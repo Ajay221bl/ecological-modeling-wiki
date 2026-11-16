@@ -1,0 +1,130 @@
+---
+type: home
+tags:
+  - start-here
+  - index
+aliases: []
+status: seedling
+---
+
+# Index
+
+Every note in the wiki, by folder. 104 notes in total.
+
+## 00 Start Here (5)
+- [[Change Log]]
+- [[How This Wiki Works]]
+- [[Learning Path]]
+- [[Open Questions]]
+- [[Start Here]]
+
+## 01 Maps of Content (13)
+- [[MOC - Autocorrelation]]
+- [[MOC - Basics from Zero]]
+- [[MOC - Bayesian Inference]]
+- [[MOC - Course Readings]]
+- [[MOC - Data Exploration]]
+- [[MOC - Ecological Modeling Course]]
+- [[MOC - Linear Models and GLMs]]
+- [[MOC - Mixed Models]]
+- [[MOC - Model Selection]]
+- [[MOC - Modeling Foundations]]
+- [[MOC - Probability and Distributions]]
+- [[MOC - R for Ecological Modeling]]
+- [[MOC - Why We Do It This Way]]
+
+## 02 Molecular Notes (15)
+- [[Bias and Precision]]
+- [[Biological vs Statistical Population]]
+- [[Continuous vs Discrete Data]]
+- [[Deterministic and Stochastic Components]]
+- [[Exploration, Inference and Prediction]]
+- [[Factorials and Binomial Coefficient]]
+- [[Induction vs Deduction]]
+- [[Logarithms and Exponents]]
+- [[Parameter vs Estimate]]
+- [[Population and Sample]]
+- [[Process vs Observation Error]]
+- [[Theoretical vs Empirical Modeling]]
+- [[Variable and Observation]]
+- [[Why every statistical model has a deterministic and a stochastic part]]
+- [[Why model at all]]
+
+## Basics from Zero (28)
+- [[Binary Variable]]
+- [[Binomial Coefficient]]
+- [[Categorical Variable]]
+- [[Continuous Data]]
+- [[Correlation]]
+- [[Covariance]]
+- [[Discrete Data]]
+- [[Estimate]]
+- [[Estimator]]
+- [[Exponent]]
+- [[Exponential Function]]
+- [[Factorial]]
+- [[Functions in Maths]]
+- [[Greek Letters and Notation]]
+- [[Logarithm]]
+- [[Mean]]
+- [[Natural Logarithm]]
+- [[Observation]]
+- [[Parameter]]
+- [[Population]]
+- [[Product Notation]]
+- [[Sample]]
+- [[Scientific Notation in R Output]]
+- [[Standard Deviation]]
+- [[Standard Error]]
+- [[Summation Notation]]
+- [[Variable]]
+- [[Variance]]
+
+## Course (4)
+- [[Course Overview]]
+- [[Course Schedule]]
+- [[Final Project]]
+- [[Homework]]
+
+## Modeling Foundations (33)
+- [[Accuracy]]
+- [[Analytical Model]]
+- [[Bias]]
+- [[Bias-Variance Trade-off]]
+- [[Binomial Sampling]]
+- [[Biological Population]]
+- [[Conceptual Model]]
+- [[Deduction]]
+- [[Deterministic Component]]
+- [[Empirical Model]]
+- [[Exploratory Modeling]]
+- [[Hypothesis]]
+- [[Induction]]
+- [[Inferential Modeling]]
+- [[Model]]
+- [[Modeling Process]]
+- [[Observation Error]]
+- [[Overfitting]]
+- [[Parsimony]]
+- [[Precision]]
+- [[Predictive Modeling]]
+- [[Process Variation]]
+- [[Real World and Model World]]
+- [[Representative Sample]]
+- [[Sampling Unit]]
+- [[Sampling Variation]]
+- [[Sensitivity Analysis]]
+- [[Simulation Model]]
+- [[Statistical Model]]
+- [[Statistical Population]]
+- [[Stochastic Component]]
+- [[Theoretical Model]]
+- [[Underfitting]]
+
+## Sources (6)
+- [[Course Website]]
+- [[Hobbs and Hooten 2015 Ch1]]
+- [[Hobbs and Hooten 2015 Ch2]]
+- [[Powell and Gale 2015 Ch1]]
+- [[Powell and Gale 2015 Ch2]]
+- [[Tredennick et al. 2021]]
