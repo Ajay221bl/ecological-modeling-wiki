@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "Two events are independent when knowing that one happened doesn't change the probability of the other."
 aliases:
   - "Independence of events"
   - "Statistical independence"
@@ -11,27 +12,12 @@ status: seedling
 
 # Independent Events
 
-**In one line:** two events are independent when knowing that one happened doesn't change the probability of the other.
+Two coins flipped in different rooms: learning that the first came up heads tells you nothing about the second. Compare two cards dealt from one deck, where learning the first is an ace makes an ace less likely for the second. Two events are **independent** when knowing that one happened does not change the probability of the other: P(A | B) = P(A) ([[Conditional Probability]]). The consequence is the multiplication rule, P(A, B) = P(A) × P(B) ([[Joint Probability]]), which extends to any number of independent events: multiply them all. Two nests far apart, each surviving with probability 0.6, both survive with probability 0.6 × 0.6 = 0.36.
 
-> [!info] Before this, it helps to know
-> [[Conditional Probability]] (the definition uses it) · [[Joint Probability]] (which simplifies)
+Independence is an assumption about the world, argued from how things work, not read from a formula. The second simulation in the code below shows how it fails. A shared bad or good year hits both nests: in good years each survives with probability 0.9, in bad years 0.3. Each nest still survives 60% of the time overall, but the probability that both survive is 0.45, not 0.36, because the nests rise and fall together.
 
-## The everyday picture
-Two coins flipped in different rooms. Learning that the first came up heads tells you nothing about the second. Compare with two cards dealt from one deck: learning the first is an ace makes an ace less likely for the second.
+This is the workhorse of statistics because the [[Likelihood]] of a dataset is the product of the probabilities of the individual observations, and that product is valid only if the observations are independent given the model. When they share causes the model lacks, the product overstates the evidence; that is the problem of [[Independence of Observations]]. Often the right statement is [[Conditional Independence]], independence once a shared cause is known. Do not confuse independent with disjoint: [[Disjoint Events]] cannot both happen, so knowing one happened tells you a lot about the other, the opposite of independence ([[Independent vs Disjoint Events]], [[Hobbs and Hooten 2015 Ch3]]).
 
-## A tiny example
-Two nests far apart, each surviving with probability 0.6.
-- P(both survive) = 0.6 × 0.6 = 0.36.
-- If they shared a predator's territory, both failing together would be more common and this product would be wrong.
-
-## Start from zero
-1. **Definition: P(A | B) = P(A).** Knowing B is irrelevant.
-2. **Consequence: P(A, B) = P(A) × P(B).** The multiplication rule.
-3. **It works for any number of independent events:** multiply them all.
-4. **Why this is the workhorse of statistics:** the likelihood of a dataset is the product of the probabilities of the individual observations. That product is valid only if the observations are independent given the model.
-5. **Independence is an assumption about the world,** to be argued from the design. It can't be read from a formula.
-
-## In R
 ```r
 set.seed(3)
 a <- rbinom(1e5, 1, 0.6); b <- rbinom(1e5, 1, 0.6)        # independent nests
@@ -40,17 +26,6 @@ shared <- rbinom(1e5, 1, 0.5)                             # a shared bad year hi
 a2 <- rbinom(1e5, 1, ifelse(shared == 1, 0.9, 0.3)); b2 <- rbinom(1e5, 1, ifelse(shared == 1, 0.9, 0.3))
 c(joint = mean(a2 & b2), product = mean(a2) * mean(b2))   # joint 0.45, product 0.36: not independent
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch3]]. The idea behind [[Independence of Observations]].
-
-## Common confusions
-- **"Independent means they can't both happen."** That is disjoint, the opposite situation.
-
-## Explain it back
-- When may you multiply probabilities?
-
-*Pass test:* you can test independence by comparing a joint probability with the product.
 
 ## Connections
 - **Builds on:** [[Conditional Probability]], [[Joint Probability]]

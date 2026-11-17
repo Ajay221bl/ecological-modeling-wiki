@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "The uniform distribution spreads probability evenly over an interval, so every value between its lower and upper limit is equally likely."
 aliases:
   - "dunif()"
   - "Flat distribution"
@@ -12,39 +13,17 @@ status: seedling
 
 # Uniform Distribution
 
-**In one line:** the uniform distribution spreads probability evenly over an interval, so every value between its lower and upper limit is equally likely.
+The pointer on a board-game spinner is as likely to stop at one angle as at any other; no region is favoured. The **uniform distribution** spreads probability evenly over an interval from a lower limit a to an upper limit b, so every value in between is equally likely. Its density is a flat line at height 1/(b − a) inside the interval and zero outside ([[Probability Density Function]], [[Support of a Distribution]]). Its mean is the midpoint (a + b)/2 and its variance (b − a)²/12.
 
-> [!info] Before this, it helps to know
-> [[Probability Density Function]] (a flat one) · [[Support of a Distribution]] (the interval)
+Because the density is flat, the probability of a sub-interval is just its length divided by the whole length. For Uniform(0, 10), the density is 0.1 everywhere and P(below 3) = 3/10 = 0.3; the code below checks that, and the simulated variance matches 100/12 = 8.3. Uniform draws are the raw material of randomness on a computer: `runif()` produces them, and other random draws and random locations are built from them ([[Random Numbers and set.seed()]]).
 
-## The everyday picture
-A spinner on a board game. The pointer is as likely to stop at one angle as at any other. No region is favoured.
+It is often used as a "vague" prior, and that needs care ([[Vague Prior]], [[Hobbs and Hooten 2015 Ch3]]). Its hard edges forbid values outside the limits completely, and it is flat only on the scale you wrote it on. The last line of the code puts a uniform prior on a probability p and looks at the implied prior on logit(p): it is peaked, not flat. So uniform does not mean uninformative; it carries information in its limits and takes a specific shape on any other scale. Uniform(0, 1) is the same as Beta(1, 1) ([[Beta Distribution]]).
 
-## Start from zero
-1. **Two parameters:** lower limit a and upper limit b.
-2. **Density is constant: 1/(b − a)** inside, zero outside.
-3. **Mean = (a + b)/2. Variance = (b − a)²/12.**
-4. **Probability of a sub-interval = its length ÷ (b − a).**
-5. **Used to generate randomness.** `runif()` is the raw material for other random draws and for random locations.
-6. **Used as a "vague" prior.** *Caution:* its hard edges forbid values outside the limits completely, and it is not flat once you transform the parameter. Flat on a probability is not flat on the log-odds.
-
-## In R
 ```r
 dunif(3, 0, 10); punif(3, 0, 10)                 # density 0.1, P(below 3) = 0.3
 set.seed(5); u <- runif(1e5, 0, 10); c(mean(u), var(u), 100 / 12)
 p <- runif(1e5); hist(qlogis(p), breaks = 60)    # a flat prior on p is a peaked (logistic) prior on logit(p)
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch3]]. Their Chapter 5 discusses why uniform priors aren't automatically uninformative.
-
-## Common confusions
-- **"Uniform means uninformative."** It carries information: the limits, and a specific shape on any other scale.
-
-## Explain it back
-- What is the density of Uniform(2, 6)?
-
-*Pass test:* you can compute uniform probabilities from lengths.
 
 ## Connections
 - **Builds on:** [[Probability Density Function]]

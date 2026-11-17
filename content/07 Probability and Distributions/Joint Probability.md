@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "A joint probability is the probability that two things are both true at once."
 aliases:
   - "P(A and B)"
   - "P(A, B)"
@@ -13,49 +14,21 @@ status: seedling
 
 # Joint Probability
 
-**In one line:** a joint probability is the probability that two things are both true at once.
+A two-way table of people by hair colour and eye colour has a cell for brown hair and blue eyes, and the share of people in that cell is a joint probability; the whole table adds to 1. A **joint probability** is the probability that two things are both true at once, written P(A, B) or P(A ∩ B) ([[Event]], [[Probability]]). It is never larger than either P(A) or P(B), because requiring two things is harder than requiring one, and the order does not matter: P(A, B) = P(B, A).
 
-> [!info] Before this, it helps to know
-> [[Event]] (the things) · [[Probability]] (the measure)
+An example. Of 100 sites, a species is present at 40, and at 30 of those it was detected. So P(present and detected) = 30/100 = 0.30. The same number comes from the general rule P(A, B) = P(A | B) × P(B), here P(present) × P(detected given present) = 0.4 × 0.75 = 0.30, where the bar means "given" ([[Conditional Probability]]). Only in the special case of [[Independent Events]] does this simplify to P(A) × P(B). The figure and code lay the site example out as a table: each cell is a joint probability, the row and column totals are [[Marginal Probability|marginal probabilities]], and a conditional probability rescales one row.
 
-## The everyday picture
-A two-way table of people by hair colour and eye colour. Each cell is a joint probability: the share of people who are both brown-haired and blue-eyed. The whole table adds up to 1.
+Joint probability is central because a statistical model is a joint probability of all the data, and in Bayesian work of all the parameters too; fitting a model is working with that one big joint probability. Breaking it into conditional pieces is the [[Chain Rule of Probability]], which Hobbs and Hooten use to build every later result ([[Hobbs and Hooten 2015 Ch3]], [[Joint, Marginal and Conditional Probability]]). The common mistake is to assume joint probability is always P(A) × P(B); that holds only under independence.
 
-## A tiny example
-100 sites. A species is present at 40. At those 40, it was detected at 30.
-- P(present and detected) = 30/100 = 0.30.
-- Equivalently: P(present) × P(detected given present) = 0.4 × 0.75 = 0.30.
-
-## Start from zero
-1. **Write it P(A, B) or P(A ∩ B).**
-2. **It is never larger than either P(A) or P(B).** Requiring two things is harder than requiring one.
-3. **General rule: P(A, B) = P(A | B) × P(B).**
-4. **Special case, independence: P(A, B) = P(A) × P(B).**
-5. **Order doesn't matter:** P(A, B) = P(B, A).
-6. **Why it is central:** a statistical model is a joint probability of all the data and, in Bayesian work, all the parameters too. Fitting is working with that one big joint probability.
-
-## See it
 ![[Joint marginal conditional.png|700]]
 *What to look at:* each cell is a joint probability, the margins are sums of cells, and a conditional rescales one row.
 
-## In R
 ```r
 tab <- matrix(c(0.30, 0.10, 0.00, 0.60), 2, byrow = TRUE, dimnames = list(c("present", "absent"), c("detected", "not detected")))
 tab; sum(tab)
 tab["present", "detected"]                       # joint
 0.4 * 0.75                                       # P(present) x P(detected | present)
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch3]] builds every later result from joint, conditional and marginal probability.
-
-## Common confusions
-- **"Joint probability is P(A) × P(B)."** Only when A and B are independent.
-
-## Explain it back
-- Why can a joint probability never exceed either single probability?
-
-*Pass test:* you can read a joint probability from a table and compute one from a conditional.
 
 ## Connections
 - **Builds on:** [[Event]], [[Probability]]

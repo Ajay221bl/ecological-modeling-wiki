@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "The expected value of a random variable is its long-run average: each possible value weighted by its probability and added up."
 aliases:
   - "Expectation"
   - "E(Y)"
@@ -13,45 +14,18 @@ status: seedling
 
 # Expected Value
 
-**In one line:** the expected value of a random variable is its long-run average: each possible value weighted by its probability and added up.
+If a lottery ticket pays 100 with probability 0.01 and nothing otherwise, then over thousands of tickets you would average 1 per ticket. You never win exactly 1; it is what the game is worth on average. The **expected value** of a random variable is that long-run average: each possible value weighted by its probability and added up. For a discrete variable E(Y) = Σ y × P(Y = y) ([[Probability Mass Function]], [[Summation Notation]]); for a continuous one it is the same weighted sum done as an area, ∫ y × density(y) dy. It is written μ or E(Y), and it is the balance point of the distribution: the population version of the sample [[Mean]].
 
-> [!info] Before this, it helps to know
-> [[Mean]] (the sample version) · [[Probability Mass Function]] (the weights) · [[Summation Notation]] (the adding)
+For a die, E(Y) = (1 + 2 + 3 + 4 + 5 + 6) × 1/6 = 3.5, which shows the expected value need not be a possible value: no die shows 3.5. The code below computes it for the die, for a Poisson with mean 3, and by integration for a gamma distribution with shape 2 and rate 0.5, whose mean is 4. Expectations add: E(X + Y) = E(X) + E(Y), and E(a + bY) = a + b E(Y).
 
-## The everyday picture
-The fair price of a lottery ticket. If a ticket pays 100 with probability 0.01 and nothing otherwise, then over thousands of tickets you'd average 1 per ticket. You never win exactly 1. It is what the game is worth on average.
+Regression models are statements about expected values: the deterministic part says E(Y | X) = β₀ + β₁X, the average response at given predictors ([[Linear Predictor]]). One warning matters later: for a curved function g, E(g(Y)) is generally not g(E(Y)). The mean of the logs is not the log of the mean; in the last line of the code, for lognormal data E(log z) is 0 while log E(z) is 0.5 ([[Jensen's Inequality]]). And the expected value is not the most likely value, which is the mode; for skewed distributions they differ. It is the first of the [[Moments of a Distribution]], and the target that sample averages approach by the [[Law of Large Numbers]] ([[Hobbs and Hooten 2015 Ch3]]).
 
-## A tiny example
-A die: E(Y) = 1(1/6) + 2(1/6) + 3(1/6) + 4(1/6) + 5(1/6) + 6(1/6) = 3.5.
-
-## Start from zero
-1. **Discrete: E(Y) = Σ y × P(Y = y).**
-2. **Continuous: E(Y) = ∫ y × density(y) dy.** The same weighted sum, done as an area.
-3. **It is the balance point of the distribution.**
-4. **It need not be a possible value.** No die shows 3.5.
-5. **Written μ or E(Y).**
-6. **Expectations add:** E(X + Y) = E(X) + E(Y), and E(a + bY) = a + b E(Y).
-7. **Why models are about it:** the deterministic part of a regression is a statement about the expected value of the response at given predictors, E(Y | X) = β₀ + β₁X.
-8. **Warning:** E(g(Y)) is generally not g(E(Y)) for a curved g. The mean of the logs is not the log of the mean.
-
-## In R
 ```r
 sum((1:6) * (1/6))                               # 3.5
 y <- 0:100; sum(y * dpois(y, 3))                 # E(Y) for Poisson(3) is 3
 integrate(function(y) y * dgamma(y, 2, 0.5), 0, Inf)$value   # gamma(shape 2, rate 0.5): mean 4
 set.seed(10); z <- rlnorm(1e5); c(mean(log(z)), log(mean(z)))   # E(log z) is 0, log E(z) is 0.5
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch3]] defines it as the first moment. GLM notes rely on E(Y) = μ.
-
-## Common confusions
-- **"Expected value is the most likely value."** That is the mode. For skewed distributions they differ.
-
-## Explain it back
-- Compute E(Y) for a variable that is 0 with probability 0.7 and 10 with probability 0.3.
-
-*Pass test:* you can compute an expectation as a probability-weighted sum.
 
 ## Connections
 - **Builds on:** [[Mean]], [[Probability Mass Function]]

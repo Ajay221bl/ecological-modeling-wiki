@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "The mean-variance relationship of a distribution is the rule that says how its variance changes as its mean changes."
 aliases:
   - "Variance function"
   - "Mean-variance relation"
@@ -11,29 +12,15 @@ status: seedling
 
 # Mean-Variance Relationship
 
-**In one line:** the mean-variance relationship of a distribution is the rule that says how its variance changes as its mean changes.
+Guess the number of people in a small room and you are off by two or three; guess the crowd in a stadium and you are off by thousands. For most things you count or measure, bigger quantities come with bigger errors. The **mean-variance relationship** of a distribution is its precise version of that rule: how its [[Variance]] changes as its [[Mean]] changes. Each family has its own. Normal: the variance is constant, unrelated to the mean. Poisson: variance = mean. Negative binomial: variance = mean + mean²/k. Binomial: variance = np(1 − p), largest in the middle and shrinking near 0 and n. Gamma and lognormal: variance proportional to mean², so the standard deviation grows in step with the mean.
 
-> [!info] Before this, it helps to know
-> [[Mean]] and [[Variance]] (the two linked quantities) · [[Probability Distribution]] (each has its own rule)
+The figure shows three of these as a flat line, a diagonal and an upward-bending curve. The code below simulates each family at means of 1, 5, 20 and 80. The normal's variance stays at 4 throughout; the Poisson's tracks the mean; the negative binomial with k = 2 reaches about 3,300 at a mean of 80; and the gamma with shape 4 grows with the mean squared, from 0.25 to 1,600.
 
-## The everyday picture
-Estimating crowds. Guess the number in a small room and you're off by two or three. Guess the number in a stadium and you're off by thousands. For most things you count or measure, bigger quantities come with bigger errors. Each distribution has a precise version of that rule.
+This is how you choose a distribution: plot the variance of your data against its mean, across groups or fitted values, and the pattern points to the family ([[Choosing a Distribution for Your Response]]). It is also why a [[Generalized Linear Model]] does not need equal variance: each family builds its rule in, so a Poisson GLM expects the fan shape that would count as [[Heteroscedasticity]] in a linear model ([[Zuur et al. 2009 Ch8]], [[Zuur et al. 2009 Ch9]]). So unequal variance is not always a problem; in a GLM it is expected, in the form the family dictates. Diagnostics then check the rule: [[Overdispersion]] means the data's variance grows faster than the family says, and the [[Dispersion Parameter]] is the knob that scales it.
 
-## Start from zero
-1. **Normal:** variance is constant, unrelated to the mean.
-2. **Poisson:** variance = mean.
-3. **Negative binomial:** variance = mean + mean²/k.
-4. **Binomial:** variance = np(1 − p). Largest in the middle, shrinking near 0 and n.
-5. **Gamma and lognormal:** variance ∝ mean². The SD grows in step with the mean.
-6. **Why this is how you choose a distribution:** plot the variance of your data against its mean (across groups or fitted values). The pattern points to the family.
-7. **Why GLMs don't need equal variance:** each family builds its rule in. A Poisson GLM expects the fan shape that would count as a violation in a linear model.
-8. **Diagnostics check the rule:** overdispersion means the data's variance grows faster than the family says.
-
-## See it
 ![[Mean variance relationships.png|700]]
 *What to look at:* one flat line, one diagonal, one curve bending upward. Three families, three rules.
 
-## In R
 ```r
 set.seed(20); mu <- c(1, 5, 20, 80)
 rbind(mean = mu,
@@ -43,20 +30,10 @@ rbind(mean = mu,
       gamma = sapply(mu, function(m) var(rgamma(1e5, shape = 4, rate = 4 / m)))) |> round(1)
 ```
 
-## In the course
-The variance function is the second ingredient of a GLM in [[Zuur et al. 2009 Ch8]] and [[Zuur et al. 2009 Ch9]].
-
-## Common confusions
-- **"Unequal variance is always a problem."** In a GLM it is expected, in the specific form the family dictates.
-
-## Explain it back
-- State the mean-variance rule for Poisson, negative binomial and gamma.
-
-*Pass test:* you can match a variance-against-mean plot to a family.
-
 ## Connections
 - **Builds on:** [[Mean]], [[Variance]]
 - **Leads to:** [[Overdispersion]], [[Dispersion Parameter]], [[Generalized Linear Model]], [[Heteroscedasticity]]
+- **See also:** [[Probability Distribution]]
 - **Part of:** [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]]
 
 ## Flashcards

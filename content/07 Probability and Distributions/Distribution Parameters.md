@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "Distribution parameters are the few numbers that pick out one specific member of a distribution family by setting where it sits, how wide it is and what shape it has."
 aliases:
   - "Location parameter"
   - "Scale parameter"
@@ -13,43 +14,21 @@ status: seedling
 
 # Distribution Parameters
 
-**In one line:** distribution parameters are the few numbers that pick out one specific member of a distribution family by setting where it sits, how wide it is and what shape it has.
+A mixing desk has dials: one slides the sound left and right, another stretches it, and on some instruments a third changes its whole character. **Distribution parameters** are the few numbers that pick out one specific member of a distribution family by setting where it sits, how wide it is and what shape it has ([[Parameter]], [[Probability Distribution]]). *Location* parameters shift a distribution along the axis without changing its shape, like the normal's mean. *Scale* parameters stretch or squeeze it, like the normal's standard deviation: doubling the scale doubles the spread. A *rate* is 1/scale, so a high rate means a tight distribution; the gamma and exponential are usually written with rates. *Shape* parameters change the form itself, like the gamma's shape, the beta's a and b, or the t distribution's degrees of freedom.
 
-> [!info] Before this, it helps to know
-> [[Parameter]] (the general idea) · [[Probability Distribution]] (the family)
+Count distributions use natural parameters: the Poisson has its mean λ, and the binomial has n and p. The figure shows shifting, stretching and reshaping as three different operations, and the code checks them: a normal shifted by 5 has the same height at the shifted point; a gamma with rate 0.5 is identical to one with scale 2; and doubling a gamma's rate halves its spread.
 
-## The everyday picture
-The dials on a mixing desk. "Normal" is the kind of sound. One dial slides it left and right, another stretches it. "Gamma" has a dial that changes its whole shape from a steep slope to a hump.
+Knowing the type of each parameter tells you how it relates to the mean and variance, and so what a regression on that parameter means ([[Moments of a Distribution]], [[Moment Matching]]). It also protects against a classic error: check each function's parameterisation. `dgamma(x, shape, rate)` differs from `dgamma(x, shape, scale = )`; `dnorm()` takes the standard deviation, not the variance; and JAGS writes the normal with a precision, 1/variance ([[Precision Parameter]]). Only a few distributions have their mean and standard deviation as parameters; others add parameters such as a [[Dispersion Parameter]].
 
-## Start from zero
-1. **Location parameters shift the distribution** along the axis without changing its shape. The normal's mean.
-2. **Scale parameters stretch or squeeze it.** The normal's SD. Doubling the scale doubles the spread.
-3. **Rate is 1/scale.** Some distributions (gamma, exponential) are usually written with a rate. A high rate means a tight distribution.
-4. **Shape parameters change the form itself.** The gamma's shape, the beta's a and b, the t's degrees of freedom.
-5. **Count distributions use natural parameters:** Poisson has its mean λ, binomial has n and p.
-6. **Why know the type:** it tells you how the parameter relates to the mean and variance, and so what a regression on that parameter means.
-7. **Check each function's parameterisation.** `dgamma(x, shape, rate)` versus `dgamma(x, shape, scale = )`. `dnorm` takes the SD, while JAGS takes precision (1/variance).
-
-## See it
 ![[Location scale shape.png|700]]
 *What to look at:* shifting, stretching and reshaping are three different operations.
 
-## In R
 ```r
 x <- 3
 c(dnorm(x, 0, 1), dnorm(x + 5, 5, 1))                    # location shift: same height
 c(dgamma(x, shape = 2, rate = 0.5), dgamma(x, shape = 2, scale = 2))   # rate 0.5 is scale 2
 set.seed(13); c(sd(rgamma(1e5, 2, rate = 1)), sd(rgamma(1e5, 2, rate = 2)))   # doubling the rate halves the spread
 ```
-
-## Common confusions
-- **"Every distribution has a mean and SD as its parameters."** Only a few do.
-- **"The second argument of `dnorm` is the variance."** It is the standard deviation.
-
-## Explain it back
-- What is the relation between rate and scale?
-
-*Pass test:* you can classify a parameter as location, scale, rate or shape.
 
 ## Connections
 - **Builds on:** [[Parameter]], [[Probability Distribution]]

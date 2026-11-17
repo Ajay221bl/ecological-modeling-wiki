@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "The chain rule of probability writes the joint probability of several things as a product of conditional probabilities, one link at a time."
 aliases:
   - "Factoring a joint distribution"
   - "Product rule"
@@ -12,50 +13,24 @@ status: seedling
 
 # Chain Rule of Probability
 
-**In one line:** the chain rule of probability writes the joint probability of several things as a product of conditional probabilities, one link at a time.
+In a relay race, the chance the baton reaches the finish is the chance the first runner completes a leg, times the chance the second does given they received it, times the chance the third does given that. The **chain rule of probability** writes the [[Joint Probability]] of several things as a product of [[Conditional Probability|conditional probabilities]], one link at a time. For two things, P(A, B) = P(A | B) P(B); for three, P(A, B, C) = P(A | B, C) P(B | C) P(C); for any number, keep peeling one off and conditioning on everything that remains. Any order is valid, so choose the one that matches how the process works. It is unrelated to the chain rule of calculus, despite the shared name.
 
-> [!info] Before this, it helps to know
-> [[Joint Probability]] (what is factored) · [[Conditional Probability]] (the factors)
+A nest example: P(egg laid, hatches, fledges) = P(laid) × P(hatches | laid) × P(fledges | hatched) = 0.9 × 0.7 × 0.5 = 0.315. The simulation below follows 100,000 eggs through the three stages and gets close to 0.315. The chain simplifies with [[Conditional Independence]]: if fledging depends only on hatching, then P(fledges | hatched, laid) = P(fledges | hatched).
 
-## The everyday picture
-A relay race. The chance the baton reaches the finish is the chance the first runner completes a leg, times the chance the second does given they received it, times the chance the third does given that. A long joint event is a chain of "given what came before".
+This is exactly how hierarchical models are written. Hobbs and Hooten factor the joint distribution of data y, true state z and parameters θ as P(y, z, θ) = P(y | z) × P(z | θ) × P(θ): an observation model, a process model and priors, each an arrow in the diagram ([[Hierarchical Model]], [[Directed Acyclic Graph]]). Combined with [[Bayes' Theorem]], this factoring is used to write every model in their book ([[Hobbs and Hooten 2015 Ch3]], [[Hobbs and Hooten 2015 Ch6]]).
 
-## A tiny example
-P(egg laid, hatches, fledges) = P(laid) × P(hatches | laid) × P(fledges | hatched) = 0.9 × 0.7 × 0.5 = 0.315.
-
-## Start from zero
-1. **Two things: P(A, B) = P(A | B) P(B).**
-2. **Three things: P(A, B, C) = P(A | B, C) P(B | C) P(C).**
-3. **Any number: keep peeling one off,** conditioning on everything remaining.
-4. **Any order is valid.** Choose the one that matches how the process works.
-5. **Simplify with conditional independence.** If A depends only on B, then P(A | B, C) = P(A | B).
-6. **Why this is how hierarchical models are written:** P(data, true state, parameters) = P(data | true state) × P(true state | parameters) × P(parameters). Observation model, process model, priors.
-
-## See it
 ```mermaid
 flowchart LR
   P[parameters] --> Z[true state<br/>process model] --> Y[data<br/>observation model]
 ```
 *What to look at:* each arrow is one conditional factor in the chain.
 
-## In R
 ```r
 0.9 * 0.7 * 0.5
 set.seed(5); n <- 1e5
 laid <- rbinom(n, 1, 0.9); hatch <- rbinom(n, 1, 0.7 * laid); fledge <- rbinom(n, 1, 0.5 * hatch)
 mean(fledge)            # close to 0.315
 ```
-
-## In the course
-Hobbs and Hooten call this factoring the joint distribution and use it with diagrams to write every model in the book ([[Hobbs and Hooten 2015 Ch3]]; [[Hobbs and Hooten 2015 Ch6]]).
-
-## Common confusions
-- **"It is the chain rule from calculus."** Same name, different rule.
-
-## Explain it back
-- Factor P(y, z, θ) in the order data, state, parameters.
-
-*Pass test:* you can factor a three-variable joint probability.
 
 ## Connections
 - **Builds on:** [[Joint Probability]], [[Conditional Probability]]
