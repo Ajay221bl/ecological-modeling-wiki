@@ -19,6 +19,9 @@ The ecology words the readings, labs and homework datasets assume you know, each
 - [[Carrying Capacity]]: Carrying capacity K is the population size an environment can support in the long run, where births balance deaths because resources limit further growth.
 - [[Density Dependence]]: Density dependence means per-capita vital rates change with population density, usually falling as crowding increases competition, disease or predation.
 - [[Tag Loss]]: Tag loss is when a marked animal loses its mark, so it looks unmarked if recaptured, which biases mark-recapture estimates unless it is measured and corrected.
+- [[Metapopulation]]: A metapopulation is a set of separate local populations in patches of habitat, linked by occasional movement, where patches are emptied by local extinction...
+- [[Translocation]]: A translocation is the deliberate capture, transport and release of wild animals into another area, to start, re-establish or boost a population.
+- [[Reintroduction]]: A reintroduction is a translocation that releases a species into part of its historical range from which it had disappeared, to re-establish a wild...
 
 ## 2. Traits and climate
 - [[Body Size]]: Body size and morphology are an organism's physical dimensions, such as wing length, skull length or mass, which link to physiology, survival and reproduction.
@@ -47,6 +50,9 @@ The ecology words the readings, labs and homework datasets assume you know, each
 - [[Enemy Release Hypothesis]]: The enemy release hypothesis proposes that introduced species thrive because they have left behind the predators, parasites and pathogens that limited them...
 - [[Woody Encroachment]]: Woody encroachment is the spread of trees and shrubs into grasslands, which reduces habitat for grassland-specialist birds that need open, treeless landscapes.
 - [[NDVI]]: NDVI is a satellite index of vegetation greenness, (NIR − Red) / (NIR + Red), ranging from −1 to 1, with higher values meaning more live green vegetation.
+- [[Home Range]]: A home range is the area an animal normally uses for its everyday activities of finding food, mating and caring for young, over a stated period.
+- [[Edge Effect]]: An edge effect is a change in conditions, species or ecological processes near the boundary between two different habitats, compared with the interior of...
+- [[Species Interaction]]: A species interaction is any way one species affects another's survival, behaviour or distribution, such as predation, competition or facilitation.
 
 ## Related MOCs
 [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]] · [[MOC 21 - Course Readings|MOC - Course Readings]] · [[Start Here]]

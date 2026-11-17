@@ -18,7 +18,7 @@ One summer of camera traps, each site checked several times, in a season short e
 
 Powell and Gale (Ch15) list its assumptions: closure within the season; constant ψ and p across sites unless modelled with covariates; no false positives; and independent surveys and sites. Covariates enter through logit links, with logit(ψᵢ) from [[Site Covariates]] and logit(pᵢⱼ) from site and [[Observation Covariates]] ([[Logit Link]]). It is fitted by [[Maximum Likelihood Estimation]], with unmarked's `occu()`, Program PRESENCE or MARK, or by Bayesian MCMC ([[unmarked Package]]). In the code below 150 sites, where occupancy rises with forest cover, are fitted with base R's `optim()`; the estimates are b0 = −0.87, b_forest = 3.06 and p = 0.38, against the truth of −1, 3 and 0.4.
 
-It is taught in the occupancy guest lecture ([[Course Website]], [[Powell and Gale 2015]] Ch15), and extended over years by [[Multi-season Occupancy]]. Don't stop visiting once you find the species: classic surveys did, but occupancy models need the later visits to estimate p, with removal designs a special exception ([[Removal Sampling]]).
+The guest lecture's worked example asks which forest conditions best predict spotted owl occupancy: 32 sites surveyed twice, with wind speed, cloud cover, date and time of day recorded for detection, and canopy cover, saplings, shrubs, forbs, ferns, grass and moss measured for occupancy ([[Occupancy Guest Lecture]], [[Course Website]], [[Powell and Gale 2015]] Ch15). [[Happe et al. 2020]] fitted the same model to reintroduced fishers, stacking years ([[Stacked Occupancy Design]], [[Fisher Occupancy Case Study]]). It is extended over years by [[Multi-season Occupancy]] and to several species by [[Multi-species Occupancy]]. Don't stop visiting once you find the species: classic surveys did, but occupancy models need the later visits to estimate p, with removal designs a special exception ([[Removal Sampling]]).
 
 ```r
 set.seed(4); S <- 150; K <- 3; forest <- runif(S)
@@ -30,8 +30,8 @@ round(c(b0 = fit$par[1], b_forest = fit$par[2], p = plogis(fit$par[3])), 2)  # t
 
 ## Connections
 - **Builds on:** [[Occupancy]], [[Detection History]], [[Closure Assumption]], [[Logit Link]]
-- **Leads to:** [[Multi-season Occupancy]], [[Site Covariates]], [[Observation Covariates]], [[unmarked Package]]
-- **Part of:** [[MOC 16 - Population Estimation|MOC - Population Estimation]], molecular note [[Occupancy Workflow in R]]
+- **Leads to:** [[Multi-season Occupancy]], [[Stacked Occupancy Design]], [[Site Covariates]], [[Observation Covariates]], [[unmarked Package]]
+- **Part of:** [[MOC 16 - Population Estimation|MOC - Population Estimation]], molecular note [[Assumptions of Occupancy Models]], [[Occupancy Workflow in R]], [[Single-season vs Multi-season Occupancy]]
 
 ## Flashcards
 

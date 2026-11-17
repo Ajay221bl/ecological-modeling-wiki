@@ -22,7 +22,7 @@ Checking which houses on a street have a cat is hard when some cats hide wheneve
 
 Powell and Gale (2015 Ch15) give four points with three visits and histories 000, 000, 010 and 111: [[Naive Occupancy]] is 2 of 4 = 50%, but the true states were 1, 0, 1, 1, so true occupancy was 75%. Whenever p < 1, ψ̂ is at least the naive occupancy. The diagram shows why: zeros come from two branches, unoccupied or occupied and missed, and repeat visits let the model split them. In the code below 100 sites with true occupancy 0.57 and p = 0.3 give a naive occupancy of 0.41, while maximising the occupancy likelihood gives ψ̂ = 0.58 and p̂ = 0.26 ([[Single-season Occupancy]]).
 
-Occupancy data are cheap: presence or absence by sight, sign, calls, cameras or recordings. They suit rare or elusive species, range monitoring, habitat relationships, invasive spread and disease. The model was introduced by MacKenzie et al. (2002) and Tyre et al. (2003), as cited in Powell and Gale; [[Guélat and Kéry 2018]] treat site-occupancy models as the occurrence analogue of N-mixture models ([[N-mixture Model]], [[Course Website]], [[Powell and Gale 2015]] Ch15). Occupancy is not abundance: a site with one animal and a site with fifty are both occupied. And ψ is not the proportion of sites where the species was seen.
+Occupancy data are cheap: presence or absence by sight, sign, calls, cameras or recordings ([[Choosing a Survey Method for Occupancy]]). The Nov 3 [[Occupancy Guest Lecture]] lists what occupancy is designed for: understanding changes or differences in the proportion of occupied sites across space or time, which underlies distribution models, habitat suitability models and metapopulation models, and multi-season models of colonization and extinction ([[Species Distribution Model]], [[Metapopulation]]). They suit rare or elusive species, range monitoring, habitat relationships, invasive spread and disease. The model was introduced by MacKenzie et al. (2002) and Tyre et al. (2003), as cited in Powell and Gale; [[Guélat and Kéry 2018]] treat site-occupancy models as the occurrence analogue of N-mixture models ([[N-mixture Model]], [[Course Website]], [[Powell and Gale 2015]] Ch15). Occupancy is not abundance: a site with one animal and a site with fifty are both occupied. And ψ is not the proportion of sites where the species was seen.
 
 ```mermaid
 flowchart TD
@@ -43,8 +43,8 @@ round(c(true = mean(z), naive = mean(d > 0), psi_hat = plogis(fit$par[1]), p_hat
 
 ## Connections
 - **Builds on:** [[Imperfect Detection]], [[Detection Probability]], [[Latent Variable]]
-- **Leads to:** [[Detection History]], [[Naive Occupancy]], [[Single-season Occupancy]], [[Multi-season Occupancy]], [[Closure Assumption]]
-- **Part of:** [[MOC 16 - Population Estimation|MOC - Population Estimation]], molecular note [[Naive vs Estimated Occupancy]], [[Occupancy vs Abundance]], [[Occupancy vs Detection Probability]], [[Occupancy Workflow in R]]
+- **Leads to:** [[Detection History]], [[Occupancy Likelihood]], [[Naive Occupancy]], [[Single-season Occupancy]], [[Multi-season Occupancy]], [[Multi-species Occupancy]], [[Closure Assumption]]
+- **Part of:** [[MOC 16 - Population Estimation|MOC - Population Estimation]], molecular note [[Naive vs Estimated Occupancy]], [[Occupancy vs Abundance]], [[Occupancy vs Detection Probability]], [[Assumptions of Occupancy Models]], [[Occupancy Workflow in R]], [[Fisher Occupancy Case Study]]
 
 ## Flashcards
 

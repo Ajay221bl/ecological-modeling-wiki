@@ -21,6 +21,32 @@ Every round of changes and checks on this wiki, newest first. Each round ("pass"
 
 ---
 
+## v1.3 (2026-11-17): occupancy guest lecture and the fisher paper
+**Asked for:** add the knowledge in the two files just added to Raw Materials: the occupancy guest lecture slides (`OccLecture (1).pptx`, Nov 3, 44 slides) and Happe et al. 2020, *Occupancy patterns in a reintroduced fisher population during reestablishment*.
+
+**Read:** all 44 slides, including the image-only ones (detection-history equations, likelihood, spotted owl example, dynamic and multi-species slides), viewed as rendered pages; the whole Happe et al. paper (abstract, study area, methods, results, Tables 1 to 3, discussion, management implications).
+
+**New atomic notes (32):**
+- Occupancy core: [[Occupancy Likelihood]], [[Site Independence Assumption]], [[Unexplained Heterogeneity in Occupancy]], [[Unexplained Heterogeneity in Detection]], [[Stacked Occupancy Design]], [[Colonization Probability]], [[Local Extinction Probability]], [[Multi-species Occupancy]], [[Marginal Occupancy]], [[Conditional Occupancy]], [[Co-occurrence Probability]].
+- Software: [[ubms Package]], [[spOccupancy Package]], [[Program PRESENCE]].
+- Field methods: [[Spatially Balanced Sampling]], [[Live Trapping]], [[Coverboard]], [[Track Survey]], [[Acoustic Survey]], [[Autonomous Recording Unit]], [[Breeding Amphibian Survey]], [[Camera Trap]], [[Hair Snare]], [[Environmental DNA]].
+- Ecology: [[Metapopulation]], [[Translocation]], [[Reintroduction]], [[Home Range]], [[Edge Effect]], [[Species Interaction]].
+- Tests used in the paper: [[Chi-square Test]], [[Kruskal-Wallis Test]].
+
+**New molecular notes (6):** [[Assumptions of Occupancy Models]], [[Single-season vs Multi-season Occupancy]], [[Marginal vs Conditional Occupancy]], [[Choosing a Survey Method for Occupancy]], [[Choosing Occupancy Software]], and [[Fisher Occupancy Case Study]], a step-by-step walk through the paper from design to conclusion with every number interpreted.
+
+**New source notes (2):** [[Occupancy Guest Lecture]], [[Happe et al. 2020]]. The [[Course Schedule]] row for Nov 3 and 5 now links both.
+
+**Updated notes:** [[Occupancy]] (what occupancy is for), [[Detection History]] (the lecture's 30-site table), [[Naive Occupancy]] (the Where's Waldo example and the fishers' naive vs estimated values), [[Closure Assumption]], [[Single-season Occupancy]] (the spotted owl example), [[Multi-season Occupancy]] (time structures; "colonization" and "local extinction" are now their own notes, so those aliases moved), [[Site Covariates]], [[Observation Covariates]], [[unmarked Package]] (the other tools) and [[Occupancy Workflow in R]] (detection modelled with a global occupancy model; QAIC when ĉ > 1). All new notes sit in [[MOC 16 - Population Estimation|MOC - Population Estimation]] in teaching order: field methods at the end of section 1, the new occupancy concepts beside the notes they build on in section 2.
+
+**Figures (3 new):** Fisher naive vs estimated occupancy (from the paper's Table 1 and results), Marginal vs conditional occupancy, Dynamic occupancy trajectory. Two new Mermaid diagrams.
+
+**Checks:** every new R block run and its numbers quoted from the real output (for example, unmodelled detection differences give ψ̂ = 0.44 against a true 0.60; paired sites make reported SEs 28% too small; the paper's top QAIC recomputes as 213.54). ubms, spOccupancy and unmarked are not installed here, so those blocks are marked `norun`. Links: 0 unresolved. Mermaid: both new diagrams render. 1,094 notes, 1,906 cards, 767 R blocks.
+
+**Worth knowing:** the slide panel titled "Conditional" plots P(co-occurrence), a joint probability; the notes explain the difference. Values read off the multi-species slide are approximate. Happe et al. is dated 2020 (volume 84) although the file name says 2019.
+
+---
+
 ## v1.2 (2026-11-17): every atomic note rewritten as plain paragraphs
 **Asked for:** check every atomic note line by line for factual errors, unclear explanations, broken examples and whether it holds one concept; write each as 2 or 3 clear, self-sufficient paragraphs with no subsection headings; add graphs, images and Mermaid diagrams where useful; keep the closing Connections section that links all related notes.
 

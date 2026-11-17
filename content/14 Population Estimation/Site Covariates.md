@@ -17,7 +17,7 @@ status: seedling
 
 Habitat often affects both: dense vegetation can raise occupancy but lower detection, so a covariate in only one part of the model can be misread. In unmarked they are stored in the `siteCovs` of an `unmarkedFrameOccu` ([[unmarked Package]]). Standardise them before fitting so the optimiser behaves ([[Standardizing|Standardization]]).
 
-They are used in the occupancy guest lecture ([[Course Website]]); the visit-level counterpart is [[Observation Covariates]]. Site covariates don't only go in ψ; they can also explain p.
+The guest lecture's examples are habitat type, land use type, elevation, presence of other species and management history ([[Occupancy Guest Lecture]], [[Course Website]]); [[Happe et al. 2020]] used distance to the wilderness edge, precipitation, elevation and forest structure measured in buffers around each camera ([[Fisher Occupancy Case Study]]). The visit-level counterpart is [[Observation Covariates]]. Site covariates don't only go in ψ; they can also explain p.
 
 ## Connections
 - **Builds on:** [[Explanatory Variable]], [[Single-season Occupancy]]

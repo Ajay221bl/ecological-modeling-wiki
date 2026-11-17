@@ -37,7 +37,7 @@ The tentative schedule from the syllabus ([[Course Overview]]), with the map of 
 | Thu Oct 22 | Mixed models lab: Bayesian | | | [[MOC 14 - Mixed Models|MOC - Mixed Models]] |
 | Tue Oct 27 | Generalized additive models | [[Noam Ross GAM Course]] lessons 1 and 2; [[Zuur et al. 2009 Ch3]] | | [[MOC 15 - GAMs|MOC - GAMs]] |
 | Thu Oct 29 | GAM lab | | HW4: mixed models | [[MOC 15 - GAMs|MOC - GAMs]] |
-| Tue Nov 3, Thu Nov 5 | Guest lecture and lab: occupancy modeling | [[Powell and Gale 2015]] (my addition) | | [[MOC 16 - Population Estimation|MOC - Population Estimation]] |
+| Tue Nov 3, Thu Nov 5 | Guest lecture and lab: occupancy modeling | [[Occupancy Guest Lecture]] (slides), [[Happe et al. 2020]]; [[Powell and Gale 2015]] Ch15 (my addition) | | [[MOC 16 - Population Estimation|MOC - Population Estimation]] |
 | Tue Nov 10 | GAMs: yep, Bayes | | | [[MOC 15 - GAMs|MOC - GAMs]] ([[Bayesian GAMs]]) |
 | Thu Nov 12 | Hierarchical GAMs | [[Pedersen et al. 2019]]; [[Lawton et al. 2022]] | | [[MOC 15 - GAMs|MOC - GAMs]] |
 | Tue Nov 17, Thu Nov 19 | Stan language labs | | Project final draft (Nov 19) | [[MOC 17 - Stan|MOC - Stan]] |

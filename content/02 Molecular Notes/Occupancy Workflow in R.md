@@ -37,9 +37,9 @@ flowchart TD
 1. **Build the detection matrix** y (sites × visits, NA for missed visits).
 2. **Standardize covariates;** site covariates in a data frame, visit covariates as site × visit matrices.
 3. **Create the frame:** `unmarkedFrameOccu(y, siteCovs, obsCovs)`.
-4. **Fit candidates:** start by finding a good detection model with ψ(.), then add occupancy covariates.
+4. **Fit candidates:** settle the detection model first, holding occupancy simple (ψ(.)) or, as [[Happe et al. 2020]] did, fixed at a global model, then add occupancy covariates to the chosen detection model.
 5. **Compare with AIC** (`fitList()` and `modSel()`).
-6. **Check fit:** `parboot()` or the MacKenzie-Bailey test (AICcmodavg `mb.gof.test`), giving ĉ.
+6. **Check fit:** `parboot()` or the MacKenzie-Bailey test (AICcmodavg `mb.gof.test`), giving ĉ; if ĉ > 1, rank models by [[QAIC]] and inflate standard errors by √ĉ (Happe et al.: ĉ = 1.37).
 7. **Predict:** `predict(m, type = "state", newdata)` for ψ maps, `type = "det"` for p.
 8. **Report** naive occupancy, ψ̂ and p̂ with intervals, and the model table.
 
@@ -66,7 +66,7 @@ Adding many covariates to ψ while leaving p constant, so habitat effects on vis
 *Pass test:* you can run an occupancy analysis end to end.
 
 ## Connections
-- **Related:** [[Site vs Observation Covariates]], [[How many visits does an occupancy study need]]
+- **Related:** [[Site vs Observation Covariates]], [[How many visits does an occupancy study need]], [[Assumptions of Occupancy Models]], [[Choosing Occupancy Software]], [[Fisher Occupancy Case Study]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 16 - Population Estimation|MOC - Population Estimation]], [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 
 ## Flashcards
