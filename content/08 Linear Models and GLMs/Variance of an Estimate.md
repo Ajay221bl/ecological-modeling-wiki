@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "The variance of an estimate measures how much that estimate would vary from one repetition of the study to the next, and its square root is the standard error."
 aliases:
   - "Sampling variance"
   - "var(θ̂)"
@@ -12,41 +13,17 @@ status: seedling
 
 # Variance of an Estimate
 
-**In one line:** the variance of an estimate measures how much that estimate would vary from one repetition of the study to the next, and its square root is the standard error.
+Clamp a rifle in a vice and fire: the spread of the bullet holes shows how steady the rifle is. Each shot is one study's estimate. The **variance of an estimate** measures how much that estimate would vary from one repetition of the study to the next: it is the [[Variance]] of the estimate's [[Sampling Distribution]], and its square root is the [[Standard Error]]. For a mean it is σ²/n; for a binomial proportion p(1 − p)/n; for maximum likelihood estimates in general, it comes from the inverse of the [[Hessian Matrix]].
 
-> [!info] Before this, it helps to know
-> [[Sampling Distribution]] (whose variance it is) · [[Variance]] (the measure) · [[Standard Error]] (its square root)
+With p = 0.3 and n = 50, the variance of the estimated proportion is 0.3 × 0.7 / 50 = 0.0042, so the standard error is 0.065; the code below confirms both by simulating 100,000 studies. It falls as n rises: quadrupling n halves the standard error. Variances of independent estimates add, var(A − B) = var(A) + var(B), which is how you get the standard error of a difference; two estimates with SEs 0.05 and 0.07 have a difference with SE √(0.05² + 0.07²) = 0.086. For functions of estimates, such as a product of survival rates or a ratio, use the [[Delta Method]] or simulate.
 
-## The everyday picture
-The spread of bullet holes from a rifle clamped in a vice. Each shot is one study's estimate. A tight cluster means a low-variance estimator.
+An estimate without its variance cannot be compared, combined or tested, which is why [[Powell and Gale 2015 Ch3]] and Chapter 4 derive variances for both estimates and derived quantities ([[Precision]]). Do not confuse the variance of an estimate with the variance of the data: the first shrinks with n, the second does not.
 
-## Start from zero
-1. **var(θ̂) is the variance of the sampling distribution of θ̂.**
-2. **SE = √var(θ̂).**
-3. **For a mean:** σ²/n. **For a binomial proportion:** p(1 − p)/n.
-4. **For ML estimates in general:** from the inverse of the Hessian.
-5. **It falls as n rises.** Quadrupling n halves the standard error.
-6. **Variances of independent estimates add.** var(A − B) = var(A) + var(B). That is how you get the SE of a difference.
-7. **For functions of estimates** (a product of survival rates, a ratio) use the delta method or simulate.
-8. **Why it matters:** an estimate without its variance can't be compared, combined or tested.
-
-## In R
 ```r
 p <- 0.3; n <- 50; c(var = p * (1 - p) / n, se = sqrt(p * (1 - p) / n))
 set.seed(10); phat <- rbinom(1e5, n, p) / n; c(var(phat), sd(phat))
 se_a <- 0.05; se_b <- 0.07; sqrt(se_a^2 + se_b^2)        # SE of a difference between two independent estimates
 ```
-
-## In the course
-[[Powell and Gale 2015 Ch3]] and Ch4 derive variances of ML estimates and of derived quantities.
-
-## Common confusions
-- **"Variance of the estimate = variance of the data."** The first shrinks with n, the second doesn't.
-
-## Explain it back
-- What is the SE of a difference between two independent estimates with SEs 0.3 and 0.4?
-
-*Pass test:* you can compute the variance and SE of a proportion and of a difference.
 
 ## Connections
 - **Builds on:** [[Sampling Distribution]], [[Variance]]

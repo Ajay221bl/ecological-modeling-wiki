@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "The negative log-likelihood is the log-likelihood with its sign flipped, so that the best parameter values are found at its lowest point."
 aliases:
   - "NLL"
   - "−log L"
@@ -12,40 +13,18 @@ status: seedling
 
 # Negative Log-likelihood
 
-**In one line:** the negative log-likelihood is the log-likelihood with its sign flipped, so that the best parameter values are found at its lowest point.
+Turn a hill upside down and it becomes a bowl: finding the top of the hill and the bottom of the bowl are the same search. Computer routines are written to roll a ball to the bottom, so we hand them the bowl. The **negative log-likelihood** (NLL) is the [[Log-likelihood]] with its sign flipped, NLL(θ) = −ℓ(θ), so the best parameter values are at its lowest point. Maximising the likelihood is the same as minimising the NLL, and optimisation functions such as `optim()` minimise by default ([[Numerical Optimization]]).
 
-> [!info] Before this, it helps to know
-> [[Log-likelihood]] (what is negated) · [[Numerical Optimization]] (which minimises by convention)
+In the code below, six counts have a Poisson NLL that is lowest near λ = 3.17, and `optimize()` finds the minimum at exactly the sample mean, which is the Poisson's [[Maximum Likelihood Estimation|maximum likelihood estimate]]. The NLL behaves like a measure of misfit, lower being better, just as a sum of squares does. For normal errors it is the sum of squares in disguise, plus constants, which is why least squares and maximum likelihood agree for linear models.
 
-## The everyday picture
-Turning a hill upside down into a bowl. Finding the top of a hill and finding the bottom of a bowl are the same search. Computer routines are written to roll a ball to the bottom, so we hand them the bowl.
+[[Deviance]] and AIC are built on −2 × log-likelihood, twice the NLL ([[Johnson and Omland 2004]]). For discrete data, where log-likelihoods are negative, the negative log-likelihood is a positive number, despite its name.
 
-## Start from zero
-1. **NLL(θ) = −ℓ(θ).**
-2. **Maximising the likelihood = minimising the NLL.**
-3. **Why flip:** optimisation functions such as `optim()` minimise by default.
-4. **It behaves like a measure of misfit:** lower is better, as with a sum of squares.
-5. **For normal errors it is the sum of squares in disguise,** plus constants. That is why least squares and maximum likelihood agree for linear models.
-6. **Deviance and AIC are built on −2 × log-likelihood.**
-
-## In R
 ```r
 y <- c(2, 4, 3, 6, 1, 3)
 nll <- function(lambda) -sum(dpois(y, lambda, log = TRUE))
 sapply(c(2, 3, 3.17, 4), nll)                         # lowest near the sample mean
 optimize(nll, c(0.1, 20))$minimum; mean(y)
 ```
-
-## In the course
-[[Johnson and Omland 2004]] frames model fitting as minimising it.
-
-## Common confusions
-- **"Negative log-likelihood is a negative number."** For discrete data it is positive.
-
-## Explain it back
-- Why do we minimise the NLL instead of maximising the likelihood?
-
-*Pass test:* you can write an NLL function and minimise it.
 
 ## Connections
 - **Builds on:** [[Log-likelihood]]

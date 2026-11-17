@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "Maximum likelihood estimation chooses, as the estimate of a parameter, the value that makes the observed data more probable than any other value would."
 aliases:
   - "MLE"
   - "Maximum likelihood"
@@ -14,36 +15,15 @@ status: seedling
 
 # Maximum Likelihood Estimation
 
-**In one line:** maximum likelihood estimation chooses, as the estimate of a parameter, the value that makes the observed data more probable than any other value would.
+Tuning a radio, you turn the dial and listen: at most positions the station is faint, at one it comes through loudest, and you stop there. **Maximum likelihood estimation** (MLE) chooses as the estimate of a parameter the value that makes the observed data more probable than any other value would: the peak of the [[Likelihood Function]]. Write the [[Log-likelihood]] of the data as a function of the parameters and find where it is highest. Sometimes there is a formula: set the derivative to zero and solve ([[Finding a Maximum with Calculus]]). For 7 successes in 10 trials, the log-likelihood 7·log(p) + 3·log(1 − p) peaks at p = 7/10, the observed proportion; for a Poisson the MLE is the sample mean, and for a normal mean, the sample mean. Usually the peak is found by computer search ([[Numerical Optimization]]).
 
-> [!info] Before this, it helps to know
-> [[Likelihood Function]] (whose peak is sought) · [[Log-likelihood]] (the working scale) · [[Finding a Maximum with Calculus]] (one way to find the peak)
+The peak's location is the estimate, and its sharpness gives the standard error: a sharply curved peak means small changes in the parameter cost a lot of likelihood, so the estimate is precise ([[Hessian Matrix]]). The code below finds p = 0.7 with `optimize()`, then fits a Poisson mean to 50 counts with `optim()`: the estimate equals the sample mean, the standard error from the curvature matches the formula √(λ̂/n), and `glm()` finds the same estimate. The figure marks the estimate under the summit.
 
-## The everyday picture
-Tuning a radio. You turn the dial and listen. At most positions the station is faint. At one position it comes through loudest. You stop there. The dial position is the parameter, the loudness is the likelihood.
+The reasoning is simple: if one parameter value makes what you saw quite probable and another makes it nearly impossible, prefer the first. Maximum likelihood turns that into a recipe for any model that assigns probabilities to data, and with enough data its estimates are close to the truth, about as precise as any method can be, and approximately normal, which gives intervals and tests ([[Likelihood Ratio Test]]). It is what `glm()`, `glmmTMB()` and `lmer(REML = FALSE)` do, and for normal errors it gives the same answer as [[Least Squares]] ([[Powell and Gale 2015 Ch3]], [[Hobbs and Hooten 2015 Ch4]], [[Zuur et al. 2009 Ch8]], [[Course Website]]). Two confusions. The MLE is not the most probable parameter value; it is the value under which the data are most probable. And MLEs are not always unbiased: in small samples they can be, as the ML variance divides by n rather than n − 1. It also uses no prior knowledge; adding a prior and taking the peak gives the [[Maximum a Posteriori Estimate]].
 
-## A tiny example
-7 successes in 10 trials. Which p makes that most probable? The log-likelihood 7·log(p) + 3·log(1 − p) peaks at p = 7/10. The MLE is the observed proportion.
-
-## Start from zero
-1. **Write the log-likelihood of the data as a function of the parameters.**
-2. **Find the parameter values where it is highest.**
-3. **Sometimes by formula.** Set the derivative to zero and solve. Binomial: p̂ = y/n. Poisson: λ̂ = mean. Normal: μ̂ = mean.
-4. **Usually by computer search,** climbing the surface step by step.
-5. **The peak's location is the estimate.**
-6. **The peak's sharpness gives the standard error.** A sharply curved peak means small changes in the parameter cost a lot of likelihood, so the estimate is precise.
-7. **Why it is the default method:** with enough data, ML estimates are close to the truth, about as precise as any method can be, and approximately normal, which gives intervals and tests.
-8. **Its caveats:** small samples can give biased estimates (the ML variance divides by n, not n − 1), and it returns a single best value with no use of prior knowledge.
-9. **It is what `glm()`, `glmmTMB()` and `lmer(REML = FALSE)` do.**
-
-## See it
 ![[Likelihood peak.png|700]]
 *What to look at:* the estimate is the parameter value under the summit.
 
-## Why it is this way
-If one parameter value makes what you saw quite probable and another makes it nearly impossible, it is reasonable to prefer the first. Maximum likelihood turns that intuition into a general recipe that works for any model that assigns probabilities to data.
-
-## In R
 ```r
 ll <- function(p) dbinom(7, 10, p, log = TRUE)
 optimize(ll, c(0, 1), maximum = TRUE)$maximum                    # 0.7
@@ -52,19 +32,6 @@ nll <- function(l) -sum(dpois(y, l, log = TRUE)); fit <- optim(3, nll, method = 
 c(mle = fit$par, mean = mean(y), se = sqrt(1 / fit$hessian), se_formula = sqrt(mean(y) / 50))
 exp(coef(glm(y ~ 1, family = poisson)))                          # glm finds the same estimate
 ```
-
-## In the course
-Sep 10 and the likelihood lab ([[Course Website]]). [[Powell and Gale 2015 Ch3]], [[Hobbs and Hooten 2015 Ch4]], [[Zuur et al. 2009 Ch8]].
-
-## Common confusions
-- **"The MLE is the most probable parameter value."** It is the value under which the data are most probable.
-- **"MLEs are always unbiased."** Not in small samples.
-
-## Explain it back
-- What are the two ways of finding an MLE?
-- How does the shape of the peak relate to the standard error?
-
-*Pass test:* you can find an MLE numerically and explain what it maximises.
 
 ## Connections
 - **Builds on:** [[Likelihood Function]], [[Log-likelihood]]

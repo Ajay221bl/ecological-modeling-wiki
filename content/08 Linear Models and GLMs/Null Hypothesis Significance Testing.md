@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "Null hypothesis significance testing is the procedure of assuming no effect, computing a p-value from the data and declaring the effect \"significant\" if the p-value is below a threshold."
 aliases:
   - "NHST"
   - "Significance testing"
@@ -13,26 +14,12 @@ status: seedling
 
 # Null Hypothesis Significance Testing
 
-**In one line:** null hypothesis significance testing is the procedure of assuming no effect, computing a p-value from the data and declaring the effect "significant" if the p-value is below a threshold.
+A courtroom trial run by fixed rules presumes innocence, hears the evidence, and convicts only if the evidence would be very unlikely for an innocent person; the verdict is binary and the standard of proof was set beforehand. **Null hypothesis significance testing** (NHST) is that procedure for data. State H₀, and implicitly its alternative ([[Null Hypothesis]]); choose α ([[Significance Level]]); collect data and compute a test statistic; compute the [[P-value]]; and reject H₀ if p < α, otherwise fail to reject. The flowchart shows how the whole procedure ends in a yes or no about one hypothesis.
 
-> [!info] Before this, it helps to know
-> [[Null Hypothesis]] · [[P-value]] · [[Significance Level]] · [[Type I Error]] (the pieces it assembles)
+What it controls is the long-run rate of false positives ([[Type I Error]]). What it does not give is the probability a hypothesis is true, the size of an effect, or a comparison among several explanations. The course readings press four criticisms: nulls are often trivially false; binary decisions hide uncertainty; many unplanned tests produce false findings; and it handles only one alternative at a time ([[Anderson and Burnham 2002]], [[Johnson and Omland 2004]]).
 
-## The everyday picture
-A courtroom trial run by fixed rules. Presume innocence, hear the evidence, and convict only if the evidence would be very unlikely for an innocent person. The verdict is binary and the standard of proof was set beforehand.
+So the course goes on to estimation with intervals, to information-theoretic comparison of several models ([[Multiple Working Hypotheses]], [[Multi-model Inference]], [[Strong Inference]]), and to Bayesian posterior probabilities ([[Frequentist vs Bayesian Inference]]). That does not make NHST wrong: it answers a narrow question correctly. Trouble comes from treating that answer as the scientific conclusion ([[Course Website]]).
 
-## Start from zero
-1. **State H₀** (and implicitly Hₐ).
-2. **Choose α.**
-3. **Collect data and compute a test statistic.**
-4. **Compute the p-value.**
-5. **Reject H₀ if p < α. Otherwise fail to reject.**
-6. **What it controls:** the long-run rate of false positives.
-7. **What it doesn't give:** the probability a hypothesis is true, the size of an effect, or a comparison among several explanations.
-8. **Critiques in the course readings:** nulls are often trivially false. Binary decisions hide uncertainty. Many unplanned tests produce false findings. It handles only one alternative at a time.
-9. **Where the course goes instead:** estimation with intervals, information-theoretic comparison of several models and Bayesian posterior probabilities.
-
-## See it
 ```mermaid
 flowchart LR
   A[State H0] --> B[Choose alpha] --> C[Compute test statistic] --> D[p-value] --> E{p below alpha?}
@@ -40,18 +27,6 @@ flowchart LR
   E -->|no| G[Fail to reject]
 ```
 *What to look at:* the whole procedure ends in a yes or no about one hypothesis.
-
-## In the course
-[[Anderson and Burnham 2002]] and [[Johnson and Omland 2004]] set it against model selection. Sep 22 lecture ([[Course Website]]).
-
-## Common confusions
-- **"NHST is wrong."** It answers a narrow question correctly. Trouble comes from treating that answer as the scientific conclusion.
-
-## Explain it back
-- List the five steps.
-- Name three criticisms.
-
-*Pass test:* you can walk through a test and say what it does and doesn't tell you.
 
 ## Connections
 - **Builds on:** [[Null Hypothesis]], [[P-value]], [[Significance Level]]

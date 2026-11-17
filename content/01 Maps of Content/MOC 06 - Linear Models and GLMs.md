@@ -86,10 +86,10 @@ Unit 4 (Sep 1, 3): the straight-line model, how to read it, and how GLMs extend 
 - [[Functional Response]]: a functional response describes how a predator's or herbivore's consumption rate changes with prey or food density: linear (Type I), saturating (Type II) or...
 
 ## 7. Next: estimation and GLMs
-- [[Likelihood]]: the likelihood of a parameter value is the probability (or probability density) of the observed data computed as if that parameter value were true.
-- [[Maximum Likelihood Estimation]]: maximum likelihood estimation chooses, as the estimate of a parameter, the value that makes the observed data more probable than any other value would.
-- [[Confidence Interval]]: a confidence interval is a range of parameter values computed from the data by a procedure that captures the true value in a stated percentage of repeated...
-- [[P-value]]: a p-value is the probability, calculated assuming the null hypothesis is true, of getting a test statistic at least as extreme as the one actually observed.
+- [[Likelihood]]: The likelihood of a parameter value is the probability (or probability density) of the observed data computed as if that parameter value were true.
+- [[Maximum Likelihood Estimation]]: Maximum likelihood estimation chooses, as the estimate of a parameter, the value that makes the observed data more probable than any other value would.
+- [[Confidence Interval]]: A confidence interval is a range of parameter values computed from the data by a procedure that captures the true value in a stated percentage of repeated...
+- [[P-value]]: A p-value is the probability, calculated assuming the null hypothesis is true, of getting a test statistic at least as extreme as the one actually observed.
 - [[Generalized Linear Model]]: a generalized linear model extends linear regression to responses such as counts and yes/no outcomes by pairing a suitable probability distribution with a...
 - [[Link Function]]: a link function is the transformation applied to the mean of the response so that the result can be modeled as a straight-line combination of predictors.
 - [[Logistic Regression]]: logistic regression models the probability of a yes/no outcome as a function of predictors, using a Bernoulli (or binomial) distribution and a logit link.

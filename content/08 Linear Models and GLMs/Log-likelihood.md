@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "The log-likelihood is the natural logarithm of the likelihood, used because it turns a product of many tiny probabilities into a manageable sum."
 aliases:
   - "Log likelihood"
   - "logLik()"
@@ -13,47 +14,17 @@ status: seedling
 
 # Log-likelihood
 
-**In one line:** the log-likelihood is the natural logarithm of the likelihood, used because it turns a product of many tiny probabilities into a manageable sum.
+Earthquake energies span such a range that we report their logarithm on the Richter scale: the ranking of quakes does not change, but the numbers become usable. The **log-likelihood** is the natural logarithm of the [[Likelihood]], written ℓ(θ) ([[Natural Logarithm]]). The likelihood of n independent observations is a product of n probabilities, each below 1, so the product shrinks fast; with 1,000 observations it is smaller than a computer can store and becomes 0. Taking logs turns the product into a sum, since log(a × b) = log(a) + log(b), so ℓ(θ) = Σ log P(yᵢ | θ) ([[Summation Notation]]).
 
-> [!info] Before this, it helps to know
-> [[Likelihood]] (what is logged) · [[Natural Logarithm]] (the function) · [[Summation Notation]] (the result is a sum)
+Three Poisson counts 2, 4 and 3, under mean 3, have probabilities 0.224, 0.168 and 0.224. The likelihood is 0.224 × 0.168 × 0.224 = 0.0084, and the log-likelihood is log(0.224) + log(0.168) + log(0.224) = −4.78. The code below checks both, then shows 2,000 counts whose product underflows to 0 while the sum of logs is fine; `logLik()` on a fitted model reports the same sum. In R the sum comes from the `log = TRUE` argument of the d functions.
 
-## The everyday picture
-Measuring earthquakes on the Richter scale. The raw energies span such a range that you report their logarithm. The ranking of quakes doesn't change, but the numbers become usable.
+Nothing is lost by logging, because the log always increases: the θ that maximises the log-likelihood also maximises the likelihood ([[Maximum Likelihood Estimation]]). For discrete data the values are negative, closer to zero being better; for continuous data they can be positive, because densities can exceed 1. Differences of log-likelihoods are ratios of likelihoods, which is what [[AIC]], [[Deviance]] and likelihood ratio tests use ([[Hobbs and Hooten 2015 Ch4]], [[Johnson and Omland 2004]], [[Zuur et al. 2009 Ch8]]). Its size depends on n and on the data's units, so a log-likelihood of −500 is not a "bad fit" on its own; only compare log-likelihoods of models fitted to the same data. Flipped in sign it becomes the [[Negative Log-likelihood]].
 
-## A tiny example
-Three Poisson counts 2, 4, 3 with mean 3: probabilities 0.224, 0.168, 0.224.
-- Likelihood: 0.224 × 0.168 × 0.224 = 0.0084.
-- Log-likelihood: log(0.224) + log(0.168) + log(0.224) = −4.78.
-
-## Start from zero
-1. **Likelihood of n independent observations = product of n probabilities.**
-2. **Each is below 1, so the product shrinks fast.** With 1,000 observations it is smaller than a computer can store, and becomes 0.
-3. **Take logs: the product becomes a sum.** log(a × b) = log(a) + log(b).
-4. **ℓ(θ) = Σ log P(yᵢ | θ).**
-5. **The log is always increasing,** so the θ that maximises the log-likelihood also maximises the likelihood. Nothing is lost.
-6. **Values are negative** for discrete data (logs of probabilities below 1). Closer to zero is better.
-7. **Differences of log-likelihoods are ratios of likelihoods.** This is the quantity AIC and likelihood ratio tests use.
-8. **In R:** `logLik(model)`, or `sum(dpois(y, lambda, log = TRUE))`.
-
-## In R
 ```r
 y <- c(2, 4, 3); prod(dpois(y, 3)); sum(dpois(y, 3, log = TRUE)); log(prod(dpois(y, 3)))
 set.seed(1); big <- rpois(2000, 3); prod(dpois(big, 3)); sum(dpois(big, 3, log = TRUE))      # the product underflows to 0. The sum is fine
 m <- glm(big ~ 1, family = poisson); logLik(m)
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch4]], [[Johnson and Omland 2004]], [[Zuur et al. 2009 Ch8]].
-
-## Common confusions
-- **"A log-likelihood of −500 is a bad fit."** Its size depends on n and on the data's units. Only compare log-likelihoods of models fitted to the same data.
-- **"Positive log-likelihoods are errors."** Densities can exceed 1, so continuous data can give positive values.
-
-## Explain it back
-- Give two reasons to work with the log of the likelihood.
-
-*Pass test:* you can compute a log-likelihood by summing log probabilities.
 
 ## Connections
 - **Builds on:** [[Likelihood]], [[Natural Logarithm]]

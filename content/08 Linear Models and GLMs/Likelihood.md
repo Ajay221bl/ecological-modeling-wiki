@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "The likelihood of a parameter value is the probability (or probability density) of the observed data computed as if that parameter value were true."
 aliases:
   - "Likelihood of the data"
   - "L(θ)"
@@ -12,57 +13,20 @@ status: seedling
 
 # Likelihood
 
-**In one line:** the likelihood of a parameter value is the probability (or probability density) of the observed data computed as if that parameter value were true.
+A detective has one fixed clue and several suspects. For each suspect in turn the detective asks: "if this person did it, how probable is the clue I found?" The suspect who makes the clue most probable is best supported. The clue does not change; the suspect does. The **likelihood** of a parameter value is the probability, or probability density, of the observed data computed as if that parameter value were true ([[Conditional Probability]], [[Parameter]]). Choose a probability model for the data, hold the observed data fixed, pick a candidate parameter value, and compute the probability of the data under it from the [[Probability Mass Function]] or [[Probability Density Function]]. That number is the likelihood of that value.
 
-> [!info] Before this, it helps to know
-> [[Conditional Probability]] (it is P(data | parameter)) · [[Probability Mass Function]] and [[Probability Density Function]] (what you evaluate) · [[Parameter]] (what you vary)
+Check 10 nests and 7 succeed. If the success probability p were 0.5, the probability of 7 of 10 would be 0.117; if p = 0.7, it would be 0.267; if p = 0.9, 0.057. So p = 0.7 makes the data most probable: it has the highest likelihood. Only comparisons mean anything. A likelihood of 0.267 is not good or bad on its own, but it is 2.3 times that of p = 0.5. For independent observations, the likelihood of the whole dataset is the product of each observation's probability, as the last line of the code does for three counts under means of 3 and 6. The figure shows the idea: the data stay fixed, and the curve shows how their probability changes as the parameter varies ([[Likelihood Function]]).
 
-## The everyday picture
-A detective with one fixed clue and several suspects. For each suspect in turn the detective asks: "if this person did it, how probable is the clue I found?" The suspect who makes the clue most probable is best supported. The clue doesn't change. The suspect does.
+Probability reasons forward: given the parameter, what data should I expect? Science needs to reason backward: given these data, which parameter values are plausible? The likelihood is the forward calculation re-read in the backward direction, and it is the one place where data and parameters meet. That is why it is the hinge of all inference in the course: [[Maximum Likelihood Estimation]], AIC, likelihood ratio tests and [[Bayes' Theorem]] all run on it, usually on the log scale ([[Log-likelihood]]). Two confusions. The likelihood is not the probability that the parameter is true; it is the probability of the data given the parameter, and getting the probability of a parameter needs Bayes' theorem and a prior. And likelihoods do not sum to 1 across parameter values, because they are not a probability distribution over the parameter ([[Hobbs and Hooten 2015 Ch4]], [[Powell and Gale 2015 Ch3]], [[Course Website]]).
 
-## A tiny example
-You check 10 nests and 7 succeed. How well do different success probabilities p explain that?
-- If p = 0.5: P(7 of 10) = 0.117.
-- If p = 0.7: P(7 of 10) = 0.267.
-- If p = 0.9: P(7 of 10) = 0.057.
-- p = 0.7 makes the data most probable. It has the highest likelihood.
-
-## Start from zero
-1. **Choose a probability model for the data,** such as binomial.
-2. **Hold the observed data fixed.**
-3. **Pick a candidate parameter value.** Compute the probability of the data under it.
-4. **That number is the likelihood of that parameter value.**
-5. **Repeat for other values and compare.** Higher likelihood means better supported by the data.
-6. **Only comparisons mean anything.** A likelihood of 0.267 isn't good or bad alone. It is 2.3 times that of p = 0.5.
-7. **For independent observations, multiply:** the likelihood of the dataset is the product of each observation's probability.
-8. **Why it is the hinge of all inference in this course:** it is the one place where data and parameters meet. Maximum likelihood, AIC, likelihood ratio tests and Bayes' theorem all run on it.
-
-## See it
 ![[Likelihood peak.png|700]]
 *What to look at:* the data stay fixed. The curve shows how the probability of those data changes as the parameter is varied.
 
-## Why it is this way
-Probability reasons forward: given the parameter, what data should I expect? Science needs to reason backward: given these data, which parameter values are plausible? The likelihood is the forward calculation re-read in the backward direction, by fixing the data and varying the parameter.
-
-## In R
 ```r
 dbinom(7, 10, c(0.5, 0.7, 0.9))                     # 0.117, 0.267, 0.057
 dbinom(7, 10, 0.7) / dbinom(7, 10, 0.5)             # 0.7 is 2.3 times better supported than 0.5
 y <- c(2, 4, 3); prod(dpois(y, 3)); prod(dpois(y, 6))     # three counts: likelihood of mean 3 versus mean 6
 ```
-
-## In the course
-Sep 10, "Likelihood" ([[Course Website]]). [[Hobbs and Hooten 2015 Ch4]], [[Powell and Gale 2015 Ch3]].
-
-## Common confusions
-- **"Likelihood is the probability that the parameter is true."** It is the probability of the data given the parameter. Getting the probability of a parameter needs Bayes' theorem and a prior.
-- **"Likelihoods sum to 1 across parameter values."** They don't. It is not a probability distribution over the parameter.
-
-## Explain it back
-- In the phrase "likelihood of p = 0.7", what is fixed and what varies?
-- Why can't a single likelihood value be interpreted alone?
-
-*Pass test:* you can compute and compare likelihoods of two parameter values for a small dataset.
 
 ## Connections
 - **Builds on:** [[Conditional Probability]], [[Probability Mass Function]], [[Parameter]]

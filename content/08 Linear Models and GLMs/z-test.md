@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "A z-test compares an estimate with a hypothesised value by measuring their difference in standard errors and referring it to the standard normal distribution."
 aliases:
   - "z test"
   - "z-statistic"
@@ -12,38 +13,16 @@ status: seedling
 
 # z-test
 
-**In one line:** a z-test compares an estimate with a hypothesised value by measuring their difference in standard errors and referring it to the standard normal distribution.
+A **z-test** is a t-test done with a ruler you trust completely. It compares an estimate with a hypothesised value by measuring their difference in standard errors, z = (estimate − hypothesised value) / SE, and refers the result to the [[Standard Normal Distribution]]; |z| > 1.96 gives p < 0.05 ([[Standard Error]]). The [[t-test]] does the same but uses the heavier-tailed t distribution, to account for having estimated σ from a small sample. When the standard error is known, or the sample is large enough that estimating it adds no real uncertainty, those heavier tails are not needed.
 
-> [!info] Before this, it helps to know
-> [[Standard Normal Distribution]] (the reference) · [[Standard Error]] (the unit) · [[t-test]] (its small-sample cousin)
+The same statistic of 2.2 gives p = 0.028 as a z, 0.052 as a t with 10 df, and 0.028 again as a t with 1,000 df, as the code below shows: in large samples t and z coincide. R prints z for Poisson and binomial GLMs, where the variance is fixed by the mean and no separate σ is estimated. It prints t for `lm` and for quasi, Gaussian or gamma GLMs, where a dispersion is estimated. The code shows the column names switching from "z value" to "t value" when the same model is fitted as quasi-Poisson ([[Quasi-Poisson]]).
 
-## The everyday picture
-A t-test done with a ruler you trust completely. When the standard error is known, or the sample is large enough that estimating it adds no real uncertainty, the heavier tails of the t distribution aren't needed.
+Zuur explains this switch when overdispersion is estimated ([[Zuur et al. 2009 Ch9]]). So z and t columns are not interchangeable: for small samples with an estimated dispersion, t is the right reference. The z-tests printed for GLM coefficients are [[Wald Test|Wald tests]].
 
-## Start from zero
-1. **z = (estimate − hypothesised value) / SE.**
-2. **Compare with Normal(0, 1).** |z| > 1.96 gives p < 0.05.
-3. **z versus t:** t accounts for having estimated σ from a small sample. z doesn't.
-4. **Where R prints z:** Poisson and binomial GLMs, where the variance is fixed by the mean and no separate σ is estimated.
-5. **Where R prints t:** `lm`, and quasi or Gaussian or gamma GLMs, where a dispersion is estimated.
-6. **In large samples t and z coincide.**
-
-## In R
 ```r
 2 * pnorm(-abs(2.2)); 2 * pt(-abs(2.2), 10); 2 * pt(-abs(2.2), 1000)     # same statistic: z, t with 10 df, t with 1000 df
 set.seed(11); y <- rpois(50, 3); colnames(summary(glm(y ~ 1, family = poisson))$coefficients); colnames(summary(glm(y ~ 1, family = quasipoisson))$coefficients)
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch9]] explains the switch from z to t when overdispersion is estimated.
-
-## Common confusions
-- **"z and t columns are interchangeable."** For small samples with an estimated dispersion, t is the right reference.
-
-## Explain it back
-- Why does a quasi-Poisson summary show t where a Poisson summary shows z?
-
-*Pass test:* you can say when software reports z and when t.
 
 ## Connections
 - **Builds on:** [[Standard Normal Distribution]], [[Standard Error]]
