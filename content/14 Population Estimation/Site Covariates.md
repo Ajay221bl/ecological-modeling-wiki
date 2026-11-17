@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Site covariates are measurements that describe a site and stay fixed across its visits, such as forest cover or elevation, used to explain occupancy and sometimes detection."
 aliases:
   - "Site-level covariates"
   - "siteCovs"
@@ -12,31 +13,11 @@ status: seedling
 
 # Site Covariates
 
-**In one line:** site covariates are measurements that describe a site and stay fixed across its visits, such as forest cover or elevation, used to explain occupancy and sometimes detection.
+**Site covariates** are measurements that describe a site and stay fixed across its visits, such as forest cover or elevation, used to explain occupancy and sometimes detection, the way the size of a house stays the same between your visits when you ask whether it has a cat ([[Explanatory Variable]], [[Single-season Occupancy]]). There is one value per site. They can enter ψ, where the species lives, or p, how easy it is to see there ([[Detection Probability]]).
 
-> [!info] Before this, it helps to know
-> [[Explanatory Variable]] · [[Single-season Occupancy]]
+Habitat often affects both: dense vegetation can raise occupancy but lower detection, so a covariate in only one part of the model can be misread. In unmarked they are stored in the `siteCovs` of an `unmarkedFrameOccu` ([[unmarked Package]]). Standardise them before fitting so the optimiser behaves ([[Standardizing|Standardization]]).
 
-## The everyday picture
-The size of a house when asking whether it has a cat. It does not change between your visits.
-
-## Start from zero
-1. **One value per site.**
-2. **Can enter ψ** (where the species lives) **or p** (how easy it is to see there).
-3. **Habitat often affects both:** dense vegetation can raise occupancy but lower detection.
-4. **unmarked:** stored in `siteCovs` of an `unmarkedFrameOccu`.
-5. **Standardize them** before fitting so the optimizer behaves.
-
-## In the course
-Occupancy guest lecture ([[Course Website]]).
-
-## Common confusions
-- **"Site covariates only go in ψ."** They can also explain p.
-
-## Explain it back
-- Give an example of a site covariate that might affect both ψ and p.
-
-*Pass test:* you can place a covariate in the correct part of the model.
+They are used in the occupancy guest lecture ([[Course Website]]); the visit-level counterpart is [[Observation Covariates]]. Site covariates don't only go in ψ; they can also explain p.
 
 ## Connections
 - **Builds on:** [[Explanatory Variable]], [[Single-season Occupancy]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Survey sampling designs are rules for choosing which plots, points or transects to survey so that results can be scaled up to the whole study area without bias."
 aliases:
   - "Simple random sampling (survey)"
   - "Stratified sampling"
@@ -15,32 +16,11 @@ status: seedling
 
 # Survey Sampling Designs
 
-**In one line:** survey sampling designs are rules for choosing which plots, points or transects to survey so that results can be scaled up to the whole study area without bias.
+Tasting a pot of soup, you can stir and take random spoonfuls, taste from each layer, take a spoonful every few centimetres, or ladle out a few cupfuls and taste them fully. **Survey sampling designs** are rules for choosing which plots, points or transects to survey so that results can be scaled up to the whole study area without bias ([[Random Sampling]], [[Study Population]], [[Bias]]). Simple random sampling makes every unit equally likely; it is unbiased but can miss rare habitats by chance. Stratified sampling splits the area into strata such as habitat types and samples randomly within each, which improves precision when strata differ.
 
-> [!info] Before this, it helps to know
-> [[Random Sampling]] · [[Study Population]] · [[Bias]]
+Systematic sampling uses a regular grid or every kth unit from a random start; it gives even coverage and is easy in the field, but can resonate with regular patterns in the landscape. Cluster sampling takes groups of nearby units, such as all points along a randomly chosen route, which saves travel but makes units in a cluster correlated. Convenience sampling, such as along roads, is not a probability design, because roadsides differ from the rest of the area ([[Finite Population Correction]]).
 
-## The everyday picture
-Tasting a pot of soup. Stir and take random spoonfuls (simple random), taste from each layer (stratified), take a spoonful every few centimetres (systematic), or ladle out a few cupfuls and taste them fully (cluster).
-
-## Start from zero
-1. **Simple random:** every unit equally likely. Unbiased but can miss rare habitats by chance.
-2. **Stratified:** split the area into strata (habitat types), sample randomly within each; improves precision when strata differ.
-3. **Systematic:** a regular grid or every kth unit from a random start; even coverage, easy in the field, but can resonate with regular patterns in the landscape.
-4. **Cluster:** sample groups of nearby units (all points along a randomly chosen route); cheap travel, but units in a cluster are correlated.
-5. **Convenience sampling** (along roads) is not a probability design; roadsides differ from the rest of the area.
-6. **Covered in Powell and Gale (2015) Ch14** as the design-based part of abundance estimation.
-
-## In the course
-[[Powell and Gale 2015]] Ch14. [[Study Design]].
-
-## Common confusions
-- **"Systematic sampling is not random."** With a random start it is a probability design; the risk is periodic landscapes.
-
-## Explain it back
-- When does stratification help most?
-
-*Pass test:* you can choose and justify a survey design.
+Powell and Gale (2015) cover these in Ch14 as the design-based part of abundance estimation ([[Powell and Gale 2015]], [[Study Design]], [[Count-based Abundance Estimation]]). Systematic sampling is not "not random": with a random start it is a probability design, and the risk is periodic landscapes.
 
 ## Connections
 - **Builds on:** [[Random Sampling]], [[Study Population]]

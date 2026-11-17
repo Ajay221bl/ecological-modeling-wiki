@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "A detection function g(x) gives the probability of detecting an animal at distance x from the line or point, starting at 1 on the line and falling with distance."
 aliases:
   - "g(x)"
   - "Half-normal detection function"
@@ -14,33 +15,14 @@ status: seedling
 
 # Detection Function
 
-**In one line:** a detection function g(x) gives the probability of detecting an animal at distance x from the line or point, starting at 1 on the line and falling with distance.
+A **detection function** g(x) gives the probability of detecting an animal at distance x from the line or point, starting at 1 on the line and falling with distance ([[Distance Sampling]], [[Probability Density]]). The half-normal, g(x) = exp(−x² / 2σ²), has one parameter σ that sets how fast detection fades. The hazard rate, g(x) = 1 − exp(−(x/σ)^−b), has a "shoulder" of near-certain detection near the line before it drops. A uniform key with cosine or polynomial adjustments gives flexible shapes.
 
-> [!info] Before this, it helps to know
-> [[Distance Sampling]] · [[Probability Density]]
+A good shoulder matters: detection should be nearly certain close to the line. Choose among shapes with AIC and goodness-of-fit tests, and truncate the farthest few percent of distances, which add noise rather than information ([[AIC]]). The figure shows the hazard-rate curve staying flat near zero, its shoulder, before falling. The area under g(x) is the [[Effective Strip Width]].
 
-## Start from zero
-1. **Half-normal:** g(x) = exp(−x² / 2σ²). One parameter σ sets how fast detection fades.
-2. **Hazard rate:** g(x) = 1 − exp(−(x/σ)^−b). Has a "shoulder" of near-certain detection near the line, then drops.
-3. **Uniform with adjustments** (cosine, polynomial) for flexible shapes.
-4. **A good shoulder matters:** detection should be nearly certain close to the line.
-5. **Choose among shapes with AIC** and goodness-of-fit tests.
-6. **Truncate** the farthest few percent of distances; they add noise, not information.
+It is covered in [[Powell and Gale 2015]] Ch19 ([[Detection on the Line g(0)]]). g(x) is not the distribution of distances: the distances also depend on how many animals exist at each distance, and g(x) is the detection probability.
 
-## See it
 ![[Detection function.png|700]]
 *What to look at:* the hazard-rate curve stays flat near zero (its shoulder) before falling.
-
-## In the course
-[[Powell and Gale 2015]] Ch19.
-
-## Common confusions
-- **"g(x) is the distribution of distances."** The distances also depend on how many animals exist at each distance; g(x) is the detection probability.
-
-## Explain it back
-- What does σ control in a half-normal detection function?
-
-*Pass test:* you can describe the common detection functions.
 
 ## Connections
 - **Builds on:** [[Distance Sampling]]

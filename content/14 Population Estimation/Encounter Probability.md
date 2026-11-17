@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Encounter probability is the general name for the chance that a marked animal is encountered on an occasion, whether by live capture, by resighting, or by a dead recovery."
 aliases:
   - "Encounter probabilities"
   - "Capture, recovery and resighting probability"
@@ -13,28 +14,11 @@ status: seedling
 
 # Encounter Probability
 
-**In one line:** encounter probability is the general name for the chance that a marked animal is encountered on an occasion, whether by live capture, by resighting, or by a dead recovery.
+**Encounter probability** is the general name for the chance that a marked animal is encountered on an occasion, whether by live capture, by resighting or by a dead recovery ([[Detection Probability]], [[Mark-Recapture]]). [[Capture Probability]] is being caught in a trap or net; resighting probability is being seen and identified without capture, through colour bands or collars; and recovery probability is being found dead and reported, as when hunters report bands ([[Dead Recovery Models]], [[Joint Live-dead Encounter Models]]).
 
-> [!info] Before this, it helps to know
-> [[Detection Probability]] · [[Mark-Recapture]]
+Powell and Gale (Ch7) prefer "probability" to "rate", because a rate implies per unit of time while a probability is per occasion. Encounter probabilities are nuisance parameters for survival studies but essential ones: without them, death is confused with being missed ([[Apparent Survival]], [[Cormack-Jolly-Seber Model]]).
 
-## Start from zero
-1. **Capture probability:** caught in a trap or net.
-2. **Resighting probability:** seen and identified without capture (colour bands, collars).
-3. **Recovery probability:** found dead and reported, as when hunters report bands.
-4. **"Probability", not "rate":** Powell and Gale (Ch7) prefer probability because a rate implies per unit time.
-5. **Encounter probabilities are nuisance parameters** for survival studies but essential: without them survival is confused with being missed.
-
-## In the course
-[[Powell and Gale 2015]] Ch7.
-
-## Common confusions
-- **"Encounter rate and encounter probability are interchangeable."** Older literature used "rate"; a probability is per occasion, a rate per unit time.
-
-## Explain it back
-- Name three kinds of encounter.
-
-*Pass test:* you can name encounter types and why they must be estimated.
+They are introduced in [[Powell and Gale 2015]] Ch7. Encounter rate and encounter probability are not interchangeable: older literature used "rate", but a probability is per occasion and a rate per unit time ([[Hazard Rate]]).
 
 ## Connections
 - **Builds on:** [[Detection Probability]], [[Mark-Recapture]]

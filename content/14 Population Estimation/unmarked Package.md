@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Unmarked is an R package that fits hierarchical models of animal occurrence and abundance from unmarked-animal survey data, including occupancy, N-mixture and distance-sampling models, by maximum likelihood."
 aliases:
   - "unmarked"
   - "unmarkedFrameOccu"
@@ -11,24 +12,12 @@ status: seedling
 
 # unmarked Package
 
-**In one line:** unmarked is an R package that fits hierarchical models of animal occurrence and abundance from unmarked-animal survey data, including occupancy, N-mixture and distance-sampling models, by maximum likelihood.
+**unmarked** is an R package that fits hierarchical models of animal occurrence and abundance from unmarked-animal survey data, including occupancy, N-mixture and distance-sampling models, by [[Maximum Likelihood Estimation]] ([[Single-season Occupancy]], [[Model Formula Syntax|Formula Syntax in R]]). You build the data object first, `unmarkedFrameOccu(y = , siteCovs = , obsCovs = )`, then fit with a double formula, `occu(~ detection ~ occupancy, data)`, where detection comes first ([[Site Covariates]], [[Observation Covariates]]). Other fitters are `colext()` for dynamic occupancy ([[Multi-season Occupancy]]), `pcount()` for N-mixture counts ([[N-mixture Model]]), `distsamp()` for distance sampling ([[Distance Sampling]]) and `multinomPois()` for removal and double-observer data ([[Removal Sampling]], [[Double-observer Methods]]).
 
-> [!info] Before this, it helps to know
-> [[Single-season Occupancy]] · [[Maximum Likelihood Estimation]] · [[Model Formula Syntax|Formula Syntax in R]]
+Estimates are on the logit or log scale, so use `backTransform()` or `predict()` for probabilities; goodness of fit uses `parboot()` with a fit statistic, and the AICcmodavg package adds MacKenzie-Bailey tests ([[Goodness of Fit and c-hat]]). unmarked is not installed in this wiki's R, so the code below is shown but not run; the base-R `optim()` code in [[Single-season Occupancy]] fits the same likelihood. It shows a model with wind on detection and forest on occupancy, and predicted occupancy at forest cover 0.2 and 0.8.
 
-## Start from zero
-1. **Data object first:** `unmarkedFrameOccu(y = , siteCovs = , obsCovs = )`.
-2. **Double formula:** `occu(~ detection ~ occupancy, data)`. Detection comes first.
-3. **Other fitters:**
-   - `colext()` for dynamic occupancy.
-   - `pcount()` for N-mixture counts.
-   - `distsamp()` for distance sampling.
-   - `multinomPois()` for removal and double-observer data.
-4. **Estimates are on the logit (or log) scale;** use `backTransform()` or `predict()` for probabilities.
-5. **Goodness of fit:** `parboot()` with a fit statistic; the AICcmodavg package adds MacKenzie-Bailey tests.
-6. **Not installed in this wiki's R,** so the code below is shown but not run; the base-R `optim()` code in [[Single-season Occupancy]] fits the same likelihood.
+It is used in the occupancy guest lecture ([[Course Website]]). `occu(~ forest ~ wind)` puts forest on detection, not occupancy: the first formula is always detection.
 
-## In R
 ```r
 # norun (unmarked is not installed here)
 library(unmarked)
@@ -37,17 +26,6 @@ m1 <- occu(~ wind ~ forest, data = umf)
 summary(m1); backTransform(m1, type = "det")   # only valid if p has no covariates
 predict(m1, type = "state", newdata = data.frame(forest = c(0.2, 0.8)))
 ```
-
-## In the course
-Occupancy guest lecture ([[Course Website]]).
-
-## Common confusions
-- **"occu(~ forest ~ wind)" puts forest on occupancy.** The first formula is detection.
-
-## Explain it back
-- What order are the two formulas in occu()?
-
-*Pass test:* you can set up and fit an occupancy model in unmarked.
 
 ## Connections
 - **Builds on:** [[Single-season Occupancy]], [[Maximum Likelihood Estimation]]

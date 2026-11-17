@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Known-fate models estimate survival from marked animals whose fate (alive or dead) is known at every check, so detection does not need to be estimated."
 aliases:
   - "Known fate"
   - "Known-fate data"
@@ -13,35 +14,11 @@ status: seedling
 
 # Known-fate Models
 
-**In one line:** known-fate models estimate survival from marked animals whose fate (alive or dead) is known at every check, so detection does not need to be estimated.
+If every phone call to your friends gets through, you always know who is fine and only need to count. **Known-fate models** estimate survival from marked animals whose fate, alive or dead, is known at every check, so detection does not need to be estimated ([[Survival Rate]], [[Binomial Distribution]], [[Cohort]]). Detection is assumed to be 1 for live and dead animals at each check, so survival is a straightforward binomial, and the simplest estimate is Ŝ = y / n, the y survivors out of n animals. Typical data come from radio-collared animals and monitored nests ([[Radio-telemetry Data]]).
 
-> [!info] Before this, it helps to know
-> [[Survival Rate]] · [[Binomial Distribution]] · [[Cohort]]
+The methods handle three complications: animals lost to follow-up ([[Censoring]]), animals entering at different times ([[Staggered Entry Design]]), and checks at irregular intervals ([[Exposure Days]]). Covariates such as mass, age or habitat can be modelled with logistic-type links, as in [[Program MARK]] ([[Logistic Exposure Model]]). The main estimators are [[Mayfield Nest Survival]] and the [[Kaplan-Meier Estimator]].
 
-## The everyday picture
-Checking on friends by phone. If every call gets through, you always know who is fine; you only need to count.
-
-## Start from zero
-1. **Detection is assumed to be 1** for live and dead animals at each check, so survival is a straightforward binomial.
-2. **Typical data:** radio-collared animals, monitored nests.
-3. **Simplest estimate:** Ŝ = y / n survivors out of n animals.
-4. **Complications the methods handle:**
-   - Animals lost to follow-up (censoring).
-   - Animals entering at different times (staggered entry).
-   - Checks at irregular intervals (exposure days).
-5. **Covariates** (mass, age, habitat) can be modelled with logistic-type links, as in Program MARK.
-6. **Powell and Gale (Ch9):** the structure is simplest, though the data are not the cheapest to collect.
-
-## In the course
-[[Powell and Gale 2015]] Ch9.
-
-## Common confusions
-- **"Known-fate data are cheap."** Collars and frequent checks are expensive; the model is what is simple.
-
-## Explain it back
-- What does "known fate" assume about detection?
-
-*Pass test:* you can say when a known-fate model applies.
+Powell and Gale (Ch9) note the structure is the simplest, though the data are not the cheapest to collect ([[Powell and Gale 2015]] Ch9). Known-fate data are not cheap: collars and frequent checks are expensive, and it is the model that is simple.
 
 ## Connections
 - **Builds on:** [[Survival Rate]], [[Binomial Distribution]], [[Cohort]]

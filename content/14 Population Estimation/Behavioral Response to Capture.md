@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "A behavioural response to capture means that being caught changes an animal's chance of being caught again, making it trap happy (recapture more likely) or trap shy (less likely)."
 aliases:
   - "Trap happiness"
   - "Trap shyness"
@@ -14,31 +15,11 @@ status: seedling
 
 # Behavioral Response to Capture
 
-**In one line:** a behavioural response to capture means that being caught changes an animal's chance of being caught again, making it trap happy (recapture more likely) or trap shy (less likely).
+A raccoon that found free bait in a trap keeps coming back, while a bird that was handled and stressed avoids nets afterwards. A **behavioural response to capture** means that being caught changes an animal's chance of being caught again, making it trap happy, with recapture more likely, or trap shy, with recapture less likely ([[Capture Probability]], [[Closed Population]]). Trap happy means c > p, and trap shy c < p.
 
-> [!info] Before this, it helps to know
-> [[Capture Probability]] · [[Closed Population]]
+With trap-happy animals, Lincoln-Petersen sees too many marked animals in later samples and underestimates N; with trap-shy animals too few marked animals are recaptured and N is overestimated ([[Lincoln-Petersen Estimator]]). Otis et al. (1978) introduced the idea and models for it (Powell and Gale Ch8), and model M_b estimates separate p and c ([[Capture Heterogeneity Models]]). Design fixes are to move traps, change bait, or use a different second method such as hunter kills or cameras.
 
-## The everyday picture
-A raccoon that found free bait in a trap keeps coming back (trap happy). A bird that was handled and stressed avoids nets afterwards (trap shy).
-
-## Start from zero
-1. **Trap happy: c > p.** Lincoln-Petersen then sees too many marked animals and underestimates N.
-2. **Trap shy: c < p.** Too few marked animals are recaptured and N is overestimated.
-3. **Otis et al. (1978)** introduced the idea and models for it (Powell and Gale Ch8).
-4. **Model M_b** estimates separate p and c.
-5. **Design fixes:** move traps, change bait, use a different second method (hunter kills, cameras).
-
-## In the course
-[[Powell and Gale 2015]] Ch8.
-
-## Common confusions
-- **"Trap happiness inflates N̂."** It deflates N̂, because marked animals are over-represented in later samples.
-
-## Explain it back
-- Which way does trap shyness bias Lincoln-Petersen?
-
-*Pass test:* you can predict the direction of bias from a trap response.
+It is covered in [[Powell and Gale 2015]] Ch8. Trap happiness does not inflate N̂; it deflates it, because marked animals are over-represented in later samples.
 
 ## Connections
 - **Builds on:** [[Capture Probability]]

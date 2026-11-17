@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "A census is a complete count of every individual in a population, assumed to miss none, so the count equals the true number."
 aliases:
   - "Complete count"
   - "Total count"
@@ -11,30 +12,11 @@ status: seedling
 
 # Census
 
-**In one line:** a census is a complete count of every individual in a population, assumed to miss none, so the count equals the true number.
+Counting the passengers on a small bus by walking the aisle works because, with few seats and nowhere to hide, you can trust the number. A **census** is a complete count of every individual in a population, assumed to miss none, so the count equals the true number ([[Abundance]], [[Population]]). In a census C = N, so there is no sampling error (Powell and Gale 2015 Ch14).
 
-> [!info] Before this, it helps to know
-> [[Abundance]] · [[Population]]
+It is possible only for small areas or populations, such as an endangered species on a small island or a seabird colony photographed from the air. Many "censuses" are not: a breeding bird "census" that misses quiet birds is really an index ([[Population Index]], [[Imperfect Detection]]). If detection is uncertain, call it a count and estimate N ([[Count-based Abundance Estimation]], [[Finite Population Correction]]).
 
-## The everyday picture
-Counting the passengers on a small bus by walking the aisle. With few seats and nowhere to hide, you can trust the number.
-
-## Start from zero
-1. **In a census C = N,** so there is no sampling error (Powell and Gale 2015 Ch14).
-2. **Possible only for small areas or populations,** such as an endangered species on a small island or a seabird colony photographed from the air.
-3. **Many "censuses" are not:** a breeding bird "census" that misses quiet birds is really an index.
-4. **If detection is uncertain, call it a count** and estimate N.
-
-## In the course
-[[Powell and Gale 2015]] Ch14.
-
-## Common confusions
-- **"A big effort makes a count a census."** Only complete detection does.
-
-## Explain it back
-- What must be true for a count to be a census?
-
-*Pass test:* you can tell a census from an index and an estimate.
+It is defined in [[Powell and Gale 2015]] Ch14. A big effort does not make a count a census; only complete detection does.
 
 ## Connections
 - **Builds on:** [[Abundance]]

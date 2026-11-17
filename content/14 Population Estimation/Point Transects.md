@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Point transects are distance-sampling surveys where an observer stands at a point for a set time and records the radial distance to each animal detected."
 aliases:
   - "Point counts with distances"
   - "Point transect"
@@ -12,28 +13,11 @@ status: seedling
 
 # Point Transects
 
-**In one line:** point transects are distance-sampling surveys where an observer stands at a point for a set time and records the radial distance to each animal detected.
+**Point transects** are distance-sampling surveys where an observer stands at a point for a set time and records the radial distance to each animal detected ([[Distance Sampling]]). Because the area of each ring grows with distance, there are fewer detections close to the point than far, and the model accounts for this; the effective area is π × EDR², using the effective detection radius ([[Effective Strip Width]]).
 
-> [!info] Before this, it helps to know
-> [[Distance Sampling]]
+They suit dense habitat, birds detected mostly by sound, and multi-species point counts. Animals can move during the count, which violates "detected at initial position", so shorter counts help ([[Detection Function]]).
 
-## Start from zero
-1. **Radial distances,** not perpendicular.
-2. **Area grows with distance** (rings get bigger), so fewer detections are close; the model accounts for this.
-3. **Effective area** = π × EDR².
-4. **Suits** dense habitat and birds detected mostly by sound, and multi-species point counts.
-5. **Animals can move during the count,** violating "detected at initial position"; shorter counts help.
-
-## In the course
-[[Powell and Gale 2015]] Ch19.
-
-## Common confusions
-- **"Close distances are rare, so detection must be poor near the point."** Close distances are rare because there is little area near the point.
-
-## Explain it back
-- Why are few detections expected very close to the point?
-
-*Pass test:* you can explain how point transects differ from line transects.
+They are covered in [[Powell and Gale 2015]] Ch19; the line-based alternative is [[Line Transects]]. Close distances are not rare because detection is poor near the point; they are rare because there is little area near the point.
 
 ## Connections
 - **Builds on:** [[Distance Sampling]]

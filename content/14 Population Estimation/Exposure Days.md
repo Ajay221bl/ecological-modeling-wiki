@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Exposure days are the total number of days that monitored animals or nests were at risk and under observation, used as the number of trials when estimating daily survival."
 aliases:
   - "Exposure-days"
   - "Risk days"
@@ -13,31 +14,11 @@ status: seedling
 
 # Exposure Days
 
-**In one line:** exposure days are the total number of days that monitored animals or nests were at risk and under observation, used as the number of trials when estimating daily survival.
+Comparing injury rates uses hours worked rather than number of workers: two people working ten days each give twenty worker-days of exposure. **Exposure days** are the total number of days that monitored animals or nests were at risk and under observation, used as the number of trials when estimating daily survival ([[Known-fate Models]], [[Censoring]]). Each nest or animal adds the days it was watched, and censored animals add days up to their last known-alive check.
 
-> [!info] Before this, it helps to know
-> [[Known-fate Models]] · [[Censoring]]
+Daily mortality is approximately deaths / exposure days ([[Mayfield Nest Survival]]). When the exact day of a failure between checks is unknown, Mayfield counted half of the final interval. Precision depends on the exposure days, not the number of nests.
 
-## The everyday picture
-Hours worked rather than number of workers when comparing injury rates. Two people working ten days each give twenty worker-days of exposure.
-
-## Start from zero
-1. **Each nest or animal adds the days it was watched.**
-2. **Failures between checks:** Mayfield counted half the final interval when the exact day of failure was unknown.
-3. **Censored animals** add days up to their last known-alive check.
-4. **Daily mortality ≈ deaths / exposure days.**
-5. **Precision depends on exposure days,** not on the number of nests.
-
-## In the course
-[[Powell and Gale 2015]] Ch9.
-
-## Common confusions
-- **"Each nest is one trial."** In Mayfield's method each day is a trial.
-
-## Explain it back
-- How did Mayfield treat the interval in which a nest failed?
-
-*Pass test:* you can tally exposure days from nest check data.
+They are used in [[Powell and Gale 2015]] Ch9 ([[Logistic Exposure Model]]). Each nest is not one trial; in Mayfield's method each day is a trial.
 
 ## Connections
 - **Builds on:** [[Known-fate Models]], [[Censoring]]

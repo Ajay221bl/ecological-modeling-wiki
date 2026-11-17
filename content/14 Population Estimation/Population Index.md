@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "A population index is a count or rate that is expected to rise and fall with abundance but whose relation to true abundance is unknown because detection is not measured."
 aliases:
   - "Index of abundance"
   - "Relative abundance index"
@@ -14,34 +15,11 @@ status: seedling
 
 # Population Index
 
-**In one line:** a population index is a count or rate that is expected to rise and fall with abundance but whose relation to true abundance is unknown because detection is not measured.
+The number of cars you pass on your commute can index city traffic: usually more cars means more traffic, but rain, roadworks or leaving earlier change the count without changing the city. A **population index** is a count or rate expected to rise and fall with abundance, but whose relation to true abundance is unknown because detection is not measured ([[Abundance]], [[Count Data]], [[Imperfect Detection]]). Its key assumption is that the count is proportional to abundance, with constant detection across places or years. Nebraska's rural mail carrier pheasant counts (Powell and Gale 2015 Ch14) show a long decline since the 1950s, which is real evidence only if carriers' detection stayed constant over decades.
 
-> [!info] Before this, it helps to know
-> [[Abundance]] · [[Count Data]] · [[Imperfect Detection]]
+That relation can bend. Detection can rise when animals are scarce, because observers try harder, or fall, because they stop looking, so the index exaggerates or hides change. [[Catch per Unit Effort]] in fisheries is a classic index, with hyperstability and hyperdepletion as its two failure modes. Calibrating an index with occasional proper estimates checks the proportionality assumption ([[Count-based Abundance Estimation]]).
 
-## The everyday picture
-The number of cars you pass on your commute as an index of city traffic. Usually more cars means more traffic, but rain, roadworks or leaving earlier change the count without changing the city.
-
-## A tiny example
-Nebraska's rural mail carrier pheasant counts (Powell and Gale 2015 Ch14) show a long decline since the 1950s. That is real evidence only if carriers' detection stayed constant over decades.
-
-## Start from zero
-1. **Index assumption:** the count is proportional to abundance, with constant detection across places or years.
-2. **That relation can bend.** Detection can rise when animals are scarce (observers try harder) or fall (they stop looking), so the index exaggerates or hides change.
-3. **Catch per unit effort (CPUE)** in fisheries is a classic index; hyperstability and hyperdepletion are its two failure modes.
-4. **Johnson (2010), quoted by Powell and Gale:** "although criticism of the thoughtless use of indices is welcome, their wholesale rejection is not." Indices are cheap and can be calibrated.
-5. **Calibrating an index** with occasional proper estimates checks the proportionality assumption.
-
-## In the course
-[[Powell and Gale 2015]] Ch7 and Ch14.
-
-## Common confusions
-- **"An index is worthless."** It can track change well when detection is stable; the risk is unchecked assumptions.
-
-## Explain it back
-- What assumption makes an index useful?
-
-*Pass test:* you can explain an index and how its assumption can fail.
+Powell and Gale quote Johnson (2010): "although criticism of the thoughtless use of indices is welcome, their wholesale rejection is not." Indices are cheap and can be calibrated ([[Powell and Gale 2015]] Ch7 and Ch14). An index is not worthless: it can track change well when detection is stable, and the risk is unchecked assumptions.
 
 ## Connections
 - **Builds on:** [[Abundance]], [[Imperfect Detection]]

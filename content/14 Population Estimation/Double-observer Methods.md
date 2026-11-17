@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Double-observer methods use two observers surveying at the same time, and the pattern of animals seen by one, the other or both estimates detection probability and abundance."
 aliases:
   - "Double-observer method"
   - "Dependent double-observer"
@@ -14,30 +15,11 @@ status: seedling
 
 # Double-observer Methods
 
-**In one line:** double-observer methods use two observers surveying at the same time, and the pattern of animals seen by one, the other or both estimates detection probability and abundance.
+Two proofreaders working on the same page tell you something neither can alone: if each finds typos the other missed, there are probably many typos neither found. **Double-observer methods** use two observers surveying at the same time, and the pattern of animals seen by one, the other or both estimates detection probability and abundance ([[Detection Probability]]). With independent observers, both record without cueing each other, and the overlap works like a [[Lincoln-Petersen Estimator]]: observer 1 "marks" and observer 2 "recaptures".
 
-> [!info] Before this, it helps to know
-> [[Detection Probability]] · [[Lincoln-Petersen Estimator]]
+With dependent observers, the primary calls out everything seen and the secondary records only what the primary missed; the observers then swap roles (Powell and Gale Ch16, "when do I get to be the primary observer?"). The method assumes equal detectability across animals, so groups that are easy for both to see bias N low ([[Capture Heterogeneity Models]]). It is common in aerial surveys of waterfowl and marine mammals, and it is one way to estimate [[Detection on the Line g(0)]] in distance sampling.
 
-## The everyday picture
-Two proofreaders on the same page. If each finds typos the other missed, there are probably many typos neither found.
-
-## Start from zero
-1. **Independent observers:** both record without cueing each other; the overlap works like Lincoln-Petersen (observer 1 "marks", observer 2 "recaptures").
-2. **Dependent observers:** the primary calls out everything seen; the secondary records only what the primary missed. Observers then swap roles (Powell and Gale Ch16, "when do I get to be the primary observer?").
-3. **Assumes equal detectability of animals** across individuals; groups that are easy to see for both bias N low.
-4. **Common in aerial surveys** of waterfowl and marine mammals.
-
-## In the course
-[[Powell and Gale 2015]] Ch16.
-
-## Common confusions
-- **"Two imperfect observers are worse than one."** Individually yes, but together their overlap measures detection.
-
-## Explain it back
-- How do the dependent and independent designs differ?
-
-*Pass test:* you can explain both designs.
+It is covered in [[Powell and Gale 2015]] Ch16 ([[unmarked Package]]). Two imperfect observers are not worse than one: individually they miss animals, but together their overlap measures detection.
 
 ## Connections
 - **Builds on:** [[Detection Probability]], [[Lincoln-Petersen Estimator]]

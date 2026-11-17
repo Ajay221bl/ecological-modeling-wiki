@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Age and time structure are the ways survival and detection parameters are allowed to vary in mark-recapture models: by occasion (t), by age class, by time since marking, or held constant (.)."
 aliases:
   - "Age structure"
   - "Time-dependent survival"
@@ -14,29 +15,11 @@ status: seedling
 
 # Age and Time Structure in Survival Models
 
-**In one line:** age and time structure are the ways survival and detection parameters are allowed to vary in mark-recapture models: by occasion (t), by age class, by time since marking, or held constant (.).
+**Age and time structure** are the ways survival and detection parameters are allowed to vary in mark-recapture models: by occasion (t), by age class, by time since marking, or held constant (.) ([[Cormack-Jolly-Seber Model]], [[Model Selection]]). φ(.)p(.) has constant survival and detection; φ(t)p(t) lets both vary by occasion. Juveniles often survive less than adults, and animals marked as young change class after a year. A time-since-marking effect captures "transients", animals passing through that are marked but never return. Groups such as sex or site multiply the parameters.
 
-> [!info] Before this, it helps to know
-> [[Cormack-Jolly-Seber Model]] · [[Model Selection]]
+Compare structures with AICc (Powell and Gale Ch4 for AIC, Ch10 for CJS models), adjusting for overdispersion with ĉ ([[AIC]], [[Goodness of Fit and c-hat]]). More structure needs more data, and the fully time-dependent model has confounded last parameters. In [[Program MARK]] the structure is set with the [[Parameter Index Matrix]] and the [[Design Matrix in Program MARK]].
 
-## Start from zero
-1. **Notation:** φ(.)p(.) has constant survival and detection; φ(t)p(t) lets both vary by occasion.
-2. **Age:** juveniles often survive less than adults; animals marked as young change class after a year.
-3. **Time since marking:** a "transient" effect when animals passing through are marked but never return.
-4. **Groups** (sex, site) multiply the parameters.
-5. **Compare structures with AICc** (Powell and Gale Ch4 for AIC; Ch10 for CJS models), adjusting for overdispersion with c-hat.
-6. **More structure needs more data;** the fully time-dependent model has confounded last parameters.
-
-## In the course
-[[Powell and Gale 2015]] Ch4, Ch10 and Ch12.
-
-## Common confusions
-- **"Always start with φ(t)p(t) as the answer."** It is the general starting model for goodness of fit, not necessarily the best model.
-
-## Explain it back
-- What does φ(.)p(t) mean?
-
-*Pass test:* you can read and build survival model notation.
+It is covered in [[Powell and Gale 2015]] Ch4, Ch10 and Ch12 ([[Cohort]]). Don't start with φ(t)p(t) as the answer; it is the general starting model for goodness of fit, not necessarily the best model.
 
 ## Connections
 - **Builds on:** [[Cormack-Jolly-Seber Model]], [[Model Selection]]

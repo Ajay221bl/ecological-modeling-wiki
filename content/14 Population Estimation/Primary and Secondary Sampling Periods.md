@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Primary periods are the widely spaced sampling sessions between which a population or site can change, and secondary occasions are the closely spaced surveys within a primary period, during which it is assumed closed."
 aliases:
   - "Primary periods"
   - "Secondary occasions"
@@ -13,27 +14,11 @@ status: seedling
 
 # Primary and Secondary Sampling Periods
 
-**In one line:** primary periods are the widely spaced sampling sessions between which a population or site can change, and secondary occasions are the closely spaced surveys within a primary period, during which it is assumed closed.
+**Primary periods** are the widely spaced sampling sessions between which a population or site can change, such as years or seasons; **secondary occasions** are the closely spaced surveys within a primary period, such as days within a trapping week or visits within a breeding season, during which it is assumed closed ([[Robust Design]], [[Closure Assumption]]). Detection is estimated from the secondary occasions, and change from the primary periods.
 
-> [!info] Before this, it helps to know
-> [[Robust Design]] · [[Closure Assumption]]
+Occupancy uses the same structure: visits within seasons, and seasons over years ([[Multi-season Occupancy]], [[Single-season Occupancy]]).
 
-## Start from zero
-1. **Secondary occasions:** days within a trapping week, or visits within a breeding season.
-2. **Primary periods:** years or seasons.
-3. **Detection is estimated** from secondary occasions; change from primary periods.
-4. **Occupancy uses the same structure:** visits within seasons, seasons over years.
-
-## In the course
-[[Powell and Gale 2015]] Ch13 and Ch15.
-
-## Common confusions
-- **"Secondary occasions must be one day apart."** They must be close enough for closure, which depends on the species.
-
-## Explain it back
-- What is estimated from secondary occasions?
-
-*Pass test:* you can label primary and secondary periods in a design.
+They are described in [[Powell and Gale 2015]] Ch13 and Ch15. Secondary occasions need not be one day apart; they must be close enough for closure, which depends on the species.
 
 ## Connections
 - **Builds on:** [[Robust Design]], [[Closure Assumption]]

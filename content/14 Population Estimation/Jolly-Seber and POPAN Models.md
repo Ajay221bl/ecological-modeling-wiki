@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Jolly-Seber models extend CJS by also modelling the first captures of unmarked animals, so they estimate abundance and recruitment as well as apparent survival."
 aliases:
   - "Jolly-Seber"
   - "JS model"
@@ -15,28 +16,11 @@ status: seedling
 
 # Jolly-Seber and POPAN Models
 
-**In one line:** Jolly-Seber models extend CJS by also modelling the first captures of unmarked animals, so they estimate abundance and recruitment as well as apparent survival.
+**Jolly-Seber models** extend CJS by also modelling the first captures of unmarked animals, so they estimate abundance and recruitment as well as apparent survival ([[Cormack-Jolly-Seber Model]], [[Abundance]]). CJS conditions on first capture; JS models the first capture too, which lets it estimate N_t at each occasion and the number of new animals entering through births plus immigration.
 
-> [!info] Before this, it helps to know
-> [[Cormack-Jolly-Seber Model]] · [[Abundance]]
+POPAN (Schwarz and Arnason) parameterises entry through a [[Super-population]] and probabilities of entry b_t, and Pradel models estimate the population growth rate λ directly. The assumptions are stronger: unmarked and marked animals must share p, so capture heterogeneity biases N̂ ([[Capture Heterogeneity Models]]).
 
-## Start from zero
-1. **CJS conditions on first capture;** JS models the first capture too.
-2. **That lets them estimate N_t** at each occasion and the number of new animals entering (births plus immigration).
-3. **POPAN** (Schwarz and Arnason) parameterises entry through a super-population and probabilities of entry (b_t).
-4. **Pradel models** estimate population growth rate λ directly.
-5. **Stronger assumptions:** unmarked and marked animals share p, so capture heterogeneity biases N̂.
-
-## In the course
-[[Powell and Gale 2015]] Ch10 and Ch13.
-
-## Common confusions
-- **"CJS and Jolly-Seber are the same."** JS also estimates abundance and recruitment.
-
-## Explain it back
-- What extra data does Jolly-Seber use?
-
-*Pass test:* you can say what JS models add to CJS.
+They are covered in [[Powell and Gale 2015]] Ch10 and Ch13 ([[Open Population]], [[Program MARK]]). CJS and Jolly-Seber are not the same: JS also estimates abundance and recruitment.
 
 ## Connections
 - **Builds on:** [[Cormack-Jolly-Seber Model]], [[Abundance]]

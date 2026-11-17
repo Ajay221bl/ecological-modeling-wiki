@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "In mark-recapture, a cohort is the group of marked animals released at the same time, and all later probabilities are conditioned on that known release."
 aliases:
   - "Release cohort"
   - "Marked cohort"
@@ -12,30 +13,11 @@ status: seedling
 
 # Cohort
 
-**In one line:** in mark-recapture, a cohort is the group of marked animals released at the same time, and all later probabilities are conditioned on that known release.
+Counting the bottles that wash up from a message-in-a-bottle drop means nothing unless you know how many were thrown in. In mark-recapture, a **cohort** is the group of marked animals released at the same time, and all later probabilities are conditioned on that known release ([[Mark-Recapture]], [[Capture History]]). You know exactly how many were released, and that known number is what lets you estimate the unknowns.
 
-> [!info] Before this, it helps to know
-> [[Mark-Recapture]] · [[Capture History]]
+Powell and Gale (Ch7) put it plainly: collecting duck bands from hunters is useless without knowing how many were banded, since "all you have is a shiny pile of bands" ([[Dead Recovery Models]]). Open-population models condition on first release, so the probability of a history starts after it ([[Cormack-Jolly-Seber Model]], [[Open Population]]). In demography more broadly a cohort means individuals born in the same period; the mark-recapture sense is about release ([[Age and Time Structure in Survival Models]]).
 
-## The everyday picture
-A batch of message-in-a-bottle drops. Counting bottles washed up means nothing unless you know how many were thrown in.
-
-## Start from zero
-1. **You know exactly how many were released.** That known number is what lets you estimate the unknowns.
-2. **Powell and Gale (Ch7):** collecting duck bands from hunters is useless without knowing how many were banded; "all you have is a shiny pile of bands".
-3. **Open-population models condition on first release,** so the probability of a history starts after it.
-4. **A cohort in demography** more broadly means individuals born in the same period; the mark-recapture sense is about release.
-
-## In the course
-[[Powell and Gale 2015]] Ch7.
-
-## Common confusions
-- **"Any pile of recoveries can estimate survival."** Without the size of the released cohort you have no denominator.
-
-## Explain it back
-- Why must you know how many animals you released?
-
-*Pass test:* you can explain conditioning on the released cohort.
+It is defined in [[Powell and Gale 2015]] Ch7. Not any pile of recoveries can estimate survival: without the size of the released cohort you have no denominator.
 
 ## Connections
 - **Builds on:** [[Mark-Recapture]], [[Capture History]]
