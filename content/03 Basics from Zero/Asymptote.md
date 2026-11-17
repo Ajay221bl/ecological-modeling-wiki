@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "An asymptote is a level that a curve gets closer and closer to as x keeps growing (or shrinking), without ever settling exactly on it."
 aliases:
   - "Plateau"
   - "Saturation level"
@@ -11,43 +12,15 @@ status: seedling
 
 # Asymptote
 
-**In one line:** an asymptote is a level that a curve gets closer and closer to as x keeps growing (or shrinking), without ever settling exactly on it.
+Pour water onto a dry sponge. The first splash soaks in fast, each later splash soaks in less, and the sponge's full weight is a ceiling it approaches and cannot pass. An **asymptote** is that ceiling: a level a curve gets closer and closer to as x keeps growing (or shrinking). The value a function approaches is called its *limit*, and a response that stops rising because something else has become limiting is said to *saturate*. A real sponge does become completely full, but a mathematical asymptote is only ever approached; the gap shrinks forever without closing.
 
-> [!info] Before this, it helps to know
-> [[Nonlinear Function]] (curves) · [[Functions in Maths]] (input to output rules)
+A predator's feeding rate gives a classic example: feeding rate = 10x / (5 + x) prey per hour, where x is prey density. At x = 5 it eats 50 / 10 = 5 per hour. At x = 20, 200 / 25 = 8. At x = 95, 9.5. At x = 995, 9.95. It creeps toward 10 but never gets there, because handling each prey takes time and a predator can only handle so many per hour. Two numbers describe such a curve, and both have a biological meaning. The asymptote (here 10) is the maximum rate. The *half-saturation constant* (here 5) is the density that gives half the maximum, so it says how quickly the curve gets there. Two predators with the same maximum can differ in how fast they approach it. This curve is the [[Michaelis-Menten Function]], one of the [[Nonlinear Function]]s Hobbs and Hooten recommend ([[Hobbs and Hooten 2015 Ch2]]).
 
-## The everyday picture
-Filling a sponge. The first splash of water soaks in fast. Each later splash soaks in less. The sponge's full weight is a ceiling it approaches but can't pass. That ceiling is the asymptote.
+Limits are everywhere in biology: stomach capacity, nesting space, a population's [[Carrying Capacity]], and the fact that a probability cannot exceed 1. A straight line ignores them and predicts nonsense at high x, such as a predator eating 500 prey an hour. That is why asymptotic functions, whose parameters mean "maximum rate" or "half-way point", are often preferred to polynomials. Some curves have two asymptotes: the [[Logistic Function]] flattens toward 0 on the left and 1 on the right. A practical consequence: to estimate an asymptote well you need data where the curve has started to flatten, because data from the steep part alone can be fitted by many different ceilings. Also, not every flattening curve is the same: Michaelis-Menten, monomolecular and Gompertz curves all level off but approach the limit differently. Finally, a curve *can* cross its asymptote in some functions, such as a damped oscillation that overshoots before settling; the saturating curves used in ecology approach it from one side.
 
-*Where the picture stops working:* a sponge does become completely full. A mathematical asymptote is only ever approached.
-
-## Words you'll need
-- **Limit:** the value a function approaches as x grows.
-- **Saturate:** to stop responding because something else has become limiting.
-- **Half-saturation constant:** the x at which the curve reaches half its asymptote.
-
-## A tiny example
-Feeding rate = 10x / (5 + x) prey per hour, where x is prey density.
-- x = 5: 50 / 10 = **5** (half of 10).
-- x = 20: 200 / 25 = **8**.
-- x = 95: 950 / 100 = **9.5**.
-- x = 995: 9.95. Always creeping toward **10**, never there.
-
-## Start from zero
-1. **Some things can't grow forever.** A predator can only handle so many prey per hour.
-2. **So the response flattens.** Each extra unit of x adds less than the one before.
-3. **The level it flattens toward is the asymptote.** Here 10.
-4. **A second number says how fast it gets there.** *Why:* two predators with the same maximum can differ in how quickly they reach it. Here 5 is the density giving half the maximum.
-5. **Probabilities have two asymptotes.** A logistic curve flattens at 0 and at 1 ([[Logistic Function]]).
-
-## See it
 ![[Asymptote.png|700]]
 *What to look at:* the curve nears the dashed line but the gap never closes.
 
-## Why it is this way
-Limits are everywhere in biology: stomach capacity, carrying capacity, 100% occupancy. A straight line ignores them and predicts nonsense at high x. Functions with asymptotes have parameters that mean something biological, such as "maximum rate", which is why Hobbs and Hooten favour them over polynomials.
-
-## In R
 ```r
 x <- c(5, 20, 95, 995)
 10 * x / (5 + x)          # 5.00 8.00 9.50 9.95
@@ -58,23 +31,10 @@ coef(nls(yy ~ a * xx / (b + xx), start = list(a = 8, b = 3)))   # near 10 and 5
 ```
 `nls()` fits nonlinear functions by least squares and needs starting guesses.
 
-## In the course
-Asymptotic functions are one of Hobbs and Hooten's four families ([[Hobbs and Hooten 2015 Ch2]]). [[Carrying Capacity]] is the asymptote of logistic population growth.
-
-## Common confusions
-- **"The curve reaches the asymptote."** It only approaches it. Data near the ceiling are needed to estimate it well.
-- **"A curve can never cross its asymptote."** It can, for example a damped oscillation that overshoots and settles. The saturating curves used in ecology approach from one side, which is the case this note shows.
-- **"Any flattening curve has the same formula."** Michaelis-Menten, monomolecular and Gompertz curves all flatten but approach the limit differently.
-
-## Explain it back
-- In y = ax/(b + x), what do a and b mean?
-- Why is a straight line a bad model for a saturating process?
-
-*Pass test:* you can read the asymptote and half-saturation point off a formula or graph.
-
 ## Connections
 - **Builds on:** [[Nonlinear Function]]
 - **Leads to:** [[Michaelis-Menten Function]], [[Logistic Function]], [[Carrying Capacity]]
+- **See also:** [[Functions in Maths]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
 
 ## Flashcards

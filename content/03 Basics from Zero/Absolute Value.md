@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "The absolute value of a number is its distance from zero, ignoring whether it is positive or negative."
 aliases:
   - "Magnitude"
   - "Modulus"
@@ -11,34 +12,12 @@ status: seedling
 
 # Absolute Value
 
-**In one line:** the absolute value of a number is its distance from zero, ignoring whether it is positive or negative.
+Walk 3 blocks east or 3 blocks west: either way you walked 3 blocks. The **absolute value** of a number is its distance from zero with the direction dropped. It is written with two bars, |x|, read "the absolute value of x". So |−3| = 3 and |3| = 3. Positive numbers stay as they are, negative numbers lose their minus sign, and the result is never negative. Watch the common slip here: |−x| equals |x|, not −x.
 
-> [!info] Before this, it helps to know
-> [[Variable]] (numbers in a column) · [[Mean]] (the centre of the data)
+Absolute values solve a real problem in statistics. Take the values 2, 3, 3, 5 and 7, whose [[Mean]] is 4. Each value's *deviation* is how far it sits from the mean: −2, −1, −1, +1 and +3. Try to measure the spread by adding these up and you get exactly 0. That always happens, because the mean is the balance point, so the negative deviations always cancel the positive ones. To measure spread you have to stop them cancelling. Taking absolute values does that: 2, 1, 1, 1 and 3 add to 8, and the *mean absolute deviation* is 8 / 5 = 1.6. Squaring is the other way to remove signs, and it is the one classical statistics prefers ([[Variance]], [[Sum of Squares]]). Squares give a different answer (the standard deviation here is 2.0, larger because squaring weights big deviations more), and they are smoother for the maths, because the absolute value has a sharp corner at zero that makes calculus awkward.
 
-## The everyday picture
-Walking 3 blocks east or 3 blocks west. Either way you walked 3 blocks. Absolute value is the distance walked, with the direction dropped.
+Many questions in modeling are about how big, not which way: how far off a prediction was, how strong a relationship is, how large an effect is. Absolute value answers those. You will meet it in rules of thumb such as "worry about [[Collinearity]] when |r| > 0.7", which means a [[Correlation]] stronger than 0.7 in either direction, and "|t| > 2 is a rough flag" for a coefficient ([[Zuur et al. 2010]]). Sometimes, though, the direction is the whole point: an overestimate and an underestimate of the same size can be very different mistakes, and dropping the sign would hide that.
 
-*Where the picture stops working:* sometimes the direction is the point. An overestimate and an underestimate are different mistakes even if they are the same size.
-
-## Words you'll need
-- **|x|:** read "the absolute value of x".
-- **Sign:** whether a number is positive or negative.
-- **Deviation:** an observation minus the mean.
-
-## A tiny example
-Deviations from a mean of 4 for the values 2, 3, 3, 5, 7: −2, −1, −1, +1, +3.
-- They sum to **0**, which says nothing about spread.
-- Absolute values: 2, 1, 1, 1, 3. They sum to **8**.
-- Mean absolute deviation = 8 / 5 = **1.6**.
-
-## Start from zero
-1. **Take a number.** −2.
-2. **Drop its sign.** |−2| = 2. Positive numbers stay as they are.
-3. **Use it when size matters and direction doesn't.** *Why:* deviations always cancel to zero, so to measure spread you must stop them cancelling.
-4. **Squaring is the other way to remove signs.** [[Variance]] squares instead, because squares are smoother to do maths with.
-
-## See it
 ```mermaid
 flowchart LR
   A[-3] --> C[3]
@@ -46,10 +25,6 @@ flowchart LR
 ```
 *What to look at:* two different numbers, one distance from zero.
 
-## Why it is this way
-Many questions are about how big, not which way: how far off was the prediction, how strong is the correlation, how large is the effect. Absolute value answers those. It is used less than squaring in classical statistics only because its sharp corner at zero makes calculus awkward.
-
-## In R
 ```r
 x <- c(2, 3, 3, 5, 7)
 dev <- x - mean(x)
@@ -59,22 +34,10 @@ mean(abs(dev))        # 1.6, the mean absolute deviation
 ```
 `abs()` is the absolute value function.
 
-## In the course
-Absolute values appear in rules such as "worry when |r| > 0.7" for [[Collinearity]] and in t-statistics, where |t| > 2 is a rough flag ([[Zuur et al. 2010]]).
-
-## Common confusions
-- **"|x| makes things positive, so |−x| = −x."** |−x| = |x|. The result is never negative.
-- **"Mean absolute deviation equals standard deviation."** They are different measures. SD here is 2.0, larger because squaring weights big deviations more.
-
-## Explain it back
-- Why do deviations from the mean always sum to zero?
-- When would you care about the sign of an error?
-
-*Pass test:* you can explain why spread is measured with absolute or squared deviations.
-
 ## Connections
 - **Builds on:** [[Mean]]
 - **Leads to:** [[Variance]], [[Sum of Squares]], [[Correlation]]
+- **See also:** [[Variable]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
 
 ## Flashcards

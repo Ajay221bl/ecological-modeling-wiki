@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "\"y is proportional to x\" means y equals x times some fixed number, so doubling x doubles y."
 aliases:
   - "Proportionality"
   - "∝"
@@ -11,35 +12,12 @@ status: seedling
 
 # Proportional To
 
-**In one line:** "y is proportional to x" means y equals x times some fixed number, so doubling x doubles y.
+Double the guests, double every ingredient: in a recipe the amounts are proportional to the number of guests. "y is **proportional to** x", written y ∝ x, means y equals x times some fixed number, y = c·x, so doubling x doubles y. The fixed multiplier c is the *constant of proportionality*. Proportional does not mean equal; it means equal up to that multiplier. And a line with an intercept, y = a + bx, is proportional only if a = 0, because with an intercept doubling x does not double y.
 
-> [!info] Before this, it helps to know
-> [[Functions in Maths]] (rules linking x and y) · [[Rate of Change]] (change per unit)
+The useful property is that ratios survive. Suppose three hypotheses have "scores" 2, 6 and 12 that are proportional to their probabilities. You do not know c, but probabilities must add to 1, so you can recover it: divide each score by the total, 20, to get 0.1, 0.3 and 0.6. This rescaling so the total is 1 is called *normalizing*. Halve every score to 1, 3 and 6 and you get exactly the same probabilities, because the constant cancels. And to compare two of them, you do not need c at all: the third is 12 / 2 = 6 times as probable as the first, whatever c is.
 
-## The everyday picture
-A recipe. Double the guests, double every ingredient. The amounts are proportional to the number of guests. The recipe tells you the shape of the answer even before you know how many are coming.
+This is why ∝ is everywhere in Bayesian statistics. Bayes' theorem is usually written posterior ∝ likelihood × prior ([[Bayes' Theorem]]). The missing constant is the [[Marginal Likelihood]], an integral that is usually impossible to compute, but the shape of the posterior is cheap to calculate, and methods such as the [[Metropolis Algorithm]] only ever compare two values by their ratio, so the constant cancels and is never needed ([[Normalizing Constant]]). Likelihoods are likewise only defined up to a constant ([[Likelihood]]), and Hobbs and Hooten write posteriors with ∝ from Chapter 5 onward ([[Hobbs and Hooten 2015 Ch5]]). A quick check: if y ∝ x and y = 12 when x = 4, then c = 3 and y = 30 when x = 10 ([[Functions in Maths]], [[Rate of Change]]).
 
-*Where the picture stops working:* a recipe's multiplier is known. In Bayesian statistics the multiplier is often unknown and, usefully, not needed.
-
-## Words you'll need
-- **∝:** read "is proportional to".
-- **Constant of proportionality:** the fixed multiplier c in y = c·x.
-- **Normalize:** rescale so the total is 1.
-
-## A tiny example
-Three hypotheses have "scores" 2, 6 and 12 that are proportional to their probabilities.
-- Total = 20.
-- Probabilities = 2/20, 6/20, 12/20 = **0.1, 0.3, 0.6**.
-- If the scores were 1, 3, 6 (all halved), the probabilities would be the same: 0.1, 0.3, 0.6.
-
-## Start from zero
-1. **y ∝ x means y = c·x** for some fixed c.
-2. **Ratios survive.** *Why:* multiplying everything by the same c leaves "this one is 3 times that one" unchanged.
-3. **If the total is known, c can be recovered.** Probabilities must sum to 1, so divide each score by the total.
-4. **So for many purposes c never needs computing.** Comparing two parameter values only needs their ratio.
-5. **This is how Bayes' theorem is usually written.** Posterior ∝ likelihood × prior. The missing constant is the hard-to-compute [[Marginal Likelihood]], and MCMC works without it ([[Metropolis Algorithm]]).
-
-## See it
 ```mermaid
 flowchart LR
   A[scores 2, 6, 12] --> B[divide by total 20] --> C[probabilities 0.1, 0.3, 0.6]
@@ -47,10 +25,6 @@ flowchart LR
 ```
 *What to look at:* different constants, same final answer.
 
-## Why it is this way
-Often the shape of a relationship is easy and the exact scale is hard or irrelevant. The symbol ∝ lets you write the part you know and park the rest. Bayesian computing depends on this: the posterior's shape is cheap, its scaling constant is an integral nobody can do, and ratios make the constant cancel.
-
-## In R
 ```r
 score <- c(2, 6, 12)
 score / sum(score)          # 0.1 0.3 0.6
@@ -58,19 +32,6 @@ score / sum(score)          # 0.1 0.3 0.6
 score[3] / score[1]         # 6: ratios don't need the constant
 ```
 Normalizing removes whatever constant the scores were multiplied by.
-
-## In the course
-Hobbs and Hooten write posteriors with ∝ from Chapter 5 onward ([[Hobbs and Hooten 2015 Ch5]]). Likelihoods are only defined up to a constant too ([[Likelihood]]).
-
-## Common confusions
-- **"Proportional means equal."** It means equal up to a fixed multiplier.
-- **"y = a + bx is proportional."** Only if a = 0. With an intercept, doubling x doesn't double y.
-
-## Explain it back
-- If y ∝ x and y = 12 when x = 4, what is y when x = 10?
-- Why can MCMC ignore the constant in Bayes' theorem?
-
-*Pass test:* you can explain why "posterior ∝ likelihood × prior" is enough to find the shape of the posterior.
 
 ## Connections
 - **Builds on:** [[Functions in Maths]]

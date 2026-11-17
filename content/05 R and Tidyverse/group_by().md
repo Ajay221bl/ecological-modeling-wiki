@@ -29,7 +29,7 @@ Sorting a deck into four piles by suit before counting. You haven't counted anyt
 ## See it
 ```mermaid
 flowchart LR
-  A[Whole table] -- group_by site --> B[A rows | B rows | C rows]
+  A[Whole table] -- group_by site --> B["A rows, B rows, C rows"]
   B -- summarise --> C[one row per site]
 ```
 *What to look at:* split, apply, combine.

@@ -37,13 +37,14 @@ Powell and Gale (2015 Ch15): four points, three visits. Histories 000, 000, 010,
 6. **Introduced by MacKenzie et al. (2002) and Tyre et al. (2003)** (as cited in Powell and Gale).
 
 ## See it
-mermaid:
+```mermaid
 flowchart TD
   S["Site"] -->|"ψ"| O["Occupied z = 1"]
   S -->|"1 − ψ"| U["Unoccupied z = 0"]
   O -->|"p each visit"| D["Detected 1"]
   O -->|"1 − p"| M["Missed 0"]
   U --> Z["Always 0"]
+```
 *What to look at:* zeros come from two branches; repeat visits let the model split them.
 
 ## In R

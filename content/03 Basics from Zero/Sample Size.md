@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "Sample size, written n, is simply how many independent things you measured, and it controls how much you can trust what the sample tells you."
 aliases:
   - "Number of observations"
 status: seedling
@@ -10,36 +11,12 @@ status: seedling
 
 # Sample Size
 
-**In one line:** sample size, written n, is simply how many independent things you measured, and it controls how much you can trust what the sample tells you.
+Think about tasting a pot of soup. One spoonful tells you something about the pot, ten spoonfuls from different spots tell you much more, and the hundredth spoonful adds almost nothing new. **Sample size**, written **n**, is the number of spoonfuls: how many separate, *independent* things you measured. Independent means that one measurement tells you nothing about another beyond what the model already knows ([[Independence of Observations]]). Ten weighings of the same bird are not ten birds; they are one bird measured ten times, which is why only truly separate units count toward n ([[Pseudoreplication]]). Soup is well stirred, so a few spoonfuls are enough. Animals and plots differ far more from one another, so ecology needs much larger samples.
 
-> [!info] Before this, it helps to know
-> [[Sample]] (the handful you measured) · [[Observation]] (one row of data) · [[Standard Error]] (how wobbly an estimate is)
+Here is why n matters, with numbers. Suppose sparrow masses vary with a standard deviation of 4 g. The **standard error** (SE) of the average, which is the typical distance between your sample average and the true average ([[Standard Error]]), is the standard deviation divided by the square root of n. With 4 birds the SE is 4 / √4 = 2 g. With 16 birds it is 4 / √16 = 1 g. With 64 birds it is 0.5 g. Notice the pattern: every time you collect four times as many birds, the wobble in your answer only halves. The reason is that an average is a mix of lucky and unlucky draws, and averaging more draws cancels more luck. But random errors partly cancel each other instead of adding up, and that partial cancelling follows a square-root law. So going from 4 to 16 birds buys you as much as going from 16 to 64.
 
-## The everyday picture
-Tasting soup. One spoonful tells you something about the pot. Ten spoonfuls from different spots tell you much more, and the hundredth spoonful adds almost nothing new. Sample size is the number of spoonfuls.
+Sample size also limits how complicated a model you can afford. Every number a model has to estimate (a *parameter*) needs data to pin it down, and a common rule of thumb asks for at least 10 observations per parameter. With small n you are pushed toward simpler models and toward corrections built for small samples, such as [[AICc]], and random effects need enough groups to work ([[How Many Levels for a Random Effect]]). Two traps are worth naming. More rows do not automatically mean a bigger n, because rows from the same plot or animal are not independent. And a big n does not fix everything: it shrinks random wobble, but a method that is biased stays biased no matter how much data you feed it ([[Bias]]).
 
-*Where the picture stops working:* spoonfuls of stirred soup are nearly identical. Animals and plots differ a lot, so in ecology you need far more than a few.
-
-## Words you'll need
-- **n:** the usual symbol for sample size.
-- **Independent:** one observation tells you nothing about another beyond what the model already knows ([[Independence of Observations]]).
-- **Standard error (SE):** the typical distance between an estimate and the truth ([[Standard Error]]).
-
-## A tiny example
-You weigh sparrows whose masses have a standard deviation of 4 g.
-- With n = 4 birds, SE of the mean = 4 / √4 = **2 g**.
-- With n = 16 birds, SE = 4 / √16 = **1 g**.
-- With n = 64 birds, SE = 4 / √64 = **0.5 g**.
-Each time you quadruple the birds, the wobble only halves.
-
-## Start from zero
-1. **Count the rows that are truly separate measurements.** That count is n.
-2. **More observations average out luck.** *Why:* one odd bird matters a lot among 4 and hardly at all among 64.
-3. **The gain shrinks.** The standard error falls with the square root of n, so going from 4 to 16 helps as much as going from 16 to 64.
-4. **n also limits model size.** *Why:* every parameter needs data to pin it down. A common rule of thumb is at least 10 observations per parameter.
-5. **Only independent observations count.** Ten measurements of one bird are not ten birds ([[Pseudoreplication]]).
-
-## See it
 ```mermaid
 flowchart LR
   A[n = 4<br/>SE = 2 g] --> B[n = 16<br/>SE = 1 g] --> C[n = 64<br/>SE = 0.5 g]
@@ -47,10 +24,6 @@ flowchart LR
 ```
 *What to look at:* the work grows by multiplying while the precision improves by a square root.
 
-## Why it is this way
-An estimate is an average of lucky and unlucky draws. Averaging more draws cancels more luck, but cancellation follows a square-root law because random errors partly offset each other instead of adding up. Without thinking about n you can't judge whether a result is solid or a fluke.
-
-## In R
 ```r
 sd_mass <- 4
 n <- c(4, 16, 64)
@@ -62,22 +35,10 @@ sapply(n, function(k) sd(replicate(5000, mean(rnorm(k, 20, sd_mass)))))
 ```
 The simulated spreads land close to 2, 1 and 0.5.
 
-## In the course
-Sample size sits behind every unit: AICc exists because of small n ([[AICc]]), and random effects need enough groups ([[How Many Levels for a Random Effect]]). Powell and Gale stress it when planning studies ([[Powell and Gale 2015 Ch2]]).
-
-## Common confusions
-- **"More rows means bigger n."** Only if the rows are independent. Repeated visits to one plot are not new plots.
-- **"Big n fixes everything."** It fixes wobble, not [[Bias]]. A biased method stays biased.
-
-## Explain it back
-- Why does quadrupling n only halve the standard error?
-- Why are 10 measurements of one animal not n = 10?
-
-*Pass test:* you can say what n is in a dataset and why it limits how complex a model can be.
-
 ## Connections
 - **Builds on:** [[Sample]], [[Observation]]
 - **Leads to:** [[Standard Error]], [[Pseudoreplication]], [[AICc]]
+- **See also:** [[Powell and Gale 2015 Ch2]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]], molecular note [[Population and Sample]]
 
 ## Flashcards

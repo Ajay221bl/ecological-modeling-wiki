@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "The response variable is the thing you are trying to explain or predict, written y."
 aliases:
   - "Dependent variable"
   - "Outcome"
@@ -12,34 +13,12 @@ status: seedling
 
 # Response Variable
 
-**In one line:** the response variable is the thing you are trying to explain or predict, written y.
+Imagine a row of plants on a windowsill, some taller than others. You want to know why. Height is the outcome you care about, and water, light and pot size are the things that might cause it. The **response variable** is that outcome: the thing a model tries to explain or predict, usually written **y**. The other variables, the possible causes, are [[Explanatory Variable]]s, written x. For the plants the direction is obvious, but with field data choosing the response is a decision you make from your question. Phrase the question as "what affects ___?" and whatever fills the blank is the response.
 
-> [!info] Before this, it helps to know
-> [[Variable]] (a column of data) · [[Model]] (a simplified description)
+A concrete case: five plots have tree cover of 10, 20, 30, 40 and 50 percent and hold 9, 8, 6, 5 and 3 grassland bird species. The question "does tree cover reduce bird richness?" makes bird richness the response. In R's model formula, the response goes on the left of the tilde, `birds ~ tree`, which reads "birds depends on tree" ([[Model Formula Syntax]]), and it goes on the vertical axis of a graph. Fitting a straight line to these numbers gives an intercept of 10.7 and a slope of −0.15, so each extra 10% of tree cover goes with 1.5 fewer species in these made-up data ([[Linear Regression]]).
 
-## The everyday picture
-A plant on a windowsill. You want to know why some plants grow taller. Height is the outcome you care about. Water, light and pot size are things that might cause it. Height is the response.
+Why does it matter so much which variable is the response? Because a statistical model is lopsided on purpose. Only the response is treated as random, with a probability distribution describing how it scatters around the model's prediction. The explanatory variables are treated as known. So the response's type decides the whole model: counts scatter differently from proportions, which scatter differently from body masses, and each needs its own distribution ([[Why the response type decides the distribution]]). That is why Zuur's data exploration protocol looks at the response first ([[Zuur et al. 2010]]). It also clears up a common worry: the explanatory variables do not need to be normally distributed. Distribution assumptions are about the response given the predictors, and you check them through the [[Residual]]s.
 
-*Where the picture stops working:* for the plant the direction of cause is obvious. In field data, which variable is the response is a decision you make from your question.
-
-## Words you'll need
-- **y:** the usual symbol for the response.
-- **Explanatory variable:** something used to explain the response ([[Explanatory Variable]]).
-- **Formula:** R's way of writing "y depends on x", `y ~ x`.
-
-## A tiny example
-Five plots: tree cover 10, 20, 30, 40, 50 percent; grassland bird species 9, 8, 6, 5, 3.
-- Question: does tree cover reduce bird richness?
-- Response: **bird richness** (the outcome).
-- Explanatory variable: tree cover.
-
-## Start from zero
-1. **State the question.** "What affects bird richness?"
-2. **The thing after "affects" is the response.** It goes on the left of the `~` and on the vertical axis.
-3. **Look at its type.** Count, proportion, yes or no, or continuous.
-4. **The type picks the distribution.** *Why:* the model must describe how the response scatters, and counts scatter differently from masses ([[Why the response type decides the distribution]]).
-
-## See it
 ```mermaid
 flowchart LR
   X1[Tree cover] --> Y[Bird richness<br/>the response y]
@@ -47,10 +26,6 @@ flowchart LR
 ```
 *What to look at:* arrows point into the response, never out of it.
 
-## Why it is this way
-A statistical model is lopsided on purpose. Only the response is treated as random, with a probability distribution. The explanatory variables are treated as known. So choosing the response decides what the whole model is a model of.
-
-## In R
 ```r
 d <- data.frame(tree = c(10, 20, 30, 40, 50), birds = c(9, 8, 6, 5, 3))
 m <- lm(birds ~ tree, data = d)   # response on the left of ~
@@ -59,22 +34,10 @@ plot(birds ~ tree, data = d)      # response on the vertical axis
 ```
 Each extra 10% of tree cover goes with 1.5 fewer species in these made-up data.
 
-## In the course
-Every lab starts by naming the response: richness, body mass, DBH, larvae presence ([[Course Website]]). Zuur's protocol checks the response first ([[Zuur et al. 2010]]).
-
-## Common confusions
-- **"The response is whatever column is last."** It is set by your question.
-- **"Explanatory variables need to be normal."** Distribution assumptions are about the response given the predictors, mostly seen in the residuals ([[Residual]]).
-
-## Explain it back
-- In "does rainfall affect seed set?", which is the response?
-- Why does the response's type matter more than the predictors' types?
-
-*Pass test:* you can pick the response in any study description.
-
 ## Connections
 - **Builds on:** [[Variable]]
 - **Leads to:** [[Explanatory Variable]], [[Linear Regression]], [[Model Formula Syntax]]
+- **See also:** [[Model]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
 
 ## Flashcards

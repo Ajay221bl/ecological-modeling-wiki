@@ -21,6 +21,15 @@ Every round of changes and checks on this wiki, newest first. Each round ("pass"
 
 ---
 
+## v1.1.1 (2026-11-17): diagrams fixed
+**Reported:** some Mermaid diagrams showed as plain text ("mermaid: flowchart TD ...") instead of a picture.
+
+**Cause and fix:** in 14 notes the diagram was written under a "mermaid:" label instead of inside a mermaid code block, so neither Obsidian nor the website knew it was a diagram. All 14 are now proper code blocks. One more diagram, in [[group_by()]], had "|" characters inside a box label, which Mermaid reads as syntax; it now uses commas.
+
+**Checks:** all 117 diagrams in the wiki were rendered with Mermaid 11.4 (the version the website uses) and none fail.
+
+---
+
 ## v1.1 (2026-11-17): everything in syllabus order
 **Asked for:** sort the MOCs from basic to advanced, following the syllabus, instead of alphabetically. Keep notes A to Z inside each folder, but number the folders in syllabus order.
 

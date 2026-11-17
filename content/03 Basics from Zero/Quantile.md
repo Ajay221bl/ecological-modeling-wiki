@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "A quantile is the value below which a chosen fraction of the data falls, such as the value with 25% of observations beneath it."
 aliases:
   - "Percentile"
   - "Quartile"
@@ -11,43 +12,15 @@ status: seedling
 
 # Quantile
 
-**In one line:** a quantile is the value below which a chosen fraction of the data falls, such as the value with 25% of observations beneath it.
+On a child's growth chart, "on the 90th percentile for height" means taller than 90 of every 100 children of that age. A **quantile** turns "how big?" into "bigger than what share of the others?": it is the value below which a chosen fraction of the data falls. Stated in percent it is called a *percentile*, so the 0.25 quantile is the 25th percentile. The three quantiles that cut the data into quarters are the *quartiles*: Q1 (0.25), Q2 (0.50, which is the [[Median]]) and Q3 (0.75). A percentile is a value on the data's own scale, such as a mass in grams, not a percentage.
 
-> [!info] Before this, it helps to know
-> [[Median]] (the 50% quantile) · [[Proportion]] (a fraction between 0 and 1)
+Sorted masses of 9 mice are 14, 15, 16, 18, 19, 21, 22, 25 and 30 g. The median is the 5th value, 19 g. Q1 is the 3rd value, 16 g, and Q3 is the 7th, 22 g, so the middle half of the mice weigh between 16 and 22 g. R finds the position with 1 + (n − 1) × p, which for p = 0.25 gives 1 + 8 × 0.25 = 3, the third value. When the position is not a whole number the quantile falls between two observations, and R takes a weighted mix of them. R actually offers nine slightly different rules (`type = 1` to `9`), which agree for large samples. With small samples, an extreme quantile such as the 90th is only a rough guess between two values.
 
-## The everyday picture
-A child's growth chart. "On the 90th percentile for height" means taller than 90 of every 100 children of that age. A quantile turns "how big?" into "bigger than what share of the others?".
+Quantiles matter because they describe any shape. The mean and standard deviation summarise well only when data are roughly bell-shaped, but "where do chosen fractions of the data sit?" works for lopsided data too. A pair of quantiles makes an interval: the 0.025 and 0.975 quantiles hold the middle 95% of values. That is exactly how intervals are read off thousands of bootstrap or MCMC draws ([[Percentile Bootstrap Interval]], [[Credible Interval]]), which is why Bayesian and resampling methods lean on quantiles. Quantiles of named distributions come from functions such as `qnorm(0.975)` = 1.96 ([[Quantile Function]]). Quartiles also build the [[Boxplot]] and the [[Interquartile Range]], and comparing your data's quantiles with a distribution's quantiles is what a [[QQ Plot]] does.
 
-*Where the picture stops working:* growth charts come from millions of children. With 10 data points, a 90th percentile is a rough guess between two values.
-
-## Words you'll need
-- **Percentile:** a quantile stated in percent. The 25th percentile is the 0.25 quantile.
-- **Quartiles:** the 0.25, 0.50 and 0.75 quantiles, called Q1, Q2 (the median) and Q3.
-- **Tail:** the extreme low or high end of the data.
-
-## A tiny example
-Sorted masses of 9 mice (g): 14, 15, 16, 18, 19, 21, 22, 25, 30.
-- Median (0.50 quantile): 5th value = **19**.
-- Q1 (0.25 quantile): 3rd value = **16**.
-- Q3 (0.75 quantile): 7th value = **22**.
-- So the middle half of the mice weigh between 16 and 22 g.
-
-## Start from zero
-1. **Sort the data.**
-2. **Pick a fraction p.** Say 0.25.
-3. **Find the position.** R's default uses 1 + (n − 1) × p = 1 + 8 × 0.25 = 3, the third value.
-4. **Interpolate if the position isn't whole.** *Why:* the quantile falls between two observations, so you take a weighted mix.
-5. **Pairs of quantiles make intervals.** The 0.025 and 0.975 quantiles hold the middle 95% of values. That is how intervals are read off bootstrap and posterior samples ([[Credible Interval]]).
-
-## See it
 ![[Quantiles and IQR.png|700]]
 *What to look at:* the quartiles cut the sorted data into four equal-sized groups, whatever the shape.
 
-## Why it is this way
-The mean and standard deviation summarise well only when data are roughly bell-shaped. Quantiles make no such assumption: they describe any shape by where chosen fractions of the data sit. They are the bridge from a pile of simulated values to an interval, which is why Bayesian and bootstrap methods lean on them.
-
-## In R
 ```r
 mass <- c(14, 15, 16, 18, 19, 21, 22, 25, 30)
 quantile(mass, c(0.25, 0.5, 0.75))   # 16 19 22
@@ -56,19 +29,6 @@ quantile(mass, c(0.025, 0.975))      # ends of the middle 95%
 qnorm(0.975)                          # 1.96
 ```
 `quantile()` works on data. `qnorm()` and friends give quantiles of named distributions ([[Quantile Function]]).
-
-## In the course
-Boxplots are drawn from quartiles ([[Boxplot]]). The confidence interval lab takes column quantiles of bootstrap output ([[Percentile Bootstrap Interval]]).
-
-## Common confusions
-- **"Percentile means percent."** A percentile is a value of the data (a mass in grams), not a percentage.
-- **"There is one formula."** R offers nine slightly different rules (`type = 1` to `9`). They agree for large samples.
-
-## Explain it back
-- What does "the 0.9 quantile of rainfall is 80 mm" mean?
-- How do two quantiles make a 95% interval?
-
-*Pass test:* you can read quartiles off sorted data and explain an interval as a pair of quantiles.
 
 ## Connections
 - **Builds on:** [[Median]], [[Proportion]]

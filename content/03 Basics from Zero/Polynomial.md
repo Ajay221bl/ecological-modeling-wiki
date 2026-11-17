@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "A polynomial is a sum of powers of x, such as a + bx + cx², which lets a model bend."
 aliases:
   - "Polynomial term"
   - "Polynomial regression"
@@ -11,43 +12,15 @@ status: seedling
 
 # Polynomial
 
-**In one line:** a polynomial is a sum of powers of x, such as a + bx + cx², which lets a model bend.
+Think of a bendy ruler. A stiff ruler can only draw straight lines, but each extra power of x lets the ruler make one more bend. A **polynomial** is a sum of powers of x, each multiplied by its own number (its *coefficient*): a + bx + cx² + dx³ and so on. Each piece of the sum is a *term*, and the highest power is the *degree*. Degree 1 is a straight line, degree 2 (quadratic) can make one bend, degree 3 (cubic) two bends. In general a polynomial of degree d can turn at most d − 1 times.
 
-> [!info] Before this, it helps to know
-> [[Exponent]] (powers) · [[Linear Function]] (the simplest polynomial)
+Try one with numbers: y = 2 + 3x − 0.5x². At x = 0, y = 2. At x = 2, y = 2 + 6 − 2 = 6. At x = 3, y = 2 + 9 − 4.5 = 6.5, the peak. At x = 6, y = 2 + 18 − 18 = 2 again. So the curve goes up and then comes back down. Here is the clever part: this is still a linear model, because x² is simply another column of numbers and the model just adds coefficient times column. That means ordinary lm() can fit it, with no new software. In an R formula you must write `I(x^2)` or `poly(x, 2)`, because a bare `^` inside a formula means "interactions", not "squared". `poly(x, 2, raw = TRUE)` gives coefficients for x and x² directly, while the default form fits the same curve using reshaped columns that are less correlated with each other.
 
-## The everyday picture
-A bendy ruler. A stiff ruler draws only straight lines. Each extra power of x adds one more bend the ruler is allowed to make: x² allows one bend, x³ two, and so on.
+Polynomials are the cheapest way to let a straight-line model bend, and over a short range they can mimic almost any smooth curve. But they have two weaknesses. First, higher degree is not more accurate: a degree-8 polynomial will wiggle through the noise in your sample and predict new data worse, which is [[Overfitting]] (the [[Parsimony]] note shows a degree-10 example). Second, polynomials are global: a bend needed in one place forces behaviour everywhere else, and beyond the ends of the data they shoot off to huge values, which makes them dangerous for [[Extrapolation]]. A [[Spline]] fixes both problems by joining short polynomial pieces end to end. The most common polynomial in practice is the single squared term, see [[Quadratic Term]].
 
-*Where the picture stops working:* a ruler stays put beyond its ends. A polynomial shoots off to huge values outside the data, so it is dangerous for [[Extrapolation]].
-
-## Words you'll need
-- **Term:** one piece of the sum, such as cx².
-- **Degree:** the highest power. Degree 2 is quadratic, degree 3 cubic.
-- **Coefficient:** the number multiplying each power.
-
-## A tiny example
-y = 2 + 3x − 0.5x².
-- x = 0: y = 2.
-- x = 2: y = 2 + 6 − 2 = **6**.
-- x = 3: y = 2 + 9 − 4.5 = **6.5** (the peak).
-- x = 6: y = 2 + 18 − 18 = **2**. Up, then down.
-
-## Start from zero
-1. **Start with a line.** y = a + bx. No bends.
-2. **Add x².** Now the slope itself changes with x, giving one hump or one dip.
-3. **Add x³ for a second bend.** Each degree adds one possible turn.
-4. **It is still a linear model.** *Why:* x² is just another column of numbers, and the model adds coefficient times column.
-5. **Higher degree means more risk.** High-degree polynomials wiggle to chase noise ([[Overfitting]]) and behave wildly at the edges.
-
-## See it
 ![[Polynomial degrees.png|700]]
 *What to look at:* degree 1 cannot bend, degree 2 bends once, degree 8 wiggles through the noise.
 
-## Why it is this way
-Polynomials are the cheapest way to let a straight-line model curve: they need no new software, just new columns. Any smooth curve can be approximated by one over a short range. The cost is that they are global: a wiggle needed in one place forces behaviour everywhere else. Splines fix that by using polynomials in pieces ([[Spline]]).
-
-## In R
 ```r
 set.seed(4)
 x <- seq(0, 6, length.out = 30)
@@ -58,19 +31,6 @@ coef(m2)                               # close to 2, 3, -0.5
 AIC(m1, m2)                            # the quadratic fits far better
 ```
 `raw = TRUE` gives coefficients for x and x² directly. The default uses orthogonal polynomials, which fit the same curve with less collinearity.
-
-## In the course
-The model selection lab uses a quadratic latitude term for crab size ([[Course Website]]). [[Parsimony]] uses a degree-10 polynomial to show overfitting.
-
-## Common confusions
-- **"`y ~ x + x^2` works in R."** Inside a formula `^` means interactions. Write `I(x^2)` or `poly(x, 2)`.
-- **"Higher degree is more accurate."** It fits the sample better and new data worse.
-
-## Explain it back
-- What does each added degree let the curve do?
-- Why is a polynomial model still "linear"?
-
-*Pass test:* you can write a quadratic model in R and explain its risk at the edges.
 
 ## Connections
 - **Builds on:** [[Exponent]], [[Linear Function]]

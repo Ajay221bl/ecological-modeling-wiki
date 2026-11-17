@@ -23,7 +23,7 @@ What are the steps from data to a reported GAM?
 - [[Basis Dimension and gam.check()]], [[Concurvity]], [[Partial Effect Plots]], [[Prediction from a GAM]].
 
 ## See it
-mermaid:
+```mermaid
 flowchart TD
   A[Explore: plots of y against each x] --> B[Pick family and link]
   B --> C[Write formula: s terms, te for interactions, re for groups]
@@ -34,6 +34,7 @@ flowchart TD
   F --> G[summary: edf, tests]
   G --> H[draw or plot partial effects]
   H --> I[predict on response scale with intervals]
+```
 *What to look at:* the loop back to the formula when k is too small.
 
 ## The reasoning, step by step

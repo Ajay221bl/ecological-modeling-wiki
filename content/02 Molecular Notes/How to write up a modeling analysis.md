@@ -22,9 +22,10 @@ How do I turn my R analysis into a methods and results section?
 - [[Figures for Model Results]], [[Reporting Statistics in Text]].
 
 ## See it
-mermaid:
+```mermaid
 flowchart LR
   P["Key points"] --> F["Main figure"] --> M["Methods"] --> R["Results"] --> D["Discussion"] --> E["Edit: cut, read aloud"]
+```
 *What to look at:* the points and figure come first; prose is built around them.
 
 ## The reasoning, step by step

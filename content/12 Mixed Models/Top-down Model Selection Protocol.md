@@ -26,11 +26,12 @@ status: seedling
 5. **Why this order:** if the fixed part is too small, unexplained fixed structure leaks into the random effects, and a poor random structure biases the fixed-effect SEs.
 6. **Zuur et al. 2009 Ch5** present this four-step version and a longer ten-step protocol (with linear regression and GLS steps first).
 7. **The linear mixed models lab** follows it: compare random structures with AICc, then fixed effects with ML.
-mermaid:
+```mermaid
 flowchart LR
   A[Beyond-optimal fixed part] --> B[Choose random structure with REML]
   B --> C[Choose fixed part with ML]
   C --> D[Refit with REML and validate]
+```
 
 ## In the course
 [[Zuur et al. 2009 Ch5]]. Linear mixed models lab ([[Course Website]]).

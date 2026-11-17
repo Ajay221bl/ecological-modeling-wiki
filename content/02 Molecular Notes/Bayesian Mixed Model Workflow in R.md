@@ -24,7 +24,7 @@ What are the steps to fit and report a Bayesian mixed model?
 - [[Leave-one-out Cross-validation]], [[Conditional vs Marginal Predictions]].
 
 ## See it
-mermaid:
+```mermaid
 flowchart TD
   A[Draw design: groups, levels, family] --> B[Write brms formula]
   B --> C[Choose priors: b, sd, cor, family]
@@ -36,6 +36,7 @@ flowchart TD
   F -->|yes| H[pp_check and residual checks]
   H --> I[Compare candidates with loo]
   I --> J[Predict: re_formula NULL or NA]
+```
 *What to look at:* the loop back when convergence checks fail.
 
 ## The reasoning, step by step
