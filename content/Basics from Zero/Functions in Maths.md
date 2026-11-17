@@ -6,7 +6,6 @@ tags:
 aliases:
   - "Mathematical function"
   - "f(x)"
-  - "g(x)"
 status: seedling
 ---
 
@@ -67,7 +66,7 @@ f(5)             # 9
 f(0:10)          # works on a whole vector of inputs at once
 curve(f(x), from = 0, to = 10, ylab = "y")   # draw it
 ```
-Writing maths functions as R functions is also how you build simulations ([[Writing Functions]]).
+Writing maths functions as R functions is also how you build simulations ([[Writing Your Own Function|Writing Functions]]).
 
 ## In the course
 Hobbs and Hooten's chapter on deterministic models is a tour of a "few good functions" ecologists reuse: linear, exponential, power, asymptotic (Michaelis-Menten) and threshold models ([[Hobbs and Hooten 2015 Ch2]], §2.2).

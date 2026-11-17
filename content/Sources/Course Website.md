@@ -18,7 +18,7 @@ status: seedling
 
 **Address:** https://livinglandscapes.github.io/Course_EcologicalModeling/index.html
 **Source files:** the site is built from the public GitHub repository `LivingLandscapes/Course_EcologicalModeling` (R Markdown pages, `code/` scripts, `data/` files). Read on 2026-11-16.
-**Syllabus weeks:** Aug 20 (coding) to Oct 22 (Bayesian mixed models lab) in scope. The GAM and HGAM pages and Homework 5 come later.
+**Syllabus weeks:** all of them, Aug 20 (coding) to Nov 24 (writing). The site could not be re-read on 2026-11-17 (the network blocked it), so notes on the GAM, occupancy and Stan sessions lean on the readings and the package documentation.
 
 > [!warning] Verify
 > This is a living site, so pages can change during the semester. Several labs were written for earlier years and keep older wording (for example "send the data to Jes"). Where a lab and a reading disagree, the reading and the lecture win, and I note the clash in [[Open Questions]].
@@ -35,18 +35,19 @@ flowchart LR
   E --> F[Analysis A - Z<br/>reproducible workflow]
   F --> G[Autocorrelation]
   G --> H[Mixed Models<br/>LMM, GLMM, CIs, Bayesian, HW4]
-  H --> I[GAMs / HGAMs<br/>out of scope for now]
+  H --> I[GAMs / HGAMs<br/>HW5]
+  I --> J[Occupancy, Stan,<br/>writing]
 ```
 
 ## Key ideas I use
 - **The reproducibility rule.** Every script loads packages with `require(librarian); shelf(..., lib = tempdir())`, uses relative paths, and reads public data straight from the repository URL. Homework that throws errors loses points. → [[Reproducibility]], [[RProject]], [[here()]], [[Homework]]
 - **Data exploration lab** follows Zuur's eight steps on the Loess Canyons grassland bird data (the same study family as my final project). Its warnings: don't delete outliers first, and don't transform Y just to get normality. → [[Data Exploration Protocol]], [[Outlier]], [[Transformation]], [[Collinearity]]
-- **Linear models lab** (Palmer penguins) shows that VIFs blow up for interaction terms until you standardize, but stay high for a truly collinear predictor (species), which has to go. Predictions on new data must be scaled with the *original* mean and SD. → [[Variance Inflation Factor]], [[Standardizing Predictors]], [[Linear Model Assumptions]], [[Plotting Model Predictions]]
+- **Linear models lab** (Palmer penguins) shows that VIFs blow up for interaction terms until you standardize, but stay high for a truly collinear predictor (species), which has to go. Predictions on new data must be scaled with the *original* mean and SD. → [[Variance Inflation Factor]], [[Standardizing|Standardizing Predictors]], [[Linear Model Assumptions]], [[Plotting Model Predictions with Ribbons|Plotting Model Predictions]]
 - **Hello, Bayes!** fits the same quail-trend model with `lm()` and `brm()`, then shows the normal model predicts negative whistle counts and fixes it by truncating at zero. → [[Bayesian Linear Regression in R]], [[brm()]], [[Posterior Predictive Check]], [[Trace Plot]]
-- **Model selection lab** (fiddler crabs): write hypotheses in words, fit a named list of models with `lapply()`, trim the global model to VIF < 5, rank by AICc, then average. → [[Candidate Model Set]], [[AICc]], [[Delta AIC]], [[Akaike Weight]], [[Model Averaging]], [[map() and apply()]]
+- **Model selection lab** (fiddler crabs): write hypotheses in words, fit a named list of models with `lapply()`, trim the global model to VIF < 5, rank by AICc, then average. → [[Candidate Model Set]], [[AICc]], [[Delta AIC]], [[Akaike Weight]], [[Model Averaging]], [[map()|map() and apply()]]
 - **Bayesian model selection lab** (Fort Robinson tree DBH): same models in `lm()` and `brm()`, ranked by `loo()` or `waic()` with `loo_compare()`. PSIS-LOO is preferred (Vehtari et al. 2017). → [[Leave-one-out Cross-validation]], [[WAIC]]
 - **Autocorrelation lab**: pika stress hormones for space (maps, spline correlograms) and lake ice cover for time (`acf()`, `ccf()`). → [[Spatial Autocorrelation]], [[Temporal Autocorrelation]], [[Correlogram]]
-- **Linear mixed models lab** walks from one `lm()` to one `lm()` per subject (`lmList()`) to `lmer()`, and plots shrinkage. Random structures are compared by AICc because a likelihood ratio test on a variance sits on the boundary (variances can't be negative); fixed effects are then compared with ML. → [[Partial Pooling]], [[Linear Mixed Model]], [[REML vs ML]], [[Random Slope]], [[Residual Diagnostics with DHARMa]]
+- **Linear mixed models lab** walks from one `lm()` to one `lm()` per subject (`lmList()`) to `lmer()`, and plots shrinkage. Random structures are compared by AICc because a likelihood ratio test on a variance sits on the boundary (variances can't be negative); fixed effects are then compared with ML. → [[Partial Pooling]], [[Linear Mixed Model]], [[REML vs ML]], [[Random Slope]], [[DHARMa Simulated Residuals|Residual Diagnostics with DHARMa]]
 - **GLMM lab** (red deer parasites by farm): presence/absence from skewed counts, complete separation, simplifying a global `glmer()` that won't converge, all-combinations model selection, and parametric bootstrap. → [[GLMM]], [[lmer() and glmer()]], [[Convergence Warnings]], [[Logistic Regression]], [[Parametric Bootstrap]]
 - **CI lab**: Wald, profile and bootstrap intervals, and prediction bands from `bootMer()`. Even the residual variance is uncertain. → [[Wald Confidence Interval]], [[Profile Likelihood Confidence Interval]], [[Conditional vs Marginal Predictions]]
 - **Bayesian mixed models lab** (DeSoto deer weights) is a timed team exercise: explore, fit, check, plot. Homework 4 (bull thistle, nested design) must be Bayesian. → [[Bayesian Mixed Model Workflow in R]], [[Bayesian GLMM]]

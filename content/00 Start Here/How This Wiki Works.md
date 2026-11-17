@@ -50,7 +50,7 @@ Every round of changes and checks is recorded in the [[Change Log]].
 Cards are made for the Obsidian **Spaced Repetition** community plugin, with the same settings as my AGST vault (multi-line separator `??`, end marker `++++`).
 
 1. Run **Spaced Repetition: Review flashcards from all notes**, or click the flashcards icon.
-2. Pick a deck. Everything sits under `eco`: basics, modeling, r, exploration, distributions, lm-glm, bayes, selection, autocorrelation, mixed, why and course.
+2. Pick a deck. Everything sits under `eco`: basics, modeling, r, exploration, distributions, lm-glm, bayes, selection, autocorrelation, mixed, gam, popest, stan, writing, ecology, why and course.
 3. Rate each card Easy, Good or Hard.
 4. To drill one note, open it and run **Review flashcards in this note**.
 
@@ -71,4 +71,4 @@ Cards are made for the Obsidian **Spaced Repetition** community plugin, with the
 - A `> [!warning] Verify` callout marks a detail that comes from outside my reading folder or couldn't be confirmed.
 - Graphs are PNG files in `Figures`, embedded with `![[name.png|700]]`. Graphs of made-up data say "simulated" in their title. Flowcharts are Mermaid code blocks, which Obsidian draws on its own.
 - R code runs as-is on simulated data or data bundled with an R package. Copy it into a script inside an RProject and run it top to bottom.
-- R packages used: tidyverse, lme4, glmmTMB, brms, DHARMa, MuMIn, loo, bayesplot, performance, spdep.
+- R packages used: tidyverse, lme4, glmmTMB, nlme, mgcv, brms, rstan, loo, posterior, bayesplot, performance, spdep, survival, plus DHARMa, MuMIn, AICcmodavg, unmarked, gratia and cmdstanr. Blocks that need one of the last six, or that take minutes to sample, carry a `# norun` comment: they were checked against the package documentation but not run when the wiki was built.

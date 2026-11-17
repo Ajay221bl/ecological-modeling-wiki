@@ -3,10 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
-aliases:
-  - "Sampled population"
-  - "Scope of inference"
-  - "Sampling frame"
+aliases: []
 status: seedling
 ---
 

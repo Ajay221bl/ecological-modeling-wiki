@@ -81,9 +81,9 @@ Categorical predictors appear in every lab, and grouping factors such as site ar
 
 ## Connections
 - **Builds on:** [[Variable]]
-- **Leads to:** [[Dummy Coding]], [[Grouping Factor]], [[Interaction]]
+- **Leads to:** [[Dummy Coding]], [[Grouping Factor]], [[Interaction Term|Interaction]]
 - **Part of:** [[MOC - Basics from Zero]], molecular note [[Continuous vs Discrete Data]]
-- **Go deeper:** [[Data Frames and Tibbles]]
+- **Go deeper:** [[Data Frame|Data Frames and Tibbles]]
 
 ## Flashcards
 

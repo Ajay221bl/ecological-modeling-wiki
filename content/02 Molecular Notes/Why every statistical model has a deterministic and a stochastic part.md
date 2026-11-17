@@ -55,7 +55,7 @@ For every model, write both halves explicitly before coding:
 - *Deterministic:* μᵢ = β₀ + β₁xᵢ (or log(μᵢ) = ..., or logit(pᵢ) = ...)
 - *Stochastic:* yᵢ ~ Normal(μᵢ, σ), or Poisson(μᵢ), or Bernoulli(pᵢ)
 
-Then check the stochastic half against the data with residual plots, overdispersion tests or posterior predictive checks ([[Residual Diagnostics with DHARMa]], [[Posterior Predictive Check]]).
+Then check the stochastic half against the data with residual plots, overdispersion tests or posterior predictive checks ([[DHARMa Simulated Residuals|Residual Diagnostics with DHARMa]], [[Posterior Predictive Check]]).
 
 ## What would go wrong otherwise
 - With no stochastic part, you can't estimate parameters from noisy data, can't compare models and can't state uncertainty.

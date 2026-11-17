@@ -5,7 +5,6 @@ tags:
   - flashcards/eco/modeling
 aliases:
   - "Binomial trial"
-  - "Bernoulli trial"
   - "Success/failure data"
 status: seedling
 ---

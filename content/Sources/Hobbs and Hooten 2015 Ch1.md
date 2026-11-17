@@ -28,7 +28,7 @@ Uncertainty as the core of science; notation (bold for vectors, [a | b] for "the
 - Notation: θ, y, x, [a | b, c] and g() (§1.1.1, p. 5) → [[Greek Letters and Notation]]
 - The process model [z | g(θp, x), σ²p]: σ²p "subsumes all the unmodeled influences" (§1.1.2, p. 6) → [[Deterministic and Stochastic Components]], [[Process vs Observation Error]]
 - The sampling model [uᵢ | z, σ²s] (§1.1.3, pp. 7 to 8) and the observation model [yᵢ | d(θo, uᵢ), σ²o] for biased observations (§1.1.4, pp. 8 to 9) → [[Process vs Observation Error]]
-- Parameter models are priors, as informative as knowledge allows (§1.1.5, p. 9) → [[Prior]]
+- Parameter models are priors, as informative as knowledge allows (§1.1.5, p. 9) → [[Prior Distribution|Prior]]
 - The full model is Bayesian (unknowns are random variables) and hierarchical (quantities appear on both sides of "|") (eq. 1.1.5, p. 10) → [[Hierarchical Model]]
 
 ## Notes that rely on it

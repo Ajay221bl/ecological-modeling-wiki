@@ -6,7 +6,6 @@ tags:
 aliases:
   - "Stochastic part"
   - "Error distribution"
-  - "Error term"
 status: seedling
 ---
 

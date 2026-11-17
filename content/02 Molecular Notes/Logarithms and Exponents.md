@@ -6,7 +6,6 @@ tags:
   - basics
 aliases:
   - "Log and exp"
-  - "Log scale"
 status: seedling
 ---
 

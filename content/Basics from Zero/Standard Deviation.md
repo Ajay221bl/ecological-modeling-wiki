@@ -5,7 +5,6 @@ tags:
   - flashcards/eco/basics
 aliases:
   - "SD"
-  - "sigma"
   - "sd()"
 status: seedling
 ---
@@ -78,7 +77,7 @@ Hobbs and Hooten write normal models as y ~ normal(μ, σ²) and stress that σ 
 - **Builds on:** [[Variance]]
 - **Leads to:** [[Standard Error]], [[Normal Distribution]], [[Residual]]
 - **Part of:** [[MOC - Basics from Zero]]
-- **Go deeper:** [[Standardizing Predictors]] (dividing by the SD to put predictors on one scale)
+- **Go deeper:** [[Standardizing|Standardizing Predictors]] (dividing by the SD to put predictors on one scale)
 
 ## Flashcards
 

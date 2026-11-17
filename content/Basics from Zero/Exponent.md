@@ -4,7 +4,6 @@ tags:
   - basics
   - flashcards/eco/basics
 aliases:
-  - "Power"
   - "Exponents"
   - "Raising to a power"
 status: seedling

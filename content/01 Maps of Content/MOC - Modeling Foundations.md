@@ -20,6 +20,11 @@ Unit 1 (Tue Aug 18): what a model is, the kinds of models ecologists build, and 
 - [[Simulation Model]]: a simulation model runs a set of rules forward on a computer, step by step, to see what happens. It's used when a system has too many interacting parts to...
 - [[Theoretical Model]]: a theoretical model is a small set of equations about how nature works, studied with maths to find out what follows from them, usually without any data.
 - [[Empirical Model]]: an empirical model describes a relationship found in data, such as a straight line through points, and uses probability to say how sure we are about it.
+- [[Models as Abstractions]]: a model is an abstraction, a deliberately incomplete picture that keeps what matters for one question and drops the rest.
+- [[Individual-based Model]]: an individual-based model simulates each animal or plant separately, following simple rules, and lets population patterns emerge from their combined behaviour.
+- [[Mechanistic Model]]: a mechanistic model is built from the causes believed to produce the pattern, so its parameters stand for real biological processes.
+- [[Phenomenological Model]]: a phenomenological model describes the pattern in the data without claiming to represent the processes behind it.
+- [[Model Complexity]]: model complexity is how much freedom a model has to bend to the data, roughly the number of parameters it estimates.
 
 ## 2. Why we model
 - [[Exploratory Modeling]]: exploratory modeling searches data for patterns in order to come up with hypotheses. Its results are ideas to test later, not findings.
@@ -34,6 +39,14 @@ Unit 1 (Tue Aug 18): what a model is, the kinds of models ecologists build, and 
 - [[Underfitting]]: underfitting is when a model is too rigid to capture a real pattern, so its answers are systematically off (biased).
 - [[Bias-Variance Trade-off]]: adding parameters to a model reduces its bias but makes each estimate wobblier (more variance); removing them does the reverse. The best model balances the...
 - [[Sensitivity Analysis]]: a sensitivity analysis nudges each input of a model a little and measures how much the answer changes, which shows which inputs matter most.
+- [[Forecast]]: a forecast is a prediction about the future that comes with a statement of how uncertain it is.
+- [[Scientific Method]]: the scientific method is a loop: observe, propose an explanation, work out what it predicts, test the prediction against new data, and revise.
+- [[Hypothetico-deductive Method]]: the hypothetico-deductive method tests an idea by deducing a consequence that must hold if the idea is true and then trying to show that the consequence fails.
+- [[Line of Inference]]: the line of inference is the chain of steps from the animals you measured to the population you want to talk about, and a conclusion is only as strong as...
+- [[Parameter Estimation]]: parameter estimation is using data to work out plausible values for the unknown numbers in a model.
+- [[Bracket Notation]]: bracket notation writes a probability distribution as square brackets, so [y | θ] reads "the distribution of y given θ".
+- [[Adaptive Resource Management]]: adaptive resource management treats each management action as an experiment, so that monitoring the result improves the model used for the next decision.
+- [[Management Cycle]]: the management cycle is the repeating sequence of setting objectives, acting, monitoring and evaluating that wildlife management follows.
 
 ## 3. Where data come from
 - [[Biological Population]]: a biological population is a group of organisms of one species living in a certain place at a certain time, such as all the turtles in one pond this summer.
@@ -49,6 +62,24 @@ Unit 1 (Tue Aug 18): what a model is, the kinds of models ecologists build, and 
 - [[Stochastic Component]]: the stochastic component of a model is the probability distribution describing how real observations scatter around the expected value, written y ~...
 - [[Process Variation]]: process variation is real up-and-down change in nature that your model doesn't explain, such as good and bad years for a bird population.
 - [[Observation Error]]: observation error is the extra noise, and sometimes bias, added by how you measure, such as birds that are present but missed in a count.
+- [[Individual Variation]]: individual variation is the real difference between individuals in traits or fates, even under identical conditions.
+- [[Study Population]]: the study population is the set of units that your sampling methods could actually have selected.
+- [[Random Sampling]]: random sampling means choosing units by chance so that every unit in the study population has a known probability of being picked.
+- [[Sampling Effort]]: sampling effort is how much work went into collecting the data, such as hours searched, traps set or area covered.
+- [[Unbiased Estimator]]: an unbiased estimator is a recipe whose answers, averaged over many repeated samples, land exactly on the true value.
+- [[Population Dynamics]]: population dynamics is the study of how and why population size changes over time, through births, deaths, immigration and emigration.
+- [[Population Growth Rate]]: the population growth rate λ is next year's population size divided by this year's, so it says by what factor the population multiplies each year.
+- [[Survival Rate]]: a survival rate is the probability that an individual alive at the start of a period is still alive at its end.
+
+## 4. Designing a study
+- [[Study Design]]: study design is the plan, made before collecting data, for what to measure, where, when and how often, so the data can answer the question.
+- [[Observational Study]]: an observational study measures things as they are, without the researcher deciding who gets which condition.
+- [[Experimental Study]]: an experimental study is one where the researcher assigns the conditions, ideally at random, and then measures what follows.
+- [[Replication]]: replication means applying each condition to several independent units, so you can tell a real effect from the natural differences between units.
+- [[Randomization]]: randomization means letting chance decide which units receive which treatment.
+- [[Treatment]]: a treatment is the condition a researcher deliberately applies to units in order to see its effect.
+- [[Control Group]]: a control group is the set of units that do not receive the treatment but are otherwise handled the same way, giving the baseline for comparison.
+- [[Confounding Variable]]: a confounding variable is one that influences both the explanatory variable and the response, creating an association between them that isn't cause and effect.
 
 ## Related molecular notes
 - [[Theoretical vs Empirical Modeling]]: A **theoretical** model starts from ideas about how nature works and asks, with maths, what must follow. An **empirical** model starts from data and...
@@ -60,6 +91,9 @@ Unit 1 (Tue Aug 18): what a model is, the kinds of models ecologists build, and 
 - [[Process vs Observation Error]]: The scatter in ecological data has three sources. **Process variation** is real change in nature (good and bad years). **Observation error** comes from how...
 - [[Why model at all]]: Because data never speak for themselves. A model is the explicit story of how the data came to be, and writing it down is what lets data test an idea,...
 - [[Why every statistical model has a deterministic and a stochastic part]]: The deterministic part is your idea about how nature works, written as a function that predicts the average. But nature never matches the average exactly,...
+- [[Correlation vs Causation]]: two variables can be correlated because one causes the other, because a third variable drives both, by chance, or because of how data were selected, so a...
+- [[Observational vs Experimental Study]]: in an experiment the researcher assigns treatments, ideally at random, so differences can be attributed to the treatment, while in an observational study...
+- [[Mechanistic vs Phenomenological Model]]: a mechanistic model is built from how the system works (births, deaths, consumption), so its parameters have biological meaning, while a phenomenological...
 
 ## Related MOCs
 [[MOC - Why We Do It This Way]] · [[MOC - Course Readings]] · [[Start Here]]

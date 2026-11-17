@@ -5,7 +5,6 @@ tags:
   - flashcards/eco/modeling
 aliases:
   - "Biased estimator"
-  - "Unbiased estimator"
   - "Systematic error"
 status: seedling
 ---

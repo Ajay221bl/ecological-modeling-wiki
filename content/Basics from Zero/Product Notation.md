@@ -25,7 +25,7 @@ Three locks on a door, each with its own chance of being left open: 0.5, 0.4 and
 ## Words you'll need
 - **∏ (capital pi, Greek P for "product"):** multiply together everything that follows.
 - **Index range ($i = 1$ to $n$):** where the list starts and stops, written below and above ∏.
-- **Independent events:** events whose chances don't affect each other, so their joint chance is the product ([[Independence]]).
+- **Independent events:** events whose chances don't affect each other, so their joint chance is the product ([[Independence of Observations|Independence]]).
 - **Likelihood:** the probability of the whole dataset under a model, a product over observations ([[Likelihood]]).
 
 ## A tiny example
@@ -80,7 +80,7 @@ Hobbs and Hooten write the joint probability of independent data as a product ([
 
 ## Connections
 - **Builds on:** [[Summation Notation]], [[Greek Letters and Notation]]
-- **Leads to:** [[Likelihood]], [[Independence]], [[Logarithm]]
+- **Leads to:** [[Likelihood]], [[Independence of Observations|Independence]], [[Logarithm]]
 - **Part of:** [[MOC - Basics from Zero]]
 - **Go deeper:** [[Hobbs and Hooten 2015 Ch3]]
 

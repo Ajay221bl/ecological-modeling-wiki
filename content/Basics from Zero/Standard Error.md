@@ -71,7 +71,7 @@ summary(fit)$coefficients        # the "Std. Error" column: SE of each estimate
 ```
 
 ## In the course
-The SE is the frequentist measure of uncertainty, and Bayesian models report the posterior SD instead ([[Posterior]]). Mixed models exist largely to get the SE right when observations are grouped ([[Why use a random effect instead of a fixed effect]]).
+The SE is the frequentist measure of uncertainty, and Bayesian models report the posterior SD instead ([[Posterior Distribution|Posterior]]). Mixed models exist largely to get the SE right when observations are grouped ([[Why use a random effect instead of a fixed effect]]).
 
 ## Common confusions
 - **"Report the SE because it's smaller."** Report what answers your question: SD to describe the data, SE (or a CI) to describe how precise an estimate is.
