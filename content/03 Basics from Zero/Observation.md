@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "An observation is one case on which you recorded your variables, such as one survey point on one visit. In a data table it is one row."
 aliases:
   - "Observations"
   - "Row"
@@ -12,42 +13,12 @@ status: seedling
 
 # Observation
 
-**In one line:** an observation is one case on which you recorded your variables, such as one survey point on one visit. In a data table it is one row.
+In a school register each line is one pupil, with their age, height and favourite subject written side by side. A field notebook works the same way: each line is everything you wrote down on one occasion. An **observation** is that one case on which you recorded your variables, such as one survey point on one visit, and in a data table it is one *row* ([[Variable]]). In a register one line is always one pupil, but in ecology a row might stand for one animal, one plot, one visit or one year, so the first question of any analysis is: what does one row stand for?
 
-> [!info] Before this, it helps to know
-> [[Variable]] (the things recorded on each observation)
+That question matters because statistics weighs evidence by counting rows. Suppose point 12 is surveyed twice and point 13 once. The table has 3 rows, so 3 observations, but only 2 places. The two rows for point 12 share that point's habitat, soil and neighbouring birds, so they are not two fully separate pieces of evidence about birds in general. Scale it up: 20 points visited 3 times gives 60 observations but still only 20 places. Observations that do not share conditions making them alike are *independent* ([[Independence of Observations]]); rows from the same place, animal or year are usually not.
 
-## The everyday picture
-In a school register, each **line** is one pupil: their age, height and favourite subject, all on one line. That line is an observation. A field notebook works the same way: each line is "everything I wrote down on this one occasion".
+Treating related rows as if they were independent is called [[Pseudoreplication]], and it overstates your evidence, making every standard error too small and every result look surer than it is. So the *sample size* n is usually the number of rows, but not always; sometimes the number of independent units is what counts ([[Sampling Unit]]). The fix is not to throw away the repeated rows but to tell the model which rows belong together, which is what mixed models do with a [[Grouping Factor]] ([[MOC 14 - Mixed Models|MOC - Mixed Models]]). Every homework dataset is laid out with one observation per row ([[Homework]]), so knowing what a row is comes before anything else.
 
-*Where the picture stops working:* in a register one line is always one pupil. In ecology one line might be one animal, one plot, one visit or one year. You must decide what a line stands for.
-
-## Words you'll need
-- **Row:** one line of a data table; one observation.
-- **Sample size (n):** usually the number of rows, but see [[Sampling Unit]] for when it isn't.
-- **Independent:** observations that don't share conditions that make them alike ([[Independence of Observations]]).
-- **Pseudoreplication:** treating related rows as if they were independent ([[Pseudoreplication]]).
-
-## A tiny example
-Two survey points; point 12 visited twice, point 13 once.
-
-| point | visit | wind | richness |
-|---|---|---|---|
-| 12 | 1 | 2 | 6 |
-| 12 | 2 | 4 | 5 |
-| 13 | 1 | 1 | 11 |
-
-That's **3 observations** (rows). But only **2 places**. The two rows for point 12 share that point's habitat, soil and neighbours, so they aren't two fully separate pieces of evidence about birds in general.
-
-Scale it up: 20 points × 3 visits = **60 observations**, still only **20 places**.
-
-## Start from zero
-1. **Each separate occasion of recording is one observation.** Point 12 on May 3 is one; point 12 on June 1 is another.
-2. **Put each observation on its own row.** *Why:* then a row reads as "everything I saw on this occasion", and you can count your observations by counting rows.
-3. **Decide what one row stands for before analysing.** *Why:* the model's sense of "how much evidence do I have" comes from counting rows.
-4. **Check whether rows are independent.** Rows from the same place, animal or year are related. *Why it matters:* treating them as separate overstates the evidence ([[Pseudoreplication]]), which is what mixed models fix ([[Grouping Factor]]).
-
-## See it
 ```mermaid
 flowchart LR
   O1["Point 12, visit 1"] --> R1["Row 1"]
@@ -57,30 +28,12 @@ flowchart LR
 ```
 *What to look at:* three rows, but the dotted line warns that two of them share a place.
 
-## Why it is this way
-Statistics weighs evidence by counting it, and the row is what gets counted. That's why "what is one observation?" is the first question of any analysis: answer it wrongly and every standard error is wrong too.
-
-## In R
 ```r
 birds <- data.frame(point = c(12, 12, 13), visit = c(1, 2, 1),
                     wind = c(2, 4, 1), richness = c(6, 5, 11))
 nrow(birds)                  # 3 observations
 length(unique(birds$point))  # but only 2 places
 ```
-
-## In the course
-Every homework dataset has one observation per row ([[Homework]]), and the mixed models unit is built around rows that share a group ([[MOC 14 - Mixed Models|MOC - Mixed Models]]).
-
-## Common confusions
-- **"An observation is always one animal."** It's whatever one row stands for.
-- **"More rows means more independent information."** Only if the rows are independent.
-
-## Explain it back
-- Using a school register, say what one observation is.
-- Why are the two rows for point 12 not two separate pieces of evidence?
-- 20 points visited 3 times: how many observations, and how many places?
-
-*Pass test:* you can say in one sentence what one row stands for in any dataset.
 
 ## Connections
 - **Builds on:** [[Variable]]

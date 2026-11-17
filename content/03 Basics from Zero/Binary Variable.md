@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "A binary variable has only two possible values, such as alive or dead, present or absent, usually coded 1 and 0."
 aliases:
   - "Binary data"
   - "Presence-absence"
@@ -12,36 +13,12 @@ status: seedling
 
 # Binary Variable
 
-**In one line:** a binary variable has only two possible values, such as alive or dead, present or absent, usually coded 1 and 0.
+Think of a light switch: on or off, nothing in between. A **binary variable** has only two possible values, such as alive or dead, present or absent, burned or unburned. Did the nest survive? Was the frog heard? Each is a switch. Binary data are the simplest kind of [[Discrete Data]], and they are usually *coded* as 1 for the outcome you chose to count and 0 for the other. The 1 does not have to mean "good"; it just marks the outcome you are counting, and it could equally be "died".
 
-> [!info] Before this, it helps to know
-> [[Discrete Data]] (binary is the simplest discrete case)
+Coding as 1 and 0 has a lovely payoff. Five nests are recorded as survived = 1, 0, 1, 1, 0. The sum, 3, counts the survivors, and the mean, 3 / 5 = 0.6, is the proportion that survived, which is the natural estimate of the *probability* p that a nest survives. In ecology each switch has a chance of being on, and that chance is what you model. One yes-or-no outcome with chance p follows the [[Bernoulli Distribution]]; the number of yeses out of n tries follows the binomial ([[Binomial Sampling]]). Do not mix up the two words: *binary* describes one yes/no outcome, *binomial* the count of yeses among n of them.
 
-## The everyday picture
-A **light switch**: on or off, nothing in between. Did the nest survive? Was the frog heard? Is the plot burned? Each is a switch.
+Why does recognising a binary response matter so much? Because a straight-line model ignores the fact that a probability must stay between 0 and 1. Fit a straight line to survival against nest height and it may predict 1.3 or −0.2 for some nest, and neither is a possible probability. So binary responses get [[Logistic Regression]], which passes the straight line through a [[Link Function]] (the logit) that keeps every prediction between 0 and 1. Many of the most important questions in ecology are yes-or-no questions in disguise: survival and detection in Powell and Gale ([[Powell and Gale 2015 Ch3]]), occupancy, and presence or absence of a parasite, all of which are handled in the GLM unit ([[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]).
 
-*Where the picture stops working:* a switch has no "chance" attached. In ecology each switch has a probability of being on, and that probability is what you model.
-
-## Words you'll need
-- **Binary:** two possible values.
-- **Coding 1/0:** writing the "yes" outcome as 1 and the "no" as 0.
-- **Probability (p):** the chance the outcome is 1.
-- **Bernoulli distribution:** the distribution of one yes/no outcome with chance p ([[Bernoulli Distribution]]).
-- **Logistic regression:** the usual model for a binary response ([[Logistic Regression]]).
-
-## A tiny example
-Five nests: survived = 1, 0, 1, 1, 0.
-- The mean of the 0s and 1s is 3 / 5 = **0.6**. *Why that's handy:* the mean of a 1/0 variable is the proportion of 1s, the natural estimate of p.
-- A straight-line model could predict 1.3 or −0.2 for some nest. Neither is a possible probability, which is why binary responses get logistic regression instead.
-
-## Start from zero
-1. **Some outcomes are yes or no.** Survived or not, present or not.
-2. **Code them 1 and 0.** *Why:* then sums count the yeses and means give the proportion.
-3. **What you model is the chance of a 1.** It must stay between 0 and 1.
-4. **One yes/no outcome follows a Bernoulli distribution;** the count of yeses out of n follows a binomial ([[Binomial Sampling]]).
-5. **So binary responses need models that keep predictions between 0 and 1.** That's what the logit link in logistic regression does ([[Link Function]]).
-
-## See it
 ```mermaid
 flowchart LR
   Q["Did the nest survive?"] -->|yes| One["1"]
@@ -51,30 +28,12 @@ flowchart LR
 ```
 *What to look at:* coding as 1/0 turns "how often?" into a simple average.
 
-## Why it is this way
-Many of the most important ecological questions (survival, occupancy, detection) are yes/no questions. Recognising a binary response early saves you from fitting a straight line that predicts impossible probabilities.
-
-## In R
 ```r
 survived <- c(1, 0, 1, 1, 0)
 mean(survived)                               # 0.6: proportion that survived
 fit <- glm(survived ~ 1, family = binomial)  # logistic regression with no predictors
 plogis(coef(fit))                            # 0.6 back on the probability scale
 ```
-
-## In the course
-Binary data are the basis of survival and detection estimation in Powell and Gale ([[Powell and Gale 2015 Ch3]]) and of logistic regression in the GLM unit ([[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]).
-
-## Common confusions
-- **Binary vs binomial.** Binary is one yes/no outcome; binomial is the count of yeses out of n tries.
-- **"1 must mean good."** 1 just marks the outcome you chose to count. It could be "died".
-
-## Explain it back
-- Use a light switch to explain a binary variable.
-- Why is the mean of 1s and 0s the proportion of 1s?
-- Why can't a straight-line model be trusted for binary data?
-
-*Pass test:* you can code a yes/no field outcome and estimate its probability by hand.
 
 ## Connections
 - **Builds on:** [[Discrete Data]]
