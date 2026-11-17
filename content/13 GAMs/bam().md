@@ -28,7 +28,7 @@ t1 <- system.time(m1 <- bam(y ~ s(x), data = d, discrete = TRUE))[["elapsed"]]; 
 ## Connections
 - **Builds on:** [[Generalized Additive Model]]
 - **Leads to:** [[AR(1) Error Structure]], [[Parallel Computing in R]]
-- **See also:** [[AR(1) Process]]
+- **See also:** [[AR(1) Error Structure]]
 - **Part of:** [[MOC 15 - GAMs|MOC - GAMs]]
 
 ## Flashcards

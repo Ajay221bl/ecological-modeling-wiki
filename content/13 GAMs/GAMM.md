@@ -29,7 +29,7 @@ m <- gamm(y ~ s(year), random = list(site = ~ 1), correlation = corAR1(form = ~ 
 ## Connections
 - **Builds on:** [[Generalized Additive Model]], [[Mixed Effects Model]], [[Correlation Structure]]
 - **Leads to:** [[Random-effect Smooth]], [[Hierarchical GAM]], [[Penalized Quasi-likelihood]]
-- **See also:** [[AR(1) Process]]
+- **See also:** [[AR(1) Error Structure]]
 - **Part of:** [[MOC 15 - GAMs|MOC - GAMs]]
 
 ## Flashcards
