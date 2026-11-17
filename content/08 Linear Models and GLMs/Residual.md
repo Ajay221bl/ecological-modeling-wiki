@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "A residual is the difference between what was observed and what the model fitted for that observation."
 aliases:
   - "Residuals"
   - "Raw residual"
@@ -13,49 +14,25 @@ status: seedling
 
 # Residual
 
-**In one line:** a residual is the difference between what was observed and what the model fitted for that observation.
+Measure the gap from each point straight up or down to the fitted string. A point above the string has a positive gap: the model under-predicted it. A **residual** is that gap, the difference between what was observed and what the model fitted: eᵢ = yᵢ − ŷᵢ ([[Fitted Value]]). With 8 species observed and 7.3 fitted, the residual is 8 − 7.3 = +0.7. For the five bird plots the residuals are −0.4, 0.3, 0, 0.7 and −0.6; in a least-squares fit with an intercept they always sum to zero, which the code below shows. Each vertical stick in the figure is one residual.
 
-> [!info] Before this, it helps to know
-> [[Fitted Value]] (what is subtracted) · [[Linear Regression]] (the model)
+Residuals are the data's leftovers after the model has taken what it can explain, and they are the key diagnostic. If the model is right, they should look like patternless noise of constant spread. Any pattern, such as a curve, a funnel, clumps by site or runs in time, is information the model missed ([[Residuals vs Fitted Plot]]). Their standard deviation estimates σ, the [[Residual Standard Error]].
 
-## The everyday picture
-The gap between each point and the string, measured straight up or down. A point above the string has a positive residual. The model under-predicted it.
+Two confusions. A residual is not the same as the error: the [[Error Term]] is the distance from the unknown true line, the residual the distance from the estimated line, so residuals are estimates of the unseen errors. And small residuals do not mean a correct model: an overfitted model has tiny residuals and poor predictions. For GLMs, raw residuals are rescaled into [[Pearson Residuals]] so their spread can be judged.
 
-## A tiny example
-Observed 8 species, fitted 7.3. Residual = 8 − 7.3 = +0.7.
-
-## Start from zero
-1. **eᵢ = yᵢ − ŷᵢ.** Observed minus fitted.
-2. **Positive:** the observation is above the line.
-3. **In a least-squares fit with an intercept they sum to zero.**
-4. **They are the data's leftover after the model has taken what it can explain.**
-5. **They are estimates of the unseen errors εᵢ.**
-6. **Why they are the key diagnostic:** if the model is right, the residuals should look like patternless noise of constant spread. Any pattern (a curve, a funnel, clumps by site, runs in time) is information the model missed.
-7. **Their SD estimates σ.**
-
-## See it
 ![[Linear regression anatomy.png|700]]
 *What to look at:* each vertical stick is one residual.
 
-## In R
 ```r
 d <- data.frame(tree = c(0, 10, 20, 30, 40), rich = c(12, 11, 9, 8, 5))
 m <- lm(rich ~ tree, d); round(resid(m), 2); sum(resid(m))
 d$rich - fitted(m)
 ```
 
-## Common confusions
-- **"Residual and error are the same."** The error is the distance from the unknown true line. The residual is the distance from the estimated line.
-- **"Small residuals mean a correct model."** An overfitted model has tiny residuals and poor predictions.
-
-## Explain it back
-- What should residuals look like if the model is adequate?
-
-*Pass test:* you can compute residuals and say what patterns in them mean.
-
 ## Connections
 - **Builds on:** [[Fitted Value]]
 - **Leads to:** [[Error Term]], [[Residuals vs Fitted Plot]], [[Residual Standard Error]], [[Pearson Residuals]]
+- **See also:** [[Linear Regression]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 
 ## Flashcards

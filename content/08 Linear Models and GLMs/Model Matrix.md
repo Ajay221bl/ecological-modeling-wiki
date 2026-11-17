@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "The model matrix is the table of numbers a model actually works with: one row per observation and one column per coefficient."
 aliases:
   - "Design matrix"
   - "X matrix"
@@ -12,41 +13,17 @@ status: seedling
 
 # Model Matrix
 
-**In one line:** the model matrix is the table of numbers a model actually works with: one row per observation and one column per coefficient.
+Behind a recipe calculator sits a spreadsheet: each row is one cake, each column one ingredient amount; multiply each column by its coefficient, add across the row, and you have that cake's predicted height. The **model matrix**, or design matrix X, is that table for a model: one row per observation and one column per coefficient ([[Matrix]]). Column 1 is all 1s, for the intercept. Numeric predictors appear as they are, factors appear as dummy columns ([[Dummy Coding]]), and interactions appear as products of columns. Prediction is X %*% β: each row's values times the coefficients, summed ([[Matrix Notation for Models]], [[Linear Predictor]]).
 
-> [!info] Before this, it helps to know
-> [[Matrix]] (its form) · [[Dummy Coding]] (how factors enter) · [[Matrix Notation for Models]] (y = Xβ + ε)
+In the code below, four plots with tree cover and a burn factor give a model matrix with columns for the intercept, tree, burnyes and tree:burnyes; the interaction column is tree × burnyes, so it is zero for unburned plots. Multiplying by coefficients 12, −0.05, 3 and −0.15 gives the four predictions by hand. `model.matrix(formula, data)` shows it for any formula.
 
-## The everyday picture
-The spreadsheet behind a recipe calculator. Every row is one cake. Every column is one ingredient amount. Multiply each column by its coefficient, add across the row and you get that cake's predicted height.
+Look at it whenever a coefficient's meaning is unclear: it shows exactly how R has coded your factors and interactions, which settles most puzzles. It is also what you need later, because predicting by hand from a mixed or Bayesian model is `X %*% β` with a matrix built from new data, as the mixed-model labs do ([[Predicting New Data]], [[Zuur et al. 2009 Ch5]], [[Course Website]]). It is not your data frame: it is the numeric translation of the right-hand side of your formula.
 
-## Start from zero
-1. **Column 1 is all 1s:** the intercept.
-2. **Numeric predictors appear as they are.**
-3. **Factors appear as dummy columns.**
-4. **Interactions appear as products of columns.**
-5. **Prediction = X %*% β.** Each row's values times the coefficients, summed.
-6. **`model.matrix(formula, data)` shows it.**
-7. **Why look at it:** it shows exactly how R has coded your factors and interactions, which settles most "what does this coefficient mean" puzzles.
-8. **Why you need it later:** predicting by hand from a mixed or Bayesian model is `X %*% β` with a new-data matrix.
-
-## In R
 ```r
 d <- data.frame(tree = c(5, 20, 40, 10), burn = factor(c("no", "no", "yes", "yes")))
 X <- model.matrix(~ tree * burn, d); X
 beta <- c(12, -0.05, 3, -0.15); X %*% beta          # predictions by hand
 ```
-
-## In the course
-Used in the mixed-model labs to compute predictions and intervals by hand ([[Course Website]]). [[Zuur et al. 2009 Ch5]].
-
-## Common confusions
-- **"It is my data frame."** It is the numeric translation of the right-hand side of your formula.
-
-## Explain it back
-- What does each column of the model matrix correspond to?
-
-*Pass test:* you can build a model matrix and multiply it by coefficients.
 
 ## Connections
 - **Builds on:** [[Matrix]], [[Dummy Coding]]

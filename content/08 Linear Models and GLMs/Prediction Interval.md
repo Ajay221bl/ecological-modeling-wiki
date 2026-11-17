@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "A prediction interval is a range expected to contain a single new observation with a stated probability, combining uncertainty about the fitted mean with the scatter of individuals around it."
 aliases:
   - "Predictive interval"
   - "interval = \"prediction\""
@@ -11,44 +12,21 @@ status: seedling
 
 # Prediction Interval
 
-**In one line:** a prediction interval is a range expected to contain a single new observation with a stated probability, combining uncertainty about the fitted mean with the scatter of individuals around it.
+You may know the long-run average temperature for a date to within half a degree, yet tomorrow itself can land five degrees either side. A **prediction interval** is for tomorrow, not the average: a range expected to contain a single new observation with a stated probability. It combines two sources of uncertainty: where the true line is (estimation), and how far a new point will fall from it ([[Residual Standard Error|residual scatter]]). A [[Confidence Interval]] for the mean uses only the first, so its width shrinks toward zero as n grows. A prediction interval uses both, with variance = (SE of the fitted mean)² + σ², so it never shrinks below about ±2σ, however much data you have.
 
-> [!info] Before this, it helps to know
-> [[Confidence Interval]] (for the mean only) · [[Residual Standard Error]] (the individual scatter) · [[Predicting New Data]] (the setting)
+The figure shows both: the narrow inner band is for the mean and the wide outer band for new observations. In the code below, with 60 points and residual SD about 1.5, the confidence interval at x = 5 is a fraction of a unit wide while the prediction interval spans about ±3, and the standard deviation behind it is computed by hand as √(SE² + σ̂²).
 
-## The everyday picture
-Forecasting tomorrow's temperature. You may know the long-run average for the date to within half a degree. Tomorrow itself can still land five degrees either side. The prediction interval is for tomorrow, not for the average.
+Show the confidence band to say how well the relationship is known, and the prediction band to say where new data will fall ([[Predicting New Data]], [[Plotting Model Predictions with Ribbons]]). The prediction interval depends on the error distribution being right much more than the confidence interval does. More data do not make it vanish; only the estimation part shrinks. In mixed models the distinction multiplies, as the 15 October session on "the CI wars" discusses, and the Bayesian equivalent comes from the [[Posterior Predictive Distribution]] ([[Course Website]], [[Forecast]]).
 
-## Start from zero
-1. **Two sources of uncertainty.** Where is the true line (estimation)? How far will a new point fall from it (residual scatter)?
-2. **Confidence interval for the mean:** uses only the first. Width shrinks toward zero as n grows.
-3. **Prediction interval:** uses both. Variance = (SE of fitted mean)² + σ².
-4. **It never shrinks below about ±2σ,** however much data you have.
-5. **It depends on the error distribution being right,** much more than the confidence interval does.
-6. **Which to show:** the confidence band to show how well the relationship is known. The prediction band to show where new data will fall.
-
-## See it
 ![[Prediction ribbon.png|700]]
 *What to look at:* the narrow inner band is for the mean. The wide outer band is for new observations.
 
-## In R
 ```r
 set.seed(11); d <- data.frame(x = runif(60, 0, 10)); d$y <- 2 + 0.8 * d$x + rnorm(60, 0, 1.5)
 m <- lm(y ~ x, d); nd <- data.frame(x = 5)
 rbind(confidence = predict(m, nd, interval = "confidence"), prediction = predict(m, nd, interval = "prediction"))
 se <- predict(m, nd, se.fit = TRUE)$se.fit; sqrt(se^2 + sigma(m)^2)         # SD used for the prediction interval
 ```
-
-## In the course
-Contrasted with confidence intervals in the regression lab ([[Course Website]]). In mixed models the distinction multiplies (Oct 15, "The CI wars").
-
-## Common confusions
-- **"More data make the prediction interval vanish."** Only the estimation part shrinks.
-
-## Explain it back
-- Why is a prediction interval always wider than a confidence interval?
-
-*Pass test:* you can compute both intervals and explain their difference.
 
 ## Connections
 - **Builds on:** [[Confidence Interval]], [[Residual Standard Error]]

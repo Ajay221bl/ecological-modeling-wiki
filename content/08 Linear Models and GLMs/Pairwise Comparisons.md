@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "Pairwise comparisons estimate the difference between every pair of group means after fitting a model with a multi-level factor."
 aliases:
   - "Multiple comparisons"
   - "Post hoc tests"
@@ -13,22 +14,12 @@ status: seedling
 
 # Pairwise Comparisons
 
-**In one line:** pairwise comparisons estimate the difference between every pair of group means after fitting a model with a multi-level factor.
+After a league's group stage shows the teams are not all equal, a round-robin finds who differs from whom. **Pairwise comparisons** do this for a fitted model with a multi-level factor: they estimate the difference between every pair of group means. A factor with K levels has K(K − 1)/2 pairs, but the model's coefficients show only the K − 1 comparisons with the [[Reference Level]], and an [[ANOVA]] says only that some means differ. The rest are computed from the fitted model, usually with `emmeans(m, pairwise ~ factor)`.
 
-> [!info] Before this, it helps to know
-> [[Reference Level]] (which gives only some of the pairs) · [[ANOVA]] (which says only that some differ) · [[P-value]] (which needs adjusting)
+Many comparisons inflate false positives. With 10 independent tests at the 0.05 level, the chance of at least one false alarm is 1 − 0.95¹⁰ = 0.40 ([[Type I Error]]). So the comparisons are adjusted: Tukey's method widens the intervals to keep the chance of any false alarm across the whole family at 5%. The code below fits three habitats and prints all three Tukey-adjusted differences, with forest clearly below both grass and wetland.
 
-## The everyday picture
-A round-robin after the group stage. The ANOVA told you the teams aren't all equal. Now each plays each to find who differs from whom.
+Report the differences with their intervals, not just letters and stars ([[Statistical Significance]]). The common mistake is to run every pairwise t-test separately, which ignores both the multiplicity and the pooled variance estimate from the model.
 
-## Start from zero
-1. **A factor with K levels has K(K − 1)/2 pairs.** The model's coefficients show only the K − 1 comparisons with the reference.
-2. **Compute the rest from the fitted model.** `emmeans(m, pairwise ~ factor)`.
-3. **Many comparisons inflate false positives.** With 10 tests at 0.05, the chance of at least one false alarm is about 40%.
-4. **Adjust.** Tukey's method widens the intervals to keep the family-wide error rate at 5%.
-5. **Report differences with intervals,** not letters and stars alone.
-
-## In R
 ```r
 library(emmeans)
 d <- data.frame(hab = factor(rep(c("forest", "grass", "wetland"), each = 6)), y = c(6, 8, 7, 9, 7, 8, 10, 12, 11, 13, 11, 12, 11, 13, 12, 14, 12, 13))
@@ -36,17 +27,10 @@ m <- lm(y ~ hab, d); emmeans(m, pairwise ~ hab)$contrasts
 1 - 0.95^10
 ```
 
-## Common confusions
-- **"Run every pairwise t-test separately."** That ignores the multiplicity and the pooled variance.
-
-## Explain it back
-- Why adjust p-values for multiple comparisons?
-
-*Pass test:* you can get all pairwise differences from one model.
-
 ## Connections
 - **Builds on:** [[Reference Level]], [[ANOVA]]
 - **Leads to:** [[Type I Error]], [[Statistical Significance]]
+- **See also:** [[P-value]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 
 ## Flashcards

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "Predicting with scaled covariates means converting new predictor values to the model's standardised scale using the original mean and standard deviation before predicting, and labelling the plot in original units."
 aliases:
   - "Predicting with standardised predictors"
   - "Unscaling predictions"
@@ -12,25 +13,12 @@ status: seedling
 
 # Predicting with Scaled Covariates
 
-**In one line:** predicting with scaled covariates means converting new predictor values to the model's standardised scale using the original mean and standard deviation before predicting, and labelling the plot in original units.
+A thermostat calibrated in Celsius needs your Fahrenheit number converted before you dial it in, using the standard conversion, not one you make up on the day. **Predicting with scaled covariates** means the same for a model fitted on standardised predictors: convert new predictor values to the model's scale using the *original* mean and standard deviation, predict, and label the plot in original units ([[Standardizing]], [[Predicting New Data]]). The steps are: before fitting, save the mean and SD of each predictor you scale; fit on the scaled predictor; make a grid in real units, such as tree cover 0 to 60%; convert the grid with (value − saved mean) / saved SD; predict with the converted column ([[predict()]]); and plot against the real-unit column ([[Plotting Model Predictions with Ribbons]]).
 
-> [!info] Before this, it helps to know
-> [[Standardizing]] (what was done before fitting) · [[Predicting New Data]] (the task) · [[predict()]] (the tool)
+The trap is calling `scale()` on the new grid. That standardises the grid by its own mean and SD, so the converted values are wrong, and the predictions are wrong with no error message. In the code below, a Poisson model is fitted on standardised tree cover. Converting the grid 0, 30, 60 with the saved numbers reproduces the true expected counts; calling `scale()` on the grid gives different, wrong predictions.
 
-## The everyday picture
-A thermostat calibrated in Celsius. If you think in Fahrenheit, you must convert your number before dialling it in, using the standard conversion, not one you make up on the day.
+Putting `scale()` inside the model formula works in `lm()`, where `predict()` handles it, but it is fragile across packages, so explicit columns are safer ([[Scaling Predictors]]). This step recurs in the GLMM and Bayesian labs ([[Course Website]]). "Standardise the new data the same way" means using the same numbers, not calling `scale()` again.
 
-## Start from zero
-1. **Before fitting, save the mean and SD** of each predictor you scale.
-2. **Fit on the scaled predictor.**
-3. **Make a grid in real units** (tree cover 0 to 60%).
-4. **Convert the grid:** (value − saved mean) / saved SD.
-5. **Predict using the converted column.**
-6. **Plot against the real-unit column.**
-7. **The trap:** calling `scale()` on the new grid standardises it by the grid's own mean and SD, giving wrong predictions without any error message.
-8. **Why not just use `scale()` inside the formula:** it works in `lm` and `predict` handles it, but it is fragile across packages. Explicit columns are safer.
-
-## In R
 ```r
 set.seed(10); d <- data.frame(tree = runif(100, 0, 60)); d$rich <- rpois(100, exp(2.4 - 0.02 * d$tree))
 mu <- mean(d$tree); s <- sd(d$tree); d$tree_z <- (d$tree - mu) / s
@@ -40,17 +28,6 @@ nd$wrong_z <- as.numeric(scale(nd$tree))                                        
 cbind(nd, right = predict(m, nd, type = "response"), wrong = predict(m, data.frame(tree_z = nd$wrong_z), type = "response"))
 exp(2.4 - 0.02 * c(0, 30, 60))                                                   # truth
 ```
-
-## In the course
-A recurring step in the GLMM and Bayesian labs ([[Course Website]]).
-
-## Common confusions
-- **"Standardise the new data the same way" means calling `scale()` again.** It means using the same numbers.
-
-## Explain it back
-- Why does `scale(newdata$x)` give wrong predictions?
-
-*Pass test:* you can predict from a model with standardised predictors and plot in original units.
 
 ## Connections
 - **Builds on:** [[Standardizing]], [[Predicting New Data]]

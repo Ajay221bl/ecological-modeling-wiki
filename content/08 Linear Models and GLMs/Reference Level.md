@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "The reference level is the category of a factor that a model uses as its baseline, against which every other category's coefficient is measured."
 aliases:
   - "Baseline level"
   - "Treatment contrasts"
@@ -13,41 +14,18 @@ status: seedling
 
 # Reference Level
 
-**In one line:** the reference level is the category of a factor that a model uses as its baseline, against which every other category's coefficient is measured.
+Mountain heights are all "metres above sea level". Measure from the valley floor instead and every number changes, while the mountains stay exactly as high. The **reference level** is a factor's sea level: the category a model uses as its baseline, against which every other category's coefficient is measured ([[Dummy Coding]]). The [[Intercept]] is the reference level's mean (with other predictors at zero), and each other coefficient is "this level minus reference". This scheme is called treatment contrasts and is R's default, which picks the first level alphabetically unless told otherwise ([[Factors in R]]).
 
-> [!info] Before this, it helps to know
-> [[Dummy Coding]] (which creates it) · [[Intercept]] (which holds its mean)
+In the code below, treatments burn, control and graze have means 9, 5 and 7. By default "burn" is the reference, so the coefficients are 9, −4 and −2. A meaningful reference, such as the control, the unburned or the commonest class, makes them easier to read: after `relevel(trt, ref = "control")` they are 5, +4 and +2. The coefficients and their p-values change, but the fit does not; the last line confirms the fitted values are identical. In an output table, `burnyes` means "burned compared with not burned", and the level whose name is missing is the reference.
 
-## The everyday picture
-Sea level. Mountain heights are all "metres above sea level". Change the reference to the valley floor and every number changes, while the mountains stay the same height.
+The common confusion is that a non-significant level coefficient means that level does not matter. It means only that the level does not differ clearly from the reference; it may differ from the other levels, which needs [[Pairwise Comparisons]]. Coding against the average of all groups instead is [[Sum-to-zero Contrasts]].
 
-## Start from zero
-1. **R picks the first level alphabetically** unless told otherwise.
-2. **The intercept is the reference level's mean** (with other predictors at zero).
-3. **Each other coefficient is "this level minus reference".**
-4. **This scheme is called treatment contrasts,** R's default.
-5. **Choose a meaningful reference:** the control, the unburned, the commonest class. `relevel(f, ref = "control")` or `factor(x, levels = c(...))`.
-6. **Changing the reference changes the coefficients and their p-values, but not the fit.** Predictions are identical.
-7. **Why this matters when reading output:** `burnyes` in a table means "burned compared with not burned". A missing level name tells you which is the reference.
-
-## In R
 ```r
 d <- data.frame(trt = factor(rep(c("burn", "control", "graze"), each = 4)), y = c(8, 9, 10, 9, 5, 6, 5, 4, 7, 6, 8, 7))
 coef(lm(y ~ trt, d))                                     # reference is "burn" (alphabetical)
 d$trt2 <- relevel(d$trt, ref = "control"); coef(lm(y ~ trt2, d))      # now differences from control
 all.equal(fitted(lm(y ~ trt, d)), fitted(lm(y ~ trt2, d)))            # same fit
 ```
-
-## In the course
-Linear regression lab part 2 ([[Course Website]]).
-
-## Common confusions
-- **"A non-significant level coefficient means that level doesn't matter."** It means it doesn't differ clearly from the reference. It may differ from other levels.
-
-## Explain it back
-- How do you change the reference level in R?
-
-*Pass test:* you can tell which level is the reference from a coefficient table.
 
 ## Connections
 - **Builds on:** [[Dummy Coding]], [[Intercept]]

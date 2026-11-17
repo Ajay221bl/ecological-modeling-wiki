@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "Analysis of variance compares the means of several groups by asking whether the variation between group means is larger than expected from the variation within groups."
 aliases:
   - "Analysis of variance"
   - "One-way ANOVA"
@@ -13,50 +14,21 @@ status: seedling
 
 # ANOVA
 
-**In one line:** analysis of variance compares the means of several groups by asking whether the variation between group means is larger than expected from the variation within groups.
+Compare three classrooms' test scores. If the classes truly differ, the class averages will be far apart compared with how much pupils differ within each class; if the averages are no further apart than the within-class scatter would produce by luck, there is no evidence of a difference. **Analysis of variance** (ANOVA) compares the means of several groups this way. It splits the total variation, the [[Sum of Squares]] of every observation from the grand mean, into two parts: *between* groups (group means around the grand mean) and *within* groups (observations around their group mean). Each is divided by its degrees of freedom to give a mean square, and F = between mean square ÷ within mean square ([[F Distribution]]). F near 1 means group differences are no bigger than noise; a large F is evidence that at least one mean differs.
 
-> [!info] Before this, it helps to know
-> [[Sum of Squares]] (what is split) · [[Dummy Coding]] (ANOVA is a regression on dummies) · [[F Distribution]] (the yardstick)
+In the code below, three habitats have four plots each, with means 11.5, 7.5 and 15.5. The between-group sum of squares is 128 on 2 df and the within-group 15 on 9 df, so F = 64 / 1.67 = 38.4, a very large value. The code computes both sums by hand and matches `anova()`, and the figure shows the same split as deviations from the grand mean.
 
-## The everyday picture
-Three classrooms' test scores. If the classes truly differ, the class averages will be far apart compared with how much pupils differ inside each class. If the averages are no further apart than the within-class scatter would produce by luck, there is no evidence of a difference.
+ANOVA is a linear model: `lm(y ~ factor)` and `aov(y ~ factor)` are the same fit, a regression on dummy variables, and ANOVA is one way of summarising it ([[Dummy Coding]], [[F-test]]). It uses variances to compare means; it does not analyse variances as such. It does not say which groups differ or by how much, for which you look at coefficients or contrasts. With several terms, `anova(m)` tests them in sequence, so order matters when data are unbalanced ([[Zuur et al. 2009 Appendix A]]). Extensions are [[Two-way ANOVA]] and [[ANCOVA]], and the same partitioning idea becomes a [[Variance Components|Variance Component]] in mixed models.
 
-## A tiny example
-Three habitats, means 11, 7, 16, each from 2 plots with small scatter. Between-group variation is large, within-group small, so F is large.
-
-## Start from zero
-1. **Total variation:** sum of squared deviations of every observation from the grand mean.
-2. **Split it in two:** between groups (group means around the grand mean) and within groups (observations around their group mean).
-3. **Divide each by its degrees of freedom** to get mean squares.
-4. **F = between mean square ÷ within mean square.**
-5. **F near 1:** group differences are no bigger than noise. **F large:** evidence that at least one mean differs.
-6. **It is a linear model.** `lm(y ~ factor)` and `aov(y ~ factor)` are the same fit. ANOVA is one way of summarising it.
-7. **It doesn't say which groups differ or by how much.** Look at the coefficients or contrasts for that.
-8. **In R, `anova(m)` on a model with several terms tests them in sequence.** Order matters when data are unbalanced.
-
-## See it
 ![[ANOVA partition.png|700]]
 *What to look at:* the same data with deviations measured from the grand mean, then split into between-group and within-group pieces.
 
-## In R
 ```r
 d <- data.frame(hab = factor(rep(c("grass", "forest", "wetland"), each = 4)), y = c(10, 12, 11, 13, 6, 8, 7, 9, 15, 17, 14, 16))
 m <- lm(y ~ hab, d); anova(m)
 ss_between <- sum(4 * (tapply(d$y, d$hab, mean) - mean(d$y))^2); ss_within <- sum(resid(m)^2)
 c(ss_between, ss_within, F = (ss_between / 2) / (ss_within / 9))
 ```
-
-## In the course
-[[Zuur et al. 2009 Appendix A]]. Homework 1 uses a two-factor version ([[Course Website]]).
-
-## Common confusions
-- **"ANOVA and regression are different methods."** ANOVA is regression with categorical predictors.
-- **"ANOVA analyses variances."** It uses variances to compare means.
-
-## Explain it back
-- What two sources of variation does the F ratio compare?
-
-*Pass test:* you can explain the F ratio and show that ANOVA is a linear model.
 
 ## Connections
 - **Builds on:** [[Sum of Squares]], [[Dummy Coding]], [[F Distribution]]
