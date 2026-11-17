@@ -21,7 +21,7 @@ Which survival model should I use for my data?
 - [[Cormack-Jolly-Seber Model]], [[Dead Recovery Models]], [[Joint Live-dead Encounter Models]], [[Multi-state Models]], [[Robust Design]].
 
 ## See it
-mermaid:
+```mermaid
 flowchart TD
   Q["How are fates observed?"] --> K{"Every fate known?"}
   K -->|"yes"| N{"Nests or collars?"}
@@ -33,6 +33,7 @@ flowchart TD
   L -->|"both"| J["Joint live-dead"]
   C --> MS["Multiple sites or states? Multi-state"]
   C --> RD["Need N too? Jolly-Seber / robust design"]
+```
 *What to look at:* the first branch is whether detection is 1.
 
 ## The reasoning, step by step
