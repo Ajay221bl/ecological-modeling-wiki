@@ -56,6 +56,7 @@ flowchart LR
   - [[MOC 19 - Ecology Vocabulary|MOC - Ecology Vocabulary]]: the ecology words the datasets assume
 - The "why" behind each rule: [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]]
 - Homework, project and schedule: [[MOC 00 - Ecological Modeling Course|MOC - Ecological Modeling Course]]
+- Every homework, question by question: [[MOC 22 - Homework|MOC - Homework]]
 - The readings, in syllabus order: [[MOC 21 - Course Readings|MOC - Course Readings]]
 - Things I still need to find out: [[Open Questions]]
 - Every note in one list: [[Index]]

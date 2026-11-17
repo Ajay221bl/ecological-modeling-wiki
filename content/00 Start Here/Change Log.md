@@ -21,6 +21,27 @@ Every round of changes and checks on this wiki, newest first. Each round ("pass"
 
 ---
 
+## v1.4 (2026-11-17): every course homework mapped and walked through
+**Asked for:** "what about all the homeworks?" Make sure the wiki covers everything the homework assignments ask for.
+
+**Read:** all six homework pages in the course website repository (Homework 1 to 5 from the menu, plus Homework 6, which is on the site but not in its menu), and explored every homework dataset in R (rip.dat.02-14.csv, bleach.csv, mlrbird.csv and mlrland.csv, C_vulgare_seedling_dataset.csv, FireWeather.csv) so the walkthroughs quote real numbers.
+
+**New map:** [[MOC 22 - Homework]], each homework question mapped to the notes needed to answer it, in the order the homeworks are set. [[Homework]] now lists six homeworks with datasets and links.
+
+**New molecular notes (9):** one worked-approach note per homework, giving the reasoning and R steps rather than an answer key: [[Homework 1 - Riparian Plant Diversity]], [[Homework 2 - Coral Bleaching]], [[Homework 3 - Woodland Birds and Landscape Scale]], [[Homework 4 - Thistle Seedlings and Enemy Release]], [[Homework 5 - Fire Weather HGAMs]], [[Homework 6 - Penguin Body Mass in brms]]; plus [[How to Approach a Course Homework]], [[Patch vs Landscape Effects]] and [[Two-way ANOVA vs Mixed Model]].
+
+**New atomic notes (20):**
+- Statistics and R: [[Inverse Simpson Index]], [[Interaction Plot]], [[One-to-many Join]], [[librarian and shelf()]], [[Inverse Prediction]], [[Marginal Effects Plot]], [[Bayesian Logistic Regression]], [[conditional_effects()]], [[Scale of Effect]], [[Random Effect with Few Levels]], [[Bounded Count]].
+- Ecology from the homework datasets: [[Exclosure]], [[Grazing]], [[Riparian Zone]], [[Coral Bleaching]], [[Temperature Anomaly]], [[Habitat Patch]], [[Invasive Species]], [[Relative Humidity]], [[Prescribed Fire]].
+
+**New figures (2):** an interaction plot (parallel vs diverging lines) and the Homework 2 logistic fit with its link-scale band, showing an open-ended inverse prediction.
+
+**Things the data showed that the walkthroughs flag:** in Homework 1 all 39 rows from 2014 are empty records (zero hits in every species column), so their richness and diversity are missing, not zero; in Homework 2 the linear model's 50% point (SST ≈ 0.76) lies beyond the warmest year in the data; in Homework 4 a Poisson GLMM with plots nested in sites finds the distance effect and the spray × distance interaction that the two-way ANOVA missed; in Homework 5 the wind data contain implausible maxima (148 and 198 mph) and 90 exact zeros, and RH has 137 values of exactly 100%.
+
+**Checks:** 0 unresolved links, 0 style or card problems (1,124 notes). Every new R block was run and its output compared with the numbers in the text; blocks that fit brms models or install packages are marked as not run.
+
+---
+
 ## v1.3 (2026-11-17): occupancy guest lecture and the fisher paper
 **Asked for:** add the knowledge in the two files just added to Raw Materials: the occupancy guest lecture slides (`OccLecture (1).pptx`, Nov 3, 44 slides) and Happe et al. 2020, *Occupancy patterns in a reintroduced fisher population during reestablishment*.
 

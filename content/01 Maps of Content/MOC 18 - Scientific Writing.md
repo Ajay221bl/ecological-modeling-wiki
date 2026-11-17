@@ -27,6 +27,7 @@ Nov 24: turning an analysis into clear methods and results. Readings: Cormac McC
 
 ## Related molecular notes
 - [[How to write up a modeling analysis]]: writing up a modeling analysis means stating the question and theme, describing data and model so they can be repeated, reporting effects with uncertainty...
+- [[How to Approach a Course Homework]]: every course homework follows the same arc (load data reproducibly, explore, choose a model from the data type and design, fit, check, compare, show...
 
 ## Related MOCs
 [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]] · [[MOC 21 - Course Readings|MOC - Course Readings]] · [[Start Here]]
