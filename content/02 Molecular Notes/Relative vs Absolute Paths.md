@@ -42,7 +42,7 @@ Copying a file path from Finder into `read.csv()`.
 
 ## Connections
 - **Related:** [[Why a reproducible project structure saves you]], [[Console vs Script]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - R for Ecological Modeling]], [[MOC - Reproducible Coding and Figures]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]], [[MOC 12 - Reproducible Coding and Figures|MOC - Reproducible Coding and Figures]]
 
 ## Flashcards
 

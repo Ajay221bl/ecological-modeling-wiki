@@ -47,7 +47,7 @@ Write the candidate set (and why each model is there) before analysis, ideally i
 
 ## Connections
 - **Related:** [[Null Hypothesis Testing vs Model Selection]], [[Why AIC rewards fit but punishes complexity]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Model Selection]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 10 - Model Selection|MOC - Model Selection]]
 
 ## Flashcards
 

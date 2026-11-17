@@ -30,5 +30,5 @@ Explains the logic of accept-reject Markov chains, Metropolis and Metropolis-Has
 [[Acceptance Rate]], [[Burn-in]], [[Convergence]], [[Course Schedule]], [[For Loop]], [[Full-conditional Distribution]], [[Gibbs Sampling]], [[Hamiltonian Monte Carlo]], [[Initial Values]], [[Integral]], [[JAGS and BUGS]], [[Markov Chain]], [[MCMC]], [[MCMC Chains]], [[MCMC Convergence]], [[Metropolis Algorithm]], [[Metropolis-Hastings Algorithm]], [[Monte Carlo Integration]], [[Monte Carlo Simulation]], [[Other Convergence Diagnostics]], [[Proposal Distribution]], [[R-hat]], [[Simulation Model]], [[Thinning]], [[Trace Plot]], [[Tuning Parameter]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Hobbs and Hooten 2015 Ch6]] · **Next:** [[Hobbs and Hooten 2015 Ch8]]

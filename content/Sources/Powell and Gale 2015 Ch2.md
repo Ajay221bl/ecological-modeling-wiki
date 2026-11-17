@@ -36,5 +36,5 @@ The BIDE model of population change, the management cycle and adaptive managemen
 - [[Population and Sample]], [[Parameter vs Estimate]], [[Biological vs Statistical Population]], [[Sampling Unit]], [[Representative Sample]], [[Induction vs Deduction]], [[Bias and Precision]], [[Hypothesis]], [[Standard Error]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Powell and Gale 2015 Ch1]] · **Next:** [[Powell and Gale 2015 Ch3]]

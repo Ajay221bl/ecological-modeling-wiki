@@ -51,7 +51,7 @@ An improper posterior produces chains that drift without settling, or worse, cha
 
 ## Connections
 - **Related:** [[How to choose a prior]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Bayesian Inference]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]]
 
 ## Flashcards
 

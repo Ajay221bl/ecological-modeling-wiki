@@ -51,7 +51,7 @@ Using N-mixture models on highly mobile animals that move between sites across v
 
 ## Connections
 - **Related:** [[Choosing a Population Estimation Method]], [[Open vs Closed Populations]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Population Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 
 ## Flashcards
 

@@ -31,4 +31,4 @@ The book's thread is a line of inference: an ecological idea becomes a determini
 [[Carrying Capacity]], [[Density Dependence]], [[Fecundity]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

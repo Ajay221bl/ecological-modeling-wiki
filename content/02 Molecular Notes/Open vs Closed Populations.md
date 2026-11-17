@@ -50,7 +50,7 @@ Running a closed model over a breeding season with young entering the population
 
 ## Connections
 - **Related:** [[Mark-Recapture vs Unmarked Survey Methods]], [[Choosing a Survival Model]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Population Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 
 ## Flashcards
 

@@ -31,4 +31,4 @@ Compares a Poisson GLM, a non-spatial N-mixture model, and N-mixture models with
 [[Conditional Autoregressive Model]], [[Imperfect Detection]], [[N-mixture Model]], [[Occupancy]], [[Spatial Smooths]], [[Species Distribution Model]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

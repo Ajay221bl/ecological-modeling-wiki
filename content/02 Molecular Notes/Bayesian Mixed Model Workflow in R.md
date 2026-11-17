@@ -71,7 +71,7 @@ Skipping the prior predictive check and discovering after fitting that the defau
 
 ## Connections
 - **Related:** [[lme4 vs brms]], [[How to check an MCMC fit]], [[Bayesian Linear Regression in R]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Mixed Models]], [[MOC - Bayesian Inference]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 14 - Mixed Models|MOC - Mixed Models]], [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]]
 
 ## Flashcards
 

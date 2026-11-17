@@ -57,7 +57,7 @@ Fitting model I with many sparse groups, getting erratic curves for each.
 
 ## Connections
 - **Related:** [[by= Smooths vs Factor Smooths]], [[HGAM vs GLMM with Random Slopes]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - GAMs]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 15 - GAMs|MOC - GAMs]]
 
 ## Flashcards
 

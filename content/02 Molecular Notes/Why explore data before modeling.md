@@ -57,7 +57,7 @@ Fitting a full model straight away and only noticing a recording error (a 300 kg
 
 ## Connections
 - **Related:** [[Which assumption violation leads to which model]], [[Outlier, Leverage and Influence]], [[Why collinearity inflates standard errors]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Data Exploration]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 04 - Data Exploration|MOC - Data Exploration]]
 
 ## Flashcards
 

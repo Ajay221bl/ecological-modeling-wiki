@@ -30,4 +30,4 @@ Runs the full cycle on a single dataset: explore (outliers, collinearity, relati
 [[ANCOVA]], [[ANOVA]], [[Confidence Interval]], [[Course Overview]], [[Diversity Index]], [[Dummy Coding]], [[F-test]], [[Interaction Term]], [[Least Squares]], [[Linear Regression]], [[Null Hypothesis]], [[P-value]], [[R and RStudio]], [[R-squared]], [[Residual Sum of Squares]], [[t-test]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

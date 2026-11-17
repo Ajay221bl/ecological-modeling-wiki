@@ -66,7 +66,7 @@ Adding many covariates to ψ while leaving p constant, so habitat effects on vis
 
 ## Connections
 - **Related:** [[Site vs Observation Covariates]], [[How many visits does an occupancy study need]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Population Estimation]], [[MOC - R for Ecological Modeling]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 16 - Population Estimation|MOC - Population Estimation]], [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 
 ## Flashcards
 

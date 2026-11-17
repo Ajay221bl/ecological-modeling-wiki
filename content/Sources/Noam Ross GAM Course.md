@@ -33,4 +33,4 @@ Lesson 1 introduces GAMs, basis functions, wiggliness and smoothing parameters; 
 [[Basis Function]], [[Course Schedule]], [[Generalized Additive Model]], [[Smoothing Function s()]], [[Smoothing Parameter]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

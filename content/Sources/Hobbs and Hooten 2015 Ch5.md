@@ -30,5 +30,5 @@ Derives Bayes' theorem, connects it to likelihood, finds posteriors in closed fo
 [[Bayes' Theorem]], [[Bayesian Inference]], [[Beta Distribution]], [[Beta-Binomial Conjugacy]], [[Conjugate Prior]], [[Course Schedule]], [[Frequentist Inference]], [[Grid Approximation]], [[How This Wiki Works]], [[Informative Prior]], [[Jeffreys Prior]], [[Marginal Likelihood]], [[Parameter Estimation]], [[Posterior Distribution]], [[Precision Parameter]], [[Prior Distribution]], [[Prior Predictive Check]], [[Prior Sensitivity Analysis]], [[Proportional To]], [[Unobserved Quantities as Random Variables]], [[Vague Prior]], [[Weakly Informative Prior]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Hobbs and Hooten 2015 Ch4]] · **Next:** [[Hobbs and Hooten 2015 Ch6]]

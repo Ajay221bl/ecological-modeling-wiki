@@ -30,4 +30,4 @@ Sections: data exploration, the linear regression model, violating the assumptio
 [[Bartlett Test]], [[Central Limit Theorem]], [[Cleveland Dot Plot]], [[Cook's Distance]], [[Course Overview]], [[Data Exploration]], [[Degrees of Freedom]], [[F Distribution]], [[Fixed X Assumption]], [[Leverage]], [[Linear Model Assumptions]], [[Linear Regression]], [[Linearity]], [[LOESS Smoother]], [[Model Validation]], [[Normal Distribution]], [[Residuals vs Fitted Plot]], [[Square Root]], [[Square-root Transformation]], [[Student t Distribution]], [[Sum of Squares]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

@@ -51,7 +51,7 @@ Saying "the probability increases by 0.8 per unit" (impossible), or "2.2 times m
 
 ## Connections
 - **Related:** [[Probability, Odds and Log Odds]], [[Predictions on Link vs Response Scale]], [[Interpreting Regression Coefficients]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Generalized Linear Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]]
 
 ## Flashcards
 

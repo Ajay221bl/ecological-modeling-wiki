@@ -53,7 +53,7 @@ Treating P(occupied | forest) and P(forest | occupied) as the same number.
 
 ## Connections
 - **Related:** [[Independent vs Disjoint Events]], [[Why the posterior is proportional to likelihood times prior]], [[Conditional vs Marginal Predictions]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Probability and Distributions]], [[MOC - Bayesian Inference]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]], [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]]
 
 ## Flashcards
 

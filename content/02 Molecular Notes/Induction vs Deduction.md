@@ -51,7 +51,7 @@ State what your hypothesis predicts before collecting data, then report your est
 
 ## Connections
 - **Related:** [[Why model at all]], [[Modeling Process]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Modeling Foundations]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]
 
 ## Flashcards
 

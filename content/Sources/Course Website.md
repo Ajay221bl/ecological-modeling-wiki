@@ -78,8 +78,8 @@ The site lists three readings that aren't in my folder: Vehtari, Gelman and Gabr
 - [[Course Schedule]], [[Homework]], and every unit's *In the course* section from Unit 2 onwards.
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
-- **Related:** [[Course Overview]], [[MOC - R for Ecological Modeling]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
+- **Related:** [[Course Overview]], [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 
 ## Flashcards
 

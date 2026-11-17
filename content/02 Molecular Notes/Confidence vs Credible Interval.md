@@ -62,7 +62,7 @@ The Bayesian sentence attached to a confidence interval is the single commonest 
 
 ## Connections
 - **Related:** [[Frequentist vs Bayesian Inference]], [[Equal-tailed vs Highest Density Interval]], [[Wald, Profile and Bootstrap Intervals]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Bayesian Inference]], [[MOC - Likelihood and Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]], [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]]
 
 ## Flashcards
 

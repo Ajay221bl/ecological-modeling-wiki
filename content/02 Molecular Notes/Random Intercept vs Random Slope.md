@@ -56,7 +56,7 @@ Adding random slopes for every predictor regardless of data, then ignoring the s
 
 ## Connections
 - **Related:** [[Nested vs Crossed Random Effects]], [[Fixed vs Random Effects]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Mixed Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 14 - Mixed Models|MOC - Mixed Models]]
 
 ## Flashcards
 

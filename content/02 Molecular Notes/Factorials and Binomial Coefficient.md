@@ -50,7 +50,7 @@ In R, `factorial(5)` and `choose(20, 5)`; `dbinom()` uses `choose()` for you.
 
 ## Connections
 - **Related:** [[Binomial Sampling]], [[Binomial Distribution]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Basics from Zero]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
 
 ## Flashcards
 

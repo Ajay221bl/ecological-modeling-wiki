@@ -69,8 +69,8 @@ Ticks counted on deer at 30 sites over 5 years. Step 3: counts, so Poisson. Step
 - Running every possible model and picking the best ([[Data Dredging]]).
 
 ## Connections
-- **Part of:** [[MOC - Ecological Modeling Course]]
-- **Related:** [[End-to-end Analysis Plan]], [[Homework]], [[Final Project]], [[MOC - Why We Do It This Way]]
+- **Part of:** [[MOC 00 - Ecological Modeling Course|MOC - Ecological Modeling Course]]
+- **Related:** [[End-to-end Analysis Plan]], [[Homework]], [[Final Project]], [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]]
 
 ## Flashcards
 

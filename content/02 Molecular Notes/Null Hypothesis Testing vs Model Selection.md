@@ -54,7 +54,7 @@ Decide the framework before analysis, according to the question and design.
 
 ## Connections
 - **Related:** [[Likelihood Ratio Test vs AIC]], [[What a p-value does and does not tell you]], [[Frequentist vs Bayesian Inference]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Model Selection]], [[MOC - Likelihood and Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 10 - Model Selection|MOC - Model Selection]], [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]]
 
 ## Flashcards
 

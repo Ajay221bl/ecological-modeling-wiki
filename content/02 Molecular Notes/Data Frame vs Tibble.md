@@ -51,7 +51,7 @@ Expecting `tb[, "n"]` to give a numeric vector to `mean()`; use `tb$n` or `tb[["
 
 ## Connections
 - **Related:** [[Wide vs Long Data]], [[Loops, apply and map]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - R for Ecological Modeling]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 
 ## Flashcards
 

@@ -55,7 +55,7 @@ Reading brms `sd_g__Intercept` as a variance (it is an SD), or lme4's `VarCorr` 
 
 ## Connections
 - **Related:** [[Bayesian Mixed Model Workflow in R]], [[Frequentist vs Bayesian Inference]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Mixed Models]], [[MOC - Bayesian Inference]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 14 - Mixed Models|MOC - Mixed Models]], [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]]
 
 ## Flashcards
 

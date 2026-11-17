@@ -30,5 +30,5 @@ Reviews GAMs and smoothing penalties, connects smooths to random effects, define
 [[Basis Dimension and gam.check()]], [[Basis Function]], [[by= Smooths]], [[Course Schedule]], [[Cyclic Spline]], [[Factor-smooth Interaction]], [[Generalized Additive Model]], [[Global Smoother]], [[Group-level Smoothers]], [[Hierarchical GAM]], [[Partial Effect Plots]], [[Penalized Regression Spline]], [[Random-effect Smooth]], [[REML for Smoothness Selection]], [[Shared Wiggliness]], [[Smoothing Parameter]], [[Spline]], [[Tensor Product Smooth]], [[Thin Plate Regression Spline]], [[Wiggliness Penalty]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Next:** [[Lawton et al. 2022]]

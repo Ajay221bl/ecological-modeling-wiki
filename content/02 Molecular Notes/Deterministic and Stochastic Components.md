@@ -55,7 +55,7 @@ Write every model as two lines, the mean and the distribution, before you code i
 
 ## Connections
 - **Related:** [[Statistical Model]], [[Process vs Observation Error]], [[Why every statistical model has a deterministic and a stochastic part]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Modeling Foundations]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]
 
 ## Flashcards
 

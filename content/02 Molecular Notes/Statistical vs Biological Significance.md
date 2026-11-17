@@ -43,7 +43,7 @@ Calling a significant 0.5 percent change in nest success "an important habitat e
 
 ## Connections
 - **Related:** [[What a p-value does and does not tell you]], [[Type I and Type II Errors]], [[Bias and Precision]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Basics from Zero]], [[MOC - Model Selection]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 01 - Basics from Zero|MOC - Basics from Zero]], [[MOC 10 - Model Selection|MOC - Model Selection]]
 
 ## Flashcards
 

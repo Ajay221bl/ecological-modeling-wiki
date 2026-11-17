@@ -58,7 +58,7 @@ Running a known-fate model on radio-collared animals while silently dropping the
 
 ## Connections
 - **Related:** [[True vs Apparent Survival]], [[Mayfield vs Kaplan-Meier]], [[Choosing a Population Estimation Method]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Population Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 
 ## Flashcards
 

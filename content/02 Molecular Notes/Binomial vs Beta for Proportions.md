@@ -51,7 +51,7 @@ A beta model on count-based proportions ignores differing sample sizes. A binomi
 
 ## Connections
 - **Related:** [[Why the response type decides the distribution]], [[What to do about overdispersion]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Generalized Linear Models]], [[MOC - Probability and Distributions]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]], [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]]
 
 ## Flashcards
 

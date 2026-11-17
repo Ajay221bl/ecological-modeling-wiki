@@ -30,4 +30,4 @@ Introduces additive modelling with LOESS and splines, technical details of GAMs 
 [[by= Smooths]], [[Concurvity]], [[Course Schedule]], [[Cubic Regression Spline]], [[Effective Degrees of Freedom]], [[Generalized Additive Model]], [[Generalized Cross-validation]], [[Knots]], [[Penalized Regression Spline]], [[Smoother]], [[Spline]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

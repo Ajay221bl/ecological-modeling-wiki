@@ -52,7 +52,7 @@ Calling a confidence band "where 95% of observations fall".
 
 ## Connections
 - **Related:** [[Conditional vs Marginal Predictions]], [[Confidence vs Credible Interval]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Mixed Models]], [[MOC - Linear Models and GLMs]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 14 - Mixed Models|MOC - Mixed Models]], [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 
 ## Flashcards
 

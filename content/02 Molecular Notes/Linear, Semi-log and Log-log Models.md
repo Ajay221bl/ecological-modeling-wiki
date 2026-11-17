@@ -52,7 +52,7 @@ Reporting the slope of log(y) ~ x as "y increases by 0.05 units".
 
 ## Connections
 - **Related:** [[Transform the data or change the model]], [[Linear vs Nonlinear Function]], [[Predictions on Link vs Response Scale]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Linear Models and GLMs]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 
 ## Flashcards
 

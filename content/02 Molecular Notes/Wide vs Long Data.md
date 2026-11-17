@@ -52,7 +52,7 @@ Fitting a separate model to each year column instead of one model with year as a
 
 ## Connections
 - **Related:** [[Data Frame vs Tibble]], [[Balanced Data|Balanced vs Unbalanced Data]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - R for Ecological Modeling]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 
 ## Flashcards
 

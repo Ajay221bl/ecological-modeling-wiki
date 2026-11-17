@@ -56,7 +56,7 @@ Choosing by R² or log-likelihood alone always picks the biggest model. Choosing
 
 ## Connections
 - **Related:** [[AIC vs BIC]], [[Likelihood Ratio Test vs AIC]], [[AIC, WAIC and LOO]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Model Selection]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 10 - Model Selection|MOC - Model Selection]]
 
 ## Flashcards
 

@@ -50,7 +50,7 @@ Modelling "number of chicks fledged out of eggs laid" as Poisson, which ignores 
 
 ## Connections
 - **Related:** [[Why the response type decides the distribution]], [[Poisson vs Negative Binomial]], [[Binomial vs Beta for Proportions]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Probability and Distributions]], [[MOC - Generalized Linear Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]]
 
 ## Flashcards
 

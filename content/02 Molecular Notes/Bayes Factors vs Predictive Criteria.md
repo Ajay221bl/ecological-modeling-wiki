@@ -54,7 +54,7 @@ Running a Bayes factor with default vague priors and announcing strong support f
 
 ## Connections
 - **Related:** [[AIC vs BIC]], [[AIC, WAIC and LOO]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Bayesian Model Selection]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 11 - Bayesian Model Selection|MOC - Bayesian Model Selection]]
 
 ## Flashcards
 

@@ -26,12 +26,12 @@ Course objectives. By the end I should be able to:
 > Objectives 1 and 4 are about *reading* statistics, and objectives 2 and 3 are about *doing* them. So every concept note in this wiki has both a "what does this look like in a paper" angle (the *In the course* section, using the assigned papers) and a "how do I run it" angle (the *In R* section).
 
 ## Format
-About half the sessions are lectures and discussion. The other half are labs for exercises and for fixing modeling and coding problems. The course is not an introduction to R: Dr. Roberts teaches some R, but I'm expected to be proficient already or to teach myself. That's why [[MOC - R for Ecological Modeling]] starts from scratch.
+About half the sessions are lectures and discussion. The other half are labs for exercises and for fixing modeling and coding problems. The course is not an introduction to R: Dr. Roberts teaches some R, but I'm expected to be proficient already or to teach myself. That's why [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]] starts from scratch.
 
 ## Texts
 - Zuur et al. 2009, *Mixed Effects Models and Extensions in Ecology with R* ([[Zuur et al. 2009 Ch2]], [[Zuur et al. 2009 Ch5]], [[Zuur et al. 2009 Appendix A]])
 - Hobbs and Hooten 2015, *Bayesian Models: A Statistical Primer for Ecologists* ([[Hobbs and Hooten 2015 Ch1]] onwards)
-- Further readings on Blackboard (see [[MOC - Course Readings]])
+- Further readings on Blackboard (see [[MOC 21 - Course Readings|MOC - Course Readings]])
 
 ## Grading (100 points)
 | Part | Points |
@@ -45,7 +45,7 @@ About half the sessions are lectures and discussion. The other half are labs for
 A = 90 to 100, B = 80 to 89, C = 70 to 79, D = 60 to 69. There is no extra credit. Late work loses 50% of its points.
 
 ## Connections
-- **Part of:** [[MOC - Ecological Modeling Course]]
+- **Part of:** [[MOC 00 - Ecological Modeling Course|MOC - Ecological Modeling Course]]
 - **Related:** [[Course Schedule]], [[Homework]], [[Final Project]]
 
 ## Flashcards

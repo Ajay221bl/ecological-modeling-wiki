@@ -29,4 +29,4 @@ Simulates mixed models with few grouping levels and compares fixed and random tr
 [[How Many Levels for a Random Effect]], [[Singular Fit]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

@@ -60,7 +60,7 @@ Reading zero-part coefficients as "presence" in a zero-inflated model reverses t
 
 ## Connections
 - **Related:** [[What to do about overdispersion]], [[Poisson vs Negative Binomial]], [[Occupancy|Occupancy Model]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Generalized Linear Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]]
 
 ## Flashcards
 

@@ -54,7 +54,7 @@ Using `nls()` for a polynomial, or thinking `lm()` can only fit straight lines.
 
 ## Connections
 - **Related:** [[Mechanistic vs Phenomenological Model]], [[Polynomial vs Spline]], [[Linear, Semi-log and Log-log Models]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Linear Models and GLMs]], [[MOC - Basics from Zero]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]], [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
 
 ## Flashcards
 

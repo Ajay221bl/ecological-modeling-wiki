@@ -61,7 +61,7 @@ s <- summary(lm(y ~ x))$coef[2, ]; round(c(slope = s[[1]], p = s[[4]], R2 = summ
 
 ## Connections
 - **Related:** [[Statistical vs Biological Significance]], [[Type I and Type II Errors]], [[Null Hypothesis Testing vs Model Selection]], [[Frequentist vs Bayesian Inference]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Basics from Zero]], [[MOC - Likelihood and Estimation]], [[MOC - Model Selection]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 01 - Basics from Zero|MOC - Basics from Zero]], [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]], [[MOC 10 - Model Selection|MOC - Model Selection]]
 
 ## Flashcards
 

@@ -53,7 +53,7 @@ Reading "trt1 = −0.371" as the mean of trt1.
 
 ## Connections
 - **Related:** [[Additive vs Interaction Model]], [[Centering, Scaling and Standardizing]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Linear Models and GLMs]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 
 ## Flashcards
 

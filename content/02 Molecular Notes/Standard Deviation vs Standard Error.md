@@ -50,7 +50,7 @@ Showing SE bars to make data look less variable than they are.
 
 ## Connections
 - **Related:** [[Why the variance divides by n minus 1]], [[Prediction vs Confidence Interval]], [[Bias and Precision]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Basics from Zero]], [[MOC - Likelihood and Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 01 - Basics from Zero|MOC - Basics from Zero]], [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]]
 
 ## Flashcards
 

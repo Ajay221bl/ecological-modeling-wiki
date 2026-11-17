@@ -73,7 +73,7 @@ Treating the sampler as a black box leaves you unable to tell a model problem (n
 
 ## Connections
 - **Related:** [[How to check an MCMC fit]], [[Why the posterior is proportional to likelihood times prior]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Bayesian Inference]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]]
 
 ## Flashcards
 

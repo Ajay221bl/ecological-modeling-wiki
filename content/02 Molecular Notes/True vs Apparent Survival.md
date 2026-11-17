@@ -45,7 +45,7 @@ Comparing CJS φ from a small plot with known-fate S from telemetry and concludi
 
 ## Connections
 - **Related:** [[Choosing a Survival Model]], [[Open vs Closed Populations]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Population Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 
 ## Flashcards
 

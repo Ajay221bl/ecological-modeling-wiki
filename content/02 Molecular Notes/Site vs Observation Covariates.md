@@ -48,7 +48,7 @@ Putting temperature on the visit day into ψ.
 
 ## Connections
 - **Related:** [[Occupancy vs Detection Probability]], [[Occupancy Workflow in R]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Population Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 
 ## Flashcards
 

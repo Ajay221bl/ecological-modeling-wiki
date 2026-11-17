@@ -49,7 +49,7 @@ Labelling plots 1 to 4 within every site and fitting `(1 | plot)`: four "plots" 
 
 ## Connections
 - **Related:** [[Random Intercept vs Random Slope]], [[Fixed vs Random Effects]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Mixed Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 14 - Mixed Models|MOC - Mixed Models]]
 
 ## Flashcards
 

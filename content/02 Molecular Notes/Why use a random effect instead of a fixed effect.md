@@ -51,7 +51,7 @@ Adding a site fixed effect and then trying to test a site-level covariate: the t
 
 ## Connections
 - **Related:** [[Fixed vs Random Effects]], [[Why non-independence inflates false positives]], [[Complete, No and Partial Pooling]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Mixed Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 14 - Mixed Models|MOC - Mixed Models]]
 
 ## Flashcards
 

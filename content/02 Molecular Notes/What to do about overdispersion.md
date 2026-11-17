@@ -60,7 +60,7 @@ Ignoring a dispersion of 4 halves every standard error (√4 = 2). Effects that 
 
 ## Connections
 - **Related:** [[Poisson vs Negative Binomial]], [[Zero-inflated vs Hurdle Model]], [[Model Validation]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Generalized Linear Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]]
 
 ## Flashcards
 

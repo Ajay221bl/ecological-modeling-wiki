@@ -50,7 +50,7 @@ Thinking files are "saved to GitHub" after a commit, before pushing.
 
 ## Connections
 - **Related:** [[Why a reproducible project structure saves you]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Reproducible Coding and Figures]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 12 - Reproducible Coding and Figures|MOC - Reproducible Coding and Figures]]
 
 ## Flashcards
 

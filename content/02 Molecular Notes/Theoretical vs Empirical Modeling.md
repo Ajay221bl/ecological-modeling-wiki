@@ -52,7 +52,7 @@ Ask whether your question is "what follows from this idea?" (theory) or "what is
 
 ## Connections
 - **Related:** [[Why model at all]], [[Exploration, Inference and Prediction]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Modeling Foundations]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]
 
 ## Flashcards
 

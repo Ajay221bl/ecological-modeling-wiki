@@ -52,7 +52,7 @@ Without a link, predictions leave the possible range and fitting can fail outrig
 
 ## Connections
 - **Related:** [[Generalized Linear Model]], [[Predictions on Link vs Response Scale]], [[Transform the data or change the model]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Generalized Linear Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]]
 
 ## Flashcards
 

@@ -50,7 +50,7 @@ Feeding the raw SD of yearly survival estimates into a population viability anal
 
 ## Connections
 - **Related:** [[Partial Pooling]], [[Data Model, Process Model and Parameter Model]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Population Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 
 ## Flashcards
 

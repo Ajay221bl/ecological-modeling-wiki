@@ -30,4 +30,4 @@ Treats Gaussian regression as a GLM, introduces the Poisson GLM with artificial 
 [[Analysis of Deviance]], [[Chi-square Distribution]], [[Count Data]], [[Deviance]], [[Dispersion Parameter]], [[Log Link]], [[Mean-Variance Relationship]], [[Negative Binomial Distribution]], [[Negative Binomial GLM]], [[Offset]], [[Overdispersion]], [[Pearson Residuals]], [[Poisson Regression]], [[Quasi-Poisson]], [[Residual Deviance]], [[Sampling Effort]], [[Underdispersion]], [[Wald Test]], [[z-test]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

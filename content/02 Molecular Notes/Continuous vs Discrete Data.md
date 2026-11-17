@@ -55,7 +55,7 @@ Classify the response first, before choosing any model ([[Data Exploration Proto
 
 ## Connections
 - **Related:** [[Variable and Observation]], [[Probability Distribution]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Basics from Zero]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
 
 ## Flashcards
 

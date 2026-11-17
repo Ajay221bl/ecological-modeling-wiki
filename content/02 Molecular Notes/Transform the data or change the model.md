@@ -60,7 +60,7 @@ Using log(y + 1) on counts with many zeros and reading the slope as a rate ratio
 
 ## Connections
 - **Related:** [[Which assumption violation leads to which model]], [[Linear Model vs GLM]], [[Linear, Semi-log and Log-log Models]], [[Predictions on Link vs Response Scale]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Linear Models and GLMs]], [[MOC - Generalized Linear Models]], [[MOC - Data Exploration]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]], [[MOC 04 - Data Exploration|MOC - Data Exploration]]
 
 ## Flashcards
 

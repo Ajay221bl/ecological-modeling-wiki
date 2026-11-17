@@ -31,5 +31,5 @@ Analyses bird species richness across western and central Europe, North Africa a
 [[Autocorrelation]], [[Correlation Structure]], [[Correlogram]], [[Course Schedule]], [[Distance Classes]], [[Effective Sample Size]], [[Environmental Gradient]], [[Evapotranspiration]], [[Extent]], [[Generalized Least Squares]], [[Grain]], [[Inflated Type I Error]], [[Latitudinal Gradient]], [[Macroecology]], [[Moran's I]], [[Negative Autocorrelation]], [[Positive Autocorrelation]], [[Principal Component Analysis]], [[Pseudoreplication]], [[Residual Autocorrelation]], [[Spatial Autocorrelation]], [[Spatial Autoregressive Models]], [[Spatial Scale]], [[Spatial Weights Matrix]], [[Trend Surface Analysis]], [[Variance Partitioning]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Dynamic Ecology Autocorrelation Post]] · **Next:** [[Harrison et al. 2018]]

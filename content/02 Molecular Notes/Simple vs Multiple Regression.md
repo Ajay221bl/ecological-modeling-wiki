@@ -49,7 +49,7 @@ Comparing a coefficient from a simple regression in one paper with one from a mu
 
 ## Connections
 - **Related:** [[Additive vs Interaction Model]], [[Correlation vs Causation]], [[Why collinearity inflates standard errors]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Linear Models and GLMs]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 
 ## Flashcards
 

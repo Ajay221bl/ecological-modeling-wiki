@@ -51,7 +51,7 @@ Setting a small k to "keep it simple" and never checking whether the curve was f
 
 ## Connections
 - **Related:** [[GLM vs GAM]], [[GCV vs REML for Smoothing]], [[Polynomial vs Spline]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - GAMs]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 15 - GAMs|MOC - GAMs]]
 
 ## Flashcards
 

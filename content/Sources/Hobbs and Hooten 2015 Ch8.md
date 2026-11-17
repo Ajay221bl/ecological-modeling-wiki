@@ -30,5 +30,5 @@ Covers model checking with posterior predictive checks and Bayesian p-values, ma
 [[Bayesian P-value]], [[Composition Sampling]], [[Course Schedule]], [[Credible Interval]], [[Delta Method]], [[Derived Quantities]], [[Equal-tailed Interval]], [[Equivariance Property of MCMC]], [[Highest Posterior Density Interval]], [[Marginal Posterior Distribution]], [[Mode]], [[Posterior Draws]], [[Posterior Predictive Check]], [[Posterior Predictive Distribution]], [[Posterior Summary]], [[Predicting New Data]], [[Probability of Direction]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Hobbs and Hooten 2015 Ch7]] · **Next:** [[Hobbs and Hooten 2015 Ch9]]

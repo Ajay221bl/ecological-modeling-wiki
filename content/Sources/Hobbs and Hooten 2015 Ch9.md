@@ -27,8 +27,8 @@ Frames model comparison as predicting new data, introduces scoring rules and inf
 - Selection inside the model → [[Indicator Variable Selection]], [[Spike-and-slab Prior]], [[Reversible-jump MCMC]]
 
 ## Notes that rely on it (23)
-[[Bayes Factor]], [[Bayesian Model Averaging]], [[BIC]], [[Course Schedule]], [[Cross-validation]], [[DIC]], [[Effective Number of Parameters]], [[Hypothesis]], [[Indicator Variable Selection]], [[Learning Path]], [[Leave-one-out Cross-validation]], [[Log Pointwise Predictive Density]], [[MOC - Model Selection]], [[Model Averaging]], [[Model Probabilities]], [[Model Selection]], [[Multi-model Inference]], [[Null Hypothesis Significance Testing]], [[Posterior Predictive Loss]], [[Regularization]], [[Reversible-jump MCMC]], [[Spike-and-slab Prior]], [[WAIC]]
+[[Bayes Factor]], [[Bayesian Model Averaging]], [[BIC]], [[Course Schedule]], [[Cross-validation]], [[DIC]], [[Effective Number of Parameters]], [[Hypothesis]], [[Indicator Variable Selection]], [[Learning Path]], [[Leave-one-out Cross-validation]], [[Log Pointwise Predictive Density]], [[MOC 10 - Model Selection]], [[Model Averaging]], [[Model Probabilities]], [[Model Selection]], [[Multi-model Inference]], [[Null Hypothesis Significance Testing]], [[Posterior Predictive Loss]], [[Regularization]], [[Reversible-jump MCMC]], [[Spike-and-slab Prior]], [[WAIC]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Hobbs and Hooten 2015 Ch8]]

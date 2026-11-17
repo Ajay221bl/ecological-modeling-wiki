@@ -47,7 +47,7 @@ Adding x² random slopes to a GLMM to mimic curvature.
 
 ## Connections
 - **Related:** [[Choosing an HGAM Model Type]], [[Random Intercept vs Random Slope]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - GAMs]], [[MOC - Mixed Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 15 - GAMs|MOC - GAMs]], [[MOC 14 - Mixed Models|MOC - Mixed Models]]
 
 ## Flashcards
 

@@ -52,7 +52,7 @@ Reporting estimate ± 2 SE for a random-effect SD.
 
 ## Connections
 - **Related:** [[Confidence vs Credible Interval]], [[Prediction vs Confidence Interval]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Likelihood and Estimation]], [[MOC - Mixed Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]], [[MOC 14 - Mixed Models|MOC - Mixed Models]]
 
 ## Flashcards
 

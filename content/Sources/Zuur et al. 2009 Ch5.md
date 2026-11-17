@@ -32,4 +32,4 @@ Builds from the RIKZ beach data (two-stage analysis, then random intercepts and 
 [[Balanced Data]], [[Bootstrap]], [[Boundary Problem When Testing Variances]], [[Course Overview]], [[Course Schedule]], [[Facets]], [[Hierarchical Data]], [[Likelihood Ratio Test]], [[Linear Mixed Model]], [[Matrix]], [[Matrix Notation for Models]], [[Mixed Effects Model]], [[Model Matrix]], [[Multivariate Normal Distribution]], [[Nested Experimental Design]], [[Nested Models]], [[Nested Random Effects]], [[nlme lme()]], [[Random Effect]], [[REML]], [[Top-down Model Selection Protocol]], [[Variance Components]], [[Variance-Covariance Matrix]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

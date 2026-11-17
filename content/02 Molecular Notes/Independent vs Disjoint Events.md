@@ -44,7 +44,7 @@ Multiplying probabilities of two outcomes of the same trial as if they were inde
 
 ## Connections
 - **Related:** [[Joint, Marginal and Conditional Probability]], [[Why non-independence inflates false positives]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Probability and Distributions]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]]
 
 ## Flashcards
 

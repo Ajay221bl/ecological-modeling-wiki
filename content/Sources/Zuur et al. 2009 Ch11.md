@@ -30,4 +30,4 @@ Explains zero-truncated data, sources of excess zeros (true and false zeros), mi
 [[Hurdle Model]], [[Mixture Distribution]], [[Truncated Distribution]], [[Zero Inflation]], [[Zero-inflated Model]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

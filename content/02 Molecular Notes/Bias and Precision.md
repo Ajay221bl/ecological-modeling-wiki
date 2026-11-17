@@ -56,7 +56,7 @@ Fix bias by design (better methods, modelling detection); fix precision with mor
 
 ## Connections
 - **Related:** [[Parameter vs Estimate]], [[Biological vs Statistical Population]], [[Bias-Variance Trade-off]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Modeling Foundations]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]
 
 ## Flashcards
 

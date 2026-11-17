@@ -51,7 +51,7 @@ Reading a small Geary's c as "weak autocorrelation".
 
 ## Connections
 - **Related:** [[Correlogram vs Variogram]], [[Positive vs Negative Autocorrelation]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Autocorrelation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 13 - Autocorrelation|MOC - Autocorrelation]]
 
 ## Flashcards
 

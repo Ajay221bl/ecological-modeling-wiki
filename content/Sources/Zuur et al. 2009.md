@@ -35,4 +35,4 @@ Each chapter fixes one violated assumption of linear regression. The book's habi
 [[What to Report for a Model]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

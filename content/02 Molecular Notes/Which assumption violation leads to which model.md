@@ -70,7 +70,7 @@ Log-transforming everything until the QQ plot looks straight, while ignoring tha
 
 ## Connections
 - **Related:** [[Linear Model vs GLM]], [[OLS vs GLS]], [[Transform the data or change the model]], [[What to do about overdispersion]], [[Why use a random effect instead of a fixed effect]], [[GLM vs GAM]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Linear Models and GLMs]], [[MOC - Data Exploration]], [[MOC - Mixed Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]], [[MOC 04 - Data Exploration|MOC - Data Exploration]], [[MOC 14 - Mixed Models|MOC - Mixed Models]]
 
 ## Flashcards
 

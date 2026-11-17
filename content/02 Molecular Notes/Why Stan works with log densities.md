@@ -46,7 +46,7 @@ Computing a likelihood as a product in generated quantities and getting 0 for ev
 
 ## Connections
 - **Related:** [[Writing a Stan Model Step by Step]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Stan]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 17 - Stan|MOC - Stan]]
 
 ## Flashcards
 

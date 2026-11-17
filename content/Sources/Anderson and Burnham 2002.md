@@ -31,5 +31,5 @@ Short, blunt advice: think hard before analysis, build a small set of hypotheses
 [[AIC]], [[AICc]], [[Akaike Weight]], [[Alternative Hypothesis]], [[Candidate Model Set]], [[Confidence Set of Models]], [[Course Schedule]], [[Criticisms of p-values]], [[Data Dredging]], [[Delta AIC]], [[Evidence Ratio]], [[Full Reality]], [[Hypothesis]], [[Hypothetico-deductive Method]], [[Information Theory]], [[Kullback-Leibler Information]], [[Model Averaging]], [[Model Selection]], [[Model Selection Uncertainty]], [[Models as Abstractions]], [[Multi-model Inference]], [[Multiple Working Hypotheses]], [[Nested Models]], [[Null Hypothesis]], [[Null Hypothesis Significance Testing]], [[Number of Parameters]], [[Overdispersion]], [[P-value]], [[Parsimony]], [[Post hoc Analysis]], [[QAIC]], [[Quasi-Poisson]], [[Statistical Significance]], [[Stepwise Selection]], [[Type I Error]], [[Unconditional Variance]], [[Uninformative Parameters]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Powell and Gale 2015 Ch4]] · **Next:** [[Johnson and Omland 2004]]

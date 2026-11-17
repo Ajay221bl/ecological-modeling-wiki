@@ -48,7 +48,7 @@ Writing a random-intercept GLMM by hand in Stan for a homework that brms fits in
 
 ## Connections
 - **Related:** [[lme4 vs brms]], [[Writing a Stan Model Step by Step]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Stan]], [[MOC - Bayesian Model Selection]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 17 - Stan|MOC - Stan]], [[MOC 11 - Bayesian Model Selection|MOC - Bayesian Model Selection]]
 
 ## Flashcards
 

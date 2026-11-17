@@ -31,5 +31,5 @@ Starts from Tobler's first law, notes that ecological variables are fields with 
 [[Autocorrelation]], [[Course Schedule]], [[Generalized Least Squares]], [[Isotropy]], [[Macroecology]], [[Negative Autocorrelation]], [[Phylogenetic Autocorrelation]], [[Positive Autocorrelation]], [[Stationarity]], [[Tobler's First Law]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Next:** [[Diniz-Filho et al. 2003]]

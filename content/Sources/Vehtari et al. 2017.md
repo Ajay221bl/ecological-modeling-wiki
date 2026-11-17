@@ -34,4 +34,4 @@ Defines elpd, LOO and WAIC, introduces PSIS-LOO and the Pareto k diagnostic, sho
 [[log_lik for LOO]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

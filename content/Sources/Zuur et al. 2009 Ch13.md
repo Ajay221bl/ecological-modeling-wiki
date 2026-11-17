@@ -29,4 +29,4 @@ Sets the scene with a binomial GLMM (deer infection with *E. cervi*), then GLMMs
 [[GAMM]], [[Laplace Approximation]], [[Penalized Quasi-likelihood]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

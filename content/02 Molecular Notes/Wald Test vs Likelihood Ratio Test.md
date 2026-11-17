@@ -60,7 +60,7 @@ Concluding "no effect" from a non-significant Wald test in a logistic model with
 
 ## Connections
 - **Related:** [[Wald, Profile and Bootstrap Intervals]], [[Likelihood Ratio Test vs AIC]], [[Probability vs Likelihood]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Likelihood and Estimation]], [[MOC - Generalized Linear Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]]
 
 ## Flashcards
 

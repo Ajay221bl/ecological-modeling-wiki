@@ -50,7 +50,7 @@ Judging a logistic regression from a raw residual plot leads nowhere: it always 
 
 ## Connections
 - **Related:** [[Model Validation]], [[What to do about overdispersion]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Generalized Linear Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]]
 
 ## Flashcards
 

@@ -45,7 +45,7 @@ A script beginning with `setwd("C:/Users/me/Desktop/final")`, which fails on eve
 
 ## Connections
 - **Related:** [[Relative vs Absolute Paths]], [[Console vs Script]], [[Git vs GitHub]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Reproducible Coding and Figures]], [[MOC - R for Ecological Modeling]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 12 - Reproducible Coding and Figures|MOC - Reproducible Coding and Figures]], [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 
 ## Flashcards
 

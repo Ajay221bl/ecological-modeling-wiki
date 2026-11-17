@@ -56,7 +56,7 @@ Plotting re.form = NA predictions and calling them the population-average probab
 
 ## Connections
 - **Related:** [[Prediction vs Confidence Interval]], [[Fixed vs Random Effects]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Mixed Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 14 - Mixed Models|MOC - Mixed Models]]
 
 ## Flashcards
 
