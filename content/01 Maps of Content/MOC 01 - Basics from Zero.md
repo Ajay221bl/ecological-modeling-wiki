@@ -67,7 +67,7 @@ The maths and vocabulary every other note leans on, explained from nothing. If a
 - [[Spearman Rank Correlation]]: Spearman rank correlation measures whether two variables rise together in any steady way, by correlating their ranks instead of their raw values.
 - [[Sum of Squares]]: A sum of squares adds up squared distances from some reference, usually the mean or a fitted line, to measure total variation.
 - [[Degrees of Freedom]]: Degrees of freedom are the number of independent pieces of information left to estimate variability after the data have been used to estimate other things.
-- [[Weighted Mean]]: a weighted mean averages values after multiplying each by a weight, Σwᵢxᵢ / Σwᵢ, so some values count more than others.
+- [[Weighted Mean]]: A weighted mean averages values after multiplying each by a weight, Σwᵢxᵢ / Σwᵢ, so some values count more than others.
 
 ## 4. Odds
 - [[Odds]]: Odds are the chance that something happens divided by the chance that it doesn't.

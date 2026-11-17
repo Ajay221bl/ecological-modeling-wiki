@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "A line plot joins points in order along the x-axis, usually time, so trends and cycles are easy to see."
 aliases:
   - "Line graph"
   - "Time series plot"
@@ -13,34 +14,16 @@ status: seedling
 
 # Line Plot
 
-**In one line:** a line plot joins points in order along the x-axis, usually time, so trends and cycles are easy to see.
+A **line plot** joins points in order along the x-axis, usually time, so trends and cycles are easy to see ([[Scatterplot]], [[Time Series]]). Use it when x has a natural order, such as time or distance along a transect, and do not join unordered categories with lines. Show one line per group with colour or facets.
 
-> [!info] Before this, it helps to know
-> [[Scatterplot]] · [[Time Series]]
+In base R it is `plot(x, y, type = "l")`, and in ggplot2 `geom_line()` ([[ggplot2 Grammar of Graphics|ggplot2]]). Show the data points too when observations are sparse, or the line implies data that do not exist. The code below draws the annual flow of the Nile from 1871 to 1970, a classic series with a drop around 1898.
 
-## Start from zero
-1. **Use when x has a natural order** (time, distance along a transect).
-2. **Do not join unordered categories** with lines.
-3. **One line per group** with colour or facets.
-4. **Base R:** `plot(x, y, type = "l")`; ggplot2: `geom_line()`.
-5. **Show the data points too** when observations are sparse, or the line implies data that do not exist.
+Line plots belong to the data exploration and figures units ([[Course Website]]). Lines can't connect any points, only ordered ones; otherwise use points or bars.
 
-## In R
 ```r
 plot(Nile, type = "l", ylab = "Annual flow", main = "Nile flow, 1871 to 1970")
 range(time(Nile))
 ```
-
-## In the course
-Data exploration and figures units ([[Course Website]]).
-
-## Common confusions
-- **"Lines can connect any points."** Only ordered ones; otherwise use points or bars.
-
-## Explain it back
-- When is a line plot misleading?
-
-*Pass test:* you can choose a line plot correctly.
 
 ## Connections
 - **Builds on:** [[Scatterplot]], [[Time Series]]

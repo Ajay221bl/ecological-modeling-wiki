@@ -26,7 +26,7 @@ Unit 3 (Aug 25, 27): look before you model. Zuur et al. 2010's protocol for catc
 - [[Violin Plot]]: A violin plot shows a variable's density curve mirrored on both sides of a centre line, one \"violin\" per group.
 - [[QQ Plot]]: A QQ plot checks whether data follow a chosen distribution by plotting the data's sorted values against the values that distribution would be expected to give.
 - [[Rug Plot]]: A rug plot draws a small tick on the axis at every observed value, showing exactly where the data are.
-- [[Line Plot]]: a line plot joins points in order along the x-axis, usually time, so trends and cycles are easy to see.
+- [[Line Plot]]: A line plot joins points in order along the x-axis, usually time, so trends and cycles are easy to see.
 
 ## 3. Looking at relationships
 - [[Scatterplot]]: A scatterplot shows two numeric variables at once by drawing one dot per observation, placed by its value on each axis.
@@ -34,7 +34,7 @@ Unit 3 (Aug 25, 27): look before you model. Zuur et al. 2010's protocol for catc
 - [[Pairplot]]: A pairplot is a grid of scatterplots showing every variable plotted against every other.
 - [[Coplot]]: A coplot shows the scatterplot of two variables repeated in several panels, each panel using only the observations within one level or slice of a third...
 - [[Relationships Between Y and X]]: Checking the relationship between Y and X means plotting the response against each predictor to see what shape, if any, connects them.
-- [[Principal Component Analysis]]: principal component analysis turns many correlated variables into a few uncorrelated summary axes (principal components) that capture as much of the...
+- [[Principal Component Analysis]]: Principal component analysis turns many correlated variables into a few uncorrelated summary axes (principal components) that capture as much of the...
 
 ## 4. Checking assumptions before fitting
 - [[Homogeneity of Variance]]: Homogeneity of variance means the scatter of the data around the model's fitted values is the same size everywhere.
@@ -64,7 +64,7 @@ Unit 3 (Aug 25, 27): look before you model. Zuur et al. 2010's protocol for catc
 - [[Spatial Data in R]]: Spatial data are observations with a location attached, and in R the sf package stores them as a data frame with one extra column holding each row's geometry.
 - [[Coordinate Reference System]]: A coordinate reference system is the rule that says which place on Earth a pair of coordinate numbers refers to.
 - [[UTM Coordinates]]: UTM coordinates give a location as metres east and metres north within one of 60 north-south strips of the globe.
-- [[Presence-Absence Data]]: presence-absence data record whether a species was found (1) or not found (0) at each site or survey, the response for logistic regression, species...
+- [[Presence-Absence Data]]: Presence-absence data record whether a species was found (1) or not found (0) at each site or survey, the response for logistic regression, species...
 
 ## Related molecular notes
 - [[Why explore data before modeling]]: exploring data before fitting catches outliers, unequal variance, excess zeros, collinear predictors, odd relationships and dependence while they can still...
