@@ -3,6 +3,7 @@ type: atomic
 tags:
   - ecology
   - flashcards/eco/ecology
+description: "Fecundity is the number of offspring an individual produces in a period, such as eggs per clutch or fledglings per female per year."
 aliases:
   - "Reproductive output"
   - "Fertility (ecology)"
@@ -13,28 +14,11 @@ status: seedling
 
 # Fecundity
 
-**In one line:** fecundity is the number of offspring an individual produces in a period, such as eggs per clutch or fledglings per female per year.
+**Fecundity** is the number of offspring an individual produces in a period, such as eggs per clutch or fledglings per female per year ([[Vital Rates]]). Because it is measured as counts of eggs or young, Poisson or negative binomial models often fit it ([[Count Data]], [[Poisson Distribution]]). Its components are breeding probability, clutch or litter size, and hatching and fledging success.
 
-> [!info] Before this, it helps to know
-> [[Vital Rates]] · [[Count Data]]
+It depends on condition: lighter females often produce fewer young, and [[Shipley et al. 2022]] suggest this explains why female tree swallow mass did not decline while male mass did ([[Body Condition]]). Demographers sometimes use "fertility" for realised births and "fecundity" for potential, but ecologists often use fecundity for realised young. Combined with survival in matrix and integral projection models, it gives the population growth rate ([[Population Dynamics]]).
 
-## Start from zero
-1. **Measured as counts** (eggs, young), so Poisson or negative binomial models often fit.
-2. **Components:** breeding probability, clutch or litter size, hatching and fledging success.
-3. **Depends on condition:** lighter females often produce fewer young (Shipley et al. 2022 suggest this explains why female tree swallow mass did not decline while male mass did).
-4. **Fecundity vs fertility:** demographers sometimes use fertility for realised births and fecundity for potential; ecologists often use fecundity for realised young.
-5. **Combined with survival** in matrix and integral projection models to get growth rate.
-
-## In the course
-[[Shipley et al. 2022]]. [[Hobbs and Hooten 2015]] (examples).
-
-## Common confusions
-- **"Clutch size is fecundity."** It is one component; failed nests and re-nesting change annual output.
-
-## Explain it back
-- What distribution suits clutch size data?
-
-*Pass test:* you can define fecundity and its components.
+Examples appear in [[Shipley et al. 2022]] and [[Hobbs and Hooten 2015]]. Clutch size is not fecundity: it is one component, and failed nests and re-nesting change annual output.
 
 ## Connections
 - **Builds on:** [[Vital Rates]], [[Count Data]]

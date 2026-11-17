@@ -3,6 +3,7 @@ type: atomic
 tags:
   - ecology
   - flashcards/eco/ecology
+description: "Tag loss is when a marked animal loses its mark, so it looks unmarked if recaptured, which biases mark-recapture estimates unless it is measured and corrected."
 aliases:
   - "Tag Retention and Tag Loss"
   - "Mark loss"
@@ -14,28 +15,11 @@ status: seedling
 
 # Tag Loss
 
-**In one line:** tag loss is when a marked animal loses its mark, so it looks unmarked if recaptured, which biases mark-recapture estimates unless it is measured and corrected.
+**Tag loss** is when a marked animal loses its mark, so it looks unmarked if recaptured, which biases mark-recapture estimates unless it is measured and corrected ([[Mark-Recapture]]). Mark-recapture assumes marks are not lost (Powell and Gale Ch8 and Ch10). In closed models lost tags make recaptures look like new animals, so m₂ is too small and N̂ too large ([[Lincoln-Petersen Estimator]]). In open models lost tags look like deaths, so survival is biased low ([[Cormack-Jolly-Seber Model]]).
 
-> [!info] Before this, it helps to know
-> [[Mark-Recapture]]
+Double tagging, with two tags per animal, estimates retention: animals that have kept only one tag show the loss rate. PIT tags, natural marks and genetic identification reduce the problem.
 
-## Start from zero
-1. **Mark-recapture assumes marks are not lost** (Powell and Gale Ch8 and Ch10).
-2. **Closed models:** lost tags make recaptures look like new animals, so m₂ is too small and N̂ too large.
-3. **Open models:** lost tags look like deaths, so survival is biased low.
-4. **Double tagging** (two tags per animal) estimates retention: animals with one tag left show the loss rate.
-5. **PIT tags, natural marks and genetics** reduce the problem.
-
-## In the course
-[[Powell and Gale 2015]] Ch3, Ch8 and Ch10.
-
-## Common confusions
-- **"Tag loss only reduces sample size."** It biases N upward and survival downward.
-
-## Explain it back
-- Which way does tag loss bias CJS survival?
-
-*Pass test:* you can predict the bias from tag loss.
+It is discussed in [[Powell and Gale 2015]] Ch3, Ch8 and Ch10 ([[Apparent Survival]]). Tag loss does not only reduce sample size; it biases N upward and survival downward.
 
 ## Connections
 - **Builds on:** [[Mark-Recapture]]

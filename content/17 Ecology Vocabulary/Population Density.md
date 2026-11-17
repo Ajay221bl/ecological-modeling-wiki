@@ -3,6 +3,7 @@ type: atomic
 tags:
   - ecology
   - flashcards/eco/ecology
+description: "Population density is the number of individuals per unit area (or volume), such as deer per square kilometre, which lets you compare places of different size."
 aliases:
   - "Density (ecology)"
   - "Animal density"
@@ -13,37 +14,16 @@ status: seedling
 
 # Population Density
 
-**In one line:** population density is the number of individuals per unit area (or volume), such as deer per square kilometre, which lets you compare places of different size.
+A big country can have many people but a low density, while a small city-state can have fewer people and be packed. **Population density** is the number of individuals per unit area, or volume, such as deer per square kilometre, which lets you compare places of different size: D = N / A, abundance divided by area ([[Abundance]]). It needs a defined area, which is easy for a plot and hard for an open landscape, where you must ask what area your traps actually sampled.
 
-> [!info] Before this, it helps to know
-> [[Abundance]]
+[[Distance Sampling]] estimates density directly, while [[Mark-Recapture]] gives N, which needs an effective trapping area to become D. Density drives many processes, including competition, disease transmission and density-dependent growth ([[Density Dependence]]). In the code below two sites each hold 120 animals, but one covers 4 km² and the other 30 km², so their densities are 30 and 4 per km².
 
-## The everyday picture
-People per square kilometre. A big country can have many people but a low density; a small city-state can have fewer people but be packed.
+[[Christensen et al. 2020]] note that host (deer) density was not available as a predictor of haemorrhagic disease, a common gap in disease ecology ([[Powell and Gale 2015]] Ch14 and Ch19). High abundance means high density only for the same area.
 
-## Start from zero
-1. **D = N / A.** Abundance divided by area.
-2. **Needs a defined area,** which is easy for a plot and hard for an open landscape (what area did your traps sample?).
-3. **Distance sampling estimates density directly;** mark-recapture gives N, which needs an effective trapping area to become D.
-4. **Density drives many processes:** competition, disease transmission, density-dependent growth.
-5. **Christensen et al. (2020) note** that host (deer) density was not available as a predictor of hemorrhagic disease, a common gap in disease ecology.
-
-## In R
 ```r
 N <- c(site_A = 120, site_B = 120); area_km2 <- c(4, 30)
 round(N / area_km2, 1)   # same abundance, very different density
 ```
-
-## In the course
-[[Powell and Gale 2015]] Ch14 and Ch19. [[Christensen et al. 2020]].
-
-## Common confusions
-- **"High abundance means high density."** Only for the same area.
-
-## Explain it back
-- How do you turn a mark-recapture N̂ into density?
-
-*Pass test:* you can compute density and explain why it needs an area.
 
 ## Connections
 - **Builds on:** [[Abundance]]

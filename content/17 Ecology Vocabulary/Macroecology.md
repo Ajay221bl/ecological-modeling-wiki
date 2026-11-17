@@ -3,6 +3,7 @@ type: atomic
 tags:
   - ecology
   - flashcards/eco/ecology
+description: "Biogeography studies where species live and why, and macroecology studies statistical patterns across large scales and many species, such as richness gradients and body-size rules."
 aliases:
   - "Macroecology and Biogeography"
   - "Biogeography"
@@ -13,27 +14,11 @@ status: seedling
 
 # Macroecology
 
-**In one line:** biogeography studies where species live and why, and macroecology studies statistical patterns across large scales and many species, such as richness gradients and body-size rules.
+**Biogeography** studies where species live and why, and **macroecology** studies statistical patterns across large scales and many species, such as richness gradients and body-size rules ([[Species Richness]], [[Spatial Scale]]). Data are often grid cells covering continents, with richness or range maps. Classic patterns are the [[Latitudinal Gradient]] in richness, Bergmann's rule and range-size distributions ([[Body Size]]).
 
-> [!info] Before this, it helps to know
-> [[Species Richness]] · [[Spatial Scale]]
+Predictors include climate (AET, PET, temperature), topography (range in elevation) and history ([[Evapotranspiration]]). Spatial autocorrelation is everywhere at these scales; [[Diniz-Filho et al. 2003]] showed it need not bias OLS coefficients, but it changes standard errors and the importance given to predictors acting at different scales ([[Spatial Autocorrelation]]).
 
-## Start from zero
-1. **Data are often grid cells** covering continents, with richness or range maps.
-2. **Classic patterns:** latitudinal richness gradient, Bergmann's rule, range size distributions.
-3. **Spatial autocorrelation is everywhere** at these scales; Diniz-Filho et al. (2003) showed it need not bias OLS coefficients, but it changes standard errors and the importance given to predictors acting at different scales.
-4. **Predictors:** climate (AET, PET, temperature), topography (range in elevation), history.
-
-## In the course
-[[Diniz-Filho et al. 2003]]. [[Dynamic Ecology Autocorrelation Post|McGill 2013]] (Dynamic Ecology post).
-
-## Common confusions
-- **"Macroecology just means big maps."** It is about statistical regularities across many species and places.
-
-## Explain it back
-- Why is spatial autocorrelation central in macroecology?
-
-*Pass test:* you can describe macroecology and its typical data.
+See also [[Dynamic Ecology Autocorrelation Post|McGill 2013]], a Dynamic Ecology post. Macroecology does not just mean big maps; it is about statistical regularities across many species and places.
 
 ## Connections
 - **Builds on:** [[Species Richness]], [[Spatial Scale]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - ecology
   - flashcards/eco/ecology
+description: "Woody encroachment is the spread of trees and shrubs into grasslands, which reduces habitat for grassland-specialist birds that need open, treeless landscapes."
 aliases:
   - "Grassland Birds and Woody Encroachment"
   - "Woody plant encroachment"
@@ -13,28 +14,11 @@ status: seedling
 
 # Woody Encroachment
 
-**In one line:** woody encroachment is the spread of trees and shrubs into grasslands, which reduces habitat for grassland-specialist birds that need open, treeless landscapes.
+**Woody encroachment** is the spread of trees and shrubs into grasslands, which reduces habitat for grassland-specialist birds that need open, treeless landscapes ([[Habitat Structure]], [[Canopy Cover]]). Its causes include fire suppression, grazing changes, climate and CO₂. Grassland birds such as meadowlarks, grasshopper sparrows and prairie-chickens often avoid even low tree cover.
 
-> [!info] Before this, it helps to know
-> [[Habitat Structure]] · [[Canopy Cover|Canopy and Tree Cover]]
+The response is nonlinear, with declines that can be steep at low cover, suiting GAMs or thresholds ([[Generalized Additive Model]]). Prescribed fire is the main management tool to reverse encroachment ([[Fire History Variables]]). Powell and Gale (Ch15) use greater prairie-chickens shifting habitat between seasons as an example of closure violation in occupancy studies ([[Closure Assumption]]).
 
-## Start from zero
-1. **Causes:** fire suppression, grazing changes, climate, CO₂.
-2. **Grassland birds** (meadowlarks, grasshopper sparrows, prairie-chickens) often avoid even low tree cover.
-3. **Response is nonlinear:** declines can be steep at low cover, suiting GAMs or thresholds.
-4. **Prescribed fire** is the main management tool to reverse encroachment.
-5. **Powell and Gale (Ch15)** use greater prairie-chickens shifting habitat between seasons as an example of closure violation in occupancy studies.
-
-## In the course
-Lab datasets ([[Course Website]]). [[Powell and Gale 2015]] Ch15.
-
-## Common confusions
-- **"More trees mean more birds."** For grassland specialists, tree cover removes habitat.
-
-## Explain it back
-- Why might the bird response to tree cover be nonlinear?
-
-*Pass test:* you can explain encroachment and model its effect.
+It appears in the lab datasets and [[Powell and Gale 2015]] Ch15 ([[Course Website]]). More trees do not mean more birds: for grassland specialists, tree cover removes habitat.
 
 ## Connections
 - **Builds on:** [[Habitat Structure]], [[Canopy Cover|Canopy and Tree Cover]]

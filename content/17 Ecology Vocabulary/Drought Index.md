@@ -3,6 +3,7 @@ type: atomic
 tags:
   - ecology
   - flashcards/eco/ecology
+description: "A drought index is a number summarising how dry conditions are relative to normal for a place and time, such as the U.S. Drought Monitor categories D0 (abnormally dry) to D4 (exceptional drought)."
 aliases:
   - "Drought severity"
   - "Drought Monitor"
@@ -14,31 +15,11 @@ status: seedling
 
 # Drought Index
 
-**In one line:** a drought index is a number summarising how dry conditions are relative to normal for a place and time, such as the U.S. Drought Monitor categories D0 (abnormally dry) to D4 (exceptional drought).
+A **drought index** is a number summarising how dry conditions are relative to normal for a place and time, such as the U.S. Drought Monitor categories D0 (abnormally dry), D1 (moderate), D2 (severe), D3 (extreme) and D4 (exceptional) ([[Explanatory Variable]], [[Ordinal Variable]]). Other indices are the Palmer Drought Severity Index (PDSI) and the Standardized Precipitation Index (SPI). [[Christensen et al. 2020]] summed the percentage of each county in categories D0 to D4 for the last week of August, giving a cumulative drought severity from 0 to 500 per county and year.
 
-> [!info] Before this, it helps to know
-> [[Explanatory Variable]] · [[Ordinal Variable]]
+Choose a time window that matches the biology: Christensen et al. used late August, when haemorrhagic disease peaks ([[Epizootic Hemorrhagic Disease]]). Indices are relative to the local normal, so the same rainfall can be "drought" in one place and not another. They are often spatially and temporally autocorrelated, so models need random effects or spatial terms ([[Spatial Autocorrelation]], [[Random Effect]]).
 
-## A tiny example
-Christensen et al. (2020) summed the percentage of each county in categories D0 to D4 for the last week of August, giving a cumulative drought severity from 0 to 500 per county and year.
-
-## Start from zero
-1. **U.S. Drought Monitor categories:** D0 abnormally dry, D1 moderate, D2 severe, D3 extreme, D4 exceptional.
-2. **Other indices:** Palmer Drought Severity Index (PDSI), Standardized Precipitation Index (SPI).
-3. **Choose a time window** that matches the biology (Christensen et al. used late August, when hemorrhagic disease peaks).
-4. **Indices are relative to local normal,** so the same rainfall can be "drought" in one place and not another.
-5. **Often spatially and temporally autocorrelated,** so models need random effects or spatial terms.
-
-## In the course
-[[Christensen et al. 2020]]. [[Shipley et al. 2022]]. Lab datasets ([[Course Website]]).
-
-## Common confusions
-- **"Drought index is total rainfall."** It is dryness relative to the local normal, often combining several measures.
-
-## Explain it back
-- What are the five U.S. Drought Monitor categories?
-
-*Pass test:* you can explain how a drought index was built and used.
+It appears in Christensen et al., [[Shipley et al. 2022]] and the lab datasets ([[Course Website]]). A drought index is not total rainfall; it is dryness relative to the local normal, often combining several measures.
 
 ## Connections
 - **Builds on:** [[Explanatory Variable]], [[Ordinal Variable]]

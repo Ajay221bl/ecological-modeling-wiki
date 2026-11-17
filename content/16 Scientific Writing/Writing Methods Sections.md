@@ -3,6 +3,7 @@ type: atomic
 tags:
   - writing
   - flashcards/eco/writing
+description: "A methods section explains what data you collected and exactly how you analysed them, in enough detail that someone could repeat the analysis and judge whether it suits the question."
 aliases:
   - "Methods section"
   - "Statistical methods section"
@@ -13,30 +14,11 @@ status: seedling
 
 # Writing Methods Sections
 
-**In one line:** a methods section explains what data you collected and exactly how you analysed them, in enough detail that someone could repeat the analysis and judge whether it suits the question.
+A **methods section** explains what data you collected and exactly how you analysed them, in enough detail that someone could repeat the analysis and judge whether it suits the question ([[Reproducibility]], [[Study Design]]). A useful order is study area and design, data collection, response and predictors, data exploration, the model, model checking, model selection or inference, and software. State the model in words and as an equation: response distribution, link, predictors, random effects and correlation structure ([[Generalized Linear Model]], [[Mixed Effects Model]]).
 
-> [!info] Before this, it helps to know
-> [[Reproducibility]] · [[Study Design]]
+Justify choices from the question and the data exploration; Zuur et al. (2010) say to report every exploration step and justify any outlier removal or transformation ([[Data Exploration Protocol]]). Say how you checked the model, with residual plots, dispersion, autocorrelation and convergence diagnostics ([[Model Validation]]). Name software and versions, such as R, lme4, mgcv, brms and Stan, with citations. For Bayesian models give the priors, chains, iterations, warmup, and R-hat and ESS thresholds; for model selection give the candidate set and why, the criterion (AICc, LOO) and how ties were handled ([[Candidate Model Set]]).
 
-## Start from zero
-1. **Order:** study area and design, data collection, response and predictors, data exploration, model, model checking, model selection or inference, software.
-2. **State the model in words and as an equation:** response distribution, link, predictors, random effects, correlation structure.
-3. **Justify choices** from the question and data exploration (Zuur et al. 2010: report every exploration step, justify outlier removal and transformations).
-4. **Say how you checked the model:** residual plots, dispersion, autocorrelation, convergence diagnostics.
-5. **Name software and versions:** R, lme4, mgcv, brms, Stan, with citations.
-6. **For Bayesian models:** priors, chains, iterations, warmup, R-hat and ESS thresholds.
-7. **For model selection:** the candidate set and why, criterion (AICc, LOO), and how ties were handled.
-
-## In the course
-Writing results, Nov 24 ([[Course Website]]). [[Zuur et al. 2010]]. [[Harrison et al. 2018]]. [[Final Project]].
-
-## Common confusions
-- **"Methods just list the R functions."** They explain the model and why it fits the question; functions are a detail.
-
-## Explain it back
-- What must the methods say about a Bayesian model?
-
-*Pass test:* you can write a reproducible statistical methods paragraph.
+This is from the November 24 writing-results session ([[Course Website]], [[Zuur et al. 2010]], [[Harrison et al. 2018]], [[Final Project]], [[What to Report for a Model]]). Methods do not just list the R functions; they explain the model and why it fits the question, and the functions are a detail.
 
 ## Connections
 - **Builds on:** [[Reproducibility]], [[Study Design]]

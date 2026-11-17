@@ -3,6 +3,7 @@ type: atomic
 tags:
   - ecology
   - flashcards/eco/ecology
+description: "Habitat is the set of resources and conditions where an organism lives, and habitat use or selection describes how animals use places relative to what is available."
 aliases:
   - "Habitat use"
   - "Habitat selection"
@@ -13,28 +14,11 @@ status: seedling
 
 # Habitat
 
-**In one line:** habitat is the set of resources and conditions where an organism lives, and habitat use or selection describes how animals use places relative to what is available.
+**Habitat** is the set of resources and conditions where an organism lives, and habitat use or selection describes how animals use places relative to what is available ([[Explanatory Variable]]). Use is where animals are found; selection is use compared with availability. Resource selection functions compare used locations with available ones, often with logistic regression ([[Logistic Regression]]).
 
-> [!info] Before this, it helps to know
-> [[Explanatory Variable]]
+Detection matters: a habitat where animals are hard to see looks avoided ([[Why raw counts mislead]], [[Imperfect Detection]]). Scale matters too, since selection at the home-range scale can differ from selection within it ([[Spatial Scale]]). Occupancy models with habitat covariates estimate habitat relationships while correcting for detection (Powell and Gale Ch15) ([[Occupancy]], [[Site Covariates]]).
 
-## Start from zero
-1. **Use:** where animals are found. **Selection:** use compared with availability.
-2. **Resource selection functions** compare used locations with available ones, often with logistic regression.
-3. **Detection matters:** a habitat where animals are hard to see looks avoided (see [[Why raw counts mislead]]).
-4. **Scale matters:** selection at the home-range scale can differ from selection within it.
-5. **Occupancy models** with habitat covariates estimate habitat relationships while correcting for detection (Powell and Gale Ch15).
-
-## In the course
-[[Powell and Gale 2015]] Ch15. Lab datasets ([[Course Website]]).
-
-## Common confusions
-- **"Where I find animals is their best habitat."** Use is not quality; sink habitats can attract animals.
-
-## Explain it back
-- What is the difference between use and selection?
-
-*Pass test:* you can describe habitat use and selection.
+It is covered in [[Powell and Gale 2015]] Ch15 and the lab datasets ([[Course Website]], [[Habitat Structure]]). Where you find animals is not necessarily their best habitat: use is not quality, and sink habitats can attract animals.
 
 ## Connections
 - **Builds on:** [[Explanatory Variable]]

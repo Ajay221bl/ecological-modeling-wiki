@@ -3,6 +3,7 @@ type: atomic
 tags:
   - writing
   - flashcards/eco/writing
+description: "Cutting unnecessary words means deleting any word, punctuation mark, sentence or section whose removal keeps the original message, so the reader spends attention only on what matters."
 aliases:
   - "Minimalism in writing"
   - "Concise writing"
@@ -13,31 +14,11 @@ status: seedling
 
 # Cutting Unnecessary Words
 
-**In one line:** cutting unnecessary words means deleting any word, punctuation mark, sentence or section whose removal keeps the original message, so the reader spends attention only on what matters.
+**Cutting unnecessary words** means deleting any word, punctuation mark, sentence or section whose removal keeps the original message, so the reader spends attention only on what matters ([[Plain Clear Sentences]]). McCarthy's test is: can I keep my message without this punctuation mark, word, sentence, paragraph or section? If yes, remove it. "In order to" becomes "To"; "Due to the fact that" becomes "Because"; "It is important to note that the slope was positive" becomes "The slope was positive".
 
-> [!info] Before this, it helps to know
-> [[Plain Clear Sentences]]
+Don't say the same thing three ways: pick one word, "elucidate" or "elaborate", not both. Use adjectives only when they are relevant, and don't over-anticipate objections, because a paper is not a dialogue with every possible reviewer. Common cuts in results are "It can be seen in Table 2 that", "statistically" and "interestingly" ([[Writing Results Sections]], [[Reporting Statistics in Text]]).
 
-## A tiny example
-"In order to" → "To". "Due to the fact that" → "Because". "It is important to note that the slope was positive" → "The slope was positive".
-
-## Start from zero
-1. **McCarthy's test:** can I keep my message without this punctuation mark, word, sentence, paragraph or section? If yes, remove it.
-2. **Don't say the same thing three ways;** pick one word ("elucidate" or "elaborate", not both).
-3. **Adjectives only when relevant.**
-4. **Don't over-anticipate objections;** a paper is not a dialogue with every possible reviewer.
-5. **Common cuts in results:** "It can be seen in Table 2 that", "statistically", "interestingly".
-
-## In the course
-[[McCarthy Writing Advice]].
-
-## Common confusions
-- **"Shorter means less content."** It means the same content with less effort for the reader.
-
-## Explain it back
-- What question decides whether a word stays?
-
-*Pass test:* you can cut a paragraph by a third without losing meaning.
+It comes from [[McCarthy Writing Advice]] and serves the paper's [[Theme and Key Points]]. Shorter does not mean less content; it means the same content with less effort for the reader.
 
 ## Connections
 - **Builds on:** [[Plain Clear Sentences]]
