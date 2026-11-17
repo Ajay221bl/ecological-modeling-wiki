@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "DIC is an early Bayesian analogue of AIC that adds the posterior mean deviance to an effective number of parameters, DIC = D̄ + pD."
 aliases:
   - "Deviance Information Criterion"
   - "Deviance information criterion (DIC)"
@@ -11,38 +12,17 @@ status: seedling
 
 # DIC
 
-**In one line:** DIC is an early Bayesian analogue of AIC that adds the posterior mean deviance to an effective number of parameters, DIC = D̄ + pD.
+**DIC**, the Deviance Information Criterion, is an early Bayesian analogue of [[AIC]]. Compute the [[Deviance]] D(θ) = −2 log p(y | θ) at each posterior draw; D̄ is its posterior mean, and pD = D̄ − D(θ̄), the gap between the average deviance and the deviance at the posterior mean, is the [[Effective Number of Parameters]]. Then DIC = D̄ + pD = D(θ̄) + 2pD, and smaller is better.
 
-> [!info] Before this, it helps to know
-> [[Deviance]] (what is averaged) · [[Effective Number of Parameters]] (its penalty) · [[AIC]] (its model)
+In the code below a one-parameter Poisson model gives D̄ = 162.4, pD = 0.97, close to 1 as it should be, and DIC = 163.3. JAGS and R2jags report DIC automatically, and it was popular in ecology papers of the 2000s ([[JAGS and BUGS]]).
 
-## Start from zero
-1. **Compute deviance D(θ) = −2 log p(y | θ) at each posterior draw.**
-2. **D̄:** the posterior mean deviance.
-3. **pD = D̄ − D(θ̄):** the gap between the average deviance and the deviance at the posterior mean.
-4. **DIC = D̄ + pD = D(θ̄) + 2pD.**
-5. **Smaller is better,** like AIC.
-6. **Reported automatically by JAGS and R2jags.** Popular in 2000s ecology papers.
-7. **Problems:** pD can be negative. It depends on the parameterisation. It assumes a roughly normal posterior. It handles hierarchical and mixture models poorly.
-8. **WAIC and LOO have replaced it** in current practice.
+Its problems are that pD can be negative, it depends on the parameterisation, it assumes a roughly normal posterior, and it handles hierarchical and mixture models poorly. [[WAIC]] and [[Leave-one-out Cross-validation|LOO]] have replaced it in current practice, and [[Hobbs and Hooten 2015 Ch9]] reviews its problems. DIC was the standard Bayesian criterion; it no longer is.
 
-## In R
 ```r
 set.seed(4); y <- rpois(40, 3); lam <- rgamma(4000, 0.01 + sum(y), 0.01 + 40)
 D <- sapply(lam, function(l) -2 * sum(dpois(y, l, log = TRUE))); Dbar <- mean(D); Dhat <- -2 * sum(dpois(y, mean(lam), log = TRUE))
 c(Dbar = Dbar, pD = Dbar - Dhat, DIC = Dbar + (Dbar - Dhat))           # one parameter: pD close to 1
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch9]] reviews DIC and its problems.
-
-## Common confusions
-- **"DIC is the standard Bayesian criterion."** It was. WAIC and LOO are preferred now.
-
-## Explain it back
-- Write DIC in terms of D̄ and pD.
-
-*Pass test:* you can compute DIC for a one-parameter model.
 
 ## Connections
 - **Builds on:** [[Deviance]], [[Effective Number of Parameters]], [[AIC]]

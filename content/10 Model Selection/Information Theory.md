@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "The information-theoretic approach to model selection ranks models by how much information is lost when each is used to approximate the unknown process that generated the data."
 aliases:
   - "Information-theoretic approach"
   - "I-T approach"
@@ -12,33 +13,11 @@ status: seedling
 
 # Information Theory
 
-**In one line:** the information-theoretic approach to model selection ranks models by how much information is lost when each is used to approximate the unknown process that generated the data.
+Every photocopy of a painting loses some detail. You can't see the original, but you can still tell which copy lost the least by how well each matches the bits of the original you have glimpsed. The **information-theoretic approach** ranks models the same way, by how much information is lost when each is used to approximate the unknown process that generated the data ([[Full Reality]]). Truth is unknown and infinitely complex, so every model is an approximation, and [[Kullback-Leibler Information]] measures the distance from truth to a model. It can't be computed, because truth is unknown, but differences in it between models can be estimated from the data ([[Likelihood]]).
 
-> [!info] Before this, it helps to know
-> [[Kullback-Leibler Information]] (the measure of loss) · [[Likelihood]] (how it is estimated) · [[Multiple Working Hypotheses]] (the philosophy it serves)
+Akaike (1973) showed that the maximised log-likelihood, corrected for the number of parameters, estimates this relative distance; that is [[AIC]]. The framework, after Burnham and Anderson, is to build a set of models before seeing the data ([[Candidate Model Set]]), compute AIC for each, rank them, compute an [[Akaike Weight]] for each, and base inference on the whole set. There is no null hypothesis and no p-value; evidence is relative among the models considered.
 
-## The everyday picture
-Photocopies of a painting. Every copy loses some detail. You can't see the original, but you can still tell which copy lost the least, by how well each one matches the bits of the original you have glimpsed (the data).
-
-## Start from zero
-1. **Truth (full reality) is unknown and infinitely complex.**
-2. **Every model is an approximation.**
-3. **Kullback-Leibler information measures the distance** from truth to a model.
-4. **We can't compute it, because truth is unknown.** But differences in it between models can be estimated from the data.
-5. **Akaike (1973) showed** that the maximised log-likelihood, corrected for the number of parameters, estimates this relative distance. That is AIC.
-6. **Framework, after Burnham and Anderson:** build a set of a priori models, compute AIC for each, rank them, compute weights, and base inference on the whole set.
-7. **No null hypothesis and no p-values.** Evidence is relative among the models considered.
-
-## In the course
-[[Anderson and Burnham 2002]], [[Johnson and Omland 2004]]. Model selection lecture ([[Course Website]]).
-
-## Common confusions
-- **"Information theory here is the same as computer science's information theory."** It borrows Kullback-Leibler information from it, but the use is statistical.
-
-## Explain it back
-- What quantity is being estimated, in relative terms?
-
-*Pass test:* you can outline the information-theoretic workflow.
+It is the philosophy behind [[Multiple Working Hypotheses]] made quantitative ([[Anderson and Burnham 2002]], [[Johnson and Omland 2004]], [[Course Website]]). It borrows Kullback-Leibler information from the information theory of computer science, but its use here is statistical.
 
 ## Connections
 - **Builds on:** [[Kullback-Leibler Information]], [[Likelihood]]

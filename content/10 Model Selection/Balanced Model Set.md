@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "A balanced model set includes every predictor in the same number of models, which is required if summed weights are to be compared between predictors."
 aliases:
   - "Balanced candidate set"
   - "Balanced design of models"
@@ -11,30 +12,16 @@ status: seedling
 
 # Balanced Model Set
 
-**In one line:** a balanced model set includes every predictor in the same number of models, which is required if summed weights are to be compared between predictors.
+A **balanced model set** includes every predictor in the same number of models ([[Candidate Model Set]]). With x1 and x2, the set null, x1, x2 and x1 + x2 is balanced, each predictor appearing in 2 of the 4. The set null, x1, x1 + x2 and x1 + x3 is not: x1 appears in 3 models and x2 and x3 in one each, as the code below counts.
 
-> [!info] Before this, it helps to know
-> [[Candidate Model Set]] (what is balanced) · [[Relative Variable Importance]] (what needs it)
+Balance matters for [[Relative Variable Importance]], the summed weight of the models containing a predictor: in an unbalanced set, x1's summed weight is inflated just by appearing more often. All-subsets sets are balanced automatically ([[All-subsets Selection]]). Hypothesis-driven sets are often unbalanced, which is fine for ranking models but not for summed weights.
 
-## Start from zero
-1. **Example with x1 and x2:** null, x1, x2, x1 + x2. Each predictor appears in 2 of the 4.
-2. **Unbalanced example:** null, x1, x1 + x2, x1 + x3. x1 appears in 3 models, x2 in 1. x1's summed weight is inflated just by appearing more often.
-3. **All-subsets sets are balanced automatically.**
-4. **Hypothesis-driven sets are often unbalanced.** That is fine for ranking models, not for summed weights.
+So balance matters for variable-level summaries, not for ranking models.
 
-## In R
 ```r
 balanced <- list(c(), "x1", "x2", c("x1", "x2")); unbalanced <- list(c(), "x1", c("x1", "x2"), c("x1", "x3"))
 cnt <- function(s) table(unlist(s)); cnt(balanced); cnt(unbalanced)
 ```
-
-## Common confusions
-- **"Balance matters for ranking models."** It matters for variable-level summaries.
-
-## Explain it back
-- Give an unbalanced set of three predictors.
-
-*Pass test:* you can check whether a set is balanced.
 
 ## Connections
 - **Builds on:** [[Candidate Model Set]]

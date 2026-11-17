@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "The global model is the most complex model in the candidate set, containing every predictor and structure that appears in any other model."
 aliases:
   - "Most complex model"
   - "Full model"
@@ -12,31 +13,16 @@ status: seedling
 
 # Global Model
 
-**In one line:** the global model is the most complex model in the candidate set, containing every predictor and structure that appears in any other model.
+The **global model** is the most complex model in the [[Candidate Model Set]], containing every predictor and structure that appears in any other model, so in a nested set every other model is a simplification of it ([[Nested Models]]). It should still be sensible, not every possible interaction.
 
-> [!info] Before this, it helps to know
-> [[Candidate Model Set]] (what it belongs to) · [[Nested Models]] (others are usually nested in it)
+Check its fit first. If the global model fails its diagnostics, every simpler model will too, and AIC comparisons among them are meaningless ([[Model Validation]]). It is also where you estimate the overdispersion factor ĉ for [[QAIC]], and where [[Collinearity]] is most visible. In the code below a Poisson global model of overdispersed bird counts has a Pearson dispersion of 2.1, a warning to fix before comparing models.
 
-## Start from zero
-1. **Every other model is a simplification of it** (in a nested set).
-2. **Check its fit first.** If the global model fails its diagnostics, every simpler model will too, and AIC comparisons are meaningless.
-3. **Estimate overdispersion (ĉ) from it** for QAIC.
-4. **It should still be sensible:** not every possible interaction.
-5. **Collinearity is most visible here.**
+The global model is not the answer; it is the starting point for checks.
 
-## In R
 ```r
 set.seed(9); d <- data.frame(tree = runif(80, 0, 60), shrub = runif(80, 0, 30)); d$birds <- rnbinom(80, mu = exp(2 - 0.02 * d$tree), size = 2)
 g <- glm(birds ~ tree * shrub, family = poisson, data = d); sum(resid(g, "pearson")^2) / df.residual(g)      # check the global model: overdispersed
 ```
-
-## Common confusions
-- **"The global model is the answer."** It is the starting point for checks.
-
-## Explain it back
-- Why validate the global model before comparing models?
-
-*Pass test:* you can say what the global model is used for.
 
 ## Connections
 - **Builds on:** [[Candidate Model Set]], [[Nested Models]]

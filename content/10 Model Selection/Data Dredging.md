@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "Data dredging is searching through many models, variables or tests until something looks significant or well supported, and then reporting it as if it had been the plan all along."
 aliases:
   - "Data snooping"
   - "Fishing"
@@ -15,39 +16,16 @@ status: seedling
 
 # Data Dredging
 
-**In one line:** data dredging is searching through many models, variables or tests until something looks significant or well supported, and then reporting it as if it had been the plan all along.
+Throw darts at a barn and paint targets around wherever they land, and every throw looks like a bullseye while nothing is learned about your aim. **Data dredging** is searching through many models, variables or tests until something looks significant or well supported, then reporting it as if it had been the plan. Each extra comparison is another chance for noise to look like signal ([[Type I Error]], [[Pairwise Comparisons|Multiple Comparisons]]): with 20 independent tests at 0.05, the chance of at least one false positive is 1 − 0.95²⁰ = 64%. In the code below, 3 of 40 pure-noise predictors are "significant", the best with p = 0.015.
 
-> [!info] Before this, it helps to know
-> [[Type I Error]] (what multiplies) · [[Candidate Model Set]] (what should prevent it) · [[Pairwise Comparisons|Multiple Comparisons]] (the same problem in tests)
+Forms include all-subsets fishing ([[All-subsets Selection]]), [[Stepwise Selection]], trying many transformations, choosing the response after seeing results, adding covariates until p < 0.05, and inventing the hypothesis after the result, called HARKing. The reported uncertainty is wrong because it ignores the search, and the results don't replicate on new data.
 
-## The everyday picture
-Throwing darts at a barn and painting targets around wherever they land. Every throw looks like a bullseye. Nothing has been learned about your aim.
+It is the main error Burnham and Anderson warn against in model selection ([[Anderson and Burnham 2002]], [[Johnson and Omland 2004]]). The defence is a small a priori [[Candidate Model Set]], pre-registered hypotheses, honest labelling of exploratory results ([[Post hoc Analysis]]) and validation on new data ([[Cross-validation]]). AIC does not protect against dredging: AIC across 1,000 models dredges as well as p-values do.
 
-## Start from zero
-1. **Each extra comparison is another chance for noise to look like signal.**
-2. **Try enough predictors and some will "work"** by chance. With 20 independent tests at 0.05, the chance of at least one false positive is 64%.
-3. **Forms:** all-subsets fishing, trying many transformations, choosing the response after seeing results, adding covariates until p < 0.05, inventing the hypothesis after the result (HARKing).
-4. **The reported uncertainty is wrong:** it ignores the search.
-5. **Results don't replicate** on new data.
-6. **Burnham and Anderson's term for it in model selection** is the main error they warn against.
-7. **Defence:** a small a priori candidate set, pre-registered hypotheses, honest labelling of exploratory results, and validation on new data.
-
-## In R
 ```r
 set.seed(10); 1 - 0.95^20
 y <- rnorm(50); X <- matrix(rnorm(50 * 40), 50); p <- apply(X, 2, function(x) summary(lm(y ~ x))$coefficients[2, 4]); sum(p < 0.05); round(min(p), 4)      # 40 noise predictors, a few "significant"
 ```
-
-## In the course
-[[Anderson and Burnham 2002]], [[Johnson and Omland 2004]].
-
-## Common confusions
-- **"AIC protects against dredging."** AIC across 1,000 models dredges as well as p-values do.
-
-## Explain it back
-- Why do dredged results fail to replicate?
-
-*Pass test:* you can name three forms of dredging and the defences.
 
 ## Connections
 - **Builds on:** [[Type I Error]], [[Candidate Model Set]]

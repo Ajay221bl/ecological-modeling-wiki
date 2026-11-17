@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "A scoring rule assigns a number to a probabilistic prediction once the outcome is known, rewarding forecasts that put high probability on what happened."
 aliases:
   - "Scoring rule"
   - "Proper scoring rule"
@@ -14,32 +15,16 @@ status: seedling
 
 # Scoring Rules
 
-**In one line:** a scoring rule assigns a number to a probabilistic prediction once the outcome is known, rewarding forecasts that put high probability on what happened.
+A **scoring rule** assigns a number to a probabilistic prediction once the outcome is known, rewarding forecasts that put high probability on what happened ([[Predictive Modeling|Prediction]], [[Probability Distribution]]). The log score, log p(y observed), is the basis of lppd, elpd, WAIC and LOO ([[Log Pointwise Predictive Density]]). The Brier score, (p − y)² for a 0/1 outcome forecast with probability p, is lower when better. The continuous ranked probability score (CRPS) compares the whole predictive distribution with the observed value, rewarding both accuracy and appropriate spread. Squared error scores only a point prediction ([[Mean Square Prediction Error]]).
 
-> [!info] Before this, it helps to know
-> [[Predictive Modeling|Prediction]] (what is scored) · [[Probability Distribution]] (the forecast) · [[Out-of-sample Prediction]] (the usual setting)
+A rule is proper if forecasters score best on average by reporting their true beliefs; log, Brier and CRPS are proper, which stops a model gaming the score by being over- or under-confident. The log score punishes confident mistakes hard: p = 0.01 for something that happens costs log(0.01) = −4.6. In the code below forecasts of 0.9 and 0.6 for events that happened and 0.2 for one that didn't get log scores of −0.11, −0.51 and −0.22 and Brier scores of 0.01, 0.16 and 0.04.
 
-## Start from zero
-1. **Log score:** log p(y_observed). The basis of lppd, elpd, WAIC and LOO.
-2. **Brier score:** (p − y)² for a 0/1 outcome forecast with probability p. Lower is better.
-3. **CRPS (continuous ranked probability score):** compares the whole predictive distribution with the observed value. Rewards both accuracy and appropriate spread.
-4. **Squared error** scores only a point prediction.
-5. **A rule is proper** if forecasters score best on average by reporting their true beliefs. Log, Brier and CRPS are proper. This stops a model from gaming the score by being over- or under-confident.
-6. **The log score punishes confident mistakes hard:** p = 0.01 for something that happens costs log(0.01) = −4.6.
+They are used to judge [[Out-of-sample Prediction]], usually within [[Cross-validation]]. Percent correct is not a good score: it ignores how confident the predictions were and isn't proper.
 
-## In R
 ```r
 p <- c(0.9, 0.6, 0.2); y <- c(1, 1, 0)
 rbind(log_score = round(log(ifelse(y == 1, p, 1 - p)), 2), brier = round((p - y)^2, 2))
 ```
-
-## Common confusions
-- **"Accuracy (percent correct) is a good score."** It ignores how confident the predictions were and isn't proper.
-
-## Explain it back
-- Why are proper scores important?
-
-*Pass test:* you can compute log and Brier scores.
 
 ## Connections
 - **Builds on:** [[Predictive Modeling|Prediction]], [[Probability Distribution]]

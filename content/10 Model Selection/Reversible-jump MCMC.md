@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "Reversible-jump MCMC is a sampler that moves not only within a model's parameter space but between models with different numbers of parameters, so the time it spends in each model estimates that model's posterior probability."
 aliases:
   - "RJMCMC"
   - "Reversible jump"
@@ -12,29 +13,11 @@ status: seedling
 
 # Reversible-jump MCMC
 
-**In one line:** reversible-jump MCMC is a sampler that moves not only within a model's parameter space but between models with different numbers of parameters, so the time it spends in each model estimates that model's posterior probability.
+**Reversible-jump MCMC** (RJMCMC) is a sampler that moves not only within a model's parameter space but between models with different numbers of parameters ([[MCMC]]). The model index becomes an unknown sampled along with the parameters, and moves can add or remove parameters, "jumping" between dimensions. A special acceptance rule, built on the [[Metropolis-Hastings Algorithm]], keeps the chain correct despite the change in dimension.
 
-> [!info] Before this, it helps to know
-> [[MCMC]] (the base method) · [[Model Probabilities]] (what it estimates) · [[Metropolis-Hastings Algorithm]] (its acceptance rule)
+The fraction of iterations the chain spends in model k estimates its posterior probability P(Mₖ | y) ([[Model Probabilities]]), so it delivers [[Bayesian Model Averaging]] directly. It is powerful but hard to tune: proposals between models must be well designed or the chain rarely jumps.
 
-## Start from zero
-1. **The model index becomes an unknown,** sampled along with parameters.
-2. **Moves can add or remove parameters** ("jumps" between dimensions).
-3. **A special acceptance rule** keeps the chain correct despite the change in dimension.
-4. **Fraction of iterations in model k ≈ P(Mₖ | y).**
-5. **Powerful but hard to tune.** Proposals between models must be well designed or the chain rarely jumps.
-6. **Discussed by Hobbs and Hooten;** rarely implemented by hand in applied ecology. Indicator variables are an easier route.
-
-## In the course
-[[Hobbs and Hooten 2015 Ch9]].
-
-## Common confusions
-- **"RJMCMC is a different kind of model."** It is a sampling algorithm.
-
-## Explain it back
-- What does the share of time in each model estimate?
-
-*Pass test:* you can say what problem RJMCMC solves.
+Hobbs and Hooten discuss it, but it is rarely implemented by hand in applied ecology, and [[Indicator Variable Selection]] is an easier route ([[Hobbs and Hooten 2015 Ch9]]). RJMCMC is not a different kind of model; it is a sampling algorithm.
 
 ## Connections
 - **Builds on:** [[MCMC]], [[Model Probabilities]]
