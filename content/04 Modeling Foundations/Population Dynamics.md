@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "Population dynamics is the study of how and why population size changes over time, through births, deaths, immigration and emigration."
 aliases:
   - "BIDE model"
   - "Births, deaths, immigration, emigration"
@@ -11,30 +12,12 @@ status: seedling
 
 # Population Dynamics
 
-**In one line:** population dynamics is the study of how and why population size changes over time, through births, deaths, immigration and emigration.
+A bank balance changes only through deposits and withdrawals. A population is the same: its size can change in only four ways. The two deposits are births and immigrants (animals arriving from elsewhere); the two withdrawals are deaths and emigrants (animals leaving). **Population dynamics** is the study of how and why the size of a [[Biological Population]] changes over time through those four processes. A bank statement lists every transaction, but wildlife transactions are hidden and must be estimated, which is why so much of the course is about estimating them.
 
-> [!info] Before this, it helps to know
-> [[Biological Population]] (a group of one species in a place) · [[Rate of Change]] (change per unit time)
+Written as an equation, N next year = N + B − D + I − E, where N is this year's number, B births, D deaths, I immigrants and E emigrants. This is called the BIDE equation. With 100 deer this year, 30 births, 20 deaths, 5 arrivals and 10 departures, next year holds 100 + 30 − 20 + 5 − 10 = 105 deer. The ratio 105 / 100 = 1.05 is the [[Population Growth Rate]] λ, and if it stayed at 1.05 the herd would reach about 163 in ten years ([[Rate of Change]]). The BIDE equation is bookkeeping, so it is always true: there are no other ways in or out. The science lies in what drives each term, such as weather, density, harvest and habitat.
 
-## The everyday picture
-A bank account. The balance changes only through deposits and withdrawals. For a population the two deposits are births and immigrants, and the two withdrawals are deaths and emigrants. Nothing else can change the count.
+Managers want to know not just how many animals there are but why the number is changing and which lever to pull, and splitting change into its four components shows where to look. Each component is a parameter that some chapter of Powell and Gale teaches you to estimate: [[Survival Rate]], [[Fecundity]], and movement ([[Powell and Gale 2015 Ch1]]). Two confusions are common. A stable count does not mean nothing is happening, because high births can be offsetting high deaths, or immigration can be hiding a local decline. And survival alone cannot tell you the trend; you need all four components. Whether immigration and emigration can be ignored is the question of [[Open vs Closed Populations]].
 
-*Where the picture stops working:* a bank statement lists every transaction. Wildlife transactions are hidden and must be estimated.
-
-## A tiny example
-100 deer this year. During the year: 30 births, 20 deaths, 5 arrive, 10 leave.
-- Next year = 100 + 30 − 20 + 5 − 10 = **105**.
-- Growth rate λ = 105 / 100 = **1.05**.
-
-## Start from zero
-1. **Start with this year's number,** Nₜ.
-2. **Add births (B) and immigrants (I).**
-3. **Subtract deaths (D) and emigrants (E).**
-4. **N next year = N + B − D + I − E.** The "BIDE" equation.
-5. **It is bookkeeping, so it is always true.** *Why:* these are the only four ways in or out.
-6. **The science is in what drives each term.** Weather, density, harvest, habitat.
-
-## See it
 ```mermaid
 flowchart LR
   B[Births] --> N[Population N]
@@ -44,10 +27,6 @@ flowchart LR
 ```
 *What to look at:* two arrows in, two arrows out.
 
-## Why it is this way
-Managers want to know not just how many animals there are but why the number is changing and which lever to pull. Breaking change into its four components shows where to look. Each component is a parameter that some chapter of Powell and Gale teaches you to estimate.
-
-## In R
 ```r
 N <- 100; B <- 30; D <- 20; I <- 5; E <- 10
 N_next <- N + B - D + I - E; N_next       # 105
@@ -55,19 +34,6 @@ N_next / N                                # lambda = 1.05
 round(100 * 1.05^(0:10))                  # ten years at that rate
 ```
 Constant λ of 1.05 turns 100 deer into 163 in ten years.
-
-## In the course
-The framework behind [[Powell and Gale 2015 Ch1]] and the later estimation chapters.
-
-## Common confusions
-- **"A stable count means nothing is happening."** High births can be offsetting high deaths.
-- **"Survival alone tells the trend."** You need all four components.
-
-## Explain it back
-- What are the four processes that change population size?
-- Why is the BIDE equation always true?
-
-*Pass test:* you can write the BIDE equation and compute next year's population.
 
 ## Connections
 - **Builds on:** [[Biological Population]], [[Rate of Change]]

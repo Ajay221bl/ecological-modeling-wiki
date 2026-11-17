@@ -13,74 +13,74 @@ status: seedling
 Unit 1 (Tue Aug 18): what a model is, the kinds of models ecologists build, and why we model at all. Readings: Powell and Gale 2015 Ch1 and Ch2, Tredennick et al. 2021.
 
 ## 1. What a model is
-- [[Model]]: a model is a deliberately simplified version of the real world, built to answer a particular question. "All models are wrong, and some are useful" (Box and...
-- [[Real World and Model World]]: you build a simplified **Model World** from the messy **Real World**, turn it into a **Model**, feed the model **Data** from the Real World, and then reason...
-- [[Conceptual Model]]: a conceptual model is your Model World put into words or a sketch: the species in the middle, the things that affect it around it, and arrows for how they...
-- [[Analytical Model]]: an analytical (or numerical) model is a mathematical equation that gives a number as its answer, such as Weight = 100 + 85 × age for a young elephant.
-- [[Statistical Model]]: a statistical model learns unknown numbers (parameters) from data. It does this by pairing a rule for the average with a description of how real data...
-- [[Simulation Model]]: a simulation model runs a set of rules forward on a computer, step by step, to see what happens. It's used when a system has too many interacting parts to...
-- [[Theoretical Model]]: a theoretical model is a small set of equations about how nature works, studied with maths to find out what follows from them, usually without any data.
-- [[Empirical Model]]: an empirical model describes a relationship found in data, such as a straight line through points, and uses probability to say how sure we are about it.
-- [[Models as Abstractions]]: a model is an abstraction, a deliberately incomplete picture that keeps what matters for one question and drops the rest.
-- [[Individual-based Model]]: an individual-based model simulates each animal or plant separately, following simple rules, and lets population patterns emerge from their combined behaviour.
-- [[Mechanistic Model]]: a mechanistic model is built from the causes believed to produce the pattern, so its parameters stand for real biological processes.
-- [[Phenomenological Model]]: a phenomenological model describes the pattern in the data without claiming to represent the processes behind it.
-- [[Model Complexity]]: model complexity is how much freedom a model has to bend to the data, roughly the number of parameters it estimates.
+- [[Model]]: A model is a deliberately simplified version of the real world, built to answer a particular question. \"All models are wrong, and some are useful\" (Box...
+- [[Real World and Model World]]: You build a simplified **Model World** from the messy **Real World**, turn it into a **Model**, feed the model **Data** from the Real World, and then reason...
+- [[Conceptual Model]]: A conceptual model is your Model World put into words or a sketch: the species in the middle, the things that affect it around it, and arrows for how they...
+- [[Analytical Model]]: An analytical (or numerical) model is a mathematical equation that gives a number as its answer, such as Weight = 100 + 85 × age for a young elephant.
+- [[Statistical Model]]: A statistical model learns unknown numbers (parameters) from data. It does this by pairing a rule for the average with a description of how real data...
+- [[Simulation Model]]: A simulation model runs a set of rules forward on a computer, step by step, to see what happens. It's used when a system has too many interacting parts to...
+- [[Theoretical Model]]: A theoretical model is a small set of equations about how nature works, studied with maths to find out what follows from them, usually without any data.
+- [[Empirical Model]]: An empirical model describes a relationship found in data, such as a straight line through points, and uses probability to say how sure we are about it.
+- [[Models as Abstractions]]: A model is an abstraction, a deliberately incomplete picture that keeps what matters for one question and drops the rest.
+- [[Individual-based Model]]: An individual-based model simulates each animal or plant separately, following simple rules, and lets population patterns emerge from their combined behaviour.
+- [[Mechanistic Model]]: A mechanistic model is built from the causes believed to produce the pattern, so its parameters stand for real biological processes.
+- [[Phenomenological Model]]: A phenomenological model describes the pattern in the data without claiming to represent the processes behind it.
+- [[Model Complexity]]: Model complexity is how much freedom a model has to bend to the data, roughly the number of parameters it estimates.
 
 ## 2. Why we model
-- [[Exploratory Modeling]]: exploratory modeling searches data for patterns in order to come up with hypotheses. Its results are ideas to test later, not findings.
-- [[Inferential Modeling]]: inferential modeling weighs the evidence for a few hypotheses that were stated before looking at the data. It cares most about the size and certainty of the...
-- [[Predictive Modeling]]: predictive modeling aims to forecast new observations as accurately as possible, and it must be judged on data the model has never seen.
+- [[Exploratory Modeling]]: Exploratory modeling searches data for patterns in order to come up with hypotheses. Its results are ideas to test later, not findings.
+- [[Inferential Modeling]]: Inferential modeling weighs the evidence for a few hypotheses that were stated before looking at the data. It cares most about the size and certainty of the...
+- [[Predictive Modeling]]: Predictive modeling aims to forecast new observations as accurately as possible, and it must be judged on data the model has never seen.
 - [[Modeling Process]]: Starfield's seven steps for building a model: define the problem, identify the variables, create the model, solve it, interpret it, run a sensitivity...
-- [[Induction]]: induction reasons from particular cases to a general rule, such as from a sample to a whole population. Its conclusions go beyond the evidence, so they...
-- [[Deduction]]: deduction reasons from a general rule to a particular case. If the starting statements are true, the conclusion must be true.
-- [[Hypothesis]]: a hypothesis is a proposed explanation for something you noticed, stated clearly enough that it makes a prediction your data could prove wrong.
-- [[Parsimony]]: parsimony means choosing the simplest model that still captures the important pattern. Too simple and it misses real patterns (underfitting); too complex...
-- [[Overfitting]]: overfitting is when a model is so flexible that it fits the random noise in your data as well as the real pattern, so it looks great on those data and...
-- [[Underfitting]]: underfitting is when a model is too rigid to capture a real pattern, so its answers are systematically off (biased).
-- [[Bias-Variance Trade-off]]: adding parameters to a model reduces its bias but makes each estimate wobblier (more variance); removing them does the reverse. The best model balances the...
-- [[Sensitivity Analysis]]: a sensitivity analysis nudges each input of a model a little and measures how much the answer changes, which shows which inputs matter most.
-- [[Forecast]]: a forecast is a prediction about the future that comes with a statement of how uncertain it is.
-- [[Scientific Method]]: the scientific method is a loop: observe, propose an explanation, work out what it predicts, test the prediction against new data, and revise.
-- [[Hypothetico-deductive Method]]: the hypothetico-deductive method tests an idea by deducing a consequence that must hold if the idea is true and then trying to show that the consequence fails.
-- [[Line of Inference]]: the line of inference is the chain of steps from the animals you measured to the population you want to talk about, and a conclusion is only as strong as...
-- [[Parameter Estimation]]: parameter estimation is using data to work out plausible values for the unknown numbers in a model.
-- [[Bracket Notation]]: bracket notation writes a probability distribution as square brackets, so [y | θ] reads "the distribution of y given θ".
-- [[Adaptive Resource Management]]: adaptive resource management treats each management action as an experiment, so that monitoring the result improves the model used for the next decision.
-- [[Management Cycle]]: the management cycle is the repeating sequence of setting objectives, acting, monitoring and evaluating that wildlife management follows.
+- [[Induction]]: Induction reasons from particular cases to a general rule, such as from a sample to a whole population. Its conclusions go beyond the evidence, so they...
+- [[Deduction]]: Deduction reasons from a general rule to a particular case. If the starting statements are true, the conclusion must be true.
+- [[Hypothesis]]: A hypothesis is a proposed explanation for something you noticed, stated clearly enough that it makes a prediction your data could prove wrong.
+- [[Parsimony]]: Parsimony means choosing the simplest model that still captures the important pattern. Too simple and it misses real patterns (underfitting); too complex...
+- [[Overfitting]]: Overfitting is when a model is so flexible that it fits the random noise in your data as well as the real pattern, so it looks great on those data and...
+- [[Underfitting]]: Underfitting is when a model is too rigid to capture a real pattern, so its answers are systematically off (biased).
+- [[Bias-Variance Trade-off]]: Adding parameters to a model reduces its bias but makes each estimate wobblier (more variance); removing them does the reverse. The best model balances the...
+- [[Sensitivity Analysis]]: A sensitivity analysis nudges each input of a model a little and measures how much the answer changes, which shows which inputs matter most.
+- [[Forecast]]: A forecast is a prediction about the future that comes with a statement of how uncertain it is.
+- [[Scientific Method]]: The scientific method is a loop: observe, propose an explanation, work out what it predicts, test the prediction against new data, and revise.
+- [[Hypothetico-deductive Method]]: The hypothetico-deductive method tests an idea by deducing a consequence that must hold if the idea is true and then trying to show that the consequence fails.
+- [[Line of Inference]]: The line of inference is the chain of steps from the animals you measured to the population you want to talk about, and a conclusion is only as strong as...
+- [[Parameter Estimation]]: Parameter estimation is using data to work out plausible values for the unknown numbers in a model.
+- [[Bracket Notation]]: Bracket notation writes a probability distribution as square brackets, so [y | θ] reads \"the distribution of y given θ\".
+- [[Adaptive Resource Management]]: Adaptive resource management treats each management action as an experiment, so that monitoring the result improves the model used for the next decision.
+- [[Management Cycle]]: The management cycle is the repeating sequence of setting objectives, acting, monitoring and evaluating that wildlife management follows.
 
 ## 3. Where data come from
-- [[Biological Population]]: a biological population is a group of organisms of one species living in a certain place at a certain time, such as all the turtles in one pond this summer.
-- [[Statistical Population]]: the statistical population is the set of units your sampling method could actually have measured. Your conclusions apply to it, and only to it.
-- [[Sampling Unit]]: a sampling unit is the smallest independent "piece" of time and space you sample, such as one plot, one pond or one transect in one season. Your real sample...
-- [[Representative Sample]]: a sample is representative when it looks like the population it came from in the ways that matter, and choosing the sample at random is the main way to make...
-- [[Sampling Variation]]: sampling variation is the difference in results that comes purely from *which* units happened to be in your sample.
-- [[Bias]]: bias is how far an estimator's answers land from the truth *on average*: a systematic miss in one direction.
-- [[Precision]]: precision is how close repeated estimates land to each other. A precise estimate would come out nearly the same if you repeated the study.
-- [[Accuracy]]: accuracy is a loose word for "close to the truth". Some authors mean unbiased; others mean unbiased *and* precise. Powell and Gale suggest saying which you...
-- [[Binomial Sampling]]: binomial sampling is any study where each of n separate units has just two possible outcomes (alive or dead, present or absent, tag kept or lost), each with...
-- [[Deterministic Component]]: the deterministic component of a model is the rule that gives the expected (average) value for given conditions, written μ = g(θ, x). Same inputs, same...
-- [[Stochastic Component]]: the stochastic component of a model is the probability distribution describing how real observations scatter around the expected value, written y ~...
-- [[Process Variation]]: process variation is real up-and-down change in nature that your model doesn't explain, such as good and bad years for a bird population.
-- [[Observation Error]]: observation error is the extra noise, and sometimes bias, added by how you measure, such as birds that are present but missed in a count.
-- [[Individual Variation]]: individual variation is the real difference between individuals in traits or fates, even under identical conditions.
-- [[Study Population]]: the study population is the set of units that your sampling methods could actually have selected.
-- [[Random Sampling]]: random sampling means choosing units by chance so that every unit in the study population has a known probability of being picked.
-- [[Sampling Effort]]: sampling effort is how much work went into collecting the data, such as hours searched, traps set or area covered.
-- [[Unbiased Estimator]]: an unbiased estimator is a recipe whose answers, averaged over many repeated samples, land exactly on the true value.
-- [[Population Dynamics]]: population dynamics is the study of how and why population size changes over time, through births, deaths, immigration and emigration.
-- [[Population Growth Rate]]: the population growth rate λ is next year's population size divided by this year's, so it says by what factor the population multiplies each year.
-- [[Survival Rate]]: a survival rate is the probability that an individual alive at the start of a period is still alive at its end.
+- [[Biological Population]]: A biological population is a group of organisms of one species living in a certain place at a certain time, such as all the turtles in one pond this summer.
+- [[Statistical Population]]: The statistical population is the set of units your sampling method could actually have measured. Your conclusions apply to it, and only to it.
+- [[Sampling Unit]]: A sampling unit is the smallest independent \"piece\" of time and space you sample, such as one plot, one pond or one transect in one season. Your real...
+- [[Representative Sample]]: A sample is representative when it looks like the population it came from in the ways that matter, and choosing the sample at random is the main way to make...
+- [[Sampling Variation]]: Sampling variation is the difference in results that comes purely from *which* units happened to be in your sample.
+- [[Bias]]: Bias is how far an estimator's answers land from the truth *on average*: a systematic miss in one direction.
+- [[Precision]]: Precision is how close repeated estimates land to each other. A precise estimate would come out nearly the same if you repeated the study.
+- [[Accuracy]]: Accuracy is a loose word for \"close to the truth\". Some authors mean unbiased; others mean unbiased *and* precise. Powell and Gale suggest saying which...
+- [[Binomial Sampling]]: Binomial sampling is any study where each of n separate units has just two possible outcomes (alive or dead, present or absent, tag kept or lost), each with...
+- [[Deterministic Component]]: The deterministic component of a model is the rule that gives the expected (average) value for given conditions, written μ = g(θ, x). Same inputs, same...
+- [[Stochastic Component]]: The stochastic component of a model is the probability distribution describing how real observations scatter around the expected value, written y ~...
+- [[Process Variation]]: Process variation is real up-and-down change in nature that your model doesn't explain, such as good and bad years for a bird population.
+- [[Observation Error]]: Observation error is the extra noise, and sometimes bias, added by how you measure, such as birds that are present but missed in a count.
+- [[Individual Variation]]: Individual variation is the real difference between individuals in traits or fates, even under identical conditions.
+- [[Study Population]]: The study population is the set of units that your sampling methods could actually have selected.
+- [[Random Sampling]]: Random sampling means choosing units by chance so that every unit in the study population has a known probability of being picked.
+- [[Sampling Effort]]: Sampling effort is how much work went into collecting the data, such as hours searched, traps set or area covered.
+- [[Unbiased Estimator]]: An unbiased estimator is a recipe whose answers, averaged over many repeated samples, land exactly on the true value.
+- [[Population Dynamics]]: Population dynamics is the study of how and why population size changes over time, through births, deaths, immigration and emigration.
+- [[Population Growth Rate]]: The population growth rate λ is next year's population size divided by this year's, so it says by what factor the population multiplies each year.
+- [[Survival Rate]]: A survival rate is the probability that an individual alive at the start of a period is still alive at its end.
 
 ## 4. Designing a study
-- [[Study Design]]: study design is the plan, made before collecting data, for what to measure, where, when and how often, so the data can answer the question.
-- [[Observational Study]]: an observational study measures things as they are, without the researcher deciding who gets which condition.
-- [[Experimental Study]]: an experimental study is one where the researcher assigns the conditions, ideally at random, and then measures what follows.
-- [[Replication]]: replication means applying each condition to several independent units, so you can tell a real effect from the natural differences between units.
-- [[Randomization]]: randomization means letting chance decide which units receive which treatment.
-- [[Treatment]]: a treatment is the condition a researcher deliberately applies to units in order to see its effect.
-- [[Control Group]]: a control group is the set of units that do not receive the treatment but are otherwise handled the same way, giving the baseline for comparison.
-- [[Confounding Variable]]: a confounding variable is one that influences both the explanatory variable and the response, creating an association between them that isn't cause and effect.
+- [[Study Design]]: Study design is the plan, made before collecting data, for what to measure, where, when and how often, so the data can answer the question.
+- [[Observational Study]]: An observational study measures things as they are, without the researcher deciding who gets which condition.
+- [[Experimental Study]]: An experimental study is one where the researcher assigns the conditions, ideally at random, and then measures what follows.
+- [[Replication]]: Replication means applying each condition to several independent units, so you can tell a real effect from the natural differences between units.
+- [[Randomization]]: Randomization means letting chance decide which units receive which treatment.
+- [[Treatment]]: A treatment is the condition a researcher deliberately applies to units in order to see its effect.
+- [[Control Group]]: A control group is the set of units that do not receive the treatment but are otherwise handled the same way, giving the baseline for comparison.
+- [[Confounding Variable]]: A confounding variable is one that influences both the explanatory variable and the response, creating an association between them that isn't cause and effect.
 
 ## Related molecular notes
 - [[Theoretical vs Empirical Modeling]]: A **theoretical** model starts from ideas about how nature works and asks, with maths, what must follow. An **empirical** model starts from data and...

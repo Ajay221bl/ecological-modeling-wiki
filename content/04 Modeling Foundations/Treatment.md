@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "A treatment is the condition a researcher deliberately applies to units in order to see its effect."
 aliases:
   - "Experimental treatment"
   - "Treatment and Control"
@@ -12,31 +13,12 @@ status: seedling
 
 # Treatment
 
-**In one line:** a treatment is the condition a researcher deliberately applies to units in order to see its effect.
+When you try a new cake recipe with less sugar, the change you made is the treatment, and everything else stays as in the usual recipe, so any difference in the cake can be blamed on the sugar. In research, a **treatment** is a condition a researcher deliberately applies to units in order to see its effect, as in an [[Experimental Study]]. The thing being manipulated is a *factor*, and its different versions are its *levels*: present or absent, or several doses. "Treatment" is not a medical word here; fire, grazing, watering and removal are all treatments. In a model, the treatment enters as an [[Explanatory Variable]], usually a categorical one.
 
-> [!info] Before this, it helps to know
-> [[Experimental Study]] (assigning conditions) · [[Explanatory Variable]] (what might drive the response)
+The thistle experiment from Homework 4 is a good example. Half the subplots are sprayed with insecticide and half are not, so the factor "insecticide" has two levels, sprayed and unsprayed. A second factor, distance from tall thistle, has five levels (0, 7.5, 15, 30 and 60 m). Together they make 2 × 5 = 10 treatment combinations, which R can list with `expand.grid()` ([[expand.grid()]]). The effect of a treatment is the difference in response between its levels, because that difference is what the manipulation, and nothing else, changed; with two crossed factors the analysis is a [[Two-way ANOVA]], and R codes the levels as 0/1 columns ([[Dummy Coding]]). The experiment tests the [[Enemy Release Hypothesis]].
 
-## The everyday picture
-Trying a new cake recipe. The change you make, less sugar, is the treatment. Everything else stays as in the usual recipe, so any difference in the cake can be blamed on the sugar.
+Two practical points. First, applying a treatment often changes other things too: spraying also wets and disturbs a plot, and in the field you cannot hold everything constant the way you can in a kitchen. That is why controls get a sham treatment such as plain water ([[Control Group]]). Second, a treatment is applied to units, not to every measurement: if a subplot is sprayed once and measured twenty times, the twenty measurements share one application, and the model must be matched to the level at which the treatment was applied. Naming the treatment precisely, including how and to which unit it was applied, fixes what the experiment can say.
 
-*Where the picture stops working:* you can hold a kitchen constant. In the field, applying a treatment often changes other things too, such as trampling the plot.
-
-## A tiny example
-Thistle seedlings: half the subplots are sprayed with insecticide, half are not.
-- Treatment factor: insecticide, with two levels (sprayed, unsprayed).
-- A second factor: distance from tall thistle, with five levels (0, 7.5, 15, 30, 60 m).
-- Combined: 2 × 5 = **10 treatment combinations**.
-
-## Start from zero
-1. **Decide what to manipulate.** The factor.
-2. **Decide its levels.** Present or absent, or several doses.
-3. **Apply each level to several units, assigned randomly.**
-4. **The treatment enters the model as an explanatory variable.**
-5. **Its effect is the difference in response between levels.** *Why:* that difference is what the manipulation, and nothing else, changed.
-6. **Watch for side effects of applying it.** Spraying also wets and disturbs the plot, which is why controls get sprayed with plain water.
-
-## See it
 ```mermaid
 flowchart LR
   F[Factor: insecticide] --> L1[Level: sprayed]
@@ -46,33 +28,17 @@ flowchart LR
 ```
 *What to look at:* a factor has levels, and the effect is a comparison between them.
 
-## Why it is this way
-Naming the treatment precisely, including how and to what unit it was applied, fixes what the experiment can say. Many analysis errors come from mismatching the model to the level at which the treatment was applied.
-
-## In R
 ```r
 design <- expand.grid(spray = c("no", "yes"), distance = c(0, 7.5, 15, 30, 60))
 nrow(design); head(design, 4)          # 10 combinations
 ```
 `expand.grid()` lists every combination of factor levels ([[expand.grid()]]).
 
-## In the course
-The thistle experiment in Homework 4 tests the [[Enemy Release Hypothesis]] ([[Course Website]]).
-
-## Common confusions
-- **"Treatment means something medical."** It is any applied condition: fire, grazing, water, removal.
-- **"The treatment was applied to every measurement."** It was applied to units. Measurements inside a unit share it.
-
-## Explain it back
-- What are the factor and levels in a burn experiment with low, medium and high intensity?
-- Why might applying a treatment have unintended side effects?
-
-*Pass test:* you can name the factors, levels and combinations of a described experiment.
-
 ## Connections
 - **Builds on:** [[Experimental Study]]
 - **Leads to:** [[Control Group]], [[Two-way ANOVA]], [[Dummy Coding]]
-- **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]], molecular note [[Treatment|Treatment and Control]]
+- **See also:** [[Treatment|Treatment and Control]]
+- **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]
 
 ## Flashcards
 

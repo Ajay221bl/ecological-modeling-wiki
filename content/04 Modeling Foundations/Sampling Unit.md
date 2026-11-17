@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "A sampling unit is the smallest independent \"piece\" of time and space you sample, such as one plot, one pond or one transect in one season. Your real sample size is the number of these pieces, not the number of measurements."
 aliases:
   - "Sampling units"
   - "Experimental unit"
@@ -12,42 +13,12 @@ status: seedling
 
 # Sampling Unit
 
-**In one line:** a sampling unit is the smallest independent "piece" of time and space you sample, such as one plot, one pond or one transect in one season. Your real sample size is the number of these pieces, not the number of measurements.
+You test whether a fertiliser makes tomatoes bigger using two greenhouses, one fertilised and one not, and weigh 100 tomatoes from each. That feels like 200 data points, but you have really compared one greenhouse with one other greenhouse. If the fertilised one was also sunnier or better watered, every one of its 100 tomatoes shares that luck. The **sampling unit** here is the greenhouse: the smallest piece of time and space that could be chosen, and given its condition, independently of the others. The tomatoes are *subsamples*, repeated measurements inside a unit. Powell and Gale define the statistical population as the set of all such units ([[Powell and Gale 2015 Ch2]]), and your real sample size n is the number of units, not the number of measurements.
 
-> [!info] Before this, it helps to know
-> [[Variable and Observation]] · [[Population and Sample]]
+A field example. Three plots are burned and three left unburned, and five quadrats are measured in each plot, giving 6 × 5 = 30 measurements. Fire was applied to whole plots, so for the burn effect the sampling units are the 6 plots. A model that treats the 30 quadrats as independent claims 30 − 2 = 28 *degrees of freedom* (roughly, the independent pieces of information left after estimating the model's parameters) for judging the effect; the honest number, from 6 plots, is 6 − 2 = 4. It claims seven times as many independent pieces of evidence as there are, so the [[Standard Error]] comes out too small and the effect looks more certain than it is. That mistake is [[Pseudoreplication]].
 
-## The everyday picture
-You want to know whether a new fertiliser makes tomatoes bigger. You have two greenhouses: one gets the fertiliser, one doesn't. You weigh 100 tomatoes from each. That feels like 200 data points. But really you've compared **one greenhouse with one other greenhouse**. If the fertilised greenhouse also happened to be sunnier, warmer or better watered, every one of its 100 tomatoes shares that luck. The tomatoes aren't 200 separate tests; the greenhouses are 2.
+The reason is that measurements within a unit share its conditions, the same soil, weather, fire and history, so they are more alike than measurements from different units and do not each bring fresh evidence ([[Independence of Observations]]). Extra quadrats are not useless: they pin down each plot's value more precisely. But they do not increase n. There are two fixes: average the measurements within each unit and analyse one value per unit, or use a mixed model with a random effect for the unit, which tells the model which measurements belong together ([[Random Intercept]], [[Harrison et al. 2018]]). The unit is whatever the treatment or condition was applied to independently, not whatever you happened to measure, and an observation (a row in your data) is not the same as a unit, since several rows can share one ([[Variable and Observation]]).
 
-The greenhouse is the sampling unit. The tomatoes are repeated measurements inside it.
-
-*Where the picture stops working:* the 100 tomatoes aren't useless. They tell you the greenhouse's average very precisely. They just can't tell you about greenhouses in general.
-
-## Words you'll need
-- **Sampling unit:** the smallest piece of time and space that can be chosen and measured independently of the others.
-- **Subsample (repeated measurement):** a measurement taken inside a sampling unit, such as a quadrat inside a plot.
-- **Independent:** not sharing conditions that make values alike ([[Independence of Observations]]).
-- **Sample size (n):** the number of sampling units.
-- **Degrees of freedom:** roughly, how many independent pieces of information are left after estimating the model's parameters.
-- **Pseudoreplication:** treating subsamples as if they were independent units ([[Pseudoreplication]]).
-- **Random effect:** a model term that tells the model which measurements belong to the same unit ([[Random Intercept]]).
-
-## A tiny example
-Three plots were burned and three left unburned, with five quadrats measured in each plot.
-- **Measurements:** 6 plots × 5 quadrats = **30**.
-- **Sampling units for the burn effect:** **6 plots** (3 per treatment). Fire was applied to whole plots, so plots are what got the treatment independently.
-- **Counting wrongly:** a model treating the 30 quadrats as independent would claim 30 − 2 = **28** degrees of freedom for judging the effect. The honest number, based on 6 plots, is 6 − 2 = **4**. The wrong count makes the evidence look about seven times stronger than it is.
-
-## Start from zero
-1. **To sample nature, you divide it into pieces.** The prairie becomes 1-ha plots, the river becomes 100-m reaches, the season becomes weeks.
-2. **Each piece that could be chosen and measured independently is a sampling unit.** Powell and Gale define the statistical population as all such units ([[Powell and Gale 2015 Ch2]], p. 14).
-3. **You may take several measurements per unit.** Five quadrats per plot, three visits per point, ten chicks per nest box.
-4. **Those repeated measurements are not new units.** *Why:* quadrats in the same plot share its soil, weather, fire and history, so they're more alike than quadrats in different plots. They don't each bring fresh, independent evidence.
-5. **Your real sample size is the number of units.** Treating each measurement as independent inflates the sample size and makes the [[Standard Error]] too small, so effects look more certain than they are. That's [[Pseudoreplication]].
-6. **Two fixes.** Average the measurements within each unit and analyse one value per unit, or use a mixed model with a random effect for the unit, which tells the model which measurements belong together ([[Random Intercept]]).
-
-## See it
 ```mermaid
 flowchart TB
   P["Study area"] --> U1["Plot 1 (sampling unit)"]
@@ -59,10 +30,6 @@ flowchart TB
 ```
 *What to look at:* 9 measurements but only 3 sampling units. To compare plots, n = 3.
 
-## Why it is this way
-Every inference depends on how many independent pieces of evidence you have, and evidence is only independent if each piece could have come out differently on its own. Things that share conditions move together, so they count less. Getting the unit wrong is the classic way to make a weak result look strong. That's the reason behind the course's whole unit on mixed models ([[MOC 14 - Mixed Models|MOC - Mixed Models]]).
-
-## In R
 ```r
 set.seed(5)
 # 6 plots, 5 quadrats each
@@ -77,24 +44,10 @@ summary(lm(cover ~ burned, data = plot_means))
 # lme4::lmer(cover ~ burned + (1 | plot), data = d)
 ```
 
-## In the course
-Introduced with Powell and Gale's definition of the statistical population ([[Powell and Gale 2015 Ch2]], p. 14). It's central to the mixed models readings, where Harrison et al. 2018 discuss grouping and pseudoreplication ([[Harrison et al. 2018]]).
-
-## Common confusions
-- **Sampling unit vs observation.** An observation is a row in your data. Several rows can share one sampling unit ([[Variable and Observation]]).
-- **"More quadrats per plot increases n."** It makes each plot's value more precise, but n (the number of plots) stays the same.
-- **"The unit is whatever I measured."** The unit is whatever the treatment or condition was applied to independently. For a burn treatment, that's the plot.
-
-## Explain it back
-- Use two greenhouses and 200 tomatoes to explain what a sampling unit is.
-- 6 plots with 5 quadrats each: what is n for the burn effect, and why?
-- Why does counting quadrats as independent make the evidence look stronger than it is?
-
-*Pass test:* for any study, you can say what the sampling unit is and how many there are.
-
 ## Connections
 - **Builds on:** [[Variable and Observation]], [[Population and Sample]]
 - **Leads to:** [[Pseudoreplication]], [[Biological vs Statistical Population]], [[Grouping Factor]], [[Independence of Observations]]
+- **See also:** [[MOC 14 - Mixed Models]]
 - **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]
 - **Go deeper:** [[Harrison et al. 2018]]
 

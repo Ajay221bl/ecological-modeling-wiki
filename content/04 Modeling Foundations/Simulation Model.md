@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "A simulation model runs a set of rules forward on a computer, step by step, to see what happens. It's used when a system has too many interacting parts to work out with pen and paper."
 aliases:
   - "Computer simulation"
 status: seedling
@@ -10,43 +11,12 @@ status: seedling
 
 # Simulation Model
 
-**In one line:** a simulation model runs a set of rules forward on a computer, step by step, to see what happens. It's used when a system has too many interacting parts to work out with pen and paper.
+Nobody can work out with algebra who will win a board game with dice, even though the rules are simple: roll, move, follow the square's instruction. So you just play it, and if you play it a thousand times you learn which strategies tend to win and how often. A **simulation model** treats nature the same way: it runs a set of rules forward on a computer, one *time step* (such as one year) at a time, keeping track of *state variables* such as population size N, and it is used when a system has too many interacting parts to work out with pen and paper. Hobbs and Hooten note that nonlinear systems with many state variables are usually "mathematically intractable", too complicated to solve with algebra; each single step, though, is easy arithmetic, so the computer can take the journey one step at a time ([[Hobbs and Hooten 2015 Ch2]], [[For Loop|For Loops]]).
 
-> [!info] Before this, it helps to know
-> [[Analytical Model]] (equations with given parameters) · [[For Loop|For Loops]] (repeating a step many times)
+A tiny stochastic simulation, one that includes chance. Start with 100 animals, and each year flip a coin: heads is a good year (multiply by 1.15), tails a bad year (multiply by 0.9). One *run*, a complete play-through, goes good, bad, good: 100 → 115 → 103.5 → about 119. Another goes bad, bad, good: 100 → 90 → 81 → about 93. Same rules, different luck, different futures. Run 30 years a thousand times and count how many runs end below 50 animals; that fraction estimates how risky the population's situation is. One run is one possible future; the useful answer is the spread over many runs.
 
-## The everyday picture
-A board game with dice. The rules are simple (roll, move, follow the square's instruction), but nobody can work out with algebra who'll win. So you just **play it** and see. Play it a thousand times and you learn which strategies tend to win and how often.
+Simulation handles what pen and paper cannot: many interactions across space, time and individuals, plus chance. It is also a way to check statistics: simulate data from a model with known parameters, fit the model, and see whether you get the parameters back, because a method that cannot recover the truth from fake data will not be trustworthy on real data; Hobbs and Hooten use this to check MCMC code ([[Hobbs and Hooten 2015 Ch7]]). Powell and Gale add that simulating can be cheaper than running an experiment ([[Powell and Gale 2015 Ch1]]). The weaknesses, per Hobbs and Hooten, are that parameter values are usually picked rather than estimated, so uncertainty has no coherent statistical treatment, and a pull toward "unbridled complexity", since adding one more rule always seems cheap while each rule is another assumption. Simulation results are not data: they show what *would* happen *if* the rules were right. Compare an [[Analytical Model]], whose equations can be solved directly.
 
-A simulation model is nature turned into a game with rules and dice. The computer plays year after year, and then plays the whole thing again and again to show the range of things that could happen.
-
-*Where the picture stops working:* a board game's rules are known exactly. A simulation's rules are your guesses about nature, so its results are only as good as those guesses.
-
-## Words you'll need
-- **Simulation:** running a model's rules forward one step at a time on a computer.
-- **Time step:** one turn of the loop, such as one year.
-- **State variable:** a quantity the simulation keeps track of, such as population size N.
-- **Stochastic (random):** including chance, like a dice roll for good or bad years.
-- **Run (replicate):** one complete play-through of the simulation.
-- **Growth multiplier (λ, "lambda"):** the number N is multiplied by each year.
-- **Intractable:** too complicated to solve with algebra.
-
-## A tiny example
-Start with 100 animals. Each year, flip a coin: heads is a good year (multiply by 1.15), tails a bad year (multiply by 0.9).
-- One run: good, bad, good → 100 × 1.15 = 115 → 115 × 0.9 = 103.5 → 103.5 × 1.15 ≈ **119**.
-- Another run: bad, bad, good → 100 × 0.9 = 90 → 81 → 81 × 1.15 ≈ **93**.
-
-Same rules, different luck, different futures. Run 30 years, 1,000 times, and count how many runs end below 50 animals. That fraction is an estimate of how risky the population's situation is.
-
-## Start from zero
-1. **Simple equations can be solved by hand.** N after 10 years at 4% growth is N₀ × 1.04¹⁰.
-2. **Real systems have many parts that affect each other.** Grass depends on rain and grazing; grazers depend on grass and predators; predators depend on grazers.
-3. **With many interacting parts, the maths usually can't be solved directly.** Hobbs and Hooten note that nonlinear systems with many state variables are "mathematically intractable" ([[Hobbs and Hooten 2015 Ch2]], p. 18).
-4. **So pick parameter values and let the computer step through time:** year 1, then year 2, and so on. *Why it works:* each single step is easy arithmetic, even when the whole journey is impossible to solve in one go.
-5. **Add randomness at each step and run it many times.** *Why:* nature has good and bad years. Many runs show how likely different futures are, not just one projection.
-6. **Simulation is also a way to check statistics.** Simulate data from a model with known parameters, fit the model, and see whether you get the parameters back. *Why:* if a method can't recover the truth from fake data where you *know* the truth, don't trust it on real data. Hobbs and Hooten use this to check MCMC code ([[Hobbs and Hooten 2015 Ch7]], §7.3.5).
-
-## See it
 ```mermaid
 flowchart LR
   S["Start: N = 100"] --> Y["Each year: draw a random<br>growth rate, update N"]
@@ -57,10 +27,6 @@ flowchart LR
 ```
 *What to look at:* the loop. A simulation is a loop that applies the model's rules over and over.
 
-## Why it is this way
-Simulation handles what pen and paper can't: many interactions across space, time and individuals, plus chance. You give up a neat formula for the answer and get a pile of possible outcomes instead. Its weaknesses, per Hobbs and Hooten, are the lack of a statistically coherent treatment of uncertainty (the parameter values are usually picked, not estimated from data) and a tendency toward "unbridled complexity", because adding one more rule always seems cheap ([[Hobbs and Hooten 2015 Ch2]], pp. 20 to 21).
-
-## In R
 ```r
 set.seed(2)
 simulate_pop <- function(N0 = 100, years = 30) {
@@ -75,21 +41,6 @@ finals <- replicate(1000, simulate_pop())  # 1000 possible futures
 mean(finals < 50)                          # proportion of runs that crashed below 50
 hist(finals, main = "Population after 30 years (simulated)")
 ```
-
-## In the course
-Powell and Gale list simulation as a reason to model when resources are scarce: it can be cheaper to simulate a population than to run an experiment ([[Powell and Gale 2015 Ch1]], p. 6). Simulating fake data to understand a model is a habit used throughout the labs.
-
-## Common confusions
-- **"Simulation results are data."** They are consequences of your assumptions. They show what *would* happen *if* the rules were right.
-- **"More detail means more realism."** Each extra rule needs its own parameter values, and each one is another assumption.
-- **"One run is the prediction."** One run is one possible future. The useful answer is the spread over many runs.
-
-## Explain it back
-- Use a dice board game to explain what a simulation is.
-- Why run a simulation 1,000 times instead of once?
-- Why would you simulate fake data before analysing real data?
-
-*Pass test:* you can describe, in plain steps, the loop inside a population simulation.
 
 ## Connections
 - **Builds on:** [[Analytical Model]], [[For Loop|For Loops]]

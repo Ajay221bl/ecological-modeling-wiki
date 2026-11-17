@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "Observation error is the extra noise, and sometimes bias, added by how you measure, such as birds that are present but missed in a count."
 aliases:
   - "Measurement error"
   - "Observation variance"
@@ -11,40 +12,15 @@ status: seedling
 
 # Observation Error
 
-**In one line:** observation error is the extra noise, and sometimes bias, added by how you measure, such as birds that are present but missed in a count.
+Step on the bathroom scales twice in a row and you might read 70.2 kg then 70.6 kg, though your weight did not change in those ten seconds. That wobble comes from the measuring, not from you, and it is **observation error**: the extra variation, and sometimes bias, added by how you measure. If the scales also read 1 kg heavy every time, that part is observation *bias* ([[Bias]]). In the field the sources are missed animals, differences between observers, wind and instruments. A key one is *detection probability*, the chance that an animal that is present actually gets counted. Hobbs and Hooten write the observation error variance as σ²ₒ and give it a layer of its own in a model, the *observation model*, because it describes your methods rather than the ecology ([[Hobbs and Hooten 2015 Ch1]], [[Data Model, Process Model and Parameter Model]]).
 
-> [!info] Before this, it helps to know
-> [[Process Variation]] (the real variation it gets mixed with) · [[Bias]]
+An example. The true population over four years is 100, 104, 98 and 107, a range of 9. You spot about 60% of the birds and scale the counts up by 1/0.6, getting estimates of 92, 113, 88 and 122, a range of 34. The extra swing, nearly four times the real one, is observation error. Mistake it for real change and you would think the population is wildly unstable. Notice too that scaling by detection fixed the average bias (counts are no longer 40% low) but not the wobble.
 
-## The everyday picture
-Bathroom scales. Step on twice in a row and you might read 70.2 kg then 70.6 kg, though your weight didn't change in those ten seconds. That wobble is observation error. If the scales also read 1 kg heavy every time, that's observation *bias*.
+You never see the true state directly, so observation error always mixes with the real year-to-year change in nature, [[Process Variation]]. Separating the two usually needs *replicate observations*, repeated measurements of the same state such as two counts at one site in one week, or prior information ([[Hobbs and Hooten 2015 Ch6]]); with one count per state, both just look like scatter. Ignoring observation error inflates apparent variability and, when detection is imperfect, underestimates abundance, and modeling it is the idea behind occupancy and detection models. A model's [[Residual]] is not observation error on its own; it mixes every source unless the model separates them.
 
-*Where the picture stops working:* you can test scales with a known weight. In the field you rarely know the true number of birds to check against.
-
-## Words you'll need
-- **Observation error (σ²ₒ):** variation in measurements around the true state.
-- **Detection probability:** the chance an animal that is present gets counted.
-- **Observation model:** the part of a model describing how measurements relate to the truth ([[Data Model, Process Model and Parameter Model]]).
-- **Replicate observations:** repeated measurements of the same state, such as two counts at one site in one week.
-
-## A tiny example
-True population: 100, 104, 98, 107 (a range of 9). You spot about 60% of birds and scale counts up by 1/0.6. Your estimates: **92, 113, 88, 122** (a range of 34). The extra swing, nearly four times the real one, is observation error. Mistake it for process variation and you'd think the population is wildly unstable.
-
-## Start from zero
-1. **You never see the true state directly; you measure it.**
-2. **Measurement adds its own wobble.** Missed birds, observer differences, wind, instruments.
-3. **Some of it is bias.** *Why:* if you always miss 40% of birds, counts are systematically low ([[Bias]]).
-4. **Hobbs and Hooten give it its own layer, the observation model** ([[Hobbs and Hooten 2015 Ch1]], pp. 7 to 9). *Why separate it:* it's about your methods, not the ecology.
-5. **Separating it from process variation usually needs replicate observations** or prior information ([[Hobbs and Hooten 2015 Ch6]], §6.3). *Why:* with one count per state, both just look like scatter.
-
-## See it
 ![[Process vs observation error.png|700]]
 *What to look at:* the orange counts wiggle around the blue line; that extra wiggle is observation error.
 
-## Why it is this way
-Every measurement passes through a method, and methods are imperfect. Ignoring observation error inflates apparent variability and, if detection is imperfect, underestimates abundance. Modeling it is the idea behind occupancy and detection models.
-
-## In R
 ```r
 set.seed(7)
 N <- numeric(25); N[1] <- 50
@@ -52,20 +28,6 @@ for (t in 2:25) N[t] <- N[t - 1] * exp(rnorm(1, 0.02, 0.12))
 counts <- rpois(25, N * 0.6) / 0.6     # detection 0.6 adds observation error
 sd(diff(log(N))); sd(diff(log(counts)))   # counts look more variable than the truth
 ```
-
-## In the course
-The observation model in Hobbs and Hooten ([[Hobbs and Hooten 2015 Ch1]]); the occupancy guest lecture (Nov 3) models detection directly.
-
-## Common confusions
-- **"A residual is observation error."** A residual mixes every source unless the model separates them ([[Residual]]).
-- **"Scaling counts by detection removes the error."** It removes average bias, not the wobble.
-
-## Explain it back
-- Use bathroom scales to explain observation error and observation bias.
-- Why did the counts in the example swing more than the true population?
-- What extra data help separate observation error from process variation?
-
-*Pass test:* for any survey method, you can name one source of observation error and one of observation bias.
 
 ## Connections
 - **Builds on:** [[Process Variation]], [[Bias]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "An empirical model describes a relationship found in data, such as a straight line through points, and uses probability to say how sure we are about it."
 aliases:
   - "Empirical modeling"
 status: seedling
@@ -10,35 +11,12 @@ status: seedling
 
 # Empirical Model
 
-**In one line:** an empirical model describes a relationship found in data, such as a straight line through points, and uses probability to say how sure we are about it.
+A bridge inspector measures how much 50 real bridges sag under traffic and fits a line: each extra tonne adds about 2 mm of sag, give or take 0.3. She does not need to know *why*; the data told her, and she can say how sure she is. An **empirical model** works the same way: it describes a relationship found in data, usually with a simple shape such as a straight line ([[Linear Regression]]), and uses probability theory to attach uncertainty, a standard error or interval saying how far the estimates might be off. *Empirical* means based on observation. Hobbs and Hooten name this as one of three traditions in ecological modeling, beside theoretical and simulation models ([[Hobbs and Hooten 2015 Ch2]]).
 
-> [!info] Before this, it helps to know
-> [[Statistical Model]] · [[Theoretical Model]] (the contrasting style)
+An example. In 40 grassland plots you fit biomass = β₀ + β₁ × grazer density + scatter, and get a [[Slope]] β̂₁ = −3.2 g per grazer with a standard error of 0.8. The slope is four standard errors below zero, so grazing very likely reduces biomass in these plots. That honest statement of uncertainty is the great strength of the empirical style, and it is the style of most of this course: lm, glm and mixed models are all empirical models.
 
-## The everyday picture
-A bridge inspector with a clipboard measures how much 50 real bridges sag under traffic and fits a line: "each extra tonne adds about 2 mm of sag, give or take 0.3". She doesn't need to know *why*; the data told her, and she can say how confident she is.
+The catch is in what the numbers mean. The −3.2 is the slope of biomass on grazers *in these data*, not a biological constant such as a grazer's eating rate, so it does not automatically carry to a different grassland. The straight line is chosen by default rather than by theory; empirical models do have a deterministic part, it just is not derived from a mechanism. They also struggle with many interacting parts, which is where a [[Simulation Model]] takes over. The contrasting style starts from mechanism instead of data ([[Theoretical Model]]), and a [[Statistical Model]] is the general frame both can use when confronted with data.
 
-*Where the picture stops working:* her "2 mm per tonne" only applies to bridges like the 50 she measured. An empirical model's numbers don't automatically carry to new kinds of places.
-
-## Words you'll need
-- **Empirical:** based on observation and data.
-- **Regression:** fitting a line or curve to data ([[Linear Regression]]).
-- **Slope:** change in the response per unit of the predictor ([[Slope]]).
-- **Uncertainty:** how much the estimates might be off, from standard errors or intervals.
-
-## A tiny example
-40 plots of grass biomass and grazer density. Fit biomass = β₀ + β₁ × grazers + scatter. Result: β̂₁ = **−3.2 g per grazer**, SE **0.8**.
-- The slope is about four SEs below zero, so grazing very likely reduces biomass here.
-- But "−3.2" is a summary of *these* plots. It isn't a biological constant like a grazer's eating rate.
-
-## Start from zero
-1. **Collect data on the variables you care about.**
-2. **Fit a simple relationship:** usually a straight line ([[Linear Regression]]).
-3. **Probability theory gives the uncertainty.** *Why it's the great strength:* every estimate comes with an honest SE ([[Hobbs and Hooten 2015 Ch2]], p. 19).
-4. **The catch:** the parameters are defined by the data ("the slope of biomass on grazers here"), not as portable biological quantities.
-5. **And few variables.** Empirical models struggle with many interacting parts; that's the [[Simulation Model]]'s ground.
-
-## See it
 ```mermaid
 flowchart LR
   D["Data"] --> F["Fit a line or curve"]
@@ -47,28 +25,10 @@ flowchart LR
 ```
 *What to look at:* data are the starting point, and uncertainty comes out the end.
 
-## Why it is this way
-When you don't know the mechanism, letting the data speak is the honest first step, and probability theory keeps you from over-claiming. Most of this course (lm, glm, mixed models) is empirical modeling.
-
-## In R
 ```r
 fit <- lm(dist ~ speed, data = cars)   # an empirical model: stopping distance vs speed
 summary(fit)$coefficients              # slope estimate with its standard error
 ```
-
-## In the course
-The empirical tradition in Hobbs and Hooten's three-way split ([[Hobbs and Hooten 2015 Ch2]], §2.1), and the style of every lab from Sep 1 onward.
-
-## Common confusions
-- **"Empirical models have no deterministic part."** They do, usually a straight line, chosen by default rather than by theory.
-- **"Data-driven means biologically meaningful."** The slope describes the data; it may not be a portable biological quantity.
-
-## Explain it back
-- Use the bridge inspector to explain an empirical model.
-- What does an empirical model do well that a theoretical one doesn't?
-- Why might "−3.2 g per grazer" not apply to a different grassland?
-
-*Pass test:* you can say for any regression whether its slope is a description or a mechanism.
 
 ## Connections
 - **Builds on:** [[Statistical Model]]

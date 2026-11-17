@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "Bracket notation writes a probability distribution as square brackets, so [y | θ] reads \"the distribution of y given θ\"."
 aliases:
   - "Square bracket notation"
   - "[a|b]"
@@ -11,36 +12,12 @@ status: seedling
 
 # Bracket Notation
 
-**In one line:** bracket notation writes a probability distribution as square brackets, so [y | θ] reads "the distribution of y given θ".
+A recipe book might write "180/20" instead of "bake in an oven at 180 degrees for 20 minutes"; once you know the code, long instructions shrink to a glance. **Bracket notation** does this for probability statements. Square brackets mean "the probability distribution of", so [a] is the distribution of a ([[Probability Distribution]]). A vertical bar means "given", so [a | b] is the distribution of a given b ([[Conditional Probability]]), and a comma means "and", so [a, b] is the joint distribution of a and b together. Read the quantity left of the bar as random and the quantity right of it as known for now. This is Hobbs and Hooten's house style, less common elsewhere, and it is introduced in [[Hobbs and Hooten 2015 Ch3]].
 
-> [!info] Before this, it helps to know
-> [[Conditional Probability]] (probability given something) · [[Probability Distribution]] (how chances are spread) · [[Greek Letters and Notation]] (reading symbols)
+Read a Bayesian model aloud with it. [y | θ] is "the distribution of the data given the parameters", the likelihood. [θ] is "the distribution of the parameters", the prior. And [θ | y] ∝ [y | θ][θ] reads "the posterior is proportional to the likelihood times the prior", which is Bayes' theorem in one line ([[Bayes' Theorem]]). With numbers: if a candidate value θ = 0.3 has prior probability [θ = 0.3] = 0.5 and the data have probability [y | θ = 0.3] = 0.2 under it, their product, 0.1, is that value's unnormalized posterior weight; dividing every candidate's weight by the total turns the weights into posterior probabilities.
 
-## The everyday picture
-Shorthand in a recipe book. Instead of "bake in an oven at 180 degrees for 20 minutes" the book writes "180/20". Once you know the code, long instructions shrink to a glance. Brackets do that for probability statements.
+Why a new notation? Because hierarchical models stack several layers (data, process, parameters), and written in full with P(Y = y | Θ = θ) for every piece they become a wall of symbols. Brackets show at a glance which quantity depends on which, and that is exactly the skill needed to write model code later ([[Hierarchical Model]], [[Chain Rule of Probability|Factoring a Joint Distribution]], [[Hobbs and Hooten 2015 Ch6]]). Two confusions to avoid: [a | b] does not mean a divided by b, the bar means "given"; and in this book brackets do not mean a matrix or an R index, they mean a distribution. A quick test: [z | y, θ] reads "the distribution of z given y and θ".
 
-*Where the picture stops working:* recipe shorthand is local to one book. This notation is Hobbs and Hooten's house style, less common elsewhere.
-
-## Words you'll need
-- **[a]:** the probability distribution of a.
-- **[a | b]:** the distribution of a given b. The bar reads "given".
-- **[a, b]:** the joint distribution of a and b together.
-
-## A tiny example
-Reading a Bayesian model aloud:
-- [y | θ] is "the distribution of the data given the parameters" (the likelihood).
-- [θ] is "the distribution of the parameters" (the prior).
-- [θ | y] ∝ [y | θ][θ] reads "posterior is proportional to likelihood times prior".
-- With numbers: if [θ = 0.3] = 0.5 and [y | θ = 0.3] = 0.2, their product 0.1 is that value's unnormalized posterior weight.
-
-## Start from zero
-1. **Probability statements get long.** P(Y = y | Θ = θ) for each piece.
-2. **Replace "the distribution of" with square brackets.**
-3. **Keep the bar for "given" and the comma for "and".**
-4. **Now whole models fit on a line.** *Why:* a hierarchical model multiplies several distributions, and brackets show the structure without clutter.
-5. **Read left of the bar as random, right of it as known for now.**
-
-## See it
 ```mermaid
 flowchart LR
   A["[theta]<br/>prior"] --> C["[theta | y]<br/>posterior"]
@@ -48,10 +25,6 @@ flowchart LR
 ```
 *What to look at:* three bracketed pieces are the whole of Bayes' theorem.
 
-## Why it is this way
-Hierarchical models stack data, process and parameter layers. Written in full they are a wall of symbols. The bracket shorthand makes it obvious which quantity depends on which, and that is the skill needed to write model code later.
-
-## In R
 ```r
 theta <- c(0.3, 0.5, 0.7)            # three candidate values
 prior <- c(0.5, 0.3, 0.2)            # [theta]
@@ -61,22 +34,10 @@ round(rbind(theta, prior, lik, post), 3)
 ```
 Each row of the table is one bracket expression.
 
-## In the course
-Introduced in [[Hobbs and Hooten 2015 Ch3]] and used in every later chapter, especially for hierarchical models ([[Hobbs and Hooten 2015 Ch6]]).
-
-## Common confusions
-- **"[a | b] means a divided by b."** The bar means "given".
-- **"Brackets mean a matrix or an R index."** In this book they mean a distribution.
-
-## Explain it back
-- Read [z | y, θ] aloud.
-- Which bracket is the prior and which the likelihood in [θ | y] ∝ [y | θ][θ]?
-
-*Pass test:* you can read a bracketed model statement aloud in plain words.
-
 ## Connections
 - **Builds on:** [[Conditional Probability]], [[Probability Distribution]]
 - **Leads to:** [[Bayes' Theorem]], [[Hierarchical Model]], [[Chain Rule of Probability|Factoring a Joint Distribution]]
+- **See also:** [[Greek Letters and Notation]]
 - **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]
 
 ## Flashcards

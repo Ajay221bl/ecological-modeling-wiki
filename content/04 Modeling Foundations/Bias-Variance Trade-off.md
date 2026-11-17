@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "Adding parameters to a model reduces its bias but makes each estimate wobblier (more variance); removing them does the reverse. The best model balances the two."
 aliases:
   - "Bias variance tradeoff"
   - "Bias-variance"
@@ -11,43 +12,15 @@ status: seedling
 
 # Bias-Variance Trade-off
 
-**In one line:** adding parameters to a model reduces its bias but makes each estimate wobblier (more variance); removing them does the reverse. The best model balances the two.
+Imagine describing a friend's face to a sketch artist. With 3 words ("round, smiling, bald") the sketch is recognisable but crude. With 300 words you start describing the pimple and the shadow from that day's light, details that will not be there next week, and each word is less carefully chosen. Somewhere in between, the sketch is best. The **bias-variance trade-off** is the same tension in models. A model with few parameters cannot follow reality closely, so it misses systematically: that is *bias* ([[Bias]], [[Underfitting]]). A model with many parameters can follow anything, including noise, and because the same limited data are spread over more things to estimate, each estimate wobbles more from sample to sample: that is *variance*, the opposite of [[Precision]] ([[Overfitting]]). Here "variance" means the wobble of estimates across samples, not the spread of the data.
 
-> [!info] Before this, it helps to know
-> [[Bias]] · [[Precision]] · [[Overfitting]] · [[Underfitting]]
+The total expected miss is the mean squared error, bias² + variance ([[Accuracy]]), and because one term falls while the other rises as parameters are added, total error is lowest somewhere in the middle. A simulation from the [[Parsimony]] note shows it: 15 points are generated from a straight line plus noise, and curves of increasing degree are fitted and then tested on 200 new points. The straight line (3 parameters) has a mean squared error of 1.17 on the new data; the degree-10 polynomial (12 parameters), which hugs the original points almost perfectly, has 6.23, more than five times worse. The error climbs steadily with degree in between. The polynomial has almost no bias on the fitting data but enormous variance; the line accepts a little rigidity and wins overall.
 
-## The everyday picture
-Describing a friend's face to a sketch artist with a limited number of words. With 3 words ("round, smiling, bald") the sketch is recognisable but crude: biased. With 300 words you'll mention the pimple and the shadow from that day's light, details that won't be there next week, and every word you use is less carefully chosen. Somewhere in between, the sketch is best.
+The reason is a fixed budget: data are finite and every parameter takes a share of them, so you cannot drive both bias and variance to zero at once, and that is why model selection exists. Some tools trade on purpose, adding a little bias to cut a lot of variance; this is called *shrinkage* or *regularization*, pulling estimates toward a central value. Priors in Bayesian models, ridge regression, and the [[Partial Pooling]] of mixed models all work this way. Tredennick and colleagues' ridge regression, a deliberately biased fit, beat an unpenalised one at forecasting butterfly population growth for exactly this reason ([[Tredennick et al. 2021]]). So unbiased is not always best: a slightly biased but much more precise estimate can land closer to the truth.
 
-*Where the picture stops working:* words don't wobble. Model parameters do, because each one is estimated from the same limited data.
-
-## Words you'll need
-- **Bias:** systematic miss from leaving things out ([[Bias]]).
-- **Variance (of an estimate):** how much it would wobble across samples; the opposite of precision ([[Precision]]).
-- **Mean squared error:** bias² + variance; the total expected miss ([[Accuracy]]).
-- **Shrinkage / regularization:** pulling estimates toward a central value, accepting a little bias for less variance ([[Partial Pooling]]).
-
-## A tiny example
-Using the [[Parsimony]] simulation: on new data,
-- the straight line (3 parameters) has mean squared error **1.17**;
-- the degree-10 polynomial (12 parameters) has **6.23**.
-The polynomial has almost no bias on the fitting data but huge variance; the line accepts a little rigidity and wins overall. Tredennick et al.'s ridge regression, a deliberately biased fit, beat an unpenalised one at forecasting butterfly growth for the same reason ([[Tredennick et al. 2021]]).
-
-## Start from zero
-1. **Few parameters: the model can't follow reality closely.** High bias ([[Underfitting]]).
-2. **Many parameters: it can follow anything, including noise.** *Why variance rises:* the same data are spread over more things to estimate, so each is pinned down less precisely ([[Overfitting]]).
-3. **Total error = bias² + variance.** *Why add them:* both push estimates away from the truth.
-4. **So error is lowest somewhere in the middle.** That's the sweet spot parsimony aims for.
-5. **Some tools trade on purpose:** priors, ridge regression and mixed-model shrinkage add a little bias to cut a lot of variance.
-
-## See it
 ![[Parsimony.png|700]]
 *What to look at:* the left panel is the bias end, the right panel the variance end.
 
-## Why it is this way
-Data are finite, and every parameter takes a share of them. That fixed budget is why you can't drive both bias and variance to zero at once, and why model selection exists.
-
-## In R
 ```r
 set.seed(3)
 x <- sort(runif(15, 0, 10)); y <- 2 + 0.5 * x + rnorm(15, 0, 1)
@@ -56,20 +29,6 @@ x_new <- runif(200, min(x), max(x)); y_new <- 2 + 0.5 * x_new + rnorm(200, 0, 1)
 mse <- function(d) mean((y_new - predict(lm(y ~ poly(x, d)), data.frame(x = x_new)))^2)
 round(sapply(1:10, mse), 2)    # error on new data for curves of degree 1 to 10
 ```
-
-## In the course
-Behind model selection (Sep 15), priors (Units 5 and 7) and partial pooling in mixed models ([[Partial Pooling]]).
-
-## Common confusions
-- **"Unbiased is always best."** A slightly biased, much more precise estimate can land closer to the truth.
-- **"Variance here means data variance."** It means the wobble of estimates across samples.
-
-## Explain it back
-- Use the sketch artist to explain the trade-off.
-- Why does adding parameters increase the variance of each estimate?
-- Why can a deliberately biased method forecast better?
-
-*Pass test:* you can say where on the bias-variance line a given model sits and why.
 
 ## Connections
 - **Builds on:** [[Bias]], [[Precision]], [[Overfitting]], [[Underfitting]]

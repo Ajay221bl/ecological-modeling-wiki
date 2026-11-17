@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "Bias is how far an estimator's answers land from the truth *on average*: a systematic miss in one direction."
 aliases:
   - "Biased estimator"
   - "Systematic error"
@@ -11,43 +12,15 @@ status: seedling
 
 # Bias
 
-**In one line:** bias is how far an estimator's answers land from the truth *on average*: a systematic miss in one direction.
+Throw darts at a board many times. If they cluster in the top-left corner, every throw misses the same way, and it does not matter how tightly they cluster: the centre of the cluster is not the bull's-eye. That systematic miss is **bias**: how far an [[Estimator]]'s answers land from the true [[Parameter]] *on average*. Formally, bias = (average estimate over many repeated studies) − (true value), and an estimator with zero bias is *unbiased* ([[Unbiased Estimator]]). In estimation the bull's-eye is invisible, so you learn about bias by reasoning about your method or by simulation: imagine repeating the study many times and averaging the estimates, so that random wobble cancels out and only the systematic miss is left.
 
-> [!info] Before this, it helps to know
-> [[Estimator]] (bias is a property of the recipe) · [[Parameter]]
+An example. True elk survival is 0.80, but your tags slightly injure the animals, so tagged elk survive at 0.70. Tag 200 elk, repeat the study many times, and the estimates average 0.70: a bias of 0.70 − 0.80 = −0.10. Now tag 2,000 elk. The estimates are much less spread out, but they still average 0.70. More data did not help, because the method itself misses: every new data point carries the same systematic error. Powell and Gale name two sources of bias ([[Powell and Gale 2015 Ch2]]). *Small-sample bias* affects some estimators when n is small and fades as n grows. *Model bias* comes from a wrong assumption, such as harmful tags or animals that become shy of traps, and it does not fade; only redesigning the sampling or the analysis fixes it.
 
-## The everyday picture
-Darts thrown at a board, many times. If the darts cluster in the top-left corner, every throw misses the same way: that's bias. It doesn't matter how tightly they cluster; the centre of the cluster isn't the bull's-eye.
+That is why bias is the error more effort cannot wash out, and why Powell and Gale value lack of bias over precision when you must choose. A tight cluster in the wrong place is still wrong, so a precise estimate is not automatically a good one ([[Precision]]). Yet bias is not always bad: some modern tools deliberately accept a little bias in exchange for much less wobble, as in [[Partial Pooling]], because the total error can then be smaller ([[Bias-Variance Trade-off]]). The two together decide how close an estimate tends to land, which is what people loosely call [[Accuracy]].
 
-*Where the picture stops working:* in estimation the bull's-eye is invisible. You can only learn about bias by reasoning about your method or by simulation.
-
-## Words you'll need
-- **Bias:** (average estimate) − (true value).
-- **Unbiased:** bias of zero; right on average.
-- **Small-sample bias:** bias some estimators have when n is small, fading as n grows.
-- **Model bias:** bias from a wrong assumption, such as tags harming the animals wearing them ([[Powell and Gale 2015 Ch2]], p. 16).
-
-## A tiny example
-True survival is 0.80. Your tags slightly injure elk, so tagged elk survive at 0.70.
-- Tag 200 elk and repeat the study many times: estimates average **0.70**.
-- Bias = 0.70 − 0.80 = **−0.10**.
-- Tag 2,000 elk: estimates average... still **0.70**. More data didn't help, because the method itself misses.
-
-## Start from zero
-1. **Imagine repeating your study many times.** Each repeat gives an estimate.
-2. **Average all those estimates.** *Why:* random wobble cancels out in the average, leaving only systematic misses.
-3. **Compare that average with the truth.** The gap is the bias.
-4. **Bias has two sources:** small samples, and wrong model assumptions such as trap-shyness or harmful tags ([[Powell and Gale 2015 Ch2]], p. 16).
-5. **More data usually can't fix model bias.** *Why:* every new data point carries the same systematic miss. Only redesigning the sampling or analysis fixes it ([[Powell and Gale 2015 Ch2]], p. 18).
-
-## See it
 ![[Bias and precision.png|700]]
 *What to look at:* the third target's tight cluster is far from the centre. That's high bias.
 
-## Why it is this way
-Bias is the one error that more effort can't wash out, which is why Powell and Gale value lack of bias over precision when you must choose. Some modern tools deliberately accept a *little* bias in exchange for much less wobble ([[Partial Pooling]], [[Bias-Variance Trade-off]]).
-
-## In R
 ```r
 set.seed(5)
 truth <- 0.8
@@ -56,20 +29,6 @@ mean(est) - truth                                  # bias about -0.10
 est_big <- replicate(2000, mean(rbinom(2000, 1, 0.7)))
 mean(est_big) - truth                              # still about -0.10
 ```
-
-## In the course
-Powell and Gale's chapter on context and inference ([[Powell and Gale 2015 Ch2]], pp. 16 to 18, Fig. 2.5).
-
-## Common confusions
-- **"More data reduces bias."** It reduces wobble. Model bias stays.
-- **"Bias is always bad."** A little deliberate bias can buy a lot of precision.
-
-## Explain it back
-- Use darts to explain bias.
-- Why did tagging 2,000 elk still give 0.70?
-- Name the two sources of bias Powell and Gale describe.
-
-*Pass test:* for any field method, you can name one thing that would bias it.
 
 ## Connections
 - **Builds on:** [[Estimator]], [[Parameter]]
