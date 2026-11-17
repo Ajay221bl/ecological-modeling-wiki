@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "The nugget is the semivariance a variogram shows at (nearly) zero distance, representing measurement error and variation at scales smaller than the closest sampling distance."
 aliases:
   - "Nugget effect"
   - "Nugget variance"
@@ -11,33 +12,14 @@ status: seedling
 
 # Nugget
 
-**In one line:** the nugget is the semivariance a variogram shows at (nearly) zero distance, representing measurement error and variation at scales smaller than the closest sampling distance.
+In theory two samples taken at the same spot should be identical, so a [[Variogram]] should start at 0. In practice it starts higher, and the jump is the **nugget**: the semivariance at nearly zero distance, representing [[Observation Error|Measurement Error]] and real variation over distances shorter than the closest sample spacing. The name comes from gold mining, where nuggets make neighbouring ore samples differ sharply. In the figure the fitted curve starts at 0.2, not 0.
 
-> [!info] Before this, it helps to know
-> [[Variogram]] (where it appears)
+The nugget/sill ratio is the share of variance that is spatially unstructured, and near 1 means little spatial structure ([[Sill]]). In nlme correlation structures, `nugget = TRUE` adds this parameter, as in `corExp(form = ~ x + y, nugget = TRUE)`.
 
-## Start from zero
-1. **In theory, two samples at the same spot should be identical,** so semivariance should start at 0.
-2. **In practice it starts higher.** The jump is the nugget.
-3. **Causes:** measurement error, and real variation over distances shorter than the sample spacing.
-4. **Nugget/sill ratio:** the share of variance that is spatially unstructured. Near 1 means little spatial structure.
-5. **In nlme correlation structures, `nugget = TRUE`** adds this parameter (`corExp(form = ~ x + y, nugget = TRUE)`).
-6. **The name comes from gold mining:** nuggets make neighbouring ore samples differ sharply.
+It is explained in [[Zuur et al. 2009 Ch7]] alongside the [[Variogram Range]]. A nugget does not mean the variogram was miscomputed; it is expected in real data.
 
-## See it
 ![[Variogram parts.png|700]]
 *What to look at:* the fitted curve starts at 0.2, not at 0.
-
-## In the course
-[[Zuur et al. 2009 Ch7]].
-
-## Common confusions
-- **"A nugget means the variogram was miscomputed."** It is expected in real data.
-
-## Explain it back
-- What two things does the nugget represent?
-
-*Pass test:* you can read the nugget from a variogram.
 
 ## Connections
 - **Builds on:** [[Variogram]]

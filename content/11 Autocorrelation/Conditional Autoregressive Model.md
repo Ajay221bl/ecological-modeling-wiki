@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "A conditional autoregressive (CAR) model gives each site a spatial random effect whose expected value, given its neighbours, is the average of the neighbours' effects, so that adjacent sites are pulled toward each other."
 aliases:
   - "CAR"
   - "CAR model"
@@ -16,36 +17,17 @@ status: seedling
 
 # Conditional Autoregressive Model
 
-**In one line:** a conditional autoregressive (CAR) model gives each site a spatial random effect whose expected value, given its neighbours, is the average of the neighbours' effects, so that adjacent sites are pulled toward each other.
+A **conditional autoregressive (CAR) model** gives each site a spatial random effect whose expected value, given its neighbours, is the average of the neighbours' effects, so adjacent sites are pulled toward each other ([[Spatial Weights Matrix]], [[Random Effect]]). Each site's effect, given its neighbours, is normal with mean equal to the neighbours' average times a dependence parameter, and variance inversely related to the number of neighbours. The intrinsic CAR (ICAR) fixes the dependence parameter at 1 and is common in disease mapping and atlas data; BYM adds an unstructured random effect to an ICAR.
 
-> [!info] Before this, it helps to know
-> [[Spatial Weights Matrix]] (defines neighbours) · [[Random Effect]] (the CAR term is one) · [[Hierarchical Model]] (where CAR is usually used)
+It is usually a random effect inside a GLM or GLMM, typically fitted with Bayesian methods such as JAGS, Stan, brms `car()` or INLA, within a [[Hierarchical Model]]. It suits gridded or areal data, where "neighbour" is natural. The code below shows the brms syntax for a Poisson model with an ICAR term; it is not run in the wiki build.
 
-## Start from zero
-1. **Each site's effect, given its neighbours, is Normal with mean = average of the neighbours' effects** (times a dependence parameter) and variance inversely related to the number of neighbours.
-2. **Usually used as a random effect inside a GLM or GLMM,** typically fitted with Bayesian methods (JAGS, Stan, brms `car()`, INLA).
-3. **Intrinsic CAR (ICAR):** the dependence parameter is fixed at 1. Common in disease mapping and atlas data.
-4. **BYM:** ICAR plus an unstructured random effect.
-5. **Guélat and Kéry (2018)** used CAR random effects (and 2-D splines) in N-mixture models of atlas data and found that modelling autocorrelation and imperfect detection improved abundance maps.
-6. **Suits gridded or areal data,** where "neighbour" is natural.
+Guélat and Kéry (2018) used CAR random effects, and 2-D splines ([[Spatial Smooths]]), in N-mixture models of atlas data and found that modelling both autocorrelation and [[Imperfect Detection]] improved abundance maps ([[Guélat and Kéry 2018]]). CAR is not the same as SAR ([[Spatial Autoregressive Models]]): they lead to different covariance structures and are usually used differently, CAR as a random effect in Bayesian hierarchical models.
 
-## In R
 ```r
 # norun (Bayesian fit, shown for syntax only)
 library(brms); W <- nb2mat(nb, style = "B", zero.policy = TRUE); rownames(W) <- d$cell
 fit <- brm(count ~ forest + car(W, gr = cell, type = "icar"), data = d, data2 = list(W = W), family = poisson())
 ```
-
-## In the course
-[[Guélat and Kéry 2018]] (reading for the autocorrelation week).
-
-## Common confusions
-- **"CAR is the same as SAR."** They lead to different covariance structures and are usually used differently (CAR as a random effect in Bayesian hierarchical models).
-
-## Explain it back
-- What is the conditional mean of a site's CAR effect?
-
-*Pass test:* you can describe the CAR assumption.
 
 ## Connections
 - **Builds on:** [[Spatial Weights Matrix]], [[Random Effect]], [[Hierarchical Model]]

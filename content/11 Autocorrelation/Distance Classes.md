@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "Distance classes group pairs of sites by how far apart they are, so that autocorrelation can be computed separately for near, middle and far pairs."
 aliases:
   - "Distance bins"
   - "Distance bands"
@@ -12,30 +13,11 @@ status: seedling
 
 # Distance Classes
 
-**In one line:** distance classes group pairs of sites by how far apart they are, so that autocorrelation can be computed separately for near, middle and far pairs.
+**Distance classes** group pairs of sites by how far apart they are, so that autocorrelation can be computed separately for near, middle and far pairs ([[Spatial Autocorrelation]]). Choose break points, such as 0 to 100 km, 100 to 200 km and so on; for each class compute [[Moran's I]] or the semivariance using only pairs in that class, each with its own [[Spatial Weights Matrix]]; and plot the values against the class midpoints to get a [[Correlogram]] or [[Variogram]].
 
-> [!info] Before this, it helps to know
-> [[Spatial Weights Matrix]] (one per class) · [[Spatial Autocorrelation]]
+Equal-width classes are simple, but far classes may contain few pairs. Equal-count classes, with the same number of pairs in each, make the estimates comparably precise, and Diniz-Filho et al. recommend them; they used 10 classes chosen to equalise the number of connections ([[Diniz-Filho et al. 2003]]). The exact choice is arbitrary but rarely changes the overall picture.
 
-## Start from zero
-1. **Choose break points,** for example 0 to 100 km, 100 to 200 km, and so on.
-2. **For each class compute Moran's I** (or semivariance) using only pairs in that class.
-3. **Plot the values against class midpoint:** a correlogram (or variogram).
-4. **Equal-width classes** are simple, but far classes may contain few pairs.
-5. **Equal-count classes** (same number of pairs) make estimates comparably precise. Diniz-Filho et al. recommend this.
-6. **The exact choice is arbitrary but rarely changes the overall picture.**
-7. **The last classes are unreliable.** Common advice: interpret only up to about half the maximum distance.
-
-## In the course
-[[Diniz-Filho et al. 2003]] (10 distance classes, chosen to equalise the number of connections).
-
-## Common confusions
-- **"More classes is always better."** More classes means fewer pairs per class and noisier estimates.
-
-## Explain it back
-- Why equalise the number of pairs per class?
-
-*Pass test:* you can set sensible distance classes.
+The last classes are unreliable, and common advice is to interpret only up to about half the maximum distance. More classes are not always better: they mean fewer pairs per class and noisier estimates.
 
 ## Connections
 - **Builds on:** [[Spatial Weights Matrix]], [[Spatial Autocorrelation]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "Negative autocorrelation means nearby observations are less similar than random pairs, producing an alternating or evenly spaced pattern."
 aliases:
   - "Negative spatial autocorrelation"
   - "Regular spacing"
@@ -12,32 +13,14 @@ status: seedling
 
 # Negative Autocorrelation
 
-**In one line:** negative autocorrelation means nearby observations are less similar than random pairs, producing an alternating or evenly spaced pattern.
+**Negative autocorrelation** means nearby observations are less similar than random pairs, producing an alternating or evenly spaced pattern, as in the right panel of the figure ([[Autocorrelation]]). Moran's I is below −1/(n − 1), Geary's c above 1, and ACF bars negative. It is rarer in ecology; causes include competition and territoriality, which space individuals out, and boom-bust cycles in time, where a negative lag-1 autocorrelation means highs tend to follow lows.
 
-> [!info] Before this, it helps to know
-> [[Autocorrelation]] (the general idea)
+Correlograms of gradients show positive autocorrelation at short distances and negative at long distances, because the two ends of a gradient differ ([[Correlogram]], [[Diniz-Filho et al. 2003]]). Spatial ecologists sometimes call even spacing "overdispersion", which should not be confused with [[Overdispersion]] of counts in a GLM ([[Dynamic Ecology Autocorrelation Post]]).
 
-## Start from zero
-1. **Moran's I below −1/(n−1), Geary's c above 1, negative ACF bars.**
-2. **Rarer in ecology.** Causes include competition and territoriality (spacing out), and boom-bust cycles in time.
-3. **In a time series,** negative lag-1 autocorrelation means highs tend to follow lows.
-4. **Correlograms of gradients** show positive autocorrelation at short distances and negative at long distances (Diniz-Filho et al.), because the two ends of a gradient differ.
-5. **Spatial ecologists sometimes call even spacing "overdispersion"** (McGill). Don't confuse it with overdispersion of counts in a GLM.
+Negative autocorrelation at long distances does not mean something is wrong: it is the normal signature of a gradient. Its opposite is [[Positive Autocorrelation]].
 
-## See it
 ![[Spatial autocorrelation patterns.png|700]]
 *What to look at:* the right panel.
-
-## In the course
-[[Diniz-Filho et al. 2003]], [[Dynamic Ecology Autocorrelation Post]].
-
-## Common confusions
-- **"Negative autocorrelation at long distances means something is wrong."** It is the normal signature of a gradient.
-
-## Explain it back
-- What correlogram shape does a linear gradient produce?
-
-*Pass test:* you can give an ecological cause of negative autocorrelation.
 
 ## Connections
 - **Builds on:** [[Autocorrelation]]

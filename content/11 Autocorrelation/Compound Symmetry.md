@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "Compound symmetry assumes every pair of observations within a group is equally correlated, however far apart in time they are."
 aliases:
   - "corCompSymm()"
   - "Exchangeable correlation"
@@ -12,33 +13,15 @@ status: seedling
 
 # Compound Symmetry
 
-**In one line:** compound symmetry assumes every pair of observations within a group is equally correlated, however far apart in time they are.
+**Compound symmetry** assumes every pair of observations within a group is equally correlated, however far apart in time they are ([[Correlation Structure]]). It has one parameter, the common correlation ρ, and ignores time order, so day 1 and day 2 are as correlated as day 1 and day 100. In the code below `corCompSymm(0.4)` for four observations gives 0.4 for every pair.
 
-> [!info] Before this, it helps to know
-> [[Correlation Structure]] · [[Random Intercept]] (which implies it)
+A [[Random Intercept]] model implies compound symmetry within groups, with correlation σ²_group / (σ²_group + σ²), the [[Intraclass Correlation]]. In nlme it is `corCompSymm(form = ~ 1 | site)`.
 
-## Start from zero
-1. **One parameter:** the common correlation ρ.
-2. **Ignores time order.** Day 1 and day 2 are as correlated as day 1 and day 100.
-3. **A random intercept model implies compound symmetry** within groups: correlation = σ²_group / (σ²_group + σ²).
-4. **nlme:** `corCompSymm(form = ~ 1 | site)`.
-5. **Often too simple for time series** but reasonable for subsamples with no order (several quadrats in a plot).
+It is often too simple for time series but reasonable for subsamples with no order, such as several quadrats in a plot ([[Zuur et al. 2009 Ch6]]). Compound symmetry and the [[AR(1) Error Structure]] are not the same: AR(1) decays with lag, and compound symmetry doesn't.
 
-## In R
 ```r
 library(nlme); round(corMatrix(Initialize(corCompSymm(0.4), data = data.frame(t = 1:4))), 2)
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch6]].
-
-## Common confusions
-- **"Compound symmetry and AR(1) are the same."** AR(1) decays with lag; compound symmetry doesn't.
-
-## Explain it back
-- Which random-effects model implies compound symmetry?
-
-*Pass test:* you can link compound symmetry to a random intercept.
 
 ## Connections
 - **Builds on:** [[Correlation Structure]], [[Random Intercept]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "A process is stationary when its mean, variance and correlation structure stay the same across space or time, so the correlation between two points depends only on how far apart they are."
 aliases:
   - "Stationary process"
   - "Second-order stationarity"
@@ -12,38 +13,16 @@ status: seedling
 
 # Stationarity
 
-**In one line:** a process is stationary when its mean, variance and correlation structure stay the same across space or time, so the correlation between two points depends only on how far apart they are.
+A river that looks the same whichever stretch you sample, with the same average depth and the same choppiness, is stationary; one that gets deeper downstream is not. A process is **stationary** when its [[Mean]], [[Variance]] and correlation structure stay the same across space or time, so the correlation between two points depends only on how far apart they are, not on where they are ([[Autocorrelation]]). That means a constant mean with no trend, a constant variance with no fanning out, and correlation that depends only on separation.
 
-> [!info] Before this, it helps to know
-> [[Autocorrelation]] (what stationarity simplifies) · [[Variance]] · [[Mean]]
+Correlograms, variograms, ACFs and correlation structures all assume it, which is what lets them describe correlation as a single function of distance or lag ([[Variogram]], [[Autocorrelation Function]]). In the code below a series with a trend has a mean of 2.6 in its first half and 7.5 in its second, while a stationary series has means of −0.04 and −0.08.
 
-## The everyday picture
-A river that looks the same whichever stretch you sample: same average depth, same choppiness. A river that gets deeper downstream is not stationary.
+Fix non-stationarity in the mean by modelling the trend with covariates or a smooth, then check the residuals; changing variance can be handled with [[Variance Structures]] such as `varIdent` and `varPower` in nlme. The [[Dynamic Ecology Autocorrelation Post]] names stationarity and [[Isotropy]] as the assumptions that make correlation a function of distance only ([[Zuur et al. 2009 Ch6]]). Stationary does not mean nothing changes: values vary, but their statistical properties don't.
 
-## Start from zero
-1. **Constant mean:** no trend.
-2. **Constant variance:** no fanning out.
-3. **Correlation depends only on separation,** not on where you are.
-4. **Correlograms, variograms, ACFs and correlation structures assume it.** That is what lets them describe correlation as a single function of distance or lag.
-5. **Fix non-stationarity in the mean by modelling the trend** (covariates, a smooth). Then check stationarity of the residuals.
-6. **Variance changes** can be handled with variance structures (`varIdent`, `varPower` in nlme).
-
-## In R
 ```r
 set.seed(4); t <- 1:200; trend <- 0.05 * t + rnorm(200); ok <- rnorm(200)
 round(c(trend_first_half = mean(trend[1:100]), trend_second_half = mean(trend[101:200]), stationary_first = mean(ok[1:100]), stationary_second = mean(ok[101:200])), 2)
 ```
-
-## In the course
-[[Dynamic Ecology Autocorrelation Post]] names stationarity and isotropy as the assumptions that make correlation a function of distance only. [[Zuur et al. 2009 Ch6]].
-
-## Common confusions
-- **"Stationary means nothing changes."** Values vary; their statistical properties don't.
-
-## Explain it back
-- What three things must stay constant?
-
-*Pass test:* you can say why variograms need stationarity.
 
 ## Connections
 - **Builds on:** [[Autocorrelation]], [[Variance]], [[Mean]]

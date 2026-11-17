@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "A lag is the separation, in time steps or distance, between two observations whose values are being compared."
 aliases:
   - "Time lag"
   - "Lag k"
@@ -12,34 +13,15 @@ status: seedling
 
 # Lag
 
-**In one line:** a lag is the separation, in time steps or distance, between two observations whose values are being compared.
+A **lag** is the separation, in time steps or distance, between two observations whose values are being compared ([[Time Series]]). At lag 1 each value is paired with the one just before it; at lag k, with the one k steps before; the lag 0 correlation is always 1. In the code below the series 5, 7, 6, 9, 8 gives the lag-1 pairs (7, 5), (6, 7), (9, 6) and (8, 9).
 
-> [!info] Before this, it helps to know
-> [[Time Series]] (where lags are counted)
+In cross-correlation lags can be negative, pairing x at time t with y at time t − k or t + k ([[Cross-correlation]]). In space, the "lag" is a distance class ([[Distance Classes]]). Lagged predictors, such as last year's rainfall, are a separate idea: using a past value of a covariate as a predictor.
 
-## Start from zero
-1. **Lag 1:** each value paired with the one just before it.
-2. **Lag k:** each value paired with the one k steps before.
-3. **Lag 0 correlation is always 1.**
-4. **In cross-correlation,** lags can be negative: x at time t paired with y at time t − k or t + k.
-5. **In space, the "lag" is a distance class.**
-6. **Lagged predictors** (last year's rainfall) are a separate idea: using a past value of a covariate as a predictor.
+Reading the lag axis of `acf()` and `ccf()` plots is part of the autocorrelation lab ([[Autocorrelation Function]], [[Course Website]]). In `acf()` lag is measured in observation steps, or units of the series' frequency, not calendar units.
 
-## In R
 ```r
 x <- c(5, 7, 6, 9, 8); cbind(x_t = x[-1], x_t_minus_1 = x[-5])        # lag-1 pairs
 ```
-
-## In the course
-Reading the lag axis on `acf()` and `ccf()` plots in the autocorrelation lab ([[Course Website]]).
-
-## Common confusions
-- **"Lag is measured in calendar units."** In `acf()` it is in observation steps (or units of the series' frequency).
-
-## Explain it back
-- What is the lag-0 autocorrelation?
-
-*Pass test:* you can build lagged pairs.
 
 ## Connections
 - **Builds on:** [[Time Series]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "Spatial scale describes the size of the units and of the area in a study, and patterns or processes can change when either changes."
 aliases:
   - "Scale (spatial)"
   - "Scale dependence"
@@ -12,28 +13,11 @@ status: seedling
 
 # Spatial Scale
 
-**In one line:** spatial scale describes the size of the units and of the area in a study, and patterns or processes can change when either changes.
+**Spatial scale** describes the size of the units and of the area in a study, and patterns or processes can change when either changes. It has two parts: [[Grain]], the resolution or size of one unit, and [[Extent]], the whole area or time span. Different processes act at different scales: climate drives richness across continents, while habitat and competition act locally.
 
-> [!info] Before this, it helps to know
-> [[Grain]] (the unit size) · [[Extent]] (the total area)
+Autocorrelation is scale-dependent, and a correlogram shows the distances at which similarity holds ([[Spatial Autocorrelation]]). Diniz-Filho et al. found that a spatial model (GLS) gave more weight to predictors acting at smaller scales, while OLS emphasised broad-scale clinal predictors; neither is "wrong", they answer at different scales ([[Autocorrelation as Signal or Nuisance]]).
 
-## Start from zero
-1. **Two parts:** grain (resolution, the size of one unit) and extent (the whole area or time span).
-2. **Different processes act at different scales.** Climate drives richness across continents; habitat and competition act locally.
-3. **Autocorrelation is scale-dependent.** A correlogram shows at which distances similarity holds.
-4. **Diniz-Filho et al.:** a spatial model (GLS) gave more weight to predictors acting at smaller scales, while OLS emphasised broad-scale clinal predictors. Neither is "wrong"; they answer at different scales.
-5. **Match the scale of the analysis to the scale of the question** and of the hypothesised process.
-
-## In the course
-[[Diniz-Filho et al. 2003]], [[Shipley et al. 2022]]. [[Hobbs and Hooten 2015 Ch1]].
-
-## Common confusions
-- **"A relationship found at one scale holds at all scales."** Relationships often change or reverse.
-
-## Explain it back
-- What are the two components of spatial scale?
-
-*Pass test:* you can explain scale dependence with an example.
+Match the scale of the analysis to the scale of the question and of the hypothesised process ([[Diniz-Filho et al. 2003]], [[Shipley et al. 2022]], [[Hobbs and Hooten 2015 Ch1]]). A relationship found at one scale need not hold at all scales; relationships often change or reverse.
 
 ## Connections
 - **Builds on:** [[Grain]], [[Extent]]
