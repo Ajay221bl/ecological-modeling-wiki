@@ -3,6 +3,7 @@ type: atomic
 tags:
   - stan
   - flashcards/eco/stan
+description: "A vectorised sampling statement applies a distribution to a whole vector at once, such as `y ~ normal(mu, sigma)` with vector y and mu, which is shorter and much faster than a loop."
 aliases:
   - "Vectorization in Stan"
   - "Vectorised likelihood"
@@ -12,32 +13,11 @@ status: seedling
 
 # Vectorized Sampling Statements
 
-**In one line:** a vectorised sampling statement applies a distribution to a whole vector at once, such as `y ~ normal(mu, sigma)` with vector y and mu, which is shorter and much faster than a loop.
+A **vectorised sampling statement** applies a distribution to a whole vector at once, such as `y ~ normal(mu, sigma)` with vector y and mu, which is shorter and much faster than a loop ([[Sampling Statements and target +=]], [[Data Types in Stan]]). The loop `for (n in 1:N) y[n] ~ normal(a + b * x[n], sigma);` and the vectorised `y ~ normal(a + b * x, sigma);` give the same log density, but the vectorised form computes it, and its gradient, in one call.
 
-> [!info] Before this, it helps to know
-> [[Sampling Statements and target +=]] · [[Data Types in Stan]]
+Vectors and scalars can be mixed, so a scalar sigma is repeated for every element, and indexing works inside: `y ~ normal(a + u[g] + b * x, sigma)` uses the group index vector g ([[Group Index Vectors in Stan]]). Some operations still need loops, such as per-site mixture likelihoods ([[Occupancy]]).
 
-## A tiny example
-Loop: `for (n in 1:N) y[n] ~ normal(a + b * x[n], sigma);`
-Vectorised: `y ~ normal(a + b * x, sigma);`
-
-## Start from zero
-1. **Same log density,** computed in one call.
-2. **Faster** because the gradient is computed once for the vector.
-3. **Mix vectors and scalars:** a scalar sigma is repeated for every element.
-4. **Indexing works inside:** `y ~ normal(a + u[g] + b * x, sigma)` uses group index vector g.
-5. **Some operations still need loops,** such as per-site mixture likelihoods.
-
-## In the course
-Stan labs ([[Course Website]]).
-
-## Common confusions
-- **"Vectorising changes the model."** It only changes the speed.
-
-## Explain it back
-- Rewrite a loop over n as a vectorised statement.
-
-*Pass test:* you can vectorise a likelihood.
+Vectorising is practised in the Stan labs ([[Course Website]], [[Loops, apply and map]]). Vectorising does not change the model; it only changes the speed.
 
 ## Connections
 - **Builds on:** [[Sampling Statements and target +=]], [[Data Types in Stan]]

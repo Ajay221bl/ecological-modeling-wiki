@@ -21,6 +21,30 @@ Every round of changes and checks on this wiki, newest first. Each round ("pass"
 
 ---
 
+## v1.2 (2026-11-17): every atomic note rewritten as plain paragraphs
+**Asked for:** check every atomic note line by line for factual errors, unclear explanations, broken examples and whether it holds one concept; write each as 2 or 3 clear, self-sufficient paragraphs with no subsection headings; add graphs, images and Mermaid diagrams where useful; keep the closing Connections section that links all related notes.
+
+**What changed:**
+- All 843 atomic notes now open with 2 or 3 paragraphs in the Feynman style: an everyday picture, a definition of every term, the mechanics, a small worked example, the course sources, and the common confusion. The old "Start from zero", "In the course" and "Common confusions" headings are gone; their content is folded into the paragraphs.
+- Every note's R block was re-run, and the paragraphs now quote its real output (for example, the mixed-model notes give the `sleepstudy` estimates and the Stan notes the numbers from compiled models).
+- Figures and diagrams are kept beside the paragraphs, with a sentence saying what to look at. Diagrams that sat inside a removed numbered list, such as the one in [[Top-down Model Selection Protocol]], were moved into the body so they are not lost.
+- Connections and Flashcards are unchanged. Any link that only appeared in a removed section was kept under "See also" in Connections, so no related note was lost.
+- Molecular notes and maps were not changed, and the maps keep their syllabus order.
+
+**Factual fixes found during the check:**
+- Sum of Squares: the worked example used fitted values that were not the least-squares line, so "total = model + residual" did not actually add up (17 + 1 is not 20). Replaced with a real least-squares example (16.14 = 15.84 + 0.30, R² = 0.98).
+- Uncertainty: the R comment said the 4-plot interval sits "around a similar centre"; it is actually centred near 0, far from the true 12. Comment and explanation corrected.
+- Spearman Rank Correlation: Pearson r for the example is 0.795, now given as 0.80 (was 0.79).
+- Treatment and Control Group: Connections listed 'molecular note [[Treatment|Treatment and Control]]', which is only an alias of Treatment itself (a self-link). Removed.
+- Sensitivity Analysis: figure caption said λ = 0.97 gives 41 animals after 30 years; it is 40 (0.97³⁰ × 100 = 40.1). The old R comment called the 1% finite-difference ratio (about 35) "elasticity"; the note now states it as "a 1% rise in λ gives about 35% more animals".
+- Adaptive Resource Management: text said the model weights were 30/70 while the R output gives 21/79; now 21/79.
+- Mayfield Nest Survival: Powell and Gale's worked example gives SE 0.07 for the daily survival rate; the formula gives 0.016. The note explains the slip.
+- Smoother: the R example uses LOESS's default span, which is too wide for the data; the note now says so instead of implying the smoothed values are close to the truth.
+
+**Checks:** 0 broken links; every R block in the rewritten notes runs (Stan models compiled and sampled); all 117 Mermaid diagrams render with Mermaid 11.4; no em dashes.
+
+---
+
 ## v1.1.1 (2026-11-17): diagrams fixed
 **Reported:** some Mermaid diagrams showed as plain text ("mermaid: flowchart TD ...") instead of a picture.
 

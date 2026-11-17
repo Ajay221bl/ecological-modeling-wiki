@@ -3,6 +3,7 @@ type: atomic
 tags:
   - stan
   - flashcards/eco/stan
+description: "The step size controls how far each leapfrog step moves in Hamiltonian Monte Carlo, and maximum tree depth caps how many steps NUTS may take per iteration; the step size is tuned during warmup, the tree depth is a fixed limit you set (default 10), and hitting it is reported as a tree-depth warning."
 aliases:
   - "max_treedepth"
   - "Tree depth warning"
@@ -13,29 +14,11 @@ status: seedling
 
 # Step Size and Maximum Tree Depth
 
-**In one line:** the step size controls how far each leapfrog step moves in Hamiltonian Monte Carlo, and maximum tree depth caps how many steps NUTS may take per iteration; the step size is tuned during warmup, the tree depth is a fixed limit you set (default 10), and hitting it is reported as a tree-depth warning.
+The **step size** controls how far each leapfrog step moves in Hamiltonian Monte Carlo, and the **maximum tree depth** caps how many steps NUTS may take per iteration ([[Hamiltonian Monte Carlo]], [[adapt_delta and Sampler Settings]]). The step size is tuned during warmup to hit a target acceptance rate, adapt_delta, default 0.8. Smaller steps follow curved posteriors more accurately but need more steps. Tree depth d allows up to 2^d leapfrog steps, and the default maximum of 10 allows 1,024; hitting it is reported as a tree-depth warning.
 
-> [!info] Before this, it helps to know
-> [[Hamiltonian Monte Carlo]] · [[adapt_delta and Sampler Settings]]
+Tree-depth warnings are about efficiency, not validity: the sampler stopped early, but the draws are still correct. Divergences are about validity: the step size was too big for the posterior's curvature ([[Divergent Transitions]]). Fix tree-depth warnings by reparameterising or rescaling predictors, and raise `max_treedepth` only if needed ([[Non-centered Parameterization]], [[Standardizing|Standardization]]).
 
-## Start from zero
-1. **Step size** is adapted during warmup to hit a target acceptance rate (adapt_delta, default 0.8).
-2. **Smaller steps** follow curved posteriors more accurately but need more steps.
-3. **Tree depth** d allows up to 2^d leapfrog steps; the default maximum is 10 (1024 steps).
-4. **Tree-depth warnings are about efficiency,** not validity: the sampler stopped early but the draws are still correct.
-5. **Divergences are about validity:** the step size was too big for the posterior's curvature.
-6. **Fix tree-depth warnings** by reparameterising or rescaling predictors; raise `max_treedepth` only if needed.
-
-## In the course
-Stan labs ([[Course Website]]).
-
-## Common confusions
-- **"Tree-depth warnings mean the results are wrong."** They mean sampling was inefficient; divergences are the validity warning.
-
-## Explain it back
-- How many leapfrog steps does max_treedepth = 10 allow?
-
-*Pass test:* you can interpret step-size and tree-depth warnings.
+These settings come up in the Stan labs ([[Course Website]], [[Running Stan from R]]). Tree-depth warnings don't mean the results are wrong; they mean sampling was inefficient, and divergences are the validity warning.
 
 ## Connections
 - **Builds on:** [[Hamiltonian Monte Carlo]], [[adapt_delta and Sampler Settings]]

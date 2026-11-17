@@ -3,6 +3,7 @@ type: atomic
 tags:
   - stan
   - flashcards/eco/stan
+description: "The transformed parameters block defines quantities computed from parameters, such as a linear predictor or rescaled random effects, that are used in the model and saved with every draw."
 aliases:
   - "transformed parameters block"
   - "Derived parameters in Stan"
@@ -11,36 +12,11 @@ status: seedling
 
 # Transformed Parameters
 
-**In one line:** the transformed parameters block defines quantities computed from parameters, such as a linear predictor or rescaled random effects, that are used in the model and saved with every draw.
+The **transformed parameters** block defines quantities computed from parameters, such as a linear predictor or rescaled random effects, that are used in the model and saved with every draw ([[Stan Program Blocks]]). For example, non-centred random effects are written `transformed parameters { vector[J] u = sigma_g * z; }` ([[Non-centered Parameterization]]). They are recomputed at every step of the sampler, so they can enter the likelihood, and they are saved in the output, so you get their posterior too.
 
-> [!info] Before this, it helps to know
-> [[Stan Program Blocks]]
+Constraints declared here are checked, not enforced, so a violation rejects the proposal ([[Constrained Parameters]]). If you only need a value for output, put it in [[Generated Quantities]], which is cheaper. Putting a prior on a transformed parameter needs a [[Jacobian Adjustment]] unless the transform is linear and you understand the consequence.
 
-## A tiny example
-Non-centred random effects:
-```
-transformed parameters {
-  vector[J] u = sigma_g * z;
-}
-```
-
-## Start from zero
-1. **Recomputed at every step of the sampler,** so they can enter the likelihood.
-2. **Saved in the output,** so you get their posterior too.
-3. **Constraints declared here are checked,** not enforced; a violation rejects the proposal.
-4. **If you only need the value for output,** put it in generated quantities (cheaper).
-5. **Putting a prior on a transformed parameter** needs a [[Jacobian Adjustment]] unless the transform is linear and you understand the consequence.
-
-## In the course
-Stan lab: mixed models ([[Course Website]]).
-
-## Common confusions
-- **"Transformed parameters are sampled."** They are computed from sampled parameters.
-
-## Explain it back
-- When would you use generated quantities instead?
-
-*Pass test:* you can place a derived quantity in the right block.
+This block appears in the Stan lab on mixed models ([[Course Website]], [[Random Intercepts in Stan]]). Transformed parameters are not sampled; they are computed from sampled parameters.
 
 ## Connections
 - **Builds on:** [[Stan Program Blocks]]

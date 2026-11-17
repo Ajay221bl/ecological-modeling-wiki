@@ -3,6 +3,7 @@ type: atomic
 tags:
   - stan
   - flashcards/eco/stan
+description: "A group index vector is an integer array giving each observation's group number, so a vector of group effects can be looked up per observation with `u[g]`."
 aliases:
   - "Index variables in Stan"
   - "Group indices"
@@ -13,32 +14,11 @@ status: seedling
 
 # Group Index Vectors in Stan
 
-**In one line:** a group index vector is an integer array giving each observation's group number, so a vector of group effects can be looked up per observation with `u[g]`.
+A **group index vector** is an integer array giving each observation's group number, so a vector of group effects can be looked up per observation with `u[g]` ([[Data Types in Stan]], [[Grouping Factor]], [[Random Intercept]]). `sleepstudy` has 180 rows and 18 subjects: `g = as.integer(Subject)` gives values 1 to 18, and in Stan `u[g]` returns a vector of 180 subject effects, one per row.
 
-> [!info] Before this, it helps to know
-> [[Data Types in Stan]] · [[Grouping Factor]] · [[Random Intercept]]
+Declare it as `array[N] int<lower=1, upper=J> g;`, build it in R with `as.integer(factor(group))`, which numbers groups 1 to J, and use it as `y ~ normal(a + u[g] + b * x, sigma);` ([[Vectorized Sampling Statements]]). Random slopes use `b_g[g] .* x`, an elementwise product ([[Random Slope]]). Nested groups need one index per level, such as site within region ([[Nested Random Effects]]). Check that the largest index equals J, or Stan errors.
 
-## A tiny example
-sleepstudy has 180 rows and 18 subjects. `g = as.integer(Subject)` gives values 1 to 18; in Stan, `u[g]` returns a vector of 180 subject effects, one per row.
-
-## Start from zero
-1. **Declare:** `array[N] int<lower=1, upper=J> g;`
-2. **Build in R:** `as.integer(factor(group))`, which numbers groups 1 to J.
-3. **Use:** `y ~ normal(a + u[g] + b * x, sigma);`
-4. **Random slopes:** `b_g[g] .* x` (elementwise product).
-5. **Nested groups** need one index per level (site within region).
-6. **Check** that the largest index equals J, or Stan errors.
-
-## In the course
-Stan lab: mixed models ([[Course Website]]).
-
-## Common confusions
-- **"Pass the factor directly."** Stan needs integers 1 to J.
-
-## Explain it back
-- How do you turn a factor into Stan group indices?
-
-*Pass test:* you can index group effects in Stan.
+It is used in the Stan lab on mixed models ([[Course Website]], [[Random Intercepts in Stan]]). Don't pass the factor directly: Stan needs integers 1 to J.
 
 ## Connections
 - **Builds on:** [[Data Types in Stan]], [[Grouping Factor]]
