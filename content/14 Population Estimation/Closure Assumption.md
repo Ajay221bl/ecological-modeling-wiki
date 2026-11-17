@@ -19,12 +19,12 @@ Taking a class register several times in one lesson, the absences tell you about
 
 Occupancy closure is at the species level: one leopard leaving is fine if another still uses the site (Powell and Gale Ch15). Mark-recapture and N-mixture closure is at the individual level, with no births, deaths, immigration or emigration (ΔN = 0), which is stricter ([[Closed Population]], [[N-mixture Model]]). Random movement in and out keeps ψ unbiased but changes its meaning to "proportion of sites used", and p then includes the chance of being present ([[Availability for Detection]]). Non-random shifts, such as seasonal habitat changes, bias ψ, so restrict surveys to a period before the shift.
 
-"Short" is relative: a month may be too long for mice but fine for elephants (Powell and Gale Ch7) ([[Powell and Gale 2015]] Ch7, Ch8 and Ch15, [[Open Population]]). Closure does not mean animals never move; occupancy closure only needs each site's species status to stay the same.
+"Short" is relative: a month may be too long for mice but fine for elephants (Powell and Gale Ch7) ([[Powell and Gale 2015]] Ch7, Ch8 and Ch15, [[Open Population]]). The guest lecture puts it as: species are present at occupied sites for the duration of the sampling season, and occupancy can change between seasons but not within one; it is the first of the four assumptions in [[Assumptions of Occupancy Models]] ([[Occupancy Guest Lecture]]). Closure does not mean animals never move; occupancy closure only needs each site's species status to stay the same.
 
 ## Connections
 - **Builds on:** [[Occupancy]], [[Abundance]]
-- **Leads to:** [[Single-season Occupancy]], [[Closed Population]], [[Robust Design]], [[Temporary Emigration]]
-- **Part of:** [[MOC 16 - Population Estimation|MOC - Population Estimation]], molecular note [[Open vs Closed Populations]]
+- **Leads to:** [[Single-season Occupancy]], [[Site Independence Assumption]], [[Closed Population]], [[Robust Design]], [[Temporary Emigration]]
+- **Part of:** [[MOC 16 - Population Estimation|MOC - Population Estimation]], molecular note [[Open vs Closed Populations]], [[Assumptions of Occupancy Models]]
 
 ## Flashcards
 

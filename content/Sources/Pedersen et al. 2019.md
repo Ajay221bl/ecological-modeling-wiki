@@ -26,8 +26,8 @@ Reviews GAMs and smoothing penalties, connects smooths to random effects, define
 - Choosing a model type → [[Choosing an HGAM Model Type]]
 - Smooths as random effects → [[Random-effect Smooth]], [[Factor-smooth Interaction]]
 
-## Notes that rely on it (20)
-[[Basis Dimension and gam.check()]], [[Basis Function]], [[by= Smooths]], [[Course Schedule]], [[Cyclic Spline]], [[Factor-smooth Interaction]], [[Generalized Additive Model]], [[Global Smoother]], [[Group-level Smoothers]], [[Hierarchical GAM]], [[Partial Effect Plots]], [[Penalized Regression Spline]], [[Random-effect Smooth]], [[REML for Smoothness Selection]], [[Shared Wiggliness]], [[Smoothing Parameter]], [[Spline]], [[Tensor Product Smooth]], [[Thin Plate Regression Spline]], [[Wiggliness Penalty]]
+## Notes that rely on it (21)
+[[Basis Dimension and gam.check()]], [[Basis Function]], [[by= Smooths]], [[Course Schedule]], [[Cyclic Spline]], [[Factor-smooth Interaction]], [[Generalized Additive Model]], [[Global Smoother]], [[gratia]], [[Group-level Smoothers]], [[Hierarchical GAM]], [[Partial Effect Plots]], [[Penalized Regression Spline]], [[Random-effect Smooth]], [[REML for Smoothness Selection]], [[Shared Wiggliness]], [[Smoothing Parameter]], [[Spline]], [[Tensor Product Smooth]], [[Thin Plate Regression Spline]], [[Wiggliness Penalty]]
 
 ## Connections
 - **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

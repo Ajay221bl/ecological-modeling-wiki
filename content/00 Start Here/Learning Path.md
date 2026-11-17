@@ -120,7 +120,7 @@ Unit 4 (Sep 1, 3): how a model's numbers are learned from data. Likelihood, maxi
 
 **2. Uncertainty of estimates:** [[Sampling Distribution]] → [[Variance of an Estimate]] → [[Confidence Interval]] → [[Wald Confidence Interval]] → [[Profile Likelihood Confidence Interval]] → [[Delta Method]] → [[Bootstrap]] → [[Parametric Bootstrap]] → [[Percentile Bootstrap Interval]]
 
-**3. Hypothesis tests:** [[Null Hypothesis]] → [[Alternative Hypothesis]] → [[Test Statistic]] → [[P-value]] → [[Significance Level]] → [[Statistical Significance]] → [[Type I Error]] → [[Type II Error]] → [[Statistical Power]] → [[Null Hypothesis Significance Testing]] → [[Wald Test]] → [[z-test]]
+**3. Hypothesis tests:** [[Null Hypothesis]] → [[Alternative Hypothesis]] → [[Test Statistic]] → [[P-value]] → [[Significance Level]] → [[Statistical Significance]] → [[Type I Error]] → [[Type II Error]] → [[Statistical Power]] → [[Null Hypothesis Significance Testing]] → [[Wald Test]] → [[z-test]] → [[Chi-square Test]] → [[Kruskal-Wallis Test]]
 
 **4. Fitting machinery:** [[Iteratively Reweighted Least Squares]] → [[Nonlinear Least Squares]] → [[Nuisance Parameter]]
 
@@ -230,13 +230,13 @@ Units 10 to 13 (Oct 6, 8, 13, 15, 22): models for grouped data, fitted with lme4
 ## 14. [[MOC 19 - Ecology Vocabulary]]
 The ecology words the readings, labs and homework datasets assume you know, each explained from nothing.
 
-**1. Populations and demography:** [[Population Density]] → [[Vital Rates]] → [[Fecundity]] → [[Carrying Capacity]] → [[Density Dependence]] → [[Tag Loss]]
+**1. Populations and demography:** [[Population Density]] → [[Vital Rates]] → [[Fecundity]] → [[Carrying Capacity]] → [[Density Dependence]] → [[Tag Loss]] → [[Metapopulation]] → [[Translocation]] → [[Reintroduction]]
 
 **2. Traits and climate:** [[Body Size]] → [[Body Condition]] → [[Phenology]] → [[Climate Change Effects on Wildlife]] → [[Drought Index]] → [[Evapotranspiration]] → [[Environmental Gradient]] → [[Latitudinal Gradient]] → [[Macroecology]]
 
 **3. Disease:** [[Vector-borne Disease]] → [[Epizootic Hemorrhagic Disease]]
 
-**4. Habitat and landscape:** [[Habitat]] → [[Habitat Structure]] → [[Canopy Cover]] → [[Diameter at Breast Height]] → [[Coarse Woody Debris]] → [[Fire History Variables]] → [[Landscape Metrics]] → [[Species Distribution Model]] → [[Enemy Release Hypothesis]] → [[Woody Encroachment]] → [[NDVI]]
+**4. Habitat and landscape:** [[Habitat]] → [[Habitat Structure]] → [[Canopy Cover]] → [[Diameter at Breast Height]] → [[Coarse Woody Debris]] → [[Fire History Variables]] → [[Landscape Metrics]] → [[Species Distribution Model]] → [[Enemy Release Hypothesis]] → [[Woody Encroachment]] → [[NDVI]] → [[Home Range]] → [[Edge Effect]] → [[Species Interaction]]
 
 ## 15. [[MOC 15 - GAMs]]
 Oct 27 onward: generalized additive models let the data draw a smooth curve, and hierarchical GAMs let groups share or differ in that curve. Readings: Zuur et al. 2009 Ch3, Pedersen et al. 2019, Lawton et al. 2022, Noam Ross's GAM course.
@@ -252,9 +252,9 @@ Oct 27 onward: generalized additive models let the data draw a smooth curve, and
 ## 16. [[MOC 16 - Population Estimation]]
 Guest lectures and Powell and Gale 2015 Ch5 to 19: occupancy, mark-recapture, survival and abundance when animals are missed.
 
-**1. Counting animals you cannot always see:** [[Imperfect Detection]] → [[Detection Probability]] → [[Cumulative Detection Probability]] → [[Availability for Detection]] → [[Abundance]] → [[Census]] → [[Population Index]] → [[Catch per Unit Effort]] → [[Count-based Abundance Estimation]] → [[Survey Sampling Designs]] → [[Finite Population Correction]]
+**1. Counting animals you cannot always see:** [[Imperfect Detection]] → [[Detection Probability]] → [[Cumulative Detection Probability]] → [[Availability for Detection]] → [[Abundance]] → [[Census]] → [[Population Index]] → [[Catch per Unit Effort]] → [[Count-based Abundance Estimation]] → [[Survey Sampling Designs]] → [[Finite Population Correction]] → [[Spatially Balanced Sampling]] → [[Live Trapping]] → [[Coverboard]] → [[Track Survey]] → [[Acoustic Survey]] → [[Autonomous Recording Unit]] → [[Breeding Amphibian Survey]] → [[Camera Trap]] → [[Hair Snare]] → [[Environmental DNA]]
 
-**2. Occupancy:** [[Occupancy]] → [[Detection History]] → [[Naive Occupancy]] → [[Closure Assumption]] → [[Single-season Occupancy]] → [[Multi-season Occupancy]] → [[Site Covariates]] → [[Observation Covariates]] → [[unmarked Package]]
+**2. Occupancy:** [[Occupancy]] → [[Detection History]] → [[Occupancy Likelihood]] → [[Naive Occupancy]] → [[Closure Assumption]] → [[Site Independence Assumption]] → [[Unexplained Heterogeneity in Occupancy]] → [[Unexplained Heterogeneity in Detection]] → [[Single-season Occupancy]] → [[Stacked Occupancy Design]] → [[Multi-season Occupancy]] → [[Colonization Probability]] → [[Local Extinction Probability]] → [[Multi-species Occupancy]] → [[Marginal Occupancy]] → [[Conditional Occupancy]] → [[Co-occurrence Probability]] → [[Site Covariates]] → [[Observation Covariates]] → [[unmarked Package]] → [[ubms Package]] → [[spOccupancy Package]] → [[Program PRESENCE]]
 
 **3. Mark-recapture and closed populations:** [[Mark-Recapture]] → [[Capture History]] → [[Cohort]] → [[Closed Population]] → [[Open Population]] → [[Encounter Probability]] → [[Capture Probability]] → [[Lincoln-Petersen Estimator]] → [[Chapman Estimator]] → [[Schnabel Estimator]] → [[Behavioral Response to Capture]] → [[Capture Heterogeneity Models]] → [[Huggins Closed Capture Model]] → [[Horvitz-Thompson Estimator]] → [[Removal Sampling]] → [[Double-observer Methods]]
 
@@ -264,7 +264,7 @@ Guest lectures and Powell and Gale 2015 Ch5 to 19: occupancy, mark-recapture, su
 
 **6. Program MARK and model checking:** [[Program MARK]] → [[Parameter Index Matrix]] → [[Design Matrix in Program MARK]] → [[Goodness of Fit and c-hat]]
 
-**Then the why:** [[Why raw counts mislead]] · [[Census vs Index vs Estimate]] · [[Naive vs Estimated Occupancy]] · [[Occupancy vs Detection Probability]] · [[Site vs Observation Covariates]] · [[Occupancy vs Abundance]] · [[How many visits does an occupancy study need]] · [[Occupancy Workflow in R]] · [[Open vs Closed Populations]] · [[Mark-Recapture vs Unmarked Survey Methods]] · [[Line vs Point Transects]] · [[True vs Apparent Survival]] · [[Mayfield vs Kaplan-Meier]] · [[Choosing a Survival Model]] · [[Choosing a Population Estimation Method]] · [[Process vs Sampling Variance in Survival Estimates]]
+**Then the why:** [[Why raw counts mislead]] · [[Census vs Index vs Estimate]] · [[Naive vs Estimated Occupancy]] · [[Occupancy vs Detection Probability]] · [[Site vs Observation Covariates]] · [[Occupancy vs Abundance]] · [[How many visits does an occupancy study need]] · [[Occupancy Workflow in R]] · [[Open vs Closed Populations]] · [[Mark-Recapture vs Unmarked Survey Methods]] · [[Line vs Point Transects]] · [[True vs Apparent Survival]] · [[Mayfield vs Kaplan-Meier]] · [[Choosing a Survival Model]] · [[Choosing a Population Estimation Method]] · [[Process vs Sampling Variance in Survival Estimates]] · [[Assumptions of Occupancy Models]] · [[Single-season vs Multi-season Occupancy]] · [[Marginal vs Conditional Occupancy]] · [[Choosing a Survey Method for Occupancy]] · [[Choosing Occupancy Software]] · [[Fisher Occupancy Case Study]]
 
 ## 17. [[MOC 17 - Stan]]
 Stan language labs: writing a Bayesian model directly in Stan, block by block, and running it from R.

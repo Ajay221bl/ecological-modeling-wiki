@@ -19,7 +19,7 @@ Whether it was raining when you knocked on the door changes each visit and affec
 
 Examples are observer identity, survey duration, wind, temperature, day of year and time since sunrise. Finley et al. (2005, in Powell and Gale Ch15) found swift fox detection peaked in February and October, during dispersal, and was low in June and July when foxes were in dens. In unmarked they are `obsCovs`, entered after the first `~` in `occu(~ p covariates ~ ψ covariates)` ([[unmarked Package]]).
 
-They are used in the occupancy guest lecture ([[Course Website]], [[Powell and Gale 2015]] Ch15, [[Site Covariates]]). Weather can't explain occupancy within a closed season; it explains detection.
+The guest lecture's examples are temperature, date, lunar cycle, wind speed and precipitation, and it stresses that p can take both site-specific and survey-specific covariates ([[Occupancy Guest Lecture]], [[Course Website]], [[Powell and Gale 2015]] Ch15, [[Site Covariates]]). [[Happe et al. 2020]] used date and date², year, bait availability and percent wilderness for fisher detection ([[Unexplained Heterogeneity in Detection]]). Weather can't explain occupancy within a closed season; it explains detection.
 
 ## Connections
 - **Builds on:** [[Detection Probability]], [[Single-season Occupancy]]
