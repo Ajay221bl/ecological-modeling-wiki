@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "A package is a bundle of extra functions and data that someone wrote for R, which you install once and load each session."
 aliases:
   - "library()"
   - "install.packages()"
@@ -12,23 +13,12 @@ status: seedling
 
 # Packages in R
 
-**In one line:** a package is a bundle of extra functions and data that someone wrote for R, which you install once and load each session.
+A phone works out of the box, but for banking or maps you download an app once (install) and then tap it each time you want it (load). A **package** is R's app: a bundle of extra functions, data and documentation that someone wrote, which you install once per computer and load once per session ([[R and RStudio]]). `install.packages("lme4")` downloads it, normally from [[CRAN]]; `library(lme4)` loads it so its functions can be used.
 
-> [!info] Before this, it helps to know
-> [[R and RStudio]] (the base system) · [[Function Arguments]] (using the functions inside)
+Put the `library()` calls at the top of the script, so a reader sees at a glance what the script needs, and never put `install.packages()` in a shared script, because it would reinstall on every run. "Error: could not find function" almost always means the package is not loaded in this session, even though it is installed; `library()` loads but never installs. Sometimes you want one function without loading a whole package, or two packages share a function name; writing `package::function()`, as with `stats::sd()` in the code below, says exactly which one you mean. When two loaded packages do clash, the one loaded later wins and R prints a "masked" message.
 
-## The everyday picture
-Apps on a phone. The phone works out of the box. For banking or maps you download an app once (install), then tap it each time you want it (load). Deleting the phone's memory at night means tapping it again tomorrow.
+Packages are what turn base R into a modeling toolkit. This course uses tidyverse for data handling, lme4 and glmmTMB for mixed models, brms for Bayesian models, DHARMa for residual checks, MuMIn and AICcmodavg for model selection, and others ([[Course Website]], [[Tidyverse]]). Because results can change between package versions, reports should record which versions were used ([[Session Info]]), and the course loads packages with a helper that installs anything missing ([[librarian shelf()]], [[Function Arguments]]).
 
-## Start from zero
-1. **Install once per computer:** `install.packages("lme4")`. This downloads from [[CRAN]].
-2. **Load once per session:** `library(lme4)`.
-3. **Put `library()` calls at the top of the script.** *Why:* a reader sees at a glance what the script needs.
-4. **Never put `install.packages()` in a shared script.** It reinstalls every run.
-5. **`pkg::fun()` uses one function without loading the package,** and settles name clashes.
-6. **Two packages can share a function name.** The later-loaded one wins and R prints a "masked" message.
-
-## In R
 ```r
 library(stats)               # already installed with R
 # install.packages("lme4")   # once per computer, typed in the console
@@ -36,19 +26,6 @@ library(lme4)                # every session, at the top of the script
 packageVersion("lme4")
 stats::sd(c(1, 2, 3))        # package::function, explicit about the source
 ```
-
-## In the course
-Course packages include tidyverse, lme4, glmmTMB, brms, DHARMa, MuMIn, AICcmodavg, loo, sf, ncf and mgcv ([[Course Website]]). The course loads them with [[librarian shelf()]].
-
-## Common confusions
-- **"Error: could not find function."** The package isn't loaded this session, even if it is installed.
-- **"library() installs."** It only loads what is already installed.
-
-## Explain it back
-- What is the difference between installing and loading?
-- What does `dplyr::filter()` mean?
-
-*Pass test:* you can install, load and name the source package of a function.
 
 ## Connections
 - **Builds on:** [[R and RStudio]]

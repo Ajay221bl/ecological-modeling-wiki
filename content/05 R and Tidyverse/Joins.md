@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "A join combines two tables side by side by matching rows that share a key, such as the same site code."
 aliases:
   - "left_join()"
   - "Merging tables"
@@ -12,22 +13,12 @@ status: seedling
 
 # Joins
 
-**In one line:** a join combines two tables side by side by matching rows that share a key, such as the same site code.
+Matching name tags to a guest list: each guest is looked up on the list by name and their table number is copied onto the tag, and guests not on the list get a blank. A **join** combines two tables side by side by matching rows that share a *key*, a column both tables contain, such as a site code ([[Data Frame]]). It is how you keep each kind of information in its own tidy table ([[Tidy Data]]) and bring them together for analysis, for example many bird surveys per site joined to one row of habitat data per site.
 
-> [!info] Before this, it helps to know
-> [[Data Frame]] (the tables) · [[Tidy Data]] (one table per kind of thing)
+`left_join(x, y, by = "site")` keeps every row of x and adds y's columns where the key matches; a row with no match gets `NA`. The other joins differ only in what they keep: `inner_join()` keeps only matched rows, `full_join()` keeps everything from both, and `anti_join()` returns the rows of x that failed to match. In the example below, site C has surveys but no habitat row, so the left join gives it `NA` tree cover, the inner join drops it, and the anti join shows it. Homework 3 joins two years of bird data to one landscape table for the Mount Lofty Ranges this way ([[Course Website]], [[Landscape Metrics]]).
 
-## The everyday picture
-Matching name tags to a guest list. Each guest (row in table one) is looked up on the list (table two) by name, and their table number is copied onto the tag. Guests not on the list get a blank.
+Joins fail quietly, so check them. If a key appears twice in y, rows of x are duplicated; if keys are spelled differently ("A" and "a"), matches fail and give `NA` without any error. Compare the row count before and after a left join, as the last line does, and run an `anti_join()` to see what did not match. A join is not stacking tables: gluing tables by position is [[Binding Rows and Columns]], which does no matching at all ([[Data Wrangling]]).
 
-## Start from zero
-1. **Find the key:** the column both tables share.
-2. **`left_join(x, y, by = "key")` keeps every row of x** and adds y's columns where the key matches. No match gives `NA`.
-3. **`inner_join` keeps only matched rows. `full_join` keeps everything. `anti_join` shows what failed to match.**
-4. **Check the row count after joining.** *Why:* if a key appears twice in y, rows of x are duplicated. If keys are spelled differently, matches fail silently.
-5. **Typical case:** many bird surveys per site joined to one row of habitat data per site.
-
-## See it
 ```mermaid
 flowchart LR
   X[x: surveys<br/>site, year, birds] --> J[left_join by site]
@@ -36,7 +27,6 @@ flowchart LR
 ```
 *What to look at:* the many-rows table goes on the left, the one-row-per-site table on the right.
 
-## In R
 ```r
 library(dplyr)
 birds <- data.frame(site = c("A", "A", "B", "C"), year = c(1, 2, 1, 1), n = c(9, 8, 6, 5))
@@ -46,19 +36,6 @@ inner_join(birds, land, by = "site")     # C dropped
 anti_join(birds, land, by = "site")      # which surveys have no habitat row?
 nrow(birds); nrow(left_join(birds, land, by = "site"))   # row count unchanged: good
 ```
-
-## In the course
-Homework 3 joins two years of bird data to one landscape table for the Mt Lofty Ranges ([[Course Website]]).
-
-## Common confusions
-- **"A join stacks tables."** That is binding rows. A join adds columns by matching.
-- **"No error means it worked."** Unmatched keys just give NA. Always run an `anti_join()`.
-
-## Explain it back
-- What does `left_join` do with rows of x that have no match?
-- How can a join create extra rows?
-
-*Pass test:* you can attach site-level covariates to observation-level data and verify the result.
 
 ## Connections
 - **Builds on:** [[Data Frame]], [[Tidy Data]]

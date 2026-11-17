@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "Every R function has a help page, opened with `?name`, that states what it does, what inputs it takes and what it returns."
 aliases:
   - "?function"
   - "Vignettes"
@@ -12,22 +13,12 @@ status: seedling
 
 # Help Files in R
 
-**In one line:** every R function has a help page, opened with `?name`, that states what it does, what inputs it takes and what it returns.
+The instruction leaflet in a medicine box is dry, always laid out the same way, and the place where the default dose and the warnings are written. Every R function has such a leaflet: a **help page**, opened with `?name`, as in `?lm`, that states what the function does, what inputs it takes and what it returns. `??"mixed model"` searches all the help installed on your computer.
 
-> [!info] Before this, it helps to know
-> [[Function Arguments]] (what help pages list) · [[Packages in R]] (where vignettes come from)
+Pages share a fixed layout: Description, Usage, Arguments, Details, Value and Examples. Read Usage first, because it shows every argument with its default value ([[Function Arguments]]); then Arguments for what each one means; and Value for what comes back, such as the components of a fitted model. The Examples always work, and `example(mean)` runs them. In the console, `args(glm)` prints the Usage line on its own, as the code below shows.
 
-## The everyday picture
-The instruction leaflet in a medicine box. Dry, always structured the same way, and the place where the default dose and the warnings are written down.
+For longer explanations, many packages include *vignettes*, tutorial-length documents listed with `vignette(package = "lme4")` ([[Packages in R]]). The lme4 vignette's table of random-effect formulas is the reference the mixed-model lab leans on ([[lme4 Random-effect Syntax]]). Help pages can feel hard to read, but they have one big advantage over answers found online: they match the version you have installed, while web answers go stale. Reading the help is also the first step of [[Debugging]].
 
-## Start from zero
-1. **`?lm` opens the page.** `??"mixed model"` searches all installed help.
-2. **Pages share a layout.** Description, Usage (with defaults), Arguments, Details, Value (what comes back), Examples.
-3. **Read Usage first for defaults,** then Arguments for what each means.
-4. **Run the Examples:** `example(lm)`. They always work.
-5. **Vignettes are long-form tutorials:** `vignette(package = "lme4")`. *Why they matter:* the lme4 vignette's table of random-effect formulas is the reference the mixed-model lab leans on.
-
-## In R
 ```r
 # ?glm                      # open in the Help pane
 args(glm)                   # the Usage line in the console
@@ -35,14 +26,6 @@ head(names(formals(lm)))    # argument names
 example(mean, echo = FALSE) # run a help page's examples
 # vignette("lmer", package = "lme4")
 ```
-
-## Common confusions
-- **"Help pages are unreadable, I'll search online."** Online answers go stale. The help page matches your installed version.
-
-## Explain it back
-- Which section tells you what a function returns?
-
-*Pass test:* you can find a function's defaults and run its examples.
 
 ## Connections
 - **Builds on:** [[Function Arguments]]

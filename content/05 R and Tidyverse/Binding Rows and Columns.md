@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "Binding glues tables together by simple position: rows underneath each other, or columns side by side, with no matching by key."
 aliases:
   - "rbind()"
   - "cbind()"
@@ -12,22 +13,12 @@ status: seedling
 
 # Binding Rows and Columns
 
-**In one line:** binding glues tables together by simple position: rows underneath each other, or columns side by side, with no matching by key.
+Tape two sheets of paper together. Top to bottom makes a longer list; side to side makes a wider one, which only makes sense if the lines on both sheets were already in the same order. **Binding** glues tables together by simple position, rows underneath each other or columns side by side, with no matching by key ([[Data Frame]]). That is the difference from a join ([[Joins]]).
 
-> [!info] Before this, it helps to know
-> [[Data Frame]] (the tables) · [[Joins]] (matching by key, the safer cousin)
+Binding rows is the common and safe case: the same variables from different files, such as one file per year. `rbind()` insists that the tables have identical columns, while dplyr's `bind_rows()` matches columns by name and fills gaps with `NA`, and its `.id` argument records which table each row came from. In the example below, the 2021 table has an extra `observer` column, so the 2020 rows get `NA` there and a new `year` column says which file each row came from.
 
-## The everyday picture
-Taping two sheets of paper together. Top to bottom makes a longer list. Side to side makes a wider one, and only makes sense if the lines on both sheets were already in the same order.
+Binding columns, with `cbind()` or `bind_cols()`, attaches values by row position, and that is where the risk lies: if one table was sorted differently, values land on the wrong rows with no warning. So `cbind()` is not a quick join; when the tables share a key, join them instead. `cbind()` is still the natural tool for building a matrix column by column, as the last line shows, where a column of 1s beside a predictor is the start of a [[Matrices in R|matrix]] for regression.
 
-## Start from zero
-1. **`rbind()` / `bind_rows()` stack rows.** Use for the same variables from different files, such as one file per year.
-2. **`bind_rows()` matches columns by name and fills gaps with NA.** `rbind()` insists on identical columns.
-3. **`.id` records which table each row came from.**
-4. **`cbind()` / `bind_cols()` put columns side by side by row position.**
-5. **Column binding trusts the row order.** *Why it is risky:* if one table was sorted differently, values get attached to the wrong rows with no warning. Prefer a join.
-
-## In R
 ```r
 library(dplyr)
 y1 <- data.frame(site = c("A", "B"), birds = c(9, 6))
@@ -36,14 +27,6 @@ bind_rows(`2020` = y1, `2021` = y2, .id = "year")     # stacks, fills observer w
 cbind(y1, tree = c(10, 30))                           # adds a column by position
 X <- cbind(1, c(2, 5, 9)); X                          # building a matrix column by column
 ```
-
-## Common confusions
-- **"cbind is a quick join."** It ignores keys entirely.
-
-## Explain it back
-- When is `cbind()` dangerous?
-
-*Pass test:* you can stack yearly files and label their origin.
 
 ## Connections
 - **Builds on:** [[Data Frame]]

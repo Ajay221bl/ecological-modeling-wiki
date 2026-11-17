@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "The tidyverse is a family of R packages that share one design, so data import, cleaning, reshaping and plotting all work the same way."
 aliases:
   - "tidyverse package"
   - "dplyr and friends"
@@ -11,22 +12,12 @@ status: seedling
 
 # Tidyverse
 
-**In one line:** the tidyverse is a family of R packages that share one design, so data import, cleaning, reshaping and plotting all work the same way.
+A set of kitchen tools from one maker has handles that all fit your hand the same way and lids that fit each other's pots. You could cook with a mismatched drawer, but with a set you stop thinking about the tools. The **tidyverse** is that kind of set for R: a family of packages that share one design, so importing, cleaning, reshaping and plotting data all work the same way ([[Packages in R]]). `library(tidyverse)` loads the core set at once. Each package has one job: readr reads files, tidyr reshapes tables, dplyr transforms them, ggplot2 plots, stringr handles text, forcats handles factors and purrr repeats operations.
 
-> [!info] Before this, it helps to know
-> [[Packages in R]] (installing and loading) · [[Data Frame]] (what the tools act on)
+The shared design is simple. Most functions are verbs, such as `filter()`, `mutate()` and `summarise()`, that take a data frame as their first argument and return a data frame ([[Data Frame]]). Because the output of one verb is the right input for the next, steps chain together with the [[Pipe Operator]], and code reads top to bottom as a list of actions. The example below takes a small table of masses, groups it by species and summarises the mean mass of each, in three readable lines. The tools all expect [[Tidy Data]], one variable per column and one observation per row, and the diagram shows how the packages line up as stages from import to plot ([[filter()]], [[ggplot2 Grammar of Graphics]]).
 
-## The everyday picture
-A set of kitchen tools from one maker. The handles all fit your hand the same way and the lids fit each other's pots. You could cook with a mismatched drawer, but with a set you stop thinking about the tools.
+The tidyverse does not replace R; it is a set of packages inside R, and base R functions keep working alongside it. One practical consequence of loading many packages is name clashes: if `filter()` behaves strangely or "isn't found", either the package is not loaded or another package's function of the same name is masking it. The course's crash course and its wrangling-to-figures session are built on the tidyverse ([[Course Website]]).
 
-## Start from zero
-1. **`library(tidyverse)` loads the core set at once.**
-2. **Each package has one job.** readr reads files, dplyr transforms tables, tidyr reshapes, ggplot2 plots, stringr handles text, purrr repeats, forcats handles factors.
-3. **Functions are verbs** that take a data frame first and return a data frame.
-4. **So steps chain with the pipe** ([[Pipe Operator]]). *Why this design:* code reads top to bottom as a list of actions.
-5. **They expect [[Tidy Data]].**
-
-## See it
 ```mermaid
 flowchart LR
   A[readr<br/>import] --> B[tidyr<br/>reshape] --> C[dplyr<br/>transform] --> D[ggplot2<br/>plot]
@@ -34,7 +25,6 @@ flowchart LR
 ```
 *What to look at:* one package per stage of the wrangling pipeline.
 
-## In R
 ```r
 library(tidyverse)
 penguins_like <- tibble(species = c("A", "A", "B", "B"), mass = c(3700, 3900, 5000, 5200))
@@ -42,18 +32,6 @@ penguins_like |>
   group_by(species) |>
   summarise(mean_mass = mean(mass))
 ```
-
-## In the course
-The crash course and the wrangling-to-figures session are tidyverse-based ([[Course Website]]).
-
-## Common confusions
-- **"Tidyverse replaces R."** It is a set of packages inside R. Base R still works alongside.
-- **"filter() isn't found."** The package isn't loaded, or another package's `filter` is masking it.
-
-## Explain it back
-- Name four tidyverse packages and their jobs.
-
-*Pass test:* you can say which package handles reading, reshaping, transforming and plotting.
 
 ## Connections
 - **Builds on:** [[Packages in R]], [[Data Frame]]

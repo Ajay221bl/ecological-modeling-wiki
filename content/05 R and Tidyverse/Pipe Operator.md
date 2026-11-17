@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "The pipe passes the result on its left into the function on its right, so a chain of steps reads in the order it happens."
 aliases:
   - "Pipe"
   - "%>%"
@@ -12,22 +13,12 @@ status: seedling
 
 # Pipe Operator
 
-**In one line:** the pipe passes the result on its left into the function on its right, so a chain of steps reads in the order it happens.
+On an assembly line, a part moves from station to station and each station does one thing. Without the **pipe**, R code for several steps has to be written nested, with each function inside the next, so you read it from the innermost bracket outward. The pipe passes the result on its left into the function on its right, so a chain of steps reads in the order it happens. `x |> f()` means `f(x)`, and `x |> f() |> g()` means `g(f(x))`; read `|>` as "then".
 
-> [!info] Before this, it helps to know
-> [[Function Arguments]] (the first argument is where the pipe delivers) · [[Tidyverse]] (functions designed for it)
+The left side becomes the *first* argument of the function on the right ([[Function Arguments]]), which is why tidyverse verbs all take the data first: they were designed to be piped ([[Tidyverse]]). The code below does the same job twice. The nested version, `arrange(summarise(group_by(d, site), ...), ...)`, must be read inside out; the piped version reads as a recipe: take d, then group by site, then summarise the mean, then sort. Both give the same table, but only one can be read aloud. Writing one step per line also makes debugging easy, because you can run the chain up to any line and look at the intermediate result.
 
-## The everyday picture
-An assembly line. A part moves from station to station and each does one thing. Without the pipe you would write the stations nested inside each other, and have to read from the innermost bracket outward.
+There are two spellings. `|>` is built into R from version 4.1, while `%>%` comes from the older magrittr package; in everyday use they behave the same. A pipe does not change the original data: `d |> mutate(...)` returns a new table, so assign it, as in `d2 <- d |> ...`. And ggplot2 layers are joined with `+`, not with a pipe, an accident of history rather than a different idea ([[filter()]], [[mutate()]], [[group_by()]]).
 
-## Start from zero
-1. **`x |> f()` means `f(x)`.**
-2. **`x |> f() |> g()` means `g(f(x))`.** Read `|>` as "then".
-3. **The left side becomes the first argument.** *Why tidyverse verbs take data first:* so they can be piped.
-4. **Two spellings.** `|>` is built into R (4.1 and later). `%>%` comes from the magrittr package and is older. They behave the same in everyday use.
-5. **One step per line** keeps it readable and easy to debug: run the chain up to any line.
-
-## In R
 ```r
 library(dplyr)
 d <- data.frame(site = c("A", "A", "B", "B", "B"), birds = c(9, 8, 6, 5, 3))
@@ -40,15 +31,6 @@ d |>
   arrange(desc(mean_birds))
 ```
 Both give the same table. Only one can be read aloud.
-
-## Common confusions
-- **"The pipe changes d."** It doesn't. Assign the result: `d2 <- d |> ...`.
-- **"Pipe and + in ggplot are the same."** ggplot layers are added with `+`, an accident of history.
-
-## Explain it back
-- Rewrite `round(mean(x), 1)` with pipes.
-
-*Pass test:* you can read a piped chain aloud as "take, then, then".
 
 ## Connections
 - **Builds on:** [[Function Arguments]], [[Tidyverse]]

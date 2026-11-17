@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "`rep()` repeats values, either the whole set several times or each value several times."
 aliases:
   - "Repeat"
   - "Replicating values"
@@ -11,18 +12,12 @@ status: seedling
 
 # rep()
 
-**In one line:** `rep()` repeats values, either the whole set several times or each value several times.
+**`rep()`** repeats values ([[Vectors in R]]), in one of two orders. `rep(x, times = n)` repeats the whole vector n times, so `rep(c("A", "B"), times = 3)` gives A B A B A B. `rep(x, each = n)` repeats each element n times before moving on, so `rep(c("A", "B"), each = 3)` gives A A A B B B.
 
-> [!info] Before this, it helps to know
-> [[Vectors in R]] (what it returns)
+The difference matters because `rep()` is how you build labels for simulated or designed data ([[Simulating Data]]). For 3 sites with 4 visits each, `site <- rep(1:3, each = 4)` gives 1 1 1 1 2 2 2 2 3 3 3 3, and `visit <- rep(1:4, times = 3)` gives 1 2 3 4 1 2 3 4 1 2 3 4; side by side, as in the code below, every row is one visit to one site. Combining both arguments builds nested layouts, such as plots within sites, which become the grouping variables of mixed models ([[Grouping Factor]]).
 
-## Start from zero
-1. **`rep(x, times = n)`** repeats the whole vector: A B A B.
-2. **`rep(x, each = n)`** repeats each element: A A B B.
-3. **Why it matters:** it builds group labels for simulated or designed data, such as 10 sites with 5 visits each.
-4. **Combine both** for nested layouts.
+Mixing up `times` and `each` scrambles a design without any error: the labels are still the right length, just attached to the wrong rows. Print the first few rows to check. Its partner [[seq()]] makes stepped sequences rather than repeats.
 
-## In R
 ```r
 rep(c("A", "B"), times = 3)       # A B A B A B
 rep(c("A", "B"), each = 3)        # A A A B B B
@@ -30,14 +25,6 @@ site  <- rep(1:3, each = 4)       # 3 sites, 4 visits each
 visit <- rep(1:4, times = 3)
 data.frame(site, visit)[1:6, ]
 ```
-
-## Common confusions
-- **"times and each are the same."** They give different orders, and mixing them up scrambles a design.
-
-## Explain it back
-- Write the labels for 5 plots each measured in 3 years.
-
-*Pass test:* you can build site and visit labels for a balanced design.
 
 ## Connections
 - **Builds on:** [[Vectors in R]]

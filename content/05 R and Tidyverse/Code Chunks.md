@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "A code chunk is a fenced block of R code inside an R Markdown file, with options that control whether the code runs and what appears in the report."
 aliases:
   - "Chunk"
   - "Chunk options"
@@ -12,36 +13,11 @@ status: seedling
 
 # Code Chunks
 
-**In one line:** a code chunk is a fenced block of R code inside an R Markdown file, with options that control whether the code runs and what appears in the report.
+Picture windows set into a wall of text. Each window shows a piece of the machinery, and shutters decide whether readers see the code, the output, both or neither. A **code chunk** is a fenced block of R code inside an [[R Markdown]] file. It starts with ```` ```{r name, options} ```` and ends with ```` ``` ````, and its *options* control whether the code runs and what appears in the report. Naming each chunk pays off, because when knitting fails the error message then says which chunk broke.
 
-> [!info] Before this, it helps to know
-> [[R Markdown]] (the file it lives in)
+The key options are few. `echo = FALSE` hides the code but shows its output, which suits figures in a polished report. `eval = FALSE` shows the code without running it. `include = FALSE` runs the code but shows nothing, which is ideal for a setup chunk that loads packages. `message = FALSE` and `warning = FALSE` hide package chatter, and `fig.width`, `fig.height` and `fig.cap` size and caption figures. `cache = TRUE` saves a chunk's results so slow code is not rerun at every knit ([[Caching Long Runs]]). Defaults for the whole document are set once in a setup chunk with `knitr::opts_chunk$set(...)`.
 
-## The everyday picture
-Windows in a wall of text. Each window shows a piece of the machinery. Shutters (the options) decide whether readers see the code, the output, both or neither.
-
-## Start from zero
-1. **A chunk starts with ```` ```{r name, options} ```` and ends with ```` ``` ````.**
-2. **Name chunks.** Error messages then say where knitting failed.
-3. **Key options:**
-   - `echo = FALSE` hides the code, shows output.
-   - `eval = FALSE` shows code, doesn't run it.
-   - `include = FALSE` runs it, shows nothing (good for setup).
-   - `message = FALSE`, `warning = FALSE` hide chatter.
-   - `fig.width`, `fig.height`, `fig.cap` control figures.
-   - `cache = TRUE` saves results so slow chunks aren't rerun.
-4. **Set defaults once** in a setup chunk with `knitr::opts_chunk$set(...)`.
-5. **Chunks share one session, in order.** *So:* a chunk can use objects from chunks above it, never below.
-
-## Common confusions
-- **"warning = FALSE fixes warnings."** It hides them. Read them first.
-- **"cache = TRUE is always safe."** A cached chunk won't notice that upstream data changed.
-
-## Explain it back
-- Which option hides code but keeps the figure?
-- Why name your chunks?
-
-*Pass test:* you can choose options for a setup chunk, a figure chunk and a slow model chunk.
+All chunks run in one R session, in order, so a chunk can use objects created in chunks above it but never below it ([[Knitting]]). Two options are easy to misuse. `warning = FALSE` does not fix warnings; it hides them, so read them first ([[Errors and Warnings in R]]). And `cache = TRUE` is not always safe: a cached chunk does not notice when the data it depends on change upstream, so it can quietly serve old results.
 
 ## Connections
 - **Builds on:** [[R Markdown]]

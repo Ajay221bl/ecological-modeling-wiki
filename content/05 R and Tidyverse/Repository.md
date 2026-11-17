@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "A repository is a project folder whose complete change history is tracked by Git."
 aliases:
   - "Repo"
   - "Git repository"
@@ -11,28 +12,11 @@ status: seedling
 
 # Repository
 
-**In one line:** a repository is a project folder whose complete change history is tracked by Git.
+A project binder with a logbook stapled inside the cover: the binder holds the current pages, and the logbook records every page ever added, changed or removed. A **repository**, or repo, is a project folder whose complete change history is tracked by [[Git]]. Any folder becomes a repository when Git is initialised in it, and from then on a hidden `.git` subfolder holds the history; delete that subfolder and the history is gone, though the current files remain.
 
-> [!info] Before this, it helps to know
-> [[Git]] (what tracks it) · [[Project Folder Structure]] (what goes inside)
+The rule of thumb is one project, one repository, matching the RStudio project folder ([[RProject]]) and its tidy structure of data, scripts and outputs ([[Project Folder Structure]]). A copy on your own computer is called *local*, and a copy on a host such as GitHub is called *remote*. *Cloning* downloads a remote repository with its entire history, and a [[Fork]] is your own copy of someone else's repository on GitHub.
 
-## The everyday picture
-A project binder with a logbook stapled inside the cover. The binder holds the current pages. The logbook records every page ever added, changed or removed.
-
-## Start from zero
-1. **Any folder becomes a repository when Git is initialised in it.**
-2. **A hidden `.git` subfolder holds the history.** Delete it and the history is gone.
-3. **One project, one repository.** It should match your RProject folder ([[RProject]]).
-4. **A copy on your machine is "local", one on GitHub is "remote".**
-5. **Cloning downloads a remote repository** with its entire history.
-
-## Common confusions
-- **"A repository is a place on the internet."** It is the tracked folder, wherever it sits.
-
-## Explain it back
-- What makes a folder a repository?
-
-*Pass test:* you can say where a repository's history is stored.
+A repository is not "a place on the internet". It is the tracked folder, wherever it sits; the copy on GitHub is just one more copy. Which files it tracks is controlled by its [[gitignore File]].
 
 ## Connections
 - **Builds on:** [[Git]]

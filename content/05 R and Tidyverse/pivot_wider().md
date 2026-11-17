@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "`pivot_wider()` spreads the values of one column out into several new columns named after the values of another."
 aliases:
   - "Long to wide"
   - "spread()"
@@ -11,36 +12,18 @@ status: seedling
 
 # pivot_wider()
 
-**In one line:** `pivot_wider()` spreads the values of one column out into several new columns named after the values of another.
+Deal a single queue of people into labelled rooms: everyone tagged "robin" goes to the robin room, everyone tagged "wren" to the wren room. **`pivot_wider()`**, from tidyr, spreads the values of one column out into several new columns named after the values of another. It is the reverse of [[pivot_longer()]]. `names_from` gives the column whose values become the new column names, and `values_from` the column that fills them. The table gets wider and shorter ([[Wide vs Long Data]]).
 
-> [!info] Before this, it helps to know
-> [[pivot_longer()]] (the reverse) · [[Tidy Data]] (the long form)
+In the example below, long data with one row per site-species count become one row per site, with a column for each species. Site B has no robin row, so its robin cell is `NA`. Whether that should be `NA` or 0 is a scientific decision, not a formatting one: a species not recorded at a site that was surveyed is a zero, and `values_fill = 0` says so; a site that was never surveyed for robins is genuinely unknown. Decide deliberately.
 
-## The everyday picture
-Dealing a single queue of people into labelled rooms. Everyone tagged "robin" goes to the robin column, everyone tagged "wren" to the wren column.
+You need the wide shape for some specific jobs, even though [[Tidy Data]] is long. Community analyses often expect a sites-by-species table with one column per species, the input to counts such as [[Species Richness]] and to a [[Diversity Index]], and side-by-side tables are easier to read in a report.
 
-## Start from zero
-1. **`names_from`:** the column whose values become new column names.
-2. **`values_from`:** the column that fills them.
-3. **The table gets wider and shorter.**
-4. **Missing combinations become `NA`.** Use `values_fill = 0` when absence means zero.
-5. **When you need it:** community matrices (sites by species) for diversity functions, and side-by-side tables for a report. *Why:* some functions, such as those in vegan, expect one column per species.
-
-## In R
 ```r
 library(tidyr)
 long <- data.frame(site = c("A", "A", "B"), species = c("robin", "wren", "wren"), count = c(3, 1, 4))
 pivot_wider(long, names_from = species, values_from = count)                    # B has NA robins
 pivot_wider(long, names_from = species, values_from = count, values_fill = 0)   # absence = 0
 ```
-
-## Common confusions
-- **"NA and 0 are the same here."** Decide deliberately. A species not recorded at a surveyed site is a zero.
-
-## Explain it back
-- When is wide format the right one?
-
-*Pass test:* you can build a site-by-species matrix from long data.
 
 ## Connections
 - **Builds on:** [[pivot_longer()]], [[Tidy Data]]

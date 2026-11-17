@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "Reading data means loading a file, usually a CSV, from disk into a data frame."
 aliases:
   - "read.csv()"
   - "read_csv()"
@@ -13,23 +14,12 @@ status: seedling
 
 # Reading Data into R
 
-**In one line:** reading data means loading a file, usually a CSV, from disk into a data frame.
+A delivered parcel has a label saying how it was packed: commas between items, a header row on top. Tell R the packing, and it lays everything out on the table. **Reading data** means loading a file from disk into a [[Data Frame]]. The usual format is a CSV, plain text with commas between values and one line per row. `read.csv("path")` from base R, or `read_csv("path")` from the tidyverse package readr, loads it; `read.table()` handles other separators, such as tabs, with `sep = "\t"` and `header = TRUE`. The labs read files such as `DeerEcervi.txt` this way ([[Course Website]]).
 
-> [!info] Before this, it helps to know
-> [[Data Frame]] (what you get) · [[Working Directory]] (where R looks for files)
+R guesses each column's type as it reads, and one stray entry can make it guess wrong. In the example below, a small file has "n/a" in its tree column, so `read.csv()` reads the whole column as text. Declaring how missing values are written, `na.strings = c("NA", "n/a")`, fixes it at import: the column becomes numeric with one `NA` ([[Missing Values]]). That is why the first thing to do after reading is to look, with `str()` and `summary()` ([[Inspecting Data]]). `read_csv()` does a similar job, faster, returns a [[Tibble]], reports the column types it chose, and never converts text to factors.
 
-## The everyday picture
-Unpacking a delivery. The parcel (file) has a label saying how it was packed: commas between items, a header row on top. Tell R the packing and it lays everything out on the table.
+"File not found" means R is looking in the [[Working Directory]], not where you think the file is. Inside a project, use relative paths built with [[here()]] rather than a path such as `C:/Users/me/...`, which only exists on your computer. Files can also be read straight from the web ([[Reading Data from a URL]]).
 
-## Start from zero
-1. **A CSV is plain text with commas between values** and one line per row.
-2. **`read.csv("path")` (base) or `read_csv("path")` (readr) loads it.**
-3. **`read.table()` handles other separators,** such as tabs: `sep = "\t"`, `header = TRUE`.
-4. **R guesses each column's type.** *Check them:* a stray character turns a numeric column to text.
-5. **Use relative paths inside a project** ([[here()]]), never `C:/Users/me/...`.
-6. **Look immediately** with `str()` and `summary()` ([[Inspecting Data]]).
-
-## In R
 ```r
 f <- file.path(tempdir(), "birds.csv")
 writeLines(c("site,tree,birds", "A,10,9", "B,30,6", "C,n/a,3"), f)   # make a small file to read
@@ -40,18 +30,6 @@ str(d)                                   # now numeric with one NA
 # readr::read_csv(f, na = c("NA", "n/a")) returns a tibble and reports the column types
 ```
 Declaring how missing values are written fixes the column type at import.
-
-## In the course
-The labs read `.csv` and `.txt` files, such as `DeerEcervi.txt` with `read.table(header = TRUE)` ([[Course Website]]).
-
-## Common confusions
-- **"File not found."** R is looking in the working directory, not where you think.
-- **"read.csv and read_csv are the same."** Similar job. `read_csv` is faster, returns a tibble and never converts text to factors.
-
-## Explain it back
-- What should you run right after reading a file?
-
-*Pass test:* you can read a CSV, set missing-value codes and confirm column types.
 
 ## Connections
 - **Builds on:** [[Data Frame]], [[Working Directory]]

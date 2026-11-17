@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "A matrix in R is a rectangular grid of values that are all the same type, addressed by row and column."
 aliases:
   - "matrix()"
   - "Arrays in R"
@@ -11,23 +12,12 @@ status: seedling
 
 # Matrices in R
 
-**In one line:** a matrix in R is a rectangular grid of values that are all the same type, addressed by row and column.
+A chessboard of numbers: every square holds the same kind of thing, and you name a square by its row and column. A **matrix** in R is a rectangular grid of values that are all of one type, addressed as `m[row, col]`; it is the R version of the maths [[Matrix]]. `matrix(1:6, nrow = 2)` folds a vector into a grid, filling down the columns first, and `cbind()` and `rbind()` glue vectors together as columns or rows. In the code below, `m[2, 3]` is 6, `m[, 1]` is the first column (leaving an index blank means "all"), and `dim(m)` is 2 by 3.
 
-> [!info] Before this, it helps to know
-> [[Matrix]] (the maths idea) · [[Vectors in R]] (which a matrix is, with a shape)
+The one-type rule is what separates a matrix from a [[Data Frame]] and what makes matrix algebra possible; one text entry turns the whole matrix into text. Matrix arithmetic has its own operators: `*` multiplies element by element, `%*%` does true matrix multiplication, and `t()` transposes. `apply(m, 1, sum)` runs a function along each row, giving row sums of 9 and 12 ([[apply()]]).
 
-## The everyday picture
-A chessboard of numbers. Every square holds the same kind of thing, and you name a square by its row and column.
+You will rarely build matrices by hand in this course; you will meet them as outputs. A correlation table from `cor()`, the variance-covariance matrix of a model's coefficients from `vcov()`, the [[Model Matrix]] a regression is built on, and the draws from a Bayesian fit, with one row per draw and one column per parameter, are all matrices. Knowing how to index them ([[Indexing in R]]) is what lets you pull out the number you need ([[Vectors in R]]).
 
-## Start from zero
-1. **`matrix(values, nrow, ncol)` folds a vector into a grid,** filling down columns.
-2. **`cbind()` and `rbind()` glue vectors as columns or rows.**
-3. **Index with `m[row, col]`.** Leave one blank for "all".
-4. **One type only.** *Why:* that is what makes matrix algebra possible, and it distinguishes a matrix from a data frame.
-5. **`%*%` multiplies matrices. `t()` transposes.**
-6. **You meet them as outputs.** Correlation tables, model matrices, variance-covariance matrices, and MCMC draws (rows are draws, columns are parameters).
-
-## In R
 ```r
 m <- matrix(1:6, nrow = 2); m      # filled column by column
 m[2, 3]; m[, 1]; dim(m)            # 6; first column; 2 3
@@ -36,16 +26,6 @@ round(cor(d), 2)                   # a correlation matrix
 vcov(lm(birds ~ tree, d))          # variance-covariance matrix of the coefficients
 apply(m, 1, sum)                   # row sums: 9 12
 ```
-
-## Common confusions
-- **"`*` multiplies matrices."** `*` is element by element. Use `%*%`.
-- **"A matrix can have a text column."** One text entry turns the whole matrix into text.
-
-## Explain it back
-- How does a matrix differ from a data frame?
-- What does `m[, 2]` return?
-
-*Pass test:* you can build a matrix, pick out elements and name two places matrices appear in model output.
 
 ## Connections
 - **Builds on:** [[Matrix]], [[Vectors in R]]

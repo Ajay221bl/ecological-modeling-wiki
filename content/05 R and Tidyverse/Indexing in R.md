@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "Indexing is picking out part of an object, by position, by name or by a true/false test."
 aliases:
   - "Subsetting"
   - "Square brackets"
@@ -12,23 +13,12 @@ status: seedling
 
 # Indexing in R
 
-**In one line:** indexing is picking out part of an object, by position, by name or by a true/false test.
+In a library you can ask for "the third book on the shelf" (by position), "the one called *Moby Dick*" (by name) or "every book published after 2000" (by a test). **Indexing**, also called subsetting, is picking out part of an R object, and it works in exactly those three ways, mostly with square brackets ([[Subscripts and Indexing]]). By position, `x[3]` gives the third element and `x[c(1, 4)]` the first and fourth; a negative number drops, so `x[-1]` is everything but the first. R counts from 1, not 0.
 
-> [!info] Before this, it helps to know
-> [[Vectors in R]] (things to index) · [[Data Frame]] (tables to index) · [[Subscripts and Indexing]] (the maths notation)
+By test, `x[x > 20]` keeps the elements above 20. This works because the test makes a TRUE/FALSE vector and R keeps the TRUE positions. Tests combine with `&` (and), `|` (or) and `!` (not), and `%in%` checks membership in a set. Equality is tested with `==`; a single `=` assigns, and is a classic slip. By name, `d$mass` or `d[["mass"]]` gives one column. Tables take two indices, `d[rows, columns]`, with a blank meaning "all": in the code below `d[2, "mass"]` is 25, `d[d$site == "A", ]` gives all columns for site A, and the last test keeps rows from sites A or C with mass above 20. `which()` returns positions where a test is true, so `which(mass == max(mass))` is 2.
 
-## The everyday picture
-A library. You can ask for "the third book on the shelf" (position), "the one called Moby Dick" (name) or "every book published after 2000" (a test). Three ways to say which ones you want.
+The comma matters with data frames: `d[2, ]` is row 2, but `d[2]` without a comma is column 2, and it "works" without any warning. Indexing is the base R way to filter rows and choose columns; the tidyverse offers the same operations as named verbs ([[filter()]], [[select()]]). It also underlies finding and removing missing values ([[Missing Values]], [[Vectors in R]], [[Data Frame]]).
 
-## Start from zero
-1. **By position:** `x[3]`, `x[c(1, 4)]`. Negative drops: `x[-1]`.
-2. **By test:** `x[x > 20]`. *Why this works:* the test makes a TRUE/FALSE vector and R keeps the TRUE positions.
-3. **By name:** `d$mass` or `d[["mass"]]` for one column.
-4. **Tables take two indices:** `d[rows, columns]`. A blank means all.
-5. **Combine tests** with `&` (and), `|` (or), `!` (not).
-6. **`%in%` tests membership:** `d[d$site %in% c("A", "C"), ]`.
-
-## In R
 ```r
 mass <- c(21, 25, 19, 23)
 mass[2]; mass[-1]; mass[mass > 20]
@@ -39,16 +29,6 @@ d[d$site %in% c("A", "C") & d$mass > 20, ]
 which(mass == max(mass))             # position of the largest: 2
 ```
 R counts from 1, not 0.
-
-## Common confusions
-- **"`=` tests equality."** `==` tests. `=` assigns.
-- **"I forgot the comma and it still worked."** `d[2]` on a data frame returns column 2, not row 2.
-
-## Explain it back
-- What does `d[d$mass > 20, ]` return and why is the comma needed?
-- How do you drop the first element of a vector?
-
-*Pass test:* you can extract rows and columns by position, name and condition.
 
 ## Connections
 - **Builds on:** [[Vectors in R]], [[Data Frame]]

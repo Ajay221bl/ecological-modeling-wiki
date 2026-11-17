@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "`paste()` glues pieces of text and values together into one string."
 aliases:
   - "paste0()"
   - "Concatenating strings"
@@ -11,20 +12,12 @@ status: seedling
 
 # paste()
 
-**In one line:** `paste()` glues pieces of text and values together into one string.
+**`paste()`** glues pieces of text and values together into one string ([[Strings in R]]). `paste("plot", 3)` gives "plot 3", joining with a space; `paste0("plot", 3)` gives "plot3", with nothing between; and `sep = "_"` sets any other separator. It is vectorized, so `paste0("site", 1:3)` gives three labels at once, "site1", "site2" and "site3" ([[Vectors in R]]). The `collapse` argument works the other way, squeezing a whole vector into a single string: `paste(c("tree", "burn", "year"), collapse = " + ")` gives "tree + burn + year".
 
-> [!info] Before this, it helps to know
-> [[Strings in R]] (text values) · [[Vectors in R]] (it works element by element)
+In the course, `paste()` builds things that would be tedious or error-prone to type. Joining a base web address to each file name gives the URLs for reading data ([[Reading Data from a URL]]). File names and plot labels can be built from variables. And text can become a model: `as.formula(paste("birds ~", "tree + burn"))` turns a string into a formula ([[Model Formula Syntax]]), which is how every combination of predictors can be generated automatically for a candidate set ([[Building All Fixed x Random Combinations]]).
 
-## Start from zero
-1. **`paste(a, b)` joins with a space.**
-2. **`paste0(a, b)` joins with nothing between.**
-3. **`sep = "_"` sets the separator.**
-4. **It is vectorized:** `paste0("site", 1:3)` gives three labels.
-5. **`collapse = ", "` squeezes a vector into one string.**
-6. **Course uses:** building data URLs, file names, plot labels, and model formulas from text with `as.formula()`.
+`paste()` does not add numbers: it turns them into text and joins them, so `paste(2, 3)` is "2 3", not 5.
 
-## In R
 ```r
 paste("plot", 3); paste0("plot", 3)
 paste0("site", 1:3)
@@ -32,14 +25,6 @@ repo <- "https://example.org/data/"; paste0(repo, "deer.txt")
 paste(c("tree", "burn", "year"), collapse = " + ")
 as.formula(paste("birds ~", paste(c("tree", "burn"), collapse = " + ")))   # a formula built from text
 ```
-
-## Common confusions
-- **"paste adds numbers."** It turns them into text and joins them.
-
-## Explain it back
-- How would you build the formula `y ~ a + b + c` from a vector of names?
-
-*Pass test:* you can assemble a URL and a formula with paste.
 
 ## Connections
 - **Builds on:** [[Strings in R]]

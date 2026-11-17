@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "CRAN is the official online warehouse from which R and most of its packages are downloaded."
 aliases:
   - "Comprehensive R Archive Network"
 status: seedling
@@ -10,36 +11,18 @@ status: seedling
 
 # CRAN
 
-**In one line:** CRAN is the official online warehouse from which R and most of its packages are downloaded.
+An app store with a strict review desk lists only apps that pass its checks, and removes ones that later break. **CRAN**, the Comprehensive R Archive Network, is that store for R: the official online warehouse, mirrored around the world, from which R itself and most of its packages are downloaded. `install.packages()` fetches from CRAN by default ([[Packages in R]]). Each package has a CRAN page with its reference manual and *vignettes* (worked tutorials), and CRAN Task Views list packages by topic, such as Environmetrics and Spatial.
 
-> [!info] Before this, it helps to know
-> [[Packages in R]] (what CRAN stores)
+Every package on CRAN must pass automated checks on several operating systems: it installs cleanly, its examples run, and it is documented. A package that later breaks and is not fixed is archived. But these checks are about software, not statistics. Being on CRAN means the code runs, not that the method is right for your data, so "on CRAN means statistically validated" is a misunderstanding.
 
-## The everyday picture
-An app store with a strict review desk. Every package must pass automated checks on several operating systems before it is listed, and is removed if it later breaks.
+Not everything lives on CRAN. Development versions and some tools are installed from GitHub or other repositories, and `cmdstanr`, used by the course's Bayesian labs, comes from Stan's own repository, as the code below shows ([[cmdstanr Backend]]). Whatever the source, `citation("lme4")` tells you how to cite a package, and recording versions makes the analysis reproducible ([[Session Info]], [[librarian shelf()]]).
 
-## Start from zero
-1. **`install.packages()` downloads from CRAN by default.**
-2. **Packages there have passed basic checks.** They install cleanly and have documentation. *This is not a check that the statistics are right.*
-3. **Each package has a page** with its manual and vignettes.
-4. **Not everything is on CRAN.** Development versions and some tools live on GitHub. `cmdstanr`, used by the course's Bayesian labs, is installed from Stan's own repository.
-5. **CRAN Task Views list packages by topic,** for example Environmetrics and Spatial.
-
-## In R
 ```r
 # norun
 install.packages("lme4")                                   # from CRAN
 install.packages("cmdstanr", repos = c("https://stan-dev.r-universe.dev", getOption("repos")))  # not on CRAN
 citation("lme4")                                           # how to cite a package
 ```
-
-## Common confusions
-- **"On CRAN means statistically validated."** CRAN checks that code runs, not that the method suits your data.
-
-## Explain it back
-- What does CRAN check, and what doesn't it check?
-
-*Pass test:* you can say where a package comes from and how to cite it.
 
 ## Connections
 - **Builds on:** [[Packages in R]]

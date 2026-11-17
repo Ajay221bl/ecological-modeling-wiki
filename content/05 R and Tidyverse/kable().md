@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "`kable()` turns a data frame into a cleanly formatted table in a knitted report."
 aliases:
   - "knitr kable"
   - "Tables in reports"
@@ -11,32 +12,15 @@ status: seedling
 
 # kable()
 
-**In one line:** `kable()` turns a data frame into a cleanly formatted table in a knitted report.
+A data frame printed in a report looks like raw console output. **`kable()`**, from the knitr package, turns a data frame into a cleanly formatted table in a knitted [[R Markdown]] document. `knitr::kable(df)` does the basic job; `digits` rounds the numbers, `col.names` relabels the columns, and `caption` adds a title. The example below formats a small model selection table with model names, numbers of parameters, ΔAICc values and weights.
 
-> [!info] Before this, it helps to know
-> [[R Markdown]] (where it is used) · [[summarise()]] (what often feeds it)
+The point is not only looks. Because the table is generated from the data or model objects, often via [[summarise()]] or a tidy table of coefficients ([[tidy()]]), it updates automatically when the analysis changes and is never retyped by hand. Tables typed into a word processor go stale and collect typos. Typical content in this course is model selection tables ([[Model Ranking Tables]]) and coefficient tables for a results section ([[Writing Results Sections]]).
 
-## Start from zero
-1. **Raw printed data frames look like console output** in a report.
-2. **`knitr::kable(df)` formats one as a proper table.**
-3. **`digits` rounds, `col.names` relabels, `caption` adds a title.**
-4. **Why it matters:** the table is generated from the model objects, so it updates when the analysis changes and is never retyped by hand.
-5. **Typical content:** model selection tables and coefficient tables.
-
-## In R
 ```r
 library(knitr)
 tab <- data.frame(model = c("cover + burn", "cover", "null"), K = c(4, 3, 2), dAICc = c(0, 1.8, 14.2), weight = c(0.71, 0.29, 0.00))
 kable(tab, digits = 2, col.names = c("Model", "K", "ΔAICc", "Weight"), caption = "Model selection table")
 ```
-
-## Common confusions
-- **"Tables should be typed into Word."** Typed tables go stale and collect typos.
-
-## Explain it back
-- Why generate tables from code?
-
-*Pass test:* you can print a rounded, captioned table from a data frame.
 
 ## Connections
 - **Builds on:** [[R Markdown]]

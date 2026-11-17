@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "`shelf()` from the librarian package installs any missing packages and loads them all in one line."
 aliases:
   - "shelf()"
   - "librarian package"
@@ -11,41 +12,18 @@ status: seedling
 
 # librarian shelf()
 
-**In one line:** `shelf()` from the librarian package installs any missing packages and loads them all in one line.
+Imagine a lending library that orders any book it does not have and then hands you the whole stack: you give one list and never check the shelves first. **`shelf()`**, from the librarian package, works that way for R packages. Given a list of package names, it installs any that are missing and then loads them all, in one line ([[Packages in R]]). Names are written without quotes, and packages hosted on GitHub work too, written as `user/repo`.
 
-> [!info] Before this, it helps to know
-> [[Packages in R]] (installing and loading) · [[Reproducibility]] (code that runs elsewhere)
+It solves a real problem. A script that starts with `library(lme4)` fails on any computer where lme4 is not installed, so a script that runs perfectly for you may crash for a classmate or the instructor. With `shelf()` at the top, everyone's script starts the same way and runs on any machine, which is why the course requires it in every submitted script ([[Reproducibility]], [[Course Website]]). The code below shows the standard header: install librarian itself if needed, then `shelf(tidyverse, lme4, AICcmodavg, lib = tempdir())`.
 
-## The everyday picture
-A lending library that orders any book it doesn't have and then hands you the whole stack. You give one list. You don't have to check first which books are on the shelf.
+The `lib = tempdir()` part sends installs to a temporary folder so they do not alter the grader's own package library. Because a temporary folder is wiped when R closes, packages are reinstalled next session, which is intended for grading and slow for daily work. `shelf()` replaces the block of `library()` calls at the top of a script and nothing else; packages still come from [[CRAN]] or GitHub as usual.
 
-## Start from zero
-1. **The problem:** a script with `library(x)` fails on a computer where x isn't installed.
-2. **`shelf(a, b, c)` checks each package.**
-3. **Missing ones are installed, then all are loaded.** *Why the course uses it:* everyone's script then starts the same way and runs on any machine, including the instructor's.
-4. **Names are unquoted, and GitHub packages work too:** `shelf(tidyverse, user/repo)`.
-5. **The course adds `lib = tempdir()`** so installs go to a temporary folder and don't alter the grader's own library.
-
-## In R
 ```r
 # norun  (installs from the internet)
 if (!require(librarian)) install.packages("librarian")
 library(librarian)
 shelf(tidyverse, lme4, AICcmodavg, lib = tempdir())   # the course's standard header
 ```
-
-## In the course
-Required at the top of every submitted script on the Computer setup page ([[Course Website]]).
-
-## Common confusions
-- **"shelf() replaces library() everywhere."** It replaces the block of `library()` calls at the top. Nothing else changes.
-- **"tempdir() keeps packages."** A temporary folder is wiped when R closes, so they reinstall next session. That is intended for grading, and slow for daily work.
-
-## Explain it back
-- What problem does `shelf()` solve?
-- Why does the course install to `tempdir()`?
-
-*Pass test:* you can write the course's package header from memory.
 
 ## Connections
 - **Builds on:** [[Packages in R]]

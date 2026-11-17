@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "`apply()` runs a function over every row or every column of a matrix."
 aliases:
   - "apply family"
   - "Row and column operations"
@@ -11,22 +12,12 @@ status: seedling
 
 # apply()
 
-**In one line:** `apply()` runs a function over every row or every column of a matrix.
+Run a highlighter along each row of a table and write the row's total in the margin, or down each column and write totals along the bottom. **`apply()`** does that with any function you choose: it runs a function over every row or every column of a matrix ([[Matrices in R]]) and returns one result for each. The call is `apply(X, MARGIN, FUN)`, where X is the matrix, MARGIN is 1 for rows or 2 for columns (the same order as `m[row, col]`), and FUN is any function that takes a vector, such as `mean`, `sd`, `quantile` or one of your own ([[Function Arguments]]).
 
-> [!info] Before this, it helps to know
-> [[Matrices in R]] (the grid it works on) · [[Function Arguments]] (passing a function as input)
+Its main use in this course is summarising simulation and bootstrap output. Such output is a matrix with one row per draw and one column per prediction point, so summarising each column gives a result at each point. In the code below, 1,000 draws at 4 points are stored as a 1000 × 4 matrix; `apply(boot, 2, mean)` gives the mean at each point, and `apply(boot, 2, quantile, c(0.025, 0.975))` gives a 95% interval at each point, with the extra argument passed on to `quantile()`. That is exactly how prediction bands are built from `bootMer()` output in the confidence-interval lab ([[bootMer()]], [[Percentile Bootstrap Interval]]), and how intervals are taken from [[Posterior Draws]].
 
-## The everyday picture
-Running a highlighter along each row of a table and writing the row's total in the margin. Or down each column, writing totals along the bottom. `apply()` does that with any function you choose.
+For plain sums and means, `rowSums()`, `colSums()`, `rowMeans()` and `colMeans()` are faster shortcuts. Avoid using `apply()` on a data frame: it first converts it to a matrix, and if any column is text, everything becomes text. For lists rather than matrices, use [[lapply()]] ([[Loops, apply and map]]).
 
-## Start from zero
-1. **`apply(X, MARGIN, FUN)`.**
-2. **MARGIN 1 means rows, 2 means columns.**
-3. **FUN is any function taking a vector.** `mean`, `sd`, `quantile`, or your own.
-4. **It returns one result per row or column.**
-5. **Its main use in the course: summarising draws.** *Why:* bootstrap and posterior output is a matrix with one row per draw and one column per prediction point, so column quantiles give an interval at each point.
-
-## In R
 ```r
 set.seed(3)
 boot <- matrix(rnorm(4000, mean = rep(c(5, 6, 7, 8), each = 1000)), ncol = 4)  # 1000 draws x 4 points
@@ -35,19 +26,6 @@ t(apply(boot, 2, quantile, c(0.025, 0.975)))       # a 95% interval for each poi
 rowSums(boot[1:3, ]); colMeans(boot)               # fast shortcuts for sums and means
 ```
 Column-wise quantiles are how prediction bands are built from `bootMer()` output.
-
-## In the course
-The confidence interval lab takes column quantiles of the bootstrap matrix ([[bootMer()]]; [[Course Website]]).
-
-## Common confusions
-- **"1 is columns."** 1 is rows, 2 is columns, the same order as `m[row, col]`.
-- **"Use apply on a data frame."** It first converts to a matrix, so mixed types become text.
-
-## Explain it back
-- What does `apply(m, 2, sd)` return?
-- Why is `apply(draws, 2, quantile, ...)` so useful?
-
-*Pass test:* you can get a per-column interval from a matrix of draws.
 
 ## Connections
 - **Builds on:** [[Matrices in R]]

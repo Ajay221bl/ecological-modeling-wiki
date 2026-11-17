@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "`unique()` lists the different values that occur in a vector, each once."
 aliases:
   - "levels()"
   - "n_distinct()"
@@ -12,19 +13,12 @@ status: seedling
 
 # unique()
 
-**In one line:** `unique()` lists the different values that occur in a vector, each once.
+**`unique()`** lists the different values that occur in a vector, each one once, in order of first appearance ([[Vectors in R]]). `length(unique(x))` counts them, and dplyr's `n_distinct(x)` does the same in one step. In the example below, five site entries contain three distinct sites, A, B and C. Species richness, the number of different species recorded, is exactly `length(unique(species))` ([[Species Richness]]).
 
-> [!info] Before this, it helps to know
-> [[Vectors in R]] (what it scans) · [[Factors in R]] (which have levels)
+How many distinct groups a variable has matters for modeling. A grouping variable with only three or four levels is a poor candidate for a random effect, because a variance cannot be estimated well from so few groups ([[How Many Levels for a Random Effect]]), so counting levels is a routine check. For finding rows entered twice, `duplicated()` flags each value that has appeared before.
 
-## Start from zero
-1. **`unique(x)` returns each value once,** in order of first appearance.
-2. **`length(unique(x))` counts them.** dplyr's `n_distinct(x)` does the same.
-3. **`levels(f)` lists a factor's allowed categories,** including ones that no longer occur.
-4. **Why you need the count:** the number of distinct groups decides whether a variable can be a random effect ([[How Many Levels for a Random Effect]]), and species richness is just a count of unique species.
-5. **`duplicated()` flags repeats,** useful for finding rows entered twice.
+For factors there is a subtlety. `levels(f)` lists the factor's allowed categories, and that list does not shrink when data are removed ([[Factors in R]]). In the example, after site C's rows are filtered out, `unique(f)` shows only A and B, but `levels(f)` still includes C. `droplevels()` removes unused levels, which matters because models and plots use the levels, not the data, to decide how many groups there are.
 
-## In R
 ```r
 site <- c("A", "B", "A", "C", "B")
 unique(site); length(unique(site))        # "A" "B" "C" and 3
@@ -34,14 +28,6 @@ levels(droplevels(f))
 sp <- c("robin", "wren", "robin", "lark"); length(unique(sp))   # richness = 3
 duplicated(site)
 ```
-
-## Common confusions
-- **"levels() and unique() agree."** Not after filtering: unused levels stay until `droplevels()`.
-
-## Explain it back
-- How do you count the number of groups in a column?
-
-*Pass test:* you can count groups and remove unused factor levels.
 
 ## Connections
 - **Builds on:** [[Vectors in R]], [[Factors in R]]

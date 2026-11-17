@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "R talks back in three ways: a message is information, a warning means \"I finished but something may be wrong\", and an error means \"I stopped\"."
 aliases:
   - "Warning"
   - "Message"
@@ -11,23 +12,12 @@ status: seedling
 
 # Errors and Warnings in R
 
-**In one line:** R talks back in three ways: a message is information, a warning means "I finished but something may be wrong", and an error means "I stopped".
+R talks back in three ways, like traffic signals. A **message** is a road sign: neutral information, such as which packages were loaded. A **warning** is an amber light: R finished and returned a result, but something about it may be unreliable. An **error** is a red light: R stopped, and no result exists. In the code below, `message()` prints information, `as.numeric("abc")` returns `NA` with a warning, and `stop()` raises an error, which `try()` catches so the example can continue. They appear in the [[Console]], and with long output the last line is the one to read first, followed by the function it names.
 
-> [!info] Before this, it helps to know
-> [[Console]] (where they appear)
+Some warnings matter greatly. In this course, "model failed to converge" ([[Convergence Warnings]]), "boundary (singular) fit" ([[Singular Fit]]), "fitted probabilities numerically 0 or 1" ([[Complete Separation]]) and "divergent transitions" ([[Divergent Transitions]]) each mean that a model's estimates may not be trustworthy, and each has its own note. A warning can be safe to ignore, but only after reading and understanding it; never silence one you have not understood.
 
-## The everyday picture
-Traffic signals. A message is a road sign: informative. A warning is an amber light: proceed, but look. An error is a red light: nothing further happens until you fix it.
+The most important limit: no error does not mean the answer is right. R reports problems it can detect, such as a function receiving the wrong type, but it cannot detect a wrong model, a mis-coded variable or data read in incorrectly. Those bugs run silently, which is why [[Debugging]] starts with inspecting results, not just watching for red text.
 
-## Start from zero
-1. **Message:** neutral news, such as which packages loaded.
-2. **Warning:** the code ran and returned something. The something may be unreliable.
-3. **Error:** the code stopped. No result exists.
-4. **Read the last line first,** then find the function named.
-5. **Some warnings matter greatly.** *In this course:* "model failed to converge", "boundary (singular) fit", "fitted probabilities numerically 0 or 1", "divergent transitions". Each has its own note because each means the estimates may not be trustworthy.
-6. **Never silence a warning you haven't understood.**
-
-## In R
 ```r
 message("just so you know")
 as.numeric("abc")                    # warning: NAs introduced by coercion (still returns NA)
@@ -35,15 +25,6 @@ res <- tryCatch(log(-1), warning = function(w) "caught a warning")
 res
 out <- try(stop("this is an error"), silent = TRUE); class(out)   # execution would normally halt here
 ```
-
-## Common confusions
-- **"Warnings can be ignored."** Some can, after reading. Convergence warnings can't.
-- **"No error means the answer is right."** R reports problems it can detect, not wrong models.
-
-## Explain it back
-- What is the practical difference between a warning and an error?
-
-*Pass test:* you can classify a console line as message, warning or error and say what to do next.
 
 ## Connections
 - **Builds on:** [[Console]]

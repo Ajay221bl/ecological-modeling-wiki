@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "Simulating data means inventing a dataset from a model whose true parameters you chose, so you can see whether your analysis recovers them."
 aliases:
   - "Simulation"
   - "Fake data"
@@ -15,23 +16,12 @@ status: seedling
 
 # Simulating Data
 
-**In one line:** simulating data means inventing a dataset from a model whose true parameters you chose, so you can see whether your analysis recovers them.
+A pilot practises engine failure in a flight simulator, where it is safe and the "truth" is known. If they cannot land the simulator, they should not fly the plane. **Simulating data** means inventing a dataset from a model whose true parameters you chose, so you can see whether your analysis recovers them. The recipe follows the model itself: choose true values (say intercept 2, slope 0.5, residual SD 1), make the predictor values, compute the [[Deterministic Component]] (mu = 2 + 0.5x), add randomness from the [[Stochastic Component]] (here `rnorm(n, mu, 1)`), then fit the model and compare the estimates with the truth.
 
-> [!info] Before this, it helps to know
-> [[Random Numbers and set.seed()]] (repeatable randomness) · [[Deterministic Component]] (the rule) · [[Stochastic Component]] (the noise)
+The example below does this for three model types. For a linear model, `lm()` returns estimates near 2 and 0.5. For counts, the deterministic part goes through `exp()` and the noise is Poisson, and a Poisson GLM returns estimates near 0.2 and 0.15. For grouped data, each of 10 sites gets its own intercept drawn from a normal distribution, the structure a mixed model assumes. Every model in the course can be simulated from by following its own equation, and the randomness is made repeatable with [[Random Numbers and set.seed()|set.seed()]] ([[Distribution Functions in R]]).
 
-## The everyday picture
-A flight simulator. A pilot practises engine failure where it is safe and the "truth" is known. If they can't land the simulator, they shouldn't fly the plane. If your model can't recover parameters from fake data, don't trust it on real data.
+Simulation is so valuable because it is the only situation in which you know the right answer. It checks that model code works, Hobbs and Hooten's recommended habit before trusting any Bayesian model; it shows how much data a design needs to detect an effect; and it makes a method's behaviour visible. Simulated data are a test rig, not a result. Recovering the truth shows the code works *when the model is true*; it does not show the model is right for your real data, whose assumptions may still fail. The same machinery underlies the [[Parametric Bootstrap]], and almost every R example in this wiki uses it.
 
-## Start from zero
-1. **Choose true parameter values.** Intercept 2, slope 0.5, SD 1.
-2. **Make the predictors.**
-3. **Compute the deterministic part.** mu = 2 + 0.5 x.
-4. **Add randomness from a distribution.** `rnorm(n, mu, 1)`, or `rpois(n, exp(...))` for counts.
-5. **Fit the model and compare with the truth.**
-6. **Why it is so valuable:** it is the only situation where you know the right answer. It checks code, shows how much data you need, and makes a method's behaviour visible.
-
-## See it
 ```mermaid
 flowchart LR
   P[Choose true parameters] --> D[Deterministic part] --> R[Add random draws] --> F[Fit the model] --> C{Estimates near truth?}
@@ -39,7 +29,6 @@ flowchart LR
 ```
 *What to look at:* the loop ends in a comparison you can never make with real data.
 
-## In R
 ```r
 set.seed(10)
 n <- 100; x <- runif(n, 0, 10)
@@ -53,21 +42,10 @@ y2 <- rnorm(n, 2 + a[site] + 0.5 * x, 1)
 ```
 Every model in the course can be simulated from by following its own equation.
 
-## In the course
-Hobbs and Hooten recommend simulated data to check model code ([[Simulating Data|Simulated Data to Check Model Code]]). Every R example in this wiki uses it.
-
-## Common confusions
-- **"Simulated data are cheating."** They are a test rig, not a result.
-- **"If it recovers the truth, the model is right for my data."** It shows the code works when the model is true. Real data may break the assumptions.
-
-## Explain it back
-- What are the four steps of simulating from a regression?
-
-*Pass test:* you can simulate from a linear and a Poisson model and recover the parameters.
-
 ## Connections
 - **Builds on:** [[Random Numbers and set.seed()]], [[Deterministic Component]], [[Stochastic Component]]
-- **Leads to:** [[Distribution Functions in R]], [[Simulating Data|Simulated Data to Check Model Code]], [[Parametric Bootstrap]]
+- **Leads to:** [[Distribution Functions in R]], [[Parametric Bootstrap]]
+- **See also:** [[Simulating Data|Simulated Data to Check Model Code]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 
 ## Flashcards

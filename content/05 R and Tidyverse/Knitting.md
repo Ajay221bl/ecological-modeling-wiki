@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "Knitting is running an R Markdown file from top to bottom in a fresh R session and assembling the text, code and output into a finished document."
 aliases:
   - "Knit"
   - "Rendering"
@@ -12,31 +13,11 @@ status: seedling
 
 # Knitting
 
-**In one line:** knitting is running an R Markdown file from top to bottom in a fresh R session and assembling the text, code and output into a finished document.
+Baking from a written recipe in a clean kitchen exposes any step that relied on an ingredient you had lying around but never wrote down: the bake fails, and that failure is useful, because it shows the recipe was incomplete. **Knitting** runs an [[R Markdown]] file from top to bottom in a fresh, empty R session and assembles the text, code and output into a finished document. You press Knit in RStudio, or run `rmarkdown::render("file.Rmd")`. The [[Code Chunks]] run in order, their output and figures are captured, and everything is merged and converted to HTML, PDF or Word.
 
-> [!info] Before this, it helps to know
-> [[R Markdown]] (the source) · [[Code Chunks]] (what gets run)
+Any error stops the knit and names the chunk and line where it happened. The most common one, "object not found", means the object was created in your console during interactive work but never in the document itself. That is exactly what makes knitting the gold-standard test of a report: if it knits in a clean session, the document contains everything needed to reproduce itself ([[Reproducibility]]). Knitting is therefore not "just formatting"; it is a full rerun of the analysis.
 
-## The everyday picture
-Baking from the written recipe in a clean kitchen. If a step relies on an ingredient you had lying around but never wrote down, the bake fails. That failure is useful: it shows the recipe was incomplete.
-
-## Start from zero
-1. **Press Knit** (or run `rmarkdown::render("file.Rmd")`).
-2. **A new, empty R session starts.**
-3. **Chunks run in order.** Output and figures are captured.
-4. **Text and results are merged and converted** to HTML, PDF or Word.
-5. **Any error stops it,** naming the chunk and line.
-6. **Why this is the gold standard test:** it proves the document contains everything needed to reproduce itself.
-7. **Paths resolve from the Rmd file's folder,** not the project root. `here()` avoids the mismatch ([[here()]]).
-
-## Common confusions
-- **"Object not found" when knitting.** The object was created in your console, not in the document.
-- **"Knitting is just formatting."** It is a full rerun of the analysis.
-
-## Explain it back
-- Why can a document run interactively and still fail to knit?
-
-*Pass test:* you can explain why a successful knit is evidence of reproducibility.
+One quirk to know: when a document knits, file paths are read from the folder containing the `.Rmd` file, not from the project's top folder, so a path that works in the console can fail when knitting. Building paths with [[here()]] avoids the mismatch. A good final chunk records the R and package versions used, so readers know exactly what produced the results ([[Session Info]]).
 
 ## Connections
 - **Builds on:** [[R Markdown]], [[Code Chunks]]

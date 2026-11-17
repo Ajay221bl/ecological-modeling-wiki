@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "R stores a date as a count of days from a fixed starting day, which lets it sort, subtract and extract parts such as year or day of the year."
 aliases:
   - "Date class"
   - "POSIXlt"
@@ -19,25 +20,12 @@ status: seedling
 
 # Dates in R
 
-**In one line:** R stores a date as a count of days from a fixed starting day, which lets it sort, subtract and extract parts such as year or day of the year.
+On a tape measure for time, "12 March" and "3 April" stop being just words: laid on the tape, they are 22 days apart. **Dates in R** work that way. R stores a date, of class `Date`, as a count of days from a fixed starting day (1 January 1970), which lets it sort dates, subtract them and extract parts such as the year or the day of the year ([[Data Types in R]]). Dates usually arrive as text, such as `"2021-03-12"` ([[Strings in R]]), and `as.Date()` converts them; if the text is not in year-month-day order, give the format, as in `as.Date("03/13/2012", format = "%m/%d/%Y")`.
 
-> [!info] Before this, it helps to know
-> [[Data Types in R]] (dates are their own type) · [[Strings in R]] (dates arrive as text)
+Once converted, arithmetic works and differences come out in days. Parts are extracted with `format()`: `"%Y"` gives the year and `"%j"` the *day of year*, 1 to 366, which ecologists often call the Julian day. In the code below, lake ice went off on 2 April 1990, 13 March 2012 and 25 March 2020, days 92, 73 and 85 of their years: a plain number that can go straight into a model of earlier thaw ([[Phenology]]). The autocorrelation lab gets the same number by converting to `POSIXlt`, a format that stores year, month and day separately; its `yday` starts at 0, so add 1. `lubridate::yday()` starts at 1 ([[Course Website]]).
 
-## The everyday picture
-A tape measure for time. "12 March" and "3 April" are just words until you lay them on the tape. Then you can read off that they are 22 days apart.
+Three traps. Events that cross New Year, such as ice-on in late December or early January, break day-of-year ordering, so count days from a fixed date such as 1 July instead: in the example, 28 December and 10 January become days 180 and 193 of the same winter. Leap years shift every date after February by one day of year. And "Julian day" has two meanings: astronomers count days since 4713 BC, while ecologists almost always mean day of year. Dates read from spreadsheets often arrive as text or serial numbers, so check the class. Dates are the backbone of any [[Time Series]] and of [[Temporal Autocorrelation]].
 
-## Start from zero
-1. **Dates arrive as text.** `"2021-03-12"`.
-2. **Convert with `as.Date()`,** giving the format if it isn't year-month-day: `format = "%m/%d/%Y"`.
-3. **Now arithmetic works.** Differences are in days.
-4. **Extract pieces** with `format(d, "%Y")` or by converting to `POSIXlt`, a list holding year, month, day and `yday`.
-5. **Day of year (often called Julian day) is 1 to 366.** *Why ecologists use it:* phenology asks "how far into the year did it happen?", and a plain number can go in a model.
-6. **`POSIXlt$yday` starts at 0,** so add 1. `lubridate::yday()` gives the same number, starting at 1.
-7. **Events that cross New Year** (ice-on in December or January) need care: count days from a fixed date such as 1 July, or add 365 to January dates.
-8. **Leap years:** day 60 is 1 March in most years but 29 February in leap years.
-
-## In R
 ```r
 ice_off <- as.Date(c("1990-04-02", "2012-03-13", "2020-03-25"))
 diff(ice_off)                              # days between events
@@ -49,19 +37,6 @@ ice_on <- as.Date(c("2021-12-28", "2022-01-10"))   # same winter, different cale
 as.numeric(ice_on - as.Date("2021-07-01"))           # 180 193: days since 1 July keeps the order
 ```
 Ice left on day 92 in 1990 and day 73 in 2012: a model-ready measure of earlier thaw.
-
-## In the course
-The autocorrelation lab converts lake ice dates with `as.POSIXlt` to get Julian day ([[Course Website]]; [[Phenology]]).
-
-## Common confusions
-- **"Julian day" has two meanings.** Astronomers count days since 4713 BC. Ecologists nearly always mean day of year.
-- **"yday starts at 1."** `as.POSIXlt()$yday` starts at 0.
-- **"Excel dates import cleanly."** Often as text or serial numbers. Check the class.
-
-## Explain it back
-- Why turn a date into day of year before modeling?
-
-*Pass test:* you can convert text to dates and extract year and day of year.
 
 ## Connections
 - **Builds on:** [[Data Types in R]]

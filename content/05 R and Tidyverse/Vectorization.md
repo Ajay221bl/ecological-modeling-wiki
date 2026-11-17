@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "Vectorization means applying an operation to a whole vector in one statement, with no explicit loop."
 aliases:
   - "Vectorized operations"
   - "Vectorised code"
@@ -11,22 +12,12 @@ status: seedling
 
 # Vectorization
 
-**In one line:** vectorization means applying an operation to a whole vector in one statement, with no explicit loop.
+A cookie cutter with twelve shapes on one frame makes twelve cookies in a single press; cutting them one at a time with a knife gives the same result with more effort and more chances to slip. **Vectorization** means applying an operation to a whole vector in one statement, with no explicit loop ([[Vectors in R]]). R's arithmetic and most of its functions accept whole vectors, so `x * 2` doubles every element and `sqrt(x)` takes every square root.
 
-> [!info] Before this, it helps to know
-> [[Vectors in R]] (whole columns as objects) · [[For Loop]] (the alternative)
+There is still a loop, but it runs inside fast compiled code underneath R rather than in R itself, where each step is slow. The timing in the code below squares a million numbers both ways, and the vectorized `x^2` is far faster than the explicit [[For Loop]]. Vectorized code is also shorter and reads like the maths: `sum((y - mean(y))^2)` is the formula for a sum of squares, giving 20 for 2, 4, 6 and 8. Creating new columns in the tidyverse relies on the same idea ([[mutate()]]).
 
-## The everyday picture
-A cookie cutter with twelve shapes on one frame. One press, twelve cookies. A loop is cutting them one at a time with a knife: same result, more effort, more chances to slip.
+Not everything vectorizes. Steps that depend on the previous result, such as a population projected year by year, still need a loop. And vectorization is not the same as using `apply()` or [[lapply()]], which hide a loop behind a function call but still call the function once per element; true vectorization is a single call on the whole vector. One more trap: `max(a, b)` returns one overall maximum, while the element-by-element version is `pmax()`, which gives 4, 5, 6 in the example ([[Loops, apply and map]]).
 
-## Start from zero
-1. **R's arithmetic and most functions accept whole vectors.**
-2. **`x * 2` doubles every element.** No loop needed.
-3. **The loop still happens, inside fast compiled code.** *Why it's faster:* R is slow per step, the compiled code underneath is not.
-4. **It is also shorter and closer to the maths.** `sum((y - mean(y))^2)` reads like the formula.
-5. **Not everything vectorizes.** Steps that depend on previous results still need a loop.
-
-## In R
 ```r
 x <- runif(1e6)
 system.time(for (i in seq_along(x)) x[i]^2)   # loop
@@ -35,16 +26,6 @@ y <- c(2, 4, 6, 8)
 sum((y - mean(y))^2)                          # 20, straight from the formula
 pmax(c(1, 5, 3), c(4, 2, 6))                  # element-wise maximum: 4 5 6
 ```
-
-## Common confusions
-- **"Vectorized means using apply()."** `apply()` hides a loop but is not what this means. True vectorization is one call on the whole vector.
-- **"`max(a, b)` compares element by element."** It gives one overall maximum. `pmax()` is the element-wise version.
-
-## Explain it back
-- Why is vectorized code faster in R?
-- Give an operation that can't be vectorized.
-
-*Pass test:* you can rewrite a simple loop as one vectorized line.
 
 ## Connections
 - **Builds on:** [[Vectors in R]], [[For Loop]]
