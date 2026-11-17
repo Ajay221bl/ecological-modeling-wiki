@@ -12,3 +12,5 @@ A first-principles wiki for the Ecological Modeling course (BIOL580V, Fall 2026)
 - **What changed and when:** [[Change Log]]
 
 Use the search bar (or press Ctrl/Cmd + K) to find any concept, and the graph view to see how notes connect.
+
+**Try the R code as you read.** Every R code block has a **Run** button: R runs right in your browser, and the output and plots appear under the block. **Open in console** copies a block into the R console (the round **R** button at the bottom right, or Ctrl/Cmd + \`) so you can change it and run it again. The first run downloads R, which takes a few seconds. Objects stay in memory as you move between pages until you press **Restart R**. Blocks that need Stan or JAGS (brms, rstan, JAGS) say so and only run in RStudio.
