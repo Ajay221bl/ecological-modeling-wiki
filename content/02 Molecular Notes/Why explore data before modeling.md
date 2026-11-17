@@ -24,7 +24,7 @@ Why spend time plotting before I fit anything?
 - [[Model Validation]].
 
 ## See it
-mermaid:
+```mermaid
 flowchart LR
   A[Raw data] --> B[Outliers Y and X]
   B --> C[Homogeneity and normality of Y]
@@ -35,6 +35,7 @@ flowchart LR
   G --> H[Independence]
   H --> I[Choose and fit model]
   I --> J[Validate residuals]
+```
 *What to look at:* the protocol comes before fitting; validation comes after. Both feed back into the model choice.
 
 ## The reasoning, step by step

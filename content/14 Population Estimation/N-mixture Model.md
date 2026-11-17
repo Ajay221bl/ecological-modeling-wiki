@@ -35,12 +35,13 @@ Powell and Gale (Ch18) five points, three visits: true N = 4, 2, 3, 0, 9. Counts
 7. **Sensitive to assumptions:** unmodelled heterogeneity, double counting or movement can inflate λ̂. [[Guélat and Kéry 2018]] added spatial terms (CAR or 2D splines) to N-mixture models.
 
 ## See it
-mermaid:
+```mermaid
 flowchart LR
   L["λ (mean abundance)"] --> N1["N at site i (latent)"]
   N1 -->|"Binomial(N, p) visit 1"| Y1["count y_i1"]
   N1 -->|"visit 2"| Y2["count y_i2"]
   N1 -->|"visit 3"| Y3["count y_i3"]
+```
 *What to look at:* one hidden number per site, seen through several noisy counts.
 
 ## In R

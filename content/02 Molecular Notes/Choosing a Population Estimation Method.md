@@ -24,7 +24,7 @@ Which population estimation method should I use?
 - [[Choosing a Survival Model]].
 
 ## See it
-mermaid:
+```mermaid
 flowchart TD
   Q["What is the question?"] --> W["Where is it?"] --> O["Occupancy (repeat visits)"]
   Q --> H["How many?"] --> I{"Individuals identifiable?"}
@@ -35,6 +35,7 @@ flowchart TD
   U -->|"successive removals"| RS["Removal"]
   U -->|"two observers"| DO["Double observer"]
   Q --> S["Survival / movement?"] --> SV["See Choosing a Survival Model"]
+```
 *What to look at:* the method follows from the question and from what you can observe.
 
 ## The reasoning, step by step

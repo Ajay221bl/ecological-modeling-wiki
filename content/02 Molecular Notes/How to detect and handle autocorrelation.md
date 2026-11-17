@@ -25,7 +25,7 @@ My data were collected across sites and years. What exactly do I do about autoco
 - [[AIC]]: choosing among structures.
 
 ## See it
-mermaid:
+```mermaid
 flowchart TD
   A[Fit model without autocorrelation] --> B[Extract residuals]
   B --> C{Time or space?}
@@ -39,6 +39,7 @@ flowchart TD
   H -->|no| J[Add correlation structure, random effect or spatial term]
   J --> K[Compare structures by AIC]
   K --> L[Check normalised residuals] --> F
+```
 *What to look at:* the loop back from the remedy to the residual check.
 
 ## The reasoning, step by step

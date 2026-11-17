@@ -22,12 +22,13 @@ How do I go from a model on paper to a working Stan program?
 - [[Running Stan from R]], [[R-hat]], [[Divergent Transitions]].
 
 ## See it
-mermaid:
+```mermaid
 flowchart TD
   A["Model on paper"] --> B["data block"] --> C["parameters block (with bounds)"] --> D["model block: priors + likelihood"]
   D --> E["generated quantities: y_rep, log_lik"] --> F["Fit simulated data: recover truth?"]
   F -->|"yes"| G["Fit real data"] --> H["Diagnostics: R-hat, ESS, divergences"] --> I["PPC and interpretation"]
   F -->|"no"| D
+```
 *What to look at:* the fake-data loop catches bugs before they become conclusions.
 
 ## The reasoning, step by step

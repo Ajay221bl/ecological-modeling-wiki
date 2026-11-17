@@ -24,7 +24,7 @@ My residuals look wrong. Which model do I move to?
 - [[Data Exploration Protocol]].
 
 ## See it
-mermaid:
+```mermaid
 flowchart TD
   A[Residual problem] --> B{What kind?}
   B -->|Response is counts, 0/1, proportions| C[GLM]
@@ -35,6 +35,7 @@ flowchart TD
   C --> H{Variance bigger than expected?}
   H -->|Yes| I[Negative binomial, quasi or OLRE]
   H -->|Too many zeros| J[Zero-inflated or hurdle]
+```
 *What to look at:* each branch is one assumption; real data often need two branches at once, such as a Poisson GLMM.
 
 ## The reasoning, step by step

@@ -22,7 +22,7 @@ What are the steps of an occupancy analysis in R?
 - [[AIC]] and [[Goodness of Fit and c-hat]].
 
 ## See it
-mermaid:
+```mermaid
 flowchart TD
   A["Detection matrix + covariates"] --> B["unmarkedFrameOccu()"]
   B --> C["Fit p models with psi(.)"]
@@ -30,6 +30,7 @@ flowchart TD
   D --> E["AIC table: modSel()"]
   E --> F["Goodness of fit: parboot / MB test"]
   F --> G["predict(): psi map and p curves"]
+```
 *What to look at:* detection is settled first because a wrong p model distorts ψ.
 
 ## The reasoning, step by step

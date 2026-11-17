@@ -30,10 +30,11 @@ Looking for your keys in a messy room. Not finding them does not prove they are 
 5. **Guélat and Kéry (2018)** simulated abundance data and found that ignoring imperfect detection (with a Poisson GLM) badly damaged abundance maps, especially when combined with spatial autocorrelation.
 
 ## See it
-mermaid:
+```mermaid
 flowchart LR
   N["True state N (or present / absent)"] -->|"detection p < 1"| C["What you record C"]
   C -.->|"needs extra info: repeats, marks, distances"| N
+```
 *What to look at:* the dashed arrow is the hard part; every estimation method is a way of drawing it.
 
 ## Why it is this way
