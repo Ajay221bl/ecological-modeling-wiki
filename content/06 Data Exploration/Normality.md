@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "The normality assumption says that the scatter of the data around the model's fitted values follows a normal, bell-shaped distribution."
 aliases:
   - "Normality assumption"
   - "Normally distributed residuals"
@@ -11,24 +12,12 @@ status: seedling
 
 # Normality
 
-**In one line:** the normality assumption says that the scatter of the data around the model's fitted values follows a normal, bell-shaped distribution.
+A leaf's final length is its expected length plus a little from extra rain, minus a little from shade, plus a little from good soil. Add up many small, independent pushes and pulls and the totals pile up in a bell around the expected value. The **normality assumption** says that the scatter of the data around a model's fitted values follows that bell, a [[Normal Distribution]]. A linear model writes y = fitted value + error, with error ~ Normal(0, σ²). So the assumption is about the errors, estimated by the residuals ([[Residual]]); it is not about the raw response.
 
-> [!info] Before this, it helps to know
-> [[Normal Distribution]] (the shape assumed) · [[Residual]] (what should have it) · [[QQ Plot]] (the check)
+The difference matters. In the code below, half the observations come from a group with mean 5 and half from a group with mean 20. The raw response has two peaks and fails a normality test badly, yet the residuals from a model with group as a predictor are perfectly normal, so the model's assumption is satisfied. If sites differ a lot in a predictor, the raw response can look skewed or two-peaked for that reason alone. Check normality after fitting, with a [[QQ Plot]] or histogram of the residuals.
 
-## The everyday picture
-Many small independent nudges. A leaf's final length is its expected length plus a little from extra rain, minus a little from shade, plus a little from soil. Add up many small pushes and pulls and the totals pile up in a bell around the expected value.
+Of the linear model's assumptions, normality is the least critical; Gelman and Hill rank it last. With moderate sample sizes, estimates and tests of coefficients hold up well under mild non-normality. It matters more with small samples, strong skew, or when you need prediction intervals for single observations ([[Linear Model Assumptions]]). If it fails badly, ask what kind of data you have: counts, proportions and positive skewed values each have their own distribution in a [[Generalized Linear Model]]. One caution about tests such as Shapiro-Wilk: with large samples they flag trivial departures, so a significant test is not a verdict; look at the QQ plot. This is step 3 of the protocol ([[Zuur et al. 2010]]).
 
-## Start from zero
-1. **A linear model says:** y = fitted value + error, with error ~ Normal(0, σ²).
-2. **So the assumption is about the errors,** estimated by the residuals. *It is not about the raw response.*
-3. **Why the difference matters:** if sites differ a lot in the predictor, the raw response can be skewed or two-peaked while the residuals are perfectly normal.
-4. **Check after fitting:** QQ plot or histogram of residuals.
-5. **How much it matters:** of the linear model's assumptions it is the least critical. With moderate sample sizes, estimates and tests of coefficients hold up well under mild non-normality.
-6. **When it matters more:** small samples, strong skew, or when you need prediction intervals for single observations.
-7. **What to do if it fails badly:** ask what kind of data you have. Counts, proportions and positive skewed values have their own distributions in a GLM.
-
-## In R
 ```r
 set.seed(3)
 grp <- rep(c(5, 20), each = 100); y <- grp + rnorm(200)
@@ -37,18 +26,6 @@ shapiro.test(y)$p.value                           # the raw response fails a nor
 shapiro.test(resid(lm(y ~ factor(grp))))$p.value  # the residuals pass
 ```
 The response is strongly non-normal. The model's assumption is satisfied anyway.
-
-## In the course
-Protocol step 3 ([[Zuur et al. 2010]]). Gelman and Hill rank normality of errors as the least important regression assumption.
-
-## Common confusions
-- **"My response must be normal."** The residuals, not the response.
-- **"A significant Shapiro test means I can't use a linear model."** With large n the test flags trivial departures. Look at the QQ plot.
-
-## Explain it back
-- Why can a response be non-normal while the assumption holds?
-
-*Pass test:* you can say exactly what must be normal and how to check it.
 
 ## Connections
 - **Builds on:** [[Normal Distribution]], [[Residual]]

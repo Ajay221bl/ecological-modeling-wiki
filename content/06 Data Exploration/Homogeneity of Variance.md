@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "Homogeneity of variance means the scatter of the data around the model's fitted values is the same size everywhere."
 aliases:
   - "Homoscedasticity"
   - "Equal variance"
@@ -13,27 +14,15 @@ status: seedling
 
 # Homogeneity of Variance
 
-**In one line:** homogeneity of variance means the scatter of the data around the model's fitted values is the same size everywhere.
+A dart player who is equally steady wherever they aim scatters darts the same amount around the bullseye as around the 20; a player whose throws go wild only when aiming high is not. **Homogeneity of variance**, also called homoscedasticity or constant variance, means the scatter of the data around a model's fitted values is the same size everywhere. A linear model has a single error [[Variance]], σ², describing the scatter around the line ([[Linear Regression]]), and one number can only be right if the scatter really is the same in every group and at every value of the predictors.
 
-> [!info] Before this, it helps to know
-> [[Variance]] (what must be constant) · [[Residual]] (where it is checked) · [[Linear Regression]] (the model that assumes it)
+You check it in two ways. For groups, use side-by-side boxplots: are the boxes of similar length? For continuous predictors, plot each [[Residual]] against its fitted value: is the band of even width ([[Residuals vs Fitted Plot]])? The figure and code below contrast an even band with a funnel whose spread grows with x; splitting x into thirds, the residual variance climbs across the funnel data but stays roughly equal for the even data. A rule of thumb for groups is that trouble starts when the largest group variance is about four times the smallest. Formal tests exist ([[Bartlett Test]]), but plots show how big the difference is.
 
-## The everyday picture
-A dart player who is equally steady whatever part of the board they aim at. Their darts scatter the same amount around the bullseye as around the 20. A player whose throws go wild only when aiming high breaks the assumption.
+It matters because σ² feeds every standard error. If the true scatter is bigger in some places than the model assumes, the standard errors and p-values there are wrong, usually too optimistic. Two confusions. Homogeneity is about spread, not about groups having the same mean. And it is not an assumption of every model: a Poisson GLM expects variance to grow with the mean, so there the check is whether variance grows the way the distribution says. When the assumption fails, the result is [[Heteroscedasticity]], and Zuur's Chapter 4 is about modeling it directly ([[Variance Structures]], [[Zuur et al. 2009 Ch4]]). This is step 2 of the exploration protocol ([[Zuur et al. 2010]]).
 
-## Start from zero
-1. **A linear model has one error variance, σ².** It describes the scatter around the line.
-2. **One number can only be right if the scatter is the same everywhere:** in every group and at every value of the predictors.
-3. **Check groups** with side-by-side boxplots. Are the boxes of similar length?
-4. **Check continuous predictors** with a plot of residuals against fitted values. Is the band of even width?
-5. **Why it matters:** σ² feeds every standard error. If the true scatter is bigger in some places, the model's standard errors and p-values are wrong there, usually too optimistic.
-6. **A rule of thumb for groups:** trouble starts when the largest group variance is around four times the smallest.
-
-## See it
 ![[Homogeneity vs heterogeneity.png|700]]
 *What to look at:* left, an even band. Right, a funnel that opens as the fitted value grows.
 
-## In R
 ```r
 set.seed(1)
 x <- runif(200, 1, 10)
@@ -43,19 +32,6 @@ op <- par(mfrow = c(1, 2)); plot(fitted(lm(even ~ x)), resid(lm(even ~ x))); plo
 tapply(resid(lm(fan ~ x)), cut(x, 3), var)           # variance climbs across thirds of x
 tapply(resid(lm(even ~ x)), cut(x, 3), var)          # roughly equal
 ```
-
-## In the course
-Protocol step 2 ([[Zuur et al. 2010]]). Zuur's Chapter 4 is about what to do when it fails ([[Zuur et al. 2009 Ch4]]).
-
-## Common confusions
-- **"It means the groups have the same mean."** It concerns spread, not centre.
-- **"It applies to every model."** A Poisson GLM expects variance to grow with the mean. There the check is whether variance grows the way the distribution says.
-
-## Explain it back
-- Which plot checks equal variance for a continuous predictor?
-- Why do unequal variances damage standard errors?
-
-*Pass test:* you can recognise a funnel in a residual plot and say why it matters.
 
 ## Connections
 - **Builds on:** [[Variance]], [[Residual]]

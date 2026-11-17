@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "A transformation replaces a variable with a mathematical function of itself, such as its logarithm, before analysis."
 aliases:
   - "Data transformation"
   - "Transforming variables"
@@ -11,28 +12,15 @@ status: seedling
 
 # Transformation
 
-**In one line:** a transformation replaces a variable with a mathematical function of itself, such as its logarithm, before analysis.
+A map of the solar system drawn to scale puts the inner planets in one unreadable clump. Draw it with a ruler whose marks go 1, 10, 100, 1000 and every planet has room; the planets have not moved, the ruler changed. A **transformation** replaces a variable with a mathematical function of itself, such as its [[Logarithm]], square root or logit, before analysis ([[Functions in Maths]]). Every value is transformed and the model is fitted on the new scale. People transform for three reasons: to straighten a curved relationship ([[Linearity]]), to even out spread that changes, and to reduce the pull of extreme values.
 
-> [!info] Before this, it helps to know
-> [[Functions in Maths]] (what is applied) · [[Logarithm]] (the commonest choice) · [[Linearity]] (one goal)
+The figure and code below show all three on one dataset where y grows exponentially with x: on the raw scale the cloud is a curved fan, the square root helps, and on the log scale it becomes a straight, even band. A model of log(y) then recovers the true slope of 0.3, which means each unit of x multiplies y by about e^0.3 ≈ 1.35, close to the 1.31 estimated from these data. The cost is that the model now describes the transformed variable: a slope is per log-unit, and back-transforming a mean does not give the mean on the original scale. The last line shows that exp(mean(log y)) is smaller than mean(y); it is the geometric mean.
 
-## The everyday picture
-Changing the ruler. A map of the solar system drawn to scale puts the inner planets in one unreadable clump. Draw it with a ruler whose marks are 1, 10, 100, 1000 and every planet has room. The planets haven't moved. The ruler changed.
+Transforming a predictor, such as log body mass, is harmless to the error assumptions and often sensible. Transforming the response is the delicate case. For counts and proportions, a GLM usually does the job better, because it changes the scale of the *mean* through the [[Link Function]] and leaves the data alone ([[Transform the data or change the model]]). Zuur's protocol treats transformation as one option when outliers or heterogeneity appear, to consider before deleting outliers, while preferring a better model where possible ([[Zuur et al. 2010]]). The aim is never to make the response look normal, but a well-behaved relationship and residuals. Common choices have their own notes ([[Log Transformation]], [[Square-root Transformation]], [[Logit Link|Logit Transformation]]).
 
-## Start from zero
-1. **Choose a function:** log, square root, logit, reciprocal.
-2. **Apply it to every value** of the response or a predictor.
-3. **Fit the model on the new scale.**
-4. **Three reasons people transform:** to straighten a curved relationship, to even out the spread, to reduce the pull of extreme values.
-5. **The cost:** the model now describes the transformed variable. A slope is per log-unit, and back-transforming a mean does not give the mean on the original scale.
-6. **Transforming a predictor is harmless** to the error assumptions and often sensible (log body mass).
-7. **Transforming a response is the delicate case.** For counts and proportions, a GLM usually does the same job better: *it changes the scale of the mean through the link function and leaves the data alone*.
-
-## See it
 ![[Transformation effect.png|700]]
 *What to look at:* a curved fan becomes a straight even band on the log scale.
 
-## In R
 ```r
 set.seed(13)
 x <- runif(100, 1, 10); y <- exp(0.3 * x + rnorm(100, 0, 0.4))
@@ -41,19 +29,6 @@ m <- lm(log(y) ~ x); coef(m)                         # slope close to the true 0
 exp(coef(m)[2])                                      # each unit of x multiplies y by about 1.31
 c(mean(y), exp(mean(log(y))))                        # back-transformed mean of logs is NOT the mean
 ```
-
-## In the course
-Zuur's protocol treats transformation as one option when outliers or heterogeneity appear, and prefers changing the model where possible ([[Zuur et al. 2010]]). The lab says to consider it before deleting outliers.
-
-## Common confusions
-- **"Transform until the response looks normal."** The aim is a well-behaved relationship and residuals.
-- **"Back-transform the mean to get the mean."** exp(mean(log y)) is the geometric mean, smaller than the arithmetic mean.
-
-## Explain it back
-- What are three reasons to transform?
-- Why is a GLM often preferred to transforming a count?
-
-*Pass test:* you can say what a transformation changes and what it costs.
 
 ## Connections
 - **Builds on:** [[Functions in Maths]], [[Logarithm]]

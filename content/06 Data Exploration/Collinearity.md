@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "Collinearity means two or more predictors carry overlapping information because they are strongly related to each other."
 aliases:
   - "Multicollinearity"
   - "Correlated predictors"
@@ -11,34 +12,15 @@ status: seedling
 
 # Collinearity
 
-**In one line:** collinearity means two or more predictors carry overlapping information because they are strongly related to each other.
+Two people carry a sofa together. You can see the sofa move, but you cannot tell how much each is lifting, because they always lift at the same time; to separate their efforts you would need to see each lift alone. **Collinearity**, or multicollinearity, means two or more predictors carry overlapping information because they are strongly related to each other ([[Correlation]]). Tree cover and shrub cover on grassland plots are a typical pair, with a correlation around −0.9: where trees are dense, shrubs are sparse. Birds decline along that gradient, but is it the trees they avoid or the shrubs they miss? The data hardly ever show one changing without the other.
 
-> [!info] Before this, it helps to know
-> [[Correlation]] (the pairwise version) · [[Multiple Regression]] (where it bites) · [[Standard Error]] (what it inflates)
+The problem comes from what a coefficient in [[Multiple Regression]] means: the change in Y for one unit of this X, *holding the other X's fixed*. If two X's move together, the data hold few cases where one changes alone, so that comparison rests on little information. The result is large standard errors ([[Standard Error]]) and unstable estimates that can flip sign when a predictor or a few rows are added. The figure shows the two slope estimates scattering along a long diagonal: one can only go up if the other goes down. The code below simulates both cases; with predictors correlated at −0.95, the standard errors are about three times larger than with independent predictors ([[Why collinearity inflates standard errors]]).
 
-## The everyday picture
-Two people carrying a sofa together. You can see the sofa move, but you can't tell how much each person is lifting, because they always lift at the same time. To separate their efforts you would need to see each lift alone.
+Detect it with pairplots and correlations, where |r| above about 0.6 to 0.7 is a common flag ([[Pairplot]]), and with the [[Variance Inflation Factor]], which also catches combinations of several predictors. Respond by dropping one of a pair on biological grounds, as the course lab does, by combining them into an index or a [[Principal Component Analysis|principal component]], or by keeping both and accepting wide intervals. Three confusions. Collinearity does not bias the estimates; it makes them imprecise. It does not ruin prediction within the observed combinations of predictors, only for new combinations, such as trees without the usual loss of shrubs. And dropping a variable does not remove its effect: the remaining one now stands in for both, a problem close to [[Confounding Variable|confounding]]. This is step 5 of the protocol ([[Zuur et al. 2010]]).
 
-## A tiny example
-Tree cover and shrub cover on grassland plots, correlation −0.9. Where trees are dense, shrubs are sparse. Birds decline along that gradient. Is it the trees they avoid or the shrubs they miss? The data hardly ever show one changing without the other.
-
-## Start from zero
-1. **A regression coefficient means:** the change in Y for one unit of this X, *holding the other X's fixed*.
-2. **If two X's move together, the data hold few cases where one changes alone.**
-3. **So that "holding fixed" comparison rests on little information.**
-4. **Result: large standard errors** and unstable estimates that can flip sign when a predictor or a few rows are added.
-5. **The model's predictions are still fine** within the range of the data. *It is the separate interpretation of each coefficient that suffers.*
-6. **Detect:** pairplots and correlations (a common flag is |r| above 0.6 to 0.7), and VIF.
-7. **Respond:** drop one of the pair, chosen on biological grounds. Combine them (an index, a principal component). Or keep both and accept wide intervals.
-
-## See it
 ![[Collinearity.png|700]]
 *What to look at:* with correlated predictors the estimates of the two slopes scatter along a long diagonal. One can only go up if the other goes down.
 
-## Why it is this way
-The amount of information about a slope depends on how much its predictor varies independently of the others. Correlated predictors leave little independent variation, so the same data pin the slope down far less tightly.
-
-## In R
 ```r
 set.seed(5)
 sim <- function(r) { tree <- rnorm(100); shrub <- r * tree + sqrt(1 - r^2) * rnorm(100)
@@ -46,20 +28,6 @@ sim <- function(r) { tree <- rnorm(100); shrub <- r * tree + sqrt(1 - r^2) * rno
 sim(0)          # independent predictors: small SE
 sim(-0.95)      # collinear predictors: SE roughly three times larger
 ```
-
-## In the course
-Protocol step 5 ([[Zuur et al. 2010]]). The lab drops one of each highly correlated pair before modeling ([[Course Website]]).
-
-## Common confusions
-- **"Collinearity biases the estimates."** They remain unbiased but become imprecise.
-- **"Collinearity ruins prediction."** Not within the observed combinations. It ruins prediction for new combinations (trees without the usual shrub loss).
-- **"Dropping a variable removes its effect."** The remaining variable now stands in for both.
-
-## Explain it back
-- Why does collinearity inflate standard errors?
-- What are three responses to it?
-
-*Pass test:* you can explain collinearity with the sofa picture and say what it does and doesn't damage.
 
 ## Connections
 - **Builds on:** [[Correlation]], [[Multiple Regression]]

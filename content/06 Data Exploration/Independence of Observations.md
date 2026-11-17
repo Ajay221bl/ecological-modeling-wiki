@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "Observations are independent when knowing the value of one tells you nothing extra about another beyond what the model already says."
 aliases:
   - "Independence"
   - "Independence assumption"
@@ -12,32 +13,15 @@ status: seedling
 
 # Independence of Observations
 
-**In one line:** observations are independent when knowing the value of one tells you nothing extra about another beyond what the model already says.
+Ask 100 people their opinion. If they are 100 strangers, you have 100 opinions; if they are 10 families of 10 who all talk at dinner, you have something closer to 10, and counting them as 100 makes you far more certain than you should be. Observations are **independent** when knowing the value of one tells you nothing extra about another beyond what the model already says ([[Observation]]). Standard models multiply the probabilities of the observations together, and that step is only valid if they are independent. Dependence comes from shared causes the model lacks: the same site, the same animal, nearness in space or time, related species. Ten nest boxes at each of six sites share each site's weather, food and predators, so their 60 clutch sizes hold far less than 60 nests' worth of information about a treatment applied to whole sites.
 
-> [!info] Before this, it helps to know
-> [[Observation]] (the units) · [[Sample Size]] (what dependence quietly shrinks) · [[Residual]] (where dependence shows up)
+Dependent data hold less information than their count suggests, but the model does not know that. It uses n as given, so standard errors and p-values come out too small ([[Sample Size]], [[Effective Sample Size]]). The simulation below makes this concrete. A treatment is applied to whole sites, sites differ at random, and there is no true treatment effect, yet a model that ignores sites calls the effect significant in about 46% of datasets, instead of the 5% it should. Ignoring grouping manufactures findings, which is why this is the most serious of the assumptions: other violations distort a little, this one can turn noise into "significant" effects ([[Why non-independence inflates false positives|Why non-independence is the most dangerous violation]], [[Pseudoreplication]]).
 
-## The everyday picture
-Asking 100 people their opinion. If they are 100 strangers, you have 100 opinions. If they are 10 families of 10 who all talk at dinner, you have something closer to 10. Counting them as 100 makes you far more certain than you should be.
+Think about independence from the design: how were the data collected, and what is the true unit of replication? Then check residuals ([[Residual]]) against group, time order and location; the figure shows 60 points that look like a tight trend until their six site colours reveal six clumps. Fix it by modeling the dependence, with random effects for groups ([[Mixed Effects Model|Mixed Model]]) and correlation structures for time and space ([[Autocorrelation]]), which is the subject of Units 9 to 13 of the course. Two confusions: independence is about the observations' errors, not about predictors being unrelated (that is collinearity); and random sampling of sites does not make repeated visits to one site independent. This is step 8 of the protocol ([[Zuur et al. 2010]]).
 
-## A tiny example
-Ten nest boxes at each of 6 sites, 60 nests. Nests at a site share weather, food and predators. Site-level conditions push all ten up or down together, so the 60 clutch sizes hold less than 60 nests' worth of information about a site-level treatment.
-
-## Start from zero
-1. **Standard models multiply the probabilities of the observations together.** That step is only valid if they are independent.
-2. **Dependence comes from shared causes the model lacks:** same site, same animal, nearby in space, adjacent in time, related species.
-3. **Dependent data hold less information than their count suggests.**
-4. **The model doesn't know that.** It uses n as given, so *standard errors come out too small and p-values too small*.
-5. **Why it is the most serious assumption:** the other violations distort a little. This one can turn noise into "significant" effects.
-6. **Think about it from the design:** how were the data collected? What is the true unit of replication?
-7. **Check residuals** against group, time order and location.
-8. **Fix by modeling the dependence:** random effects for groups, correlation structures for time and space.
-
-## See it
 ![[Independence and grouping.png|700]]
 *What to look at:* the same 60 points. Ignoring the site colours suggests a tight trend. Seeing them shows six clumps.
 
-## In R
 ```r
 set.seed(7)
 pvals <- replicate(500, {
@@ -47,19 +31,6 @@ pvals <- replicate(500, {
 mean(pvals < 0.05)        # far above the 5% it should be
 ```
 Around 45% of null datasets give p < 0.05. Ignoring grouping manufactures findings.
-
-## In the course
-Protocol step 8 ([[Zuur et al. 2010]]). The reason for Units 9 to 13: autocorrelation and mixed models.
-
-## Common confusions
-- **"Independence means the predictors are unrelated."** That is collinearity. Independence concerns the observations' errors.
-- **"Random sampling guarantees it."** Random sampling of sites doesn't make repeated visits to one site independent.
-
-## Explain it back
-- Why does non-independence make p-values too small?
-- Name four sources of dependence in ecological data.
-
-*Pass test:* you can spot the true unit of replication in a study description.
 
 ## Connections
 - **Builds on:** [[Observation]], [[Sample Size]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "Data are balanced when every group or combination of groups has the same number of observations."
 aliases:
   - "Balanced design"
   - "Unbalanced data"
@@ -13,29 +14,12 @@ status: seedling
 
 # Balanced Data
 
-**In one line:** data are balanced when every group or combination of groups has the same number of observations.
+A pair of scales with the same number of weights in each pan gives a clean comparison, because neither side has an advantage; load one pan with twenty weights and the other with two, and the result mostly reflects the heavy pan. Data are **balanced** when every group, or every combination of groups, has the same number of observations ([[Categorical Variable]], [[Replication]]). Count them with `table()`. Burned and unburned plots crossed with grazed and ungrazed is balanced with 10 plots in each of the four cells; with 18, 2, 5 and 15 it is unbalanced, because most burned plots are grazed and most unburned ones are not.
 
-> [!info] Before this, it helps to know
-> [[Categorical Variable]] (the groups) · [[Replication]] (the count per group) · [[Study Design]] (where balance is decided)
+Balance is prized in designed experiments because the factors are then uncorrelated with each other, so each effect is estimated separately and with the best precision for the total effort ([[Study Design]]). Unbalanced data make factors partly collinear: in the example, "burned" and "grazed" travel together ([[Collinearity]]). One visible consequence is that sequential sums of squares in `anova()` depend on the order of terms. In the code below, the variation credited to burning is different when it is entered before grazing than after, for the same model. Another is that small cells, such as the 2 burned ungrazed plots, are estimated poorly.
 
-## The everyday picture
-A set of scales with the same number of weights in each pan. Comparisons are clean because neither side has an advantage. Load one pan with twenty weights and the other with two, and the result mostly reflects the heavy pan.
+Field data are almost always unbalanced, and that is not a reason they cannot be analysed; interpretation just needs more care. Modern tools cope well: likelihood-based mixed models do not need balance, and they pull poorly sampled groups toward the overall mean ([[Partial Pooling]], [[Mixed Effects Model|Mixed Model]]), which Zuur notes classical repeated-measures ANOVA cannot do ([[Zuur et al. 2009 Ch5]]). Balance means equal group sizes, not equal group means.
 
-## A tiny example
-Burned and unburned crossed with grazed and ungrazed.
-- Balanced: 10 plots in each of the four cells.
-- Unbalanced: 18, 2, 5 and 15. Most burned plots are grazed, most unburned ones aren't.
-
-## Start from zero
-1. **Count observations per cell** with `table()`.
-2. **Equal counts: balanced.**
-3. **Why balance is prized in experiments:** the factors are then uncorrelated with each other, so each effect is estimated separately and with the best precision for the total effort.
-4. **Unbalanced data make factors partly collinear.** In the example, "burned" and "grazed" travel together.
-5. **Consequences:** the order of terms can change sequential sums of squares in `anova()`, and small cells are estimated poorly.
-6. **Field data are almost always unbalanced.**
-7. **Modern tools cope.** Likelihood-based mixed models don't need balance, and they shrink poorly sampled groups toward the overall mean.
-
-## In R
 ```r
 set.seed(12)
 d <- data.frame(burn = rep(c("b", "u"), c(20, 20)), graze = c(rep(c("g", "n"), c(18, 2)), rep(c("g", "n"), c(5, 15))))
@@ -45,18 +29,6 @@ anova(lm(y ~ burn + graze, d))[1:2, "Sum Sq"]       # burn first
 anova(lm(y ~ graze + burn, d))[2:1, "Sum Sq"]       # graze first: different sums of squares for the same terms
 ```
 With unbalanced cells, how much variation each factor "explains" depends on the order you enter them.
-
-## In the course
-Zuur notes that mixed models handle unbalanced data that classical repeated-measures ANOVA cannot ([[Zuur et al. 2009 Ch5]]).
-
-## Common confusions
-- **"Unbalanced data can't be analysed."** They can. Interpretation needs more care.
-- **"Balance means equal group means."** It means equal group sizes.
-
-## Explain it back
-- Why does imbalance make sequential ANOVA depend on term order?
-
-*Pass test:* you can check balance with a table and explain what imbalance costs.
 
 ## Connections
 - **Builds on:** [[Replication]], [[Study Design]]

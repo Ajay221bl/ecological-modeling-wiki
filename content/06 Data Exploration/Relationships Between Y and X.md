@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "Checking the relationship between Y and X means plotting the response against each predictor to see what shape, if any, connects them."
 aliases:
   - "Response-predictor relationships"
   - "Functional form"
@@ -11,25 +12,12 @@ status: seedling
 
 # Relationships Between Y and X
 
-**In one line:** checking the relationship between Y and X means plotting the response against each predictor to see what shape, if any, connects them.
+You try on a jacket before buying it. The model you plan to fit assumes a shape, usually a straight line ([[Linear Function]]), and checking the **relationships between Y and X** means plotting the response against each predictor, with a smoother, to see whether that shape fits ([[Scatterplot]]). Straight means a linear term will do ([[Linearity]]). Curved one way suggests a log of X or Y, or a GLM with a log link ([[Transformation]]). Humped suggests a [[Quadratic Term]] or a smooth ([[Generalized Additive Model]]). Flat may mean no effect, or an effect hidden by another variable. And note whether the spread changes along X, for the variance check.
 
-> [!info] Before this, it helps to know
-> [[Scatterplot]] (the tool) · [[Linear Function]] and [[Nonlinear Function]] (the shapes to tell apart)
+The example below shows why this matters. The response grows exponentially with x and its spread grows too, so on the raw scale the smoother curves upward and the scatter fans out ([[Nonlinear Function]]). On the log scale the relationship is straight and the spread even, and a straight line fitted to log(y) explains far more of the variation than one fitted to y. Fitting a straight line to a curve without looking gives a confident, wrong slope and a residual pattern you might not think to look for. This check is step 6 of the protocol ([[Zuur et al. 2010]]).
 
-## The everyday picture
-Trying on a jacket before buying. The model you plan to fit assumes a shape, usually a straight line. Looking first tells you whether that shape fits the data's shoulders.
+Hold back on conclusions. These plots show each predictor alone, and with several correlated predictors the pattern for one can be created by another. They tell you about the *shape* of relationships, not which predictors matter; choosing predictors by eye from these plots is data snooping.
 
-## Start from zero
-1. **Plot Y against each X,** with a smoother.
-2. **Straight?** A linear term will do.
-3. **Curved one way?** Consider a log of X or Y, or a GLM with a log link.
-4. **Humped?** A quadratic term or a smooth.
-5. **Flat?** Maybe no effect, or an effect hidden by another variable.
-6. **Does the spread change along X?** Note it for the variance check.
-7. **Why not just fit and see:** a straight line fitted to a curve gives a confident, wrong slope and a residual pattern you might not look for.
-8. **Hold back on conclusions.** These plots show each predictor alone. With several correlated predictors, the pattern for one can be created by another.
-
-## In R
 ```r
 set.seed(13)
 x <- runif(80, 1, 50); y <- exp(1 + 0.05 * x + rnorm(80, 0, 0.3))
@@ -40,17 +28,6 @@ par(op)
 c(summary(lm(y ~ x))$r.squared, summary(lm(log(y) ~ x))$r.squared)
 ```
 The log scale straightens the relationship and evens out the spread.
-
-## In the course
-Protocol step 6 ([[Zuur et al. 2010]]).
-
-## Common confusions
-- **"These plots tell me which predictors matter."** They tell you about shape. Choosing predictors by eye from the data is snooping.
-
-## Explain it back
-- What are three shapes to look for and the usual response to each?
-
-*Pass test:* you can match a scatterplot shape to a modeling choice.
 
 ## Connections
 - **Builds on:** [[Scatterplot]]

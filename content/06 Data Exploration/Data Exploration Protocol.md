@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "The data exploration protocol is Zuur, Ieno and Elphick's eight-step checklist of things to look at before fitting a model."
 aliases:
   - "Zuur protocol"
   - "Eight steps of data exploration"
@@ -11,26 +12,12 @@ status: seedling
 
 # Data Exploration Protocol
 
-**In one line:** the data exploration protocol is Zuur, Ieno and Elphick's eight-step checklist of things to look at before fitting a model.
+Experienced pilots never skip the pre-flight checklist, because the point of a checklist is to catch the thing you were sure was fine. The **data exploration protocol** is Zuur, Ieno and Elphick's eight-step checklist of things to look at before fitting a model ([[Zuur et al. 2010]], [[Data Exploration]]). In order: (1) outliers in the response Y and the predictors X ([[Outlier]]); (2) homogeneity of variance, whether the spread is similar across groups and along predictors ([[Homogeneity of Variance]]); (3) normality, where the model assumes it ([[Normality]]); (4) zero trouble, how many zeros are in the response ([[Zero Inflation]]); (5) collinearity among the X's ([[Collinearity]]); (6) the shape of the relationships between Y and each X ([[Relationships Between Y and X]]); (7) interactions, whether a Y-X relationship differs between groups ([[Interaction Term]]); and (8) independence of Y, whether observations are grouped or close in space or time ([[Independence of Observations]]).
 
-> [!info] Before this, it helps to know
-> [[Data Exploration]] (the purpose) · [[Response Variable]] and [[Explanatory Variable]] (Y and X in the steps)
+The order has a logic. Single variables come first, because an outlier or a pile of zeros distorts every later plot. Relationships come next. Dependence comes last because it decides the whole class of model. Three steps point directly at a modeling decision, as the diagram shows: many zeros suggest a count or zero-inflated model, strong collinearity means dropping or combining predictors, and grouped or nearby observations call for a mixed model or a correlation structure. The code below takes one quick look per step on simulated bird-richness data from eight routes: boxplots and a dot chart for outliers, boxplots by route for spread, a histogram for shape, the share of zeros, a correlation between predictors, a scatterplot, a coplot by route, and a table of observations per route.
 
-## The everyday picture
-A pilot's pre-flight checklist. Experienced pilots don't skip it, because the point of a checklist is to catch the thing you were sure was fine.
+The protocol is a prompt to think, not a ritual where every step applies to every analysis. Normality matters for a linear model and is irrelevant for a Poisson GLM, and even where it matters the assumption concerns the residuals, the response given the predictors, not the raw response. The course's data exploration lab follows the eight steps in order ([[Course Website]], [[Why explore data before modeling]]).
 
-## Start from zero
-1. **Outliers in Y and X.** Boxplots and Cleveland dot plots ([[Outlier]]).
-2. **Homogeneity of variance.** Is the spread similar across groups and along predictors? ([[Homogeneity of Variance]])
-3. **Normality.** Histograms and QQ plots, where the model assumes it ([[Normality]]).
-4. **Zero trouble.** How many zeros are in the response? ([[Zero Inflation]])
-5. **Collinearity among the X's.** Pairplots, correlations, VIF ([[Collinearity]]).
-6. **Relationships between Y and X.** Scatterplots: linear, curved, none? ([[Relationships Between Y and X]])
-7. **Interactions.** Does the Y-X relationship differ between groups? Coplots ([[Interaction Term]]).
-8. **Independence of Y.** Are observations grouped, or close in space or time? ([[Independence of Observations]])
-*Why this order:* single variables first, since an outlier or a pile of zeros distorts every later plot. Then relationships. Then dependence, which decides the whole model class.
-
-## See it
 ```mermaid
 flowchart TD
   S1[1 Outliers] --> S2[2 Equal variance] --> S3[3 Normality] --> S4[4 Zeros] --> S5[5 Collinearity] --> S6[6 Y against X] --> S7[7 Interactions] --> S8[8 Independence]
@@ -40,7 +27,6 @@ flowchart TD
 ```
 *What to look at:* three of the steps point directly at a modeling decision.
 
-## In R
 ```r
 set.seed(1)
 d <- data.frame(tree = runif(80, 0, 60), shrub = runif(80, 0, 30), route = factor(rep(1:8, each = 10)))
@@ -56,22 +42,10 @@ table(d$route)                                    # 8 grouping structure
 ```
 Eight quick looks, each answering one question from the list.
 
-## In the course
-The data exploration lab follows the eight steps in order ([[Course Website]]; [[Zuur et al. 2010]]).
-
-## Common confusions
-- **"Every step applies to every analysis."** Normality matters for a linear model and is irrelevant for a Poisson GLM. The protocol is a prompt to think.
-- **"Normality means the raw response is bell-shaped."** The assumption concerns the residuals, the response given the predictors.
-
-## Explain it back
-- List the eight steps.
-- Which step decides whether you need a mixed model?
-
-*Pass test:* you can run through the eight questions for a new dataset.
-
 ## Connections
 - **Builds on:** [[Data Exploration]]
 - **Leads to:** [[Outlier]], [[Collinearity]], [[Independence of Observations]], [[Zero Inflation]]
+- **See also:** [[Explanatory Variable]], [[Response Variable]]
 - **Part of:** [[MOC 04 - Data Exploration|MOC - Data Exploration]], molecular note [[Why explore data before modeling]]
 - **Go deeper:** [[Zuur et al. 2010]]
 

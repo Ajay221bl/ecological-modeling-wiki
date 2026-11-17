@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "A scatterplot shows two numeric variables at once by drawing one dot per observation, placed by its value on each axis."
 aliases:
   - "Scatter plot"
   - "XY plot"
@@ -12,28 +13,15 @@ status: seedling
 
 # Scatterplot
 
-**In one line:** a scatterplot shows two numeric variables at once by drawing one dot per observation, placed by its value on each axis.
+On a star map each star is located by two coordinates, and patterns in the sky, a band, a cluster, a lone star, stand out. A **scatterplot** shows two numeric variables at once in the same way, with one dot per observation placed by its value on each axis. By convention the [[Explanatory Variable]] goes on the horizontal axis and the [[Response Variable]] on the vertical one.
 
-> [!info] Before this, it helps to know
-> [[Response Variable]] (vertical axis) · [[Explanatory Variable]] (horizontal axis) · [[Correlation]] (what it visualises)
+There are four things to read. Direction: rising, falling or flat. Form: straight, curved, humped or stepped. Spread: even along x, or fanning out? And oddities: isolated points, clusters, gaps. In the code below, bird richness falls with tree cover, and a smoother added with `lowess()` guides the eye along the trend ([[LOESS Smoother]]). Overlapping dots, common with counts, hide how many points there are, so use transparency or a little jitter.
 
-## The everyday picture
-A map of stars. Each star is one observation, located by two coordinates. Patterns in the sky, a band, a cluster, a lone star, are patterns in the relationship.
+Always plot before calculating a [[Correlation]], because a correlation coefficient gives one number, and very different pictures share the same number. Anscombe's famous quartet, in the last line of the code, is four datasets that all have a correlation of 0.82, yet one is a straight line, one a curve, one a line with an outlier and one a vertical stack with a single distant point; the figure makes the same point. A scatterplot of the response against each predictor is protocol step 6 ([[Relationships Between Y and X]]), and a grid of them is a [[Pairplot]]. No visible pattern does not prove no relationship, because another variable may be masking it, and a straight-line pattern is what [[Linear Regression]] summarises.
 
-## Start from zero
-1. **Predictor on x, response on y.**
-2. **One dot per observation.**
-3. **Read direction:** rising, falling, flat.
-4. **Read form:** straight, curved, humped, stepped.
-5. **Read spread:** even along x, or fanning out?
-6. **Read oddities:** isolated points, clusters, gaps.
-7. **Why always plot before correlating:** a correlation coefficient gives one number, and very different pictures share the same number.
-
-## See it
 ![[Correlation panels.png|700]]
 *What to look at:* similar correlation values can come from very different patterns.
 
-## In R
 ```r
 set.seed(9)
 tree <- runif(60, 0, 60); rich <- rpois(60, exp(2.3 - 0.025 * tree))
@@ -44,18 +32,6 @@ cor(tree, rich)
 sapply(1:4, function(i) round(cor(anscombe[[paste0("x", i)]], anscombe[[paste0("y", i)]]), 2))
 ```
 All four Anscombe datasets have correlation 0.82. Plot them to see four different shapes.
-
-## In the course
-Protocol step 6 ([[Relationships Between Y and X]]).
-
-## Common confusions
-- **"No visible pattern means no relationship."** Another variable may be masking it.
-- **"Overlapping dots are one dot."** Use transparency or jitter for counts.
-
-## Explain it back
-- What four things do you read off a scatterplot?
-
-*Pass test:* you can describe direction, form, spread and oddities of a plotted relationship.
 
 ## Connections
 - **Builds on:** [[Response Variable]], [[Explanatory Variable]]
