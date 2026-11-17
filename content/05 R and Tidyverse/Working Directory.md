@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "The working directory is the folder R treats as \"here\" when you give it a file name without a full address."
 aliases:
   - "getwd()"
   - "setwd()"
@@ -11,35 +12,17 @@ status: seedling
 
 # Working Directory
 
-**In one line:** the working directory is the folder R treats as "here" when you give it a file name without a full address.
+Told "go to room 12" in a building, which room you reach depends on which floor you are on. The **working directory** is the floor R is standing on: the folder R treats as "here" when you give it a file name without a full address. `getwd()` shows it, and a bare file name is looked up there, so `read.csv("birds.csv")` means "birds.csv in the working directory" ([[Reading Data into R]]). The code below prints it and lists a few files R can see from there.
 
-> [!info] Before this, it helps to know
-> [[Reading Data into R]] (which needs to find files) · [[R and RStudio]] (where the session runs)
+Different ways of starting R put you in different places ([[R and RStudio]]). That is why a script works one day and says "file not found" the next. `setwd("C:/Users/me/...")` moves it, but that line works only on your computer, because it uses an [[Absolute Path]].
 
-## The everyday picture
-Standing in a building and being told "go to room 12". Which room 12 depends on which floor you are on. The working directory is the floor R is standing on.
+The fix is an [[RProject]]: opening the project sets the working directory to the project folder for everyone, so [[Relative Path|relative paths]] work, and [[here()]] makes them robust even from subfolders. Putting `setwd()` at the top of a script is not good practice; it is the most common reason shared code fails.
 
-## Start from zero
-1. **`getwd()` shows it.**
-2. **A bare file name is looked up there.** `read.csv("birds.csv")` means "birds.csv in the working directory".
-3. **Different ways of starting R put you in different places.** *That is why* a script works one day and says "file not found" the next.
-4. **`setwd("C:/Users/me/...")` moves it,** but that line only works on your computer.
-5. **The fix is an RProject:** opening the project sets the working directory to the project folder for everyone ([[RProject]]).
-
-## In R
 ```r
 getwd()
 list.files()[1:3]          # what R can see from here
 # setwd("C:/Users/me/Desktop/thesis")   # avoid: breaks on any other machine
 ```
-
-## Common confusions
-- **"setwd() at the top of the script is good practice."** It is the most common reason shared code fails.
-
-## Explain it back
-- Why does "file not found" so often come down to the working directory?
-
-*Pass test:* you can check where R is looking and say why `setwd()` is fragile.
 
 ## Connections
 - **Builds on:** [[Reading Data into R]]

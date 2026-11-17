@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "Error bars are lines extending from a plotted estimate to show its uncertainty or the spread of the data."
 aliases:
   - "geom_errorbar()"
   - "geom_pointrange()"
@@ -12,47 +13,19 @@ status: seedling
 
 # Error Bars
 
-**In one line:** error bars are lines extending from a plotted estimate to show its uncertainty or the spread of the data.
+A dart score written as "about here, give or take this much" has a dot for the best guess and a bar for the "give or take". **Error bars** are those lines, extending from a plotted estimate to show its uncertainty or the spread of the data, and the catch is that "give or take" can mean several different things. Take richness on 5 plots: 4, 9, 5, 8 and 5, with mean 6.2 and SD 2.17. Plus or minus one SD gives 4.0 to 8.4, showing how much plots vary. Plus or minus one SE, 2.17/√5 = 0.97, gives 5.2 to 7.2, showing the precision of the mean. A 95% confidence interval, 6.2 ± 2.78 × 0.97 using t with 4 df, gives 3.5 to 8.9. Three honest bars, very different lengths, as the code below and the figure show.
 
-> [!info] Before this, it helps to know
-> [[Standard Error]], [[Standard Deviation]] and [[Confidence Interval]] (three different things a bar might show) · [[Geoms]] (how to draw them)
+The [[Standard Deviation]] describes the data and does not shrink with more samples. The [[Standard Error]] describes the estimate and shrinks with √n. A 95% [[Confidence Interval]] is roughly ± 2 SE, wider for small n. So decide what the bar means and say which in the caption, always: an unlabelled bar is uninterpretable, and SE bars make differences look more convincing than CIs do. Draw them with `geom_errorbar(aes(ymin, ymax))` or `geom_pointrange()` ([[Geoms]]).
 
-## The everyday picture
-A dart score written as "about here, give or take this much". The dot is the best guess and the bar is the "give or take". The catch is that "give or take" can mean several different things.
+Two confusions. Non-overlapping bars do not reliably mean a significant difference; it depends on the bar type, since SE bars can overlap slightly and the means still differ, and 95% CIs can overlap and still differ. And error bars are not always ± SE; there is no convention, so state it. A row of estimates with interval bars is a [[Coefficient Plot]].
 
-## A tiny example
-Richness on 5 plots: 4, 9, 5, 8, 5. Mean 6.2, SD 2.17.
-- ± SD: 4.0 to 8.4. Shows how much plots vary.
-- ± SE: SE = 2.17 / √5 = 0.97, so 5.2 to 7.2. Shows precision of the mean.
-- 95% CI: 6.2 ± 2.78 × 0.97, so 3.5 to 8.9 (t with 4 df).
-Three honest bars, very different lengths.
-
-## Start from zero
-1. **Decide what the bar means.**
-2. **SD describes the data.** It doesn't shrink with more samples.
-3. **SE describes the estimate.** It shrinks with √n.
-4. **A 95% CI is roughly ± 2 SE,** wider for small n.
-5. **Say which in the caption. Always.** *Why:* an unlabelled bar is uninterpretable, and SE bars make differences look more convincing than CIs do.
-6. **Draw with `geom_errorbar(aes(ymin, ymax))` or `geom_pointrange()`.**
-
-## See it
 ![[Error bar types.png|700]]
 *What to look at:* the same data with SD, SE and 95% CI bars: the message changes with the choice.
 
-## In R
 ```r
 x <- c(4, 9, 5, 8, 5); n <- length(x); m <- mean(x); s <- sd(x); se <- s / sqrt(n)
 rbind(SD = c(m - s, m + s), SE = c(m - se, m + se), CI95 = m + qt(c(0.025, 0.975), n - 1) * se)
 ```
-
-## Common confusions
-- **"Non-overlapping bars mean a significant difference."** It depends on the bar type. SE bars can overlap slightly and still differ. 95% CIs can overlap and still differ.
-- **"Error bars are always ± SE."** There is no convention. State it.
-
-## Explain it back
-- Which bar would you use to show how variable plots are? How precisely the mean is known?
-
-*Pass test:* you can compute and label all three kinds of bar.
 
 ## Connections
 - **Builds on:** [[Standard Error]], [[Standard Deviation]], [[Confidence Interval]]

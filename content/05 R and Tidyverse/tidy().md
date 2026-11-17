@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "`tidy()` from the broom package turns a fitted model's coefficient table into an ordinary data frame."
 aliases:
   - "broom tidy"
   - "broom package"
@@ -12,23 +13,12 @@ status: seedling
 
 # tidy()
 
-**In one line:** `tidy()` from the broom package turns a fitted model's coefficient table into an ordinary data frame.
+Pour a cluttered toolbox onto a pegboard and the same tools hang each on its own hook, where you can count, sort and pick them. **`tidy()`**, from the broom package, turns a fitted model's coefficient table into an ordinary data frame. `summary(model)` prints a table for reading, not for reuse; `tidy(model)` returns a tibble with columns term, estimate, std.error, statistic and p.value ([[Regression Coefficient]], [[Data Frame]]). `conf.int = TRUE` adds interval columns, and `exponentiate = TRUE` gives odds ratios or rate ratios for logit and log links. A model object is really a list, and `tidy()` digs the table out of it ([[Lists in R]]).
 
-> [!info] Before this, it helps to know
-> [[Regression Coefficient]] (what the table holds) · [[Data Frame]] (what you get) · [[Lists in R]] (what a model object is)
+The code below fits a logistic regression, prints its tidy table, then the odds ratios with intervals. Its companion `glance()` returns one row of fit statistics per model, such as AIC, deviance and residual df.
 
-## The everyday picture
-Pouring a cluttered toolbox onto a pegboard. The same tools, now each on its own hook where you can count, sort and pick them.
+A data frame is what you want because it goes straight into `ggplot()` for a [[Coefficient Plot]], into [[kable()]] for a table, or into `bind_rows()` to compare many models. `broom.mixed` extends it to lme4 and brms models, as the confidence interval lab uses ([[Course Website]]). `tidy()` does not change the model; it only reformats the output. Its sibling for data-level output is [[augment()]].
 
-## Start from zero
-1. **`summary(model)` prints a table for reading,** not for reuse.
-2. **`tidy(model)` returns a tibble:** term, estimate, std.error, statistic, p.value.
-3. **`conf.int = TRUE` adds interval columns.**
-4. **`exponentiate = TRUE`** gives odds ratios or rate ratios for logit and log links.
-5. **Why you want a data frame:** it goes straight into `ggplot()` for a coefficient plot, into `kable()` for a table, or into `bind_rows()` to compare many models.
-6. **`broom.mixed` extends it to lme4 and brms models.**
-
-## In R
 ```r
 library(broom)
 m <- glm(am ~ wt + hp, family = binomial, data = mtcars)
@@ -37,17 +27,6 @@ tidy(m, conf.int = TRUE, exponentiate = TRUE)[, c("term", "estimate", "conf.low"
 glance(m)[, c("AIC", "deviance", "df.residual")]      # one-row model summary
 ```
 `glance()` is the companion that returns one row of fit statistics per model.
-
-## In the course
-The confidence interval lab uses `broom.mixed` to tabulate mixed model estimates ([[Course Website]]).
-
-## Common confusions
-- **"tidy() changes the model."** It only reformats the output.
-
-## Explain it back
-- Why is a data frame of coefficients more useful than a printed summary?
-
-*Pass test:* you can get a coefficient table with confidence intervals as a data frame.
 
 ## Connections
 - **Builds on:** [[Regression Coefficient]], [[Data Frame]]

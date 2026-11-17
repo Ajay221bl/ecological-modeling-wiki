@@ -97,15 +97,15 @@ Units 2 and 8 (Aug 20, Sep 24, Sep 29): the R needed to wrangle data, fit models
 - [[File System Functions in R]]: R can create folders, download files and build file paths itself, so a script can set up everything it needs without manual clicking.
 
 ## 7. Reproducibility
-- [[RProject]]: an RProject is a folder marked with an `.Rproj` file, and opening it makes that folder the working directory with a fresh R session.
+- [[RProject]]: An RProject is a folder marked with an `.Rproj` file, and opening it makes that folder the working directory with a fresh R session.
 - [[here()]]: `here()` builds a file path starting from the project's top folder, whichever subfolder the code happens to run from.
-- [[Project Folder Structure]]: a project folder structure is a fixed set of subfolders, such as data, scripts, results and figures, so that every file has one obvious home.
-- [[README]]: a README is the short text file at the top of a project that tells a newcomer what the project is and how to run it.
-- [[Splitting Scripts]]: splitting scripts means giving each stage of the analysis, wrangling, modeling, figures, its own file instead of one giant script.
-- [[Reproducibility]]: an analysis is reproducible when someone else, given your data and code, gets exactly your results by running it.
+- [[Project Folder Structure]]: A project folder structure is a fixed set of subfolders, such as data, scripts, results and figures, so that every file has one obvious home.
+- [[README]]: A README is the short text file at the top of a project that tells a newcomer what the project is and how to run it.
+- [[Splitting Scripts]]: Splitting scripts means giving each stage of the analysis, wrangling, modeling, figures, its own file instead of one giant script.
+- [[Reproducibility]]: An analysis is reproducible when someone else, given your data and code, gets exactly your results by running it.
 
 ## 8. Figures
-- [[ggplot2 Grammar of Graphics]]: ggplot2 builds a plot from layers: data, a mapping from variables to visual properties, and geometric shapes that draw them.
+- [[ggplot2 Grammar of Graphics]]: Ggplot2 builds a plot from layers: data, a mapping from variables to visual properties, and geometric shapes that draw them.
 
 ## Related molecular notes
 - [[Why a reproducible project structure saves you]]: a project with one folder, an RProject, relative paths via here(), separate folders for raw data, scripts and outputs, and version control lets anyone,...
