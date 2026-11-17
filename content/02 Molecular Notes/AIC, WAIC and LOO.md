@@ -55,7 +55,7 @@ Comparing an AIC from `glmer` with a LOOIC from `brm`. Same scale, different est
 
 ## Connections
 - **Related:** [[Why AIC rewards fit but punishes complexity]], [[Bayes Factors vs Predictive Criteria]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Bayesian Model Selection]], [[MOC - Model Selection]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 11 - Bayesian Model Selection|MOC - Bayesian Model Selection]], [[MOC 10 - Model Selection|MOC - Model Selection]]
 
 ## Flashcards
 

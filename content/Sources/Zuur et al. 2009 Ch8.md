@@ -30,4 +30,4 @@ Introduces each distribution with its mean-variance relationship and ecological 
 [[Choosing a Distribution for Your Response]], [[Exponential Family]], [[Gamma Distribution]], [[Gamma GLM]], [[Generalized Linear Model]], [[Geometric Distribution]], [[Iteratively Reweighted Least Squares]], [[Linear Predictor]], [[Link Function]], [[Log-likelihood]], [[Maximum Likelihood Estimation]], [[Mean-Variance Relationship]], [[Numerical Optimization]], [[Poisson Distribution]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

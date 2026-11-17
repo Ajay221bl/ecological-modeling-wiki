@@ -57,7 +57,7 @@ Poisson on clumped data: overconfident inference. Negative binomial on truly Poi
 
 ## Connections
 - **Related:** [[What to do about overdispersion]], [[Binomial vs Poisson]], [[Zero-inflated vs Hurdle Model]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Generalized Linear Models]], [[MOC - Probability and Distributions]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]], [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]]
 
 ## Flashcards
 

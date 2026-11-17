@@ -54,7 +54,7 @@ Ribbons that dip below zero, probabilities above one, and biased averages.
 
 ## Connections
 - **Related:** [[Plotting Model Predictions with Ribbons]], [[Why GLMs need a link function]], [[Back-transformation]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Generalized Linear Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]]
 
 ## Flashcards
 

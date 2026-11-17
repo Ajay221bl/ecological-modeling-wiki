@@ -50,7 +50,7 @@ Fitting a 6th-degree polynomial and reporting its coefficients.
 
 ## Connections
 - **Related:** [[GLM vs GAM]], [[Why penalize wiggliness]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - GAMs]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 15 - GAMs|MOC - GAMs]]
 
 ## Flashcards
 

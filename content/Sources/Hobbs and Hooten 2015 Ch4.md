@@ -30,5 +30,5 @@ Defines likelihood functions, likelihood profiles and maximum likelihood, and sh
 [[Derivative]], [[Finding a Maximum with Calculus]], [[Hessian Matrix]], [[Likelihood]], [[Likelihood Function]], [[Likelihood Principle]], [[Likelihood Profile]], [[Likelihood Ratio]], [[Log-likelihood]], [[Maximum Likelihood Estimation]], [[Numerical Optimization]], [[Parameter Estimation]], [[Profile Likelihood Confidence Interval]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Hobbs and Hooten 2015 Ch3]] · **Next:** [[Hobbs and Hooten 2015 Ch5]]

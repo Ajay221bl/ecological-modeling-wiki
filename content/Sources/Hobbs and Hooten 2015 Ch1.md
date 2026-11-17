@@ -35,5 +35,5 @@ Uncertainty as the core of science; notation (bold for vectors, [a | b] for "the
 - [[Deterministic and Stochastic Components]], [[Process vs Observation Error]], [[Real World and Model World]], [[Statistical Model]], [[Greek Letters and Notation]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Guthery and Bingham 2007]] · **Next:** [[Hobbs and Hooten 2015 Ch2]]

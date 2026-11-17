@@ -49,7 +49,7 @@ Using by= without a group main effect, forcing all groups to the same mean.
 
 ## Connections
 - **Related:** [[Choosing an HGAM Model Type]], [[Fixed vs Random Effects]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - GAMs]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 15 - GAMs|MOC - GAMs]]
 
 ## Flashcards
 

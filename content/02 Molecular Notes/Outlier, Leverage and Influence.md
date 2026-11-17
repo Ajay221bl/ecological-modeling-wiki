@@ -54,7 +54,7 @@ Deleting every point with a large residual as an "outlier" without checking whet
 
 ## Connections
 - **Related:** [[Why explore data before modeling]], [[Mean, Median and Mode]], [[Which assumption violation leads to which model]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Data Exploration]], [[MOC - Linear Models and GLMs]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 04 - Data Exploration|MOC - Data Exploration]], [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 
 ## Flashcards
 

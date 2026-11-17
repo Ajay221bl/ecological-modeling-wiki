@@ -47,7 +47,7 @@ Using Mayfield when predation is concentrated in the nestling stage; a constant 
 
 ## Connections
 - **Related:** [[Choosing a Survival Model]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Population Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 
 ## Flashcards
 

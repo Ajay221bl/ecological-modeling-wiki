@@ -30,4 +30,4 @@ Shows variance structures (varFixed, varIdent, varPower, varExp, varConstPower, 
 [[Heteroscedasticity]], [[Homogeneity of Variance]], [[Variance Structures]], [[Weighted Regression]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

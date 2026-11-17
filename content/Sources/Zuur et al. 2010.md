@@ -31,5 +31,5 @@ Eight steps with plots for each: outliers (boxplots, Cleveland dotplots), homoge
 [[Absolute Value]], [[Cleveland Dot Plot]], [[Collinearity]], [[Coplot]], [[Count Data]], [[Course Schedule]], [[Data Exploration]], [[Data Exploration Protocol]], [[Figures for Model Results]], [[Histogram]], [[Homogeneity of Variance]], [[Independence of Observations]], [[Interquartile Range]], [[Model Validation]], [[Normality]], [[Outlier]], [[Pairplot]], [[Principal Component Analysis]], [[Relationships Between Y and X]], [[Response Variable]], [[Spearman Rank Correlation]], [[Transformation]], [[Variance Inflation Factor]], [[What to Report for a Model]], [[Writing Methods Sections]], [[Zero Inflation]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Tredennick et al. 2021]] · **Next:** [[Guthery and Bingham 2007]]

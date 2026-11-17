@@ -66,7 +66,7 @@ Reporting only p-values of smooths without plots.
 
 ## Connections
 - **Related:** [[GLM vs GAM]], [[Why penalize wiggliness]], [[Choosing an HGAM Model Type]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - GAMs]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 15 - GAMs|MOC - GAMs]]
 
 ## Flashcards
 

@@ -52,7 +52,7 @@ Reporting only the mean for strongly skewed data and calling it "typical".
 
 ## Connections
 - **Related:** [[Transform the data or change the model]], [[Equal-tailed vs Highest Density Interval]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Basics from Zero]], [[MOC - Data Exploration]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 01 - Basics from Zero|MOC - Basics from Zero]], [[MOC 04 - Data Exploration|MOC - Data Exploration]]
 
 ## Flashcards
 

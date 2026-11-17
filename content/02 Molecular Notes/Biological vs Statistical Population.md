@@ -52,7 +52,7 @@ Before sampling, write down which units your method can and can't reach, and sta
 
 ## Connections
 - **Related:** [[Population and Sample]], [[Bias and Precision]], [[Powell and Gale 2015 Ch2]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Modeling Foundations]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]
 
 ## Flashcards
 

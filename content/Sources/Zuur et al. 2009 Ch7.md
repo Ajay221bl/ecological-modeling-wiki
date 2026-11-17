@@ -30,4 +30,4 @@ Tools to detect violation of independence, spatial correlation structures (expon
 [[Autocorrelation]], [[Bubble Plot of Residuals]], [[Correlation Structure]], [[Correlogram]], [[Generalized Least Squares]], [[Isotropy]], [[Nugget]], [[Omitted Variable Bias]], [[Residual Autocorrelation]], [[Sill]], [[Spatial Autocorrelation]], [[Spatial Autoregressive Models]], [[Spatial Correlation Functions]], [[Variogram]], [[Variogram Range]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

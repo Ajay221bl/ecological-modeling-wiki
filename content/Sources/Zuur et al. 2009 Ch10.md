@@ -29,4 +29,4 @@ Covers GLMs for absence-presence data, GLMs for proportional data, and a GAM for
 [[Binomial GLM for Proportions]], [[Complementary Log-log Link]], [[Log Odds]], [[Logistic Regression]], [[Logit Link]], [[Odds Ratio]], [[Presence-Absence Data]], [[Probit Link]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

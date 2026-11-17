@@ -49,7 +49,7 @@ Pasting `summary()` output into the results and calling it a write-up.
 
 ## Connections
 - **Related:** [[Bayesian Mixed Model Workflow in R]], [[GAM Workflow in R]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Scientific Writing]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 18 - Scientific Writing|MOC - Scientific Writing]]
 
 ## Flashcards
 

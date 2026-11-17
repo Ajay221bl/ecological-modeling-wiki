@@ -31,5 +31,5 @@ Every analysis asks "what is the probability I'd observe these data if the model
 - [[Theoretical vs Empirical Modeling]], [[Simulation Model]], [[Analytical Model]], [[Functions in Maths]], [[Deterministic and Stochastic Components]], [[Statistical Model]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Hobbs and Hooten 2015 Ch1]] · **Next:** [[Hobbs and Hooten 2015 Ch3]]

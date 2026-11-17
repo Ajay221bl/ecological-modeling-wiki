@@ -54,7 +54,7 @@ Reporting the AIC winner with a p-value from an LRT of the same comparison, as i
 
 ## Connections
 - **Related:** [[Null Hypothesis Testing vs Model Selection]], [[Wald Test vs Likelihood Ratio Test]], [[Why AIC rewards fit but punishes complexity]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Model Selection]], [[MOC - Likelihood and Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 10 - Model Selection|MOC - Model Selection]], [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]]
 
 ## Flashcards
 

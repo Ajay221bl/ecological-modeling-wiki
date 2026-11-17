@@ -32,5 +32,5 @@ Starting from coin tosses and a fish-tagging example, the chapter builds a likel
 [[Bernoulli Trial]], [[Binary Variable]], [[Binomial Coefficient]], [[Binomial Distribution]], [[Binomial Sampling]], [[Course Schedule]], [[Factorial]], [[Finding a Maximum with Calculus]], [[Law of Total Probability]], [[Likelihood]], [[Likelihood Function]], [[Logarithm]], [[Maximum Likelihood Estimation]], [[Multinomial Distribution]], [[Natural Logarithm]], [[Nuisance Parameter]], [[Parameter]], [[Parameter Estimation]], [[Survival Rate]], [[Variance of an Estimate]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Powell and Gale 2015 Ch2]] · **Next:** [[Powell and Gale 2015 Ch4]]

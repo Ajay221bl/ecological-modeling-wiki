@@ -61,7 +61,7 @@ Choosing N-mixture models because they need only counts, for a species that move
 
 ## Connections
 - **Related:** [[Mark-Recapture vs Unmarked Survey Methods]], [[Occupancy vs Abundance]], [[Census vs Index vs Estimate]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Population Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 
 ## Flashcards
 

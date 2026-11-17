@@ -51,7 +51,7 @@ Fitting individual ID as a fixed effect to "control for it" in a study of 50 bir
 
 ## Connections
 - **Related:** [[Why use a random effect instead of a fixed effect]], [[Complete, No and Partial Pooling]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Mixed Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 14 - Mixed Models|MOC - Mixed Models]]
 
 ## Flashcards
 

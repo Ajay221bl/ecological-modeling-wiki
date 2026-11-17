@@ -53,7 +53,7 @@ Interpreting a flipped sign on one of two near-duplicate predictors as a real ne
 
 ## Connections
 - **Related:** [[Simple vs Multiple Regression]], [[Why explore data before modeling]], [[Centering, Scaling and Standardizing]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Data Exploration]], [[MOC - Linear Models and GLMs]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 04 - Data Exploration|MOC - Data Exploration]], [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 
 ## Flashcards
 

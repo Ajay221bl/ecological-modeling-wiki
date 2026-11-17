@@ -49,7 +49,7 @@ Leaving the default and getting a wiggly curve that won't replicate.
 
 ## Connections
 - **Related:** [[Why penalize wiggliness]], [[REML vs ML]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - GAMs]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 15 - GAMs|MOC - GAMs]]
 
 ## Flashcards
 

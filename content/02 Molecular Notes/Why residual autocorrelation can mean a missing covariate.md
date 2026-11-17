@@ -49,7 +49,7 @@ Accepting the structure with the lowest AIC without checking whether it actually
 
 ## Connections
 - **Related:** [[How to detect and handle autocorrelation]], [[Autocorrelation as Signal or Nuisance]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Autocorrelation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 13 - Autocorrelation|MOC - Autocorrelation]]
 
 ## Flashcards
 

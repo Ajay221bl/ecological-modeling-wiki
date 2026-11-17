@@ -32,5 +32,5 @@ Explains why the most complex model is not automatically best, defines AIC and A
 [[Confidence Interval]], [[Course Schedule]], [[Delta Method]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Powell and Gale 2015 Ch3]] · **Next:** [[Anderson and Burnham 2002]]

@@ -30,5 +30,5 @@ Combines long-term monitoring and experiments with linear mixed models (individu
 [[Apparent Survival]], [[Blocking]], [[Body Condition]], [[Body Size]], [[Climate Change Effects on Wildlife]], [[Course Schedule]], [[Drought Index]], [[Fecundity]], [[Habitat Structure]], [[Latitudinal Gradient]], [[Linear Mixed Model]], [[Marginal and Conditional R-squared]], [[Mixed Effects Model]], [[p-values in Mixed Models]], [[Phenology]], [[Spatial Scale]], [[Vital Rates]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Christensen et al. 2020]] · **Next:** [[Zuur et al. 2009 Ch5]]

@@ -59,7 +59,7 @@ Predicting from a standardized model by plugging in raw covariate values.
 
 ## Connections
 - **Related:** [[Additive vs Interaction Model]], [[Why collinearity inflates standard errors]], [[Treatment vs Sum-to-zero Contrasts]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Data Exploration]], [[MOC - Linear Models and GLMs]], [[MOC - Mixed Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 04 - Data Exploration|MOC - Data Exploration]], [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]], [[MOC 14 - Mixed Models|MOC - Mixed Models]]
 
 ## Flashcards
 

@@ -50,7 +50,7 @@ Calling a comparison of burned and unburned sites "a fire experiment" when the f
 
 ## Connections
 - **Related:** [[Correlation vs Causation]], [[Exploration, Inference and Prediction]], [[Balanced Data|Balanced vs Unbalanced Data]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Modeling Foundations]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]
 
 ## Flashcards
 

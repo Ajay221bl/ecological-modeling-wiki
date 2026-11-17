@@ -52,7 +52,7 @@ Computing both and reporting whichever agrees with your expectations.
 
 ## Connections
 - **Related:** [[Why AIC rewards fit but punishes complexity]], [[Bayes Factors vs Predictive Criteria]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Model Selection]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 10 - Model Selection|MOC - Model Selection]]
 
 ## Flashcards
 

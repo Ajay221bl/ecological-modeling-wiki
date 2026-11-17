@@ -54,7 +54,7 @@ Copying a JAGS prior `dnorm(0, 0.001)` into Stan as `normal(0, 0.001)` turns a v
 
 ## Connections
 - **Related:** [[How MCMC turns a formula into a posterior]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Bayesian Inference]], [[MOC - Stan]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]], [[MOC 17 - Stan|MOC - Stan]]
 
 ## Flashcards
 

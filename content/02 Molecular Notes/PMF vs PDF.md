@@ -56,7 +56,7 @@ Saying "`dnorm(5, 5, 2)` = 0.199, so there is a 20 percent chance of exactly 5."
 
 ## Connections
 - **Related:** [[Continuous vs Discrete Data]], [[Probability vs Likelihood]], [[Binomial vs Poisson]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Probability and Distributions]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]]
 
 ## Flashcards
 

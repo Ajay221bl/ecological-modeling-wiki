@@ -51,7 +51,7 @@ Ranking lmer models with different predictors by their default REML AIC.
 
 ## Connections
 - **Related:** [[Likelihood Ratio Test vs AIC]], [[Fixed vs Random Effects]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Mixed Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 14 - Mixed Models|MOC - Mixed Models]]
 
 ## Flashcards
 

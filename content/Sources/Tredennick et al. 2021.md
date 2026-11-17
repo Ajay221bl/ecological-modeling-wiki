@@ -38,5 +38,5 @@ It uses one dataset (alpine butterfly *Parnassius smintheus* growth rates in 11 
 - [[Exploration, Inference and Prediction]], [[Parsimony]], [[Correlation]], [[Why model at all]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Powell and Gale 2015 Ch2]] · **Next:** [[Zuur et al. 2010]]

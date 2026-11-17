@@ -62,7 +62,7 @@ Describing a confidence interval as "95% probability the parameter is inside", o
 
 ## Connections
 - **Related:** [[Confidence vs Credible Interval]], [[Why the posterior is proportional to likelihood times prior]], [[Null Hypothesis Testing vs Model Selection]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Bayesian Inference]], [[MOC - Likelihood and Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]], [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]]
 
 ## Flashcards
 

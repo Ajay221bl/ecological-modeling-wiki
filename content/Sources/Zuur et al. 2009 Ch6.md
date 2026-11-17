@@ -30,4 +30,4 @@ Covers temporal correlation in linear regression, correlation structures for mul
 [[AR(1) Error Structure]], [[ARMA Error Structure]], [[Autocorrelation]], [[Autocorrelation Function]], [[Compound Symmetry]], [[Correlation Structure]], [[Effective Sample Size]], [[Generalized Least Squares]], [[Residual Autocorrelation]], [[Stationarity]], [[Temporal Autocorrelation]], [[Time Series]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

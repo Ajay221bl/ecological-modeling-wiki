@@ -45,7 +45,7 @@ Write results of observational studies as "associated with" unless you have an a
 
 ## Connections
 - **Related:** [[Observational vs Experimental Study]], [[Mechanistic vs Phenomenological Model]], [[Induction vs Deduction]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Modeling Foundations]], [[MOC - Data Exploration]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]], [[MOC 04 - Data Exploration|MOC - Data Exploration]]
 
 ## Flashcards
 

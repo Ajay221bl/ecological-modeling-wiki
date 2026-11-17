@@ -64,7 +64,7 @@ Adding corExp because "spatial data need it" without checking residuals, or stop
 
 ## Connections
 - **Related:** [[OLS vs GLS]], [[Why residual autocorrelation can mean a missing covariate]], [[Autocorrelation as Signal or Nuisance]], [[Temporal vs Spatial Autocorrelation]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Autocorrelation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 13 - Autocorrelation|MOC - Autocorrelation]]
 
 ## Flashcards
 

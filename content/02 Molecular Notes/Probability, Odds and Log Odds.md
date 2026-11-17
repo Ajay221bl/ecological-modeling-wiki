@@ -54,7 +54,7 @@ Saying "odds of 4" means "a 4 percent chance" (it means 80 percent).
 
 ## Connections
 - **Related:** [[How to interpret a logistic regression coefficient]], [[Why GLMs need a link function]], [[Predictions on Link vs Response Scale]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Basics from Zero]], [[MOC - Generalized Linear Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 01 - Basics from Zero|MOC - Basics from Zero]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]]
 
 ## Flashcards
 

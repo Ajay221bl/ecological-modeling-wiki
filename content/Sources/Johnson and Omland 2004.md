@@ -30,5 +30,5 @@ Describes the steps of model selection (generate hypotheses, fit, compare with A
 [[Adjusted R-squared]], [[AIC]], [[Akaike Weight]], [[Bayes Factor]], [[Bayesian Inference]], [[BIC]], [[Bootstrap]], [[Candidate Model Set]], [[Criticisms of p-values]], [[Data Dredging]], [[Frequentist Inference]], [[Information Theory]], [[Least Squares]], [[Likelihood Ratio]], [[Likelihood Ratio Test]], [[Log-likelihood]], [[Model Selection]], [[Multi-model Inference]], [[Multiple Working Hypotheses]], [[Negative Log-likelihood]], [[Nested Models]], [[Null Hypothesis]], [[Null Hypothesis Significance Testing]], [[Program MARK]], [[Statistical Power]], [[Stepwise Selection]], [[Strong Inference]], [[Type II Error]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Anderson and Burnham 2002]]

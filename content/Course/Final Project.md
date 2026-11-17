@@ -39,7 +39,7 @@ flowchart TD
 ```
 
 ## Connections
-- **Part of:** [[MOC - Ecological Modeling Course]]
+- **Part of:** [[MOC 00 - Ecological Modeling Course|MOC - Ecological Modeling Course]]
 - **Related:** [[Course Schedule]], [[Why a reproducible project structure saves you]]
 
 ## Flashcards

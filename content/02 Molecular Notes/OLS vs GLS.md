@@ -53,7 +53,7 @@ Comparing the AIC of an lm() fit with a gls() fitted by REML. Use gls() for both
 
 ## Connections
 - **Related:** [[How to detect and handle autocorrelation]], [[Linear Model vs GLM]], [[Why non-independence inflates false positives]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Autocorrelation]], [[MOC - Linear Models and GLMs]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 13 - Autocorrelation|MOC - Autocorrelation]], [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 
 ## Flashcards
 

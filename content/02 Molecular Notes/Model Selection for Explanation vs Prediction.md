@@ -50,7 +50,7 @@ Interpreting a lasso's selected predictors as "the drivers" of a pattern, or jud
 
 ## Connections
 - **Related:** [[Why build the candidate model set before seeing the data]], [[AIC vs BIC]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Model Selection]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 10 - Model Selection|MOC - Model Selection]]
 
 ## Flashcards
 

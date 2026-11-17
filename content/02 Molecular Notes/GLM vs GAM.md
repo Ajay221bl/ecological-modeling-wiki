@@ -53,7 +53,7 @@ Adding x², x³ and x⁴ to a GLM until the curve fits instead of using a penali
 
 ## Connections
 - **Related:** [[Polynomial vs Spline]], [[Linear Model vs GLM]], [[GAM Workflow in R]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - GAMs]], [[MOC - Generalized Linear Models]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 15 - GAMs|MOC - GAMs]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]]
 
 ## Flashcards
 

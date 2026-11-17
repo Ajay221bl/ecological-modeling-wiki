@@ -31,5 +31,5 @@ Uses 2000 to 2014 annual HD presence-absence for 1,830 counties in 23 states, wi
 [[Climate Change Effects on Wildlife]], [[Course Schedule]], [[Crossed Random Effects]], [[Drought Index]], [[Environmental Gradient]], [[Epizootic Hemorrhagic Disease]], [[GLMM]], [[Habitat Structure]], [[Latitudinal Gradient]], [[Mixed Effects Model]], [[Naive Occupancy]], [[Population Density]], [[Presence-Absence Data]], [[Vector-borne Disease]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Harrison et al. 2018]] · **Next:** [[Shipley et al. 2022]]

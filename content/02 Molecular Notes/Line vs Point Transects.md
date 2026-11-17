@@ -47,7 +47,7 @@ Using point counts for large animals that flush as the observer arrives.
 
 ## Connections
 - **Related:** [[Mark-Recapture vs Unmarked Survey Methods]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Population Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 
 ## Flashcards
 

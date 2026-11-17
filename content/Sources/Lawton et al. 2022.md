@@ -30,5 +30,5 @@ Models desert locust and Australian plague locust outbreaks against preceding ND
 [[Climate Change Effects on Wildlife]], [[Course Schedule]], [[Group-level Smoothers]], [[Hierarchical GAM]], [[NDVI]], [[Phenology]], [[Shared Wiggliness]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Pedersen et al. 2019]]

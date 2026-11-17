@@ -42,7 +42,7 @@ Comparing naive occupancy between habitats with different detection and calling 
 
 ## Connections
 - **Related:** [[Occupancy vs Detection Probability]], [[Why raw counts mislead]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Population Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 
 ## Flashcards
 

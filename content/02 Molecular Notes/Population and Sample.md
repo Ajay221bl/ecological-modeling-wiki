@@ -54,7 +54,7 @@ Say exactly which population you mean, then check that every member had a chance
 
 ## Connections
 - **Related:** [[Parameter vs Estimate]], [[Biological vs Statistical Population]], [[Variable and Observation]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Basics from Zero]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
 
 ## Flashcards
 

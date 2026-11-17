@@ -51,7 +51,7 @@ Using stable occupancy of a common species to argue its population is stable.
 
 ## Connections
 - **Related:** [[Choosing a Population Estimation Method]], [[Why raw counts mislead]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Population Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 
 ## Flashcards
 

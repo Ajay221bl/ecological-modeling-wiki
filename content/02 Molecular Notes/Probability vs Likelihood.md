@@ -53,7 +53,7 @@ Reading L(0.7) = 0.27 as "a 27 percent chance that p is 0.7".
 
 ## Connections
 - **Related:** [[PMF vs PDF]], [[Frequentist vs Bayesian Inference]], [[Least Squares vs Maximum Likelihood]], [[Why the posterior is proportional to likelihood times prior]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Likelihood and Estimation]], [[MOC - Probability and Distributions]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]], [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]]
 
 ## Flashcards
 

@@ -36,5 +36,5 @@ It starts with the balls-in-a-room exercise to show that you already build model
 - [[Model]], [[Real World and Model World]], [[Conceptual Model]], [[Analytical Model]], [[Statistical Model]], [[Modeling Process]], [[Sensitivity Analysis]], [[Simulation Model]], [[Why model at all]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** none · **Next:** [[Powell and Gale 2015 Ch2]]

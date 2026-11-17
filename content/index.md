@@ -5,7 +5,7 @@ title: Ecological Modeling Wiki
 A first-principles wiki for the Ecological Modeling course (BIOL580V, Fall 2026). Every note assumes no prior knowledge, starts from an everyday picture, and explains *why* things are the way they are.
 
 - **Begin here:** [[Start Here]]
-- **New to the maths or symbols?** [[MOC - Basics from Zero]]
+- **New to the maths or symbols?** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
 - **Read in order:** [[Learning Path]]
 - **How the notes are built:** [[How This Wiki Works]]
 - **Every note in one list:** [[Index]]

@@ -52,7 +52,7 @@ Believing a GLM is fitted by least squares on the raw counts.
 
 ## Connections
 - **Related:** [[Probability vs Likelihood]], [[Why the variance divides by n minus 1]], [[REML vs ML]], [[Linear Model vs GLM]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Likelihood and Estimation]], [[MOC - Linear Models and GLMs]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]], [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 
 ## Flashcards
 

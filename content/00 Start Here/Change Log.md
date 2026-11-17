@@ -21,11 +21,24 @@ Every round of changes and checks on this wiki, newest first. Each round ("pass"
 
 ---
 
+## v1.1 (2026-11-17): everything in syllabus order
+**Asked for:** sort the MOCs from basic to advanced, following the syllabus, instead of alphabetically. Keep notes A to Z inside each folder, but number the folders in syllabus order.
+
+**What changed:**
+- The 22 maps are now numbered in syllabus order, from [[MOC 00 - Ecological Modeling Course]] and [[MOC 01 - Basics from Zero]] through [[MOC 18 - Scientific Writing]], then [[MOC 19 - Ecology Vocabulary]], [[MOC 20 - Why We Do It This Way]] and [[MOC 21 - Course Readings]]. The number is in the file name, so Obsidian and the website both list them in that order. Each map keeps its old name as an alias, so searching for "MOC - Mixed Models" still finds it.
+- Eight maps (R, Data Exploration, Probability, Linear Models, Bayesian Inference, Model Selection, Autocorrelation, Mixed Models) had two sets of numbered sections, an older short one and a newer full one, so some notes were listed twice and section numbers repeated. Each map now has one sequence of sections, basic to advanced, and each note appears once. Notes only in the older sections moved into the matching new section.
+- The topic folders are numbered in syllabus order, from 03 Basics from Zero to 17 Ecology Vocabulary. Notes inside a folder stay alphabetical, so a folder works like a glossary; the maps and [[Learning Path]] give the reading order. Links are by note title, so none changed.
+- The [[Index]] lists folders in the same order.
+
+**Checks:** 1,054 notes, 0 unresolved links, the website builds.
+
+---
+
 ## v1.0 (2026-11-17): the whole course
 **Asked for:** build the whole wiki, every unit, every atomic note one concept each, molecular notes for the questions that combine them, figures, diagrams and R code where they help; then audit every note for correctness, cut redundancy, and loosen the outline where a rigid one hurt.
 
 **Changed**
-- **Every syllabus session is covered,** Aug 18 to Nov 24. New maps: [[MOC - Likelihood and Estimation]], [[MOC - Generalized Linear Models]], [[MOC - Bayesian Model Selection]], [[MOC - Reproducible Coding and Figures]], [[MOC - GAMs]], [[MOC - Population Estimation]] (occupancy, mark-recapture, distance sampling, survival), [[MOC - Stan]], [[MOC - Scientific Writing]] and [[MOC - Ecology Vocabulary]] (the ecology words the lab datasets assume).
+- **Every syllabus session is covered,** Aug 18 to Nov 24. New maps: [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]], [[MOC 11 - Bayesian Model Selection|MOC - Bayesian Model Selection]], [[MOC 12 - Reproducible Coding and Figures|MOC - Reproducible Coding and Figures]], [[MOC 15 - GAMs|MOC - GAMs]], [[MOC 16 - Population Estimation|MOC - Population Estimation]] (occupancy, mark-recapture, distance sampling, survival), [[MOC 17 - Stan|MOC - Stan]], [[MOC 18 - Scientific Writing|MOC - Scientific Writing]] and [[MOC 19 - Ecology Vocabulary|MOC - Ecology Vocabulary]] (the ecology words the lab datasets assume).
 - **843 atomic notes, 132 molecular notes, 46 source notes, 22 maps.** Every molecular note is titled as the question it answers, and together they cover the comparisons and "why" questions the atomics raise (for example [[Which assumption violation leads to which model]], [[Transform the data or change the model]], [[Wald Test vs Likelihood Ratio Test]], [[Naive vs Estimated Occupancy]], [[Centered vs Non-centered Parameterization]]).
 - **A flexible outline.** Notes now keep only the sections that teach something for that idea, so short ideas stay short. Molecular notes can carry their own R code.
 - **Source notes for every reading,** including Powell and Gale Ch3 and Ch4, Hobbs and Hooten Ch3 to Ch9, Zuur et al. 2009 Appendix A and Ch2 to Ch13, the 2009 to 2022 papers and the GAM course. Citations were checked against the PDFs.
@@ -55,8 +68,8 @@ Every round of changes and checks on this wiki, newest first. Each round ("pass"
 - 13 two-or-three-concept notes split into 39 new single-concept atomic notes, each written in the full Feynman layout with its own analogy, worked numbers, R code and cards:
   - Basics from Zero (19): [[Variable]], [[Observation]], [[Population]], [[Sample]], [[Parameter]], [[Estimate]], [[Estimator]], [[Continuous Data]], [[Discrete Data]], [[Categorical Variable]], [[Binary Variable]], [[Exponent]], [[Logarithm]], [[Natural Logarithm]], [[Exponential Function]], [[Factorial]], [[Binomial Coefficient]], [[Product Notation]] (taken out of [[Summation Notation]]) and [[Covariance]] (the step [[Correlation]] was hiding).
   - Modeling Foundations (20): [[Theoretical Model]], [[Empirical Model]], [[Exploratory Modeling]], [[Inferential Modeling]], [[Predictive Modeling]], [[Induction]], [[Deduction]], [[Biological Population]], [[Statistical Population]], [[Deterministic Component]], [[Stochastic Component]], [[Process Variation]], [[Observation Error]], [[Sampling Variation]], [[Bias]], [[Precision]], [[Accuracy]], [[Overfitting]], [[Underfitting]] and [[Bias-Variance Trade-off]] (the last three taken out of [[Parsimony]], which keeps only the principle).
-- The 13 old notes kept their titles, so every existing link still works, but are now comparison molecular notes in 02 Molecular Notes: [[Variable and Observation]], [[Population and Sample]], [[Parameter vs Estimate]], [[Continuous vs Discrete Data]], [[Logarithms and Exponents]], [[Factorials and Binomial Coefficient]], [[Theoretical vs Empirical Modeling]], [[Exploration, Inference and Prediction]], [[Induction vs Deduction]], [[Biological vs Statistical Population]], [[Bias and Precision]], [[Deterministic and Stochastic Components]] and [[Process vs Observation Error]]. Each puts its atomics side by side with one shared analogy and one worked example, and is listed in [[MOC - Why We Do It This Way]].
-- [[MOC - Basics from Zero]], [[MOC - Modeling Foundations]], [[Index]] and [[Learning Path]] regenerated with the new atomics in reading order. Aliases that pointed two names at one note were removed, so no alias is shared by two notes.
+- The 13 old notes kept their titles, so every existing link still works, but are now comparison molecular notes in 02 Molecular Notes: [[Variable and Observation]], [[Population and Sample]], [[Parameter vs Estimate]], [[Continuous vs Discrete Data]], [[Logarithms and Exponents]], [[Factorials and Binomial Coefficient]], [[Theoretical vs Empirical Modeling]], [[Exploration, Inference and Prediction]], [[Induction vs Deduction]], [[Biological vs Statistical Population]], [[Bias and Precision]], [[Deterministic and Stochastic Components]] and [[Process vs Observation Error]]. Each puts its atomics side by side with one shared analogy and one worked example, and is listed in [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]].
+- [[MOC 01 - Basics from Zero|MOC - Basics from Zero]], [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]], [[Index]] and [[Learning Path]] regenerated with the new atomics in reading order. Aliases that pointed two names at one note were removed, so no alias is shared by two notes.
 - The term inventory (kept outside the vault) now marks 7 more terms as written, including Estimator, Covariance, Product Notation, Overfitting, Underfitting and the bias-variance trade-off.
 
 **Checks**
@@ -93,7 +106,7 @@ Every round of changes and checks on this wiki, newest first. Each round ("pass"
 **Changed**
 - New source note [[Course Website]]: how the site is organised, the lab-by-lab ideas each unit will use, the in-scope datasets, and three readings the site lists that aren't in my folder (Vehtari et al. 2017, Guélat and Kéry 2018, Oberpriller et al. 2022).
 - The plan (topic map, kept outside the vault) gained a "Website additions" block for Units 1 to 13 and a lab, script and dataset index. About 50 new atomic notes are planned from the labs, such as complete vs no vs partial pooling, complete separation, truncated distributions, spline correlograms, ACF plots, elpd and `loo_compare()`, `bootMer()`, R Markdown, Git and the `librarian` package rule. Two new molecular notes are planned too.
-- [[MOC - Course Readings]], [[Index]] and [[Learning Path]] regenerated so the new source is listed. No existing atomic or molecular note was edited.
+- [[MOC 21 - Course Readings|MOC - Course Readings]], [[Index]] and [[Learning Path]] regenerated so the new source is listed. No existing atomic or molecular note was edited.
 
 **Checks**
 - Links: no links outside the plan. Links to notes not yet written: 311.

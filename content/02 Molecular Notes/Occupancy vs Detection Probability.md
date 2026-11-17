@@ -48,7 +48,7 @@ Modelling occupancy as a function of survey date within a closed season.
 
 ## Connections
 - **Related:** [[Site vs Observation Covariates]], [[Naive vs Estimated Occupancy]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Population Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 
 ## Flashcards
 

@@ -30,5 +30,5 @@ Defines hierarchical models through factoring joint distributions, and works thr
 [[Bracket Notation]], [[Chain Rule of Probability]], [[Conditional Independence]], [[Course Schedule]], [[Data Model]], [[Directed Acyclic Graph]], [[Fixed X Assumption]], [[Group-level Model]], [[Hierarchical Model]], [[Hyperparameter]], [[Identifiability]], [[Joint Posterior Distribution]], [[Latent Variable]], [[Missing Data in Bayesian Models]], [[Nuisance Parameter]], [[Observation Error]], [[Parameter Model]], [[Partial Pooling]], [[Priors on Standard Deviations]], [[Process Model]], [[Process Variation]], [[Separating Process and Observation Variance]], [[Subscripts and Indexing]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]
 - **Previous:** [[Hobbs and Hooten 2015 Ch5]] · **Next:** [[Hobbs and Hooten 2015 Ch7]]

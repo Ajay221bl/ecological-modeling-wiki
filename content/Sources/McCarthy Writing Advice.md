@@ -31,4 +31,4 @@ Short rules: minimalism, a single thread, one message per paragraph, short sente
 [[Course Schedule]], [[Cutting Unnecessary Words]], [[One Idea per Paragraph]], [[Plain Clear Sentences]], [[Reporting Statistics in Text]], [[Theme and Key Points]], [[Writing Results Sections]]
 
 ## Connections
-- **Part of:** [[MOC - Course Readings]]
+- **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

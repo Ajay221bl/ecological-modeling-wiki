@@ -49,7 +49,7 @@ Treating Geary's c like Moran's I and reading c < 1 as negative autocorrelation.
 
 ## Connections
 - **Related:** [[Moran's I vs Geary's c]], [[Temporal vs Spatial Autocorrelation]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Autocorrelation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 13 - Autocorrelation|MOC - Autocorrelation]]
 
 ## Flashcards
 

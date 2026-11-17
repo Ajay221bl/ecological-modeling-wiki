@@ -53,7 +53,7 @@ Forcing counts or 0/1 data through `lm()` gives impossible predictions, wrong st
 
 ## Connections
 - **Related:** [[Why GLMs need a link function]], [[Which assumption violation leads to which model]], [[Least Squares vs Maximum Likelihood]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Generalized Linear Models]], [[MOC - Linear Models and GLMs]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]], [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 
 ## Flashcards
 

@@ -53,7 +53,7 @@ Before any analysis, write one sentence: "one row is one ___". Then ask whether 
 
 ## Connections
 - **Related:** [[Population and Sample]], [[Continuous vs Discrete Data]], [[Independence of Observations]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Basics from Zero]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
 
 ## Flashcards
 

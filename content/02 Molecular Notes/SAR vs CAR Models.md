@@ -49,7 +49,7 @@ Assuming a published λ from a SAR model can be compared with a ρ from a CAR mo
 
 ## Connections
 - **Related:** [[How to detect and handle autocorrelation]], [[OLS vs GLS]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Autocorrelation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 13 - Autocorrelation|MOC - Autocorrelation]]
 
 ## Flashcards
 

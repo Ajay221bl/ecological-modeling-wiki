@@ -56,7 +56,7 @@ power.t.test(n = 20, delta = 0.5, sd = 1, sig.level = 0.01)$power
 
 ## Connections
 - **Related:** [[What a p-value does and does not tell you]], [[Statistical vs Biological Significance]]
-- **Part of:** [[MOC - Why We Do It This Way]], [[MOC - Basics from Zero]], [[MOC - Likelihood and Estimation]]
+- **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 01 - Basics from Zero|MOC - Basics from Zero]], [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]]
 
 ## Flashcards
 

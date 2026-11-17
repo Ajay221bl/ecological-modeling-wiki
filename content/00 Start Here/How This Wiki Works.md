@@ -14,9 +14,9 @@ status: seedling
 This wiki uses five kinds of notes. Each kind has a template in the Templates folder.
 
 ## The big idea: first principles
-Every note is written the way Richard Feynman taught: start from an everyday picture, use plain words, define every term, show real numbers before any formula, always say *why*, and finish by checking you could explain it back. Every note starts from something obvious and builds up, so nothing is assumed. Its *Start from zero* section is a numbered chain. Each step uses only an everyday idea or another note linked right there, and any step that isn't obvious says *why* it is done that way. Follow the links backwards and every chain ends in [[MOC - Basics from Zero]]. Procedures work the same way: every step of every workflow (fitting a GLM, running MCMC, choosing a random effect) says why it is there and why it comes in that order.
+Every note is written the way Richard Feynman taught: start from an everyday picture, use plain words, define every term, show real numbers before any formula, always say *why*, and finish by checking you could explain it back. Every note starts from something obvious and builds up, so nothing is assumed. Its *Start from zero* section is a numbered chain. Each step uses only an everyday idea or another note linked right there, and any step that isn't obvious says *why* it is done that way. Follow the links backwards and every chain ends in [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]. Procedures work the same way: every step of every workflow (fitting a GLM, running MCMC, choosing a random effect) says why it is there and why it comes in that order.
 
-The course readings are listed in [[MOC - Course Readings]]. The notes teach each idea from scratch. Where the readings are silent (the R labs, for example), I fill the gap from trusted outside sources, and the note says so.
+The course readings are listed in [[MOC 21 - Course Readings|MOC - Course Readings]]. The notes teach each idea from scratch. Where the readings are silent (the R labs, for example), I fill the gap from trusted outside sources, and the note says so.
 
 Every round of changes and checks is recorded in the [[Change Log]].
 
@@ -35,10 +35,10 @@ Every round of changes and checks is recorded in the [[Change Log]].
    - *Common confusions*: the mix-ups beginners actually make, each cleared up
    - *Explain it back*: a few questions to answer aloud, and a one-line pass test
    - *Connections*, then *Flashcards* drawn from the note itself
-2. **Molecular notes** combine several atoms into one insight. Each is titled as the question it answers, such as [[Why use a random effect instead of a fixed effect]], and opens with an *In plain words* answer short enough to say out loud, then an everyday picture, and closes with an *Explain it back* check. Comparisons are molecular notes too, named after both sides, such as [[Bias and Precision]] or [[Induction vs Deduction]]: they put the atomic notes side by side and explain how they differ and why it matters. All of them are listed in [[MOC - Why We Do It This Way]].
+2. **Molecular notes** combine several atoms into one insight. Each is titled as the question it answers, such as [[Why use a random effect instead of a fixed effect]], and opens with an *In plain words* answer short enough to say out loud, then an everyday picture, and closes with an *Explain it back* check. Comparisons are molecular notes too, named after both sides, such as [[Bias and Precision]] or [[Induction vs Deduction]]: they put the atomic notes side by side and explain how they differ and why it matters. All of them are listed in [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]].
 3. **Maps of Content (MOCs)** give an overview of one cluster, with links in reading order.
 4. **Source notes** cover one reading or chapter each: the citation, what it covers, the key ideas with the concept note each one feeds, and which notes rely on it.
-5. **Course notes** are about the course itself: schedule, homework and the final project. See [[MOC - Ecological Modeling Course]].
+5. **Course notes** are about the course itself: schedule, homework and the final project. See [[MOC 00 - Ecological Modeling Course|MOC - Ecological Modeling Course]].
 
 ## Frontmatter fields
 - `type`: atomic, molecular, moc, source, project, home or template
