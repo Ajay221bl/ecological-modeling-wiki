@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "`lmer()` fits linear mixed models and `glmer()` fits generalized linear mixed models in the lme4 package, using the same formula syntax with random effects in parentheses."
 aliases:
   - "lmer()"
   - "glmer()"
@@ -13,36 +14,16 @@ status: seedling
 
 # lmer() and glmer()
 
-**In one line:** `lmer()` fits linear mixed models and `glmer()` fits generalized linear mixed models in the lme4 package, using the same formula syntax with random effects in parentheses.
+`lmer()` fits [[Linear Mixed Model|linear mixed models]] and `glmer()` fits [[GLMM|generalized linear mixed models]] in the lme4 package, using the same fixed-effect syntax as [[lm()]] with random effects in parentheses ([[lme4 Random-effect Syntax]]). `lmer(y ~ x + (1 | g), data = d)` fits by [[REML]] by default; set `REML = FALSE` for ML. `glmer(y ~ x + (1 | g), family = binomial, data = d)` fits by ML with the [[Laplace Approximation]]; `nAGQ = 10` uses adaptive quadrature, for a single random intercept only.
 
-> [!info] Before this, it helps to know
-> [[lm()]] (same fixed-effect syntax) · [[lme4 Random-effect Syntax]]
+`summary()` shows the random effects (variances and SDs) and then the fixed effects; lme4 deliberately prints no p-values for lmer ([[p-values in Mixed Models]]). The extractors are `fixef()`, `ranef()`, `coef()`, `VarCorr()`, `fitted()`, `resid()`, `predict()` and `simulate()` ([[fixef(), ranef() and VarCorr()]]). For convergence trouble use `control = glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 2e5))` ([[Convergence Warnings]]). In the code below a binomial GLMM of contagious bovine pleuropneumonia in herds (`cbpp`) gives an intercept of −1.40 on the logit scale and period effects of −0.99, −1.13 and −1.58, and `isREML()` confirms that an `lmer()` fit uses REML.
 
-## Start from zero
-1. **`lmer(y ~ x + (1 | g), data = d)`** fits by REML by default. Set `REML = FALSE` for ML.
-2. **`glmer(y ~ x + (1 | g), family = binomial, data = d)`** fits by ML with the Laplace approximation. `nAGQ = 10` uses adaptive quadrature (single random intercept only).
-3. **Output:** `summary()` shows random effects (variances and SDs) then fixed effects. lme4 doesn't print p-values for lmer.
-4. **Extractors:** `fixef()`, `ranef()`, `coef()`, `VarCorr()`, `fitted()`, `resid()`, `predict()`, `simulate()`.
-5. **Controls:** `control = glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 2e5))` for convergence trouble.
-6. **Related:** glmmTMB (more families, zero inflation), nlme (correlation and variance structures), brms (Bayesian).
+Related packages are glmmTMB (more families, zero inflation), [[nlme lme()]] (correlation and variance structures) and brms (Bayesian). Both are used in the mixed models labs ([[Course Website]]). `lmer` does not use ML unless told to; and the missing p-values are a deliberate choice, not a bug.
 
-## In R
 ```r
 library(lme4); m <- glmer(cbind(incidence, size - incidence) ~ period + (1 | herd), family = binomial, data = cbpp)
 round(fixef(m), 2); isREML(lmer(Reaction ~ Days + (1 | Subject), sleepstudy))
 ```
-
-## In the course
-Both labs on mixed models ([[Course Website]]).
-
-## Common confusions
-- **"lmer uses ML."** It uses REML unless told otherwise.
-- **"No p-values means lme4 is broken."** It is a deliberate choice; see p-values in Mixed Models.
-
-## Explain it back
-- What does glmer use by default to approximate the likelihood?
-
-*Pass test:* you can fit and extract results from both functions.
 
 ## Connections
 - **Builds on:** [[lm()]], [[lme4 Random-effect Syntax]]

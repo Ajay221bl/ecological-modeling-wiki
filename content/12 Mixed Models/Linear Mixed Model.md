@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "A linear mixed model is a linear regression with normally distributed errors plus one or more normally distributed random effects for groups."
 aliases:
   - "LMM"
   - "Linear mixed-effects model"
@@ -13,34 +14,15 @@ status: seedling
 
 # Linear Mixed Model
 
-**In one line:** a linear mixed model is a linear regression with normally distributed errors plus one or more normally distributed random effects for groups.
+A **linear mixed model** (LMM) is a linear regression with normally distributed errors plus one or more normally distributed random effects for groups ([[Mixed Effects Model]], [[Linear Regression|Linear Model]], [[Normal Distribution]]). In matrix form it is y = Xβ + Zb + ε, with b ~ Normal(0, G) and ε ~ Normal(0, σ²I). X holds the predictors for the [[Fixed Effect|fixed effects]], and Z says which group each observation belongs to, plus the slope values for random slopes. It is fitted with `lme4::lmer()` or `nlme::lme()`, by [[REML]] by default.
 
-> [!info] Before this, it helps to know
-> [[Mixed Effects Model]] (the general idea) · [[Linear Regression|Linear Model]] (the fixed part) · [[Normal Distribution]]
+Its assumptions are a linear fixed part, normal residuals with constant variance, normal random effects, and independence once the random effects are accounted for. Check it with residuals against fitted values, a Q-Q plot of residuals, a Q-Q plot of the random effects, and residuals by group. In the code below the `sleepstudy` model with random intercepts and slopes gives an intercept of 251.4 ms (SE 6.8) and a Days slope of 10.5 ms per day (SE 1.5, t = 6.8).
 
-## Start from zero
-1. **y = Xβ + Zb + ε,** with b ~ Normal(0, G) and ε ~ Normal(0, σ²I).
-2. **X holds the predictors for fixed effects. Z says which group each observation belongs to** (and the slope values for random slopes).
-3. **Fitted with `lme4::lmer()` or `nlme::lme()`,** by REML by default.
-4. **Assumptions:** linear fixed part, normal residuals with constant variance, normal random effects, independence given the random effects.
-5. **Check:** residuals versus fitted, Q-Q of residuals, Q-Q of random effects, residuals by group.
-6. **Shipley et al. (2022)** used LMMs (lme4, lmerTest) for tree swallow body size over decades, with nest as a random effect, and reported marginal and conditional R².
+[[Shipley et al. 2022]] used LMMs (lme4 and lmerTest) for tree swallow body size over decades, with nest as a random effect, and reported marginal and conditional R² ([[Marginal and Conditional R-squared]]). It is taught in the linear mixed models lab ([[Course Website]], [[Zuur et al. 2009 Ch5]]). The non-normal version is the [[GLMM]]. Checking that LMM residuals look like lm residuals is not enough: check them within groups too.
 
-## In R
 ```r
 library(lme4); m <- lmer(Reaction ~ Days + (Days | Subject), data = sleepstudy); round(summary(m)$coefficients, 2)
 ```
-
-## In the course
-Linear mixed models lab ([[Course Website]]). [[Zuur et al. 2009 Ch5]]. [[Shipley et al. 2022]].
-
-## Common confusions
-- **"LMM residuals should look like lm residuals with no structure by group."** Check them within groups too.
-
-## Explain it back
-- What do X and Z hold?
-
-*Pass test:* you can fit and check an LMM.
 
 ## Connections
 - **Builds on:** [[Mixed Effects Model]], [[Linear Regression|Linear Model]], [[Normal Distribution]]

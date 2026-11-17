@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "Complete pooling fits one model to all observations as if there were no groups, assuming every group is identical."
 aliases:
   - "Complete pooling model"
   - "Pooled model"
@@ -12,33 +13,15 @@ status: seedling
 
 # Complete Pooling
 
-**In one line:** complete pooling fits one model to all observations as if there were no groups, assuming every group is identical.
+**Complete pooling** fits one model to all observations as if there were no groups, assuming every group is identical ([[Hierarchical Data]], [[lm()]]). It uses one intercept and slope for everyone, `lm(y ~ x)`, and so assumes the between-group variance is zero. It is the right model only if groups truly don't differ.
 
-> [!info] Before this, it helps to know
-> [[Hierarchical Data]] · [[lm()]]
+Its problems are that it ignores real group differences, treats correlated observations as independent so standard errors are too small, and can give misleading slopes if groups differ systematically. In the code below a plain `lm()` on `sleepstudy` gives a slope of 10.47 with SE 1.24; the mixed model's SE for the same slope is 1.55.
 
-## Start from zero
-1. **One intercept and slope for everyone:** `lm(y ~ x)`.
-2. **Assumes between-group variance is zero.**
-3. **Problems:** ignores real group differences, treats correlated observations as independent (SEs too small), and can give misleading slopes if groups differ systematically.
-4. **It is the right model only if groups truly don't differ.**
-5. **In the lab:** the first `lm()` on `sleepstudy` before any grouping.
+The lab follows a path from complete pooling to [[No Pooling]] to [[Partial Pooling]] ([[Course Website]]). Complete pooling is not the conservative choice; it is often anti-conservative because it overcounts information.
 
-## In R
 ```r
 library(lme4); round(coef(summary(lm(Reaction ~ Days, data = sleepstudy)))["Days", 1:2], 2)
 ```
-
-## In the course
-Linear mixed models lab path: complete pooling, then no pooling, then partial pooling ([[Course Website]]).
-
-## Common confusions
-- **"Complete pooling is the conservative choice."** It is often anti-conservative because it overcounts information.
-
-## Explain it back
-- What does complete pooling assume about groups?
-
-*Pass test:* you can explain its failure mode.
 
 ## Connections
 - **Builds on:** [[Hierarchical Data]], [[lm()]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "The LKJ prior is a distribution over correlation matrices with one parameter η: η = 1 treats all correlation matrices as equally likely, and larger η favours correlations near zero."
 aliases:
   - "LKJ prior"
   - "lkj()"
@@ -14,35 +15,16 @@ status: seedling
 
 # LKJ Prior
 
-**In one line:** the LKJ prior is a distribution over correlation matrices with one parameter η: η = 1 treats all correlation matrices as equally likely, and larger η favours correlations near zero.
+The **LKJ prior** is a distribution over correlation matrices with one parameter η, used for the correlations among random effects such as intercept and slope by group ([[Correlated Random Intercepts and Slopes]], [[Prior Distribution]]). η = 1 is uniform over valid correlation matrices, so for a 2 × 2 matrix the single correlation is uniform on (−1, 1); η = 2 mildly prefers smaller correlations; larger η favours correlations near zero; and η < 1 favours strong correlations and is rarely used. The brms default for `cor` is lkj(1), and `prior(lkj(2), class = cor)` changes it.
 
-> [!info] Before this, it helps to know
-> [[Correlated Random Intercepts and Slopes]] · [[Prior Distribution]]
+For a 2 × 2 matrix the density of the correlation is proportional to (1 − r²)^(η − 1). The code below evaluates it at r = 0, 0.5 and 0.9: flat (1, 1, 1) for η = 1, (1, 0.75, 0.19) for η = 2, and (1, 0.32, 0.001) for η = 5, so a correlation of 0.9 is almost ruled out at η = 5.
 
-## Start from zero
-1. **Used for the correlations among random effects** (intercept and slope by group).
-2. **η = 1:** uniform over valid correlation matrices. For a 2 × 2 matrix the single correlation is uniform on (−1, 1).
-3. **η = 2:** mild preference for smaller correlations. brms default for `cor` is lkj(1).
-4. **η < 1:** favours strong correlations; rarely used.
-5. **Named after Lewandowski, Kurowicka and Joe (2009).**
-6. **In brms:** `prior(lkj(2), class = cor)`.
+It is named after Lewandowski, Kurowicka and Joe (2009) and is used for random slopes in the Bayesian mixed models lab ([[Course Website]], [[Bayesian GLMM]]). LKJ(1) does not assume correlations are zero; it is flat over all of them.
 
-## In R
 ```r
 d2 <- function(r, eta) (1 - r^2)^(eta - 1)        # LKJ density of the correlation in a 2 x 2 matrix, up to a constant
 r <- c(0, 0.5, 0.9); round(rbind(eta1 = d2(r, 1), eta2 = d2(r, 2), eta5 = d2(r, 5)), 3)
 ```
-
-## In the course
-Priors for random slopes in the Bayesian mixed models lab ([[Course Website]]).
-
-## Common confusions
-- **"LKJ(1) assumes correlations are zero."** It is flat over all correlations.
-
-## Explain it back
-- What does increasing η do?
-
-*Pass test:* you can choose η for random-slope correlations.
 
 ## Connections
 - **Builds on:** [[Correlated Random Intercepts and Slopes]], [[Prior Distribution]]

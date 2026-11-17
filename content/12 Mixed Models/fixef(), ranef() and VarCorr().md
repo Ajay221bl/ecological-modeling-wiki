@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "`fixef()`, `ranef()` and `VarCorr()` pull the three main pieces out of a fitted mixed model: the fixed effects, the predicted group deviations, and the variances and correlations of the random effects."
 aliases:
   - "fixef()"
   - "ranef()"
@@ -14,35 +15,16 @@ status: seedling
 
 # fixef(), ranef() and VarCorr()
 
-**In one line:** `fixef()`, `ranef()` and `VarCorr()` pull the three main pieces out of a fitted mixed model: the fixed effects, the predicted group deviations, and the variances and correlations of the random effects.
+`fixef()`, `ranef()` and `VarCorr()` pull the three main pieces out of a fitted mixed model: the [[Fixed Effect|fixed effects]], the predicted group deviations ([[Conditional Modes]]), and the variances and correlations of the random effects ([[Variance Components]], [[lmer() and glmer()]]). `fixef(m)` returns a named vector; `ranef(m)` returns a list with one data frame per grouping factor, rows for levels and columns for deviations; `coef(m)` adds the two to give each group's own coefficients; `VarCorr(m)` gives the SDs and correlations and the residual SD, and `as.data.frame(VarCorr(m))` turns them into a tidy table. `sigma(m)` gives the residual SD alone.
 
-> [!info] Before this, it helps to know
-> [[lmer() and glmer()]]
+In the code below the `sleepstudy` fixed effects are 251.4 and 10.47. Subject 308's deviations are +2.3 for the intercept and +9.2 for the slope, so `coef()` gives it 253.7 and 19.7; subject 309's are −40.4 and −8.6. `VarCorr` reports SDs of 24.7 and 5.9, a correlation of 0.07 and a residual SD of 25.6.
 
-## Start from zero
-1. **`fixef(m)`:** named vector of fixed effects.
-2. **`ranef(m)`:** list with one data frame per grouping factor; rows are levels, columns are deviations.
-3. **`coef(m)`:** fixed + random for each group (group-specific coefficients).
-4. **`VarCorr(m)`:** SDs and correlations of random effects and the residual SD. `as.data.frame(VarCorr(m))` gives a tidy table.
-5. **`sigma(m)`:** residual SD.
-6. **broom.mixed:** `tidy(m, effects = "fixed")` or `"ran_pars"` gives data frames, as used in the labs.
+The labs use them with broom.mixed, where `tidy(m, effects = "fixed")` or `"ran_pars"` gives data frames ([[Course Website]]). For mixed models `coef()` does not return the fixed effects; it returns group-specific coefficients.
 
-## In R
 ```r
 library(lme4); m <- lmer(Reaction ~ Days + (Days | Subject), data = sleepstudy)
 fixef(m); head(ranef(m)$Subject, 2); head(coef(m)$Subject, 2); as.data.frame(VarCorr(m))[, c("grp", "var1", "var2", "sdcor")]
 ```
-
-## In the course
-Labs use these with `broom.mixed` ([[Course Website]]).
-
-## Common confusions
-- **"coef() returns fixed effects."** For mixed models it returns group-specific coefficients.
-
-## Explain it back
-- What is the difference between ranef() and coef()?
-
-*Pass test:* you can extract every part of a mixed model.
 
 ## Connections
 - **Builds on:** [[lmer() and glmer()]]

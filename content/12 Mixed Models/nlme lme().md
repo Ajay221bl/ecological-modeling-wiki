@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "`lme()` from the nlme package fits linear mixed models and, unlike lme4, also accepts residual correlation structures and variance structures."
 aliases:
   - "lme()"
   - "nlme package"
@@ -11,34 +12,15 @@ status: seedling
 
 # nlme lme()
 
-**In one line:** `lme()` from the nlme package fits linear mixed models and, unlike lme4, also accepts residual correlation structures and variance structures.
+`lme()` from the nlme package fits [[Linear Mixed Model|linear mixed models]] and, unlike lme4, also accepts residual correlation structures and [[Variance Structures]] ([[Correlation Structure]]). The syntax puts the random part in its own argument: `lme(y ~ x, random = ~ 1 | site, data = d)`, or `random = ~ 1 | site/plot` for nesting. Extra arguments add `correlation = corAR1(form = ~ year | site)` and `weights = varIdent(form = ~ 1 | sex)`. It uses REML by default (`method = "ML"` to change) and prints p-values for fixed effects using its own denominator degrees of freedom.
 
-> [!info] Before this, it helps to know
-> [[Linear Mixed Model]] · [[Correlation Structure]] · [[Variance Structures]]
+Its weaknesses are that crossed random effects are awkward and it is Gaussian only, though `MASS::glmmPQL` wraps it for GLMMs ([[Penalized Quasi-likelihood]]). In the code below `lme()` fits the same `sleepstudy` model as `lmer()` and gives the same fixed effects, 251.41 and 10.47, and the same SDs, 24.7 for intercepts, 5.9 for slopes and 25.6 for the residual.
 
-## Start from zero
-1. **Syntax:** `lme(y ~ x, random = ~ 1 | site, data = d)`. Nested: `random = ~ 1 | site/plot`.
-2. **Extra arguments:** `correlation = corAR1(form = ~ year | site)` and `weights = varIdent(form = ~ 1 | sex)`.
-3. **REML by default** (`method = "ML"` to change).
-4. **Prints p-values** for fixed effects using its own denominator degrees of freedom.
-5. **Weaknesses:** no crossed random effects in a simple way, Gaussian only (`glmmPQL` in MASS wraps it for GLMMs).
-6. **Zuur et al. (2009) use nlme throughout** because of the correlation and variance options.
+Zuur et al. (2009) use nlme throughout because of its correlation and variance options ([[Zuur et al. 2009 Ch5]]). `lme` and `lmer` do not give different answers: for the same model and method they agree closely.
 
-## In R
 ```r
 library(nlme); m <- lme(Reaction ~ Days, random = ~ Days | Subject, data = lme4::sleepstudy); round(fixef(m), 2); round(as.numeric(VarCorr(m)[, "StdDev"]), 1)
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch5]].
-
-## Common confusions
-- **"lme and lmer give different answers."** For the same model and method they agree closely.
-
-## Explain it back
-- What can lme() do that lmer() cannot?
-
-*Pass test:* you can translate between lme and lmer syntax.
 
 ## Connections
 - **Builds on:** [[Linear Mixed Model]], [[Correlation Structure]], [[Variance Structures]]

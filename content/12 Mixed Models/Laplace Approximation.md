@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "The Laplace approximation and Gaussian quadrature are ways of approximating the GLMM likelihood, which requires integrating over the unknown random effects and has no exact formula."
 aliases:
   - "Laplace approximation"
   - "Gaussian quadrature"
@@ -14,34 +15,16 @@ status: seedling
 
 # Laplace Approximation
 
-**In one line:** the Laplace approximation and Gaussian quadrature are ways of approximating the GLMM likelihood, which requires integrating over the unknown random effects and has no exact formula.
+The **Laplace approximation** and Gaussian quadrature are ways to approximate the [[GLMM]] likelihood, which requires integrating over the unknown random effects and has no exact formula ([[Likelihood Function]], [[Integral]]). The likelihood is a product over groups of ∫ p(y | b) p(b) db, and for non-normal responses that integral has no closed form. Laplace approximates the integrand by a normal curve around its peak, which is fast and the lme4 default (`nAGQ = 1`). Adaptive Gauss-Hermite quadrature evaluates the integrand at several well-placed points and takes a weighted sum, which is more accurate; lme4 allows `nAGQ = 10` or more only with a single scalar random effect.
 
-> [!info] Before this, it helps to know
-> [[GLMM]] · [[Likelihood Function]] · [[Integral]]
+Laplace is least accurate for binary data with few observations per group and large random-effect variances. Alternatives are [[Penalized Quasi-likelihood]] (older and more biased), MCMC ([[Bayesian GLMM]]) and glmmTMB's Laplace with automatic differentiation. In the code below the `cbpp` intercept is −1.3983 with Laplace and −1.3992 with 5 or 25 quadrature points: the estimates settle as points are added, and here Laplace was already very close.
 
-## Start from zero
-1. **GLMM likelihood = product over groups of ∫ p(y | b) p(b) db.** For non-normal responses this integral has no closed form.
-2. **Laplace:** approximate the integrand by a normal curve around its peak. Fast. lme4 default (`nAGQ = 1`).
-3. **Adaptive Gauss-Hermite quadrature:** evaluate the integrand at several well-placed points and take a weighted sum. More accurate. `nAGQ = 10` or more, but only with a single scalar random effect in lme4.
-4. **Laplace is least accurate** for binary data with few observations per group and large random-effect variances.
-5. **Alternatives:** PQL (older, more biased), MCMC (Bayesian), and glmmTMB's Laplace via automatic differentiation.
+It is mentioned when fitting `glmer()` in the GLMM lab ([[Course Website]], [[Zuur et al. 2009 Ch13]]). Laplace is not exact; it is an approximation, usually a good one.
 
-## In R
 ```r
 library(lme4); f <- cbind(incidence, size - incidence) ~ period + (1 | herd)
 round(sapply(c(1, 5, 25), function(q) fixef(glmer(f, family = binomial, data = cbpp, nAGQ = q))[1]), 4)       # estimates settle as quadrature points increase
 ```
-
-## In the course
-Mentioned when fitting `glmer()` in the GLMM lab ([[Course Website]]). [[Zuur et al. 2009 Ch13]].
-
-## Common confusions
-- **"Laplace is exact."** It is an approximation, usually good.
-
-## Explain it back
-- When is the Laplace approximation least accurate?
-
-*Pass test:* you can explain why GLMMs need an approximation.
 
 ## Connections
 - **Builds on:** [[GLMM]], [[Likelihood Function]], [[Integral]]

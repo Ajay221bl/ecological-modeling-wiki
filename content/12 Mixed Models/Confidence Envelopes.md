@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "A confidence envelope is the shaded band around a fitted line showing the confidence interval for the mean response at every value of the predictor."
 aliases:
   - "Confidence envelope"
   - "Confidence band"
@@ -13,35 +14,16 @@ status: seedling
 
 # Confidence Envelopes
 
-**In one line:** a confidence envelope is the shaded band around a fitted line showing the confidence interval for the mean response at every value of the predictor.
+A **confidence envelope** is the shaded band around a fitted line that shows the [[Confidence Interval]] for the mean response at every value of the predictor. Compute predictions on a fine grid of x values with their standard errors or bootstrap quantiles ([[predict()]]); the lower and upper limits at each x form the band, plotted with `geom_ribbon()`. It is narrowest near the mean of x and widens toward the edges. For GLMs build it on the link scale and back-transform, so it respects bounds such as 0 to 1 for probabilities ([[Link Function]]).
 
-> [!info] Before this, it helps to know
-> [[Confidence Interval]] · [[predict()]]
+For mixed models `predict()` gives no SEs for lmer, so use [[bootMer()]] on the predictions, the delta method on the fixed effects for a population-level band, or brms posterior draws ([[Bayesian GLMM]]). The code below takes the delta-method route, combining the model matrix with `vcov(m)`: the `sleepstudy` mean is 251.4 ms (232.3 to 270.5) at day 0, 261.9 (243.3 to 280.4) at day 1 and 272.3 (254.2 to 290.5) at day 2.
 
-## Start from zero
-1. **Compute predictions on a fine grid of x values,** with their standard errors or bootstrap quantiles.
-2. **Lower and upper limits at each x** form the band. Plot with `geom_ribbon()`.
-3. **Narrowest near the mean of x,** widening toward the edges.
-4. **For GLMs build it on the link scale and back-transform** so it respects bounds (0 to 1 for probabilities).
-5. **For mixed models:** `predict()` gives no SEs for lmer, so use `bootMer()` on predictions, the delta method on fixed effects (population-level band), or brms posterior draws.
-6. **A prediction band** adds residual (and group) variation and is much wider.
+The CIs for mixed models lab builds envelopes from bootstrapped predictions ([[Course Website]]). The envelope does not show where the data should fall: that is a prediction band, which adds residual and group variation and is much wider ([[Prediction Interval]]).
 
-## In R
 ```r
 library(lme4); m <- lmer(Reaction ~ Days + (1 | Subject), sleepstudy); nd <- data.frame(Days = 0:9); X <- model.matrix(~ Days, nd)
 se <- sqrt(diag(X %*% vcov(m) %*% t(X))); fit <- X %*% fixef(m); round(head(cbind(nd, fit = fit, lo = fit - 1.96 * se, hi = fit + 1.96 * se), 3), 1)
 ```
-
-## In the course
-CIs for mixed models lab: confidence envelopes from bootstrapped predictions ([[Course Website]]).
-
-## Common confusions
-- **"The envelope shows where the data should fall."** That is a prediction band. The confidence envelope is for the mean.
-
-## Explain it back
-- Why is the envelope narrowest near the mean of x?
-
-*Pass test:* you can draw a confidence envelope for any model.
 
 ## Connections
 - **Builds on:** [[Confidence Interval]], [[predict()]]

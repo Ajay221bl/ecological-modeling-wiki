@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "A fit is singular when some random-effect variance is estimated as zero or some correlation as exactly ±1, meaning the data can't support the random structure as specified."
 aliases:
   - "isSingular()"
   - "Boundary (singular) fit"
@@ -13,35 +14,16 @@ status: seedling
 
 # Singular Fit
 
-**In one line:** a fit is singular when some random-effect variance is estimated as zero or some correlation as exactly ±1, meaning the data can't support the random structure as specified.
+A fit is **singular** when some random-effect variance is estimated as zero, or some correlation as exactly ±1, meaning the data can't support the random structure as written ([[Variance Components]], [[Correlated Random Intercepts and Slopes]]). lme4 says "boundary (singular) fit: see help('isSingular')". Causes are too few groups, too little replication within groups, genuinely tiny group variation, or an overly complex random structure.
 
-> [!info] Before this, it helps to know
-> [[Variance Components]] · [[Correlated Random Intercepts and Slopes]]
+The fixed-effect estimates are still valid, but the model is effectively simpler than written; [[Harrison et al. 2018]] note a zero variance is not a problem in itself, but the model is then equivalent to a GLM. In the code below four groups with no real group variation give a group SD of exactly 0 and the singular-fit message.
 
-## Start from zero
-1. **lme4 message:** "boundary (singular) fit: see help('isSingular')".
-2. **Causes:** too few groups, too little within-group replication, genuinely tiny group variation, or an overly complex random structure.
-3. **The fixed-effect estimates are still valid,** but the model is effectively simpler than written.
-4. **Options:** drop the zero variance term, remove correlations (`||`), drop random slopes, or go Bayesian with weakly informative priors that keep variances off zero.
-5. **Oberpriller et al. (2022):** start with the random effect; switch the grouping to a fixed effect if the fit is singular.
-6. **Harrison et al.:** a zero variance is not a problem in itself, but the model is then equivalent to a GLM.
+[[Oberpriller et al. 2022]] recommend starting with the random effect and switching the grouping to a fixed effect only if the fit is singular ([[How Many Levels for a Random Effect]]). It comes up in both mixed models labs ([[Course Website]]). A singular fit does not mean the results are wrong; it means the random structure is too rich for the data.
 
-## In R
 ```r
 library(lme4); set.seed(2); d <- data.frame(g = factor(rep(1:4, each = 10)), x = rnorm(40)); d$y <- 1 + 0.5 * d$x + rnorm(40)       # no real group variation, 4 groups
 m <- lmer(y ~ x + (1 | g), data = d); c(singular = isSingular(m), sd_g = round(attr(VarCorr(m)$g, "stddev")[[1]], 3))
 ```
-
-## In the course
-Linear and generalized linear mixed models labs ([[Course Website]]). [[Oberpriller et al. 2022]]. [[Harrison et al. 2018]].
-
-## Common confusions
-- **"A singular fit means the results are wrong."** It means the random structure is too rich for the data.
-
-## Explain it back
-- What two numbers in VarCorr signal singularity?
-
-*Pass test:* you can diagnose and respond to a singular fit.
 
 ## Connections
 - **Builds on:** [[Variance Components]], [[Correlated Random Intercepts and Slopes]]

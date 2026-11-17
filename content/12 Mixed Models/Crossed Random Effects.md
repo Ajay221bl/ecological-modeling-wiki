@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "Random effects are crossed when levels of two groupings combine freely, such as every site measured in every year, so each observation belongs to one site and one year independently."
 aliases:
   - "Crossed random effect"
   - "Cross-classified random effects"
@@ -12,35 +13,16 @@ status: seedling
 
 # Crossed Random Effects
 
-**In one line:** random effects are crossed when levels of two groupings combine freely, such as every site measured in every year, so each observation belongs to one site and one year independently.
+Random effects are **crossed** when levels of two groupings combine freely, such as every site measured in every year, so each observation belongs to one site and one year independently ([[Grouping Factor]]). Site 1 is measured in 2019, 2020 and 2021, and so is site 2, so year isn't inside site. In lme4 this is `(1 | site) + (1 | year)`, and each grouping explains its own share of the variance, site to site and year to year. Partially crossed designs, where not every combination is observed, are handled the same way.
 
-> [!info] Before this, it helps to know
-> [[Grouping Factor]]
+In the code below ten sites measured over six years give estimated SDs of 1.5 for sites, 1.3 for years and 0.56 for the residual (true 1.5, 0.8 and 0.5). lme4 handles crossed effects easily, while nlme's `lme()` does not. [[Christensen et al. 2020]] used random intercepts for state and for year, which are crossed.
 
-## Start from zero
-1. **Site 1 is measured in 2019, 2020 and 2021. So is site 2.** Year isn't inside site.
-2. **lme4:** `(1 | site) + (1 | year)`.
-3. **Each grouping explains its own share of variance:** site-to-site and year-to-year.
-4. **Partially crossed designs** (not every combination observed) are handled the same way.
-5. **lme4 handles crossed effects easily;** nlme's `lme()` does not.
-6. **Christensen et al. (2020)** used random intercepts for state and for year: crossed effects.
+The alternative structure is [[Nested Random Effects]] ([[Harrison et al. 2018]]). Don't use `site/year` for repeated years: that nests year within site and gives a separate year effect for every site.
 
-## In R
 ```r
 set.seed(2); d <- expand.grid(site = factor(1:10), year = factor(2015:2020)); d$y <- 5 + rnorm(10, 0, 1.5)[d$site] + rnorm(6, 0, 0.8)[d$year] + rnorm(60, 0, 0.5)
 m <- lme4::lmer(y ~ 1 + (1 | site) + (1 | year), data = d); as.data.frame(lme4::VarCorr(m))[, c("grp", "sdcor")]
 ```
-
-## In the course
-[[Christensen et al. 2020]]. [[Harrison et al. 2018]].
-
-## Common confusions
-- **"Use site/year for repeated years."** That nests year within site, giving a separate year effect for every site.
-
-## Explain it back
-- How do you write crossed site and year intercepts in lme4?
-
-*Pass test:* you can tell crossed from nested in your design.
 
 ## Connections
 - **Builds on:** [[Grouping Factor]]

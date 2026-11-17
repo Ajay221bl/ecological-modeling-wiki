@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "No pooling estimates each group separately, either with a separate model per group or a fixed effect for every group, so groups share no information."
 aliases:
   - "No-pooling model"
   - "Separate models per group"
@@ -14,34 +15,15 @@ status: seedling
 
 # No Pooling
 
-**In one line:** no pooling estimates each group separately, either with a separate model per group or a fixed effect for every group, so groups share no information.
+**No pooling** estimates each group separately, with a separate model per group or a fixed effect for every group, so groups share no information ([[Hierarchical Data]], [[Fixed Effect]]). `lme4::lmList(y ~ x | group)` fits one lm per group, and the equivalent fixed-effects model is `lm(y ~ x * group)`. Each group's estimate uses only its own data, so small groups get noisy, extreme estimates.
 
-> [!info] Before this, it helps to know
-> [[Hierarchical Data]] · [[Fixed Effect]]
+It can't predict for new groups and says nothing directly about the population of groups. The old workaround, a two-stage analysis that fits each group and then analyses the estimates, is done in one step by a mixed model, which also weights groups properly. In the code below `lmList()` gives the first three `sleepstudy` subjects slopes of 21.8, 2.3 and 6.1 ms per day, and the 18 slopes vary with an SD of 6.6.
 
-## Start from zero
-1. **Separate fits:** `lme4::lmList(y ~ x | group)` fits one lm per group.
-2. **Equivalent fixed-effects model:** `lm(y ~ x * group)`.
-3. **Each group's estimate uses only its own data,** so small groups get noisy, extreme estimates.
-4. **Can't predict for new groups** and says nothing about the population of groups directly.
-5. **Two-stage analysis** (fit per group, then analyse the estimates) was the old workaround; mixed models do both stages at once and weight groups properly.
-6. **Useful diagnostic:** compare lmList estimates with mixed-model estimates to see shrinkage.
+Comparing `lmList` estimates with mixed-model estimates is a useful way to see [[Shrinkage]] ([[Partial Pooling]], [[Course Website]]). No pooling is not the most faithful to the data; it is faithful to the noise in small groups. Its opposite extreme is [[Complete Pooling]].
 
-## In R
 ```r
 library(lme4); L <- lmList(Reaction ~ Days | Subject, data = sleepstudy); round(head(coef(L), 3), 1); round(sd(coef(L)$Days), 2)
 ```
-
-## In the course
-`lmList()` on `sleepstudy` in the linear mixed models lab ([[Course Website]]).
-
-## Common confusions
-- **"No pooling is the most faithful to the data."** It is faithful to noise in small groups.
-
-## Explain it back
-- What does lmList() fit?
-
-*Pass test:* you can compare no-pooling and mixed-model estimates.
 
 ## Connections
 - **Builds on:** [[Hierarchical Data]], [[Fixed Effect]]

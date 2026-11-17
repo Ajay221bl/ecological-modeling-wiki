@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "Variance components are the separate variances a mixed model estimates, one for each random effect and one for the residual, showing how much variation lies at each level of the hierarchy."
 aliases:
   - "Variance component"
   - "Random-effect variance"
@@ -12,35 +13,15 @@ status: seedling
 
 # Variance Components
 
-**In one line:** variance components are the separate variances a mixed model estimates, one for each random effect and one for the residual, showing how much variation lies at each level of the hierarchy.
+**Variance components** are the separate variances a mixed model estimates, one for each random effect and one for the residual, showing how much variation lies at each level of the hierarchy ([[Variance]], [[Random Effect]], [[Hierarchical Data]]). In a random-intercept model, total variance = σ²_group + σ²_residual; more levels add more components, as in σ²_region + σ²_site + σ²_residual. Their ratios answer biological questions, such as how repeatable a trait is ([[Intraclass Correlation]]) or how much variation is among sites versus within.
 
-> [!info] Before this, it helps to know
-> [[Variance]] · [[Random Effect]] · [[Hierarchical Data]]
+`VarCorr(m)` reports them as SDs by default; `print(VarCorr(m), comp = "Variance")` gives variances. In the code below the `sleepstudy` subject variance is 1,378 (SD 37.1) and the residual variance 960 (SD 31.0). Estimate them with [[REML]] for normal models, which is less biased than ML.
 
-## Start from zero
-1. **Random-intercept model:** total variance = σ²_group + σ²_residual.
-2. **More levels add more components:** σ²_region + σ²_site + σ²_residual.
-3. **`VarCorr(m)`** reports them (as SDs by default; `print(VarCorr(m), comp = "Variance")` for variances).
-4. **Their ratios answer biological questions:** how repeatable is a trait (ICC), how much variation is among sites versus within.
-5. **Estimate them with REML** for Gaussian models (less biased than ML).
-6. **They can't be negative.** A zero estimate means a singular fit.
-7. **Their uncertainty is often large** with few groups. Get intervals by profiling or bootstrapping.
+They can't be negative, and a zero estimate means a [[Singular Fit]]. Their uncertainty is often large with few groups, so get intervals by profiling or bootstrapping ([[Confidence Intervals for Variance Components]]). [[Harrison et al. 2018]] discuss estimating them with a clutch-mass example ([[Zuur et al. 2009 Ch5]]). `VarCorr` shows standard deviations by default, not variances.
 
-## In R
 ```r
 library(lme4); m <- lmer(Reaction ~ Days + (1 | Subject), data = sleepstudy); vc <- as.data.frame(VarCorr(m)); vc[, c("grp", "vcov", "sdcor")]
 ```
-
-## In the course
-[[Harrison et al. 2018]] (estimating variance components, the clutch-mass example). [[Zuur et al. 2009 Ch5]].
-
-## Common confusions
-- **"VarCorr shows variances."** It prints standard deviations by default.
-
-## Explain it back
-- What does VarCorr() print by default?
-
-*Pass test:* you can extract and interpret variance components.
 
 ## Connections
 - **Builds on:** [[Variance]], [[Random Effect]], [[Hierarchical Data]]
