@@ -5,7 +5,6 @@ tags:
   - flashcards/eco/modeling
 aliases:
   - "Sensitivity"
-  - "Elasticity"
 status: seedling
 ---
 

@@ -6,7 +6,6 @@ tags:
 aliases:
   - "Conceptual diagram"
   - "Physical model"
-  - "Graphical model"
 status: seedling
 ---
 
@@ -74,7 +73,7 @@ all.vars(f)     # the variables your conceptual model says matter
 ```
 
 ## In the course
-Powell and Gale call this "a wise, rewarding first step toward the design of a new research project" ([[Powell and Gale 2015 Ch1]], p. 5). Hobbs and Hooten formalize the same idea as Bayesian network diagrams, where arrows show which quantities depend on which ([[Bayesian Network Diagram]]).
+Powell and Gale call this "a wise, rewarding first step toward the design of a new research project" ([[Powell and Gale 2015 Ch1]], p. 5). Hobbs and Hooten formalize the same idea as Bayesian network diagrams, where arrows show which quantities depend on which ([[Directed Acyclic Graph|Bayesian Network Diagram]]).
 
 ## Common confusions
 - **"Conceptual models are informal, so they don't matter."** They decide which variables you measure and which models you compare, so they shape every result.
@@ -90,7 +89,7 @@ Powell and Gale call this "a wise, rewarding first step toward the design of a n
 
 ## Connections
 - **Builds on:** [[Real World and Model World]]
-- **Leads to:** [[Hypothesis]], [[Candidate Model Set]], [[Bayesian Network Diagram]], [[Statistical Model]]
+- **Leads to:** [[Hypothesis]], [[Candidate Model Set]], [[Directed Acyclic Graph|Bayesian Network Diagram]], [[Statistical Model]]
 - **Part of:** [[MOC - Modeling Foundations]]
 - **Go deeper:** [[Powell and Gale 2015 Ch1]]
 

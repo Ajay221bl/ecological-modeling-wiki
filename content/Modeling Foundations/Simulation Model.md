@@ -4,9 +4,7 @@ tags:
   - modeling
   - flashcards/eco/modeling
 aliases:
-  - "Simulation"
   - "Computer simulation"
-  - "Individual-based model"
 status: seedling
 ---
 
@@ -15,7 +13,7 @@ status: seedling
 **In one line:** a simulation model runs a set of rules forward on a computer, step by step, to see what happens. It's used when a system has too many interacting parts to work out with pen and paper.
 
 > [!info] Before this, it helps to know
-> [[Analytical Model]] (equations with given parameters) · [[For Loops]] (repeating a step many times)
+> [[Analytical Model]] (equations with given parameters) · [[For Loop|For Loops]] (repeating a step many times)
 
 ## The everyday picture
 A board game with dice. The rules are simple (roll, move, follow the square's instruction), but nobody can work out with algebra who'll win. So you just **play it** and see. Play it a thousand times and you learn which strategies tend to win and how often.
@@ -94,7 +92,7 @@ Powell and Gale list simulation as a reason to model when resources are scarce: 
 *Pass test:* you can describe, in plain steps, the loop inside a population simulation.
 
 ## Connections
-- **Builds on:** [[Analytical Model]], [[For Loops]]
+- **Builds on:** [[Analytical Model]], [[For Loop|For Loops]]
 - **Leads to:** [[Sensitivity Analysis]], [[Theoretical vs Empirical Modeling]], [[MCMC]]
 - **Part of:** [[MOC - Modeling Foundations]]
 - **Go deeper:** [[Hobbs and Hooten 2015 Ch2]] (§2.1.3)

@@ -5,7 +5,6 @@ tags:
   - flashcards/eco/basics
 aliases:
   - "Pearson correlation"
-  - "r"
   - "cor()"
   - "Correlation coefficient"
 status: seedling
@@ -60,7 +59,7 @@ Three sites: rainfall x = 1, 2, 3 and grass y = 2, 4, 7. Means: x̄ = 2, ȳ = 4.
 *What to look at:* as r gets further from 0, the cloud squeezes toward a line. The sign only says which way the line tilts.
 
 ## Why it is this way
-We want one number for "how strongly do these two go together?" that doesn't depend on the units, so we can compare rain-and-grass with temperature-and-mass. Dividing the covariance by both SDs does exactly that. Correlation is the quick screen for relationships, and above all for predictors that are related to *each other*. Strongly correlated predictors carry nearly the same information, so the model can't tell which deserves the credit, and their coefficients become unstable ([[Collinearity]], [[Why collinearity makes coefficients unstable]]). Zuur et al. 2010's protocol uses correlations and pairplots to catch this before modeling.
+We want one number for "how strongly do these two go together?" that doesn't depend on the units, so we can compare rain-and-grass with temperature-and-mass. Dividing the covariance by both SDs does exactly that. Correlation is the quick screen for relationships, and above all for predictors that are related to *each other*. Strongly correlated predictors carry nearly the same information, so the model can't tell which deserves the credit, and their coefficients become unstable ([[Collinearity]], [[Why collinearity inflates standard errors|Why collinearity makes coefficients unstable]]). Zuur et al. 2010's protocol uses correlations and pairplots to catch this before modeling.
 
 ## In R
 ```r

@@ -5,7 +5,6 @@ tags:
   - flashcards/eco/basics
 aliases:
   - "Parameters"
-  - "theta"
   - "True value"
 status: seedling
 ---

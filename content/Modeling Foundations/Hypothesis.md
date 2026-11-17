@@ -6,7 +6,6 @@ tags:
 aliases:
   - "Hypotheses"
   - "Scientific hypothesis"
-  - "Prediction"
   - "A priori hypothesis"
 status: seedling
 ---

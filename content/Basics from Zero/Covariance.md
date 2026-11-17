@@ -62,7 +62,7 @@ cov(x, x); var(x)  # identical: variance is covariance with itself
 ```
 
 ## In the course
-Covariance underlies correlation structures in the autocorrelation unit ([[Correlation Structures]]) and the variance components of mixed models ([[Variance Components]]).
+Covariance underlies correlation structures in the autocorrelation unit ([[Correlation Structure|Correlation Structures]]) and the variance components of mixed models ([[Variance Components]]).
 
 ## Common confusions
 - **"A big covariance means a strong relationship."** It might just mean big units. Use correlation to judge strength.
@@ -77,7 +77,7 @@ Covariance underlies correlation structures in the autocorrelation unit ([[Corre
 
 ## Connections
 - **Builds on:** [[Mean]], [[Variance]]
-- **Leads to:** [[Correlation]], [[Correlation Structures]], [[Variance Components]]
+- **Leads to:** [[Correlation]], [[Correlation Structure|Correlation Structures]], [[Variance Components]]
 - **Part of:** [[MOC - Basics from Zero]]
 - **Go deeper:** [[Collinearity]]
 

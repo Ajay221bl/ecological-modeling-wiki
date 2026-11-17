@@ -87,7 +87,7 @@ Lab output (from `summary()` of `lm`, `glm` and `lmer`) uses this notation throu
 - **Builds on:** [[Logarithms and Exponents]]
 - **Leads to:** [[P-value]], [[Linear Regression]]
 - **Part of:** [[MOC - Basics from Zero]]
-- **Go deeper:** [[R Objects and Vectors]]
+- **Go deeper:** [[Objects and Assignment|R Objects and Vectors]]
 
 ## Flashcards
 

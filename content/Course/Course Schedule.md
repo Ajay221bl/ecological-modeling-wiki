@@ -11,7 +11,7 @@ status: seedling
 
 # Course Schedule
 
-The tentative schedule from the syllabus ([[Course Overview]]), with the map of content each session's material lives in. Sessions after Oct 22 are outside this wiki's current scope and are listed here so I can see what's coming.
+The tentative schedule from the syllabus ([[Course Overview]]), with the map of content each session's material lives in. Every session is now covered.
 
 | Date | Session | Readings | Due | Where it lives |
 |---|---|---|---|---|
@@ -35,13 +35,13 @@ The tentative schedule from the syllabus ([[Course Overview]]), with the map of 
 | Thu Oct 15 | Mixed models lab: confidence intervals | | | [[MOC - Mixed Models]] |
 | Tue Oct 20 | No class: fall break | | | |
 | Thu Oct 22 | Mixed models lab: Bayesian | | | [[MOC - Mixed Models]] |
-| Tue Oct 27 | Generalized additive models | Noam Ross course lessons 1 and 2; Zuur et al. 2009 Ch3 | | not yet in scope |
-| Thu Oct 29 | GAM lab | | HW4: mixed models | not yet in scope |
-| Tue Nov 3, Thu Nov 5 | Guest lecture and lab: occupancy modeling | | | not yet in scope |
-| Tue Nov 10 | GAMs: yep, Bayes | | | not yet in scope |
-| Thu Nov 12 | Hierarchical GAMs | Pedersen et al. 2019; Lawton et al. 2022 | | not yet in scope |
-| Tue Nov 17, Thu Nov 19 | Stan language labs | | Project final draft (Nov 19) | not yet in scope |
-| Tue Nov 24 | Writing results | Cormac McCarthy's advice | HW5: GAMs | not yet in scope |
+| Tue Oct 27 | Generalized additive models | [[Noam Ross GAM Course]] lessons 1 and 2; [[Zuur et al. 2009 Ch3]] | | [[MOC - GAMs]] |
+| Thu Oct 29 | GAM lab | | HW4: mixed models | [[MOC - GAMs]] |
+| Tue Nov 3, Thu Nov 5 | Guest lecture and lab: occupancy modeling | [[Powell and Gale 2015]] (my addition) | | [[MOC - Population Estimation]] |
+| Tue Nov 10 | GAMs: yep, Bayes | | | [[MOC - GAMs]] ([[Bayesian GAMs]]) |
+| Thu Nov 12 | Hierarchical GAMs | [[Pedersen et al. 2019]]; [[Lawton et al. 2022]] | | [[MOC - GAMs]] |
+| Tue Nov 17, Thu Nov 19 | Stan language labs | | Project final draft (Nov 19) | [[MOC - Stan]] |
+| Tue Nov 24 | Writing results | [[McCarthy Writing Advice]] | HW5: GAMs | [[MOC - Scientific Writing]] |
 | Tue Dec 1, Thu Dec 3 | Project presentations | | | [[Final Project]] |
 
 ## Connections

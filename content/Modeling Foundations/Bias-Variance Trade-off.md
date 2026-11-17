@@ -73,7 +73,7 @@ Behind model selection (Sep 15), priors (Units 5 and 7) and partial pooling in m
 
 ## Connections
 - **Builds on:** [[Bias]], [[Precision]], [[Overfitting]], [[Underfitting]]
-- **Leads to:** [[Partial Pooling]], [[AIC]], [[Prior]]
+- **Leads to:** [[Partial Pooling]], [[AIC]], [[Prior Distribution|Prior]]
 - **Part of:** [[MOC - Modeling Foundations]]; the principle behind it: [[Parsimony]]
 - **Go deeper:** [[Tredennick et al. 2021]]
 

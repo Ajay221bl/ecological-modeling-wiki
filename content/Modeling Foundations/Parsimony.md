@@ -6,7 +6,6 @@ tags:
 aliases:
   - "Principle of parsimony"
   - "Occam's razor"
-  - "Model complexity"
 status: seedling
 ---
 

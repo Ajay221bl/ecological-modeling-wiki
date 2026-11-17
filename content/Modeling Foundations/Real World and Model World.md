@@ -62,7 +62,7 @@ flowchart TD
 *What to look at:* there is no arrow straight from the Model to the Real World. Every conclusion passes through the Model World and its assumptions (after Donovan and Starfield 2015, in [[Powell and Gale 2015 Ch1]], Fig. 1.4).
 
 ## Why it is this way
-This picture explains a puzzle that trips up beginners: how can a model fit the data beautifully and still be wrong? A good fit only shows that the Model World is internally consistent with the data you fed it. It can't show that you kept the right pieces of reality. That's why model checking ([[Posterior Predictive Check]], [[Residual Diagnostics with DHARMa]]) matters: it's how the Real World gets a chance to push back on the Model World.
+This picture explains a puzzle that trips up beginners: how can a model fit the data beautifully and still be wrong? A good fit only shows that the Model World is internally consistent with the data you fed it. It can't show that you kept the right pieces of reality. That's why model checking ([[Posterior Predictive Check]], [[DHARMa Simulated Residuals|Residual Diagnostics with DHARMa]]) matters: it's how the Real World gets a chance to push back on the Model World.
 
 ## In R
 ```r

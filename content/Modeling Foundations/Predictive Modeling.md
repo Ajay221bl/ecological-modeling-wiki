@@ -5,7 +5,7 @@ tags:
   - flashcards/eco/modeling
 aliases:
   - "Prediction (goal)"
-  - "Forecasting"
+  - "Prediction"
 status: seedling
 ---
 

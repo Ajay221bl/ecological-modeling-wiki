@@ -86,7 +86,7 @@ Every homework dataset has one observation per row ([[Homework]]), and the mixed
 - **Builds on:** [[Variable]]
 - **Leads to:** [[Sampling Unit]], [[Independence of Observations]], [[Pseudoreplication]], [[Tidy Data]]
 - **Part of:** [[MOC - Basics from Zero]], molecular note [[Variable and Observation]]
-- **Go deeper:** [[Data Frames and Tibbles]]
+- **Go deeper:** [[Data Frame|Data Frames and Tibbles]]
 
 ## Flashcards
 

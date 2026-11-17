@@ -5,7 +5,6 @@ tags:
   - flashcards/eco/modeling
 aliases:
   - "Random sample"
-  - "Random sampling"
   - "Sampling bias"
 status: seedling
 ---

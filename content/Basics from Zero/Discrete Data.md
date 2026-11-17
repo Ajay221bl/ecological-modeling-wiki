@@ -5,8 +5,6 @@ tags:
   - flashcards/eco/basics
 aliases:
   - "Discrete variable"
-  - "Count data"
-  - "Counts"
 status: seedling
 ---
 

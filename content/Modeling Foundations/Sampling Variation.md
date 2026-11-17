@@ -4,7 +4,6 @@ tags:
   - modeling
   - flashcards/eco/modeling
 aliases:
-  - "Sampling variance"
   - "Sampling error"
 status: seedling
 ---

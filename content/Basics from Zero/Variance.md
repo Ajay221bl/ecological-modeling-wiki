@@ -77,7 +77,7 @@ sd(x)                                   # 2 = sqrt(var(x))
 ```
 
 ## In the course
-Hobbs and Hooten call the variance a distribution's second central moment, and they use the mean and variance together to pick parameters for distributions ([[Moments]], [[Moment Matching]]; [[Hobbs and Hooten 2015 Ch3]], §3.4.4).
+Hobbs and Hooten call the variance a distribution's second central moment, and they use the mean and variance together to pick parameters for distributions ([[Moments of a Distribution|Moments]], [[Moment Matching]]; [[Hobbs and Hooten 2015 Ch3]], §3.4.4).
 
 ## Common confusions
 - **Variance vs standard deviation.** They carry the same information, but SD is in the data's units, so it's the one you report.
@@ -96,7 +96,7 @@ Hobbs and Hooten call the variance a distribution's second central moment, and t
 - **Builds on:** [[Mean]], [[Summation Notation]]
 - **Leads to:** [[Standard Deviation]], [[Standard Error]], [[Least Squares]], [[Overdispersion]], [[Variance Components]]
 - **Part of:** [[MOC - Basics from Zero]]
-- **Go deeper:** [[Moments]]
+- **Go deeper:** [[Moments of a Distribution|Moments]]
 
 ## Flashcards
 

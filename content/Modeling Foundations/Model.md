@@ -5,7 +5,6 @@ tags:
   - flashcards/eco/modeling
 aliases:
   - "What is a model"
-  - "All models are wrong"
   - "Modeling"
 status: seedling
 ---

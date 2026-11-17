@@ -6,7 +6,6 @@ tags:
 aliases:
   - "Measurement error"
   - "Observation variance"
-  - "Detection error"
 status: seedling
 ---
 

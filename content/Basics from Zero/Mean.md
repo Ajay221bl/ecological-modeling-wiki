@@ -7,7 +7,6 @@ aliases:
   - "Average"
   - "Sample mean"
   - "x-bar"
-  - "Expected value"
 status: seedling
 ---
 
@@ -77,7 +76,7 @@ mean(c(x, NA), na.rm = TRUE)   # 4: tell R to drop missing values
 ```
 
 ## In the course
-Powell and Gale use the formula for a sample mean as their example of a simple statistical model ([[Powell and Gale 2015 Ch1]], p. 6). Hobbs and Hooten call the mean of a distribution its first moment ([[Moments]]).
+Powell and Gale use the formula for a sample mean as their example of a simple statistical model ([[Powell and Gale 2015 Ch1]], p. 6). Hobbs and Hooten call the mean of a distribution its first moment ([[Moments of a Distribution|Moments]]).
 
 ## Common confusions
 - **Mean vs median.** The median is the middle value once sorted. With skewed data like biomass or counts the two differ, and the mean gets pulled toward the long tail.
@@ -93,7 +92,7 @@ Powell and Gale use the formula for a sample mean as their example of a simple s
 
 ## Connections
 - **Builds on:** [[Summation Notation]], [[Parameter vs Estimate]]
-- **Leads to:** [[Variance]], [[Moments]], [[Linear Regression]], [[Deterministic and Stochastic Components]]
+- **Leads to:** [[Variance]], [[Moments of a Distribution|Moments]], [[Linear Regression]], [[Deterministic and Stochastic Components]]
 - **Part of:** [[MOC - Basics from Zero]]
 - **Go deeper:** [[Hobbs and Hooten 2015 Ch3]] (§3.4.3, moments)
 

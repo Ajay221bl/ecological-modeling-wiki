@@ -5,7 +5,6 @@ tags:
   - flashcards/eco/modeling
 aliases:
   - "Empirical modeling"
-  - "Descriptive model"
 status: seedling
 ---
 

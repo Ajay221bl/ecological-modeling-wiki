@@ -5,7 +5,6 @@ tags:
   - flashcards/eco/modeling
 aliases:
   - "Theoretical modeling"
-  - "Mechanistic model"
 status: seedling
 ---
 

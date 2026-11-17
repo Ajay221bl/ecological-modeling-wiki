@@ -24,7 +24,7 @@ There are five homework problems, 5 points each (25 in total). Each one usually 
 | 2 | Your first models | Tue Sep 8 | [[MOC - Linear Models and GLMs]], [[MOC - Probability and Distributions]] |
 | 3 | Model selection | Thu Sep 24 | [[MOC - Model Selection]] |
 | 4 | Mixed models | Thu Oct 29 | [[MOC - Mixed Models]] |
-| 5 | GAMs | Tue Nov 24 | not yet in scope |
+| 5 | GAMs | Tue Nov 24 | [[MOC - GAMs]], [[GAM Workflow in R]] |
 
 ## Connections
 - **Part of:** [[MOC - Ecological Modeling Course]]
