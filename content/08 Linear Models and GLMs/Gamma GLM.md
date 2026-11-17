@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "A gamma GLM models a positive, continuous, right-skewed response whose spread grows in proportion to its mean, usually with a log link."
 aliases:
   - "Gamma regression"
   - "Gamma model"
@@ -11,40 +12,17 @@ status: seedling
 
 # Gamma GLM
 
-**In one line:** a gamma GLM models a positive, continuous, right-skewed response whose spread grows in proportion to its mean, usually with a log link.
+A 10-minute trip varies by a minute or two; a 5-hour trip varies by half an hour. The scatter is a constant percentage of the expected value, and travel time can never be negative. A **gamma GLM** models a positive, continuous, right-skewed response of that kind, such as biomass, time, distance or concentration, using the [[Gamma Distribution]] with mean μᵢ and constant shape ([[Generalized Linear Model]]). Its variance is proportional to μ², a constant coefficient of variation ([[Mean-Variance Relationship]]). The usual link is log, `Gamma(link = "log")`; R's default is the canonical inverse link, which is awkward to interpret. With a log link the coefficients are multiplicative, as in a count model ([[Log Link]]).
 
-> [!info] Before this, it helps to know
-> [[Gamma Distribution]] (the random part) · [[Log Link]] (the usual link) · [[Generalized Linear Model]] (the framework)
+In the code below, data are simulated with log-mean 1 + 0.2x and shape 4. The gamma GLM recovers the coefficients, a multiplier of exp(0.2) = 1.22 per unit of x, and a dispersion close to 1/shape = 0.25.
 
-## The everyday picture
-Travel times. A 10-minute trip varies by a minute or two. A 5-hour trip varies by half an hour. The scatter is a constant percentage of the expected value, and it can never be negative.
+The alternative is a lognormal model: log-transform and use `lm()`. The gamma GLM models the mean directly, while the lognormal models the median, which matters when back-transforming ([[Lognormal Distribution]], [[Back-transformation]]). Zeros are not allowed; with true zeros, use a hurdle-gamma or Tweedie model ([[Zuur et al. 2009 Ch8]]). The gamma is for positive continuous data, not for counts.
 
-## Start from zero
-1. **Response:** strictly positive continuous values. Biomass, time, distance, concentration.
-2. **yᵢ ~ Gamma with mean μᵢ and constant shape.**
-3. **Variance ∝ μ².** A constant coefficient of variation.
-4. **Link:** log is usual (`Gamma(link = "log")`). R's default is the canonical inverse link, which is awkward to interpret.
-5. **Coefficients with a log link are multiplicative,** as in a count model.
-6. **Alternative:** a lognormal model (log-transform and use `lm`). The gamma GLM models the mean directly. The lognormal models the median.
-7. **Zeros aren't allowed.** With true zeros use a hurdle-gamma or Tweedie model.
-
-## In R
 ```r
 set.seed(24); x <- runif(200, 0, 10); mu <- exp(1 + 0.2 * x); y <- rgamma(200, shape = 4, rate = 4 / mu)
 m <- glm(y ~ x, family = Gamma(link = "log")); round(coef(m), 3); exp(coef(m)[2])
 c(dispersion = summary(m)$dispersion, one_over_shape = 1 / 4)
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch8]] lists it in the exponential family.
-
-## Common confusions
-- **"Gamma is for counts."** It is for positive continuous data.
-
-## Explain it back
-- What mean-variance relationship does the gamma assume?
-
-*Pass test:* you can fit a gamma GLM with a log link.
 
 ## Connections
 - **Builds on:** [[Gamma Distribution]], [[Log Link]]

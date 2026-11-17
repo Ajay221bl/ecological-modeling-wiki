@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "The log link models the logarithm of the mean as a linear function of predictors, which keeps the mean positive and makes effects multiplicative."
 aliases:
   - "Log link function"
   - "Logarithmic link"
@@ -12,47 +13,17 @@ status: seedling
 
 # Log Link
 
-**In one line:** the log link models the logarithm of the mean as a linear function of predictors, which keeps the mean positive and makes effects multiplicative.
+A dimmer with a "percent" dial changes brightness by the same percentage with each click, never by a fixed amount, and no number of clicks takes it below zero. The **log link** models the logarithm of the mean as a linear function of predictors: log(μ) = η, so μ = exp(η) ([[Natural Logarithm]], [[Link Function]]). Because exp() of anything is positive, the mean cannot go below zero. Adding on the log scale is multiplying on the count scale, exp(β₀ + β₁x) = exp(β₀) × exp(β₁)^x, so effects are multiplicative ([[Multiplicative Effects]]). exp(β₀) is the expected count when predictors are zero, and exp(β₁) is the factor by which the mean is multiplied per unit of x, called a [[Rate Ratio]].
 
-> [!info] Before this, it helps to know
-> [[Natural Logarithm]] (the function) · [[Link Function]] (its role) · [[Multiplicative Effects]] (the interpretation)
+With log(μ) = 2.3 − 0.02 × tree, exp(−0.02) = 0.98: each extra 1% of tree cover multiplies the expected count by 0.98, a 2% drop, and 10% more cover multiplies it by 0.98¹⁰ = 0.82, an 18% drop. A coefficient of 0.4 would mean exp(0.4) = 1.49, a 49% rise per unit. The code below checks these, then fits a Poisson GLM and reports the multipliers with intervals. On the response scale a log link implies an exponential curve.
 
-## The everyday picture
-A dimmer with a "percent" dial. Each click of the dial changes the brightness by the same percentage, never by a fixed amount, and no number of clicks down takes it below zero.
+It is the default for Poisson and negative binomial models and the usual choice for gamma ([[Poisson Regression]]). It suits counts biologically because births, deaths and movement act per individual, so effects on abundance are naturally proportional; it also makes effort adjustments possible through an [[Offset]] ([[Zuur et al. 2009 Ch9]], [[Hobbs and Hooten 2015 Ch3]]). Two confusions. A log link does not fail with zero counts: it is applied to the mean, which is positive, and zeros in the data are fine. And a coefficient of −0.02 does not mean 0.02 fewer birds; it means about 2% fewer.
 
-## A tiny example
-log(μ) = 2.3 − 0.02 × tree.
-- exp(−0.02) = 0.98: each extra 1% of tree cover multiplies the expected count by 0.98, a 2% drop.
-- 10% more cover: 0.98¹⁰ = 0.82, an 18% drop.
-
-## Start from zero
-1. **log(μ) = η, so μ = exp(η).**
-2. **exp() of anything is positive.** The mean can't go below zero.
-3. **Adding on the log scale is multiplying on the count scale:** exp(β₀ + β₁x) = exp(β₀) × exp(β₁)^x.
-4. **exp(β₀):** the expected count when predictors are zero.
-5. **exp(β₁):** the factor by which the mean is multiplied per unit of x. Called a rate ratio.
-6. **Default for Poisson and negative binomial.** Usual choice for gamma.
-7. **It implies an exponential curve** on the response scale.
-8. **Why it suits counts biologically:** births, deaths and movement act per individual, so effects on abundance are naturally proportional.
-
-## In R
 ```r
 exp(-0.02); exp(-0.02)^10; exp(-0.02 * 10)
 set.seed(6); tree <- runif(200, 0, 60); y <- rpois(200, exp(2.3 - 0.02 * tree)); m <- glm(y ~ tree, family = poisson)
 exp(cbind(estimate = coef(m), confint.default(m)))        # multipliers with intervals
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch9]], [[Hobbs and Hooten 2015 Ch3]].
-
-## Common confusions
-- **"Log link fails with zero counts."** The link is applied to the mean, which is positive. Zeros in the data are fine.
-- **"A coefficient of −0.02 means 0.02 fewer birds."** It means 2% fewer.
-
-## Explain it back
-- Interpret a log-link coefficient of 0.4.
-
-*Pass test:* you can convert log-link coefficients to multipliers.
 
 ## Connections
 - **Builds on:** [[Natural Logarithm]], [[Link Function]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "DHARMa residuals are quantile residuals obtained by simulating many new datasets from the fitted model and recording where each real observation ranks among its simulated counterparts."
 aliases:
   - "DHARMa"
   - "Residual Diagnostics with DHARMa"
@@ -14,25 +15,12 @@ status: seedling
 
 # DHARMa Simulated Residuals
 
-**In one line:** DHARMa residuals are quantile residuals obtained by simulating many new datasets from the fitted model and recording where each real observation ranks among its simulated counterparts.
+To check a model of loaded dice by play, roll the model 250 times for each real throw and see where the real throw ranks among them; if the model is right, real throws rank anywhere from bottom to top equally often. **DHARMa residuals** are quantile residuals made that way. Simulate, say, 250 new responses from the fitted model for every observation ([[Simulating Data|Simulation]]); each observation's residual is the fraction of its simulations below the observed value, with randomisation for ties ([[Randomized Quantile Residuals]]). 0.5 means dead centre, and near 0 or 1 means the observation is extreme for the model. If the model is right, the residuals are uniform on 0 to 1, not normal.
 
-> [!info] Before this, it helps to know
-> [[Randomized Quantile Residuals]] (what they are) · [[Simulating Data|Simulation]] (how they are computed) · [[Model Validation]] (their purpose)
+`plot()` on the result gives two panels: a Q-Q plot against the uniform with tests for uniformity, dispersion and outliers, and residuals against ranked fitted values with quantile lines that should be flat at 0.25, 0.5 and 0.75. Extra tests include `testDispersion()`, `testZeroInflation()`, `testSpatialAutocorrelation()` and `testTemporalAutocorrelation()`. The code below, which is not run in the wiki build because the package is not installed there, fits a Poisson model to overdispersed counts: the Q-Q plot bends into an S and the dispersion test flags the problem ([[Overdispersion]], [[Zero Inflation]]).
 
-## The everyday picture
-Checking loaded dice by play. You have a model of the dice. Roll your model 250 times for each throw and see where the real throw ranks among them. If the model is right, real throws rank anywhere from bottom to top equally often.
+It works with `glm`, `lme4`, `glmmTMB`, `mgcv` and more, which is why it is the standard for mixed models, where classical residuals are hard to interpret; Harrison and colleagues recommend it, and the GLM and mixed-model labs use it ([[Harrison et al. 2018]], [[Course Website]], [[Model Validation]]). With large n its tests flag trivial departures, so a significant DHARMa test does not mean the model is unusable: look at the plots and the size of the deviation, not only the p-values. Its Bayesian cousin is the [[Posterior Predictive Check]].
 
-## Start from zero
-1. **Simulate** (say 250) new responses from the fitted model for every observation.
-2. **For each observation, the residual is the fraction of simulations below the observed value** (with randomisation for ties).
-3. **0.5 means dead centre.** Near 0 or 1 means the observation is extreme for the model.
-4. **If the model is right the residuals are uniform on 0 to 1.**
-5. **`plot()` gives two panels:** a Q-Q plot against the uniform, with tests for uniformity, dispersion and outliers. And residuals against (ranked) fitted values with quantile lines that should be flat at 0.25, 0.5 and 0.75.
-6. **Extra tests:** `testDispersion()`, `testZeroInflation()`, `testSpatialAutocorrelation()`, `testTemporalAutocorrelation()`.
-7. **Works with** `glm`, `lme4`, `glmmTMB`, `mgcv` and more. This is why it is the standard for mixed models, where classical residuals are hard to interpret.
-8. **With large n the tests flag trivial departures.** Look at the plots and the size of the deviation, not only the p-values.
-
-## In R
 ```r
 # norun (the DHARMa package is not installed in the wiki's build environment)
 library(DHARMa)
@@ -43,19 +31,6 @@ plot(res)                     # S-shaped Q-Q plot: overdispersion
 testDispersion(res); testZeroInflation(res)
 plotResiduals(res, x)         # residuals against a predictor
 ```
-
-## In the course
-Used for model checking in the GLM and mixed model labs ([[Course Website]]). Recommended by [[Harrison et al. 2018]].
-
-## Common confusions
-- **"A significant DHARMa test means the model is unusable."** With big data tiny misfits are significant. Judge the size.
-- **"DHARMa residuals should be normal."** Uniform by default.
-
-## Explain it back
-- How is one DHARMa residual computed?
-- What should the Q-Q panel look like?
-
-*Pass test:* you can run DHARMa on a model and interpret both panels.
 
 ## Connections
 - **Builds on:** [[Randomized Quantile Residuals]], [[Simulating Data|Simulation]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "A saturated model has as many parameters as observations, so it reproduces every data point exactly and marks the best log-likelihood any model could achieve."
 aliases:
   - "Full model (saturated)"
   - "Perfect-fit model"
@@ -11,34 +12,16 @@ status: seedling
 
 # Saturated Model
 
-**In one line:** a saturated model has as many parameters as observations, so it reproduces every data point exactly and marks the best log-likelihood any model could achieve.
+A "model" of your friends' heights that is simply a list of their heights is perfectly accurate about those friends and tells you nothing about anyone else. A **saturated model** is that list: it has as many parameters as observations, so each fitted value equals its observation and it reproduces every data point exactly ([[Log-likelihood]]). It has no residual degrees of freedom, so nothing is left to estimate error from, and it is useless for explanation or prediction, an extreme case of [[Overfitting]].
 
-> [!info] Before this, it helps to know
-> [[Log-likelihood]] (what it maximises) · [[Overfitting]] (what it is an extreme case of)
+It is useful as a reference: it sets the ceiling of log-likelihood against which [[Deviance]] is measured. For four Poisson counts 2, 0, 5 and 3, the saturated log-likelihood sets each mean to its own observation; the code below computes it, then the log-likelihood of the [[Null Model]], which uses one shared mean. The null model is the other end of the scale, with one parameter for the lot.
 
-## The everyday picture
-A "model" of your friends' heights that is a list of their heights. It is perfectly accurate about those friends and tells you nothing about anyone else.
+The saturated model is not "the full model with all my predictors". It is far bigger than that: a parameter for every row.
 
-## Start from zero
-1. **One parameter per data point.** Each fitted value equals its observation.
-2. **No residual degrees of freedom.** Nothing is left to estimate error from.
-3. **Useless for explanation or prediction.**
-4. **Useful as a reference:** it sets the ceiling of log-likelihood against which deviance is measured.
-5. **The other end of the scale is the null model,** with one parameter for the lot.
-
-## In R
 ```r
 y <- c(2, 0, 5, 3); sum(dpois(y, lambda = y, log = TRUE))       # saturated log-likelihood: each mean set to its own observation
 sum(dpois(y, lambda = mean(y), log = TRUE))                     # null model: one shared mean
 ```
-
-## Common confusions
-- **"The saturated model is the full model with all my predictors."** It is far bigger than that: a parameter for every row.
-
-## Explain it back
-- Why is a saturated model no use for prediction?
-
-*Pass test:* you can explain its role in defining deviance.
 
 ## Connections
 - **Builds on:** [[Log-likelihood]]

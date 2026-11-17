@@ -65,7 +65,7 @@ Units 6 and 7 (Sep 15, 17, 22): choosing among competing models fairly, in frequ
 - [[Residual Tests in DHARMa]]: DHARMa's residual tests turn the main diagnostic questions (correct distribution, correct dispersion, outliers, zero inflation, autocorrelation) into formal...
 
 ## 6. Bayesian selection
-- [[Deviance]]: deviance is a GLM's measure of misfit: twice the gap in log-likelihood between a perfect-fit model and your model, so smaller means closer to the data.
+- [[Deviance]]: Deviance is a GLM's measure of misfit: twice the gap in log-likelihood between a perfect-fit model and your model, so smaller means closer to the data.
 - [[DIC]]: DIC is an early Bayesian analogue of AIC that adds the posterior mean deviance to an effective number of parameters, DIC = D̄ + pD.
 - [[WAIC]]: WAIC estimates out-of-sample predictive accuracy from posterior draws by taking the log pointwise predictive density and subtracting a penalty equal to the...
 - [[Leave-one-out Cross-validation]]: leave-one-out cross-validation predicts each observation from a model fitted to all the other observations, and adds up how well those predictions did.

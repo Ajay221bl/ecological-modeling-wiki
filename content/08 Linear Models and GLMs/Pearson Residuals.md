@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "A Pearson residual is the raw residual divided by the standard deviation the model expects at that fitted value, so that all residuals are on a comparable scale."
 aliases:
   - "Pearson residual"
   - "Standardised (Pearson) residuals"
@@ -12,26 +13,12 @@ status: seedling
 
 # Pearson Residuals
 
-**In one line:** a Pearson residual is the raw residual divided by the standard deviation the model expects at that fitted value, so that all residuals are on a comparable scale.
+Grading on a curve: a miss of 7 where a miss of 7 is normal scores 1, while a miss of 7 where the usual miss is 1.4 scores 5. A **Pearson residual** is the raw residual divided by the standard deviation the model expects at that fitted value, rᵢ = (yᵢ − μ̂ᵢ) / √Var(μ̂ᵢ), so all residuals are on a comparable scale ([[Response Residuals]], [[Standardizing|Standardization]]). For a Poisson, divide by √μ̂; for a binomial, by √(n p̂(1 − p̂)); for a negative binomial, by √(μ̂ + μ̂²/k) ([[Mean-Variance Relationship]]). With fitted Poisson mean 4 and observed 8, the raw residual is 4, the expected SD is √4 = 2, and the Pearson residual is 2; with fitted mean 9 and observed 1 it is (1 − 9)/3 = −2.67.
 
-> [!info] Before this, it helps to know
-> [[Response Residuals]] (the numerator) · [[Mean-Variance Relationship]] (the denominator) · [[Standardizing|Standardization]] (the idea)
+If the model is right, Pearson residuals have mean 0 and variance about 1 at every fitted value. In the code below, the same Poisson data whose raw residuals fanned out have Pearson residuals with SD about 1 in every band. Plot them against fitted values and each predictor: a trend means a wrong mean, a fan a wrong variance function. Their sum of squares is the Pearson chi-square statistic, and divided by residual df it is the dispersion estimate ([[Dispersion Parameter]], [[Overdispersion]]).
 
-## The everyday picture
-Grading on a curve. A miss of 7 where a miss of 7 is normal scores 1. A miss of 7 where the usual miss is 1.4 scores 5.
+Their weakness is that for small counts and 0/1 data they are skewed and fall in bands, so patterns are hard to judge, and they are not normal even under a correct model. That is the case for [[Randomized Quantile Residuals]] ([[Zuur et al. 2009 Ch9]], [[Harrison et al. 2018]]). Pearson residuals have nothing to do with the Pearson correlation beyond the statistician's name. R's default GLM residuals are [[Deviance Residuals]].
 
-## A tiny example
-Poisson, fitted mean 4, observed 8. Raw residual 4. Expected sd √4 = 2. Pearson residual = 2.
-
-## Start from zero
-1. **rᵢ = (yᵢ − μ̂ᵢ) / √Var(μ̂ᵢ).**
-2. **Poisson:** divide by √μ̂. **Binomial:** by √(n p̂(1 − p̂)). **Negative binomial:** by √(μ̂ + μ̂²/k).
-3. **If the model is right they have mean 0 and variance about 1** at every fitted value.
-4. **Plot them against fitted values and each predictor.** Look for trends (wrong mean) and fans (wrong variance function).
-5. **Their sum of squares is the Pearson chi-square statistic.** Divided by residual df, it is the dispersion estimate.
-6. **Weakness:** for small counts and 0/1 data they are skewed and fall in bands, so patterns are hard to judge.
-
-## In R
 ```r
 (8 - 4) / sqrt(4)
 set.seed(7); x <- runif(300); y <- rpois(300, exp(1 + 3 * x)); m <- glm(y ~ x, family = poisson)
@@ -39,18 +26,6 @@ rp <- resid(m, type = "pearson"); all.equal(unname(rp), unname((y - fitted(m)) /
 tapply(rp, cut(fitted(m), c(0, 5, 15, 60)), sd)                         # about 1 everywhere
 sum(rp^2) / df.residual(m)
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch9]] uses Pearson residuals for GLM validation plots. [[Harrison et al. 2018]].
-
-## Common confusions
-- **"Pearson residuals should be normal."** For small counts they aren't, even under a correct model.
-- **"Pearson residual and Pearson correlation are related."** Same statistician, different ideas.
-
-## Explain it back
-- Compute the Pearson residual for y = 1 with fitted Poisson mean 9.
-
-*Pass test:* you can compute and plot Pearson residuals and get the dispersion from them.
 
 ## Connections
 - **Builds on:** [[Response Residuals]], [[Mean-Variance Relationship]]
