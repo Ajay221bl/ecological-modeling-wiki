@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "Robust regression fits a line in a way that gives outlying observations less pull than least squares does."
 aliases:
   - "Robust linear model"
   - "rlm()"
@@ -12,34 +13,16 @@ status: seedling
 
 # Robust Regression
 
-**In one line:** robust regression fits a line in a way that gives outlying observations less pull than least squares does.
+A panel of judges that discards the highest and lowest scores cannot be swung by one wild judge. **Robust regression** fits a line so that outlying observations get less pull than they do under [[Least Squares]]. Least squares penalises squared misses, so one far-off point can dominate the fit ([[Outlier]]). There are two ways to soften that. One is to change the penalty: beyond some distance, count misses linearly instead of squared, Huber's method, available as `MASS::rlm()`. The other is to change the distribution: assume [[Student t Distribution|Student t]] errors, whose heavy tails make a far-off point unsurprising so it does not drag the line, available as `family = student` in brms.
 
-> [!info] Before this, it helps to know
-> [[Least Squares]] (which it modifies) · [[Outlier]] (what it resists) · [[Student t Distribution]] (one way to do it)
+In the code below, 30 points follow a clear line, but the last one is set far below it. Ordinary least squares tilts toward that point; `rlm()` gives nearly the same coefficients as least squares fitted without the outlier.
 
-## The everyday picture
-A panel of judges that discards the highest and lowest scores. One wild judge can no longer swing the result.
+Use it when you believe the outliers are real but do not want them to dictate the fit. It is not a licence to skip looking at the outliers ([[Cook's Distance]]), and it is not assumption-free: it relaxes only the sensitivity to the tails.
 
-## Start from zero
-1. **Least squares penalises squared misses,** so a far-off point dominates.
-2. **Option 1: change the penalty.** Beyond some distance, count misses linearly, not squared (Huber). `MASS::rlm`.
-3. **Option 2: change the distribution.** Assume Student t errors. Heavy tails make a far-off point unsurprising, so it doesn't drag the line. `family = student` in brms.
-4. **Why use it:** when you believe the outliers are real but don't want them to dictate the fit.
-5. **It is not a licence to skip looking at the outliers.**
-
-## In R
 ```r
 library(MASS); set.seed(3); x <- 1:30; y <- 2 + 0.5 * x + rnorm(30); y[30] <- 0
 rbind(ols = coef(lm(y ~ x)), robust = coef(rlm(y ~ x)), without_outlier = coef(lm(y ~ x, subset = -30)))
 ```
-
-## Common confusions
-- **"Robust means assumption-free."** It relaxes the sensitivity to tails, nothing else.
-
-## Explain it back
-- Why does a t-distributed error make a regression robust?
-
-*Pass test:* you can explain what robust methods change.
 
 ## Connections
 - **Builds on:** [[Least Squares]], [[Outlier]]

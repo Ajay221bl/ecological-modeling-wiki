@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "A data frame is R's table for data: each column is a variable, each row an observation, and columns may be of different types."
 aliases:
   - "data.frame"
   - "Data Frames and Tibbles"
@@ -12,23 +13,12 @@ status: seedling
 
 # Data Frame
 
-**In one line:** a data frame is R's table for data: each column is a variable, each row an observation, and columns may be of different types.
+A **data frame** is a spreadsheet with discipline: R's table for data, in which each column is a variable ([[Variable]]), each row is an observation ([[Observation]]), and every column has a name, a single type and the same length. There are no merged cells, no notes in the margins and no totals row. Unlike a matrix, which holds one type throughout, a data frame lets each column keep its own type, which is exactly what real data need: numbers for mass, text for species, categories for site.
 
-> [!info] Before this, it helps to know
-> [[Vectors in R]] (each column is one) · [[Observation]] (a row) · [[Variable]] (a column)
+You build one by gluing equal-length vectors side by side with `data.frame()`, as in the code below with three plots, their tree cover and their bird counts ([[Vectors in R]]). `d$birds` pulls out one column as a vector; `dim()` and `names()` report its size and column names; `d[d$tree > 20, ]` keeps the rows where tree cover exceeds 20 ([[Indexing in R]]). Modeling functions take a data frame through their `data =` argument, so `lm(birds ~ tree, data = d)` knows where to find both columns. Size and types are worth checking with `str()` or `head()` whenever new data arrive ([[Inspecting Data]]).
 
-## The everyday picture
-A spreadsheet with discipline. Every column has a name and one type, and all columns are the same length. No merged cells, no notes in the margins, no totals row.
+Because all of a row's values belong to the same unit, the layout itself carries meaning: one row per observation, one column per variable, which is the idea of [[Tidy Data]]. Columns cannot have different lengths; a value that was not recorded is entered as `NA`, not left out. Most data frames arrive by reading a file rather than being typed in ([[Reading Data into R]]), and the tidyverse returns a stricter version called a [[Tibble]] ([[Data Frame vs Tibble]]).
 
-## Start from zero
-1. **Glue equal-length vectors side by side.** `data.frame(a = ..., b = ...)`.
-2. **Each column keeps its own type.** *Why:* real data mix numbers (mass), text (species) and categories (site).
-3. **Rows are observations.** All of a row's values belong to the same unit.
-4. **Pull a column with `$`.** `d$mass` is a vector.
-5. **Check size and types** with `dim()`, `str()`, `head()` ([[Inspecting Data]]).
-6. **Modeling functions take it through `data =`.**
-
-## In R
 ```r
 d <- data.frame(plot = c("A", "B", "C"), tree = c(10, 30, 50), birds = c(9, 6, 3))
 d
@@ -37,16 +27,6 @@ dim(d); names(d)        # 3 rows 3 columns; column names
 d[d$tree > 20, ]        # rows where tree cover exceeds 20
 lm(birds ~ tree, data = d)$coefficients
 ```
-
-## Common confusions
-- **"A data frame is a matrix."** A matrix holds one type. A data frame holds one type per column.
-- **"Columns can have different lengths."** They can't. Missing values are filled with `NA`.
-
-## Explain it back
-- What must be true of every column of a data frame?
-- What does `d$tree` return?
-
-*Pass test:* you can build a small data frame and extract a column and a subset of rows.
 
 ## Connections
 - **Builds on:** [[Vectors in R]]

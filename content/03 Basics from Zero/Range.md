@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "The range is the distance from the smallest value to the largest, the full stretch the data cover."
 aliases:
   - "Minimum and maximum"
   - "Data range"
@@ -11,35 +12,12 @@ status: seedling
 
 # Range
 
-**In one line:** the range is the distance from the smallest value to the largest, the full stretch the data cover.
+Think of the coldest and warmest days of the year. "From −5 to 35 degrees" tells you the extremes you must be ready for, though not what a typical day is like. The **range** of a dataset is the distance from its smallest value (the *minimum*) to its largest (the *maximum*), the full stretch the data cover. People report it either as one number, maximum minus minimum, or as the pair "from 5 to 64". Note that R's `range()` returns the pair, not the difference.
 
-> [!info] Before this, it helps to know
-> [[Observation]] (a measured value) · [[Variance]] (another measure of spread)
+Tree cover on 6 plots is 5, 12, 18, 20, 31 and 64 percent. The range is 64 − 5 = 59 percentage points. Drop the single plot with 64% and it falls to 26, so one plot made more than half of it. This is the range's weakness: it rests on just two observations and ignores everything in between, so one odd value sets it. It also grows with sample size, because more data means more chances to catch an extreme, just as more years of weather records can only widen the record temperatures. That is why it is a poor summary of typical spread, and why the [[Interquartile Range]] and the standard deviation exist. A wide range does not prove high variability; one stray value can stretch the range of otherwise tight data.
 
-## The everyday picture
-The coldest and warmest days of the year. "From −5 to 35 degrees" tells you the extremes you must be ready for, though not what a typical day is like.
+Yet the range is one of the most useful first checks there is. Looking at it for every variable answers two questions. Are the values even possible (a tree cover of 164% means a data-entry error)? That is step one of Zuur's protocol ([[Data Exploration Protocol]]), and the reason to look at every extreme value as a possible [[Outlier]]. And how far can the model's conclusions stretch? The range of a predictor is the fence around what you observed; a prediction for a plot with 90% tree cover, when your data stop at 64%, is a guess, called [[Extrapolation]].
 
-*Where the picture stops working:* more years of records can only widen the extremes, so a range depends on how long you looked.
-
-## Words you'll need
-- **Minimum, maximum:** the smallest and largest values.
-- **Spread:** how far apart the data are.
-- **Extrapolation:** predicting outside the range of the data ([[Extrapolation]]).
-
-## A tiny example
-Tree cover on 6 plots: 5, 12, 18, 20, 31, 64 percent.
-- Minimum 5, maximum 64.
-- Range = 64 − 5 = **59** percentage points.
-- Drop the plot with 64 and the range falls to 26. One plot made more than half of it.
-
-## Start from zero
-1. **Find the smallest and largest values.**
-2. **Subtract.** That is the range as one number. People also report it as the pair "5 to 64".
-3. **It rests on just two observations.** *Why:* everything in between is ignored, so one odd value sets it.
-4. **It grows with sample size.** More data means more chances for an extreme.
-5. **It marks the edge of what your model knows.** Predictions outside the range of a predictor are guesses.
-
-## See it
 ```mermaid
 flowchart LR
   A[min = 5] -- range = 59 --> B[max = 64]
@@ -47,10 +25,6 @@ flowchart LR
 ```
 *What to look at:* the range is the fence around what you observed.
 
-## Why it is this way
-The range is the quickest check there is: are the values even possible (a cover of 164%?), and how far can the model's conclusions stretch? It is a poor summary of typical spread because it is fragile, which is why the interquartile range and standard deviation exist.
-
-## In R
 ```r
 tree <- c(5, 12, 18, 20, 31, 64)
 range(tree)          # 5 64: R returns the two ends
@@ -59,22 +33,10 @@ diff(range(tree[tree < 64]))   # 26 without the largest plot
 ```
 Always look at `range()` or `summary()` of each variable before modeling.
 
-## In the course
-Step 1 of Zuur's protocol is hunting for impossible or extreme values ([[Data Exploration Protocol]]). The linear models lab warns against predicting beyond the observed range ([[Course Website]]).
-
-## Common confusions
-- **"range() gives one number."** In R it gives the minimum and maximum.
-- **"A wide range means high variability."** One stray value can make a wide range in otherwise tight data.
-
-## Explain it back
-- Why is the range sensitive to sample size?
-- How does the range of a predictor limit your predictions?
-
-*Pass test:* you can compute a range and explain why it is fragile.
-
 ## Connections
 - **Builds on:** [[Observation]]
 - **Leads to:** [[Interquartile Range]], [[Outlier]], [[Extrapolation]]
+- **See also:** [[Variance]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
 
 ## Flashcards

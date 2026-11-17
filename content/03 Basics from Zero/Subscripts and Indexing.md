@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "A subscript is a small label under a symbol that says which one you mean, such as y₃ for the third observation."
 aliases:
   - "Subscript"
   - "Index notation"
@@ -12,46 +13,18 @@ status: seedling
 
 # Subscripts and Indexing
 
-**In one line:** a subscript is a small label under a symbol that says which one you mean, such as y₃ for the third observation.
+Think of house numbers on a street. "The house" could be any of them, but "house 7" is one exact building. A **subscript** is the house number for a measurement: a small lowered label that says which one you mean. If you weigh 4 voles and get 21, 25, 19 and 23 g, you can write y₁ = 21, y₂ = 25, y₃ = 19 and y₄ = 23. The letter that stands for "whichever one" is called the *index*, usually i, j, k or t. So yᵢ, read "y sub i", means "the response in row i", and "yᵢ for i = 1 to 4" means all four voles in turn.
 
-> [!info] Before this, it helps to know
-> [[Observation]] (one row of data) · [[Greek Letters and Notation]] (reading symbols aloud)
+The point of an index is that one short line can speak about every row at once. Writing yᵢ = a + b·xᵢ says the same rule holds for observation 1, observation 2 and all the rest, without writing it out 100 times. Data often need more than one label, just as an address needs a street as well as a house number. If voles 1 and 2 come from site A and voles 3 and 4 from site B, a second index names the group: yᵢⱼ, read "y sub i j", is observation i inside group j. Parameters can carry subscripts too: αⱼ means "the intercept for group j", one value per group. In R, square brackets do the same job: `y[3]` is y₃, and `y[site == "B"]` picks out every vole from site B ([[Indexing in R]]).
 
-## The everyday picture
-House numbers on a street. "House" alone could be any of them. "House 7" is one exact building. A subscript is the house number for a measurement.
+Reading subscripts tells you the structure of a model at a glance. Anything with an i varies from observation to observation, anything with a j varies from group to group, and anything with no subscript at all is one value shared by everyone. In yᵢⱼ = αⱼ + β·xᵢⱼ, each group has its own intercept αⱼ but all groups share one slope β. That is exactly a [[Random Intercept]] model, and this notation runs through the mixed-model and hierarchical readings ([[Hobbs and Hooten 2015 Ch6]], [[Harrison et al. 2018]]). Two common slips: i is not a particular number but a placeholder for any row, and a symbol with no subscript is not a mistake but a deliberate statement that the value is shared. Subscripts pair naturally with [[Summation Notation]], which adds up yᵢ over all i.
 
-*Where the picture stops working:* houses have one number. Data often need two or more, such as plot and year.
-
-## Words you'll need
-- **Subscript:** the small lowered label, as in yᵢ.
-- **Index:** the letter that stands for "whichever one", usually i, j, k or t.
-- **yᵢ:** read "y sub i", the response for observation i.
-- **yᵢⱼ:** read "y sub i j", observation i inside group j.
-
-## A tiny example
-Masses of 4 voles: 21, 25, 19, 23 g.
-- y₁ = 21, y₂ = 25, y₃ = 19, y₄ = 23.
-- "yᵢ for i = 1 to 4" means all four in turn.
-- If voles 1 and 2 are from site A and 3 and 4 from site B, then y₂,A = 25: vole 2 at site A.
-
-## Start from zero
-1. **Give every observation a number.** Row 1, row 2 and so on.
-2. **Let a letter stand for any row.** yᵢ means "the y in row i".
-3. **Now one line covers all rows.** *Why:* writing yᵢ = a + b·xᵢ says the same rule holds for every observation without writing it 100 times.
-4. **Add a second index for groups.** yᵢⱼ: observation i in group j. Mixed models live on this notation.
-5. **Parameters can have subscripts too.** αⱼ is "the intercept for group j".
-
-## See it
 ```mermaid
 flowchart LR
   A[y] --> B[y_i<br/>which observation] --> C[y_ij<br/>which observation<br/>in which group]
 ```
 *What to look at:* each added subscript answers one more "which one?".
 
-## Why it is this way
-Models are rules that apply to every row. Subscripts let one short equation speak about all rows, and they show at a glance what varies by observation, what varies by group, and what is shared by everything (no subscript at all).
-
-## In R
 ```r
 y <- c(21, 25, 19, 23)
 y[3]                         # 19: square brackets are R's subscripts
@@ -60,19 +33,6 @@ y[site == "B"]               # 19 23: all observations in group B
 for (i in 1:4) cat("y", i, "=", y[i], "\n")   # i runs over the rows
 ```
 `y[i]` in R is yᵢ on paper.
-
-## In the course
-Hobbs and Hooten write hierarchical models with yᵢⱼ throughout ([[Hobbs and Hooten 2015 Ch6]]). Harrison and colleagues use the same notation for random effects ([[Harrison et al. 2018]]).
-
-## Common confusions
-- **"i is a specific number."** It is a placeholder for any row.
-- **"A symbol with no subscript is a mistake."** No subscript means the same value for everyone, such as a shared slope β.
-
-## Explain it back
-- Read y₅ and yᵢⱼ aloud and say what each means.
-- In yᵢⱼ = αⱼ + βxᵢⱼ, what differs between groups and what is shared?
-
-*Pass test:* you can read a subscripted equation and say what varies at each level.
 
 ## Connections
 - **Builds on:** [[Greek Letters and Notation]], [[Observation]]

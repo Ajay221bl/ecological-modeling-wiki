@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "Brms is an R package that fits Bayesian regression models with Stan while letting you write them in the familiar formula syntax of `lm` and `lmer`."
 aliases:
   - "brms package"
   - "Bayesian Regression Models using Stan"
@@ -11,25 +12,12 @@ status: seedling
 
 # brms
 
-**In one line:** brms is an R package that fits Bayesian regression models with Stan while letting you write them in the familiar formula syntax of `lm` and `lmer`.
+Stan is a powerful, demanding engine, and **brms** is an automatic gearbox that lets you drive it with the pedals you already know. It is an R package that fits Bayesian regression models with [[Stan]] while letting you write them in the formula syntax of `lm` and `lmer` ([[Model Formula Syntax]], [[Bayesian Inference]]). You write `brm(y ~ x + (1 | site), data = d, family = poisson())`, and brms translates that into Stan code, compiles it, runs the sampler and returns a fitted object ([[brm()]]).
 
-> [!info] Before this, it helps to know
-> [[Model Formula Syntax]] (how models are written) · [[Stan]] (the engine underneath) · [[Bayesian Inference]] (what it does)
+The formula language is lme4's, with extensions: smooths `s()`, distributional models with a formula for σ, zero inflation, missing data `mi()` and nonlinear formulas. Families include gaussian, poisson, negbinomial, bernoulli, binomial, Beta, Gamma, zero-inflated and hurdle versions, ordinal and more. `get_prior()` lists the priors that can be set and `prior()` sets them ([[Setting Priors in brms]]). After fitting you use `summary()`, `plot()`, `pp_check()` ([[pp_check()]]), `conditional_effects()`, `posterior_predict()`, `loo()` and `bayes_R2()`, and [[tidybayes]] for plots of draws. The code below, not run in the wiki build because it needs Stan, is the standard workflow: a negative binomial model with a random site intercept and weakly informative priors, followed by summary, trace plots, a posterior predictive check and effect plots.
 
-## The everyday picture
-An automatic gearbox for a racing engine. Stan is the engine, powerful and demanding. brms lets you drive it with the pedals you already know.
+The cost is that compilation takes a minute or so per new model and sampling is slower than `glmer`; the [[cmdstanr Backend]] can speed it up. `stancode(fit)` shows the generated program, a good bridge to writing Stan yourself. brms is the main Bayesian tool in the labs from October on ([[Course Website]]). It is not a different statistical method from Stan, only an interface; the model and sampler are Stan's. And default priors are not always fine: coefficients get flat priors by default, so set your own.
 
-## Start from zero
-1. **You write:** `brm(y ~ x + (1 | site), data = d, family = poisson())`.
-2. **brms translates that into Stan code,** compiles it, runs the sampler and returns a fitted object.
-3. **Same formula language as lme4,** with extensions: smooths `s()`, distributional models (a formula for σ), zero inflation, missing data `mi()`, nonlinear formulas.
-4. **Many families:** gaussian, poisson, negbinomial, bernoulli, binomial, Beta, Gamma, zero-inflated and hurdle versions, ordinal and more.
-5. **Priors:** `get_prior()` lists what can be set. `prior()` sets them.
-6. **After fitting:** `summary()`, `plot()`, `pp_check()`, `conditional_effects()`, `posterior_predict()`, `loo()`, `bayes_R2()`.
-7. **Cost:** compilation takes a minute or so per new model, and sampling is slower than `glmer`.
-8. **You can see the generated program** with `stancode(fit)`, a good bridge to writing Stan yourself.
-
-## In R
 ```r
 # norun (needs Stan; this is the standard workflow)
 library(brms)
@@ -38,18 +26,6 @@ fit <- brm(count ~ tree + (1 | site), data = d, family = negbinomial(),
            chains = 4, cores = 4, iter = 2000, seed = 1)
 summary(fit); plot(fit); pp_check(fit, ndraws = 100); conditional_effects(fit)
 ```
-
-## In the course
-The main Bayesian tool in the labs from October on ([[Course Website]]).
-
-## Common confusions
-- **"brms is a different statistical method from Stan."** It is an interface. The model and sampler are Stan's.
-- **"Default priors are always fine."** Coefficients get flat priors by default. Set your own.
-
-## Explain it back
-- What does brms do between your formula and the results?
-
-*Pass test:* you can fit a model with brms and list the follow-up functions.
 
 ## Connections
 - **Builds on:** [[Model Formula Syntax]], [[Stan]]

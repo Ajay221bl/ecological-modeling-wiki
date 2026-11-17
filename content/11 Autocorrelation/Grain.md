@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "Grain is the size of the smallest unit of observation in a study, such as a 1 m² quadrat or a 50 km grid cell."
 aliases:
   - "Resolution"
   - "Spatial grain"
@@ -12,28 +13,11 @@ status: seedling
 
 # Grain
 
-**In one line:** grain is the size of the smallest unit of observation in a study, such as a 1 m² quadrat or a 50 km grid cell.
+**Grain** is the size of the smallest unit of observation in a study, such as a 1 m² quadrat or a 50 km grid cell ([[Spatial Scale]]). Fine grain means small units and local detail; coarse grain means large units that average out local variation. Diniz-Filho et al. used grid cells as the grain for continental bird richness ([[Diniz-Filho et al. 2003]]).
 
-> [!info] Before this, it helps to know
-> [[Spatial Scale]] (its parent concept)
+Changing the grain changes variances and correlations, which is called the modifiable areal unit problem. Autocorrelation at distances below the grain can't be seen and shows up as [[Nugget]] variance.
 
-## Start from zero
-1. **Fine grain:** small units, local detail.
-2. **Coarse grain:** large units, averaging out local variation.
-3. **Changing grain changes variance and correlations** (the modifiable areal unit problem).
-4. **Autocorrelation at distances below the grain can't be seen.** It shows up as nugget variance.
-5. **Diniz-Filho et al. used grid cells as the grain** for continental bird richness.
-
-## In the course
-[[Diniz-Filho et al. 2003]].
-
-## Common confusions
-- **"Coarse grain is always worse."** It suits broad-scale questions.
-
-## Explain it back
-- What happens to local variation at coarse grain?
-
-*Pass test:* you can identify grain in a study.
+Grain is chosen separately from [[Extent]]. Coarse grain is not always worse; it suits broad-scale questions.
 
 ## Connections
 - **Builds on:** [[Spatial Scale]]

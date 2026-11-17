@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "A spike-and-slab prior is a mixture of a narrow \"spike\" at zero and a wide \"slab\", expressing the belief that each coefficient is either essentially zero or meaningfully nonzero."
 aliases:
   - "Spike and slab"
   - "Spike-and-slab"
@@ -12,39 +13,16 @@ status: seedling
 
 # Spike-and-slab Prior
 
-**In one line:** a spike-and-slab prior is a mixture of a narrow "spike" at zero and a wide "slab", expressing the belief that each coefficient is either essentially zero or meaningfully nonzero.
+A switch with a dimmer: most predictors are expected to be off, and a few to be on at whatever brightness the data say. A **spike-and-slab prior** is a [[Mixture Distribution]] of a narrow "spike" at zero and a wide "slab", βⱼ ~ (1 − π) × Spike + π × Slab, expressing the belief that each coefficient is either essentially zero or meaningfully nonzero ([[Prior Distribution]]). The spike is a point mass at 0 or a Normal(0, very small sd), the slab a Normal(0, large enough sd), and π is the prior probability that a predictor matters.
 
-> [!info] Before this, it helps to know
-> [[Mixture Distribution]] (its form) · [[Prior Distribution]] (its role) · [[Indicator Variable Selection]] (its discrete cousin)
+The posterior mixes too, giving the probability that each βⱼ came from the slab, like the switches of [[Indicator Variable Selection]]. With a continuous spike it can be sampled with HMC. In the code below, with π = 0.2 and a slab of sd 1, 81% of prior draws are within 0.05 of zero, while the 90th and 99th percentiles of |β| are 0.64 and 1.89.
 
-## The everyday picture
-A switch with a dimmer. Most predictors are expected to be off (the spike). A few are expected to be on, at whatever brightness the data say (the slab).
+Continuous shrinkage priors such as the horseshoe and regularised horseshoe are smooth relatives that shrink small effects hard and leave big ones alone; brms offers `horseshoe()` ([[Regularization]], [[Weakly Informative Prior]], [[Hobbs and Hooten 2015 Ch9]]). It is not the same as the lasso: both shrink, but spike-and-slab gives inclusion probabilities.
 
-## Start from zero
-1. **βⱼ ~ (1 − π) × Spike + π × Slab.**
-2. **Spike:** a point mass at 0, or Normal(0, very small sd).
-3. **Slab:** Normal(0, large enough sd).
-4. **π:** the prior probability that a predictor matters.
-5. **The posterior mixes too:** you get the probability that each βⱼ came from the slab.
-6. **With a continuous spike** it can be sampled with HMC.
-7. **Continuous shrinkage priors** (horseshoe, regularised horseshoe) are smooth relatives that shrink small effects hard and leave big ones alone. brms offers `horseshoe()`.
-
-## In R
 ```r
 set.seed(11); pi_slab <- 0.2; slab <- rbinom(10000, 1, pi_slab); b <- ifelse(slab == 1, rnorm(10000, 0, 1), rnorm(10000, 0, 0.01))
 round(c(prop_near_zero = mean(abs(b) < 0.05), quantile(abs(b), c(0.5, 0.9, 0.99))), 2)
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch9]] in connection with regularization and model selection.
-
-## Common confusions
-- **"It is the same as lasso."** Both shrink, but spike-and-slab gives inclusion probabilities.
-
-## Explain it back
-- What do the spike and the slab represent?
-
-*Pass test:* you can describe the prior and its output.
 
 ## Connections
 - **Builds on:** [[Mixture Distribution]], [[Prior Distribution]]

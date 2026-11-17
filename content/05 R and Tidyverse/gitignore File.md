@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "`.gitignore` is a plain text file listing the files and folders Git should not track."
 aliases:
   - ".gitignore"
   - "Ignoring files"
@@ -11,40 +12,11 @@ status: seedling
 
 # gitignore File
 
-**In one line:** `.gitignore` is a plain text file listing the files and folders Git should not track.
+A "do not photograph" list handed to the camera operator keeps scratch paper, private letters and bulky furniture out of every picture. **`.gitignore`** is a plain text file, placed in a repository's top folder, that lists the files and folders [[Git]] should not track. Each line is a pattern: `*.RData` ignores every file ending in `.RData`, and `figures/` ignores a whole folder. A typical file for an R project lists `.Rproj.user/`, `.Rhistory`, `.RData`, `*.rds`, `results/cache/` and `.DS_Store`.
 
-> [!info] Before this, it helps to know
-> [[Git]] (what reads it) · [[Project Folder Structure]] (what you are sorting)
+Three kinds of thing belong on the list. First, anything that can be regenerated from the code, such as knitted output, figures and cached model fits ([[Caching Long Runs]]). Second, anything private or huge, such as passwords or raw data too big or too sensitive to share. Third, machine clutter, such as RStudio's history and settings files. The payoff is a history that stays small and readable, and secrets that stay off the internet ([[Project Folder Structure]]).
 
-## The everyday picture
-A "do not photograph" list handed to the camera operator. Scratch paper, private letters and bulky furniture are left out of every picture.
-
-## A tiny example
-A typical file for an R project:
-```
-.Rproj.user/
-.Rhistory
-.RData
-*.rds
-results/cache/
-.DS_Store
-```
-
-## Start from zero
-1. **Create a file named `.gitignore` in the repository's top folder.**
-2. **Each line is a pattern.** `*.RData` ignores all such files, `figures/` a whole folder.
-3. **Ignore what can be regenerated:** knitted output, cached model fits, figures.
-4. **Ignore what is private or huge:** passwords, raw data too big or too sensitive to share.
-5. **Ignore machine clutter:** `.Rhistory`, `.Rproj.user/`, `.DS_Store`.
-6. **Why:** history stays small and readable, and secrets stay off the internet. Git keeps everything ever committed, so a password committed once is exposed forever.
-
-## Common confusions
-- **"Adding a file to .gitignore removes it from history."** It only stops future tracking.
-
-## Explain it back
-- Name three kinds of file to ignore and why.
-
-*Pass test:* you can write a sensible `.gitignore` for an analysis project.
+The second reason is serious because Git keeps everything ever committed: a password committed once remains in the history even after the file is deleted. Adding a file to `.gitignore` only stops *future* tracking; it does not remove the file from past commits. So set up the list at the start of a project, before the first commit.
 
 ## Connections
 - **Builds on:** [[Git]]

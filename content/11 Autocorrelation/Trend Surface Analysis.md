@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "Trend surface analysis adds a polynomial of the x and y coordinates as predictors, capturing broad spatial gradients in the response."
 aliases:
   - "Trend surface"
   - "Polynomial of coordinates"
@@ -12,35 +13,16 @@ status: seedling
 
 # Trend Surface Analysis
 
-**In one line:** trend surface analysis adds a polynomial of the x and y coordinates as predictors, capturing broad spatial gradients in the response.
+**Trend surface analysis** adds a polynomial of the x and y coordinates as predictors, capturing broad spatial gradients in the response ([[Polynomial|Polynomial Regression]]). A first-order surface, y ~ x + y, is a tilted plane; second order adds x², y² and x·y for a dome or saddle; third order adds more. It captures large-scale trends, not local patches ([[Spatial Scale]]), and removing a trend can make the remaining residuals more stationary ([[Stationarity]]).
 
-> [!info] Before this, it helps to know
-> [[Polynomial|Polynomial Regression]] (the method) · [[Spatial Scale]] (it captures broad scales)
+Diniz-Filho et al. list trend surfaces and partial regression as ways to account for macro-scale structure, shifting the explanation toward local scales ([[Diniz-Filho et al. 2003]], [[Variance Partitioning]]). In the code below richness that peaks in the middle of the north-south axis is fitted with a plane (R² = 0.47) and a quadratic surface (R² = 0.55), and the quadratic is better by 26 AIC units.
 
-## Start from zero
-1. **First order:** y ~ x + y (a tilted plane). Second order adds x², y² and x·y (a dome or saddle). Third order more.
-2. **Captures large-scale trends,** not local patches.
-3. **Removing a trend** can make the remaining residuals more stationary.
-4. **Diniz-Filho et al.** list trend surfaces and partial regression as ways to account for macro-scale structure, shifting the explanation toward local scales.
-5. **Smooths of coordinates in a GAM** (`s(east, north)`) are a flexible modern replacement.
-6. **High-order polynomials misbehave at the edges.**
+Smooths of coordinates in a GAM, `s(east, north)`, are a flexible modern replacement ([[Spatial Smooths]]), and high-order polynomials misbehave at the edges. A trend surface does not remove all spatial autocorrelation, only the broad part; local patches remain.
 
-## In R
 ```r
 set.seed(6); d <- data.frame(e = runif(200), n = runif(200)); d$rich <- 20 + 15 * d$n - 12 * d$n^2 + 5 * d$e + rnorm(200, 0, 2)
 m1 <- lm(rich ~ e + n, d); m2 <- lm(rich ~ poly(e, n, degree = 2), d); round(c(R2_plane = summary(m1)$r.squared, R2_quadratic = summary(m2)$r.squared, dAIC = AIC(m1) - AIC(m2)), 2)
 ```
-
-## In the course
-[[Diniz-Filho et al. 2003]].
-
-## Common confusions
-- **"A trend surface removes all spatial autocorrelation."** Only the broad part. Local patches remain.
-
-## Explain it back
-- What does a second-order trend surface contain?
-
-*Pass test:* you can fit and interpret a trend surface.
 
 ## Connections
 - **Builds on:** [[Polynomial|Polynomial Regression]], [[Spatial Scale]]

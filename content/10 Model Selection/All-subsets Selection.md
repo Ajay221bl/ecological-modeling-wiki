@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "All-subsets selection fits every combination of a list of predictors and ranks them all, which is thorough in a mechanical sense and is a form of data dredging when used without hypotheses."
 aliases:
   - "All possible subsets"
   - "Best subsets"
@@ -13,19 +14,12 @@ status: seedling
 
 # All-subsets Selection
 
-**In one line:** all-subsets selection fits every combination of a list of predictors and ranks them all, which is thorough in a mechanical sense and is a form of data dredging when used without hypotheses.
+**All-subsets selection** fits every combination of a list of predictors and ranks them all. With p predictors there are 2^p models: 10 predictors give 1,024 and 20 give over a million. `MuMIn::dredge()` does this from a global model. It is thorough in a mechanical sense and a form of [[Data Dredging]] when used without hypotheses, because the top model among thousands is often a fluke ([[Candidate Model Set]]).
 
-> [!info] Before this, it helps to know
-> [[Candidate Model Set]] (what it replaces) · [[Data Dredging]] (what it risks)
+In the code below, six noise predictors give 64 models; in this dataset the empty model wins, but across 100 noise-only datasets the winner contains at least one predictor 73% of the time.
 
-## Start from zero
-1. **With p predictors there are 2^p models.** 10 predictors give 1,024. 20 give over a million.
-2. **`MuMIn::dredge()` does this** from a global model.
-3. **The top model among thousands is often a fluke.**
-4. **Defensible uses:** a small set of predictors that are all biologically motivated, to compute balanced summed weights or full model averages. Or prediction validated on new data.
-5. **Not defensible:** throwing in every column and reporting the winner as a finding.
+Defensible uses are a small set of predictors that are all biologically motivated, to compute balanced summed weights or full model averages ([[Balanced Model Set]], [[Model Averaging]]), or prediction validated on new data. Throwing in every column and reporting the winner as a finding is not defensible, and the same objection applies to [[Stepwise Selection]]. Testing all subsets is not objective; it replaces thought with search.
 
-## In R
 ```r
 2^c(3, 5, 10, 20)
 set.seed(11); d <- as.data.frame(matrix(rnorm(40 * 6), 40)); d$y <- rnorm(40); vars <- names(d)[1:6]
@@ -35,14 +29,6 @@ best_size <- sapply(1:100, function(s) { set.seed(s); d <- as.data.frame(matrix(
 # With MuMIn installed (not available in the wiki's build environment):
 # options(na.action = "na.fail"); MuMIn::dredge(lm(y ~ ., data = d))
 ```
-
-## Common confusions
-- **"Testing all subsets is objective."** It replaces thought with search.
-
-## Explain it back
-- How many models do 8 predictors give?
-
-*Pass test:* you can say when all-subsets is and isn't defensible.
 
 ## Connections
 - **Builds on:** [[Candidate Model Set]], [[Data Dredging]]

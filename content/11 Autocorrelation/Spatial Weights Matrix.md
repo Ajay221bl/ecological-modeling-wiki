@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "A spatial weights matrix records which pairs of sites count as neighbours, and how strongly, so that statistics like Moran's I know which pairs to compare."
 aliases:
   - "W matrix"
   - "Weights matrix"
@@ -15,34 +16,15 @@ status: seedling
 
 # Spatial Weights Matrix
 
-**In one line:** a spatial weights matrix records which pairs of sites count as neighbours, and how strongly, so that statistics like Moran's I know which pairs to compare.
+A **spatial weights matrix** records which pairs of sites count as neighbours, and how strongly, so that statistics like Moran's I know which pairs to compare ([[Matrix]], [[Spatial Autocorrelation]]). Entry wᵢⱼ is positive if sites i and j are neighbours and 0 otherwise, with 0 on the diagonal. Neighbours can be defined as sites within a distance band, the k nearest, polygons sharing a border, or with weights that decline with distance such as 1/d. Row-standardised weights make each row sum to 1, so each site's neighbours average out.
 
-> [!info] Before this, it helps to know
-> [[Matrix]] (its form) · [[Spatial Autocorrelation]] (what it helps measure)
+In spdep, `dnearneigh()` or `knearneigh()` makes neighbour lists (`nb`) and `nb2listw()` turns them into weights. The code below builds a binary matrix for 8 random sites, each row marking that site's 2 nearest neighbours. Nearness is not always mutual, so the matrix need not be symmetric: site 5 counts site 7 as a neighbour, but site 7's two nearest are sites 2 and 8.
 
-## Start from zero
-1. **Entry wᵢⱼ > 0 if sites i and j are neighbours,** 0 otherwise. The diagonal is 0.
-2. **Ways to define neighbours:** within a distance band, the k nearest, sharing a border (polygons), or weights that decline with distance (1/d).
-3. **Row-standardised weights** make each row sum to 1, so each site's neighbours average out.
-4. **In spdep:** `dnearneigh()` or `knearneigh()` make neighbour lists (`nb`), `nb2listw()` turns them into weights.
-5. **Results depend on the choice.** Try more than one definition, ideally one that matches the process's scale.
-6. **Distance classes in a correlogram** each use their own binary W (Diniz-Filho et al.).
+Results depend on the choice, so try more than one definition, ideally one matching the process's scale. In a correlogram each distance class uses its own binary W, as in Diniz-Filho et al. ([[Distance Classes]], [[Moran's I]], [[Diniz-Filho et al. 2003]]); the same matrices define [[Spatial Autoregressive Models]]. There is no one correct W: it is a modelling choice.
 
-## In R
 ```r
 library(spdep); set.seed(10); xy <- cbind(runif(8), runif(8)); nb <- knn2nb(knearneigh(xy, k = 2)); W <- nb2mat(nb, style = "B"); W
 ```
-
-## In the course
-Diniz-Filho et al. define Moran's I with a binary W for each distance class ([[Diniz-Filho et al. 2003]]).
-
-## Common confusions
-- **"There is one correct W."** It is a modelling choice.
-
-## Explain it back
-- Name three ways to define neighbours.
-
-*Pass test:* you can build a weights object in spdep.
 
 ## Connections
 - **Builds on:** [[Matrix]], [[Spatial Autocorrelation]]

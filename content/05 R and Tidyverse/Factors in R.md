@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "A factor is R's way of storing a categorical variable: each value is one of a fixed list of allowed categories called levels."
 aliases:
   - "factor()"
   - "Levels of a factor"
@@ -11,23 +12,12 @@ status: seedling
 
 # Factors in R
 
-**In one line:** a factor is R's way of storing a categorical variable: each value is one of a fixed list of allowed categories called levels.
+A multiple-choice form only lets you tick one of the printed boxes, and the list of boxes exists even if nobody ticks one of them. A **factor** is R's way of storing a [[Categorical Variable]] the same way: each value must be one of a fixed list of allowed categories, called *levels*. `factor(x)` finds the distinct values in x and makes them the levels, sorted alphabetically by default. In the code below, `factor(burn)` gives the levels "burned" then "unburned".
 
-> [!info] Before this, it helps to know
-> [[Categorical Variable]] (named groups) · [[Data Types in R]] (kinds of values)
+Level order matters more than it looks, because in a model the first level becomes the *baseline*, and every other level is compared against it ([[Reference Level]], [[Dummy Coding]]). With alphabetical order, "burned" would be the baseline, which is backwards for a burn experiment. Setting `factor(burn, levels = c("unburned", "burned"))` puts the control first, so the model's coefficient, named `burnburned`, reads as "burned compared with unburned". The order also sets the order of groups on plots. Factors are also what makes R treat a variable as categories at all: a site coded 1, 2, 3 as numbers would be fitted as a slope, as if site 3 were "more" than site 1, while as a factor each site gets its own effect.
 
-## The everyday picture
-A multiple-choice form. The answer must be one of the printed boxes. The list of boxes exists even if nobody ticks one of them. Levels are the printed boxes.
+Two traps. `as.numeric()` on a factor returns the level *positions*, not the original numbers, so a factor of years 2019, 2021 becomes 1, 2; use `as.numeric(as.character(f))` instead. And after filtering, levels with no remaining data linger until `droplevels()` removes them. Grouping variables for random effects must be factors ([[Grouping Factor]]), and the GLMM lab later changes how a factor's levels are compared ([[Sum-to-zero Contrasts]], [[Data Types in R]]).
 
-## Start from zero
-1. **`factor(x)` finds the distinct values and makes them levels.**
-2. **Levels are sorted alphabetically by default.**
-3. **The first level is the baseline in models.** *Why:* R compares every other level against it ([[Reference Level]]).
-4. **So set the order on purpose.** `factor(x, levels = c(...))` or `relevel()`.
-5. **Models need factors for categories.** A site coded 1, 2, 3 as numbers would be fitted as a slope. As a factor it gets one effect per site.
-6. **Unused levels linger** after filtering. `droplevels()` removes them.
-
-## In R
 ```r
 burn <- c("unburned", "burned", "burned", "unburned", "burned")
 f <- factor(burn); levels(f)                  # "burned" "unburned": alphabetical
@@ -37,19 +27,6 @@ site <- c(1, 2, 3, 1, 2, 3)
 class(site); class(factor(site))              # numeric vs factor: very different in a model
 ```
 With `f2`, a model coefficient named `burnburned` is "burned compared with unburned".
-
-## In the course
-The GLMM lab changes contrasts for the factor sex ([[Sum-to-zero Contrasts]]). Grouping variables for random effects must be factors ([[Grouping Factor]]).
-
-## Common confusions
-- **"as.numeric(factor) gives back the numbers."** It gives level positions. Use `as.numeric(as.character(f))`.
-- **"Level order doesn't matter."** It sets the reference level and the order on plots.
-
-## Explain it back
-- Why does it matter which level comes first?
-- What goes wrong if site number is left numeric in a model?
-
-*Pass test:* you can make a factor with a chosen reference level.
 
 ## Connections
 - **Builds on:** [[Categorical Variable]], [[Data Types in R]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "The total sum of squares is Σ(yᵢ − ȳ)², the total variation of the response around its mean before any predictor is used."
 aliases:
   - "TSS"
   - "SST"
@@ -13,36 +14,16 @@ status: seedling
 
 # Total Sum of Squares
 
-**In one line:** the total sum of squares is Σ(yᵢ − ȳ)², the total variation of the response around its mean before any predictor is used.
+The **total sum of squares** (TSS) is Σ(yᵢ − ȳ)², the total variation of the response around its mean before any predictor is used ([[Sum of Squares]], [[Mean]]). For y = 3, 5 and 7, with mean 5, TSS = 4 + 0 + 4 = 8. It is the RSS of the intercept-only model, and its GLM counterpart is the null deviance ([[Deviance]]).
 
-> [!info] Before this, it helps to know
-> [[Sum of Squares]] · [[Mean]]
+For least squares with an intercept, TSS = explained SS + RSS, and R² = 1 − RSS / TSS is the share of TSS explained ([[Residual Sum of Squares]], [[R-squared]]). A model with RSS = 2 on the data above explains 6 of 8, so R² = 0.75. In the code below `mtcars$mpg` has TSS 1,126.0 and `lm(mpg ~ wt)` leaves RSS 278.3, so R² = 0.753, matching `summary(m)$r.squared`.
 
-## A tiny example
-y = 3, 5, 7, mean 5: TSS = 4 + 0 + 4 = 8. A model with RSS = 2 explains 6 of 8, so R² = 0.75.
+It belongs to the linear models unit ([[Course Website]]). TSS does not depend on the model; it depends only on the response.
 
-## Start from zero
-1. **It is the RSS of the intercept-only model.**
-2. **TSS = explained SS + RSS** for least squares with an intercept.
-3. **R² = 1 − RSS / TSS** is the share of TSS explained.
-4. **Null deviance** is its GLM counterpart.
-
-## In R
 ```r
 m <- lm(mpg ~ wt, data = mtcars); TSS <- sum((mtcars$mpg - mean(mtcars$mpg))^2); RSS <- sum(resid(m)^2)
 c(TSS = TSS, RSS = RSS, R2 = 1 - RSS / TSS, R2_lm = summary(m)$r.squared)
 ```
-
-## In the course
-Linear models unit ([[Course Website]]).
-
-## Common confusions
-- **"TSS depends on the model."** It depends only on the response.
-
-## Explain it back
-- What model has RSS equal to TSS?
-
-*Pass test:* you can compute TSS and R².
 
 ## Connections
 - **Builds on:** [[Sum of Squares]], [[Mean]]

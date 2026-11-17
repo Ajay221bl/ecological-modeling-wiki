@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "The slope is the change in the expected response for a one-unit increase in a predictor."
 aliases:
   - "β₁"
   - "Regression slope"
@@ -11,41 +12,18 @@ status: seedling
 
 # Slope
 
-**In one line:** the slope is the change in the expected response for a one-unit increase in a predictor.
+On a hill path, a slope of 0.1 means you climb 10 cm for each metre forward, and a negative slope means you descend. In a model, the **slope** is the change in the expected response for a one-unit increase in a predictor ([[Rate of Change]], [[Linear Function]]). Its units are units of y per unit of x, which should always be stated, and its sign gives the direction of the relationship. A slope of −0.17 species per percent tree cover means that of two plots differing by 10% cover, the more wooded one is expected to hold 1.7 fewer species.
 
-> [!info] Before this, it helps to know
-> [[Rate of Change]] (the general idea) · [[Linear Function]] (where it appears)
+The size of a slope depends on the units of x: per metre or per kilometre changes the number by a factor of 1,000 without changing the relationship. So a slope of 0.002 per metre is 2 per kilometre. In the code below, the slope per 10% cover is −1.7 rather than −0.17 ([[Scaling Predictors]]). The slope can also be computed directly as cov(x, y) / var(x), the correlation rescaled into real units, which gives the same number as `lm()`.
 
-## The everyday picture
-The steepness of a hill path. A slope of 0.1 means you climb 10 cm for each metre forward. A negative slope means you descend.
+The slope is usually the target of the study, because it is the estimated [[Effect Size]], and its uncertainty, not just its sign, is the result ([[Regression Coefficient]]). Read it as a comparison, "plots one unit higher in x average β₁ more in y". Two confusions: a small slope does not mean a weak effect, since x may simply be in small units; and the slope does not say what happens if you change x unless you make causal assumptions, since safely it only compares units that differ in x. Letting the slope vary between groups gives a [[Random Slope]].
 
-## A tiny example
-Slope −0.17 species per percent tree cover. Compare two plots that differ by 10% cover: the more wooded one is expected to hold 1.7 fewer species.
-
-## Start from zero
-1. **Units:** units of y per unit of x. Always state them.
-2. **Sign:** direction of the relationship.
-3. **Size:** depends on the units of x. Per metre or per kilometre changes the number by a factor of 1000 without changing the relationship.
-4. **Interpret as a comparison:** "plots one unit higher in x average β₁ more in y".
-5. **Slope = cov(x, y) / var(x).** It is the correlation rescaled into real units.
-6. **Why it is usually the target of the study:** the slope is the estimated effect size. Its uncertainty, not just its sign, is the result.
-
-## In R
 ```r
 d <- data.frame(tree = c(0, 10, 20, 30, 40), rich = c(12, 11, 9, 8, 5))
 coef(lm(rich ~ tree, d))[2]
 cov(d$tree, d$rich) / var(d$tree)                  # the same number
 coef(lm(rich ~ I(tree / 10), d))[2]                # per 10% cover: -1.7
 ```
-
-## Common confusions
-- **"A small slope means a weak effect."** It may just mean x is in small units.
-- **"The slope says what happens if I change x."** Only under causal assumptions. Safely, it compares units that differ in x.
-
-## Explain it back
-- Convert a slope of 0.002 per metre to per kilometre.
-
-*Pass test:* you can state a slope with units and as a comparison.
 
 ## Connections
 - **Builds on:** [[Rate of Change]], [[Linear Function]]

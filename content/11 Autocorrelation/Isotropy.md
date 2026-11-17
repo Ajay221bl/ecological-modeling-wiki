@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "Spatial correlation is isotropic when it depends only on the distance between two points, not on their direction."
 aliases:
   - "Isotropic"
   - "Anisotropy"
@@ -12,28 +13,11 @@ status: seedling
 
 # Isotropy
 
-**In one line:** spatial correlation is isotropic when it depends only on the distance between two points, not on their direction.
+Spatial correlation is **isotropic** when it depends only on the distance between two points, not their direction: two sites 1 km apart are equally correlated whether they lie north-south or east-west ([[Spatial Autocorrelation]]). It is anisotropic when correlation decays more slowly in one direction, as along a river or a prevailing wind.
 
-> [!info] Before this, it helps to know
-> [[Spatial Autocorrelation]] · [[Stationarity]] (its partner assumption)
+Standard correlation structures such as `corExp` and omnidirectional variograms assume isotropy ([[Correlation Structure]], [[Variogram]]). Check it with directional variograms, such as `variogram(..., alpha = c(0, 45, 90, 135))` in gstat. Anisotropy is a clue to directional processes such as dispersal.
 
-## Start from zero
-1. **Isotropic:** two sites 1 km apart are equally correlated whether they lie north-south or east-west.
-2. **Anisotropic:** correlation decays more slowly in one direction. Example: along a river or a prevailing wind.
-3. **Standard correlation structures (`corExp` and others) and omnidirectional variograms assume isotropy.**
-4. **Check with directional variograms** (`variogram(..., alpha = c(0, 45, 90, 135))` in gstat).
-5. **Anisotropy is a clue** to directional processes such as dispersal (McGill).
-
-## In the course
-[[Dynamic Ecology Autocorrelation Post]]. [[Zuur et al. 2009 Ch7]].
-
-## Common confusions
-- **"Isotropy is the same as stationarity."** Stationarity is about location. Isotropy is about direction.
-
-## Explain it back
-- How would you check for anisotropy?
-
-*Pass test:* you can explain both terms.
+It is discussed in the [[Dynamic Ecology Autocorrelation Post]] and [[Zuur et al. 2009 Ch7]]. Isotropy is not the same as [[Stationarity]]: stationarity is about location, isotropy about direction.
 
 ## Connections
 - **Builds on:** [[Spatial Autocorrelation]], [[Stationarity]]

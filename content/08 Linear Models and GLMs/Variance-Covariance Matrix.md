@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "A variance-covariance matrix is a square table that holds the variance of each of several quantities on its diagonal and the covariance of each pair off the diagonal."
 aliases:
   - "Covariance matrix"
   - "vcov()"
@@ -13,41 +14,18 @@ status: seedling
 
 # Variance-Covariance Matrix
 
-**In one line:** a variance-covariance matrix is a square table that holds the variance of each of several quantities on its diagonal and the covariance of each pair off the diagonal.
+A mileage chart between cities lists every pair. Now imagine one for uncertainty: the diagonal says how much each quantity wobbles alone, and each off-diagonal cell how much two of them wobble together. A **variance-covariance matrix** is that square table, holding the [[Variance]] of each of several quantities on its diagonal and the [[Covariance]] of each pair off the diagonal ([[Matrix]]). It is symmetric, since entry (i, j) equals entry (j, i). The square roots of the diagonal are standard deviations, or standard errors; divide an off-diagonal entry by the two standard deviations and you get a correlation.
 
-> [!info] Before this, it helps to know
-> [[Variance]] (diagonal) · [[Covariance]] (off-diagonal) · [[Matrix]] (the container)
+Its most common use is for model coefficients. `vcov(model)` is the covariance matrix of the estimated coefficients, and `sqrt(diag(vcov(m)))` gives their [[Standard Error|standard errors]], as the code below confirms for `lm(mpg ~ wt)`. The off-diagonals matter because a prediction combines several coefficients, so its uncertainty depends on how their errors move together: the standard error of a prediction is √(x V xᵀ), where x holds the predictor values. The code computes it by hand at weight 3 and matches `predict(..., se.fit = TRUE)`, and `cov2cor()` shows the intercept and slope estimates are strongly negatively correlated.
 
-## The everyday picture
-A mileage chart between cities, but for uncertainty. The diagonal says how much each quantity wobbles alone. Each off-diagonal cell says how much two of them wobble together.
+It turns up in two more places. In mixed models it holds the variances of random intercepts and slopes and their covariance ([[Random Slope]]). In models with correlated errors, an n × n matrix describes how every pair of observations covaries ([[Correlation Structure]]). In each case it is the covariance of a [[Multivariate Normal Distribution]] ([[Zuur et al. 2009 Ch5]], [[Course Website]]). Standard errors alone are not enough for prediction bands; without the covariances the band is wrong.
 
-## Start from zero
-1. **Square and symmetric:** entry (i, j) equals entry (j, i).
-2. **Diagonal:** variances. Their square roots are standard deviations (or standard errors).
-3. **Off-diagonal:** covariances. Divide by the two SDs to get correlations.
-4. **Use 1, coefficients:** `vcov(model)` is the covariance matrix of the estimated coefficients. `sqrt(diag(vcov(m)))` gives the standard errors.
-5. **Why the off-diagonals matter:** a prediction combines several coefficients, so its uncertainty depends on how their errors move together. SE of a prediction = √(x Vcov xᵀ).
-6. **Use 2, random effects:** the matrix of random intercept and slope variances and their covariance.
-7. **Use 3, residuals:** in models with correlated errors, the n × n matrix describing how every pair of observations covaries.
-
-## In R
 ```r
 m <- lm(mpg ~ wt, mtcars); V <- vcov(m); round(V, 3)
 sqrt(diag(V)); summary(m)$coefficients[, 2]                  # standard errors both ways
 x0 <- c(1, 3); sqrt(t(x0) %*% V %*% x0); predict(m, data.frame(wt = 3), se.fit = TRUE)$se.fit    # SE of the fitted mean at wt = 3
 round(cov2cor(V), 2)
 ```
-
-## In the course
-Used to build confidence bands by hand in the mixed-model labs ([[Course Website]]). [[Zuur et al. 2009 Ch5]] to Ch7 for random effects and correlation structures.
-
-## Common confusions
-- **"Standard errors are enough for prediction intervals."** Without the covariances the band is wrong.
-
-## Explain it back
-- What sits on the diagonal of `vcov(model)`?
-
-*Pass test:* you can get standard errors and a prediction SE from `vcov()`.
 
 ## Connections
 - **Builds on:** [[Variance]], [[Covariance]], [[Matrix]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "A bubble plot draws each residual at its location, with bubble size showing magnitude and colour showing sign, so that clusters of same-sign residuals reveal spatial autocorrelation."
 aliases:
   - "Bubble plot"
   - "Spatial residual plot"
@@ -12,34 +13,16 @@ status: seedling
 
 # Bubble Plot of Residuals
 
-**In one line:** a bubble plot draws each residual at its location, with bubble size showing magnitude and colour showing sign, so that clusters of same-sign residuals reveal spatial autocorrelation.
+A **bubble plot** draws each residual at its location, with x and y the coordinates, bubble size showing the residual's magnitude and colour or fill its sign ([[Residual|Residuals]], [[Spatial Autocorrelation]]). For a good model the signs are mixed like salt and pepper; groups of positive residuals in one region and negative in another reveal spatial autocorrelation ([[Residual Autocorrelation]]).
 
-> [!info] Before this, it helps to know
-> [[Residual|Residuals]] (what is plotted) · [[Spatial Autocorrelation]] (what it reveals)
+Zuur et al. use it before computing variograms, with `gstat::bubble()` or ggplot using `size` and `colour`. The code below builds one in ggplot for residuals with an east-west wave, plotting |residual| as size and sign as colour.
 
-## Start from zero
-1. **x and y are the coordinates.** Bubble size is |residual|. Colour or fill is the sign.
-2. **Good model:** signs mixed like salt and pepper.
-3. **Problem:** groups of positive residuals in one region and negative in another.
-4. **Zuur et al. use it** before computing variograms (`gstat::bubble()` or ggplot with `size` and `colour`).
-5. **Quick and intuitive,** but needs a formal check (variogram, Moran's I) to judge how strong the pattern is.
+It is quick and intuitive but needs a formal check, a [[Variogram]] or Moran's I, to judge how strong the pattern is; it belongs among the checks of [[Model Validation]] ([[Zuur et al. 2009 Ch7]]). Big bubbles are not the problem; clusters of the same sign are.
 
-## In R
 ```r
 library(ggplot2); set.seed(14); d <- data.frame(x = runif(80), y = runif(80)); d$r <- sin(4 * d$x) + rnorm(80, 0, 0.4)
 p <- ggplot(d, aes(x, y, size = abs(r), colour = r > 0)) + geom_point(alpha = 0.7) + labs(colour = "positive", size = "|residual|"); class(p)[1]
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch7]].
-
-## Common confusions
-- **"Big bubbles are the problem."** Clusters of the same sign are the problem.
-
-## Explain it back
-- What pattern of colours suggests spatial autocorrelation?
-
-*Pass test:* you can draw and read one.
 
 ## Connections
 - **Builds on:** [[Residual|Residuals]], [[Spatial Autocorrelation]]

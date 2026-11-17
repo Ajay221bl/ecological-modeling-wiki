@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "A colour scale is the rule that turns data values into colours, and a good one is readable by colour-blind viewers and in greyscale."
 aliases:
   - "viridis"
   - "scale_colour_"
@@ -12,23 +13,12 @@ status: seedling
 
 # Colour Scales
 
-**In one line:** a colour scale is the rule that turns data values into colours, and a good one is readable by colour-blind viewers and in greyscale.
+On a map, height shown from dark green to white is instantly readable because lightness rises with height; a legend of random colours would have to be looked up for every spot. A **colour scale** is the rule that turns data values into colours, and a good one is readable by colour-blind viewers and in greyscale ([[Aesthetics]]). A continuous variable needs a gradient that gets steadily lighter or darker ([[Continuous Data]]). A categorical variable needs a few clearly distinct hues ([[Categorical Variable]]). Values around a meaningful midpoint, such as residuals or change, need a diverging scale: two hues meeting at a neutral centre.
 
-> [!info] Before this, it helps to know
-> [[Aesthetics]] (colour mapped to a variable) · [[Categorical Variable]] and [[Continuous Data]] (which need different scales)
+viridis scales are the safe default because their lightness changes evenly, so they survive colour-blindness and black-and-white printing; rainbow scales do not. Use `scale_colour_*` for points and lines and `scale_fill_*` for areas. The code below makes one plot of each kind: a continuous viridis fill, a discrete viridis colour for cylinder count, and a diverging gradient centred on zero for deviations from mean fuel economy. A diverging scale is also how a [[Bubble Plot of Residuals]] can be coloured.
 
-## The everyday picture
-A map legend. Height shown as dark green to white is instantly readable because lightness rises with height. A legend using random colours would have to be looked up for every spot.
+More colours do not show more. Past six or seven categories people cannot tell them apart, so facet instead ([[Themes]]).
 
-## Start from zero
-1. **Mapping a variable to colour needs a scale.**
-2. **Continuous variable: a gradient** that gets steadily lighter or darker.
-3. **Categorical variable: clearly distinct hues,** few of them.
-4. **Values around a meaningful midpoint (residuals, change): a diverging scale,** two hues meeting at a neutral centre.
-5. **viridis scales are the safe default.** *Why:* lightness changes evenly, so they survive colour-blindness and black-and-white printing. Rainbow scales don't.
-6. **`scale_colour_*` for points and lines, `scale_fill_*` for areas.**
-
-## In R
 ```r
 library(ggplot2)
 p <- ggplot(faithfuld, aes(waiting, eruptions, fill = density)) + geom_raster() + scale_fill_viridis_c()
@@ -36,14 +26,6 @@ q <- ggplot(mtcars, aes(wt, mpg, colour = factor(cyl))) + geom_point() + scale_c
 r2 <- ggplot(mtcars, aes(wt, mpg, colour = mpg - mean(mpg))) + geom_point() + scale_colour_gradient2(midpoint = 0)
 c(class(p$scales$scales[[1]])[1], class(q$scales$scales[[1]])[1])
 ```
-
-## Common confusions
-- **"More colours show more."** Past six or seven categories, people can't tell them apart. Facet instead.
-
-## Explain it back
-- Which kind of scale suits residuals, and why?
-
-*Pass test:* you can choose a sequential, categorical or diverging scale for a variable.
 
 ## Connections
 - **Builds on:** [[Aesthetics]]

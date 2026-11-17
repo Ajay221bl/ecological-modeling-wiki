@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "The performance package provides one-line checks of a fitted model, including convergence, collinearity (VIF), singularity, R² and ICC."
 aliases:
   - "performance package"
   - "check_collinearity()"
@@ -16,35 +17,15 @@ status: seedling
 
 # performance Package Checks
 
-**In one line:** the performance package provides one-line checks of a fitted model, including convergence, collinearity (VIF), singularity, R² and ICC.
+The **performance** package gives one-line checks of a fitted model, working across lm, glm, lme4, glmmTMB and others ([[lmer() and glmer()]]). `check_convergence(m)` returns TRUE or FALSE with the gradient ([[Convergence Warnings]]); `check_collinearity(m)` gives a [[Variance Inflation Factor]] for each fixed effect, with values above 5 to 10 flagging problems; `check_singularity(m)` matches `lme4::isSingular()` ([[Singular Fit]]); `r2(m)` gives marginal and conditional R² ([[Marginal and Conditional R-squared]]); `icc(m)` gives the [[Intraclass Correlation]]; and `check_model(m)` draws a panel of diagnostic plots.
 
-> [!info] Before this, it helps to know
-> [[lmer() and glmer()]] · [[Variance Inflation Factor]]
+In the code below the `sleepstudy` model with random slopes passes the convergence check, and `r2()` reports a conditional R² of 0.80 and a marginal R² of 0.28: Days alone explains 28% of the variance, and adding subject differences raises it to 80%.
 
-## Start from zero
-1. **`check_convergence(m)`:** TRUE/FALSE with the gradient.
-2. **`check_collinearity(m)`:** VIF for each fixed effect. Values above 5 to 10 flag problems.
-3. **`check_singularity(m)`:** same as `lme4::isSingular()`.
-4. **`r2(m)`:** marginal and conditional R² for mixed models (Nakagawa).
-5. **`icc(m)`:** intraclass correlation.
-6. **`check_model(m)`:** a panel of diagnostic plots.
-7. **Works across lm, glm, lme4, glmmTMB and others.**
+`performance::check_convergence()` is used in the GLMM lab ([[Course Website]]). `check_model()` doesn't replace thinking: it shows plots you still have to interpret.
 
-## In R
 ```r
 library(lme4); m <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy); performance::check_convergence(m)[1]; round(unlist(performance::r2(m)), 3)
 ```
-
-## In the course
-`performance::check_convergence()` in the GLMM lab ([[Course Website]]).
-
-## Common confusions
-- **"check_model() replaces thinking."** It shows plots you still must interpret.
-
-## Explain it back
-- Which function gives a mixed model's VIFs?
-
-*Pass test:* you can run the main checks.
 
 ## Connections
 - **Builds on:** [[lmer() and glmer()]], [[Variance Inflation Factor]]

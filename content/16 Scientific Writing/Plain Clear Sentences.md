@@ -3,6 +3,7 @@ type: atomic
 tags:
   - writing
   - flashcards/eco/writing
+description: "Plain clear sentences are short, simply built and direct, use concrete words and a personal voice, and keep equations and jargon out of the flow."
 aliases:
   - "Plain Clear Sentences (McCarthy)"
   - "Short direct sentences"
@@ -14,34 +15,11 @@ status: seedling
 
 # Plain Clear Sentences
 
-**In one line:** plain clear sentences are short, simply built and direct, use concrete words and a personal voice, and keep equations and jargon out of the flow.
+**Plain clear sentences** are short, simply built and direct, use concrete words and a personal voice, and keep equations and jargon out of the flow ([[One Idea per Paragraph]]). Compare "It was found that the occupancy probability was observed to be influenced by forest cover in a positive manner" with "Occupancy rose with forest cover". McCarthy asks for short, simple, direct sentences with few clauses and few transition words like "however" or "thus". Write in a personal, active voice: "We fitted" is as objective as "A model was fitted", and McCarthy notes passive text "doesn't fool anyone into thinking you're being objective".
 
-> [!info] Before this, it helps to know
-> [[One Idea per Paragraph]]
+Concrete examples beat abstractions: a red balloon, not "an arbitrary sphere". Avoid jargon and buzzwords, don't repeat the same word endlessly, and keep equations out of sentences by setting them apart and explaining them. Use no footnotes and few exclamation marks, and "surprisingly" once or twice per paper at most. Read the text aloud to find pauses, which become commas, and clumsy rhythm ([[Cutting Unnecessary Words]]). Try it on "It was observed that survival was reduced": it becomes "Survival fell".
 
-## A tiny example
-Before: "It was found that the occupancy probability was observed to be influenced by forest cover in a positive manner."
-After: "Occupancy rose with forest cover."
-
-## Start from zero
-1. **Short, simple, direct sentences;** few clauses and few transition words like "however" or "thus" (McCarthy).
-2. **Personal and active:** "We fitted" is as objective as "A model was fitted"; McCarthy notes passive text "doesn't fool anyone into thinking you're being objective".
-3. **Concrete examples** beat abstractions: a red balloon, not "an arbitrary sphere".
-4. **Avoid jargon and buzzwords,** and do not repeat the same word endlessly.
-5. **Keep equations out of sentences;** set them apart and explain them.
-6. **No footnotes, few exclamation marks;** "surprisingly" once or twice per paper at most.
-7. **Read it aloud** to find pauses (commas) and clumsy rhythm.
-
-## In the course
-[[McCarthy Writing Advice]].
-
-## Common confusions
-- **"Passive voice is more objective."** It is only less clear.
-
-## Explain it back
-- Rewrite "It was observed that survival was reduced" plainly.
-
-*Pass test:* you can rewrite a cluttered sentence plainly.
+It comes from [[McCarthy Writing Advice]], and the same rules apply in [[Writing Results Sections]]. Passive voice is not more objective; it is only less clear.
 
 ## Connections
 - **Builds on:** [[One Idea per Paragraph]]

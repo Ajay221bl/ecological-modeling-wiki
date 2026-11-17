@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "Accuracy is a loose word for \"close to the truth\". Some authors mean unbiased; others mean unbiased *and* precise. Powell and Gale suggest saying which you mean."
 aliases:
   - "Accurate"
 status: seedling
@@ -10,41 +11,15 @@ status: seedling
 
 # Accuracy
 
-**In one line:** accuracy is a loose word for "close to the truth". Some authors mean unbiased; others mean unbiased *and* precise. Powell and Gale suggest saying which you mean.
+Someone says a dart player is "accurate". Do they mean her darts are centred on the bull's-eye on average, or that they all land in the bull's-eye? Those are different claims, and the word hides the difference. **Accuracy** is a loose word for "close to the truth", and authors use it in two senses: some mean *unbiased*, centred on the truth on average ([[Bias]]); others mean unbiased *and* precise, close to the truth every time ([[Precision]]). On a dartboard you can look and sort it out, but in a paper you cannot, so the ambiguity can mislead readers. Powell and Gale's advice is to say which you mean, or better, to name the two parts directly ([[Powell and Gale 2015 Ch2]]).
 
-> [!info] Before this, it helps to know
-> [[Bias]] · [[Precision]]
+A worked example shows why it matters. True survival is 0.80, and two methods estimate it. Method B is unbiased (its estimates average 0.80) but imprecise, with a standard error of 0.13. Method C is biased (it averages 0.70) but precise, with a standard error of 0.03. Which is more accurate? In the first sense, B. If you want one number that counts both kinds of miss, use the *mean squared error* (MSE), the average squared distance from the truth, which equals bias² + variance. For B it is 0² + 0.13² ≈ 0.016; for C it is 0.10² + 0.03² ≈ 0.011. By MSE the *biased* method lands closer to the truth on average, so "which is more accurate?" has different answers depending on the meaning.
 
-## The everyday picture
-Someone says a dart player is "accurate". Do they mean her darts are centred on the bull's-eye on average, or that they all land *in* the bull's-eye? Those are different claims. The word hides the difference.
+Splitting accuracy into its two parts is more than pedantry, because it tells you what to fix. Bias needs a better method, since more data will not move the centre of the cluster; imprecision needs more data or a more efficient design. Two common confusions follow: "accurate" and "precise" do not mean the same thing (precise is about spread only), and an unbiased method is not always closer to the truth, as the MSE example shows. That second point is the seed of the [[Bias-Variance Trade-off]].
 
-*Where the picture stops working:* in darts you can see the board and sort it out. In a paper you can't, so the ambiguity can mislead readers.
-
-## Words you'll need
-- **Accuracy (sense 1):** unbiased; centred on the truth.
-- **Accuracy (sense 2):** both unbiased and precise; close to the truth every time.
-- **Mean squared error (MSE):** one way to combine both: average squared distance from the truth, equal to bias² + variance.
-
-## A tiny example
-True survival 0.80. Two methods:
-- Method B: unbiased (average 0.80) but SE 0.13. "Accurate" in sense 1, not in sense 2.
-- Method C: biased (average 0.70) but SE 0.03.
-- MSE combines both: B = 0² + 0.13² ≈ **0.016**; C = 0.10² + 0.03² ≈ **0.011**. By MSE, the *biased* method C lands closer to the truth on average. So "which is more accurate?" has different answers depending on the meaning.
-
-## Start from zero
-1. **"Accuracy" sounds like one idea but hides two.** Centring (bias) and spread (precision).
-2. **Authors use it both ways.** *Why that's a problem:* a reader can't tell which claim was made.
-3. **So name the parts instead.** Say "unbiased" or "precise", or both ([[Powell and Gale 2015 Ch2]], p. 16).
-4. **If you need one number, use mean squared error.** *Why:* MSE = bias² + variance, so it counts both kinds of miss.
-
-## See it
 ![[Bias and precision.png|700]]
 *What to look at:* only the first target is "accurate" in both senses.
 
-## Why it is this way
-Clear words prevent wrong decisions. Splitting accuracy into bias and precision tells you what to fix: bias needs a better method; imprecision needs more data.
-
-## In R
 ```r
 set.seed(5)
 truth <- 0.8
@@ -52,20 +27,6 @@ B <- replicate(2000, mean(rbinom(10, 1, 0.8)))    # unbiased, imprecise
 C <- replicate(2000, mean(rbinom(200, 1, 0.7)))   # biased, precise
 c(mse_B = mean((B - truth)^2), mse_C = mean((C - truth)^2))   # about 0.016 vs 0.011
 ```
-
-## In the course
-Powell and Gale's advice on naming bias and precision instead of accuracy ([[Powell and Gale 2015 Ch2]], pp. 16 to 18).
-
-## Common confusions
-- **"Accurate and precise mean the same."** Precise is about spread only.
-- **"The unbiased method is always closer to the truth."** Not necessarily, as the MSE example shows.
-
-## Explain it back
-- Why is "accurate" ambiguous?
-- In the example, why does the biased method have the smaller MSE?
-- What two words should you use instead of "accurate"?
-
-*Pass test:* you can rewrite any "accurate" in a methods section as a claim about bias, precision or both.
 
 ## Connections
 - **Builds on:** [[Bias]], [[Precision]]

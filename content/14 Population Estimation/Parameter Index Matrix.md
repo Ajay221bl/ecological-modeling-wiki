@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "A parameter index matrix (PIM) in Program MARK is a triangular table that assigns an index number to each survival or detection parameter for each release cohort and occasion, defining which parameters are shared."
 aliases:
   - "PIM"
   - "PIMs"
@@ -12,37 +13,17 @@ status: seedling
 
 # Parameter Index Matrix
 
-**In one line:** a parameter index matrix (PIM) in Program MARK is a triangular table that assigns an index number to each survival or detection parameter for each release cohort and occasion, defining which parameters are shared.
+A **parameter index matrix** (PIM) in [[Program MARK]] is a triangular table that assigns an index number to each survival or detection parameter for each release [[Cohort]] and occasion, defining which parameters are shared. The same number means the same parameter. Rows are release cohorts and columns are occasions or intervals, and there are separate PIMs for φ and p and for each group.
 
-> [!info] Before this, it helps to know
-> [[Program MARK]] · [[Cohort]]
-
-## A tiny example
-Fully time-dependent survival for 4 occasions (rows = release cohorts, columns = intervals):
 | | 1→2 | 2→3 | 3→4 |
 |---|---|---|---|
 | Cohort 1 | 1 | 2 | 3 |
 | Cohort 2 | | 2 | 3 |
 | Cohort 3 | | | 3 |
-Constant survival would put 1 in every cell.
 
-## Start from zero
-1. **Same number = same parameter.**
-2. **Rows are release cohorts,** columns are occasions or intervals.
-3. **Separate PIMs** for φ and p, and for each group.
-4. **Age structure** appears as diagonals (an animal's first interval after release uses the juvenile index).
-5. **Modern practice** sets PIMs to all different and constrains with the design matrix.
+The table above is fully time-dependent survival for 4 occasions; constant survival would put 1 in every cell. Age structure appears as diagonals, since an animal's first interval after release uses the juvenile index ([[Age and Time Structure in Survival Models]]). Modern practice sets the PIMs to all different and constrains them with the [[Design Matrix in Program MARK]].
 
-## In the course
-General Program MARK concept behind [[Powell and Gale 2015]] Ch10 to Ch13 (not named in the course sources).
-
-## Common confusions
-- **"PIM numbers are parameter values."** They are labels saying which parameter applies.
-
-## Explain it back
-- How would you write constant survival in a PIM?
-
-*Pass test:* you can read a PIM.
+It is a general Program MARK concept behind [[Powell and Gale 2015]] Ch10 to Ch13, not named in the course sources ([[Cormack-Jolly-Seber Model]]). PIM numbers are not parameter values; they are labels saying which parameter applies.
 
 ## Connections
 - **Builds on:** [[Program MARK]], [[Cohort]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "The sill is the plateau a variogram reaches at large distances, equal to the total variance of the data when points far apart are uncorrelated."
 aliases:
   - "Variogram sill"
   - "Partial sill"
@@ -12,31 +13,14 @@ status: seedling
 
 # Sill
 
-**In one line:** the sill is the plateau a variogram reaches at large distances, equal to the total variance of the data when points far apart are uncorrelated.
+Beyond a certain distance, pairs of sites are no more alike than random pairs and the semivariance stops rising. The **sill** is that plateau of the [[Variogram]], the dotted line at 1.0 in the figure, and equals the total [[Variance]] of the data when points far apart are uncorrelated. The partial sill, sill minus [[Nugget]], is the spatially structured part of the variance.
 
-> [!info] Before this, it helps to know
-> [[Variogram]] (where it appears) · [[Variance]] (what it equals)
+The distance at which the sill is reached is the [[Variogram Range]]. A variogram with no sill, which keeps rising, usually signals a trend in the mean that hasn't been removed, violating [[Stationarity]].
 
-## Start from zero
-1. **Beyond a certain distance, pairs are no more alike than random pairs.** Semivariance stops rising.
-2. **Total sill ≈ the variance of the variable.**
-3. **Partial sill = sill − nugget:** the spatially structured part of the variance.
-4. **No sill (keeps rising):** usually a trend in the mean that hasn't been removed. That violates stationarity.
+It is described in [[Zuur et al. 2009 Ch7]]. Not every variogram has a sill: a trend makes it rise without levelling.
 
-## See it
 ![[Variogram parts.png|700]]
 *What to look at:* the dotted line at 1.0.
-
-## In the course
-[[Zuur et al. 2009 Ch7]].
-
-## Common confusions
-- **"Every variogram has a sill."** A trend makes it rise without levelling.
-
-## Explain it back
-- What does a variogram without a sill suggest?
-
-*Pass test:* you can read and interpret the sill.
 
 ## Connections
 - **Builds on:** [[Variogram]], [[Variance]]

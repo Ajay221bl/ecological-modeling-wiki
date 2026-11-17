@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "A Bayesian GLMM is the same model as a frequentist GLMM, with priors on the fixed effects, the random-effect SDs and correlations, fitted by MCMC to give a full posterior for every parameter including each group's effect."
 aliases:
   - "Bayesian mixed model"
   - "Bayesian GLMM"
@@ -14,37 +15,18 @@ status: seedling
 
 # Bayesian GLMM
 
-**In one line:** a Bayesian GLMM is the same model as a frequentist GLMM, with priors on the fixed effects, the random-effect SDs and correlations, fitted by MCMC to give a full posterior for every parameter including each group's effect.
+A **Bayesian GLMM** is the same model as a frequentist [[GLMM]], with priors on the fixed effects, the random-effect SDs and correlations, fitted by MCMC to give a full posterior for every parameter including each group's effect ([[Hierarchical Model]], [[brm()]]). The formula is lme4-style, `brm(y ~ x + (x | site), family = poisson(), data = d)`. It needs priors for the fixed effects (`class = b`), the SDs (`class = sd`, see [[Priors on Standard Deviations]]), the correlations (`class = cor`, see [[LKJ Prior]]), and family parameters such as `sigma` or `shape`.
 
-> [!info] Before this, it helps to know
-> [[GLMM]] · [[Hierarchical Model]] · [[brm()]]
+Its advantages are that uncertainty in the variance components flows into everything else, there is no [[Boundary Problem When Testing Variances]], weakly informative priors stabilise fits with few groups, and predictions come with full uncertainty. Its costs are speed, the need for convergence checks (R-hat, ESS, divergences; see [[adapt_delta and Sampler Settings]]), and priors that must be justified. Output names are `b_x` for fixed effects, `sd_site__Intercept`, `cor_site__Intercept__x` and `r_site[3,Intercept]` for group effects; check it with `pp_check()` and compare models with LOO ([[Posterior Predictive Check]]). The code below, not run in the wiki build because brms fits take minutes, shows a Poisson seedling model with plot as a random intercept.
 
-## Start from zero
-1. **Formula is lme4-style:** `brm(y ~ x + (x | site), family = poisson(), data = d)`.
-2. **Priors needed for:** fixed effects (`class = b`), SDs (`class = sd`), correlations (`class = cor`), and family parameters such as `sigma` or `shape`.
-3. **Advantages:** uncertainty in variance components flows into everything else; no boundary problem; weakly informative priors stabilise fits with few groups; easy predictions with full uncertainty.
-4. **Costs:** slower, needs convergence checks (R-hat, ESS, divergences), and priors must be justified.
-5. **Output names:** `b_x` (fixed), `sd_site__Intercept`, `cor_site__Intercept__x`, `r_site[3,Intercept]` (group effects).
-6. **Checks:** posterior predictive checks (`pp_check`), LOO for comparison.
+The Bayesian mixed models lab has pairs write their own analysis of `csd2003-2006kg.txt`, and Homework 4 analyses `C_vulgare_seedling_dataset.csv` with brms and cmdstanr ([[Course Website]]). Bayesian mixed models don't need informative priors; weakly informative ones usually suffice.
 
-## In R
 ```r
 # norun (brms fits take minutes; shown for syntax)
 library(brms)
 fit <- brm(seedlings ~ treatment + (1 | plot), family = poisson(), data = d, prior = c(prior(normal(0, 1), class = b), prior(exponential(1), class = sd)), chains = 4, cores = 4, seed = 1)
 summary(fit); pp_check(fit); ranef(fit)$plot[1:3, , "Intercept"]
 ```
-
-## In the course
-Bayesian mixed models lab (pairs write their own analysis of `csd2003-2006kg.txt`) and Homework 4 (`C_vulgare_seedling_dataset.csv`) with brms and cmdstanr ([[Course Website]]).
-
-## Common confusions
-- **"Bayesian mixed models need informative priors."** Weakly informative priors usually suffice.
-
-## Explain it back
-- What does sd_site__Intercept refer to?
-
-*Pass test:* you can write and read a brms mixed model.
 
 ## Connections
 - **Builds on:** [[GLMM]], [[Hierarchical Model]], [[brm()]]

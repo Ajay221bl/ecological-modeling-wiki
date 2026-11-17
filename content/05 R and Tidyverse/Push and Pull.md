@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "Pushing sends your new commits to the remote repository, and pulling brings down commits that others, or you on another computer, put there."
 aliases:
   - "git push"
   - "git pull"
@@ -12,29 +13,11 @@ status: seedling
 
 # Push and Pull
 
-**In one line:** pushing sends your new commits to the remote repository, and pulling brings down commits that others, or you on another computer, put there.
+Posting letters and checking the mailbox: posting drops your outgoing letters at the post office, checking collects whatever has arrived for you, and until you do either, the two sides do not know each other's news. **Pushing** sends your new commits to the remote repository, such as one on [[GitHub]]; **pulling** brings down commits that others, or you on another computer, put there, and merges them into your copy. Commits live only on your computer until pushed ([[Commit]]).
 
-> [!info] Before this, it helps to know
-> [[Commit]] (what gets moved) · [[GitHub]] (the remote)
+The working rhythm is: pull before you start, commit as you go, push when you finish. Working on an out-of-date copy is what leads to *conflicts*, which happen when the same lines of a file were changed in two places. Git then marks the conflicting lines and asks you to choose which version to keep.
 
-## The everyday picture
-Posting letters and checking the mailbox. Push drops your outgoing letters at the post office. Pull collects whatever has arrived for you. Until you do either, the two sides don't know about each other's news.
-
-## Start from zero
-1. **Commits live locally until pushed.**
-2. **`git push` uploads them.**
-3. **`git pull` downloads and merges remote commits into your copy.**
-4. **Pull before you start, push when you finish.** *Why:* working on an out-of-date copy leads to conflicts.
-5. **A conflict means the same lines were changed in two places.** Git marks them and asks you to choose.
-
-## Common confusions
-- **"I committed, so it is on GitHub."** Not until you push.
-- **"A rejected push is an error to force through."** It means the remote has commits you lack. Pull first.
-
-## Explain it back
-- In what order should you pull, commit and push in a work session?
-
-*Pass test:* you can explain why a push can be rejected.
+Two misunderstandings. Committing does not put work on GitHub; only pushing does. And a rejected push is not an error to force through: it means the remote has commits you do not have yet, so pull first, then push. Contributing to someone else's repository works the same way through your own copy of it ([[Fork]]).
 
 ## Connections
 - **Builds on:** [[Commit]], [[GitHub]]

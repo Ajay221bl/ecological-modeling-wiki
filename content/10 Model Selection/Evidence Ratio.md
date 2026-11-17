@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "An evidence ratio is the Akaike weight of one model divided by that of another, saying how many times more support the data give the first."
 aliases:
   - "Evidence ratios"
   - "Ratio of Akaike weights"
@@ -11,36 +12,15 @@ status: seedling
 
 # Evidence Ratio
 
-**In one line:** an evidence ratio is the Akaike weight of one model divided by that of another, saying how many times more support the data give the first.
+Betting odds of 8 to 1 say one horse is eight times as strongly favoured as another, whatever the other horses in the race. An **evidence ratio** is the [[Akaike Weight]] of one model divided by that of another, ER = wᵢ / wⱼ = exp((Δⱼ − Δᵢ)/2), saying how many times more support the data give the first ([[Delta AIC]]). Unlike the weights themselves, it doesn't depend on the other models in the set.
 
-> [!info] Before this, it helps to know
-> [[Akaike Weight]] (the ingredients) · [[Delta AIC]] (an equivalent route)
+The code below converts AIC gaps into evidence ratios: Δ = 2 gives 2.7, Δ = 4 gives 7.4, Δ = 6 gives 20 and Δ = 10 gives 148. So a Δ of 2 is only modest evidence, less than 3 to 1. Evidence ratios are useful in writing: "the model with tree cover was 7 times better supported than the model without".
 
-## The everyday picture
-Betting odds between two horses. Odds of 8 to 1 say one horse is eight times as strongly favoured. The odds are unaffected by the other horses in the race.
+They play the same role as a [[Likelihood Ratio]] or a [[Bayes Factor]] ([[Anderson and Burnham 2002]]). An evidence ratio of 3 is not strong evidence; about 3 to 1 is fairly weak.
 
-## Start from zero
-1. **ER = wᵢ / wⱼ = exp((Δⱼ − Δᵢ)/2).**
-2. **It doesn't depend on the other models** in the set, unlike the weights themselves.
-3. **Δ = 2 → ER 2.7. Δ = 4 → 7.4. Δ = 6 → 20. Δ = 10 → 148.**
-4. **A Δ of 2 is only modest evidence:** less than 3 to 1.
-5. **Useful in writing:** "the model with tree cover was 7 times better supported than the model without".
-
-## In R
 ```r
 round(exp(c(2, 4, 6, 10) / 2), 1)
 ```
-
-## In the course
-[[Anderson and Burnham 2002]].
-
-## Common confusions
-- **"ER 3 is strong evidence."** About 3 to 1 is fairly weak.
-
-## Explain it back
-- What ER does Δ = 4 imply?
-
-*Pass test:* you can turn a Δ into an evidence ratio.
 
 ## Connections
 - **Builds on:** [[Akaike Weight]], [[Delta AIC]]

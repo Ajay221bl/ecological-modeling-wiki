@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "A link function is the transformation applied to the mean of the response so that the result can be modeled as a straight-line combination of predictors."
 aliases:
   - "Link"
   - "g(μ)"
@@ -12,51 +13,21 @@ status: seedling
 
 # Link Function
 
-**In one line:** a link function is the transformation applied to the mean of the response so that the result can be modeled as a straight-line combination of predictors.
+A map projection stretches the curved Earth onto a flat page. The mean of a response lives on a restricted territory, positive numbers for counts and between 0 and 1 for probabilities, while a [[Linear Predictor]] can roam the whole number line. A **link function** stretches the restricted territory onto the whole line so a straight line can move freely without falling off an edge. It is the transformation g applied to the mean so that g(μ) = η. It must map the restricted range onto the whole real line and be strictly increasing ([[Support of a Distribution]], [[Functions in Maths]]). The [[Log Link]] takes positive means to all real numbers; the [[Logit Link]] takes (0, 1) to all real numbers; the [[Identity Link]] changes nothing. The figure shows each link bending a restricted mean into an unrestricted linear predictor.
 
-> [!info] Before this, it helps to know
-> [[Linear Predictor]] (what the link output equals) · [[Support of a Distribution]] (why a link is needed) · [[Functions in Maths]] (what a link is)
+An example. A probability p = 0.9 maps through the logit to log(0.9/0.1) = 2.2. Add 1 on that scale to get 3.2, map back, and the probability is 0.96: it rose but stayed below 1. With a log link, adding 0.5 multiplies the mean by e^0.5 = 1.65. The code below shows both, lists the default links of four R families, and uses a family's own `linkfun` and `linkinv`. Each family has a *canonical* link that comes out of its mathematics: identity for normal, log for Poisson, logit for binomial and inverse for gamma ([[Exponential Family]]).
 
-## The everyday picture
-A map projection. The mean lives on a restricted territory: positive numbers for counts, between 0 and 1 for probabilities. The link stretches that territory out onto the whole number line, where a straight line can roam freely without falling off an edge.
+The link sets how effects are interpreted: log gives multiplicative effects on the mean, logit multiplicative effects on the odds, identity additive effects. Two confusions. A log link is not a log transformation of y: the model is log(E[y]) = η and the data are untouched, so zeros in the data are no obstacle. And the canonical link is a convenient default, not an obligation; gamma models usually use log rather than the canonical inverse. Hobbs and Hooten present links as transformations that keep predictions inside the support ([[Hobbs and Hooten 2015 Ch3]], [[Zuur et al. 2009 Ch8]]). Getting back from η to the mean is the job of the [[Inverse Link Function]], the second half of a [[Generalized Linear Model]].
 
-## A tiny example
-A probability p = 0.9. The logit link maps it to log(0.9/0.1) = 2.2. Add 1 on that scale: 3.2. Map back: 0.96. The probability rose but stayed below 1.
-
-## Start from zero
-1. **The mean μ is restricted.** A count mean must be positive. A probability must lie in 0 to 1.
-2. **A linear predictor η is unrestricted.**
-3. **The link g connects them: g(μ) = η.**
-4. **It must map the restricted range onto the whole real line** and be strictly increasing.
-5. **Log link:** positive μ to all reals. **Logit link:** (0, 1) to all reals. **Identity:** no change.
-6. **Each family has a canonical link** that comes out of its mathematics: identity for normal, log for Poisson, logit for binomial, inverse for gamma. They are convenient defaults, not obligations.
-7. **The link sets how effects are interpreted.** Log: multiplicative on the mean. Logit: multiplicative on the odds. Identity: additive.
-8. **It acts on the mean, never on the data.** Zeros in the data are no obstacle to a log link.
-
-## See it
 ![[Link functions.png|700]]
 *What to look at:* each link bends a restricted mean (vertical axis) into an unrestricted linear predictor (horizontal axis).
 
-## In R
 ```r
 qlogis(0.9); plogis(qlogis(0.9) + 1)
 log(5); exp(log(5) + 0.5)                                # log link: adding 0.5 multiplies the mean by 1.65
 poisson()$link; binomial()$link; Gamma()$link; gaussian()$link
 binomial()$linkfun(0.9); binomial()$linkinv(2.197)
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch8]], [[Hobbs and Hooten 2015 Ch3]] (as transformations that keep predictions in the support).
-
-## Common confusions
-- **"A log link is a log transformation of y."** The model is log(E[y]) = η. The data are untouched.
-- **"The canonical link must be used."** Any sensible link is allowed. Gamma models usually use log, not the canonical inverse.
-
-## Explain it back
-- Why can't the mean of a count be modeled directly as a line?
-- What does the link act on?
-
-*Pass test:* you can name the default link for three families and say what each does.
 
 ## Connections
 - **Builds on:** [[Linear Predictor]], [[Support of a Distribution]]

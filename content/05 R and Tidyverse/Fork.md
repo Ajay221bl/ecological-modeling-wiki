@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "A fork is your own copy, on GitHub, of someone else's repository, which you can change freely without affecting the original."
 aliases:
   - "Forking"
   - "Fork a repository"
@@ -11,28 +12,11 @@ status: seedling
 
 # Fork
 
-**In one line:** a fork is your own copy, on GitHub, of someone else's repository, which you can change freely without affecting the original.
+You photocopy a published recipe book so you can scribble in the margins. The library's copy stays clean, and if one of your notes is good, you can send it to the author, who may add it to the next edition. A **fork** is your own copy, on GitHub, of someone else's [[Repository]], which you can change freely without affecting the original ([[GitHub]]). Clicking Fork on a repository makes a linked copy under your account.
 
-> [!info] Before this, it helps to know
-> [[Repository]] (what is copied) · [[GitHub]] (where the copy lives)
+From there the workflow is the usual one: clone your fork to your computer, work and commit there, and push to your fork, where you have permission, unlike on the original ([[Push and Pull]]). If you want your changes adopted, a *pull request* offers them back to the original's owner, who decides whether to merge them. Forks exist so anyone can build on public work without needing permission to change it.
 
-## The everyday picture
-Photocopying a published recipe book so you can scribble in the margins. The library's copy stays clean. If one of your notes is good, you can send it to the author, who may add it to the next edition.
-
-## Start from zero
-1. **Click Fork on someone's repository.** GitHub makes a linked copy under your account.
-2. **Clone your fork to your computer and work there.**
-3. **Push to your fork.** You have permission there, not on the original.
-4. **A pull request offers your changes back** to the original's owner.
-5. **Why it exists:** it lets anyone build on public work without needing write access.
-
-## Common confusions
-- **"Fork and clone are the same."** A fork is a copy on GitHub. A clone is a copy on your computer.
-
-## Explain it back
-- Why fork instead of cloning the original directly?
-
-*Pass test:* you can explain fork, clone and pull request in order.
+Do not confuse fork and clone. A fork is a copy on GitHub; a clone is a copy on your computer. You often make both: fork first, then clone the fork.
 
 ## Connections
 - **Builds on:** [[Repository]], [[GitHub]]

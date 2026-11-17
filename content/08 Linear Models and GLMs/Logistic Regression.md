@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "Logistic regression models the probability of a yes/no outcome as a function of predictors, using a Bernoulli (or binomial) distribution and a logit link."
 aliases:
   - "Binomial GLM"
   - "Logit model"
@@ -13,42 +14,15 @@ status: seedling
 
 # Logistic Regression
 
-**In one line:** logistic regression models the probability of a yes/no outcome as a function of predictors, using a Bernoulli (or binomial) distribution and a logit link.
+Think of a dimmer switch for chance: as a predictor rises, the probability of "yes" slides along an S-curve from nearly 0 to nearly 1, and the model's job is to find where the curve sits and how steep it is. **Logistic regression** models the probability of a yes/no outcome as a function of predictors. The response yᵢ is 0 or 1; the random part is yᵢ ~ Bernoulli(pᵢ) ([[Bernoulli Distribution]]); the linear predictor is ηᵢ = β₀ + β₁xᵢ; and the link is logit(pᵢ) = ηᵢ, so pᵢ = plogis(ηᵢ) ([[Logit Link]], [[Generalized Linear Model]]). It is fitted with `glm(y ~ x, family = binomial)`. The intercept is the log-odds of "yes" when x = 0, and `plogis(β₀)` is that probability. The slope is the change in log-odds per unit of x, and exp(β₁) is the [[Odds Ratio]]. The curve crosses p = 0.5 at x = −β₀/β₁.
 
-> [!info] Before this, it helps to know
-> [[Bernoulli Distribution]] (the random part) · [[Logit Link]] (the link) · [[Generalized Linear Model]] (the framework) · [[Odds Ratio]] (the effect measure)
+An example: the probability that a plot is occupied by a grassland bird, against tree cover, with logit(p) = 2.0 − 0.08 × tree. At 0% cover p = plogis(2.0) = 0.88; at 25%, plogis(0) = 0.50; at 50%, plogis(−2.0) = 0.12. The odds ratio per 1% cover is exp(−0.08) = 0.92, so each percent of tree cover cuts the odds of occupancy by 8%. The code below simulates 300 plots from this model and recovers the coefficients, the odds ratio, the 50% point near 25% cover, and the three probabilities. The figure shows the 0/1 data as rugs at the top and bottom with the fitted S-curve between them.
 
-## The everyday picture
-A dimmer switch for chance. As the predictor rises, the probability of "yes" slides along an S-curve from nearly 0 to nearly 1. The model's job is to find where the curve sits and how steep it is.
+A straight line fitted to 0/1 data would predict probabilities below 0 and above 1 and assume a constant variance that binary data cannot have. The logit link bends the line into an S that respects both limits, and the Bernoulli supplies the right variance, p(1 − p), fixed by the mean, so single 0/1 outcomes cannot be overdispersed. Raw residual plots are useless here, showing two bands, so use binned or simulated residuals ([[DHARMa Simulated Residuals]]). Three confusions: the slope is the change in log-odds, not in probability; logistic regression estimates probabilities, and classifying needs an extra threshold decision; and it does not need equal numbers of 0s and 1s, though rare outcomes carry little information. When a predictor splits the data perfectly, see [[Complete Separation]]. Grouped data use the [[Binomial GLM for Proportions]], and imperfect detection leads to the [[Occupancy|Occupancy Model]] ([[Presence-Absence Data]], [[Zuur et al. 2009 Ch10]], [[Guthery and Bingham 2007]], [[Course Website]]).
 
-## A tiny example
-Probability a plot is occupied by a grassland bird, against tree cover.
-- logit(p) = 2.0 − 0.08 × tree.
-- At 0% cover: plogis(2.0) = 0.88.
-- At 25%: plogis(0) = 0.50.
-- At 50%: plogis(−2.0) = 0.12.
-- Odds ratio per 1% cover: exp(−0.08) = 0.92. Each percent of tree cover cuts the odds of occupancy by 8%.
-
-## Start from zero
-1. **Response:** yᵢ is 0 or 1.
-2. **Random part:** yᵢ ~ Bernoulli(pᵢ).
-3. **Linear predictor:** ηᵢ = β₀ + β₁xᵢ.
-4. **Link:** logit(pᵢ) = ηᵢ, so pᵢ = plogis(ηᵢ).
-5. **Fit:** `glm(y ~ x, family = binomial)`.
-6. **Intercept:** log-odds of "yes" when x = 0. `plogis(β₀)` is that probability.
-7. **Slope:** change in log-odds per unit x. `exp(β₁)` is the odds ratio.
-8. **The point where p = 0.5** is x = −β₀/β₁.
-9. **No overdispersion is possible** for single 0/1 outcomes. The variance p(1 − p) is fixed by the mean.
-10. **Checking:** raw residual plots are useless (two bands). Use binned or simulated residuals.
-
-## See it
 ![[Logistic regression fit.png|700]]
 *What to look at:* the 0/1 data as rugs at top and bottom, the fitted S-curve of probability between them and the point where it crosses 0.5.
 
-## Why it is this way
-A straight line fitted to 0/1 data predicts probabilities below 0 and above 1 and assumes a constant variance that binary data can't have. The logit link bends the line into an S that respects both limits, and the Bernoulli distribution supplies the right variance.
-
-## In R
 ```r
 set.seed(11); d <- data.frame(tree = runif(300, 0, 60)); d$occ <- rbinom(300, 1, plogis(2 - 0.08 * d$tree))
 m <- glm(occ ~ tree, family = binomial, data = d); round(summary(m)$coefficients, 3)
@@ -56,20 +30,6 @@ exp(coef(m)[2])                                                   # odds ratio p
 -coef(m)[1] / coef(m)[2]                                          # tree cover at which occupancy is 50%
 round(predict(m, data.frame(tree = c(0, 25, 50)), type = "response"), 2)
 ```
-
-## In the course
-Logistic regression lab ([[Course Website]]). [[Zuur et al. 2009 Ch10]], [[Guthery and Bingham 2007]].
-
-## Common confusions
-- **"The slope is the change in probability."** It is the change in log-odds.
-- **"Logistic regression classifies."** It estimates probabilities. Classification needs an extra threshold decision.
-- **"It needs equal numbers of 0s and 1s."** It doesn't, though rare outcomes carry little information.
-
-## Explain it back
-- Write the three parts of the model.
-- At what x is p = 0.5?
-
-*Pass test:* you can fit a logistic regression and report an odds ratio and predicted probabilities.
 
 ## Connections
 - **Builds on:** [[Bernoulli Distribution]], [[Logit Link]], [[Generalized Linear Model]]

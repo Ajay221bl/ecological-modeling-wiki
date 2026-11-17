@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Availability is the chance that an animal at the survey site can be detected at all (above ground, calling, in view), and presence probability is the chance that an animal using the site is actually there when you survey."
 aliases:
   - "Availability and Presence Probability"
   - "Availability bias"
@@ -14,32 +15,11 @@ status: seedling
 
 # Availability for Detection
 
-**In one line:** availability is the chance that an animal at the survey site can be detected at all (above ground, calling, in view), and presence probability is the chance that an animal using the site is actually there when you survey.
+In a prairie dog colony, even an observer with perfect eyes cannot count the animals underground: they are present but not available. **Availability** is the chance that an animal at the survey site can be detected at all, because it is above ground, calling or in view; **presence probability** is the chance that an animal using the site is actually there when you survey ([[Detection Probability]], [[Imperfect Detection]]). Powell and Gale (2015 Ch14) split the correction as N̂ = C / (P_area × P_presence × P_availability × P_detection). Presence fails when the animal's home range covers the point but it is elsewhere today; availability fails when it is here but underground, silent or under water; and detection, or perception, fails when it is available but the observer misses it.
 
-> [!info] Before this, it helps to know
-> [[Detection Probability]] · [[Imperfect Detection]]
+Most count models estimate a mix of these: for example, N-mixture p is usually availability times perception ([[N-mixture Model]]). Design helps: survey at times animals are active, and use larger plots or longer counts so absent animals return ([[Count-based Abundance Estimation]]). [[Distance Sampling]] assumes availability is 1 on the line, which fails for diving or burrowing animals ([[Detection on the Line g(0)]]).
 
-## The everyday picture
-Prairie dogs in a colony. Even with perfect eyes, the animals underground cannot be counted. They are present but not available.
-
-## Start from zero
-1. **Powell and Gale (2015 Ch14)** split the correction as N̂ = C / (P_area × P_presence × P_availability × P_detection).
-2. **Presence:** the animal's home range covers the point, but it is elsewhere today.
-3. **Availability:** it is here, but underground, silent or under water.
-4. **Detection (perception):** it is available, but the observer misses it.
-5. **Most count models estimate a mix.** For example, N-mixture p is usually availability times perception.
-6. **Design helps:** survey at times animals are active, use larger plots or longer counts so absent animals return.
-
-## In the course
-[[Powell and Gale 2015]] Ch14.
-
-## Common confusions
-- **"More careful observers fix availability."** Observers can only reduce perception error; an animal underground is unavailable to everyone.
-
-## Explain it back
-- What does an animal underground at survey time illustrate?
-
-*Pass test:* you can name the parts of detection and give an example of each.
+It is laid out in [[Powell and Gale 2015]] Ch14. More careful observers cannot fix availability: they only reduce perception error, and an animal underground is unavailable to everyone ([[Temporary Emigration]]).
 
 ## Connections
 - **Builds on:** [[Detection Probability]], [[Imperfect Detection]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - ecology
   - flashcards/eco/ecology
+description: "An environmental gradient is a gradual change in an environmental condition across space, such as temperature with elevation or moisture across a landscape, along which species and traits change."
 aliases:
   - "Ecological gradient"
   - "Elevation gradient"
@@ -12,28 +13,11 @@ status: seedling
 
 # Environmental Gradient
 
-**In one line:** an environmental gradient is a gradual change in an environmental condition across space, such as temperature with elevation or moisture across a landscape, along which species and traits change.
+An **environmental gradient** is a gradual change in an environmental condition across space, such as temperature with elevation or moisture across a landscape, along which species and traits change ([[Explanatory Variable]], [[Spatial Scale]]). Examples are elevation, latitude, moisture, salinity and urbanisation ([[Latitudinal Gradient]]). Many variables change together along a gradient, so their effects are collinear, as with temperature and latitude ([[Collinearity]]).
 
-> [!info] Before this, it helps to know
-> [[Explanatory Variable]] · [[Spatial Scale]]
+Gradients create spatial autocorrelation, because nearby sites share similar conditions ([[Diniz-Filho et al. 2003]], [[Spatial Autocorrelation]]). Responses along them are often hump-shaped, suiting quadratic terms or GAMs ([[Polynomial|Polynomial Regression]], [[Generalized Additive Model]]). Ordination, beyond the course, summarises community change along gradients.
 
-## Start from zero
-1. **Examples:** elevation, latitude, moisture, salinity, urbanisation.
-2. **Many variables change together** along a gradient, so effects are collinear (temperature and latitude).
-3. **Gradients create spatial autocorrelation:** nearby sites share similar conditions (Diniz-Filho et al. 2003).
-4. **Response shapes are often hump-shaped,** suiting quadratic terms or GAMs.
-5. **Ordination** (Beyond the Course) summarises community change along gradients.
-
-## In the course
-[[Diniz-Filho et al. 2003]]. [[Christensen et al. 2020]] (latitude).
-
-## Common confusions
-- **"Distance along a gradient is a single cause."** It bundles several correlated factors.
-
-## Explain it back
-- Why do gradients produce collinear predictors?
-
-*Pass test:* you can describe a gradient and its modeling problems.
+It appears in Diniz-Filho et al. and in [[Christensen et al. 2020]] (latitude). Distance along a gradient is not a single cause; it bundles several correlated factors.
 
 ## Connections
 - **Builds on:** [[Explanatory Variable]], [[Spatial Scale]]

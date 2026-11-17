@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "The likelihood function is the curve you get by computing the likelihood at every possible value of a parameter while the data stay fixed."
 aliases:
   - "L(θ | y)"
   - "Likelihood curve"
@@ -12,29 +13,15 @@ status: seedling
 
 # Likelihood Function
 
-**In one line:** the likelihood function is the curve you get by computing the likelihood at every possible value of a parameter while the data stay fixed.
+Draw a hill over the parameter axis. Walk along the axis trying one value after another, and the height under your feet is how probable your data are at that value. The **likelihood function** is that hill: the curve you get by computing the [[Likelihood]] at every possible value of a parameter while the data stay fixed. Write the probability of the data, P(y | θ), and treat it as a function of θ, written L(θ | y). It is the same formula as the probability mass or density function, read sideways: a PMF fixes θ and varies y, while the likelihood function fixes y and varies θ ([[Functions in Maths]]). Hobbs and Hooten write it L(θ | y) = [y | θ].
 
-> [!info] Before this, it helps to know
-> [[Likelihood]] (one point on the curve) · [[Functions in Maths]] (input: parameter, output: likelihood)
+Its peak is the [[Maximum Likelihood Estimation|maximum likelihood estimate]], and its width shows precision. A sharp peak means the data pin the parameter down; a broad dome means many values do nearly as well. The figure and code compare 7 successes in 10 trials with 70 in 100. Both curves peak at 0.7, but the values within a factor of 8 of the peak span about 0.39 to 0.92 with 10 trials and only 0.61 to 0.78 with 100: more data, a narrower hill. With several parameters the curve becomes a surface over all of them, which is reduced to a curve for one parameter by a [[Likelihood Profile]].
 
-## The everyday picture
-A hill drawn over the parameter axis. Walk along the axis trying one parameter value after another, and the height under your feet is how probable your data are at that value. The summit is the best-supported value. A sharp peak means the data pin it down. A broad dome means many values do nearly as well.
+Its area is not 1. The code adds up the area under the 10-trial curve and gets 0.09. So it is not a probability distribution for θ, and it has no such interpretation without a prior; multiplying it by a prior and rescaling is exactly what produces a [[Posterior Distribution]] ([[Hobbs and Hooten 2015 Ch4]], [[Powell and Gale 2015 Ch3]]). In practice it is usually worked with on the log scale ([[Log-likelihood]]).
 
-## Start from zero
-1. **Write the probability of the data, P(y | θ).**
-2. **Treat it as a function of θ.** Written L(θ | y) or L(θ).
-3. **Same formula as the PMF or PDF, read sideways.** A PMF fixes θ and varies y. The likelihood function fixes y and varies θ.
-4. **Its peak is the maximum likelihood estimate.**
-5. **Its width shows precision.** More data make it narrower.
-6. **With several parameters it is a surface** over all of them.
-7. **Its area is not 1.** It is not a probability distribution.
-8. **Hobbs and Hooten's notation:** L(θ | y) = [y | θ].
-
-## See it
 ![[Likelihood function n.png|700]]
 *What to look at:* same proportion of successes, more data, a narrower hill.
 
-## In R
 ```r
 p <- seq(0.01, 0.99, by = 0.01)
 L10 <- dbinom(7, 10, p); L100 <- dbinom(70, 100, p)
@@ -42,17 +29,6 @@ p[which.max(L10)]; p[which.max(L100)]                 # both peak at 0.7
 range(p[L10 > max(L10) / 8]); range(p[L100 > max(L100) / 8])     # values within a factor of 8 of the peak: far narrower with n = 100
 sum(L10 * 0.01)                                       # area under the curve is 0.09, not 1
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch4]]. [[Powell and Gale 2015 Ch3]] draws it for survival probabilities.
-
-## Common confusions
-- **"It is a probability distribution for θ."** It doesn't integrate to 1 and has no such interpretation without a prior.
-
-## Explain it back
-- How does the likelihood function change as sample size grows?
-
-*Pass test:* you can plot a likelihood function and read its peak and width.
 
 ## Connections
 - **Builds on:** [[Likelihood]]

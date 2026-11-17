@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "A confounding variable is one that influences both the explanatory variable and the response, creating an association between them that isn't cause and effect."
 aliases:
   - "Confounder"
   - "Lurking variable"
@@ -12,31 +13,12 @@ status: seedling
 
 # Confounding Variable
 
-**In one line:** a confounding variable is one that influences both the explanatory variable and the response, creating an association between them that isn't cause and effect.
+Ice cream sales and drownings rise and fall together, but ice cream does not drown anyone. Hot weather sends people both to the ice cream van and into the water. Heat is the **confounding variable**: a variable that influences both the [[Explanatory Variable]] and the [[Response Variable]], creating an association between them that is not cause and effect. The defining shape is a common cause, Z, with arrows into both X and Y, so X and Y move together through Z even if X does nothing to Y. Heat is easy to spot; in field data the confounder is often something nobody recorded.
 
-> [!info] Before this, it helps to know
-> [[Explanatory Variable]] (the supposed cause) · [[Response Variable]] (the outcome) · [[Correlation]] (moving together)
+An example. Lakes with more boats have fewer loons, and boats might disturb loons. Or perhaps big lakes near towns attract boats and also have more shoreline houses, which destroy nesting habitat. If "development" drives both boats and loon loss, banning boats might change nothing. A simulation shows how convincing a false effect can look: let development raise boat numbers and lower loon numbers while boats have no effect at all. A regression of loons on boats alone finds a slope of about −0.6, a clear "boat effect" that is entirely spurious, and adding development to the model brings the boat slope back to about zero. The association is real; the causal reading is wrong ([[Correlation]], [[Correlation vs Causation]]).
 
-## The everyday picture
-Ice cream sales and drownings rise and fall together. Ice cream doesn't drown people. Hot weather sends people both to the ice cream van and into the water. Heat is the confounder.
+There are three defences. Randomize X, which breaks Z's link to X ([[Randomization]]); measure Z and include it in the model, which is what "holding it constant" means ([[Holding Other Variables Constant]]); or compare units within levels of Z. But do not adjust for everything in sight: a variable that lies on the causal path from X to Y is part of the effect you want, and adjusting for it hides that effect, while adjusting for consequences of the response can create bias. Confounding is also not the same as [[Collinearity]]: collinearity simply means predictors are correlated with each other, while confounding is a causal claim about a common cause, although confounded predictors are often collinear and hard to separate. This gap between association and cause is why regression coefficients from field data need careful wording ([[Guthery and Bingham 2007]]) and why [[Observational Study]] results stay tentative.
 
-*Where the picture stops working:* heat is easy to spot. In field data the confounder is often something nobody recorded.
-
-## A tiny example
-Lakes with more boats have fewer loons.
-- Boats might disturb loons.
-- Or: big lakes near towns attract boats, and those lakes also have more shoreline houses, which remove nesting habitat.
-- "Development" drives both boats and loon loss. Banning boats might change nothing.
-
-## Start from zero
-1. **You see X and Y associated.**
-2. **Ask: what could cause both?** Call it Z.
-3. **If Z raises X and also changes Y, then X and Y move together through Z.**
-4. **The X-Y association is then partly or wholly spurious.**
-5. **Three defences.** Randomize X (breaks Z's link to X), measure Z and include it in the model, or compare within levels of Z.
-6. **Don't adjust for everything.** *Why:* a variable on the path from X to Y is part of the effect. Adjusting for it hides the effect you want.
-
-## See it
 ```mermaid
 flowchart TD
   Z[Confounder Z<br/>shoreline development] --> X[Boats]
@@ -45,10 +27,6 @@ flowchart TD
 ```
 *What to look at:* Z is a common cause, the defining shape of confounding.
 
-## Why it is this way
-Association is easy to measure and cause is what people want. Confounding is the gap between them. It explains why regression coefficients from field data need careful wording and why the course asks for hypotheses and a causal story before modeling.
-
-## In R
 ```r
 set.seed(8)
 dev <- rnorm(300)                                 # development
@@ -58,19 +36,6 @@ coef(lm(loons ~ boats))["boats"]                  # about -0.6: spurious
 coef(lm(loons ~ boats + dev))["boats"]            # about 0 once development is in the model
 ```
 Including the confounder removes the false boat effect.
-
-## In the course
-Guthery and Bingham's warnings about interpreting regression apply here ([[Guthery and Bingham 2007]]). Collinearity makes separating confounded predictors hard ([[Collinearity]]).
-
-## Common confusions
-- **"Confounding and collinearity are the same."** Collinearity is predictors being correlated. Confounding is a causal claim about a common cause.
-- **"Adding every available covariate is safest."** Adjusting for mediators or consequences can create bias.
-
-## Explain it back
-- Draw the three-variable diagram for ice cream and drowning.
-- Name three ways to deal with a confounder.
-
-*Pass test:* you can propose a plausible confounder for an observed association and say how to address it.
 
 ## Connections
 - **Builds on:** [[Explanatory Variable]], [[Correlation]]

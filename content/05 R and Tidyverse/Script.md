@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "A script is a plain text file of R commands, saved so the whole analysis can be rerun from top to bottom."
 aliases:
   - "R script"
   - ".R file"
@@ -11,22 +12,12 @@ status: seedling
 
 # Script
 
-**In one line:** a script is a plain text file of R commands, saved so the whole analysis can be rerun from top to bottom.
+Cooking a dish from memory works once. A written recipe lets you, or anyone, make the same dish next month. An R **script** is the recipe for an analysis: a plain text file, ending in `.R`, holding the R commands in the order they must run, saved so the whole analysis can be rerun from top to bottom. You write it in RStudio's editor pane and send lines to the [[Console]] with Ctrl + Enter, or run the whole file with Source.
 
-> [!info] Before this, it helps to know
-> [[Console]] (where commands run) · [[R and RStudio]] (the editor)
+Comments make a script readable. Anything after a `#` on a line is ignored by R, so you can write notes for humans, as in the example below where the first line names the file and its purpose and the last line explains why some plots were dropped. Good comments say *why* something is done, because the code already says *what*. In three months you will be a stranger to your own code, and the comments are how you will find your way back.
 
-## The everyday picture
-A written recipe. Cooking from memory works once. A recipe on paper lets you, or anyone, make the same dish next month. A script is the recipe for an analysis.
+The test of a good script is to restart R, so the environment is empty, and run it from top to bottom: it must produce the same results. A script that "ran for me" may secretly depend on objects you made by hand in the console, and only a clean restart exposes that. This is why the course requires submitted code to run start to finish ([[Final Project]]), why longer projects split work across several scripts ([[Splitting Scripts]]), and why scripts are the foundation of [[Reproducibility]]. Reports that weave code and text together build on the same idea ([[R Markdown]], [[Console vs Script]]).
 
-## Start from zero
-1. **Create a file ending in `.R`.**
-2. **Write commands in the order they must run.**
-3. **Add comments with `#`.** R ignores everything after it on that line. Comments say why, not what.
-4. **Run lines with Ctrl + Enter,** or the whole file with Source.
-5. **The test of a good script:** restart R, run it top to bottom, and get the same results. *Why:* that proves it depends on nothing hidden in your session.
-
-## In R
 ```r
 # 01_explore.R : first look at the bird data          <- a header comment
 birds <- c(9, 8, 6, 5, 3)      # species per plot
@@ -34,22 +25,10 @@ mean(birds)                    # 6.2
 # Comments explain WHY: plots with no survey were dropped beforehand
 ```
 
-## In the course
-The syllabus requires submitted code to run start to finish ([[Final Project]]). The reproducibility sessions split work into several scripts ([[Splitting Scripts]]).
-
-## Common confusions
-- **"It ran for me, so the script works."** It may rely on objects you made by hand in the console. Restart and rerun to be sure.
-- **"Comments are optional."** In three months you are a stranger to your own code.
-
-## Explain it back
-- What is the restart-and-rerun test?
-- What should a comment explain?
-
-*Pass test:* you can write, comment and rerun a short script.
-
 ## Connections
 - **Builds on:** [[Console]]
 - **Leads to:** [[R Markdown]], [[Splitting Scripts]], [[Reproducibility]]
+- **See also:** [[R and RStudio]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]], molecular note [[Console vs Script]]
 
 ## Flashcards

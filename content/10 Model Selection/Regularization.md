@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "Regularization fits a model while penalising large coefficients, which pulls estimates toward zero and trades a little bias for much less variance and better prediction."
 aliases:
   - "Penalization"
   - "Penalized regression"
@@ -17,42 +18,17 @@ status: seedling
 
 # Regularization
 
-**In one line:** regularization fits a model while penalising large coefficients, which pulls estimates toward zero and trades a little bias for much less variance and better prediction.
+A lead on an excitable dog lets it roam but makes large departures cost effort, so it stays near the path instead of chasing every squirrel. **Regularization** fits a model while penalising large coefficients, pulling estimates toward zero and trading a little bias for much less variance and better prediction ([[Bias-Variance Trade-off]], [[Overfitting]]). An ordinary fit maximises log L ([[Maximum Likelihood Estimation]]); a penalised fit maximises log L − λ × penalty(β). Ridge uses the penalty Σ β² and shrinks all coefficients smoothly; the lasso uses Σ |β| and shrinks some exactly to zero, so it also selects variables.
 
-> [!info] Before this, it helps to know
-> [[Bias-Variance Trade-off]] (why it helps) · [[Overfitting]] (what it prevents) · [[Maximum Likelihood Estimation]] (what it modifies)
+λ controls the strength, from 0, the ordinary fit, to large values that shrink everything to 0, and is chosen by [[Cross-validation]]. Predictors must be standardised so the penalty treats them equally. In the code below, 20 predictors of which two matter are fitted by the lasso with `glmnet`: it keeps 3 and estimates the real effects as 1.12 and −0.83 (true 1.5 and −1) and the first noise variable as exactly 0, against least-squares estimates of 1.32, −0.92 and −0.11.
 
-## The everyday picture
-A lead on an excitable dog. Without it the dog chases every squirrel (fits every bump in the data). The lead lets it roam, but large departures cost effort, so it stays near the path.
+In Bayesian terms ridge is a normal prior on β and the lasso a Laplace prior, and a [[Weakly Informative Prior]] regularises; the [[Spike-and-slab Prior]] is another form. Random effects are regularised group estimates ([[Partial Pooling]]), and a [[Smoothing Parameter]] regularises wiggliness ([[Hobbs and Hooten 2015 Ch9]]). The downside is that standard errors and p-values aren't straightforward, so it is mainly a prediction tool. Shrunken estimates are not wrong: they are biased on purpose and typically closer to the truth on average.
 
-## Start from zero
-1. **Ordinary fit:** maximise log L.
-2. **Penalised fit:** maximise log L − λ × penalty(β).
-3. **Ridge:** penalty = Σ β². Shrinks all coefficients smoothly.
-4. **Lasso:** penalty = Σ |β|. Shrinks, and sets some exactly to zero, so it also selects variables.
-5. **λ controls strength:** 0 gives the ordinary fit. Large λ shrinks everything to 0. Choose λ by cross-validation.
-6. **Predictors must be standardised** so the penalty treats them equally.
-7. **Bayesian reading:** ridge equals a normal prior on β, lasso a Laplace (double-exponential) prior. Weakly informative priors regularise.
-8. **Random effects are regularised group estimates** (partial pooling). Smoothing splines regularise wiggliness.
-9. **Downside:** standard errors and p-values aren't straightforward. It is mainly a prediction tool.
-
-## In R
 ```r
 library(glmnet); set.seed(18); n <- 60; X <- matrix(rnorm(n * 20), n); y <- 1.5 * X[, 1] - 1 * X[, 2] + rnorm(n)
 cvl <- cv.glmnet(X, y, alpha = 1); b <- coef(cvl, s = "lambda.min"); sum(b[-1] != 0); round(b[2:4], 2)      # lasso keeps few predictors, shrinks the real ones a little
 round(coef(lm(y ~ X))[2:4], 2)
 ```
-
-## In the course
-Linked to priors and model selection in [[Hobbs and Hooten 2015 Ch9]].
-
-## Common confusions
-- **"Shrunken estimates are wrong."** They are biased on purpose and typically closer to the truth on average.
-
-## Explain it back
-- How do ridge and lasso penalties differ in effect?
-
-*Pass test:* you can fit a lasso and explain λ.
 
 ## Connections
 - **Builds on:** [[Bias-Variance Trade-off]], [[Overfitting]], [[Maximum Likelihood Estimation]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "A random slope lets the effect of a predictor differ among groups, with each group's slope drawn from a normal distribution around the average slope."
 aliases:
   - "Random slopes"
   - "Varying slope"
@@ -14,42 +15,18 @@ status: seedling
 
 # Random Slope
 
-**In one line:** a random slope lets the effect of a predictor differ among groups, with each group's slope drawn from a normal distribution around the average slope.
+Every athlete improves with training, but some improve faster: the average improvement rate is the fixed slope, and the spread of individual rates the random slope. A **random slope** lets the effect of a predictor differ among groups, with each group's slope drawn from a normal distribution around the average [[Slope]]. The model is yᵢⱼ = (β₀ + b₀ⱼ) + (β₁ + b₁ⱼ)xᵢⱼ + εᵢⱼ, written `y ~ x + (x | group)` in lme4, which fits correlated random intercepts and slopes ([[Random Intercept]], [[Correlated Random Intercepts and Slopes]]). The picture is non-parallel lines, as in the right panel of the figure; it is the random-effect analogue of an [[Interaction Term]].
 
-> [!info] Before this, it helps to know
-> [[Slope]] · [[Random Intercept]] (usually fitted alongside) · [[Interaction Term]] (the fixed-effect analogue)
+In the code below the first three `sleepstudy` subjects get slopes of 19.7, 1.8 and 5.0 ms per day; the slopes vary with an SD of 5.9 and the intercepts with 24.7. A random slope needs the predictor to vary within groups, so a site-level predictor with one value per site can't have a random slope by site. It is data hungry, needing many groups and several observations per group across the range of x.
 
-## The everyday picture
-Every athlete improves with training, but some improve faster. The average improvement rate is the fixed slope; the spread of individual rates is the random slope.
+Including random slopes controls the Type I error of the fixed slope when slopes really vary (Schielzeth and Forstmeier 2009, cited by [[Harrison et al. 2018]]). The lab fits `(Days | Subject)` to `sleepstudy` ([[Course Website]]). But don't always fit the maximal random structure: fit the most complex one the data support.
 
-## Start from zero
-1. **Model:** yᵢⱼ = (β₀ + b₀ⱼ) + (β₁ + b₁ⱼ)xᵢⱼ + εᵢⱼ.
-2. **lme4:** `y ~ x + (x | group)` fits correlated random intercepts and slopes.
-3. **Picture:** non-parallel lines.
-4. **Needs the predictor to vary within groups.** A site-level predictor (one value per site) can't have a random slope by site.
-5. **Data hungry:** many groups and several observations per group across the range of x.
-6. **Including random slopes controls Type I error for the fixed slope** when slopes really vary (Schielzeth and Forstmeier 2009, cited by Harrison et al.).
-7. **Signs of too little data:** singular fit, or an intercept-slope correlation of exactly ±1. Then try `(x || group)` (no correlation) or drop the slope.
-
-## See it
 ![[Random intercepts and slopes.png|700]]
 *What to look at:* the right panel's fanning lines.
 
-## In R
 ```r
 library(lme4); m <- lmer(Reaction ~ Days + (Days | Subject), data = sleepstudy); round(head(coef(m)$Subject, 3), 1); round(attr(VarCorr(m)$Subject, "stddev"), 1)
 ```
-
-## In the course
-`sleepstudy` with `(Days | Subject)` in the linear mixed models lab ([[Course Website]]). [[Harrison et al. 2018]].
-
-## Common confusions
-- **"Fit the maximal random structure always."** Fit the most complex structure the data support (Harrison et al.).
-
-## Explain it back
-- Why can't a site-level predictor have a random slope by site?
-
-*Pass test:* you can fit and diagnose a random slope.
 
 ## Connections
 - **Builds on:** [[Slope]], [[Random Intercept]], [[Interaction Term]]

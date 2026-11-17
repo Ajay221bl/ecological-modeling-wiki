@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "A Bernoulli trial is a single random event with exactly two possible results, called success and failure, where success has probability p."
 aliases:
   - "Binary trial"
   - "Success-failure trial"
@@ -11,39 +12,15 @@ status: seedling
 
 # Bernoulli Trial
 
-**In one line:** a Bernoulli trial is a single random event with exactly two possible results, called success and failure, where success has probability p.
+One flip of a possibly unfair coin lands heads or tails, nothing in between, and one number, the chance of heads, describes it completely. A **Bernoulli trial** is a single random event with exactly two possible results, called success and failure, where success has [[Probability]] p and failure 1 − p. The outcomes are coded 1 and 0, making it a [[Binary Variable]].
 
-> [!info] Before this, it helps to know
-> [[Probability]] (p) · [[Binary Variable]] (its outcome)
+Ecology is full of them. One nest either fledges at least one chick or fails; one site visit either detects the species or does not; one marked animal is either alive next year or dead. Survival, detection, occupancy, sex, infection and germination are all yes/no events. The code below simulates ten trials with p = 0.7 with `rbinom(10, size = 1, prob = 0.7)`, producing a string of 1s and 0s.
 
-## The everyday picture
-One flip of a possibly unfair coin. It lands heads or tails. Nothing in between, and one number, the chance of heads, describes it completely.
+Bigger models are built from this atom. A fixed number of independent trials with the same p gives the [[Binomial Distribution]]; trials in sequence, such as survive and then be detected, give capture-recapture and occupancy likelihoods; and [[Logistic Regression]] lets p depend on predictors. Powell and Gale build maximum likelihood from coin flips and survival trials ([[Powell and Gale 2015 Ch3]]). "Success" is only the label for the outcome coded 1: it can be death or absence if that is what you are counting. The probability distribution of a single trial is the [[Bernoulli Distribution]].
 
-## A tiny example
-One nest: fledges at least one chick (success) or fails. One site visit: species detected or not. One marked animal: alive next year or dead.
-
-## Start from zero
-1. **Two outcomes only,** coded 1 and 0.
-2. **P(1) = p, P(0) = 1 − p.**
-3. **"Success" is just the label for the outcome coded 1.** It can be death or absence if that is what you count.
-4. **Why it is the atom of so much ecology:** survival, detection, occupancy, sex, infection and germination are all yes/no events.
-5. **Build bigger models from it.** A fixed number of independent trials with the same p gives a binomial. Trials in sequence (survive, then be detected) give capture-recapture and occupancy likelihoods.
-
-## In R
 ```r
 set.seed(10); rbinom(10, size = 1, prob = 0.7)      # ten Bernoulli trials
 ```
-
-## In the course
-[[Powell and Gale 2015 Ch3]] builds maximum likelihood from coin flips and survival trials.
-
-## Common confusions
-- **"Success means a good outcome."** It is whatever you coded as 1.
-
-## Explain it back
-- Give three Bernoulli trials from wildlife studies.
-
-*Pass test:* you can recognise yes/no events as Bernoulli trials.
 
 ## Connections
 - **Builds on:** [[Probability]], [[Binary Variable]]

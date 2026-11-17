@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "Data wrangling is the work of turning raw, messy files into one clean, tidy table ready for plotting and modeling."
 aliases:
   - "Data cleaning"
   - "Data preparation"
@@ -12,25 +13,12 @@ status: seedling
 
 # Data Wrangling
 
-**In one line:** data wrangling is the work of turning raw, messy files into one clean, tidy table ready for plotting and modeling.
+Preparing vegetables before cooking, washing, peeling and chopping, takes most of the time, nobody admires it, and the meal fails without it. **Data wrangling** is the work of turning raw, messy files into one clean, tidy table ready for plotting and modeling ([[Tidy Data]]). It usually runs: import each raw file ([[Reading Data into R]]); fix names and types, so numbers are numbers, categories are factors and dates are dates; fix values, such as typos in categories and missing-value codes like 999 or "n/a"; reshape to tidy form ([[pivot_longer()]]); combine tables ([[Joins]]); derive new variables, such as richness from a species list or presence from counts; and save the clean table, for example to `data/processed/`.
 
-> [!info] Before this, it helps to know
-> [[Tidy Data]] (the target shape) · [[Tidyverse]] (the tools)
+The code below does most of this in one pipe with [[Tidyverse]] verbs. A raw table has awkward names, years stored as text, site codes in mixed case ("sa-02" and "SA-02") and a 999 that means "not counted". The pipe renames the columns, converts the codes to upper case and the years to integers, turns 999 into `NA`, splits the code into site and plot, and reshapes the species columns into one count column. The last line computes species richness per site and year, the number of species with a count above zero. Homework 1 and 3 in the course are mostly work of this kind ([[Course Website]]).
 
-## The everyday picture
-Preparing vegetables before cooking. Washing, peeling, chopping. Nobody admires it, it takes most of the time, and the meal fails without it.
+Every one of these steps is a decision, which is why they belong in a script rather than being done by hand in a spreadsheet, where the decisions are invisible and unrepeatable. Wrangling is not separate from analysis: choices made here, such as what counts as missing or whether two spellings are the same site, change the results. Keeping wrangling in its own script makes it easy to rerun and review ([[Splitting Scripts]]), and the clean table is where [[Data Exploration]] begins.
 
-## Start from zero
-1. **Import** each raw file ([[Reading Data into R]]).
-2. **Fix names and types.** Clear column names, numbers as numbers, categories as factors, dates as dates.
-3. **Fix values.** Typos in categories, missing-value codes such as 999 or "n/a".
-4. **Reshape to tidy** ([[pivot_longer()]]).
-5. **Combine tables** ([[Joins]]).
-6. **Derive variables.** Richness from a species list, presence from counts, centred predictors.
-7. **Save the clean table** to `data/processed/`.
-*Why all in a script:* every one of these steps is a decision. Done by hand in a spreadsheet, the decisions are invisible and unrepeatable.
-
-## In R
 ```r
 library(dplyr); library(tidyr)
 raw <- data.frame(Site.Code = c("VC-01", "VC-01", "sa-02", "SA-02"), Year = c("2020", "2021", "2020", "2021"),
@@ -43,17 +31,6 @@ clean <- raw |>
 clean
 clean |> group_by(site, year) |> summarise(richness = sum(count > 0, na.rm = TRUE), .groups = "drop")
 ```
-
-## In the course
-Homework 1 and Homework 3 are mostly wrangling: splitting codes, computing richness, joining tables ([[Course Website]]).
-
-## Common confusions
-- **"Wrangling isn't analysis."** Choices made here, such as what counts as missing, change the results.
-
-## Explain it back
-- Why should wrangling be scripted?
-
-*Pass test:* you can list the usual wrangling steps in order.
 
 ## Connections
 - **Builds on:** [[Tidy Data]], [[Tidyverse]]

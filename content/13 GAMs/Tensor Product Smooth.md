@@ -3,6 +3,7 @@ type: atomic
 tags:
   - gam
   - flashcards/eco/gam
+description: "A tensor product smooth builds a smooth surface of two or more predictors from one-dimensional smooths of each, allowing different amounts of smoothness in each direction."
 aliases:
   - "te()"
   - "ti()"
@@ -14,35 +15,16 @@ status: seedling
 
 # Tensor Product Smooth
 
-**In one line:** a tensor product smooth builds a smooth surface of two or more predictors from one-dimensional smooths of each, allowing different amounts of smoothness in each direction.
+A **tensor product smooth** builds a smooth surface of two or more predictors from one-dimensional smooths of each, allowing different amounts of smoothness in each direction ([[Thin Plate Regression Spline]], [[Interaction Term]]). `te(x, z)` is a smooth interaction for predictors on different scales, such as temperature and depth, or week and latitude. It has a separate smoothing parameter for each direction, so it is unaffected by rescaling x or z. This contrasts with `s(x, z)`, which assumes the same smoothness in both directions.
 
-> [!info] Before this, it helps to know
-> [[Thin Plate Regression Spline]] · [[Interaction Term]]
+`ti(x, z)` gives only the interaction, excluding main effects, so `s(x) + s(z) + ti(x, z)` tests whether the interaction is needed; `t2()` is an alternative parameterisation that works with gamm4 ([[GAMM]]). In the code below the effect of temperature grows with depth: the additive model has AIC 107.9 and adding `ti(temp, depth)` drops it to −59.1.
 
-## Start from zero
-1. **`te(x, z)`:** a smooth interaction for predictors on different scales (temperature and depth, week and latitude).
-2. **Separate smoothing parameters for each direction,** so it is invariant to rescaling x or z.
-3. **`ti(x, z)`:** only the interaction, excluding main effects. Use with `s(x) + s(z) + ti(x, z)` to test whether the interaction is needed.
-4. **`t2()`:** an alternative parameterisation that works with gamm4.
-5. **Pedersen et al.** model bird counts with `te(week, latitude)`, using a cyclic basis for week.
-6. **Contrast with `s(x, z)`,** which assumes the same smoothness in both directions.
+[[Pedersen et al. 2019]] model bird counts with `te(week, latitude)`, using a cyclic basis for week ([[Cyclic Spline]]). `te(x, z)` and `s(x, z)` are not interchangeable: te handles different units, while s assumes equal smoothness.
 
-## In R
 ```r
 library(mgcv); set.seed(18); d <- data.frame(temp = runif(300, 0, 30), depth = runif(300, 0, 500)); d$y <- sin(d$temp / 5) * (d$depth / 500) + rnorm(300, 0, 0.2)
 m1 <- gam(y ~ s(temp) + s(depth), data = d, method = "REML"); m2 <- gam(y ~ s(temp) + s(depth) + ti(temp, depth), data = d, method = "REML"); round(c(AIC_additive = AIC(m1), AIC_with_interaction = AIC(m2)), 1)
 ```
-
-## In the course
-[[Pedersen et al. 2019]] (bird migration example).
-
-## Common confusions
-- **"te(x, z) and s(x, z) are interchangeable."** te handles different units; s assumes equal smoothness.
-
-## Explain it back
-- What does ti() leave out?
-
-*Pass test:* you can fit and test a smooth interaction.
 
 ## Connections
 - **Builds on:** [[Thin Plate Regression Spline]], [[Interaction Term]]

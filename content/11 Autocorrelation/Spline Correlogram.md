@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "A spline correlogram fits a smooth curve to the correlation between pairs of sites as a function of distance, with a bootstrap confidence band, instead of computing one value per distance class."
 aliases:
   - "spline.correlog()"
   - "Nonparametric spatial covariance function"
@@ -12,35 +13,16 @@ status: seedling
 
 # Spline Correlogram
 
-**In one line:** a spline correlogram fits a smooth curve to the correlation between pairs of sites as a function of distance, with a bootstrap confidence band, instead of computing one value per distance class.
+A **spline correlogram** fits a smooth curve, a [[Spline]], to the correlation between pairs of sites as a function of distance, with a [[Bootstrap]] confidence band, instead of computing one value per distance class ([[Correlogram]]). It comes from the ncf package as `spline.correlog(x, y, z, resamp = 1000)`. There are no distance classes to choose, and the band shows where correlation is clearly above or below zero.
 
-> [!info] Before this, it helps to know
-> [[Correlogram]] (the binned version) · [[Spline]] (the smoother) · [[Bootstrap]] (the band)
+Its x-intercept, the distance at which similarity drops to that of random pairs, estimates the scale of patchiness ([[Spatial Autocorrelation]]). It works on raw values or model residuals ([[Residual Autocorrelation]]). The code below, not run in the wiki build because ncf is not installed there, applies it to a model's residuals with 200 resamples.
 
-## Start from zero
-1. **From the ncf package:** `spline.correlog(x, y, z, resamp = 1000)`.
-2. **No distance classes to choose.** The curve is continuous.
-3. **The bootstrap band** shows where correlation is clearly above or below zero.
-4. **x-intercept:** the distance at which similarity drops to that of random pairs, an estimate of the scale of patchiness.
-5. **Slow:** each bootstrap refits the spline over all pairs. The lab warns it can take a while. Start with small `resamp` to test.
-6. **Works on raw values or model residuals.**
+It is slow, since each bootstrap refits the spline over all pairs, and the lab warns it can take a while, so start with a small `resamp` to test. It is used on the pika data in the autocorrelation lab ([[Course Website]]). Always run the resampling: no band does not mean no uncertainty.
 
-## In R
 ```r
 # norun (ncf is not installed in the wiki's build environment)
 library(ncf); sc <- spline.correlog(x = d$easting, y = d$northing, z = resid(m), resamp = 200); plot(sc); summary(sc)$estimate
 ```
-
-## In the course
-`ncf::spline.correlog()` on pika data in the autocorrelation lab ([[Course Website]]).
-
-## Common confusions
-- **"No band means no uncertainty."** Always run the resampling.
-
-## Explain it back
-- What does the x-intercept of a spline correlogram estimate?
-
-*Pass test:* you can run and read a spline correlogram.
 
 ## Connections
 - **Builds on:** [[Correlogram]], [[Spline]], [[Bootstrap]]

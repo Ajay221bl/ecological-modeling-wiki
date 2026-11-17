@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "A model formula is R's shorthand for a model: the response on the left of `~`, the terms that explain it on the right."
 aliases:
   - "Formula"
   - "Formula Syntax in R"
@@ -13,24 +14,12 @@ status: seedling
 
 # Model Formula Syntax
 
-**In one line:** a model formula is R's shorthand for a model: the response on the left of `~`, the terms that explain it on the right.
+A shopping list for a model: you write what goes in, and R works out the quantities. A **model formula** is R's shorthand for a model, with the [[Response Variable]] on the left of `~` and the terms that explain it ([[Explanatory Variable]]) on the right. `birds ~ tree + burn` reads "birds is modelled by tree and burn". You never type the coefficients; estimating them is R's job ([[Linear Regression]]).
 
-> [!info] Before this, it helps to know
-> [[Response Variable]] (left side) · [[Explanatory Variable]] (right side) · [[Linear Regression]] (what it describes)
+The symbols have special meanings inside a formula. `~` means "is modelled by"; `+` adds a term, not arithmetic; an intercept is included automatically, so `y ~ 1` is an intercept-only model and `- 1` or `+ 0` removes it. `a:b` is an interaction, and `a * b` is shorthand for `a + b + a:b` ([[Interaction Term]]). Because `^` and `*` are taken, real arithmetic must be protected with `I()`: `y ~ x + x^2` does *not* fit a quadratic, while `y ~ x + I(x^2)` (or `poly(x, 2)`) does. Functions work inline, as in `log(y) ~ scale(x)`. Packages extend the language: `(1 | g)` adds a random intercept for group g and `(x | g)` a random slope as well ([[lme4 Random-effect Syntax]]); `s(x)` adds a smooth ([[Smoothing Function s()]]); `offset(log(e))` adds an offset. The table summarises the common forms, and the code shows the coefficient names each one produces.
 
-## The everyday picture
-A shopping list for the model. You write what goes in, and R works out the quantities. `birds ~ tree + burn` says "explain birds using tree and burn". You never type the coefficients: estimating them is R's job.
+A formula is an object in its own right: it can be stored, inspected with `all.vars()`, and edited with `update()`, as in `update(f, . ~ . - g)`, which drops a term. That is why the model selection lab can keep a set of hypotheses as a named list of formulas and fit them all at once ([[Course Website]]). Behind every formula, R builds a [[Model Matrix]] with one column per coefficient, and [[lm()]] and every other modeling function in the course take a formula as their first argument.
 
-## Start from zero
-1. **`~` reads "is modelled by".**
-2. **`+` adds a term.** It is not arithmetic.
-3. **An intercept is included automatically.** `y ~ 1` is intercept only. `- 1` or `+ 0` removes it.
-4. **`a:b` is an interaction. `a * b` means `a + b + a:b`** ([[Interaction Term]]).
-5. **`I()` protects real arithmetic:** `I(x^2)`. *Why:* inside a formula `^` and `*` have special meanings.
-6. **Functions work inline:** `log(y) ~ scale(x)`.
-7. **`(1 | g)` adds a random intercept for group g, `(x | g)` a random slope too** ([[lme4 Random-effect Syntax]]). **`s(x)` adds a smooth** ([[Smoothing Function s()]]). **`offset(log(e))` adds an offset.**
-
-## See it
 | Formula | Meaning |
 |---|---|
 | `y ~ 1` | intercept only |
@@ -41,7 +30,6 @@ A shopping list for the model. You write what goes in, and R works out the quant
 | `y ~ x + (1 \| site)` | random intercept per site |
 | `y ~ s(x)` | smooth of x (mgcv) |
 
-## In R
 ```r
 d <- data.frame(y = c(9, 8, 6, 5, 3, 9, 5, 7), x = c(10, 20, 30, 40, 50, 15, 35, 25), g = rep(c("a", "b"), 4))
 names(coef(lm(y ~ x, d)))
@@ -51,19 +39,6 @@ f <- y ~ x + g; class(f); all.vars(f)  # a formula is an object you can store in
 update(f, . ~ . - g)                   # drop a term
 ```
 Because formulas are objects, a candidate model set can be a named list of them.
-
-## In the course
-Used in every lab. The model selection lab stores hypotheses as a list of formulas ([[Course Website]]).
-
-## Common confusions
-- **"`y ~ x + x^2` fits a quadratic."** It doesn't. Use `I(x^2)` or `poly(x, 2)`.
-- **"`a * b` multiplies a and b."** It expands to main effects plus interaction.
-
-## Explain it back
-- Expand `y ~ a * b`.
-- How do you remove the intercept?
-
-*Pass test:* you can translate a model described in words into a formula.
 
 ## Connections
 - **Builds on:** [[Response Variable]], [[Explanatory Variable]]

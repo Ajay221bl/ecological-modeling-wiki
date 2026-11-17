@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "Lme4 writes each random effect as a term in parentheses, with what varies on the left of the bar and the grouping factor on the right."
 aliases:
   - "lme4 formula syntax"
   - "Random-effects formula"
@@ -13,20 +14,7 @@ status: seedling
 
 # lme4 Random-effect Syntax
 
-**In one line:** lme4 writes each random effect as a term in parentheses, with what varies on the left of the bar and the grouping factor on the right.
-
-> [!info] Before this, it helps to know
-> [[Random Intercept]] · [[Random Slope]] · [[Model Formula Syntax|Formula Syntax in R]]
-
-## Start from zero
-1. **`(1 | g)`:** random intercept by g.
-2. **`(x | g)` or `(1 + x | g)`:** correlated random intercept and slope for x.
-3. **`(0 + x | g)`:** random slope only, no random intercept.
-4. **`(x || g)`:** intercept and slope with no correlation (numeric x).
-5. **`(1 | g1/g2)`:** g2 nested in g1, same as `(1 | g1) + (1 | g1:g2)`.
-6. **`(1 | g1) + (1 | g2)`:** crossed.
-7. **Fixed effects go outside the parentheses:** `y ~ x + (x | g)`. A random slope almost always needs the matching fixed slope.
-8. **The lme4 vignette has a table** of these forms; the lab uses it.
+lme4 writes each random effect as a term in parentheses, with what varies on the left of the bar and the [[Grouping Factor]] on the right ([[Model Formula Syntax|Formula Syntax in R]]). `(1 | g)` is a [[Random Intercept]] by g; `(x | g)`, the same as `(1 + x | g)`, is a correlated random intercept and [[Random Slope]] for x; `(x || g)` drops the correlation; and `(0 + x | g)` is a random slope with no random intercept. For two groupings, `(1 | g1/g2)` nests g2 in g1 and expands to `(1 | g1) + (1 | g1:g2)`, while `(1 | g1) + (1 | g2)` is crossed ([[Nested Random Effects]], [[Crossed Random Effects]]).
 
 | Formula | Meaning |
 |---|---|
@@ -37,22 +25,14 @@ status: seedling
 | `(1 \| a/b)` | b nested in a |
 | `(1 \| a) + (1 \| b)` | Crossed a and b |
 
-## In R
+Fixed effects go outside the parentheses, as in `y ~ x + (x | g)`, and a random slope almost always needs the matching fixed slope. The code below counts the variance-covariance parameters each form adds for `sleepstudy`: 1 for `(1 | Subject)`, 3 for `(Days | Subject)` (two SDs and a correlation), 2 for `(Days || Subject)` and 1 for `(0 + Days | Subject)`.
+
+The lme4 vignette has a table of these forms, used in the linear mixed models lab ([[Course Website]], [[lmer() and glmer()]]). `(x | g)` without x as a fixed effect is not fine: it forces the average slope to zero.
+
 ```r
 library(lme4); f <- c("(1 | Subject)", "(Days | Subject)", "(Days || Subject)", "(0 + Days | Subject)")
 sapply(f, function(r) length(getME(lmer(as.formula(paste("Reaction ~ Days +", r)), sleepstudy), "theta")))     # number of variance-covariance parameters
 ```
-
-## In the course
-lme4 vignette syntax table used in the linear mixed models lab ([[Course Website]]).
-
-## Common confusions
-- **"(x | g) without x as a fixed effect is fine."** It forces the average slope to zero.
-
-## Explain it back
-- How many random-effect parameters does (x | g) estimate?
-
-*Pass test:* you can write any common random structure.
 
 ## Connections
 - **Builds on:** [[Random Intercept]], [[Random Slope]], [[Model Formula Syntax|Formula Syntax in R]]

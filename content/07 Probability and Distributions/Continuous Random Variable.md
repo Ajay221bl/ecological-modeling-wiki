@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "A continuous random variable can take any value within a range, with no gaps between possible values."
 aliases:
   - "Continuous distribution"
 status: seedling
@@ -10,35 +11,16 @@ status: seedling
 
 # Continuous Random Variable
 
-**In one line:** a continuous random variable can take any value within a range, with no gaps between possible values.
+On a ramp, unlike stairs, you can stand anywhere, and there are so many possible positions that the chance of standing on any single exact point is zero; only stretches of the ramp have a probability. A **continuous random variable** can take any value within a range, with no gaps: between any two possible values there is another ([[Random Variable]]). In ecology, mass, length, temperature, time, biomass and proportion of cover are continuous ([[Continuous Data]]).
 
-> [!info] Before this, it helps to know
-> [[Random Variable]] (the general idea) · [[Continuous Data]] (the data it produces)
+Because infinitely many values share a total probability of 1, the probability of any single exact value is zero. Probabilities belong to intervals instead, such as P(10 < Y < 12), and they are areas under a curve, the [[Probability Density Function]], so finding them is integration ([[Integral]]). In the code below, for a [[Normal Distribution]] with mean 11 and standard deviation 2, P(10 < Y < 12) is about 0.38, while the probability of exactly 11 is 0.
 
-## The everyday picture
-A ramp instead of stairs. You can stand anywhere along it. There are so many possible positions that the chance of standing on any single exact point is zero. Only stretches of the ramp have a probability.
+Zero probability does not mean impossible here: every exact value has probability zero, yet one of them occurs every time you measure. Measured data are always rounded, to the nearest gram or millimetre, but treating them as continuous is still the right model. The contrast is the [[Discrete Random Variable]], whose separate values each carry their own probability ([[PMF vs PDF]]).
 
-## Start from zero
-1. **Its values fill an interval.** Between any two there is another.
-2. **The probability of any single exact value is zero.** *Why:* infinitely many values share a total probability of 1.
-3. **So probabilities belong to intervals.** P(10 < Y < 12).
-4. **Described by a probability density function.** Probability is area under its curve.
-5. **In ecology:** mass, length, temperature, time, biomass, proportions of cover.
-6. **Measured data are always rounded,** but treating them as continuous is the right model.
-
-## In R
 ```r
 pnorm(12, 11, 2) - pnorm(10, 11, 2)      # P(10 < Y < 12) for a Normal(11, 2): an area
 pnorm(11, 11, 2) - pnorm(11, 11, 2)      # P(Y exactly 11) = 0
 ```
-
-## Common confusions
-- **"Zero probability means impossible."** Each exact value has probability zero, yet one of them occurs.
-
-## Explain it back
-- Why is P(Y = 11 exactly) zero?
-
-*Pass test:* you can explain why continuous variables need densities.
 
 ## Connections
 - **Builds on:** [[Random Variable]]

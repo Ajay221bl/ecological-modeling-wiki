@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Abundance N is the number of individuals of a species in a defined area at a defined time."
 aliases:
   - "Population size"
   - "Abundance (N)"
@@ -12,31 +13,11 @@ status: seedling
 
 # Abundance
 
-**In one line:** abundance N is the number of individuals of a species in a defined area at a defined time.
+The number of people in a stadium is not the number you can see from your seat, and not the tickets sold last week, but the number in the stadium right now. **Abundance** N is the number of individuals of a species in a defined area at a defined time ([[Population]], [[Count Data]]). It needs boundaries, an area and a time window. **Density** is abundance per unit area, such as birds per hectare, which allows comparison of areas of different size.
 
-> [!info] Before this, it helps to know
-> [[Population]] · [[Count Data]]
+True abundance is a latent quantity, and counts estimate it only after correcting for the area sampled and for detection ([[Count-based Abundance Estimation]], [[Imperfect Detection]]). The estimation methods in this folder include the [[Lincoln-Petersen Estimator]], the [[Schnabel Estimator]], [[Removal Sampling]], [[Double-observer Methods]], the [[N-mixture Model]] and [[Distance Sampling]]. Relative abundance, an index, compares places or years without claiming the true N ([[Population Index]]).
 
-## The everyday picture
-The number of people in a stadium. Not the number you can see from your seat, and not the tickets sold last week: the number in the stadium right now.
-
-## Start from zero
-1. **Abundance needs boundaries:** an area and a time window.
-2. **Density** is abundance per unit area (birds per hectare); it allows comparison of areas of different size.
-3. **True abundance is a latent quantity.** Counts estimate it only after correcting for area sampled and detection.
-4. **Estimation methods** in this folder: [[Lincoln-Petersen Estimator]], [[Schnabel Estimator]], [[Removal Sampling]], [[Double-observer Methods]], [[N-mixture Model]], [[Distance Sampling]].
-5. **Relative abundance** (an index) compares places or years without claiming the true N.
-
-## In the course
-[[Powell and Gale 2015]] Ch7, Ch8 and Ch14 ("What is the difference between abundance and density?").
-
-## Common confusions
-- **"Abundance and density are the same."** Density divides abundance by area.
-
-## Explain it back
-- What two boundaries does an abundance need?
-
-*Pass test:* you can define abundance and density and say why counts are not abundance.
+Powell and Gale (2015 Ch7, Ch8 and Ch14) ask "What is the difference between abundance and density?" ([[Powell and Gale 2015]], [[Census]]). Abundance and density are not the same: density divides abundance by area.
 
 ## Connections
 - **Builds on:** [[Population]], [[Count Data]]

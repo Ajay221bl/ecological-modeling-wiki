@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "Two-way ANOVA is a linear model with two categorical predictors, optionally with their interaction."
 aliases:
   - "Factorial ANOVA"
   - "Two-factor ANOVA"
@@ -11,23 +12,12 @@ status: seedling
 
 # Two-way ANOVA
 
-**In one line:** two-way ANOVA is a linear model with two categorical predictors, optionally with their interaction.
+A baking trial uses two ovens and three recipes. You can ask whether ovens differ, whether recipes differ, and whether the best recipe depends on the oven. **Two-way ANOVA** is a linear model with two categorical predictors, either additive, y ~ A + B, or with their interaction, y ~ A * B ([[ANOVA]], [[Interaction Term]]). It asks three questions: the main effect of A, the main effect of B, and the A × B interaction.
 
-> [!info] Before this, it helps to know
-> [[ANOVA]] (one factor) · [[Interaction Term]] (the extra question) · [[Balanced Data]] (which keeps it simple)
+Test the interaction first, because if it is present the main effects do not have a single meaning: the effect of one factor depends on the other. An interaction plot of group means joined by lines shows it, with parallel lines meaning no interaction. In the code below, as in Homework 1, abundance is simulated by year and treatment with burning helping more in 2021; `anova()` flags the interaction, the interaction plot shows non-parallel lines, and the table of means shows the burn effect is about 2 in 2020 and about 5 in 2021 ([[Course Website]]).
 
-## The everyday picture
-A baking trial with two ovens and three recipes. You can ask: do ovens differ? Do recipes differ? And does the best recipe depend on the oven?
+With [[Balanced Data]], equal numbers in every cell, the three sums of squares are separate and the order of terms does not matter. With unbalanced data they overlap, and `anova()` results depend on the order of terms; that is where [[Sum-to-zero Contrasts]] and other test types come in. The common mistake is to read significant main effects as usual alongside a significant interaction. When one factor is nested inside another rather than crossed with it, see [[Nested Experimental Design]].
 
-## Start from zero
-1. **Model:** y ~ A + B (additive) or y ~ A * B (with interaction).
-2. **Three questions:** main effect of A, main effect of B, A × B interaction.
-3. **Test the interaction first.** If it is present, the main effects don't have a single meaning.
-4. **Visualise with an interaction plot:** group means joined by lines. Parallel lines mean no interaction.
-5. **With balanced data** the three sums of squares are separate and order doesn't matter.
-6. **With unbalanced data** they overlap and `anova()` results depend on the order of terms.
-
-## In R
 ```r
 set.seed(8); d <- expand.grid(year = factor(c(2020, 2021)), trt = factor(c("control", "burn")), rep = 1:6)
 d$y <- 10 + 2 * (d$trt == "burn") + 1 * (d$year == 2021) + 3 * (d$trt == "burn" & d$year == 2021) + rnorm(24)
@@ -35,17 +25,6 @@ anova(lm(y ~ year * trt, d))
 with(d, interaction.plot(year, trt, y))                 # non-parallel lines
 round(tapply(d$y, list(d$year, d$trt), mean), 1)
 ```
-
-## In the course
-Homework 1: abundance by year and treatment ([[Course Website]]).
-
-## Common confusions
-- **"Significant main effects can be read as usual alongside a significant interaction."** The interaction says the effect of one factor depends on the other.
-
-## Explain it back
-- What does a set of non-parallel lines in an interaction plot mean?
-
-*Pass test:* you can fit and read a two-factor model with an interaction.
 
 ## Connections
 - **Builds on:** [[ANOVA]], [[Interaction Term]]

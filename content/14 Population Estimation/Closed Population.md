@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "A closed population is one with no births, deaths, immigration or emigration during the sampling period, so its size N is fixed and can be estimated."
 aliases:
   - "Closed populations"
   - "Closed population estimation"
@@ -13,31 +14,11 @@ status: seedling
 
 # Closed Population
 
-**In one line:** a closed population is one with no births, deaths, immigration or emigration during the sampling period, so its size N is fixed and can be estimated.
+Guests at a locked dinner party can be counted repeatedly, and every head count is counting the same people because nobody arrives or leaves. A **closed population** is one with no births, deaths, immigration or emigration during the sampling period, so its size N is fixed and can be estimated ([[Abundance]], [[Mark-Recapture]], [[Closure Assumption]]). Population change is ΔN = B + I − D − E, and closed means ΔN = 0 (Powell and Gale Ch7). Demographic closure means no births or deaths; geographic closure means no movement in or out.
 
-> [!info] Before this, it helps to know
-> [[Abundance]] · [[Mark-Recapture]] · [[Closure Assumption]]
+No real population is closed; we make it approximately so by sampling over a time that is short for that species. Closed models estimate N and capture probabilities, not survival ([[Capture Probability]]). The methods include the [[Lincoln-Petersen Estimator]], the [[Schnabel Estimator]], [[Capture Heterogeneity Models]], the [[Huggins Closed Capture Model]] and [[Removal Sampling]].
 
-## The everyday picture
-Guests at a locked dinner party. Nobody arrives or leaves while you count, so repeated head counts are all counting the same people.
-
-## Start from zero
-1. **Population change is ΔN = B + I − D − E;** closed means ΔN = 0 (Powell and Gale Ch7).
-2. **Demographic closure:** no births or deaths. **Geographic closure:** no movement in or out.
-3. **No real population is closed;** we make it approximately so by sampling over a short time for that species.
-4. **What closed models estimate:** N and capture probabilities, not survival.
-5. **Methods:** [[Lincoln-Petersen Estimator]], [[Schnabel Estimator]], [[Capture Heterogeneity Models]], [[Huggins Closed Capture Model]], [[Removal Sampling]].
-
-## In the course
-[[Powell and Gale 2015]] Ch7 and Ch8.
-
-## Common confusions
-- **"Closed means the population is stable."** It means the same individuals are present throughout sampling.
-
-## Explain it back
-- What four processes must be absent?
-
-*Pass test:* you can define closure and judge a sampling period for a species.
+They are covered in [[Powell and Gale 2015]] Ch7 and Ch8; the contrast is an [[Open Population]]. Closed does not mean the population is stable; it means the same individuals are present throughout sampling.
 
 ## Connections
 - **Builds on:** [[Abundance]], [[Closure Assumption]]

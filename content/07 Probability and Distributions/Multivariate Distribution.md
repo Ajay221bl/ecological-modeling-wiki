@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "A multivariate distribution describes several random variables at once, including how they vary together."
 aliases:
   - "Joint distribution of several variables"
   - "Multivariate"
@@ -11,27 +12,15 @@ status: seedling
 
 # Multivariate Distribution
 
-**In one line:** a multivariate distribution describes several random variables at once, including how they vary together.
+A weather report gives temperature and humidity together. Each has its own distribution, but hot days tend to be humid, and a full description must capture that link. A **multivariate distribution** describes several random variables at once, including how they vary together. One draw is a whole [[Vector]] of values, one per variable. Each variable has its own marginal distribution ([[Marginal Probability]]), and the multivariate distribution also encodes the dependence among them, for instance through their [[Covariance]]. It is the continuous version of a [[Joint Probability]]: picture a landscape over the temperature-humidity plane, with a ridge where combinations are common.
 
-> [!info] Before this, it helps to know
-> [[Joint Probability]] (the idea, for events) · [[Covariance]] (how the variables are tied) · [[Vector]] (the values come as one)
+Slicing a multivariate distribution at one value of a variable gives a conditional distribution; summing or integrating over a variable gives a marginal. If the variables are independent, the distribution is just the product of the marginals. The figure shows a bivariate normal: the tilt of the cloud is the covariance, and the curves on the edges are the marginals. In the code below, 5,000 draws from a bivariate normal with correlation 0.7 reproduce that covariance, and among draws where the first variable is near 1, the second averages about 0.7: the conditional mean.
 
-## The everyday picture
-A weather report giving temperature and humidity together. Each has its own distribution. But hot days tend to be humid, and a full description must capture that link. A multivariate distribution is a landscape over the temperature-humidity plane, with a ridge where combinations are common.
+Multivariate distributions turn up throughout the course. A posterior over several parameters is multivariate ([[Joint Posterior Distribution]]); random intercepts and slopes follow a [[Multivariate Normal Distribution]]; spatially correlated errors form one large multivariate normal described by a [[Variance-Covariance Matrix]]; and counts across several categories follow a [[Multinomial Distribution]] ([[Hobbs and Hooten 2015 Ch3]]). It is not several separate distributions listed together: the dependence between variables is the point.
 
-## Start from zero
-1. **One draw is a whole vector** of values, one per variable.
-2. **Each variable has its own marginal distribution.**
-3. **The distribution also encodes dependence** among them, for instance through covariances.
-4. **Slicing it gives conditionals.** Summing over a variable gives marginals.
-5. **If the variables are independent, it is just the product of the marginals.**
-6. **Why it shows up in this course:** a posterior over several parameters is multivariate. Random intercepts and slopes are a multivariate normal. Spatially correlated errors are one big multivariate normal. Counts across several categories are multinomial.
-
-## See it
 ![[Bivariate normal.png|700]]
 *What to look at:* the tilted cloud. Its tilt is the covariance, and the curves on the edges are the marginals.
 
-## In R
 ```r
 library(MASS); set.seed(16)
 S <- matrix(c(1, 0.7, 0.7, 1), 2)
@@ -39,17 +28,6 @@ xy <- mvrnorm(5000, mu = c(0, 0), Sigma = S)       # each row is one draw of two
 round(cov(xy), 2); round(colMeans(xy), 2)
 mean(xy[abs(xy[, 1] - 1) < 0.1, 2])                # conditional mean of the second given the first is near 1: about 0.7
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch3]] covers the multivariate normal, multinomial and Dirichlet.
-
-## Common confusions
-- **"It is several separate distributions listed together."** The dependence between variables is the point.
-
-## Explain it back
-- What extra information does a multivariate distribution hold beyond the marginals?
-
-*Pass test:* you can simulate correlated pairs and read their covariance.
 
 ## Connections
 - **Builds on:** [[Joint Probability]], [[Covariance]]

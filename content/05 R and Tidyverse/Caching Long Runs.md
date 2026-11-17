@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "Caching means saving the result of a slow computation to a file so that later runs load it instead of computing it again."
 aliases:
   - "save() and load()"
   - "saveRDS()"
@@ -13,23 +14,12 @@ status: seedling
 
 # Caching Long Runs
 
-**In one line:** caching means saving the result of a slow computation to a file so that later runs load it instead of computing it again.
+Cook a big pot of stock on Sunday and freeze it, and all week you make soup in minutes, making new stock only when the recipe changes. **Caching** means saving the result of a slow computation, such as a Bayesian fit, a bootstrap or a spline correlogram, to a file so later runs load it instead of computing it again. After computing, save the object: `saveRDS(fit, "results/fit.rds")` for one object, or `save(a, b, file = "x.RData")` for several. Before computing, check whether the file exists, and if it does, load it ([[If-Else]], [[File System Functions in R]]).
 
-> [!info] Before this, it helps to know
-> [[If-Else]] (the test "does the file exist?") · [[File System Functions in R]] (reading and writing files)
+The code below does exactly that for 2,000 bootstrap means: if the cache file exists it is read, otherwise the means are computed and saved. `readRDS()` returns the object for you to name, while `load()` restores objects under their old names. brms does this itself with the `file` argument of [[brm()]], and slow [[bootMer()]] runs are good candidates too.
 
-## The everyday picture
-Cooking a big pot of stock on Sunday and freezing it. All week you make soup in minutes. You only make new stock when the recipe changes.
+The course requires it because the grader must be able to knit your work without waiting hours; the setup page says to cache anything over about two minutes ([[Knitting]]). The danger is a stale cache that silently reports old results, so delete the cache when the data or model change. RStudio's automatic `.RData` workspace is not a cache: it hides what your code depends on, so turn it off and cache explicitly.
 
-## Start from zero
-1. **Some steps are slow:** Bayesian fits, bootstraps, spline correlograms.
-2. **After computing, save the object.** `saveRDS(fit, "results/fit.rds")` for one object, or `save(a, b, file = "x.RData")` for several.
-3. **Before computing, check whether the file exists.** If so, load it.
-4. **`readRDS()` returns the object for you to name. `load()` restores objects under their old names.**
-5. **Why the course requires it:** the grader must be able to knit your work without waiting hours. The rule on the setup page is to cache anything over about two minutes.
-6. **Delete the cache when the data or model change.** *The danger:* a stale cache silently reports old results.
-
-## In R
 ```r
 cache <- file.path(tempdir(), "boot_means.rds")
 if (file.exists(cache)) {
@@ -42,15 +32,6 @@ if (file.exists(cache)) {
 quantile(boot, c(0.025, 0.975))
 # brms does this itself: brm(..., file = "results/fit_m1")
 ```
-
-## Common confusions
-- **"RStudio saves my workspace, that's a cache."** The automatic `.RData` hides what your code depends on. Turn it off and cache explicitly.
-- **"save and saveRDS are the same."** `saveRDS` stores one object without its name. `save` stores named objects.
-
-## Explain it back
-- What is the risk of a cache, and how do you guard against it?
-
-*Pass test:* you can wrap a slow step in a check-load-or-compute-and-save block.
 
 ## Connections
 - **Builds on:** [[If-Else]], [[File System Functions in R]]

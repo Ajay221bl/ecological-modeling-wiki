@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "Brms sets default priors for every parameter (flat on regression slopes, weakly informative Student-t priors scaled to the data on the intercept and standard deviations), which you can list with `get_prior()` and should check or replace."
 aliases:
   - "brms default priors"
   - "prior_summary()"
@@ -11,36 +12,16 @@ status: seedling
 
 # Default Priors in brms
 
-**In one line:** brms sets default priors for every parameter (flat on regression slopes, weakly informative Student-t priors scaled to the data on the intercept and standard deviations), which you can list with `get_prior()` and should check or replace.
+brms sets **default priors** for every parameter, flat on regression slopes and weakly informative Student-t priors scaled to the data on the intercept and standard deviations, which you can list with `get_prior()` and should check or replace ([[brms]], [[Prior Distribution]]). Population-level slopes (class b) get flat, improper priors. The intercept gets a Student-t with 3 degrees of freedom, centred on the median of the response and scaled by its median absolute deviation, never below 2.5. Standard deviations and sigma get a half Student-t(3, 0) with the same scale ([[Priors on Standard Deviations]]).
 
-> [!info] Before this, it helps to know
-> [[brms]] · [[Prior Distribution]]
+`get_prior(formula, data)` lists every parameter class and its default before fitting, `prior_summary(fit)` shows what was used, and `prior(normal(0, 1), class = b)` sets your own. Because the defaults depend on the data scale, they change if you rescale the response. In the code below, for `Reaction ~ Days + (1 | Subject)` on `sleepstudy`, the intercept prior is student_t(3, 288.7, 59.3), the Days slope is flat, and the subject SD and sigma get student_t(3, 0, 59.3).
 
-## Start from zero
-1. **Population-level slopes (class b):** flat (improper) by default.
-2. **Intercept:** Student-t with 3 degrees of freedom, centred on the median of the response and scaled by its median absolute deviation (never below 2.5). For `sleepstudy` that is student_t(3, 288.7, 59.3).
-3. **Standard deviations and sigma:** half Student-t(3, 0, same scale), so student_t(3, 0, 59.3) here.
-4. **`get_prior(formula, data)`** lists every parameter class and its default before fitting.
-5. **`prior_summary(fit)`** shows what was used.
-6. **Set your own:** `prior(normal(0, 1), class = b)`.
-7. **Defaults depend on the data scale,** so they change if you rescale the response.
+They are used in the Bayesian mixed models labs ([[Course Website]], [[Bayesian GLMM]]). brms priors are not always weakly informative: slopes get flat priors unless you set them.
 
-## In R
 ```r
 p <- brms::get_prior(Reaction ~ Days + (1 | Subject), data = lme4::sleepstudy)
 p[, c("prior", "class", "coef", "group")]
 ```
-
-## In the course
-Bayesian mixed models labs ([[Course Website]]).
-
-## Common confusions
-- **"brms priors are always weakly informative."** Slopes get flat priors unless you set them.
-
-## Explain it back
-- Which brms parameters have flat default priors?
-
-*Pass test:* you can inspect and change brms priors.
 
 ## Connections
 - **Builds on:** [[brms]], [[Prior Distribution]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "An informative prior concentrates plausibility on a narrow range of parameter values because earlier evidence justifies doing so."
 aliases:
   - "Informative priors"
   - "Strong prior"
@@ -12,40 +13,17 @@ status: seedling
 
 # Informative Prior
 
-**In one line:** an informative prior concentrates plausibility on a narrow range of parameter values because earlier evidence justifies doing so.
+An experienced doctor starts with firm expectations from thousands of patients, and when a single test is ambiguous those expectations rightly dominate. An **informative prior** concentrates plausibility on a narrow range of values because earlier evidence justifies it ([[Prior Distribution]]). It is built from real knowledge such as published estimates, a pilot study, a meta-analysis or physical limits, and it is narrow relative to what the data alone could say, so it visibly pulls the [[Posterior Distribution]] when the sample is small.
 
-> [!info] Before this, it helps to know
-> [[Prior Distribution]] (the general idea) · [[Posterior Distribution]] (what it will shape)
+The usual way to build one is [[Moment Matching]]: choose the prior's parameters so its mean and standard deviation match an earlier estimate and its uncertainty. In the code below an earlier survival estimate of 0.62 with standard error 0.05 becomes a Beta(57.8, 35.4) prior. With 4 survivors out of 12 new birds, the posterior median is 0.59 (95% interval 0.49 to 0.68); under a flat prior it would be 0.35 (0.14 to 0.61). The informative prior gives a far more precise estimate, and it would bias the answer if it were wrong.
 
-## The everyday picture
-An experienced doctor's first impression. Having seen thousands of patients, the doctor starts with firm expectations. It takes strong evidence to overturn them, and when a single test is ambiguous those expectations rightly dominate.
+[[Hobbs and Hooten 2015 Ch5]] argues that informative priors are a strength where knowledge exists. Using one carries obligations: cite the source and show a [[Prior Sensitivity Analysis]] with a weaker prior, such as a [[Weakly Informative Prior]] or [[Vague Prior]]. "Informative priors are biased, so avoid them" is a confusion: throwing away real prior knowledge is also a choice, with a cost in precision.
 
-## Start from zero
-1. **Built from real knowledge:** published estimates, a pilot study, a meta-analysis, physical limits.
-2. **Narrow relative to what the data alone could say.**
-3. **It visibly pulls the posterior** when the sample is small.
-4. **Benefits:** more precise estimates, use of hard-won earlier results, stabilised models.
-5. **Risk:** a confident prior that is wrong biases the answer.
-6. **How to build one:** match the prior's mean and standard deviation to the earlier estimate and its uncertainty (moment matching).
-7. **Obligations:** cite the source, and show a sensitivity analysis with a weaker prior.
-
-## In R
 ```r
 m <- 0.62; s <- 0.05; k <- m * (1 - m) / s^2 - 1; c(a = m * k, b = (1 - m) * k)       # Beta prior matching an earlier survival estimate of 0.62 (SE 0.05)
 a <- m * k; b <- (1 - m) * k; y <- 4; n <- 12
 rbind(informative = qbeta(c(.025, .5, .975), a + y, b + n - y), flat = qbeta(c(.025, .5, .975), 1 + y, 1 + n - y))
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch5]] argues that informative priors are a strength where knowledge exists.
-
-## Common confusions
-- **"Informative priors are biased, so avoid them."** Throwing away real prior knowledge is also a choice, with a cost in precision.
-
-## Explain it back
-- Where could an informative prior for annual survival come from?
-
-*Pass test:* you can turn a published estimate and standard error into a prior.
 
 ## Connections
 - **Builds on:** [[Prior Distribution]]

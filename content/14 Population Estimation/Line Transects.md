@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Line transects are distance-sampling surveys where an observer travels along a line and records the perpendicular distance from the line to each animal detected."
 aliases:
   - "Line transect"
   - "Line-transect sampling"
@@ -12,28 +13,11 @@ status: seedling
 
 # Line Transects
 
-**In one line:** line transects are distance-sampling surveys where an observer travels along a line and records the perpendicular distance from the line to each animal detected.
+**Line transects** are distance-sampling surveys where an observer travels along a line and records the perpendicular distance from the line to each animal detected ([[Distance Sampling]]). Measure the perpendicular distance directly, or record the sighting distance r and angle θ and convert with x = r sin θ. Density is D̂ = n / (2 × ESW × L), counting both sides of the line ([[Effective Strip Width]]).
 
-> [!info] Before this, it helps to know
-> [[Distance Sampling]]
+Lines are placed by a random or systematic design, not along roads or trails that animals use or avoid ([[Survey Sampling Designs]]). They suit open habitats, aerial and ship surveys, and large or conspicuous animals. Strip counts are the special case that assumes perfect detection out to a fixed width ([[Count-based Abundance Estimation]]).
 
-## Start from zero
-1. **Measure perpendicular distance,** or record sighting distance and angle and convert: x = r sin θ.
-2. **Lines are placed by a random or systematic design,** not along roads or trails that animals use or avoid.
-3. **Density:** D̂ = n / (2 × ESW × L), both sides of the line.
-4. **Suits** open habitats, aerial and ship surveys, large or conspicuous animals.
-5. **Strip counts** are the special case assuming perfect detection out to a fixed width.
-
-## In the course
-[[Powell and Gale 2015]] Ch19.
-
-## Common confusions
-- **"Walk along trails to save time."** Trails are not random and animals respond to them.
-
-## Explain it back
-- How do you turn a sighting distance and angle into perpendicular distance?
-
-*Pass test:* you can design a line-transect survey.
+They are covered in [[Powell and Gale 2015]] Ch19; the point-based alternative is [[Point Transects]]. Don't walk along trails to save time: trails are not random and animals respond to them.
 
 ## Connections
 - **Builds on:** [[Distance Sampling]]

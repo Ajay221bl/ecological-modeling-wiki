@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "The study population is the set of units that your sampling methods could actually have selected."
 aliases:
   - "Sampled population"
   - "Sampling frame"
@@ -11,40 +12,18 @@ status: seedling
 
 # Study Population
 
-**In one line:** the study population is the set of units that your sampling methods could actually have selected.
+Imagine a phone survey meant to describe all adults in a city. You can only reach people with a listed number who pick up, so the people who could possibly have ended up in your survey are a smaller and different group than the city. In ecology, the **study population** (also called the sampled population or *sampling frame*) is that reachable set: the units your sampling method could actually have selected. It sits between the *target population*, what you want to learn about ([[Biological Population]]), and the sample, the units you actually measured ([[Sample]]). A phone list is written down, but in ecology the reachable set is often fuzzy, such as "wherever a truck can get to".
 
-> [!info] Before this, it helps to know
-> [[Biological Population]] (what you care about) · [[Statistical Population]] (what the sample speaks for) · [[Line of Inference]] (the chain between them)
+An example. You want to learn about all 400 wetlands in a county, but only 250 are on public land with access, and you sample 30 of those at random. The study population is the 250 accessible wetlands; the other 150 had zero chance of selection, so the data say nothing direct about them. Suppose private wetlands happen to hold more frogs (14 on average) than accessible ones (8). The county-wide average is then about 10.3, but your random sample of accessible wetlands reports about 8: an accurate description of the accessible wetlands and a poor one of the county. A random sample makes results apply to the population it was drawn from, which is the study population, not everything you hoped to cover ([[Random Sampling]], [[Representative Sample]]).
 
-## The everyday picture
-A phone survey. You want all adults in a city. You can only reach those with a listed number who pick up. The people who could have ended up in your survey are the study population, and it is smaller and different from the city.
+Naming the study population forces the awkward question: who had no chance of being in my data? Roadside surveys, daylight surveys and fair-weather surveys all quietly redefine the population, and units with no chance of selection contribute no information. Any step from the study population to the wider target needs outside argument, not more statistics; this is the second link in the [[Line of Inference]]. Powell and Gale separate target, sampled and statistical populations to make exactly this point ([[Powell and Gale 2015 Ch2]], [[Statistical Population]]). How units are chosen from the frame is the subject of [[Survey Sampling Designs]].
 
-*Where the picture stops working:* a phone list is written down. In ecology the reachable set is often fuzzy, such as "wherever a truck can get to".
-
-## A tiny example
-Target: all 400 wetlands in a county.
-- Only 250 are on public land with access.
-- You sample 30 of those 250 at random.
-- Study population = **250 accessible wetlands**. The other 150 had zero chance of selection, so the data say nothing direct about them.
-
-## Start from zero
-1. **List what you want to learn about.** The target.
-2. **List what you can actually reach.** The frame.
-3. **The frame is your study population.**
-4. **Sample from it.** If randomly, results apply to the frame.
-5. **Any step beyond the frame needs outside argument.** *Why:* units with no chance of selection contribute no information.
-
-## See it
 ```mermaid
 flowchart LR
   T[Target<br/>400 wetlands] --> F[Study population<br/>250 accessible] --> S[Sample<br/>30 visited]
 ```
 *What to look at:* each box is a subset of the one before it.
 
-## Why it is this way
-Naming the study population forces the awkward question "who had no chance of being in my data?". Road-side surveys, daylight surveys and fair-weather surveys all quietly redefine the population. Being explicit keeps conclusions honest.
-
-## In R
 ```r
 set.seed(1)
 wet <- data.frame(access = rep(c(TRUE, FALSE), c(250, 150)))
@@ -53,19 +32,6 @@ mean(wet$frogs)                                        # target truth: about 10.
 mean(sample(wet$frogs[wet$access], 30))                # what the study can see: about 8
 ```
 The sample describes accessible wetlands well and the county poorly.
-
-## In the course
-[[Powell and Gale 2015 Ch2]] separates target, sampled and statistical populations.
-
-## Common confusions
-- **"Study population and sample are the same."** The sample is drawn from the study population.
-- **"We sampled randomly, so results apply everywhere."** They apply to what the random draw could reach.
-
-## Explain it back
-- Name the target, study population and sample in a road-side bird survey.
-- Why can't data speak for units that had no chance of selection?
-
-*Pass test:* you can identify the study population in a study description.
 
 ## Connections
 - **Builds on:** [[Statistical Population]], [[Line of Inference]]

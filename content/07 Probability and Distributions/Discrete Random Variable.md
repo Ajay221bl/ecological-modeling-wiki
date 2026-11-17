@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "A discrete random variable can take only separate, listable values, such as the whole numbers 0, 1, 2 and so on."
 aliases:
   - "Discrete distribution"
 status: seedling
@@ -10,35 +11,16 @@ status: seedling
 
 # Discrete Random Variable
 
-**In one line:** a discrete random variable can take only separate, listable values, such as the whole numbers 0, 1, 2 and so on.
+On a staircase you can stand on step 2 or step 3, never on step 2.4, and each step has its own definite probability. A **discrete random variable** can take only separate, listable values, such as the whole numbers 0, 1, 2 and so on, even if the list never ends ([[Random Variable]]). Each value has a probability of its own, and those probabilities add to 1. The rule giving them is a [[Probability Mass Function]], and the probability of a range is found by adding the probabilities of the values in it.
 
-> [!info] Before this, it helps to know
-> [[Random Variable]] (the general idea) · [[Discrete Data]] (the data it produces)
+In ecology, discrete variables are counts of animals, presence or absence, the number of successes out of n trials, and categories ([[Discrete Data]]). The code below lists the probability of each possible number of eggs hatching out of 4, when each hatches with probability 0.6, and checks that they add to 1. Named discrete distributions include the [[Poisson Distribution]] for counts and the [[Binomial Distribution]] for successes out of n.
 
-## The everyday picture
-Steps on a staircase. You can stand on step 2 or step 3, never on step 2.4. Each step has its own definite probability.
+"Discrete" usually means whole numbers, but the real point is separate values with gaps between them, so categories are discrete too. The contrast is the [[Continuous Random Variable]], whose values have no gaps, and whose probabilities live in areas rather than in single values ([[PMF vs PDF]]).
 
-## Start from zero
-1. **Its possible values can be listed,** even if the list never ends.
-2. **Each value has a probability of its own.**
-3. **Those probabilities add to 1.**
-4. **Described by a probability mass function.**
-5. **Probabilities of ranges come from adding.**
-6. **In ecology:** counts, presence or absence, number of successes out of n trials, categories.
-
-## In R
 ```r
 dbinom(0:4, 4, 0.6)                 # a probability for each possible value
 sum(dbinom(0:4, 4, 0.6))            # they add to 1
 ```
-
-## Common confusions
-- **"Discrete means whole numbers only."** Usually, but the point is separate values. Categories are discrete too.
-
-## Explain it back
-- Give three discrete random variables from field ecology.
-
-*Pass test:* you can tell whether a response is discrete.
 
 ## Connections
 - **Builds on:** [[Random Variable]]

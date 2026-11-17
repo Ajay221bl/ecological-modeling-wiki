@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "The alternative hypothesis is the claim that holds if the null hypothesis is false, usually that the effect is not zero."
 aliases:
   - "H1"
   - "Hₐ"
@@ -14,38 +15,16 @@ status: seedling
 
 # Alternative Hypothesis
 
-**In one line:** the alternative hypothesis is the claim that holds if the null hypothesis is false, usually that the effect is not zero.
+The prosecution's case is everything the defence is not, and it is often vague: "the accused did something", without saying exactly what. The **alternative hypothesis**, H₁ or Hₐ, is the claim that holds if the [[Null Hypothesis]] is false, usually that the effect is not zero. A *two-sided* alternative says the parameter differs from the null value in either direction, β ≠ 0, and is the default. A *one-sided* alternative names a direction, β < 0, and is legitimate only if the direction was fixed before seeing the data. In the code below, the one-sided p-value is half the two-sided one, which is why choosing the side after looking is cheating.
 
-> [!info] Before this, it helps to know
-> [[Null Hypothesis]] (what it opposes)
+The alternative is usually composite: it covers a whole range of values without naming one. The test never evaluates it directly. A small p-value counts against H₀; it does not measure support for any particular alternative ([[P-value]]). That is a weakness, because rejecting "no effect" does not tell you the effect is big enough to matter, which is why estimation and model comparison are preferred ([[Anderson and Burnham 2002]], [[Multiple Working Hypotheses]]).
 
-## The everyday picture
-The prosecution's case. It is everything the null is not. Often it is vague: "the accused did something", without saying exactly what.
+In a power calculation, though, a specific alternative must be named, such as "a slope of −0.1", because power depends on how big the real effect is ([[Statistical Power]]). The common mistake is to think rejecting H₀ proves your hypothesis. It supports only "not zero", which many explanations share.
 
-## Start from zero
-1. **Two-sided:** the parameter differs from the null value in either direction. β ≠ 0. The default.
-2. **One-sided:** it differs in a stated direction. β < 0. Only legitimate if the direction was fixed before seeing data.
-3. **It is usually composite:** it covers a whole range of values, without naming one.
-4. **The test never evaluates it directly.** A small p-value counts against H₀. It doesn't measure support for any particular alternative.
-5. **Why that is a weakness:** rejecting "no effect" doesn't tell you the effect is big enough to matter. That is why estimation and model comparison are preferred.
-6. **In power calculations** a specific alternative must be named: "a slope of −0.1".
-
-## In R
 ```r
 set.seed(2); y <- rnorm(15, 0.5, 1)
 c(two_sided = t.test(y)$p.value, one_sided = t.test(y, alternative = "greater")$p.value)     # the one-sided p is half
 ```
-
-## In the course
-[[Anderson and Burnham 2002]] contrast a single alternative with a set of competing models.
-
-## Common confusions
-- **"Rejecting H₀ proves my hypothesis."** It supports "not zero", which many explanations share.
-
-## Explain it back
-- When is a one-sided alternative justified?
-
-*Pass test:* you can state the alternative behind a two-sided test.
 
 ## Connections
 - **Builds on:** [[Null Hypothesis]]

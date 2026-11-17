@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "A rate of change says how much one quantity changes for each unit change in another."
 aliases:
   - "Change per unit"
 status: seedling
@@ -10,35 +11,12 @@ status: seedling
 
 # Rate of Change
 
-**In one line:** a rate of change says how much one quantity changes for each unit change in another.
+A car travels 120 km in 2 hours, so its speed is 60 km per hour: distance changing per unit of time. A **rate of change** says how much one quantity changes for each unit change in another, and the word "per" is its signature. It is written Δy / Δx, where Δ (the Greek letter delta) means "change in". Time is not required; any "per" works: grams per millimetre, species per degree, birds per metre of elevation. A *per capita* rate divides by the number of individuals, such as births per female.
 
-> [!info] Before this, it helps to know
-> [[Functions in Maths]] (y depends on x) · [[Slope]] (the rate of change of a line)
+A population is 100 animals in year 0 and 150 in year 5. The change in animals is Δy = 50 and the change in time is Δx = 5 years, so the average rate of change is 50 / 5 = 10 animals per year. Per capita that is 10 / 100 = 0.10 per animal per year at the start. For a straight line the rate is the same everywhere: it is the line's [[Slope]]. For a curve, each stretch has its own rate, because the curve steepens or flattens as you move along it. The 10 per year is an average over the five years; the rate at one instant, like a speedometer reading, is the [[Derivative]]. Rates also carry units, and a slope with no units stated cannot be interpreted.
 
-## The everyday picture
-A car's speed. 120 km in 2 hours is 60 km per hour: distance changing per unit of time. "Per" is the signature word of a rate.
+Ecology is about change (growth, decline, spread, response to a gradient), and a rate turns two snapshots into a statement about a process. It is also exactly what a regression coefficient is: the estimated change in the response per one-unit change in the predictor, which is why `lm()` on these two points returns a slope of 10. Guthery and Bingham's paper is largely about reading regression slopes as rates correctly ([[Guthery and Bingham 2007]]), and the [[Population Growth Rate]] is the central rate in Powell and Gale ([[Powell and Gale 2015 Ch1]]). Remember that an average rate holds at every point only for straight-line relationships ([[Functions in Maths]]).
 
-*Where the picture stops working:* 60 km per hour is the average. The speedometer shows the rate at one instant, which needs the [[Derivative]].
-
-## Words you'll need
-- **Δ (delta):** "change in". Δy is the change in y.
-- **Average rate:** Δy / Δx between two points.
-- **Per capita rate:** change per individual, such as births per female.
-
-## A tiny example
-A population is 100 in year 0 and 150 in year 5.
-- Δy = 150 − 100 = 50 animals. Δx = 5 years.
-- Average rate = 50 / 5 = **10 animals per year**.
-- Per capita: 10 / 100 = **0.10 per animal per year** at the start.
-
-## Start from zero
-1. **Pick two points.** (0, 100) and (5, 150).
-2. **Divide the change in y by the change in x.** That is the average rate.
-3. **For a straight line the rate is the same everywhere.** It is the slope.
-4. **For a curve it depends on where you look.** *Why:* the curve steepens or flattens, so each stretch has its own rate.
-5. **Rates carry units.** "Animals per year", "grams per millimetre". A slope with no units stated can't be interpreted.
-
-## See it
 ```mermaid
 flowchart LR
   A[year 0<br/>100 animals] -- +50 in 5 years --> B[year 5<br/>150 animals]
@@ -46,10 +24,6 @@ flowchart LR
 ```
 *What to look at:* rise over run.
 
-## Why it is this way
-Ecology is about change: growth, decline, spread, response to a gradient. A rate turns two snapshots into a statement about a process, and it is exactly what a regression coefficient is: the change in the response per unit of the predictor.
-
-## In R
 ```r
 N <- c(100, 150); t <- c(0, 5)
 diff(N) / diff(t)                 # 10 animals per year
@@ -58,19 +32,6 @@ diff(N) / diff(t) / N[1]          # 0.10 per capita
 coef(lm(N ~ t))["t"]              # 10
 ```
 A slope from `lm()` is an average rate of change.
-
-## In the course
-Guthery and Bingham's paper is about reading regression slopes as rates correctly ([[Guthery and Bingham 2007]]). Population growth rate is the central rate in Powell and Gale ([[Powell and Gale 2015 Ch1]]).
-
-## Common confusions
-- **"Rate means speed over time."** Any "per" works: per metre of elevation, per degree, per animal.
-- **"An average rate holds at every point."** Only for straight lines.
-
-## Explain it back
-- A chick grows from 20 g to 50 g in 10 days. What is its average growth rate, with units?
-- How is a regression slope a rate?
-
-*Pass test:* you can compute a rate with its units from two points.
 
 ## Connections
 - **Builds on:** [[Functions in Maths]]

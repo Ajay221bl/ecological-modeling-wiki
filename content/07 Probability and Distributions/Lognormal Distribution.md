@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "The lognormal distribution describes a positive quantity whose logarithm is normally distributed, giving a right-skewed shape with a long upper tail."
 aliases:
   - "Log-normal"
   - "dlnorm()"
@@ -11,46 +12,21 @@ status: seedling
 
 # Lognormal Distribution
 
-**In one line:** the lognormal distribution describes a positive quantity whose logarithm is normally distributed, giving a right-skewed shape with a long upper tail.
+Incomes are lopsided: most people earn modest amounts, a few earn enormous ones, and nobody earns less than zero. Take the log of every income and the lopsided pile becomes a tidy bell. The **lognormal distribution** describes a positive quantity whose logarithm is normally distributed ([[Natural Logarithm]], [[Normal Distribution]]). If log(Y) ~ Normal(μ, σ), then Y is lognormal: it lives on positive numbers only and is right-skewed, more so the larger σ is.
 
-> [!info] Before this, it helps to know
-> [[Normal Distribution]] (on the log scale) · [[Natural Logarithm]] (the link between scales) · [[Log Transformation]] (the same idea applied to data)
+Its parameters live on the log scale, which causes the usual mistake. μ ("meanlog" in R) is the mean of log Y, not of Y. The median of Y is exp(μ), and the mean of Y is exp(μ + σ²/2), pulled above the median by the long upper tail. With meanlog 2 and sdlog 0.6, the median is exp(2) = 7.4 and the mean is exp(2.18) = 8.8; the code below confirms both by simulation and recovers 2 and 0.6 as the mean and SD of the logs. The figure shows the same data skewed on the raw scale and symmetric after taking logs.
 
-## The everyday picture
-Incomes. Most people earn modest amounts, a few earn enormous ones, and nobody earns less than zero. Take logs and the lopsided pile becomes a tidy bell.
+It arises the way the normal does, but with multiplication: multiply many small independent factors together, such as growth each day or survival at each stage, and the product is lognormal, because the log of a product is a sum of logs. The last line of the code shows it, with products of 30 random growth factors whose logs form a bell. Its standard deviation grows in proportion to its mean, a constant coefficient of variation. Ecologists use it for body sizes, concentrations, continuous abundances and multiplicative process error, and Hobbs and Hooten favour it for positive continuous quantities ([[Hobbs and Hooten 2015 Ch3]], [[Multiplicative Effects]]). It is the distributional form of a [[Log Transformation]], and going back to the original scale needs care ([[Back-transformation]]). The [[Gamma Distribution]] is the other common choice for positive skewed data.
 
-## Start from zero
-1. **If log(Y) ~ Normal(μ, σ), then Y is lognormal.**
-2. **Support:** positive numbers only.
-3. **Right-skewed.** The larger σ, the stronger the skew.
-4. **Its parameters live on the log scale.** μ is the mean of log Y, not of Y.
-5. **Median of Y = exp(μ). Mean of Y = exp(μ + σ²/2).** The mean is pulled above the median by the long tail.
-6. **Why it arises:** multiply many small independent factors together (growth each day, survival each stage) and the product is lognormal, just as sums are normal.
-7. **Its SD grows in proportion to its mean:** a constant coefficient of variation.
-8. **In models:** body sizes, concentrations, abundances as continuous quantities, multiplicative process error in population models.
-
-## See it
 ![[Lognormal distribution.png|700]]
 *What to look at:* skewed on the raw scale, symmetric after taking logs.
 
-## In R
 ```r
 set.seed(2); y <- rlnorm(1e5, meanlog = 2, sdlog = 0.6)
 c(median(y), exp(2)); c(mean(y), exp(2 + 0.6^2 / 2))        # median 7.4, mean 8.8
 c(mean(log(y)), sd(log(y)))                                 # the log-scale parameters: 2 and 0.6
 prod_growth <- replicate(1e4, prod(runif(30, 0.8, 1.25))); hist(log(prod_growth))   # products of many factors: log is bell shaped
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch3]], which favours it for positive continuous quantities and process models.
-
-## Common confusions
-- **"`meanlog` is the log of the mean."** It is the mean of the logs. exp(meanlog) is the median.
-
-## Explain it back
-- Why is the mean of a lognormal larger than exp(μ)?
-
-*Pass test:* you can convert lognormal parameters to a median and a mean.
 
 ## Connections
 - **Builds on:** [[Normal Distribution]], [[Natural Logarithm]]

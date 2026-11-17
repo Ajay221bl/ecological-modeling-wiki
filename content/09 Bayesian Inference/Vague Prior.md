@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "A vague prior spreads plausibility so widely that the data, through the likelihood, almost entirely determine the posterior."
 aliases:
   - "Noninformative prior"
   - "Non-informative prior"
@@ -15,40 +16,17 @@ status: seedling
 
 # Vague Prior
 
-**In one line:** a vague prior spreads plausibility so widely that the data, through the likelihood, almost entirely determine the posterior.
+A juror who has heard nothing about a case will be led by the evidence, but even "no opinion" is a starting position, and it can look different depending on how the question is put. A **vague prior**, also called flat, diffuse or "non-informative", spreads plausibility so widely that the data, through the likelihood, almost entirely determine the posterior ([[Prior Distribution]]). Examples are Uniform(0, 1) on a probability ([[Uniform Distribution]]), Normal(0, 1000) on a slope and Uniform(0, 100) on a standard deviation. With plenty of data the posterior then resembles the likelihood and estimates resemble maximum likelihood.
 
-> [!info] Before this, it helps to know
-> [[Prior Distribution]] (the general idea) · [[Uniform Distribution]] (the simplest example)
+It has three problems. Flat on one scale isn't flat on another: in the code below, a Normal(0, 10) prior on the logit scale puts 64% of its mass on probabilities within 1% of 0 or 1, a U shape on the probability scale. Vague priors allow absurd values, so Normal(0, 1000) on a logit slope gives real weight to odds ratios of e¹⁰⁰⁰. And they can make sampling slow or unstable, above all for variance parameters with few groups.
 
-## The everyday picture
-A juror who has heard nothing about the case. They'll be led by the evidence. But even "no opinion" is a starting position, and it can look different depending on how the question is phrased.
+So "vague" isn't automatically "safe", and a [[Weakly Informative Prior]] is now usually preferred; the opposite extreme is an [[Informative Prior]]. Very wide priors shade into the [[Improper Prior]], and the [[Jeffreys Prior]] was one attempt to fix the scale problem. [[Hobbs and Hooten 2015 Ch5]] warns that no prior is truly non-informative: they always assert something, sometimes something silly.
 
-## Start from zero
-1. **Aim:** let the data speak.
-2. **Examples:** Uniform(0, 1) on a probability. Normal(0, 1000) on a slope. Uniform(0, 100) on a standard deviation.
-3. **With plenty of data** the posterior resembles the likelihood, and estimates resemble maximum likelihood.
-4. **Problem 1: flat on one scale isn't flat on another.** A flat prior on the logit scale piles probability near 0 and 1.
-5. **Problem 2: they allow absurd values.** Normal(0, 1000) on a logit slope gives real weight to odds ratios of e^1000.
-6. **Problem 3: they can make sampling slow or unstable,** above all for variance parameters with few groups.
-7. **So "vague" isn't automatically "safe".** Weakly informative priors are now usually preferred.
-
-## In R
 ```r
 set.seed(7); eta <- rnorm(10000, 0, 10)                              # a "vague" Normal(0, 10) prior on the logit scale
 p <- plogis(eta); mean(p < 0.01 | p > 0.99)                          # most of its mass says the probability is within 1% of 0 or 1
 hist(p, breaks = 50, main = "Flat-looking on the logit scale, U-shaped on the probability scale")
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch5]] discusses vague priors and warns that none is truly non-informative.
-
-## Common confusions
-- **"Noninformative priors contain no information."** They always assert something, sometimes something silly.
-
-## Explain it back
-- Why isn't a flat prior on the logit scale neutral about probability?
-
-*Pass test:* you can name two problems with very wide priors.
 
 ## Connections
 - **Builds on:** [[Prior Distribution]]

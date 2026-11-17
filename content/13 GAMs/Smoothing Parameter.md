@@ -3,6 +3,7 @@ type: atomic
 tags:
   - gam
   - flashcards/eco/gam
+description: "The smoothing parameter λ sets how heavily wiggliness is penalised relative to fit, trading closeness to the data against smoothness of the curve."
 aliases:
   - "Lambda (smoothing)"
   - "sp"
@@ -13,39 +14,19 @@ status: seedling
 
 # Smoothing Parameter
 
-**In one line:** the smoothing parameter λ sets how heavily wiggliness is penalised relative to fit, trading closeness to the data against smoothness of the curve.
+The **smoothing parameter** λ sets how heavily wiggliness is penalised relative to fit, trading closeness to the data against smoothness of the curve ([[Wiggliness Penalty]], [[Bias-Variance Trade-off]]). A small λ lets the curve follow the data closely, with low bias and high variance; a large λ flattens it toward the null space, with high bias and low variance. The figure shows λ tiny on the left, moderate in the middle and huge on the right.
 
-> [!info] Before this, it helps to know
-> [[Wiggliness Penalty]] · [[Bias-Variance Trade-off]]
+mgcv estimates one λ per smooth, several for tensor products, by REML (recommended), ML, GCV (the default `GCV.Cp`) or UBRE ([[REML for Smoothness Selection]], [[Generalized Cross-validation]]). You can fix it with `gam(..., sp = 0.1)`, though this is rarely needed, and `m$sp` shows the estimates. In the code below REML picks λ = 0.018 for a sine wave, which gives a smooth with 7.3 effective degrees of freedom ([[Effective Degrees of Freedom]]).
 
-## Start from zero
-1. **Small λ:** curve follows the data closely (low bias, high variance).
-2. **Large λ:** curve flattens toward the null space (high bias, low variance).
-3. **mgcv estimates one λ per smooth** (several for tensor products).
-4. **Methods:** REML (recommended), ML, GCV (default `GCV.Cp` in older code), UBRE.
-5. **You can fix it:** `gam(..., sp = 0.1)`. Rarely needed.
-6. **`m$sp`** shows the estimated values.
+[[Pedersen et al. 2019]] (Fig. 2) contrast λ chosen by REML with λ = 0 and λ very large ([[Noam Ross GAM Course]]). λ is not chosen by the analyst; mgcv estimates it.
 
-## See it
 ![[Smoothing parameter.png|700]]
 *What to look at:* left λ tiny, middle moderate, right huge.
 
-## In R
 ```r
 library(mgcv); set.seed(9); d <- data.frame(x = runif(200)); d$y <- sin(2 * pi * d$x) + rnorm(200, 0, 0.3); m <- gam(y ~ s(x), data = d, method = "REML")
 round(c(lambda = m$sp[[1]], edf = summary(m)$edf), 3)
 ```
-
-## In the course
-[[Pedersen et al. 2019]] (Fig. 2: λ by REML, λ = 0, λ very large). [[Noam Ross GAM Course]].
-
-## Common confusions
-- **"λ is chosen by the analyst."** mgcv estimates it.
-
-## Explain it back
-- What happens to the edf as λ grows?
-
-*Pass test:* you can explain the bias-variance role of λ.
 
 ## Connections
 - **Builds on:** [[Wiggliness Penalty]], [[Bias-Variance Trade-off]]

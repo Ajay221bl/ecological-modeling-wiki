@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "The partial autocorrelation at lag k is the correlation between values k steps apart after removing the part explained by the values in between."
 aliases:
   - "PACF"
   - "pacf()"
@@ -12,33 +13,16 @@ status: seedling
 
 # Partial Autocorrelation Function
 
-**In one line:** the partial autocorrelation at lag k is the correlation between values k steps apart after removing the part explained by the values in between.
+The **partial autocorrelation** at lag k is the correlation between values k steps apart after removing the part explained by the values in between, the same "controlling for" idea as a [[Regression Coefficient|Partial Regression Coefficient]]. In an AR(1) process, values two steps apart are correlated only through the value between them, so the [[Autocorrelation Function]] at lag 2 is φ² while the PACF at lag 2 is about 0.
 
-> [!info] Before this, it helps to know
-> [[Autocorrelation Function]] (the unadjusted version) · [[Regression Coefficient|Partial Regression Coefficient]] (the same "controlling for" idea)
+That makes it useful for choosing models: the PACF of an AR(p) process cuts off after lag p, and the ACF of an MA(q) process cuts off after lag q ([[AR(1) Error Structure]], [[ARMA Error Structure]]). In R use `pacf(x)`, whose lags start at 1. In the code below an AR(1) series with φ = 0.7 has ACF values of 0.73, 0.53, 0.37 and 0.26 at lags 1 to 4, but PACF values of 0.73, −0.02, −0.02 and 0.00: one spike, then nothing.
 
-## Start from zero
-1. **In an AR(1) process,** values two steps apart are correlated only through the value between them. ACF at lag 2 = φ², but PACF at lag 2 ≈ 0.
-2. **PACF of an AR(p) process cuts off after lag p.** That helps choose p.
-3. **ACF of an MA(q) process cuts off after lag q.**
-4. **`pacf(x)` in R.** Lags start at 1.
+It is not used in the in-scope labs, but it is the standard partner of the ACF when choosing AR terms. The PACF and ACF are equal only at lag 1.
 
-## In R
 ```r
 set.seed(7); e <- as.numeric(arima.sim(list(ar = 0.7), n = 300))
 round(rbind(acf = acf(e, plot = FALSE)$acf[2:5], pacf = pacf(e, plot = FALSE)$acf[1:4]), 2)
 ```
-
-## In the course
-Not used in the in-scope labs. Included because it is the standard partner of the ACF when choosing AR terms.
-
-## Common confusions
-- **"PACF and ACF are the same at every lag."** Only at lag 1.
-
-## Explain it back
-- Why is the lag-2 PACF near zero for AR(1)?
-
-*Pass test:* you can use PACF to pick an AR order.
 
 ## Connections
 - **Builds on:** [[Autocorrelation Function]], [[Regression Coefficient|Partial Regression Coefficient]]

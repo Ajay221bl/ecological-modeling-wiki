@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "A marginal probability is the probability of one thing on its own, found by adding up its joint probabilities over every possibility for the other thing."
 aliases:
   - "Marginal distribution"
   - "Marginalising"
@@ -13,28 +14,12 @@ status: seedling
 
 # Marginal Probability
 
-**In one line:** a marginal probability is the probability of one thing on its own, found by adding up its joint probabilities over every possibility for the other thing.
+A table of sales by product and month has a "total" column in its right margin, giving sales per product with month no longer in the picture. A **marginal probability** is the probability of one thing on its own, found by adding up its joint probabilities over every possibility for the other thing ([[Joint Probability]]). The other variable has been "summed out", or *marginalised*. For continuous variables the sum becomes an integral, and the phrase is "integrated out".
 
-> [!info] Before this, it helps to know
-> [[Joint Probability]] (what gets summed)
+In the occupancy example, P(present, detected) = 0.30 and P(absent, detected) = 0, so P(detected) = 0.30 + 0 = 0.30: the probability of detection whatever the true state. In the code below, `rowSums()` of the joint table gives the marginal probabilities of the true state (0.4 present, 0.6 absent) and `colSums()` those of detection (0.3 and 0.7). Writing the same sum with conditional probabilities gives the [[Law of Total Probability]].
 
-## The everyday picture
-The totals written in the margin of a table. A table of sales by product and by month has a "total" column at the right edge. That margin tells you sales per product, with month no longer in the picture.
+Marginalising matters because you often care about one quantity while others are nuisances you had to include, and marginalising gives a statement about the one that accounts for uncertainty in the others. In Bayesian work it is almost effortless: the marginal posterior of a slope is what you get by looking only at that parameter's column in the MCMC output, ignoring the others, as the last lines of the code do with simulated draws ([[Marginal Posterior Distribution]]). That simple act is an integration. The denominator of Bayes' theorem is also a marginal ([[Marginal Likelihood]]). "Marginal" here means "in the margin of the table", not "unimportant" ([[Joint, Marginal and Conditional Probability]], [[Hobbs and Hooten 2015 Ch3]]).
 
-## A tiny example
-P(present, detected) = 0.30, P(absent, detected) = 0.
-- P(detected) = 0.30 + 0 = 0.30.
-- That is the marginal probability of detection, whatever the true state.
-
-## Start from zero
-1. **Start from the joint probabilities of A with every possible value of B.**
-2. **Add them up over B.**
-3. **What is left is P(A).** B has been "summed out" or "marginalised".
-4. **For continuous variables the sum becomes an integral.** "Integrate out".
-5. **Why it matters:** often you care about one quantity while others are nuisances you had to include. Marginalising gives a statement about the one that accounts for uncertainty in the others.
-6. **In Bayesian work** the marginal posterior of a slope is what you get by ignoring the other parameters' columns in the MCMC output. That simple act is an integration.
-
-## In R
 ```r
 tab <- matrix(c(0.30, 0.10, 0.00, 0.60), 2, byrow = TRUE, dimnames = list(c("present", "absent"), c("detected", "not detected")))
 rowSums(tab)        # marginal of true state: 0.4, 0.6
@@ -42,17 +27,6 @@ colSums(tab)        # marginal of detection: 0.3, 0.7
 set.seed(2); draws <- data.frame(a = rnorm(4000, 2, 1), b = rnorm(4000, 0.5, 0.1))   # pretend posterior draws of two parameters
 quantile(draws$b, c(0.025, 0.975))     # marginal interval for b: just use its column
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch3]]. The denominator of Bayes' theorem is a marginal ([[Marginal Likelihood]]).
-
-## Common confusions
-- **"Marginal means unimportant."** It means "in the margin of the table".
-
-## Explain it back
-- How do you get P(A) from the joint probabilities of A and B?
-
-*Pass test:* you can sum a joint table to its margins.
 
 ## Connections
 - **Builds on:** [[Joint Probability]]

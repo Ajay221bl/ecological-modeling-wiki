@@ -3,6 +3,7 @@ type: atomic
 tags:
   - stan
   - flashcards/eco/stan
+description: "You run Stan from R by passing the model code and a named data list to an interface, rstan (`stan()`) or cmdstanr (`cmdstan_model()` then `$sample()`), which compiles the model to C++ and returns posterior draws."
 aliases:
   - "rstan"
   - "Compiling Stan Models with cmdstanr"
@@ -15,20 +16,12 @@ status: seedling
 
 # Running Stan from R
 
-**In one line:** you run Stan from R by passing the model code and a named data list to an interface, rstan (`stan()`) or cmdstanr (`cmdstan_model()` then `$sample()`), which compiles the model to C++ and returns posterior draws.
+You run Stan from R by passing the model code and a named data list to an interface, rstan's `stan()` or cmdstanr's `cmdstan_model()` followed by `$sample()`, which compiles the model to C++ and returns posterior draws ([[Stan]], [[Stan Program Blocks]], [[Lists in R]]). Write the model in a `.stan` file, which is best, or a text string. Make a named list whose names and sizes match the data block exactly. Compile it, which takes about a minute in this wiki's setup and is reused if the code has not changed.
 
-> [!info] Before this, it helps to know
-> [[Stan]] · [[Stan Program Blocks]] · [[Lists in R]]
+Then sample, choosing chains, iterations, warmup, seed and cores, and check the diagnostics before looking at estimates ([[R-hat]], [[Effective Sample Size]], [[Divergent Transitions]]). rstan runs inside R, while cmdstanr calls the CmdStan program and is usually newer and lighter; the model code is identical. The code below, not run because cmdstanr is not installed here, shows the cmdstanr route; the rstan versions run in the other Stan notes ([[Generated Quantities]]).
 
-## Start from zero
-1. **Write the model** in a `.stan` file (best) or a text string.
-2. **Make a named list** whose names and sizes match the data block exactly.
-3. **Compile** (about a minute in this wiki's setup; reused if the code has not changed).
-4. **Sample:** chains, iterations, warmup, seed, cores.
-5. **Check diagnostics** before looking at estimates.
-6. **rstan** runs inside R; **cmdstanr** calls the CmdStan program and is usually newer and lighter. The model code is identical.
+This is the workflow of the Stan labs ([[Course Website]], [[Step Size and Maximum Tree Depth]]). Data can't be a data frame: Stan needs a named list matching the data block, with sizes like N.
 
-## In R
 ```r
 # norun (cmdstanr is not installed here; rstan versions run in the other Stan notes)
 library(cmdstanr)
@@ -36,17 +29,6 @@ mod <- cmdstan_model("regression.stan")
 fit <- mod$sample(data = list(N = 50, x = x, y = y), chains = 4, parallel_chains = 4, seed = 1)
 fit$summary(c("a", "b", "sigma")); fit$diagnostic_summary()
 ```
-
-## In the course
-Stan labs ([[Course Website]]).
-
-## Common confusions
-- **"Data can be a data frame."** Stan needs a named list matching the data block, with sizes like N.
-
-## Explain it back
-- What must the data list match?
-
-*Pass test:* you can compile and run a Stan model from R.
 
 ## Connections
 - **Builds on:** [[Stan]], [[Stan Program Blocks]]

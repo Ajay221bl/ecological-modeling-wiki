@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "A model ranking table lists the candidate models from best to worst with their K, log-likelihood, AIC (or AICc), ΔAIC, weight and cumulative weight."
 aliases:
   - "AIC table"
   - "aictab()"
@@ -14,20 +15,12 @@ status: seedling
 
 # Model Ranking Tables
 
-**In one line:** a model ranking table lists the candidate models from best to worst with their K, log-likelihood, AIC (or AICc), ΔAIC, weight and cumulative weight.
+A **model ranking table** lists the candidate models from best to worst, sorted by AICc, with columns for the model name, K, the log-likelihood, AIC or AICc, ΔAIC, weight and cumulative weight ([[AIC]], [[Delta AIC]], [[Akaike Weight]], [[Cumulative Weight]]). It is the standard way to report information-theoretic results, built in R with `AICcmodavg::aictab()` or `MuMIn::model.sel()`, or easily by hand.
 
-> [!info] Before this, it helps to know
-> [[AIC]], [[Delta AIC]] and [[Akaike Weight]] (its columns) · [[Candidate Model Set]] (its rows)
+Read it for the top model, how many are close, and whether close models differ only by an uninformative parameter; the log-likelihoods show whether extra parameters actually improve fit ([[Uninformative Parameters]]). Report K and log L, not just Δ, because they let the reader spot such "pretending variables". The code below builds a table by hand for five bird models: tree plus shrub is top with weight 0.73, and the same model plus a noise variable is second at Δ 2.2 and weight 0.24, though its log-likelihood is only 0.01 higher.
 
-## Start from zero
-1. **Rows: models. Columns:** model name, K, log L, AICc, Δ, w, cumulative w.
-2. **Sorted by AICc.**
-3. **The standard way to report information-theoretic results.**
-4. **In R:** `AICcmodavg::aictab()` or `MuMIn::model.sel()`. Easy to build by hand with base R.
-5. **Read it for:** the top model, how many are close, whether close models differ only by an uninformative parameter, and the log-likelihoods (do extra parameters actually improve fit?).
-6. **Report K and log L,** not just Δ. They let the reader spot pretending variables.
+Tables like this are built in the model selection lab, and the packages also feed [[modavg()]] ([[Course Website]]). Only the top row is not what matters: the pattern across the table carries the evidence.
 
-## In R
 ```r
 set.seed(8); d <- data.frame(tree = runif(80, 0, 60), shrub = runif(80, 0, 30), noise = rnorm(80)); d$birds <- rpois(80, exp(2.3 - 0.02 * d$tree + 0.015 * d$shrub))
 ms <- list(null = birds ~ 1, tree = birds ~ tree, shrub = birds ~ shrub, both = birds ~ tree + shrub, both_noise = birds ~ tree + shrub + noise)
@@ -40,20 +33,10 @@ tab$delta <- tab$AICc - min(tab$AICc); tab$w <- exp(-tab$delta / 2) / sum(exp(-t
 # MuMIn::model.sel(fits)
 ```
 
-## In the course
-Model selection lab ([[Course Website]]).
-
-## Common confusions
-- **"Only the top row matters."** The pattern across the table carries the evidence.
-
-## Explain it back
-- What two columns help detect pretending variables?
-
-*Pass test:* you can build and read a ranking table.
-
 ## Connections
 - **Builds on:** [[AIC]], [[Delta AIC]], [[Akaike Weight]]
 - **Leads to:** [[Cumulative Weight]], [[Uninformative Parameters]], [[modavg()]]
+- **See also:** [[Candidate Model Set]]
 - **Part of:** [[MOC 10 - Model Selection|MOC - Model Selection]]
 
 ## Flashcards

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "Shrinkage is pulling individual estimates toward a common value, which adds a little bias but removes a lot of noise, so the estimates are more accurate on average."
 aliases:
   - "Shrinkage estimator"
   - "Shrunk estimates"
@@ -12,39 +13,19 @@ status: seedling
 
 # Shrinkage
 
-**In one line:** shrinkage is pulling individual estimates toward a common value, which adds a little bias but removes a lot of noise, so the estimates are more accurate on average.
+**Shrinkage** is pulling individual estimates toward a common value, which adds a little bias but removes a lot of noise, so the estimates are more accurate on average ([[Bias-Variance Trade-off]]). Mixed models shrink group effects toward the population mean ([[Partial Pooling]]); penalised regression such as ridge and lasso shrinks coefficients toward zero ([[Regularization]]); and priors shrink Bayesian estimates toward the prior centre.
 
-> [!info] Before this, it helps to know
-> [[Bias-Variance Trade-off]] (why it helps) · [[Partial Pooling]] (one source) · [[Regularization]] (another source)
+It works because extreme estimates are partly extreme by chance, and pulling them in corrects for that, which is "regression to the mean". Stein's paradox (1956) showed that for three or more means, shrinking toward a common value beats estimating each separately in total squared error. In the code below 30 noisy estimates have a mean squared error of 0.97; shrinking each halfway toward zero, the best weight when signal and noise variances are equal, cuts it to 0.36. In the figure the blue points sit between the orange points and the dashed grand mean.
 
-## Start from zero
-1. **Mixed models shrink group effects toward the population mean.**
-2. **Penalised regression (ridge, lasso) shrinks coefficients toward zero.**
-3. **Priors shrink Bayesian estimates toward the prior centre.**
-4. **Why it works:** extreme estimates are partly extreme by chance. Pulling them in corrects for that ("regression to the mean").
-5. **Stein's paradox (1956):** for three or more means, shrinking toward a common value beats estimating each separately in total squared error.
-6. **Harrison et al. note shrinkage is strongest for groups with small samples,** and can feel strange to researchers used to treating group means independently.
+Harrison et al. note shrinkage is strongest for groups with small samples and can feel strange to researchers used to treating group means independently ([[Harrison et al. 2018]], [[Conditional Modes]]). Shrinkage is not a bug of mixed models; it is the reason they predict better.
 
-## See it
 ![[Partial pooling shrinkage.png|700]]
 *What to look at:* blue points sit between orange points and the dashed grand mean.
 
-## In R
 ```r
 set.seed(3); truth <- rnorm(30, 0, 1); obs <- truth + rnorm(30, 0, 1); shrunk <- obs * 1 / (1 + 1)     # optimal weight when signal and noise variances are equal
 round(c(error_raw = mean((obs - truth)^2), error_shrunk = mean((shrunk - truth)^2)), 2)
 ```
-
-## In the course
-[[Harrison et al. 2018]].
-
-## Common confusions
-- **"Shrinkage is a bug of mixed models."** It is the reason they predict better.
-
-## Explain it back
-- Why does shrinkage reduce average error?
-
-*Pass test:* you can name three sources of shrinkage.
 
 ## Connections
 - **Builds on:** [[Bias-Variance Trade-off]], [[Partial Pooling]], [[Regularization]]

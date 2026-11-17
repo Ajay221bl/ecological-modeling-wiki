@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "Variance structures let the residual variance change with a covariate or between groups, modelling heteroscedasticity directly instead of transforming the response."
 aliases:
   - "varIdent()"
   - "varPower()"
@@ -17,38 +18,17 @@ status: seedling
 
 # Variance Structures
 
-**In one line:** variance structures let the residual variance change with a covariate or between groups, modelling heteroscedasticity directly instead of transforming the response.
+**Variance structures** let the residual variance change with a covariate or between groups, modelling [[Heteroscedasticity]] directly instead of transforming the response ([[Generalized Least Squares]], [[nlme lme()]]). They are used through the `weights =` argument of `gls()` and `lme()`. `varFixed(~ x)` makes the variance proportional to x; `varIdent(form = ~ 1 | sex)` gives each level of a factor its own variance; `varPower(form = ~ x)` makes it proportional to |x|^(2δ); `varExp(form = ~ x)` to exp(2δx); and `varConstPower` and `varComb` combine them.
 
-> [!info] Before this, it helps to know
-> [[Heteroscedasticity]] · [[Generalized Least Squares]] · [[nlme lme()]]
+Choose among them with AIC from REML fits with the same fixed effects, then check the normalised residuals (Zuur Ch4). In the code below males are simulated with three times the residual SD of females; a constant-variance `gls()` has AIC 540.3, the `varIdent` model 479.2, and it estimates the male-to-female SD ratio as 3.16.
 
-## Start from zero
-1. **Used through `weights =` in `gls()` and `lme()`.**
-2. **`varFixed(~ x)`:** variance proportional to x.
-3. **`varIdent(form = ~ 1 | sex)`:** a different variance for each level of a factor.
-4. **`varPower(form = ~ x)`:** variance ∝ |x|^(2δ).
-5. **`varExp(form = ~ x)`:** variance ∝ exp(2δx).
-6. **`varConstPower`, `varComb`:** combinations.
-7. **Choose with AIC (REML, same fixed effects),** then check normalised residuals (Zuur Ch4).
-8. **Harrison et al. note varIdent as an alternative to transformation** for unequal variances between groups.
+[[Harrison et al. 2018]] note `varIdent` as an alternative to transformation for unequal variances between groups ([[Zuur et al. 2009 Ch4]]). Unequal variance does not always need a log transform; a variance structure models it without changing the scale of the mean.
 
-## In R
 ```r
 library(nlme); set.seed(6); d <- data.frame(sex = factor(rep(c("F", "M"), each = 60)), x = runif(120, 1, 10)); d$y <- 2 + 0.5 * d$x + rnorm(120, 0, ifelse(d$sex == "F", 1, 3))
 m0 <- gls(y ~ x + sex, data = d); m1 <- gls(y ~ x + sex, weights = varIdent(form = ~ 1 | sex), data = d)
 round(c(AIC_constant = AIC(m0), AIC_varIdent = AIC(m1), sd_ratio_M_to_F = coef(m1$modelStruct$varStruct, unconstrained = FALSE)[[1]]), 2)
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch4]]. [[Harrison et al. 2018]].
-
-## Common confusions
-- **"Unequal variance always needs a log transform."** A variance structure models it without changing the scale of the mean.
-
-## Explain it back
-- Which variance function gives each sex its own variance?
-
-*Pass test:* you can add and choose a variance structure.
 
 ## Connections
 - **Builds on:** [[Heteroscedasticity]], [[Generalized Least Squares]], [[nlme lme()]]

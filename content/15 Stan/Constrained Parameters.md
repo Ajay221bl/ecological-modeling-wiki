@@ -3,6 +3,7 @@ type: atomic
 tags:
   - stan
   - flashcards/eco/stan
+description: "A constrained parameter is declared with limits such as `<lower=0>`, and Stan samples it on a transformed unconstrained scale so the bounds are always respected."
 aliases:
   - "lower and upper bounds"
   - "<lower=0>"
@@ -14,31 +15,11 @@ status: seedling
 
 # Constrained Parameters
 
-**In one line:** a constrained parameter is declared with limits such as `<lower=0>`, and Stan samples it on a transformed unconstrained scale so the bounds are always respected.
+A **constrained parameter** is declared with limits such as `<lower=0>`, and Stan samples it on a transformed, unconstrained scale so the bounds are always respected ([[Data Types in Stan]], [[Parameter]]). Typical declarations are `real<lower=0> sigma;` for a standard deviation, `real<lower=0, upper=1> p;` for a probability, and `simplex[K] theta;` for proportions that sum to one. Every scale parameter needs `<lower=0>`; without it the sampler proposes negative SDs and fails.
 
-> [!info] Before this, it helps to know
-> [[Data Types in Stan]] · [[Parameter]]
+Behind the scenes σ = exp(σ_unconstrained) and p = logit⁻¹(p_unconstrained), and Stan adds the needed [[Jacobian Adjustment]] automatically for declared constraints. Constraints must match the prior's support, so a beta prior needs `<lower=0, upper=1>` ([[Beta Distribution]]). Bounds on data are checks, not transformations: they stop bad data at read time. Special types include simplex, ordered and cholesky_factor_corr, the last used with LKJ priors ([[LKJ Prior]]).
 
-## A tiny example
-`real<lower=0> sigma;` for a standard deviation, `real<lower=0, upper=1> p;` for a probability, `simplex[K] theta;` for proportions that sum to one.
-
-## Start from zero
-1. **Every scale parameter needs `<lower=0>`.** Without it the sampler proposes negative SDs and fails.
-2. **Behind the scenes:** σ = exp(σ_unconstrained); p = logit⁻¹(p_unconstrained). Stan adds the needed Jacobian automatically for declared constraints.
-3. **Constraints must match the prior's support.** A beta prior needs `<lower=0, upper=1>`.
-4. **Bounds on data** are checks, not transformations: they stop bad data at read time.
-5. **Special types:** simplex, ordered, cholesky_factor_corr (for LKJ priors).
-
-## In the course
-Stan labs ([[Course Website]]).
-
-## Common confusions
-- **"A half-normal prior is a different distribution in Stan."** Declare `<lower=0>` and write `normal(0, s)`; the bound truncates it.
-
-## Explain it back
-- What happens if a standard deviation lacks `<lower=0>`?
-
-*Pass test:* you can declare bounded parameters.
+They are used throughout the Stan labs ([[Course Website]], [[Priors on Standard Deviations]]). A half-normal prior is not a different distribution in Stan: declare `<lower=0>` and write `normal(0, s)`, and the bound truncates it ([[Half-Normal Prior]]).
 
 ## Connections
 - **Builds on:** [[Data Types in Stan]], [[Parameter]]

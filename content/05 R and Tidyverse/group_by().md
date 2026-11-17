@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "`group_by()` marks a table as split into groups, so that the verbs after it work separately on each group."
 aliases:
   - "dplyr group_by"
   - "Grouped data frame"
@@ -11,22 +12,12 @@ status: seedling
 
 # group_by()
 
-**In one line:** `group_by()` marks a table as split into groups, so that the verbs after it work separately on each group.
+Before counting a deck of cards by suit, you sort it into four piles. You have not counted anything yet; you have only arranged things so that the next instruction, "count each pile", makes sense. **`group_by()`** does that to a table. It marks the table as split into groups defined by one or more categorical columns ([[Categorical Variable]]), so that the verbs after it work separately on each group. By itself it changes nothing visible: it neither sorts nor alters the data, it just attaches a grouping label.
 
-> [!info] Before this, it helps to know
-> [[Categorical Variable]] (what defines groups) · [[summarise()]] (the usual next step)
+The next verb then acts within groups. [[summarise()]] gives one row per group; [[mutate()]] computes within groups, so `birds - mean(birds)` becomes each count's deviation from its own site's mean, as in the second line of the example below; and functions such as `slice_max()` pick rows per group. Grouping by several columns, such as site and year, makes groups for every combination. `count(site, year)` is a shortcut for grouping and counting rows. This pattern of splitting a table, applying a calculation to each piece and combining the results, called *split-apply-combine*, is the most common move in data analysis, and the diagram traces it.
 
-## The everyday picture
-Sorting a deck into four piles by suit before counting. You haven't counted anything yet. You've only arranged things so that the next instruction, "count each pile", makes sense.
+When you are finished, call `ungroup()`. A grouping that is forgotten carries on silently and changes later calculations, so that a mean you think is overall is actually per site. Grouping variables in a table play the same role as the grouping factors of mixed models ([[Grouping Factor]]).
 
-## Start from zero
-1. **`group_by(data, g)` changes nothing visible.** It attaches a label.
-2. **The next verb acts within groups.** `summarise` gives one row each, `mutate` computes group-wise, `slice_max` picks per group.
-3. **Group by several columns for combinations:** site and year.
-4. **`ungroup()` when finished.** *Why:* a forgotten grouping silently changes later calculations.
-5. **This is split-apply-combine,** the most common move in data analysis.
-
-## See it
 ```mermaid
 flowchart LR
   A[Whole table] -- group_by site --> B["A rows, B rows, C rows"]
@@ -34,7 +25,6 @@ flowchart LR
 ```
 *What to look at:* split, apply, combine.
 
-## In R
 ```r
 library(dplyr)
 d <- data.frame(site = c("A", "A", "B", "B"), year = c(1, 2, 1, 2), birds = c(9, 8, 6, 5))
@@ -42,14 +32,6 @@ d |> group_by(site) |> summarise(mean_birds = mean(birds))
 d |> group_by(site) |> mutate(dev = birds - mean(birds)) |> ungroup()
 d |> count(site, year)          # shortcut for group_by + summarise(n = n())
 ```
-
-## Common confusions
-- **"group_by() sorts or changes the data."** It only records the grouping.
-
-## Explain it back
-- Why should you `ungroup()`?
-
-*Pass test:* you can explain split-apply-combine with a two-line example.
 
 ## Connections
 - **Builds on:** [[Categorical Variable]]

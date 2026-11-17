@@ -3,6 +3,7 @@ type: atomic
 tags:
   - stan
   - flashcards/eco/stan
+description: "A Jacobian adjustment is the extra term you add to the log density when you put a prior on a nonlinear transformation of a parameter, so that the implied prior on the original parameter is what you intended."
 aliases:
   - "Jacobian"
   - "Change of variables"
@@ -12,31 +13,11 @@ status: seedling
 
 # Jacobian Adjustment
 
-**In one line:** a Jacobian adjustment is the extra term you add to the log density when you put a prior on a nonlinear transformation of a parameter, so that the implied prior on the original parameter is what you intended.
+Stretching a rubber map makes a uniform layer of paint thicker where the map is squeezed; the Jacobian corrects for the stretching. A **Jacobian adjustment** is the extra term you add to the log density when you put a prior on a nonlinear transformation of a parameter, so that the implied prior on the original parameter is what you intended ([[Constrained Parameters]], [[Transformed Parameters]], [[Probability Density]]). Densities change under transformation: if θ = exp(φ), a flat prior on θ is not flat on φ.
 
-> [!info] Before this, it helps to know
-> [[Constrained Parameters]] · [[Transformed Parameters]] · [[Probability Density]]
+Stan adds Jacobians automatically for declared constraints such as `<lower=0>`. You must add one yourself if you write `log_sigma ~ normal(...)` where log_sigma is a transformed parameter and sigma is the declared parameter. The rule of thumb is to put priors on declared parameters, and if you put one on a nonlinear transform, add `target += log|dθ/dφ|` ([[Sampling Statements and target +=]], [[Derivative]]). Stan warns "left-hand side of sampling statement may contain a non-linear transform" to remind you.
 
-## The everyday picture
-Stretching a rubber map. If you squeeze one region and stretch another, a uniform layer of paint becomes thicker in the squeezed part. The Jacobian corrects for the stretching.
-
-## Start from zero
-1. **Densities change under transformation:** if θ = exp(φ), a flat prior on θ is not flat on φ.
-2. **Stan adds Jacobians automatically** for declared constraints (`<lower=0>`).
-3. **You must add one yourself** if you write `log_sigma ~ normal(...)` where log_sigma is a transformed parameter and sigma is the declared parameter.
-4. **Rule of thumb:** put priors on declared parameters; if you put one on a nonlinear transform, add `target += log|dθ/dφ|`.
-5. **Stan warns** ("left-hand side of sampling statement may contain a non-linear transform") to remind you.
-
-## In the course
-General Stan prerequisite (not named in the course sources).
-
-## Common confusions
-- **"The Jacobian warning can always be ignored."** It can be ignored only for linear transforms or if you deliberately accept the implied prior.
-
-## Explain it back
-- When does Stan add the Jacobian for you?
-
-*Pass test:* you can recognise when a Jacobian adjustment is needed.
+It is a general Stan prerequisite, not named in the course sources ([[Stan]]). The Jacobian warning can't always be ignored: only for linear transforms, or if you deliberately accept the implied prior.
 
 ## Connections
 - **Builds on:** [[Constrained Parameters]], [[Transformed Parameters]]

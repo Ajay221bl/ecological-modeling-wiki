@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "A sample is the part of the population you actually measured."
 aliases:
   - "Sampling"
   - "Sample data"
@@ -11,44 +12,15 @@ status: seedling
 
 # Sample
 
-**In one line:** a sample is the part of the population you actually measured.
+Stir a pot of soup and taste one spoonful. The spoonful is the **sample**: the part of the [[Population]] you actually measured, made of individual [[Observation]]s. You never drink the whole pot, but from the spoonful you decide whether the pot needs salt. The stirring matters: in an unstirred pot with the salt sunk to the bottom, a spoonful from the top would mislead you. The number of units in the sample is its *sample size*, n ([[Sample Size]]). Numbers calculated from the sample are certain facts about the sample; using them to make a guess about the population is the leap of inference, reasoning from the particular to the general ([[Induction]]).
 
-> [!info] Before this, it helps to know
-> [[Population]] (the whole set the sample comes from) · [[Observation]]
+A pond holds 200 turtles, and you trap 40 of them: the sample, n = 40. Ten of the 40 are female, so in the sample the proportion female is 10 / 40 = 0.25. That is a fact about these 40 turtles. "25% of the pond is female" is a guess, an [[Estimate]]. Trap a different 40 tomorrow and you might get 8 or 13 females, 0.20 or 0.33: same pond, different sample, different answer. Different samples always give somewhat different answers, a fact called [[Sampling Variation]], and the [[Standard Error]] measures how much they differ. Soup can be stirred until every spoonful tastes the same, but nature cannot be stirred, so this variation never goes away.
 
-## The everyday picture
-You stir a pot of soup and taste **one spoonful**. The spoonful is the sample. You never drink the whole pot, but from the spoonful you decide whether the pot needs salt. The stirring matters: an unstirred pot with salt sunk to the bottom would give a misleading spoonful.
+Measuring everything is almost never possible, so all of science runs on samples, and naming the sample separately keeps two kinds of number apart: certain facts about your data and uncertain guesses about the world. The guess is only as good as the window. A sample must look like the population in the ways that matter, which is what a [[Representative Sample]] means, and a larger sample makes the guess more precise but cannot fix a method that systematically looks in the wrong place ([[Bias]]). Powell and Gale define the sample as the subset of the study population for which you have data ([[Powell and Gale 2015 Ch2]]).
 
-*Where the picture stops working:* soup can be stirred until every spoonful tastes the same. Nature can't be stirred, so different samples always come out a bit different.
-
-## Words you'll need
-- **Sample:** the units you measured.
-- **Sample size (n):** how many units are in the sample.
-- **Estimate:** a number calculated from the sample as a guess about the population ([[Estimate]]).
-- **Representative:** looking like the population in the ways that matter ([[Representative Sample]]).
-- **Sampling variation:** the fact that different samples give different answers ([[Sampling Variation]]).
-
-## A tiny example
-A pond holds 200 turtles (the population). You trap 40: that's the sample, n = 40. 10 of the 40 are female.
-- In the sample: 10 / 40 = **0.25** female. That's a fact about these 40 turtles.
-- Trap a different 40 tomorrow and you might get 8 or 13 females (0.20 or 0.33). Same pond, different sample, different answer.
-
-## Start from zero
-1. **You can't measure the whole population.** So you measure some of it.
-2. **The units you measure are the sample.** *Why it's worth a name:* every number you calculate comes from it, and only from it.
-3. **Numbers from the sample are facts about the sample.** "10 of my 40 turtles are female" is certain.
-4. **You then use them to guess about the population.** That leap is inference by [[Induction]].
-5. **The guess is only good if the sample looks like the population.** *Why:* the sample is your only window onto the pond ([[Representative Sample]]).
-6. **Different samples give different guesses.** How much they differ is measured by the [[Standard Error]].
-
-## See it
 ![[Population and sample.png|700]]
 *What to look at:* the orange dots are the sample, the only part we see.
 
-## Why it is this way
-Measuring everything is almost never possible, so all of science runs on samples. Naming the sample separately keeps two kinds of number apart: certain facts about your data, and uncertain guesses about the world.
-
-## In R
 ```r
 set.seed(1)
 population <- rnorm(200, mean = 20, sd = 5)  # the whole pond (unseen in real life)
@@ -56,20 +28,6 @@ my_sample  <- sample(population, 40)         # the 40 turtles we trapped
 mean(my_sample)                              # a fact about the sample, a guess about the pond
 mean(sample(population, 40))                 # another sample: a different answer
 ```
-
-## In the course
-Powell and Gale define the sample as the subset of the study population with data ([[Powell and Gale 2015 Ch2]], p. 14).
-
-## Common confusions
-- **"The sample mean is the population mean."** It's a guess at it.
-- **"A bigger sample fixes a biased method."** It makes the guess more precise, not less biased ([[Bias]]).
-
-## Explain it back
-- In the soup picture, what is the sample and why does stirring matter?
-- Which is a fact and which is a guess: "25% of my 40 turtles are female" or "25% of the pond is female"?
-- Why do two samples from one pond give different answers?
-
-*Pass test:* for any study, you can say what the sample is and why it might differ from the population.
 
 ## Connections
 - **Builds on:** [[Population]], [[Observation]]

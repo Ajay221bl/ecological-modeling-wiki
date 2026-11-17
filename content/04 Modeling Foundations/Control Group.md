@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "A control group is the set of units that do not receive the treatment but are otherwise handled the same way, giving the baseline for comparison."
 aliases:
   - "Control"
   - "Untreated control"
@@ -11,32 +12,12 @@ status: seedling
 
 # Control Group
 
-**In one line:** a control group is the set of units that do not receive the treatment but are otherwise handled the same way, giving the baseline for comparison.
+A before-and-after photo for a diet cannot show that the diet worked: without someone who did not diet over the same months, you cannot tell whether the change came from the diet or from summer. The non-dieter is the control. A **control group** is the set of units that do not receive the [[Treatment]] but are otherwise handled exactly the same way, giving the baseline for comparison. It answers the question every result needs: compared with what? A single non-dieter is not enough, though; controls need [[Replication]] too, and their status should be assigned at random ([[Randomization]]).
 
-> [!info] Before this, it helps to know
-> [[Treatment]] (the applied condition) · [[Experimental Study]] (assigning conditions)
+Here is the arithmetic. In one wet spring, sprayed thistle plots see seedling survival rise from 0.30 to 0.55, which looks like +0.25 from spraying. But unsprayed controls over the same spring rise from 0.30 to 0.45, so the season alone gave +0.15. The spray's own effect is the difference of the differences: (0.55 − 0.30) − (0.45 − 0.30) = +0.10. Things change over time anyway (weather, season, observers learning), treated units experience both the treatment and those changes, and control units experience only the changes, so subtracting removes what the two have in common. Comparing changes rather than levels is the idea behind before-after-control-impact designs.
 
-## The everyday picture
-A before-and-after photo for a diet. Without a second person who didn't diet over the same months, you can't tell whether the change came from the diet or from summer. The non-dieter is the control.
+Controls must be handled identically: visited, marked and disturbed in the same way. When applying a treatment has side effects, such as the wetting and trampling that come with spraying, the controls get a *sham treatment*, a procedure that mimics the handling without the active ingredient, such as spraying plain water. Two confusions: a before measurement on the treated unit is not a control, because it controls for the unit but not for what changed over time; and controls should not be left completely alone, they should get everything except the active ingredient. In a fitted model the control usually becomes the [[Reference Level]] against which treatment coefficients are measured, and a control group is a key defence against a [[Confounding Variable]] in any [[Experimental Study]].
 
-*Where the picture stops working:* a single non-dieter is not enough. Controls need replication too.
-
-## A tiny example
-Insecticide and seedling survival, one wet spring.
-- Sprayed plots: survival rises from 0.30 to 0.55.
-- Looks like +0.25 from spraying.
-- Unsprayed controls over the same spring: 0.30 to 0.45.
-- The season gave +0.15. The spray's own effect is 0.55 − 0.45 = **+0.10**.
-
-## Start from zero
-1. **Things change over time anyway.** Weather, season, observer learning.
-2. **Treated units experience both the treatment and those changes.**
-3. **Control units experience only those changes.**
-4. **Subtract.** *Why:* what is common to both cancels, leaving the treatment's contribution.
-5. **Handle controls identically.** Visit, mark and disturb them the same way. A sham treatment (water spray) covers side effects.
-6. **Assign control status at random.**
-
-## See it
 ```mermaid
 flowchart LR
   T[Treated: 0.30 to 0.55<br/>change +0.25] --> D[Treatment effect<br/>+0.25 - 0.15 = +0.10]
@@ -44,10 +25,6 @@ flowchart LR
 ```
 *What to look at:* the control's change is subtracted from the treated group's change.
 
-## Why it is this way
-A response needs a "compared with what?". The control answers it by showing what would have happened anyway. In models it is usually the reference level against which treatment coefficients are measured ([[Reference Level]]).
-
-## In R
 ```r
 d <- data.frame(group = rep(c("control", "sprayed"), each = 2), time = rep(c("before", "after"), 2),
                 surv = c(0.30, 0.45, 0.30, 0.55))
@@ -56,23 +33,11 @@ with(d, tapply(surv, list(group, time), mean))
 ```
 Comparing changes, not levels, is the before-after-control-impact idea.
 
-## In the course
-The unsprayed subplots in Homework 4 are the controls ([[Course Website]]).
-
-## Common confusions
-- **"A before measurement is a control."** It controls for the unit, not for what changed over time.
-- **"Controls should be left completely alone."** They should get everything except the active ingredient.
-
-## Explain it back
-- Why is before-and-after on treated plots alone not enough?
-- What is a sham treatment for?
-
-*Pass test:* you can compute a treatment effect net of the control's change.
-
 ## Connections
 - **Builds on:** [[Treatment]], [[Experimental Study]]
 - **Leads to:** [[Reference Level]], [[Confounding Variable]], [[Randomization]]
-- **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]], molecular note [[Treatment|Treatment and Control]]
+- **See also:** [[Treatment|Treatment and Control]]
+- **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]
 
 ## Flashcards
 

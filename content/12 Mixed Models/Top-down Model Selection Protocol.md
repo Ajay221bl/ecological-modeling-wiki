@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "The top-down protocol for mixed models starts with all candidate fixed effects, settles the random structure using REML, then simplifies the fixed effects using ML, and finally refits the chosen model with REML."
 aliases:
   - "Top-down strategy"
   - "Choosing the random structure first"
@@ -13,19 +14,8 @@ status: seedling
 
 # Top-down Model Selection Protocol
 
-**In one line:** the top-down protocol for mixed models starts with all candidate fixed effects, settles the random structure using REML, then simplifies the fixed effects using ML, and finally refits the chosen model with REML.
+The **top-down protocol** for mixed models starts with all candidate fixed effects, settles the random structure using [[REML]], then simplifies the fixed effects using ML, and finally refits the chosen model with REML ([[Maximum Likelihood Estimation]], [[Global Model]]). Step 1 fits a "beyond optimal" model with all explanatory variables and plausible interactions in the fixed part. Step 2 keeps that fixed part and finds the best random structure, and variance structure, by comparing REML fits by AIC or LRT, mindful of the [[Boundary Problem When Testing Variances]]. Step 3 keeps that random structure and finds the best fixed part by comparing ML fits. Step 4 refits the final model with REML and validates it with residual checks ([[Model Validation]]).
 
-> [!info] Before this, it helps to know
-> [[REML]] · [[Maximum Likelihood Estimation]] · [[Global Model]]
-
-## Start from zero
-1. **Step 1:** fit a "beyond optimal" model: all explanatory variables and plausible interactions in the fixed part.
-2. **Step 2:** with that fixed part, find the best random structure (and variance structure) by comparing REML fits (AIC or LRT, mindful of the boundary).
-3. **Step 3:** with that random structure, find the best fixed part by comparing ML fits.
-4. **Step 4:** refit the final model with REML and validate it (residual checks).
-5. **Why this order:** if the fixed part is too small, unexplained fixed structure leaks into the random effects, and a poor random structure biases the fixed-effect SEs.
-6. **Zuur et al. 2009 Ch5** present this four-step version and a longer ten-step protocol (with linear regression and GLS steps first).
-7. **The linear mixed models lab** follows it: compare random structures with AICc, then fixed effects with ML.
 ```mermaid
 flowchart LR
   A[Beyond-optimal fixed part] --> B[Choose random structure with REML]
@@ -33,16 +23,7 @@ flowchart LR
   C --> D[Refit with REML and validate]
 ```
 
-## In the course
-[[Zuur et al. 2009 Ch5]]. Linear mixed models lab ([[Course Website]]).
-
-## Common confusions
-- **"Select fixed effects first, then add random effects."** The random structure needs a rich fixed part to be judged fairly.
-
-## Explain it back
-- Which estimation method is used at each step?
-
-*Pass test:* you can run the protocol on a dataset.
+The order matters: if the fixed part is too small, unexplained fixed structure leaks into the random effects, and a poor random structure biases the fixed-effect standard errors. [[Zuur et al. 2009 Ch5]] present this four-step version and a longer ten-step protocol with linear regression and GLS steps first ([[Variance Structures]]). The linear mixed models lab follows it, comparing random structures with AICc and then fixed effects with ML ([[Course Website]]). Selecting fixed effects first and adding random effects afterward gets it backwards: the random structure needs a rich fixed part to be judged fairly.
 
 ## Connections
 - **Builds on:** [[REML]], [[Maximum Likelihood Estimation]], [[Global Model]]

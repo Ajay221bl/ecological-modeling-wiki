@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "The candidate model set is the list of models, each representing a plausible hypothesis, that you decide to compare before looking at the data."
 aliases:
   - "Candidate models"
   - "Model set"
@@ -14,39 +15,15 @@ status: seedling
 
 # Candidate Model Set
 
-**In one line:** the candidate model set is the list of models, each representing a plausible hypothesis, that you decide to compare before looking at the data.
+A prize shortlist is drawn up before any entry is read; if the judges could add categories after seeing the entries, any entry could be made a winner. The **candidate model set** is the list of models, each representing a plausible hypothesis, that you decide to compare before looking at the data ([[Multiple Working Hypotheses]], [[Model Selection]]). Start from the science, asking what processes could produce the pattern, and write one model per hypothesis or combination of hypotheses. Fix the set before analysing; "a priori" means before seeing the results.
 
-> [!info] Before this, it helps to know
-> [[Multiple Working Hypotheses]] (where the models come from) · [[Model Selection]] (what is done with them)
+Keep it small and thoughtful, since each model should be defensible as an idea and Burnham and Anderson warn against sets with very many models. Usually include a null, intercept-only model as a baseline ([[Null Model]]) and a [[Global Model]] as the most complex. All models must use the same response and the same rows, as [[AIC]] requires. The code below lists five candidates for bird counts: null, predation (tree), food (shrub), additive and interaction.
 
-## The everyday picture
-The shortlist for a prize, drawn up before any entry is read. If the judges could add new categories after seeing the entries, any entry could be made a winner.
+Inference is relative to the set, so if every model is poor the best one is still poor. Exploratory analysis after the a priori set is fine if labelled as such ([[Post hoc Analysis]]), and a [[Balanced Model Set]] is needed for variable-level summaries. Building it is the first task in the model selection lab ([[Anderson and Burnham 2002]], [[Johnson and Omland 2004]], [[Course Website]]). More models do not make a more thorough analysis: they mean more chances to find spurious winners ([[Data Dredging]]).
 
-## Start from zero
-1. **Start from the science:** what processes could produce the pattern?
-2. **Write one model per hypothesis** (or combination of hypotheses).
-3. **Fix the set before analysing.** "A priori" means before seeing the results.
-4. **Keep it small and thoughtful.** Each model should be defensible as an idea. Burnham and Anderson warn against sets with very many models.
-5. **Usually include a null or intercept-only model** as a baseline and a global model as the most complex.
-6. **All models must use the same response and the same rows.**
-7. **Inference is relative to the set.** If every model is poor, the best one is still poor.
-8. **Exploratory analysis after the a priori set** is fine if labelled as such.
-
-## In R
 ```r
 cands <- c(null = "birds ~ 1", predation = "birds ~ tree", food = "birds ~ shrub", additive = "birds ~ tree + shrub", interaction = "birds ~ tree * shrub"); data.frame(formula = cands)
 ```
-
-## In the course
-[[Anderson and Burnham 2002]], [[Johnson and Omland 2004]]. Building the candidate set is the first task in the model selection lab ([[Course Website]]).
-
-## Common confusions
-- **"More models make a more thorough analysis."** More models mean more chances to find spurious winners.
-
-## Explain it back
-- Why must the set be fixed before seeing the data?
-
-*Pass test:* you can build a candidate set from three hypotheses.
 
 ## Connections
 - **Builds on:** [[Multiple Working Hypotheses]], [[Model Selection]]

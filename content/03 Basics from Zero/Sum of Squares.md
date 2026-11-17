@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "A sum of squares adds up squared distances from some reference, usually the mean or a fitted line, to measure total variation."
 aliases:
   - "SS"
   - "Sum of squared deviations"
@@ -11,70 +12,29 @@ status: seedling
 
 # Sum of Squares
 
-**In one line:** a sum of squares adds up squared distances from some reference, usually the mean or a fitted line, to measure total variation.
+Imagine scoring darts by how far each one lands from the bullseye, and, to punish wild throws extra, squaring each distance before adding them. The total is a badness score: a **sum of squares**. In statistics you add up squared *deviations* (each value minus a reference point) to measure total variation. Squaring does two jobs: it removes minus signs, so deviations cannot cancel out, and it weights big misses heavily. The reference can be the mean, giving the *total sum of squares*, or a model's fitted values, giving the *residual sum of squares*, the variation the model leaves unexplained.
 
-> [!info] Before this, it helps to know
-> [[Variance]] (the averaged version) · [[Summation Notation]] (the Σ symbol)
+Take four observations y = 2.4, 3.8, 6.3 and 7.5, measured at x = 1, 2, 3 and 4. Their mean is 5, the deviations are −2.6, −1.2, 1.3 and 2.5, and the total sum of squares is 6.76 + 1.44 + 1.69 + 6.25 = 16.14. The best straight line through them is y = 1.78 + 0.55x, with fitted values 2.33, 4.11, 5.89 and 7.67. The leftovers (residuals) are small, and their squares add to only 0.30, the residual sum of squares. The rest, 16.14 − 0.30 = 15.84, is the *model sum of squares*: the variation the line explains. So the model explains 15.84 / 16.14 = 0.98 of the total, which is [[R-squared]]. This clean split, total = explained + unexplained, is exactly what an [[ANOVA]] table lists in its "Sum Sq" column. One caution: the split adds up exactly for the least-squares line, which is the line that makes the residual sum of squares as small as possible ([[Least Squares]]).
 
-## The everyday picture
-Scoring darts by how far each lands from the bullseye. To punish wild throws extra, you square each distance before adding. The total is your "badness" score: a sum of squares.
+Squared distance is the natural currency of variation precisely because it splits so neatly; no other measure of distance divides into "explained" and "left over" so cleanly, which is why least squares, R², ANOVA tables and F-tests are all built from it ([[Zuur et al. 2009 Ch2]]). Two confusions are common. A sum of squares is not a [[Variance]]: it is a total, so it grows with every observation you add. Dividing it by its [[Degrees of Freedom]] gives the fair, per-observation version, a variance (also called a mean square). And a small residual sum of squares does not prove a good model, because it always shrinks as you add predictors, useful or not. The [[Summation Notation]] for the total is Σ(yᵢ − ȳ)².
 
-*Where the picture stops working:* in darts the bullseye is fixed. In statistics you often choose the reference point to make the score as small as possible.
-
-## Words you'll need
-- **Deviation:** a value minus a reference.
-- **Total SS:** squared deviations of the data from their mean.
-- **Residual SS:** squared deviations of the data from the model's fitted values.
-- **Model SS:** total SS minus residual SS, the part the model explains.
-
-## A tiny example
-y = 2, 4, 6, 8 with mean 5.
-- Deviations: −3, −1, 1, 3. Squares: 9, 1, 1, 9.
-- Total SS = **20**.
-- A model predicts 2.5, 3.5, 6.5, 7.5. Residuals: −0.5, 0.5, −0.5, 0.5. Residual SS = 4 × 0.25 = **1**.
-- The model explains 20 − 1 = 19 of 20, so R² = **0.95**.
-
-## Start from zero
-1. **Pick a reference.** The mean, or each point's fitted value.
-2. **Take each deviation and square it.** *Why:* squaring removes signs and weights big misses heavily.
-3. **Add them up.** That is a sum of squares.
-4. **Total SS splits in two.** Total = explained by the model + left over in residuals. This split is the heart of [[ANOVA]].
-5. **Divide by degrees of freedom to get a variance.** SS is a total, so it grows with n. A mean square is the fair, per-observation version.
-
-## See it
 ```mermaid
 flowchart LR
-  T[Total SS = 20<br/>around the mean] --> M[Model SS = 19<br/>explained]
-  T --> R[Residual SS = 1<br/>unexplained]
+  T[Total SS = 16.14<br/>around the mean] --> M[Model SS = 15.84<br/>explained by the line]
+  T --> R[Residual SS = 0.30<br/>left over]
 ```
 *What to look at:* the model's job is to move as much of the total as possible into the explained box.
 
-## Why it is this way
-Squared distance is the natural currency of variation because it adds up neatly: the variation explained and the variation left over sum exactly to the total. No other measure of distance splits so cleanly. That is why least squares, R², ANOVA tables and F-tests are all built from sums of squares.
-
-## In R
 ```r
-y <- c(2, 4, 6, 8); x <- 1:4
-sum((y - mean(y))^2)          # 20 total SS
-fit <- c(2.5, 3.5, 6.5, 7.5)  # some model's fitted values
-sum((y - fit)^2)              # 1 residual SS
-1 - 1 / 20                    # 0.95
-anova(lm(c(2.4, 3.8, 6.3, 7.5) ~ x))   # an ANOVA table lists Sum Sq for model and residuals
+x <- 1:4; y <- c(2.4, 3.8, 6.3, 7.5)
+sum((y - mean(y))^2)          # 16.14 total SS
+m <- lm(y ~ x)
+fitted(m)                     # 2.33 4.11 5.89 7.67
+sum(resid(m)^2)               # 0.30 residual SS
+1 - sum(resid(m)^2) / sum((y - mean(y))^2)   # 0.98 = R-squared
+anova(m)                      # Sum Sq column: 15.84 for x, 0.30 for residuals
 ```
 The "Sum Sq" column of `anova()` is this split.
-
-## In the course
-Least squares chooses the line with the smallest residual SS ([[Least Squares]]). Zuur's linear regression review builds the ANOVA table from sums of squares ([[Zuur et al. 2009 Ch2]]).
-
-## Common confusions
-- **"Sum of squares is the variance."** Variance is SS divided by degrees of freedom.
-- **"A small residual SS means a good model."** It always shrinks as you add predictors, useful or not.
-
-## Explain it back
-- Why square the deviations instead of just adding them?
-- How does total SS split, and what is R² in those terms?
-
-*Pass test:* you can compute total and residual SS and get R² from them.
 
 ## Connections
 - **Builds on:** [[Variance]], [[Summation Notation]]

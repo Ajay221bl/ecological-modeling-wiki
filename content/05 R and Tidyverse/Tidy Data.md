@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "Tidy data is a table laid out so that every variable is a column, every observation is a row and every cell holds one value."
 aliases:
   - "Tidy format"
   - "Long format"
@@ -11,42 +12,12 @@ status: seedling
 
 # Tidy Data
 
-**In one line:** tidy data is a table laid out so that every variable is a column, every observation is a row and every cell holds one value.
+A well-kept address book has one person per line and one kind of information per column. Compare a page where phone numbers are scribbled across the top and some people share a line: the same information is there, but only the first can be sorted, filtered or counted. **Tidy data** is a table laid out so that every variable is a column ([[Variable]]), every observation is a row ([[Observation]]) and every cell holds one value ([[Data Frame]]). "Tidy" is about layout, not cleanliness: a tidy table can still contain errors.
 
-> [!info] Before this, it helps to know
-> [[Variable]] (a column) · [[Observation]] (a row) · [[Data Frame]] (the table)
+An example. Bird counts at two sites in two years are often entered "wide", with columns `site`, `y2020` and `y2021`, so site A's row reads 9 and 8. That table hides a variable, year, inside its column headers, and so a model such as `birds ~ year` cannot even be written. The tidy version has columns `site`, `year` and `birds`, with one row per site per year: A 2020 9, A 2021 8, B 2020 6, B 2021 5. To get there, ask what the variables are (site, year, birds) and give each one column; then ask what one observation is (one site in one year) and give each one row. The code below does the conversion with [[pivot_longer()]] and then fits `lm(birds ~ year + site)`, which only the tidy form allows.
 
-## The everyday picture
-A well-kept address book: one person per line, one kind of information per column. Compare it with a page where phone numbers are scribbled across the top and some people share a line. Same information, but only one can be sorted, filtered or counted.
+The reason for the rule is that R's model formulas, dplyr verbs and ggplot aesthetics all refer to variables by column name; if a variable is not a column, nothing can use it. Wide tables are not wrong as such: they are convenient for data entry and for some report tables, and [[pivot_wider()]] makes them when needed. They are wrong as model input. The course's crash course reshapes the Pine Ridge tree data this way ([[Course Website]], [[Data Wrangling]], [[Variable and Observation]]).
 
-## A tiny example
-Untidy (years spread across column names):
-
-| site | y2020 | y2021 |
-|---|---|---|
-| A | 9 | 8 |
-| B | 6 | 5 |
-
-Tidy (year is a variable):
-
-| site | year | birds |
-|---|---|---|
-| A | 2020 | 9 |
-| A | 2021 | 8 |
-| B | 2020 | 6 |
-| B | 2021 | 5 |
-
-The untidy table hides the variable "year" in its headers, so `birds ~ year` can't even be written.
-
-## Start from zero
-1. **Ask what the variables are.** Site, year, birds.
-2. **Each gets exactly one column.**
-3. **Ask what one observation is.** One site in one year.
-4. **Each gets exactly one row.**
-5. **Why this layout:** R's model formulas, dplyr verbs and ggplot aesthetics all refer to variables by column name. If a variable isn't a column, nothing can use it.
-6. **Reshape with [[pivot_longer()]] and [[pivot_wider()]].**
-
-## See it
 ```mermaid
 flowchart LR
   W[Wide: values of a variable<br/>stuck in column names] -- pivot_longer --> T[Tidy: one column per variable]
@@ -54,7 +25,6 @@ flowchart LR
 ```
 *What to look at:* the tidy form is what models and plots want.
 
-## In R
 ```r
 library(tidyr)
 wide <- data.frame(site = c("A", "B"), y2020 = c(9, 6), y2021 = c(8, 5))
@@ -63,19 +33,6 @@ tidy$year <- as.numeric(tidy$year)
 tidy
 coef(lm(birds ~ year + site, data = tidy))     # only possible in tidy form
 ```
-
-## In the course
-The crash course's tidyr exercise reshapes the Pine Ridge tree data ([[Course Website]]).
-
-## Common confusions
-- **"Tidy means clean."** It is about layout. Tidy data can still contain errors.
-- **"Wide is wrong."** Wide is fine for data entry and for some tables in a report. It is wrong as model input.
-
-## Explain it back
-- What are the three rules of tidy data?
-- Why can't a model use a variable stored in column names?
-
-*Pass test:* you can spot an untidy table and say which variable is hidden.
 
 ## Connections
 - **Builds on:** [[Variable]], [[Observation]], [[Data Frame]]

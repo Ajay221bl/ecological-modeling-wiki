@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "`summarise()` collapses many rows into one row of summary numbers, or one row per group."
 aliases:
   - "summarize()"
   - "dplyr summarise"
@@ -11,22 +12,12 @@ status: seedling
 
 # summarise()
 
-**In one line:** `summarise()` collapses many rows into one row of summary numbers, or one row per group.
+The totals at the bottom of a receipt shrink dozens of items into a few numbers: how many items, how much in all. Grouped by department, you get one totals line per department. **`summarise()`** (also spelled `summarize()`) collapses many rows into one row of summary numbers, such as a [[Mean]] or a standard deviation, or into one row per group. The call is `summarise(data, name = summary_function(column))`, and each expression must produce one value per group.
 
-> [!info] Before this, it helps to know
-> [[Mean]] (a typical summary) · [[group_by()]] (which defines the groups)
+Without grouping you get a single row. After [[group_by()]] you get one row per group, which is why the two travel together: most questions are of the form "what is the mean per site, or per year?". The example below summarises bird counts per site with a mean, a standard deviation, the number of rows `n()` and the number of missing counts. Always include `n()`, so readers know how many observations stand behind each mean. Note `na.rm = TRUE` in the means: without it, site B's missing count would make its mean `NA` ([[Missing Values]]).
 
-## The everyday picture
-The totals line at the bottom of a receipt. Dozens of items shrink to a few numbers: how many, how much. Grouped, you get one totals line per department.
+Two confusions. Only the grouping columns and the new summaries survive; every other column is dropped, because there is no longer one row per observation. And `n()` counts rows, not non-missing values; site B has 3 rows but only 2 counts, which is why the example counts missing values separately, with `sum(is.na(birds))`. Summary tables often become report tables or the basis of plotted means ([[kable()]], [[Plotting Model Predictions with Ribbons]]).
 
-## Start from zero
-1. **`summarise(data, name = summary_function(column))`.**
-2. **Each expression must give one value per group.**
-3. **Without grouping you get one row.**
-4. **With `group_by()` you get one row per group.** *Why they travel together:* most questions are "what is the mean per site, per year?".
-5. **`n()` counts rows.** Always include it, so readers know what stands behind each mean.
-
-## In R
 ```r
 library(dplyr)
 d <- data.frame(site = c("A", "A", "B", "B", "B"), birds = c(9, 8, 6, 5, NA))
@@ -38,15 +29,6 @@ d |>
             n          = n(),
             n_missing  = sum(is.na(birds)))
 ```
-
-## Common confusions
-- **"summarise() keeps my other columns."** Only grouping columns and the summaries survive.
-- **"n() counts non-missing values."** It counts rows. Use `sum(!is.na(x))` for values.
-
-## Explain it back
-- How many rows does a grouped summarise return?
-
-*Pass test:* you can produce a per-group table of mean, SD and n.
 
 ## Connections
 - **Builds on:** [[group_by()]], [[Mean]]

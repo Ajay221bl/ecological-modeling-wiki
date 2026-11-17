@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "`table()` counts how many times each value occurs, or each combination of values from two or more variables."
 aliases:
   - "Frequency table"
   - "Cross-tabulation"
@@ -12,22 +13,12 @@ status: seedling
 
 # table()
 
-**In one line:** `table()` counts how many times each value occurs, or each combination of values from two or more variables.
+Tally marks on a clipboard: one mark each time a category turns up. With two clipboards crossed, sites down the side and years across the top, each cell tallies one combination. **`table()`** counts how many times each value occurs in a variable, usually a [[Categorical Variable]], or each combination of values from two or more variables. `table(x)` counts each distinct value; `table(x, y)` makes a cross-tabulation; `prop.table()` turns counts into proportions.
 
-> [!info] Before this, it helps to know
-> [[Categorical Variable]] (what gets counted) · [[Inspecting Data]] (where it is used first)
+Its main use is checking the design before modeling. In the example below, `table(d$site, d$trt)` shows that site C has a burned plot but no control. Empty cells show as 0, and you want to see them, because a combination with no data cannot be estimated. Homework 1 checks balance this way ([[Balanced Data|Balanced vs Unbalanced Data]]), and the GLMM lab uses it to find farms where every animal was infected or none was, a cause of [[Complete Separation]]. Counting zeros in a response is a first check for [[Zero Inflation]].
 
-## The everyday picture
-Tally marks on a clipboard. One mark each time a category turns up. With two clipboards crossed, rows for site and columns for year, each cell tallies one combination.
+Missing values are hidden from `table()` by default; add `useNA = "ifany"` to count them, as the last line does. The result is a table object, not a data frame; `as.data.frame()` converts it, and dplyr's `count()` gives the same counts directly as a data frame ([[Inspecting Data]]).
 
-## Start from zero
-1. **`table(x)` counts each distinct value.**
-2. **`table(x, y)` counts combinations.**
-3. **Empty cells show as 0.** *Why you want to see them:* a combination with no data can't be estimated.
-4. **`useNA = "ifany"` shows missing values,** which are hidden by default.
-5. **Use it to check balance** before fitting a model with factors.
-
-## In R
 ```r
 d <- data.frame(site = c("A", "A", "A", "B", "B", "C"), trt = c("burn", "burn", "ctrl", "burn", "ctrl", "burn"))
 table(d$site)
@@ -35,17 +26,6 @@ table(d$site, d$trt)          # site C has no control: unbalanced
 prop.table(table(d$trt))      # as proportions
 table(c(0, 0, 3, 0, 1, NA), useNA = "ifany")   # how many zeros and NAs?
 ```
-
-## In the course
-Homework 1 checks balance with `table()` ([[Balanced Data|Balanced vs Unbalanced Data]]). The GLMM lab uses it to find farms with all zeros or all ones ([[Complete Separation]]).
-
-## Common confusions
-- **"table() gives a data frame."** It gives a table object. Use `as.data.frame()` or dplyr's `count()` for a data frame.
-
-## Explain it back
-- What does a zero cell in a two-way table warn you about?
-
-*Pass test:* you can cross-tabulate two factors and read off imbalance.
 
 ## Connections
 - **Builds on:** [[Categorical Variable]]

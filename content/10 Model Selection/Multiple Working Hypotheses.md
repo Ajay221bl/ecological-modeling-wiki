@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "The method of multiple working hypotheses, from Chamberlin (1890), is to hold several plausible explanations in mind at once and weigh them against each other, rather than adopting one favourite."
 aliases:
   - "Method of multiple working hypotheses"
   - "Chamberlin's multiple working hypotheses"
@@ -11,36 +12,15 @@ status: seedling
 
 # Multiple Working Hypotheses
 
-**In one line:** the method of multiple working hypotheses, from Chamberlin (1890), is to hold several plausible explanations in mind at once and weigh them against each other, rather than adopting one favourite.
+A good detective keeps several suspects on the board until the evidence rules them out; a bad one picks the butler on day one and reads every clue as confirmation. The **method of multiple working hypotheses**, from Chamberlin (1890), is to hold several plausible explanations in mind at once and weigh them against each other rather than adopting one favourite ([[Hypothesis]]). One favoured hypothesis invites bias, since you look for support and explain away the rest, which Chamberlin called "parental affection" for a theory. In ecology phenomena often have several causes acting together, so more than one hypothesis may be partly right.
 
-> [!info] Before this, it helps to know
-> [[Hypothesis]] (what is held) · [[Strong Inference]] (a related method)
+The modelling translation is that each hypothesis becomes a model in the [[Candidate Model Set]], and information criteria say how strongly the data support each. The code below writes three such hypotheses for bird density: food limits density (birds ~ shrub), predation limits density (birds ~ tree), and both act (birds ~ tree + shrub).
 
-## The everyday picture
-A good detective keeps several suspects on the board until the evidence rules them out. A bad one picks the butler on day one and reads every clue as confirmation.
+[[Anderson and Burnham 2002]] and [[Johnson and Omland 2004]] present information-theoretic [[Model Selection]] as this method made quantitative, and it is related to [[Strong Inference]] ([[Course Website]]). Multiple hypotheses does not mean trying every combination of variables, which is [[Data Dredging]]: each hypothesis should be a scientific idea, not a column of the data.
 
-## Start from zero
-1. **One favoured hypothesis invites bias:** you look for support and explain away the rest. Chamberlin called this "parental affection" for a theory.
-2. **Several hypotheses at once keep you honest.**
-3. **In ecology, phenomena often have several causes acting together,** so more than one hypothesis may be partly right.
-4. **The modeling translation:** each hypothesis becomes a model in the candidate set. Information criteria then say how strongly the data support each one.
-5. **Anderson and Burnham and Johnson and Omland** present information-theoretic model selection as this method made quantitative.
-
-## In R
 ```r
 d <- data.frame(H1 = "food limits density: birds ~ shrub", H2 = "predation limits density: birds ~ tree", H3 = "both act: birds ~ tree + shrub"); t(d)
 ```
-
-## In the course
-[[Johnson and Omland 2004]], [[Anderson and Burnham 2002]]. Model selection lecture ([[Course Website]]).
-
-## Common confusions
-- **"Multiple hypotheses means trying every combination of variables."** Each hypothesis should be a scientific idea, not a column of the data.
-
-## Explain it back
-- What danger does this method guard against?
-
-*Pass test:* you can turn three hypotheses into three models.
 
 ## Connections
 - **Builds on:** [[Hypothesis]], [[Strong Inference]]

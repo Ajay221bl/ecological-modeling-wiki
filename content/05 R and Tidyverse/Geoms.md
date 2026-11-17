@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "A geom is the kind of mark a ggplot layer draws: points, lines, bars, boxes, ribbons."
 aliases:
   - "Geometric objects"
 status: seedling
@@ -10,25 +11,12 @@ status: seedling
 
 # Geoms
 
-**In one line:** a geom is the kind of mark a ggplot layer draws: points, lines, bars, boxes, ribbons.
+The same notes can be written with dots, a continuous line or a thick shaded band; the data and mapping say where the ink goes, and the pen decides the mark. A **geom** is the kind of mark a ggplot layer draws ([[ggplot2 Grammar of Graphics]]). Pick it by what you are showing. Raw data: `geom_point()`, or `geom_jitter()`, which nudges overlapping points. Distributions: `geom_histogram()`, `geom_density()`, `geom_boxplot()`, `geom_violin()` ([[Histogram]], [[Boxplot]]). Trends and fits: `geom_line()`, `geom_smooth()`. Uncertainty: `geom_ribbon()` for bands, `geom_errorbar()` and `geom_pointrange()` ([[Error Bars]]). Reference marks: `geom_hline()`, `geom_vline()`, `geom_abline()`. Maps: `geom_sf()`.
 
-> [!info] Before this, it helps to know
-> [[ggplot2 Grammar of Graphics]] (layers) · [[Aesthetics]] (what each geom needs)
+Each geom needs certain [[Aesthetics]]; a ribbon, for example, needs `ymin` and `ymax`. Layers can use different data, so points come from the raw data while the line and ribbon come from a prediction table ([[Plotting Model Predictions with Ribbons]]). The code below stacks a ribbon, a line, points and a dashed reference line, and lists the four layers in drawing order.
 
-## The everyday picture
-Different pens for the same notes. The data and mapping say where the ink goes. The geom is whether you use dots, a continuous line, or a thick shaded band.
+Layer order matters: later layers are drawn on top, so put ribbons first or they will hide the points.
 
-## Start from zero
-1. **Pick by what you are showing.**
-2. **Raw data:** `geom_point()`, `geom_jitter()` (nudges overlapping points).
-3. **Distributions:** `geom_histogram()`, `geom_density()`, `geom_boxplot()`, `geom_violin()`.
-4. **Trends and fits:** `geom_line()`, `geom_smooth()`.
-5. **Uncertainty:** `geom_ribbon()` (bands), `geom_errorbar()`, `geom_pointrange()`.
-6. **Reference marks:** `geom_hline()`, `geom_vline()`, `geom_abline()`.
-7. **Maps:** `geom_sf()`.
-8. **Each geom needs certain aesthetics.** A ribbon needs `ymin` and `ymax`. *Why layers can use different data:* points come from the raw data, the line and ribbon from a prediction table.
-
-## In R
 ```r
 library(ggplot2)
 d <- data.frame(x = c(1, 2, 3, 4), y = c(2, 4, 5, 7), lo = c(1, 3, 4, 5.5), hi = c(3, 5, 6, 8.5))
@@ -39,14 +27,6 @@ p <- ggplot(d, aes(x, y)) +
   geom_hline(yintercept = 0, linetype = 2)
 sapply(p$layers, function(l) class(l$geom)[1])            # the four layers in drawing order
 ```
-
-## Common confusions
-- **"Layer order doesn't matter."** Later layers are drawn on top. Put ribbons first.
-
-## Explain it back
-- Which geom draws a confidence band, and which aesthetics does it need?
-
-*Pass test:* you can choose a geom for raw data, a fitted trend and its uncertainty.
 
 ## Connections
 - **Builds on:** [[ggplot2 Grammar of Graphics]], [[Aesthetics]]

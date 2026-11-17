@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "`expand.grid()` builds a table with one row for every combination of the values you give it."
 aliases:
   - "Prediction grid"
   - "crossing()"
@@ -11,22 +12,12 @@ status: seedling
 
 # expand.grid()
 
-**In one line:** `expand.grid()` builds a table with one row for every combination of the values you give it.
+A restaurant menu with 3 starters and 4 mains offers 3 × 4 = 12 possible two-course meals, and listing them all is tedious by hand. **`expand.grid()`** writes that list: given named vectors, it returns a [[Data Frame]] with one row for every combination of their values. In the code below, four tree-cover values crossed with two burn states give 4 × 2 = 8 rows. The values themselves are usually made with [[seq()]].
 
-> [!info] Before this, it helps to know
-> [[Data Frame]] (what it returns) · [[seq()]] (to make the values)
+Its main use in this course is making *new data* for predictions. To draw a fitted curve you need the model's prediction at a neat, evenly spaced sequence of x values, for each group, with other predictors held at chosen values. Raw data do not provide that: their x values are uneven and tangled across groups, so lines drawn through them zigzag. A grid gives clean lines. In the example, a Poisson GLM of birds on tree cover and burning is fitted, and `predict(m, newdata = nd, type = "response")` gives the expected count at every grid row ([[predict()]], [[Predicting New Data]]), ready for plotting with confidence ribbons ([[Plotting Model Predictions with Ribbons]]).
 
-## The everyday picture
-A restaurant menu with 3 starters and 4 mains. Listing every possible two-course meal gives 3 × 4 = 12 lines. `expand.grid()` writes that list.
+The grid's column names must match the model's predictor names exactly, or `predict()` will not find them. Keep the grid within the range of the observed data, because predictions beyond it are extrapolation. A second use is listing every combination of treatments or model terms in a design.
 
-## Start from zero
-1. **Give it named vectors.**
-2. **It returns every combination,** one per row.
-3. **Main use: new data for predictions.** *Why:* to draw a fitted curve you need the model's prediction at a neat sequence of x values, for each group, with other predictors held at chosen values.
-4. **Column names must match the model's predictors exactly.**
-5. **Second use: all combinations of model terms or treatments.**
-
-## In R
 ```r
 nd <- expand.grid(tree = seq(0, 60, by = 20), burn = c("no", "yes"))
 nd; nrow(nd)                               # 4 x 2 = 8 rows
@@ -36,17 +27,6 @@ d$birds <- rpois(40, exp(2.2 - 0.02 * d$tree + 0.3 * (d$burn == "yes")))
 m <- glm(birds ~ tree + burn, family = poisson, data = d)
 nd$fit <- predict(m, newdata = nd, type = "response"); head(nd, 3)
 ```
-
-## In the course
-The labs build prediction grids this way before plotting ([[Predicting New Data]]; [[Course Website]]).
-
-## Common confusions
-- **"Use the original data for prediction lines."** Raw x values are uneven and tangled across groups. A grid gives clean lines.
-
-## Explain it back
-- How many rows from 50 x-values, 2 treatments and 3 sites?
-
-*Pass test:* you can build a prediction grid and attach predictions.
 
 ## Connections
 - **Builds on:** [[Data Frame]], [[seq()]]

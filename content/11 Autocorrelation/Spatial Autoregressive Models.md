@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "Simultaneous autoregressive (SAR) models write each site's value, or its error, as depending on a weighted average of its neighbours' values or errors, with a parameter for the strength of that dependence."
 aliases:
   - "SAR"
   - "Simultaneous autoregressive model"
@@ -16,37 +17,17 @@ status: seedling
 
 # Spatial Autoregressive Models
 
-**In one line:** simultaneous autoregressive (SAR) models write each site's value, or its error, as depending on a weighted average of its neighbours' values or errors, with a parameter for the strength of that dependence.
+**Simultaneous autoregressive (SAR) models** write each site's value, or its error, as depending on a weighted average of its neighbours' values or errors, with a parameter for the strength of that dependence ([[Spatial Weights Matrix]]). The spatial error model is y = Xβ + u with u = λWu + ε, so autocorrelation lives in the errors, close in spirit to [[Generalized Least Squares]]. The spatial lag model is y = ρWy + Xβ + ε, so the response itself depends on neighbours' responses, for example through spillover. λ or ρ near 0 means no spatial dependence.
 
-> [!info] Before this, it helps to know
-> [[Spatial Weights Matrix]] (defines the neighbours) · [[Generalized Least Squares]] (a close relative)
+In R use `spatialreg::errorsarlm(y ~ x, listw = lw)` or `lagsarlm()`. In the code below data simulated with λ = 0.6 and slope 0.5 are fitted by the error model, which recovers λ = 0.57 and slope 0.50.
 
-## Start from zero
-1. **Spatial error SAR:** y = Xβ + u, with u = λWu + ε. Autocorrelation lives in the errors.
-2. **Spatial lag SAR:** y = ρWy + Xβ + ε. The response itself depends on neighbours' responses (for example, through spillover).
-3. **λ or ρ near 0:** no spatial dependence.
-4. **In the lag model, coefficients aren't simple marginal effects,** because a change at one site spreads to neighbours.
-5. **R:** `spatialreg::errorsarlm(y ~ x, listw = lw)`, `lagsarlm()`.
-6. **Defined on a neighbour structure (areal units, grids),** rather than continuous distance.
-7. **Choice of W affects the results.**
+In the lag model coefficients aren't simple marginal effects, because a change at one site spreads to its neighbours. SAR models are defined on a neighbour structure of areal units or grids rather than continuous distance, so the choice of W affects the results ([[Diniz-Filho et al. 2003]], [[Zuur et al. 2009 Ch7]]). The lag and error models are not interchangeable: they imply different processes and different interpretations of β. The CAR model is a close relative ([[Conditional Autoregressive Model]]), and [[Spatial Eigenvector Filtering]] an alternative.
 
-## In R
 ```r
 library(spdep); library(spatialreg); set.seed(5); xy <- cbind(runif(150), runif(150)); lw <- nb2listw(knn2nb(knearneigh(xy, 6)))
 x <- rnorm(150); u <- as.numeric(solve(diag(150) - 0.6 * listw2mat(lw), rnorm(150))); y <- 1 + 0.5 * x + u
 m <- errorsarlm(y ~ x, listw = lw); round(c(lambda = m$lambda, slope = coef(m)[["x"]]), 2)
 ```
-
-## In the course
-[[Diniz-Filho et al. 2003]] mention autoregressive models among spatial methods. [[Zuur et al. 2009 Ch7]] (in passing).
-
-## Common confusions
-- **"SAR lag and error models are interchangeable."** They imply different processes and different interpretations of β.
-
-## Explain it back
-- Where does the autocorrelation live in a spatial error SAR?
-
-*Pass test:* you can fit a spatial error model.
 
 ## Connections
 - **Builds on:** [[Spatial Weights Matrix]], [[Generalized Least Squares]]

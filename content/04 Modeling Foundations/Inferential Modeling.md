@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "Inferential modeling weighs the evidence for a few hypotheses that were stated before looking at the data. It cares most about the size and certainty of the effects (the coefficients)."
 aliases:
   - "Inference (goal)"
   - "Confirmatory analysis"
@@ -11,44 +12,15 @@ status: seedling
 
 # Inferential Modeling
 
-**In one line:** inferential modeling weighs the evidence for a few hypotheses that were stated before looking at the data. It cares most about the size and certainty of the effects (the coefficients).
+You have heard the market district has the best food. To test it fairly you decide *in advance*: five meals there, five elsewhere, same price range, scored the same way. Only then do you eat, and because the plan came first, the result means something. **Inferential modeling** is that kind of planned test: it weighs the evidence for a few hypotheses that were stated *a priori*, before looking at the data, and it cares most about the size, sign and certainty of the effects, the estimated coefficients (β̂). It is the second of Tredennick and colleagues' three modeling goals, after exploration and before prediction ([[Tredennick et al. 2021]]).
 
-> [!info] Before this, it helps to know
-> [[Hypothesis]] · [[Exploratory Modeling]] (where hypotheses often come from)
+An example with R's built-in `mtcars` data. The a priori question: does engine power affect fuel economy once car weight is accounted for? Write the two answers as two *nested* models, where one is the other with a term removed ([[Nested Models]]): Model 0 is mpg ~ weight, Model 1 is mpg ~ weight + power. A [[Likelihood Ratio Test]], which asks whether the extra term improves the fit more than chance would, gives p ≈ 0.001, so the data support the hypothesis that power matters. Then you read the coefficient for power, its size and its uncertainty, because the question is "how strong is this effect?", not "how well can I forecast?". One planned comparison, one answer, no searching.
 
-## The everyday picture
-You've heard the market district has the best food. To test it fairly, you decide *in advance*: five meals there, five elsewhere, same price range, scored the same way. Only then do you eat. Because the plan came first, the result means something.
+The enemy of inference is fooling yourself with chance. Every extra comparison is another chance of a *false positive*, concluding an effect is real when it is not, so inference keeps model selection minimal and commits to hypotheses in advance. "Inference" here does not mean any statistics at all; it means the specific goal of testing hypotheses stated beforehand. The biggest danger Tredennick and colleagues name is exploring first and then reporting the p-values as if they were planned tests. Hypotheses often come from [[Exploratory Modeling]] on earlier data; inference tests them fairly on new data ([[Hypothesis]]).
 
-*Where the picture stops working:* a food test is quick to redo. A field season isn't, so the "decide first" rule is easy to bend afterwards, and that's exactly what ruins inference.
-
-## Words you'll need
-- **A priori:** decided before seeing the data.
-- **Coefficient (β̂):** an estimated effect size; inference is about these.
-- **Nested models:** one model is the other with some terms removed ([[Nested Models]]).
-- **Likelihood ratio test:** compares nested models to ask if the extra terms help more than chance ([[Likelihood Ratio Test]]).
-- **False positive:** concluding an effect is real when it isn't.
-
-## A tiny example
-A priori question: does engine power affect fuel economy once weight is accounted for?
-- Model 0: mpg ~ weight. Model 1: mpg ~ weight + power.
-- A likelihood ratio test compares them. In R's built-in `mtcars` data, adding power clearly improves the fit (p ≈ 0.001), so the evidence supports the hypothesis.
-- One planned comparison, one answer. No searching.
-
-## Start from zero
-1. **State a few hypotheses before looking.** *Why:* only then can the data test them fairly.
-2. **Write each as a model** ([[Hypothesis]]).
-3. **Keep model selection minimal.** *Why:* every extra comparison is another chance of a false positive.
-4. **Compare with tests designed for it,** such as likelihood ratio tests on nested models.
-5. **Focus on the coefficients:** their size, sign and uncertainty. *Why:* the question is "how strong is this effect?", not "how well can I forecast?"
-
-## See it
 ![[Exploration inference prediction.png|700]]
 *What to look at:* inference sits between exploration (which supplies hypotheses) and prediction.
 
-## Why it is this way
-Inference's enemy is fooling yourself with chance. Committing to hypotheses in advance and comparing as few models as possible is the defence.
-
-## In R
 ```r
 m0 <- lm(mpg ~ wt, data = mtcars)
 m1 <- lm(mpg ~ wt + hp, data = mtcars)
@@ -56,23 +28,10 @@ anova(m0, m1)      # does adding hp improve fit more than chance would?
 coef(m1)           # the effect sizes inference cares about
 ```
 
-## In the course
-The second goal in Tredennick et al. 2021 ([[Tredennick et al. 2021]]); likelihood ratio tests come in the model selection unit ([[MOC 10 - Model Selection|MOC - Model Selection]]).
-
-## Common confusions
-- **"Inference means any statistics."** Here it means the specific goal of testing a priori hypotheses.
-- **"Explore, then report p-values as tests."** That's the biggest danger Tredennick et al. name.
-
-## Explain it back
-- Use the planned food test to explain inferential modeling.
-- Why keep model selection minimal?
-- Why does inference focus on coefficients rather than predictions?
-
-*Pass test:* you can say which hypotheses you fixed before seeing your data.
-
 ## Connections
 - **Builds on:** [[Hypothesis]], [[Exploratory Modeling]]
 - **Leads to:** [[Likelihood Ratio Test]], [[Nested Models]], [[Predictive Modeling]]
+- **See also:** [[MOC 10 - Model Selection]]
 - **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]], molecular note [[Exploration, Inference and Prediction]]
 - **Go deeper:** [[Tredennick et al. 2021]]
 

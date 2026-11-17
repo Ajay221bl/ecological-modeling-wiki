@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "Bartlett's test asks whether several groups could all have the same variance."
 aliases:
   - "bartlett.test()"
   - "Test of equal variances"
@@ -11,24 +12,12 @@ status: seedling
 
 # Bartlett Test
 
-**In one line:** Bartlett's test asks whether several groups could all have the same variance.
+A referee checks whether every team's players are equally spread across the pitch, and blows the whistle when one team's spread differs from the others by more than chance would allow. **Bartlett's test** asks whether several groups could all have the same variance, a formal check of [[Homogeneity of Variance]]. Its [[Null Hypothesis]] is that all group variances are equal. It computes each group's variance and a pooled variance, combines them into a statistic that is near zero when the group variances agree, and compares that with a chi-square distribution with (number of groups − 1) degrees of freedom. A small [[P-value]] is evidence that the variances differ.
 
-> [!info] Before this, it helps to know
-> [[Homogeneity of Variance]] (the assumption tested) · [[P-value]] (its output) · [[Null Hypothesis]] (equal variances)
+In the code below, groups A and B have standard deviation 1 and group C has standard deviation 3. With all three groups the p-value is tiny; with only A and B there is no evidence of a difference. The test has a known weakness: it is very sensitive to non-normality, so a skewed dataset with equal variances can trigger it.
 
-## The everyday picture
-A referee measuring whether every team's players are equally spread across the pitch. The referee blows the whistle when one team's spread differs from the others by more than chance would allow.
+Zuur prefers plots, such as side-by-side [[Boxplot|boxplots]], to tests like this, because a test's answer depends on sample size: with little data it misses serious differences, and with lots it flags trivial ones, while a plot shows how big the difference actually is ([[Zuur et al. 2009 Ch2]]). A non-significant result does not prove the variances are equal; it may only reflect a small sample. When variances do differ, model them ([[Variance Structures]]).
 
-## Start from zero
-1. **Null hypothesis:** all group variances are equal.
-2. **Compute each group's variance and a pooled variance.**
-3. **Combine them into a statistic** that is near zero when the group variances agree.
-4. **Compare with a chi-square distribution** with (number of groups − 1) degrees of freedom.
-5. **Small p-value:** evidence that variances differ.
-6. **Weakness: it is very sensitive to non-normality.** A skewed but equal-variance dataset can trigger it.
-7. **Why Zuur prefers plots:** a test's answer depends on sample size. With little data it misses serious differences. With lots it flags trivial ones. A plot shows how big the difference is.
-
-## In R
 ```r
 set.seed(11)
 d <- data.frame(g = rep(c("A", "B", "C"), each = 30), y = c(rnorm(30, 10, 1), rnorm(30, 10, 1), rnorm(30, 10, 3)))
@@ -36,17 +25,6 @@ tapply(d$y, d$g, var)
 bartlett.test(y ~ g, data = d)$p.value        # tiny: variances differ
 bartlett.test(y ~ g, data = subset(d, g != "C"))$p.value   # A and B: no evidence of a difference
 ```
-
-## In the course
-Mentioned in [[Zuur et al. 2009 Ch2]], which advises graphical checks over tests.
-
-## Common confusions
-- **"A non-significant test proves equal variances."** It may only reflect a small sample.
-
-## Explain it back
-- What is the null hypothesis of Bartlett's test?
-
-*Pass test:* you can run the test and say why a plot is still needed.
 
 ## Connections
 - **Builds on:** [[Homogeneity of Variance]]

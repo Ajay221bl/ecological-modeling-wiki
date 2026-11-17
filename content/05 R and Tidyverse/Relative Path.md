@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "A relative path gives a file's address starting from the working directory, so it stays valid when the whole project folder moves."
 aliases:
   - "Project-relative path"
 status: seedling
@@ -10,22 +11,12 @@ status: seedling
 
 # Relative Path
 
-**In one line:** a relative path gives a file's address starting from the working directory, so it stays valid when the whole project folder moves.
+Directions that start "from the lobby of this building, second floor, third door" still work if you carry the building to another city. A **relative path** gives a file's address starting from the [[Working Directory]], such as `data/birds.csv`; `..` means "up one folder", as in `../shared/data.csv`. It contains nothing about your computer, unlike an [[Absolute Path]].
 
-> [!info] Before this, it helps to know
-> [[Working Directory]] (the starting point) · [[Absolute Path]] (the fragile alternative)
+It works for anyone whose "here" is the project folder, and that condition is what an [[RProject]] and [[here()]] guarantee. So a project folder plus relative paths gives portable code. The code below builds a small project in a temporary folder, moves into it as if the project had been opened, reads `data/birds.csv` by its relative path, and shows the absolute path R resolved it to.
 
-## The everyday picture
-Directions that start "from the lobby of this building": second floor, third door. Carry the building to another city and the directions still work.
+Relative paths are safe only if the working directory is the project root. Knitting an R Markdown file in a subfolder changes the working directory to that subfolder, which is the case `here()` was made for.
 
-## Start from zero
-1. **It starts from "here":** `data/birds.csv`.
-2. **`..` means "up one folder":** `../shared/data.csv`.
-3. **It contains nothing about your computer.**
-4. **It works for anyone whose "here" is the project folder.** *That condition is what RProjects and `here()` guarantee.*
-5. **So: project folder + relative paths = portable code.**
-
-## In R
 ```r
 proj <- file.path(tempdir(), "proj"); dir.create(file.path(proj, "data"), recursive = TRUE, showWarnings = FALSE)
 write.csv(data.frame(x = 1), file.path(proj, "data", "birds.csv"), row.names = FALSE)
@@ -34,14 +25,6 @@ read.csv("data/birds.csv")          # relative: works wherever proj lives
 normalizePath("data/birds.csv")     # the absolute path R resolved it to
 setwd(old)
 ```
-
-## Common confusions
-- **"Relative paths are always safe."** Only if the working directory is the project root. Knitting an Rmd in a subfolder changes it.
-
-## Explain it back
-- What does `../` mean?
-
-*Pass test:* you can rewrite an absolute path as a relative one.
 
 ## Connections
 - **Builds on:** [[Working Directory]], [[Absolute Path]]

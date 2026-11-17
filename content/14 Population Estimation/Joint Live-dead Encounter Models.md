@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Joint live-dead encounter models combine live recaptures in the study area with dead recoveries from anywhere, which lets them separate true survival from permanent emigration (site fidelity)."
 aliases:
   - "Burnham model"
   - "Barker model"
@@ -14,28 +15,11 @@ status: seedling
 
 # Joint Live-dead Encounter Models
 
-**In one line:** joint live-dead encounter models combine live recaptures in the study area with dead recoveries from anywhere, which lets them separate true survival from permanent emigration (site fidelity).
+**Joint live-dead encounter models** combine live recaptures in the study area with dead recoveries from anywhere, which lets them separate true survival from permanent emigration, or site fidelity ([[Cormack-Jolly-Seber Model]], [[Dead Recovery Models]], [[Apparent Survival]]). Live recaptures inform φ = S × F, and dead recoveries inform S alone, so together they estimate S, F, p and the recovery probability r.
 
-> [!info] Before this, it helps to know
-> [[Cormack-Jolly-Seber Model]] · [[Dead Recovery Models]] · [[Apparent Survival]]
+Burnham (1993) introduced the model, and Barker's extension adds resightings between occasions. It needs both kinds of data in useful numbers ([[Encounter Probability]], [[Program MARK]]).
 
-## Start from zero
-1. **Live recaptures** inform φ = S × F.
-2. **Dead recoveries** inform S alone.
-3. **Together** they estimate S, F, p and recovery probability r.
-4. **Burnham (1993)** introduced the model; Barker's extension adds resightings between occasions.
-5. **Needs both kinds of data** in useful numbers.
-
-## In the course
-[[Powell and Gale 2015]] Ch11 and Ch12.
-
-## Common confusions
-- **"Adding recoveries just increases sample size."** It changes what is estimable: S and F separately.
-
-## Explain it back
-- Which data source informs fidelity?
-
-*Pass test:* you can explain how joint models split φ.
+It is covered in [[Powell and Gale 2015]] Ch11 and Ch12. Adding recoveries does not just increase sample size: it changes what is estimable, S and F separately.
 
 ## Connections
 - **Builds on:** [[Cormack-Jolly-Seber Model]], [[Dead Recovery Models]]

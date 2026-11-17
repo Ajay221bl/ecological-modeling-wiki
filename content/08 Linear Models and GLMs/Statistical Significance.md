@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "A result is called statistically significant when its p-value falls below the chosen significance level, meaning the data would be unusual if the null hypothesis were true."
 aliases:
   - "Significant"
   - "Statistically significant"
@@ -13,41 +14,16 @@ status: seedling
 
 # Statistical Significance
 
-**In one line:** a result is called statistically significant when its p-value falls below the chosen significance level, meaning the data would be unusual if the null hypothesis were true.
+A metal detector beeping says "something metallic is probably here", not whether it is a gold ring or a bottle cap. A result is **statistically significant** when its [[P-value]] falls below the chosen [[Significance Level]], meaning the data would be unusual if the null hypothesis were true. It answers one narrow question: can chance alone, under H₀, plausibly explain this? And it turns a continuous measure into a yes/no, discarding information.
 
-> [!info] Before this, it helps to know
-> [[P-value]] (the measure) · [[Significance Level]] (the cut-off) · [[Effect Size]] (what it is often confused with)
+Significant does not mean large. In the code below, with 100,000 observations a slope of 0.01 is highly significant, yet explains about 0.01% of the variation. Not significant does not mean absent, either, since small samples miss large effects ([[Effect Size]]). And the difference between significant and not significant is not itself significant: one study at p = 0.04 and another at p = 0.06 are in agreement, not conflict.
 
-## The everyday picture
-A metal detector beeping. The beep says "something metallic is probably here". It doesn't say whether it is a gold ring or a bottle cap.
+Better practice is to report the estimate, its interval and the exact p, and discuss biological meaning; that is the advice for results sections in the 24 November session ([[Writing Results Sections]], [[Guthery and Bingham 2007]]). The course moves beyond the pass/fail line to information-theoretic and Bayesian approaches, which compare models and estimate effects directly ([[Anderson and Burnham 2002]], [[Null Hypothesis Significance Testing]]). "Significant" in statistics means distinguishable from zero, not important, and significance stars rank p-values, not effects.
 
-## Start from zero
-1. **p < α:** "significant". **p ≥ α:** "not significant".
-2. **It answers one narrow question:** can chance alone (under H₀) plausibly explain this?
-3. **It turns a continuous measure into yes/no,** discarding information.
-4. **Significant ≠ large.** Huge samples make trivial effects significant.
-5. **Not significant ≠ absent.** Small samples miss large effects.
-6. **The difference between significant and not significant is not itself significant.** One study at p = 0.04 and another at p = 0.06 are in agreement.
-7. **Better practice:** report the estimate, its interval and the exact p. Discuss biological meaning.
-8. **Why the course moves beyond it:** information-theoretic and Bayesian approaches compare models and estimate effects without a pass/fail line.
-
-## In R
 ```r
 set.seed(6); n <- 1e5; x <- rnorm(n); y <- 0.01 * x + rnorm(n)
 s <- summary(lm(y ~ x)); c(slope = s$coefficients[2, 1], p = s$coefficients[2, 4], r2 = s$r.squared)     # "significant", yet explains about 0.01% of the variation
 ```
-
-## In the course
-[[Anderson and Burnham 2002]], [[Guthery and Bingham 2007]]. Writing about it: Nov 24 session.
-
-## Common confusions
-- **"Significant means important."** In statistics it means "distinguishable from zero".
-- **"Stars rank the effects."** Stars rank p-values.
-
-## Explain it back
-- Give an example of a significant but unimportant result.
-
-*Pass test:* you can separate statistical from biological significance.
 
 ## Connections
 - **Builds on:** [[P-value]], [[Significance Level]]

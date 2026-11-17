@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "The `family` argument tells a GLM function which response distribution and link function to use."
 aliases:
   - "family ="
   - "Family object"
@@ -14,33 +15,17 @@ status: seedling
 
 # Family Argument
 
-**In one line:** the `family` argument tells a GLM function which response distribution and link function to use.
+The **`family` argument** tells a GLM function which response distribution and link function to use ([[Generalized Linear Model]], [[Link Function]]). `glm(y ~ x, family = poisson)` sets a Poisson distribution with its default log link, and the link is changed inside the family, as in `binomial(link = "cloglog")` or `Gamma(link = "log")`. Base R's families are `gaussian`, `binomial`, `poisson`, `Gamma`, `inverse.gaussian`, `quasipoisson`, `quasibinomial` and `quasi`. Packages add more: `MASS::glm.nb` for the negative binomial; `nbinom2`, `nbinom1`, `beta_family`, `betabinomial`, `truncated_poisson` and `tweedie` in glmmTMB; `nb`, `betar` and `tw` in mgcv; and `negbinomial`, `Beta`, `zero_inflated_poisson` and many more in brms. Choose by the type of response ([[Choosing a Distribution for Your Response]]).
 
-> [!info] Before this, it helps to know
-> [[Generalized Linear Model]] (what it configures) · [[Link Function]] (half of what it sets) · [[Choosing a Distribution for Your Response]] (how to pick)
+A family object carries functions: `$linkfun`, `$linkinv` and `$variance`. The code below shows the Poisson family's name and link, its inverse link at 1 (e¹ = 2.72) and its variance at a mean of 5 (5), then the probit link of 0.975 (1.96), and the default and log links of the Gamma family. These are handy for back-transforming without hard-coding the link ([[Inverse Link Function]]).
 
-## Start from zero
-1. **`glm(y ~ x, family = poisson)`** sets a Poisson distribution with its default log link.
-2. **Change the link inside the family:** `binomial(link = "cloglog")`, `Gamma(link = "log")`.
-3. **Base R families:** `gaussian`, `binomial`, `poisson`, `Gamma`, `inverse.gaussian`, `quasipoisson`, `quasibinomial`, `quasi`.
-4. **More in packages:** `MASS::glm.nb` (negative binomial). `glmmTMB`: `nbinom2`, `nbinom1`, `beta_family`, `betabinomial`, `truncated_poisson`, `tweedie`. `mgcv`: `nb`, `betar`, `tw`. `brms`: `negbinomial`, `Beta`, `zero_inflated_poisson` and many more.
-5. **A family object carries functions:** `$linkfun`, `$linkinv`, `$variance`. Handy for back-transforming without hard-coding the link.
-6. **Forgetting `family` gives a normal model** without any warning.
+Two slips. Forgetting `family` gives a normal model without any warning. And the family is capital-G `Gamma`; lower-case `gamma()` is the gamma function. Typical uses are in [[Poisson Regression]], [[Logistic Regression]] and the [[Gamma GLM]].
 
-## In R
 ```r
 f <- poisson(); f$family; f$link; f$linkinv(1); f$variance(5)
 b <- binomial(link = "probit"); b$linkfun(0.975)
 Gamma()$link; Gamma(link = "log")$link
 ```
-
-## Common confusions
-- **"`Gamma` and `gamma` are interchangeable."** The family is capital-G `Gamma`. `gamma()` is the gamma function.
-
-## Explain it back
-- What happens if you omit `family` in `glm()`?
-
-*Pass test:* you can specify a family and a non-default link.
 
 ## Connections
 - **Builds on:** [[Generalized Linear Model]], [[Link Function]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "Adapt_delta and max_treedepth are Stan sampler settings: raising adapt_delta makes the sampler take smaller, more careful steps, which removes divergent transitions at the cost of speed."
 aliases:
   - "adapt_delta"
   - "control = list(adapt_delta)"
@@ -15,36 +16,17 @@ status: seedling
 
 # adapt_delta and Sampler Settings
 
-**In one line:** adapt_delta and max_treedepth are Stan sampler settings: raising adapt_delta makes the sampler take smaller, more careful steps, which removes divergent transitions at the cost of speed.
+**adapt_delta** and **max_treedepth** are Stan sampler settings ([[Hamiltonian Monte Carlo]]). adapt_delta is the target acceptance rate during warm-up, default 0.8; raising it to 0.95 or 0.99 makes the sampler take smaller, more careful steps, which removes [[Divergent Transitions]] at the cost of speed. Use it when Stan warns "There were N divergent transitions after warmup", since even a few divergences can bias results. max_treedepth caps how many doublings a trajectory may take, default 10; warnings about hitting it signal inefficiency, not bias.
 
-> [!info] Before this, it helps to know
-> [[Hamiltonian Monte Carlo]] · [[Divergent Transitions]]
+In brms the settings go in `brm(..., control = list(adapt_delta = 0.95, max_treedepth = 12))`, alongside `chains = 4`, `iter = 2000`, `warmup = 1000`, `cores = 4` and `seed`. If divergences persist, the model needs changing: tighter priors on SDs or a non-centred parameterisation, which brms already uses for random effects ([[Priors on Standard Deviations]], [[Non-centered Parameterization]]). The code below, not run in the wiki build, shows the syntax and `rstan::check_hmc_diagnostics()`.
 
-## Start from zero
-1. **adapt_delta:** the target acceptance rate during warm-up. Default 0.8. Higher (0.95, 0.99) gives a smaller step size.
-2. **Use it when:** "There were N divergent transitions after warmup". A few divergences can bias results.
-3. **max_treedepth:** how many doublings a trajectory may take. Default 10. Warnings about hitting it signal inefficiency, not bias.
-4. **In brms:** `brm(..., control = list(adapt_delta = 0.95, max_treedepth = 12))`.
-5. **If divergences persist,** the model needs changing: tighter priors on SDs, or a non-centred parameterisation (brms already uses one for random effects).
-6. **Other settings:** `chains = 4`, `iter = 2000`, `warmup = 1000`, `cores = 4`, `seed`.
+They are used in the Bayesian mixed models lab and Homework 4 ([[Course Website]], [[Bayesian GLMM]]). Don't raise adapt_delta until the warnings vanish and stop worrying: persistent divergences point to a model problem.
 
-## In R
 ```r
 # norun (brms fit, shown for syntax)
 fit <- brm(y ~ x + (1 | site), data = d, control = list(adapt_delta = 0.99, max_treedepth = 12), chains = 4, cores = 4, seed = 1)
 rstan::check_hmc_diagnostics(fit$fit)
 ```
-
-## In the course
-Bayesian mixed models lab and Homework 4 ([[Course Website]]).
-
-## Common confusions
-- **"Raise adapt_delta until warnings vanish and stop worrying."** Persistent divergences point to a model problem.
-
-## Explain it back
-- What is the default adapt_delta?
-
-*Pass test:* you can respond to divergence and treedepth warnings.
 
 ## Connections
 - **Builds on:** [[Hamiltonian Monte Carlo]], [[Divergent Transitions]]

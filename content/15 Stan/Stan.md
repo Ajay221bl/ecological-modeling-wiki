@@ -3,6 +3,7 @@ type: atomic
 tags:
   - stan
   - flashcards/eco/stan
+description: "Stan is a probabilistic programming language in which you write a statistical model as code, and its sampler (Hamiltonian Monte Carlo) draws from the posterior distribution of the parameters."
 aliases:
   - "Stan language"
   - "Stan (probabilistic programming language)"
@@ -12,23 +13,12 @@ status: seedling
 
 # Stan
 
-**In one line:** Stan is a probabilistic programming language in which you write a statistical model as code, and its sampler (Hamiltonian Monte Carlo) draws from the posterior distribution of the parameters.
+A recipe card for a model lists the ingredients (data), the unknowns (parameters) and how they combine (the model); Stan is the kitchen that reads the card and produces samples of the finished dish. **Stan** is a probabilistic programming language in which you write a statistical model as code, and its sampler draws from the [[Posterior Distribution]] of the parameters ([[MCMC]]). You write the model once, in blocks for data, parameters, model and optional extras ([[Stan Program Blocks]]). Stan translates it to C++ and compiles it, which takes a minute or so the first time.
 
-> [!info] Before this, it helps to know
-> [[Posterior Distribution]] · [[MCMC]] · [[Hamiltonian Monte Carlo]]
+The sampler is NUTS, an adaptive form of [[Hamiltonian Monte Carlo]] that uses gradients of the log posterior. The output is posterior draws for every parameter plus diagnostics: R-hat, effective sample size and divergences ([[R-hat]], [[Effective Sample Size]], [[Divergent Transitions]]). You run it from R with rstan or cmdstanr, and brms and rstanarm write Stan code for you ([[Running Stan from R]], [[brms-generated Stan Code]]). The code below fits a straight-line regression to 50 simulated points with true intercept 1, slope 2 and σ 0.5; Stan recovers them as 1.03 (95% interval 0.74 to 1.32), 2.04 (1.55 to 2.51) and 0.48, with R-hat 1 for all three.
 
-## The everyday picture
-A recipe card for a model. You write down the ingredients (data), the unknowns (parameters) and how they combine (the model). Stan is the kitchen that cooks it: it reads the card and produces samples of the finished dish.
+Why learn the language when brms exists? For custom models that no formula interface covers, such as occupancy, N-mixture and state-space models, and to understand what brms does ([[Occupancy]], [[N-mixture Model]]). It is taught in the Stan language labs of November 17 (simple models) and November 19 (mixed models) ([[Course Website]]). Stan is not an R package; it is a separate language and engine, and rstan and cmdstanr are R interfaces. And Stan does not use Gibbs sampling like JAGS; it uses Hamiltonian Monte Carlo ([[JAGS and BUGS|JAGS]]).
 
-## Start from zero
-1. **You write the model once,** in blocks: data, parameters, model, and optional extras.
-2. **Stan translates it to C++ and compiles it,** which takes a minute or so the first time.
-3. **The sampler is NUTS,** an adaptive form of Hamiltonian Monte Carlo that uses gradients of the log posterior.
-4. **Output:** posterior draws for every parameter, plus diagnostics (R-hat, ESS, divergences).
-5. **Run from R** with rstan or cmdstanr; brms and rstanarm write Stan code for you.
-6. **Why learn the language** when brms exists: custom models (occupancy, N-mixture, state-space) that no formula interface covers, and understanding what brms does.
-
-## In R
 ```r
 library(rstan); options(mc.cores = 2)
 code <- "data { int<lower=0> N; vector[N] x; vector[N] y; }
@@ -38,18 +28,6 @@ set.seed(1); x <- runif(50); y <- 1 + 2 * x + rnorm(50, 0, 0.5)
 f <- stan(model_code = code, data = list(N = 50, x = x, y = y), chains = 4, iter = 1000, seed = 1, refresh = 0)
 round(summary(f, pars = c("a", "b", "sigma"))$summary[, c("mean", "2.5%", "97.5%", "n_eff", "Rhat")], 2)
 ```
-
-## In the course
-Stan language labs, Nov 17 (simple models) and Nov 19 (mixed models) ([[Course Website]]).
-
-## Common confusions
-- **"Stan is an R package."** It is a separate language and engine; rstan and cmdstanr are R interfaces.
-- **"Stan uses Gibbs sampling like JAGS."** Stan uses Hamiltonian Monte Carlo (NUTS).
-
-## Explain it back
-- What does Stan do with the model you write?
-
-*Pass test:* you can say what Stan is and run a simple model.
 
 ## Connections
 - **Builds on:** [[Posterior Distribution]], [[MCMC]], [[Hamiltonian Monte Carlo]]

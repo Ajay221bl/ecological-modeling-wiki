@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "Overdispersion means the data vary more than the model's distribution allows, as when counts have a variance much greater than their mean under a Poisson model."
 aliases:
   - "Overdispersed"
   - "Extra-Poisson variation"
@@ -12,32 +13,15 @@ status: seedling
 
 # Overdispersion
 
-**In one line:** overdispersion means the data vary more than the model's distribution allows, as when counts have a variance much greater than their mean under a Poisson model.
+A forecaster who says "10 mm of rain, give or take 3" every day, when actual rainfall on such days ranges from 0 to 40, may have the average right but states far too little uncertainty, and decisions made on that false confidence go wrong. **Overdispersion** means the data vary more than the model's distribution allows, as when counts have a variance much greater than their mean under a Poisson model ([[Mean-Variance Relationship]], [[Poisson Regression]]). For counts with a fitted mean of about 5, a Poisson expects a variance of about 5; if you see 22, the dispersion is about 4.4. Detect it with the dispersion statistic, Σ(Pearson residual²) / residual df: about 1 is fine, and above roughly 1.5 to 2 deserves action ([[Dispersion Parameter]]). Simulated residuals also show it. The figure compares the same mean trend with scatter inside and far outside the Poisson band.
 
-> [!info] Before this, it helps to know
-> [[Mean-Variance Relationship]] (the rule that is broken) · [[Poisson Regression]] (where it is commonest) · [[Dispersion Parameter]] (how it is measured)
+The consequence is that coefficient estimates are roughly fine, but the standard errors are too small by a factor of √dispersion, so p-values are too small and you declare effects that are not there. In the code below, clumped counts fitted with a Poisson give a dispersion well above 1 and a smaller standard error than the negative binomial does. The last line simulates data with no effect at all and finds the Poisson GLM's false-positive rate far above 5%.
 
-## The everyday picture
-A weather forecaster who says "10 mm of rain, give or take 3" every day. If actual rainfall on such days ranges from 0 to 40, the forecast's average may be right but its stated uncertainty is far too small. Decisions made on that false confidence will go wrong.
+Some causes are apparent and should be fixed in the mean model first: a missing predictor, a missing interaction or nonlinearity, outliers, or the wrong link. Others are real: animals clump, sites differ in unmeasured ways, observations are grouped, or there are excess zeros. The remedies are a [[Negative Binomial GLM]], [[Quasi-Poisson]], an [[Observation-level Random Effect]], random effects for the grouping, or a model for [[Zero Inflation]] ([[Zuur et al. 2009 Ch9]], [[Harrison et al. 2018]], [[Course Website]]). Anderson and Burnham handle it in model selection with ĉ and QAIC ([[Anderson and Burnham 2002]]). Single 0/1 outcomes cannot be overdispersed, though grouped binomial data can. Overdispersion mainly falsifies the precision of the coefficients rather than biasing them, and residual deviance / df is only a rough guide, with the Pearson statistic or simulation better for small counts. The opposite problem is [[Underdispersion]].
 
-## A tiny example
-Counts with fitted mean about 5. A Poisson expects a variance of about 5. You observe a variance of 22. Dispersion ≈ 4.4.
-
-## Start from zero
-1. **Poisson: variance must equal the mean.** Binomial: variance must be np(1 − p).
-2. **Real data often scatter more.**
-3. **Detect:** dispersion statistic = Σ(Pearson residual²) / residual df. About 1 is fine. Above roughly 1.5 to 2 deserves action. Or use simulated residuals.
-4. **Consequence:** the coefficient estimates are roughly fine, but the *standard errors are too small* by a factor of √dispersion. P-values are too small. You'll declare effects that aren't there.
-5. **Apparent causes (fix the mean model first):** a missing predictor, a missing interaction or nonlinearity, outliers, the wrong link.
-6. **Real causes:** animals clump, sites differ in unmeasured ways, observations are grouped, there are excess zeros.
-7. **Remedies:** negative binomial. Quasi-Poisson. An observation-level random effect. Random effects for the grouping. A zero-inflated model.
-8. **Single 0/1 outcomes can't be overdispersed.** Grouped binomial data can.
-
-## See it
 ![[Overdispersion.png|700]]
 *What to look at:* both panels have the same mean trend, but the right-hand scatter is far wider than the Poisson band.
 
-## In R
 ```r
 set.seed(17); x <- runif(200); y <- rnbinom(200, mu = exp(1 + 1 * x), size = 1.2)        # clumped counts
 m <- glm(y ~ x, family = poisson)
@@ -45,19 +29,6 @@ sum(resid(m, "pearson")^2) / df.residual(m)                         # dispersion
 se_p <- summary(m)$coefficients[2, 2]; se_nb <- summary(MASS::glm.nb(y ~ x))$coefficients[2, 2]; c(poisson_se = se_p, negbin_se = se_nb)
 set.seed(18); mean(replicate(500, { yy <- rnbinom(200, mu = exp(1), size = 1.2); summary(glm(yy ~ x, family = poisson))$coefficients[2, 4] < 0.05 }))    # false-positive rate far above 5%
 ```
-
-## In the course
-A main theme of the count GLM lab ([[Course Website]]). [[Zuur et al. 2009 Ch9]], [[Harrison et al. 2018]], [[Anderson and Burnham 2002]] (ĉ and QAIC).
-
-## Common confusions
-- **"Overdispersion biases the coefficients."** Mainly it falsifies their precision.
-- **"Residual deviance / df is the test."** It is a rough guide. The Pearson statistic or simulation is better, especially with small counts.
-
-## Explain it back
-- What does overdispersion do to p-values, and why?
-- List four remedies.
-
-*Pass test:* you can compute a dispersion statistic and choose a remedy.
 
 ## Connections
 - **Builds on:** [[Mean-Variance Relationship]], [[Poisson Regression]]

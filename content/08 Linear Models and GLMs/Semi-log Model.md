@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "A semi-log model is a regression in which the response is logged and the predictor is left on its original scale, so the response changes by a constant percentage per unit of the predictor."
 aliases:
   - "Log-linear regression"
   - "Log-level model"
@@ -12,39 +13,17 @@ status: seedling
 
 # Semi-log Model
 
-**In one line:** a semi-log model is a regression in which the response is logged and the predictor is left on its original scale, so the response changes by a constant percentage per unit of the predictor.
+Graph paper whose vertical axis is marked 1, 10, 100, 1000 turns a curve of steady percentage growth into a straight line. A **semi-log model** is a regression in which the response is logged and the predictor left on its original scale: log(y) = β₀ + β₁x ([[Log Transformation]]). Back on the original scale that is y = e^(β₀) · e^(β₁x), an exponential curve ([[Exponential Function]]). So β₁ is the proportional change in y per unit of x, with multiplier e^(β₁) ([[Multiplicative Effects]]).
 
-> [!info] Before this, it helps to know
-> [[Log Transformation]] (of the response) · [[Multiplicative Effects]] (the interpretation) · [[Exponential Function]] (the curve it implies)
+It suits growth or decay through time, decline with distance, and anything changing by a constant percentage ([[Exponential Growth Model]]). In the code below, a population starting near 50 and growing about 8% a year is fitted with `lm(log(N) ~ t)`: the intercept back-transforms to about 50 and the slope to a multiplier of about 1.08 ([[Back-transformation]]). The same model fitted on the mean scale is a GLM with a [[Log Link]].
 
-## The everyday picture
-A straight line on graph paper whose vertical axis is marked 1, 10, 100, 1000. Straight on that paper means a curve of steady percentage growth on ordinary paper.
+The mirror image, the level-log model y = β₀ + β₁ log(x), describes diminishing returns: each doubling of x adds β₁ · log(2) to y. Logging both variables gives the [[Log-log Model]]. Guthery and Bingham's point is that the same β means very different things in linear, semi-log and log-log models, so you must know which you fitted before interpreting it ([[Guthery and Bingham 2007]]). Semi-log and log-log are not the same: one logs one variable, the other both.
 
-## Start from zero
-1. **Model:** log(y) = β₀ + β₁x.
-2. **On the original scale:** y = e^(β₀) · e^(β₁x). An exponential curve.
-3. **β₁ is the proportional change in y per unit of x.** Multiplier e^(β₁).
-4. **Use it for** growth or decay through time, decline with distance, anything changing by a constant percentage.
-5. **The mirror image (level-log):** y = β₀ + β₁ log(x). Each doubling of x adds β₁ · log(2) to y. Diminishing returns.
-6. **Guthery and Bingham's point:** the same β means very different things in linear, semi-log and log-log models. You must know which you fitted before interpreting.
-
-## In R
 ```r
 set.seed(5); t <- 0:20; N <- 50 * exp(0.08 * t + rnorm(21, 0, 0.1))
 m <- lm(log(N) ~ t); coef(m); exp(coef(m))        # start about 50, growing about 8% per year
 plot(t, N); lines(t, exp(fitted(m)))
 ```
-
-## In the course
-[[Guthery and Bingham 2007]].
-
-## Common confusions
-- **"Semi-log and log-log are the same."** One logs one variable, the other both.
-
-## Explain it back
-- What does β₁ = −0.1 mean in log(y) = β₀ + β₁x?
-
-*Pass test:* you can interpret a semi-log slope as a percentage change.
 
 ## Connections
 - **Builds on:** [[Log Transformation]], [[Multiplicative Effects]]

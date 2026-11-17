@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Apparent survival φ is the probability that a marked animal survives and stays in the study area between occasions, so it combines true survival and fidelity."
 aliases:
   - "Apparent survival (phi)"
   - "phi"
@@ -14,31 +15,11 @@ status: seedling
 
 # Apparent Survival
 
-**In one line:** apparent survival φ is the probability that a marked animal survives and stays in the study area between occasions, so it combines true survival and fidelity.
+Your old classmates who still show up at reunions are "alive and still around"; someone missing may have died or simply moved away. **Apparent survival** φ is the probability that a marked animal survives and stays in the study area between occasions, so it combines true survival and fidelity: φ = S × F, true survival times site fidelity, the chance of not permanently emigrating ([[Survival Rate]], [[Cormack-Jolly-Seber Model]]). CJS cannot separate death from permanent emigration (Powell and Gale Ch10), because both give a history ending in zeros.
 
-> [!info] Before this, it helps to know
-> [[Survival Rate]] · [[Cormack-Jolly-Seber Model]]
+So φ ≤ S, and often much lower for dispersing juveniles. Separating them needs extra data: dead recoveries from outside the area, multi-state models with sites, or telemetry ([[Joint Live-dead Encounter Models]], [[Multi-state Models]], [[Radio-telemetry Data]], [[Temporary Emigration]]).
 
-## The everyday picture
-Your old classmates who still show up at reunions. Someone missing may have died, or simply moved away. Reunion attendance measures "alive and still around".
-
-## Start from zero
-1. **φ = S × F,** true survival times site fidelity (the chance of not permanently emigrating).
-2. **CJS cannot separate death from permanent emigration** (Powell and Gale Ch10); both give a history ending in zeros.
-3. **So φ ≤ S,** often much lower for dispersing juveniles.
-4. **Separating them** needs extra data: dead recoveries from outside the area, multi-state models with sites, or telemetry.
-5. **Shipley et al. (2022)** illustrate how survival from marked animals feeds population models.
-
-## In the course
-[[Powell and Gale 2015]] Ch10 ("What is the difference between survival and apparent survival?"). [[Shipley et al. 2022]].
-
-## Common confusions
-- **"Low φ means high mortality."** It may mean high emigration.
-
-## Explain it back
-- What two processes does φ combine?
-
-*Pass test:* you can interpret φ and say what would separate its parts.
+Powell and Gale (Ch10) ask "What is the difference between survival and apparent survival?" ([[Powell and Gale 2015]]); [[Shipley et al. 2022]] illustrate how survival from marked animals feeds population models. Low φ does not necessarily mean high mortality; it may mean high emigration.
 
 ## Connections
 - **Builds on:** [[Survival Rate]]

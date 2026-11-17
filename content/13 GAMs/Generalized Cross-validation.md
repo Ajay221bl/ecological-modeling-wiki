@@ -3,6 +3,7 @@ type: atomic
 tags:
   - gam
   - flashcards/eco/gam
+description: "Generalized cross-validation chooses the smoothing parameter that minimises an approximation to leave-one-out prediction error, and UBRE is its counterpart when the scale parameter is known."
 aliases:
   - "GCV"
   - "GCV.Cp"
@@ -14,35 +15,16 @@ status: seedling
 
 # Generalized Cross-validation
 
-**In one line:** generalized cross-validation chooses the smoothing parameter that minimises an approximation to leave-one-out prediction error, and UBRE is its counterpart when the scale parameter is known.
+**Generalized cross-validation** (GCV) chooses the smoothing parameter that minimises an approximation to leave-one-out prediction error, and UBRE (Mallows' Cp) is its counterpart when the scale parameter is known, as for Poisson and binomial ([[Leave-one-out Cross-validation]], [[Smoothing Parameter]]). The GCV score is roughly n × RSS / (n − edf)²: small residuals help, and a high edf hurts. It is computed from one fit, without refitting n times.
 
-> [!info] Before this, it helps to know
-> [[Leave-one-out Cross-validation]] · [[Smoothing Parameter]]
+It is mgcv's default (`method = "GCV.Cp"`). Its known weakness is that the score can be flat or have several minima, and it occasionally under-smooths, which is overfitting; REML is more stable ([[REML for Smoothness Selection]]). In the code below GCV picks a smooth with 5.46 effective degrees of freedom for a sine wave, with a GCV score of 0.091, close to the noise variance of 0.09.
 
-## Start from zero
-1. **GCV score ≈ n × RSS / (n − edf)².** Small residuals help, high edf hurts.
-2. **Computed from one fit,** without refitting n times.
-3. **UBRE (Mallows' Cp):** used for Poisson and binomial, where the scale is known (1).
-4. **mgcv default** (`method = "GCV.Cp"`).
-5. **Known weakness:** the GCV score can be flat with multiple minima, and tends to under-smooth (overfit) occasionally. REML is more stable.
-6. **Zuur Ch3 explains cross-validation** for choosing smoothness.
+[[Zuur et al. 2009 Ch3]] explain cross-validation for choosing smoothness ([[Cross-validation]]). GCV and REML usually agree closely, but not always: GCV is more variable.
 
-## In R
 ```r
 library(mgcv); set.seed(12); d <- data.frame(x = runif(150)); d$y <- sin(2 * pi * d$x) + rnorm(150, 0, 0.3); m <- gam(y ~ s(x), data = d)
 round(c(gcv_score = m$gcv.ubre, edf = summary(m)$edf), 3)
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch3]] (cross-validation).
-
-## Common confusions
-- **"GCV and REML always agree."** Usually close; GCV is more variable.
-
-## Explain it back
-- When does mgcv use UBRE instead of GCV?
-
-*Pass test:* you can explain GCV's role.
 
 ## Connections
 - **Builds on:** [[Leave-one-out Cross-validation]], [[Smoothing Parameter]]

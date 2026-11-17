@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Temporary emigration is when animals leave the sampled area during some primary periods and later return, so they are alive but unavailable to be caught."
 aliases:
   - "Temporary emigration γ"
   - "gamma prime and gamma double prime"
@@ -13,28 +14,11 @@ status: seedling
 
 # Temporary Emigration
 
-**In one line:** temporary emigration is when animals leave the sampled area during some primary periods and later return, so they are alive but unavailable to be caught.
+**Temporary emigration** is when animals leave the sampled area during some primary periods and later return, so they are alive but unavailable to be caught ([[Robust Design]], [[Availability for Detection]]). Adult seabirds that skip breeding in some years and stay at sea are an example. In CJS it biases p low and can bias survival ([[Cormack-Jolly-Seber Model]]).
 
-> [!info] Before this, it helps to know
-> [[Robust Design]] · [[Availability for Detection|Availability and Presence Probability]]
+The robust design estimates it with γ″, the probability of being away given present before, and γ′, of being away given away before. Random temporary emigration means γ″ = γ′; Markovian means they differ, because being away makes being away again more or less likely ([[Markov Chain]]). The survey-sampling parallel is an animal that uses the site but is elsewhere at survey time, the presence probability of Powell and Gale Ch14 ([[Super-population]]).
 
-## Start from zero
-1. **Example:** adult seabirds that skip breeding in some years and stay at sea.
-2. **In CJS it biases p low** and can bias survival.
-3. **The robust design estimates it** with γ″ (probability of being away, given present before) and γ′ (away, given away before).
-4. **Random temporary emigration:** γ″ = γ′. **Markovian:** they differ (being away makes being away again more or less likely).
-5. **Survey sampling parallel:** an animal that uses the site but is elsewhere at survey time (presence probability).
-
-## In the course
-[[Powell and Gale 2015]] Ch13 ("How can the model estimate emigration?") and Ch14.
-
-## Common confusions
-- **"An animal not caught in a year is dead or missed."** It may be temporarily away.
-
-## Explain it back
-- What is the difference between random and Markovian temporary emigration?
-
-*Pass test:* you can explain temporary emigration and how it is estimated.
+Powell and Gale (Ch13) ask "How can the model estimate emigration?" ([[Powell and Gale 2015]] Ch13 and Ch14). An animal not caught in a year is not necessarily dead or missed; it may be temporarily away.
 
 ## Connections
 - **Builds on:** [[Robust Design]], [[Availability for Detection|Availability and Presence Probability]]

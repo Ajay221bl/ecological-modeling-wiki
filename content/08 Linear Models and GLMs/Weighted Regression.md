@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "Weighted regression gives each observation a weight in the fit, usually the inverse of its variance, so noisier observations count less."
 aliases:
   - "Weighted least squares"
   - "WLS"
@@ -13,37 +14,16 @@ status: seedling
 
 # Weighted Regression
 
-**In one line:** weighted regression gives each observation a weight in the fit, usually the inverse of its variance, so noisier observations count less.
+When averaging opinions where some people are better informed, you listen more to the reliable ones. **Weighted regression** gives each observation a weight in the fit, usually the inverse of its variance, so noisier observations count less ([[Least Squares]], [[Homogeneity of Variance]]). It minimises Σwᵢ(yᵢ − ŷᵢ)² instead of the plain RSS, and weights of 1 / variance give the most efficient estimates when the variances are known up to a constant. For means based on different sample sizes, weight by n ([[Weighted Mean]]).
 
-> [!info] Before this, it helps to know
-> [[Least Squares]] · [[Homogeneity of Variance]]
+In R it is `lm(y ~ x, weights = w)`; in nlme, `gls(y ~ x, weights = varFixed(~ x))` models variance proportional to x ([[Generalized Least Squares]]). [[Zuur et al. 2009 Ch4]] extend this to estimated variance structures such as varIdent, varPower and varExp ([[Variance Structures]]). In the code below the noise SD grows with x: ordinary least squares estimates the slope as 0.513 (SE 0.073), and weighting by 1/x² gives 0.492 (SE 0.047), a more precise estimate of the true 0.5.
 
-## The everyday picture
-Averaging opinions where some people are better informed. You listen more to the reliable ones.
+Weights don't fix any heterogeneity: they only help if you know or model how the variance changes ([[Heteroscedasticity]]).
 
-## Start from zero
-1. **Minimises Σ wᵢ(yᵢ − ŷᵢ)²** instead of the plain RSS.
-2. **Weights = 1 / variance** gives the most efficient estimates when variances are known up to a constant.
-3. **In R:** `lm(y ~ x, weights = w)`; in nlme, `gls(y ~ x, weights = varFixed(~ x))` models variance proportional to x.
-4. **Means of different sample sizes:** weight by n.
-5. **Zuur et al. (2009 Ch4)** extend this to estimated variance structures (varIdent, varPower, varExp).
-
-## In R
 ```r
 set.seed(4); x <- runif(100, 1, 10); y <- 2 + 0.5 * x + rnorm(100, 0, 0.3 * x)
 round(rbind(ols = summary(lm(y ~ x))$coef[2, 1:2], wls = summary(lm(y ~ x, weights = 1 / x^2))$coef[2, 1:2]), 3)
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch4]].
-
-## Common confusions
-- **"Weights fix any heterogeneity."** Only if you know or model how variance changes.
-
-## Explain it back
-- What weight gives the most efficient estimate?
-
-*Pass test:* you can fit and justify a weighted regression.
 
 ## Connections
 - **Builds on:** [[Least Squares]], [[Homogeneity of Variance]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "Spatial data are observations with a location attached, and in R the sf package stores them as a data frame with one extra column holding each row's geometry."
 aliases:
   - "sf package"
   - "Simple features"
@@ -13,26 +14,12 @@ status: seedling
 
 # Spatial Data in R
 
-**In one line:** spatial data are observations with a location attached, and in R the sf package stores them as a data frame with one extra column holding each row's geometry.
+Imagine a spreadsheet in which each row also has a pin stuck in a map. You can still sort, filter and summarise the rows as usual, and you can also ask map questions: how far apart, which is inside which, what is nearby. **Spatial data** are observations with a location attached, and in R the sf ("simple features") package stores them as a [[Data Frame]] with one extra column, `geometry`, holding each row's point, line or polygon. `st_as_sf(d, coords = c("lon", "lat"), crs = 4326)` turns a table with coordinate columns into an sf object; note that coordinates are given as x then y, meaning longitude then latitude. dplyr verbs still work, with the geometry sticking to each row, and `geom_sf()` draws it in ggplot.
 
-> [!info] Before this, it helps to know
-> [[Data Frame]] (what an sf object extends) · [[Coordinate Reference System]] (what makes the numbers into places)
+The `crs` argument declares the [[Coordinate Reference System]], and it is essential: without it the coordinates are bare numbers and distances are meaningless. Longitude and latitude are angles, not metres, so before measuring distance or area convert to a projected system with `st_transform()`. In the code below, three bird-count sites are converted to [[UTM Coordinates]] in zone 14 north, in metres, and `st_distance()` gives the distances between them in kilometres. Other functions answer other spatial questions: `st_join()` attaches map attributes to points and `st_buffer()` draws zones around them.
 
-## The everyday picture
-A spreadsheet where each row also has a pin stuck in a map. You can still sort, filter and summarise the rows as usual. And you can also ask map questions: how far apart, which is inside which, what is nearby.
+Location matters for modeling because it is how you check for [[Spatial Autocorrelation]], where nearby sites resemble each other more than distant ones, and how covariates such as land cover are extracted from maps. The course labs use sf for the Loess Canyons route locations and in the spatial autocorrelation lab ([[Course Website]]).
 
-## Start from zero
-1. **Start with a table** containing coordinate columns.
-2. **`st_as_sf(d, coords = c("lon", "lat"), crs = 4326)`** turns it into an sf object.
-3. **A `geometry` column appears.** Points, lines or polygons.
-4. **dplyr verbs still work.** The geometry sticks to each row.
-5. **Declare the CRS.** *Why:* without it the coordinates are bare numbers and distances are meaningless.
-6. **`st_transform()`** converts to another CRS, for example to metres.
-7. **`st_distance()`, `st_join()`, `st_buffer()`** answer spatial questions.
-8. **`geom_sf()`** draws it in ggplot.
-9. **Why it matters for modeling:** location is how you check for spatial autocorrelation and extract covariates from maps.
-
-## In R
 ```r
 library(sf)
 pts <- data.frame(site = c("A", "B", "C"), lon = c(-100.60, -100.45, -100.20), lat = c(40.95, 41.00, 40.90), rich = c(12, 9, 15))
@@ -42,18 +29,6 @@ s_utm <- st_transform(s, 32614)                    # UTM zone 14N, metres
 round(st_coordinates(s_utm))
 round(units::drop_units(st_distance(s_utm)) / 1000, 1)   # pairwise distances in km
 ```
-
-## In the course
-The course labs use sf for route locations in the Loess Canyons and in the spatial autocorrelation lab ([[Course Website]]).
-
-## Common confusions
-- **"Longitude and latitude are x and y in metres."** They are angles. Convert to a projected CRS before measuring distance or area.
-- **"Order is lat, lon."** In sf, coords are given as x then y, meaning longitude then latitude.
-
-## Explain it back
-- What does `st_as_sf()` need to be told?
-
-*Pass test:* you can turn a table with coordinates into an sf object and reproject it.
 
 ## Connections
 - **Builds on:** [[Data Frame]]

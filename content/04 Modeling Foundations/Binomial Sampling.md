@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "Binomial sampling is any study where each of n separate units has just two possible outcomes (alive or dead, present or absent, tag kept or lost), each with the same chance p, and you count the \"successes\"."
 aliases:
   - "Binomial trial"
   - "Success/failure data"
@@ -11,51 +12,15 @@ status: seedling
 
 # Binomial Sampling
 
-**In one line:** binomial sampling is any study where each of n separate units has just two possible outcomes (alive or dead, present or absent, tag kept or lost), each with the same chance p, and you count the "successes".
+A basketball player who makes 70% of her free throws takes 10 shots. She will not make exactly 7 every time; some days 5, some days 9. "How many go in out of 10?" is a binomial question. Now flip it around: you watch a stranger take 10 shots and 7 go in, so what is your best guess of her skill? About 70%. **Binomial sampling** is any study where each of n separate units, called *trials*, has just two possible outcomes (alive or dead, present or absent, tag kept or lost), each with the same chance p of "success", and you count the successes, k. "Success" is just the outcome you count; it need not be good. That backwards step, from the count to the chance, is how Powell and Gale estimate survival, tag retention and detection.
 
-> [!info] Before this, it helps to know
-> [[Factorials and Binomial Coefficient]] (counting the ways k successes can happen) · [[Continuous vs Discrete Data]] (binary data)
+The probability of exactly k successes is $\binom{n}{k} p^k (1-p)^{n-k}$, the [[Binomial Distribution]]. Each piece has a reason: $p^k$ is the chance that k particular units all succeed, $(1-p)^{n-k}$ is the chance that the rest all fail, and $\binom{n}{k}$ counts how many different sets of k units could be the successful ones ([[Factorials and Binomial Coefficient]]); multiplying is allowed because the trials are independent. Now estimate p. Ten fish are tagged and 7 keep their tags ([[Powell and Gale 2015 Ch3]]). There are $\binom{10}{7}$ = 120 ways to choose which 7. If p = 0.5, P(7 of 10) = 120 × 0.5⁷ × 0.5³ = 0.117; if p = 0.7, 120 × 0.7⁷ × 0.3³ = 0.267; if p = 0.9, 120 × 0.9⁷ × 0.1³ = 0.057. The value p = 0.7 makes the observed result most probable, so it is the *maximum likelihood estimate*, and it is always p̂ = k / n, the common-sense answer, now with a reason behind it ([[Likelihood]], [[Maximum Likelihood Estimation]]). With only 10 animals the true p could easily be 0.5 or 0.85, and even with a true survival of 0.25, anywhere from about 2 to 9 survivors out of 20 is quite possible; that spread is sampling variation.
 
-## The everyday picture
-Free throws in basketball. Each shot either goes in or it doesn't. A player who makes 70% of shots takes 10 shots. She won't make exactly 7 every time: some days 5, some days 9. "How many go in out of 10?" is binomial.
+Two assumptions carry the whole model: the trials are independent, and p is the same for every trial. A tired player breaks the second; animals in one herd that live or die together break the first. When either fails, real counts vary more than the binomial expects ([[Overdispersion]]), and the fix is to model the grouping, for example with a [[Random Effect]]. Do not confuse the binomial with the [[Bernoulli Distribution]]: a Bernoulli is one trial (0 or 1), and a binomial counts the successes in n of them. Two-outcome data are everywhere in wildlife work, and the binomial underlies survival estimation, presence-absence data, detection probability and [[Logistic Regression]], so getting comfortable with it here makes GLMs feel natural later. It is also the basis for the likelihood ideas used in model selection ([[AIC]]). The data are discrete counts ([[Continuous vs Discrete Data]]).
 
-Now flip it around. You watch a stranger take 10 shots and 7 go in. What's your best guess of her skill? About 70%. That backwards step, from the count to the chance, is how Powell and Gale estimate survival, tag retention and detection.
-
-*Where the picture stops working:* a player gets tired, so later shots may have a lower chance. Binomial sampling assumes every try has the *same* chance and doesn't affect the others.
-
-## Words you'll need
-- **Trial:** one unit with two possible outcomes (one animal, one tag, one shot).
-- **Success:** the outcome you're counting (alive, tag kept). It needn't be "good".
-- **p:** the chance of success on each trial.
-- **n:** the number of trials. **k:** the number of successes.
-- **Independent:** one trial's outcome doesn't change another's chances.
-- **Binomial distribution:** the rule for how likely each k is, given n and p ([[Binomial Distribution]]).
-- **Likelihood:** how probable the observed data are for a given value of p ([[Likelihood]]).
-- **Maximum likelihood estimate (MLE):** the value of p that makes the observed data most probable ([[Maximum Likelihood Estimation]]).
-
-## A tiny example
-10 fish tagged, 7 kept their tags ([[Powell and Gale 2015 Ch3]], p. 24). Which value of p best explains that? Try three. ($\binom{10}{7}$ = 120 ways to choose which 7 kept their tags.)
-- If p = 0.5: P(7 of 10) = 120 × 0.5⁷ × 0.5³ = **0.117**
-- If p = 0.7: P(7 of 10) = 120 × 0.7⁷ × 0.3³ = **0.267**
-- If p = 0.9: P(7 of 10) = 120 × 0.9⁷ × 0.1³ = **0.057**
-
-p = 0.7 makes "7 of 10" most probable, so it's the maximum likelihood estimate. It's exactly 7/10, the common-sense answer, and now you know *why* it's the right one.
-
-## Start from zero
-1. **Many field outcomes have only two possibilities.** A collared sheep is alive or dead at year's end. A tag stays or falls off. A species is detected or not ([[Powell and Gale 2015 Ch3]], p. 22).
-2. **Each unit is one trial.** If each has the same success chance p and they don't affect each other, the number of successes k out of n follows a [[Binomial Distribution]].
-3. **The probability of exactly k successes is $\binom{n}{k} p^k (1-p)^{n-k}$.** Read it piece by piece. *Why each piece:* $p^k$ is the chance that k particular units all succeed; $(1-p)^{n-k}$ is the chance the rest all fail; and $\binom{n}{k}$ counts how many different sets of k units could be the successful ones ([[Factorials and Binomial Coefficient]]). Multiplying works because the trials are independent.
-4. **Turn it around to estimate p.** You saw k of n, so ask which p makes that most probable. The answer is always p̂ = k/n. That's [[Maximum Likelihood Estimation]], and Powell and Gale build their whole primer from this example.
-5. **The two key assumptions are independence and constant p.** *Why they matter:* if animals in one herd die together (not independent), or older animals survive less (p not constant), real counts vary more than the binomial expects ([[Overdispersion]]).
-
-## See it
 ![[Binomial sampling.png|700]]
 *What to look at:* even with a true survival of 0.25, anywhere from about 2 to 9 survivors out of 20 is quite possible. That spread is sampling variation.
 
-## Why it is this way
-Two-outcome data are everywhere in wildlife work, and the binomial is the simplest honest description of them: it uses only n and p, and it follows directly from counting and multiplying chances. It's the model underneath survival estimation, presence and absence data, detection probability and logistic regression ([[Logistic Regression]]). Getting comfortable with it here makes GLMs feel natural later.
-
-## In R
 ```r
 dbinom(7, size = 10, prob = c(0.5, 0.7, 0.9))   # 0.117 0.267 0.057
 p_grid <- seq(0, 1, by = 0.01)
@@ -64,21 +29,6 @@ p_grid[which.max(lik)]                           # 0.7: the value that maximizes
 plot(p_grid, lik, type = "l", xlab = "p", ylab = "Likelihood of 7 of 10")
 rbinom(5, size = 20, prob = 0.25)                # simulate 5 studies of 20 sheep
 ```
-
-## In the course
-Powell and Gale introduce binomial sampling as one of the "Questions to ponder" in Ch2 and work it out in Ch3 ([[Powell and Gale 2015 Ch3]], pp. 22 to 26). It's the basis for the likelihood ideas used in model selection ([[Likelihood]], [[AIC]]).
-
-## Common confusions
-- **Bernoulli vs binomial.** A Bernoulli is one trial (0 or 1). A binomial counts the successes in n Bernoulli trials ([[Bernoulli Distribution]]).
-- **"Grouped animals are separate trials."** If they share a fate (same herd, same nest), they're not independent. The fix is to model the grouping ([[Random Effect]]).
-- **"p̂ = 0.7 means exactly 70% survive."** It's the best guess; the true p could easily be 0.5 or 0.85 with only 10 animals.
-
-## Explain it back
-- Use free throws to explain binomial sampling and the backwards step to estimating p.
-- What does each of the three pieces of the binomial formula stand for?
-- Why is 0.7 the best estimate after 7 of 10 tags stayed on?
-
-*Pass test:* you can say whether a dataset fits binomial sampling by checking two outcomes, the same p and independence.
 
 ## Connections
 - **Builds on:** [[Factorials and Binomial Coefficient]], [[Continuous vs Discrete Data]]

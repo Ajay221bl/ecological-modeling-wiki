@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "A prediction plot shows what the fitted model expects across a predictor's range as a line, with a shaded ribbon for uncertainty, over the raw data."
 aliases:
   - "Plotting Model Predictions"
   - "Prediction plot"
@@ -12,27 +13,15 @@ status: seedling
 
 # Plotting Model Predictions with Ribbons
 
-**In one line:** a prediction plot shows what the fitted model expects across a predictor's range as a line, with a shaded ribbon for uncertainty, over the raw data.
+A weather forecast chart shows a line for the expected temperature, a shaded band for how far off it might be, and dots for what was actually measured: one glance shows the model, its doubt and the evidence. A **prediction plot** does this for a fitted model: a line for what the model expects across a predictor's range, a shaded ribbon for uncertainty, and the raw data underneath. The recipe: fit the model; build new data with an even sequence of the focal predictor and other predictors fixed at typical values ([[expand.grid()]], [[Predicting New Data]]); predict on the link scale with standard errors; compute fit ± 1.96 × SE and back-transform with the inverse link; and plot raw points, `geom_ribbon()` for the band and `geom_line()` for the fit ([[Geoms]]).
 
-> [!info] Before this, it helps to know
-> [[Predicting New Data]] (getting fitted values) · [[expand.grid()]] (the grid of x values) · [[Confidence Interval]] (what the ribbon shows) · [[Geoms]] (line and ribbon)
+Predicting on the link scale matters because intervals are symmetric there, and back-transforming afterwards keeps them inside legal bounds such as 0 to 1 or above zero ([[Predictions on Link vs Response Scale]]). The code below does this for a Poisson model of bird counts against tree cover and confirms that the lower edge of the band stays positive. As the figure shows, the band is narrowest where data are dense and widens at the edges. Every lab ends with a figure of this kind, and Homework 2 needs the band for a logistic curve ([[Course Website]]).
 
-## The everyday picture
-A weather forecast chart: a line for the expected temperature, a shaded band for how far off it might be, and dots for what was actually measured. One glance shows the model, its doubt and the evidence.
+Say in the caption what the band is, usually a 95% [[Confidence Interval]] for the mean, and what the other predictors were held at. Two mistakes are common. Computing fit ± 2 SE on the response scale can give negative counts or probabilities above 1. And the band does not show where new observations will fall; it shows uncertainty in the mean, while new observations scatter more ([[Prediction Interval]]). Save the finished figure from code ([[Saving Figures]]).
 
-## Start from zero
-1. **Fit the model.**
-2. **Build new data:** an even sequence of the focal predictor, other predictors fixed at typical values.
-3. **Predict on the link scale with standard errors.** *Why the link scale:* intervals are symmetric there, and back-transforming afterwards keeps them inside legal bounds such as 0 to 1.
-4. **Compute fit ± 1.96 × SE, then back-transform** with the inverse link.
-5. **Plot:** raw points, `geom_ribbon()` for the band, `geom_line()` for the fit.
-6. **Say in the caption what the band is** (95% confidence interval for the mean) and what the other predictors were held at.
-
-## See it
 ![[Prediction ribbon.png|700]]
 *What to look at:* the band is narrowest where data are dense and widens at the edges.
 
-## In R
 ```r
 library(ggplot2)
 set.seed(4)
@@ -47,19 +36,6 @@ p <- ggplot(nd, aes(tree, fit)) +
   labs(x = "Tree cover (%)", y = "Bird species")
 range(nd$lo); range(nd$hi)       # all positive: the band respects the lower bound of counts
 ```
-
-## In the course
-Every lab ends with a figure of this kind. Homework 2 needs the band for a logistic curve ([[Course Website]]).
-
-## Common confusions
-- **"Compute fit ± 2 SE on the response scale."** That can give negative counts or probabilities above 1.
-- **"The band shows where new observations will fall."** It shows uncertainty in the mean. New observations scatter more ([[Prediction Interval]]).
-
-## Explain it back
-- Why build the interval on the link scale?
-- What does the ribbon not show?
-
-*Pass test:* you can produce a fitted line with a 95% band from a GLM.
 
 ## Connections
 - **Builds on:** [[Predicting New Data]], [[expand.grid()]], [[Confidence Interval]]

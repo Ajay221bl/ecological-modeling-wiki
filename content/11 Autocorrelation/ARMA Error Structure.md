@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "An ARMA(p, q) error structure combines autoregressive terms (dependence on the previous p residuals) with moving-average terms (dependence on the previous q random shocks), allowing more flexible temporal correlation than AR(1)."
 aliases:
   - "ARMA"
   - "corARMA()"
@@ -15,35 +16,16 @@ status: seedling
 
 # ARMA Error Structure
 
-**In one line:** an ARMA(p, q) error structure combines autoregressive terms (dependence on the previous p residuals) with moving-average terms (dependence on the previous q random shocks), allowing more flexible temporal correlation than AR(1).
+An **ARMA(p, q) error structure** combines autoregressive terms, dependence on the previous p residuals, with moving-average terms, dependence on the previous q random shocks, allowing more flexible temporal correlation than the [[AR(1) Error Structure]], which is ARMA(1, 0). AR(p) is εₜ = φ₁εₜ₋₁ + ... + φₚεₜ₋ₚ + ηₜ; MA(q) is εₜ = ηₜ + θ₁ηₜ₋₁ + ... + θ_qηₜ₋q, so a shock affects only the next q steps.
 
-> [!info] Before this, it helps to know
-> [[AR(1) Error Structure]] (the simplest case, ARMA(1, 0)) · [[Partial Autocorrelation Function]]
+In nlme use `corARMA(form = ~ year, p = 2, q = 0)` ([[Correlation Structure]]). Choose p and q with [[AIC]], trying small values from 0 to 3, with the ACF and [[Partial Autocorrelation Function]] as hints. In the code below a series generated as AR(2) gives AIC 214.1 with AR(1), 208.6 with AR(2) and 210.2 with ARMA(1, 1), so AR(2) is preferred.
 
-## Start from zero
-1. **AR(p):** εₜ = φ₁εₜ₋₁ + ... + φₚεₜ₋ₚ + ηₜ.
-2. **MA(q):** εₜ = ηₜ + θ₁ηₜ₋₁ + ... + θ_qηₜ₋q. A shock affects only the next q steps.
-3. **ARMA(p, q)** combines both.
-4. **nlme:** `corARMA(form = ~ year, p = 2, q = 0)`.
-5. **Choose p and q with AIC,** trying small values (0 to 3). ACF and PACF give hints.
-6. **More parameters, more convergence trouble,** especially in short series. Zuur et al. caution that higher orders are rarely needed.
+More parameters bring more convergence trouble, especially in short series, and Zuur et al. caution that higher orders are rarely needed ([[Zuur et al. 2009 Ch6]]). Higher p and q are not always better: they overfit and often fail to converge.
 
-## In R
 ```r
 library(nlme); set.seed(3); d <- data.frame(year = 1:80); d$y <- as.numeric(arima.sim(list(ar = c(0.5, 0.3)), 80))
 sapply(list(ar1 = corAR1(form = ~ year), ar2 = corARMA(form = ~ year, p = 2), arma11 = corARMA(form = ~ year, p = 1, q = 1)), function(cs) round(AIC(gls(y ~ 1, correlation = cs, data = d)), 1))
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch6]] (section on ARMA error structures).
-
-## Common confusions
-- **"Higher p and q are always better."** They overfit and often fail to converge.
-
-## Explain it back
-- What does an MA(1) term mean in words?
-
-*Pass test:* you can fit and compare ARMA structures.
 
 ## Connections
 - **Builds on:** [[AR(1) Error Structure]], [[Partial Autocorrelation Function]]

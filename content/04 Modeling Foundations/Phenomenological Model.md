@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "A phenomenological model describes the pattern in the data without claiming to represent the processes behind it."
 aliases:
   - "Descriptive model"
   - "Statistical description"
@@ -11,34 +12,12 @@ status: seedling
 
 # Phenomenological Model
 
-**In one line:** a phenomenological model describes the pattern in the data without claiming to represent the processes behind it.
+A tailor measures a customer and makes a suit that fits perfectly, without knowing or caring why the customer has that shape. Good fit, no explanation. A **phenomenological model** (or descriptive model) is like that tailor: it describes a *pattern*, a regular relationship seen in data, without claiming to represent the processes behind it. You collect paired data, pick a convenient shape (a straight line, a polynomial, a smooth curve), and fit it; this is *curve fitting*, and the fitted coefficients summarise the pattern. Most regressions, GLMs and GAMs in the course are phenomenological, and they usually come from [[Empirical Model|empirical modeling]], where the data lead.
 
-> [!info] Before this, it helps to know
-> [[Empirical Model]] (models driven by data) · [[Linear Regression]] (the most common example)
+Here is both the strength and the limit. Bird richness falls by about 1.5 species per 10% of tree cover, fitted to plots with 10% to 50% cover. At 30% cover the line predicts 6.2 species, a sensible value because 30% lies inside the data; predicting inside the range of the data is *interpolation*. At 90% cover the same line predicts −2.8 species, which is impossible. The line described a pattern and never knew why the pattern exists, so nothing guarantees its shape outside the range it was built on. Predicting beyond the data is [[Extrapolation]], and a phenomenological model's authority ends where the data end. A body barely changes, so a suit keeps fitting, but a fitted pattern can change completely when conditions change.
 
-## The everyday picture
-A tailor measuring a customer. The tailor records the shape accurately and makes a suit that fits. They neither know nor care why the customer has that shape. Good fit, no explanation.
+Phenomenological does not mean bad. Often the mechanism is unknown or too complex, and a clear description is exactly what is needed: is there a trend, how strong is it, how uncertain? The most flexible descriptive tool in the course is the [[Generalized Additive Model]], which lets the data draw the curve. Two cautions keep these models honest. Do not ask them to extrapolate, and do not read mechanism into a good fit, because many different mechanisms can produce the same curve; treat the pattern as a clue to the cause, not proof of it ([[Correlation vs Causation]]). Guthery and Bingham warn against reading mechanism into regression coefficients for exactly this reason ([[Guthery and Bingham 2007]]). Compare the [[Mechanistic Model]], which is built from causes.
 
-*Where the picture stops working:* a body barely changes. A fitted pattern can change completely when conditions change.
-
-## Words you'll need
-- **Pattern:** a regular relationship seen in data.
-- **Curve fitting:** choosing a flexible shape that follows the data.
-- **Interpolation:** predicting within the range of the data.
-
-## A tiny example
-Bird richness falls by 1.5 species per 10% tree cover, fitted across 10% to 50% cover.
-- At 30% cover the line predicts well: that is inside the data.
-- At 90% cover it predicts a negative number of species. The line described a pattern. It never knew why.
-
-## Start from zero
-1. **Collect paired data.** Cover and richness.
-2. **Pick a convenient shape.** A line, a polynomial, a smooth curve.
-3. **Fit it.** The coefficients summarise the pattern.
-4. **Use it inside the range you sampled.** *Why:* the shape was chosen for convenience, so nothing guarantees it outside.
-5. **Treat it as a clue to mechanism, not proof.**
-
-## See it
 ```mermaid
 flowchart LR
   D[Data] --> F[Fit a convenient curve] --> S[Good description<br/>inside the data range]
@@ -46,10 +25,6 @@ flowchart LR
 ```
 *What to look at:* the model's authority ends where the data end.
 
-## Why it is this way
-Often the mechanism is unknown or too complex, and a clear description is exactly what is needed: is there a trend, how strong, how uncertain? Most regressions, GLMs and GAMs in the course are phenomenological. That is fine, as long as you don't ask them to explain or to extrapolate.
-
-## In R
 ```r
 d <- data.frame(tree = c(10, 20, 30, 40, 50), birds = c(9, 8, 6, 5, 3))
 m <- lm(birds ~ tree, d)
@@ -58,22 +33,10 @@ predict(m, data.frame(tree = 90))    # -2.8: nonsense, outside the data
 ```
 The line fits well and still fails once you leave the range it was built on.
 
-## In the course
-GAMs are the most flexible phenomenological tool in the course ([[Generalized Additive Model]]). Guthery and Bingham caution against reading mechanism into regression coefficients ([[Guthery and Bingham 2007]]).
-
-## Common confusions
-- **"Phenomenological means bad."** It means descriptive. It is often the right tool.
-- **"A good fit shows the mechanism."** Many mechanisms can produce the same curve.
-
-## Explain it back
-- Why did the line predict negative species at 90% cover?
-- When is a purely descriptive model the right choice?
-
-*Pass test:* you can say why a fitted curve can't be trusted far outside its data.
-
 ## Connections
 - **Builds on:** [[Empirical Model]]
 - **Leads to:** [[Extrapolation]], [[Generalized Additive Model]], [[Correlation vs Causation]]
+- **See also:** [[Linear Regression]]
 - **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]], molecular note [[Mechanistic vs Phenomenological Model]]
 
 ## Flashcards

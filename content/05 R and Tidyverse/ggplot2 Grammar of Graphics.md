@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "Ggplot2 builds a plot from layers: data, a mapping from variables to visual properties, and geometric shapes that draw them."
 aliases:
   - "ggplot2"
   - "ggplot()"
@@ -12,27 +13,15 @@ status: seedling
 
 # ggplot2 Grammar of Graphics
 
-**In one line:** ggplot2 builds a plot from layers: data, a mapping from variables to visual properties, and geometric shapes that draw them.
+With a few rules of sentence grammar, subject, verb and object, you can say anything. **ggplot2** gives plots a grammar the same way: you build a plot from layers instead of memorising a separate command for each chart type. Start with data, `ggplot(d, ...)`, which should be [[Tidy Data]]. Map variables to [[Aesthetics]], visual properties such as position and colour: `aes(x = tree, y = birds, colour = burn)`. Add a geom to draw them, `+ geom_point()` ([[Geoms]]). Stack more layers with `+`, such as lines, ribbons and text, then refine with scales, [[Facets]], labels and [[Themes]]. It is part of the [[Tidyverse]].
 
-> [!info] Before this, it helps to know
-> [[Tidy Data]] (the input it needs) · [[Tidyverse]] (its family)
+The figure shows a finished plot as three layers laid over each other. The code below builds one: points for simulated bird counts against tree cover coloured by burn status, a fitted Poisson curve per group from `geom_smooth()`, readable labels and a clean theme. A plot is an object, and `print(p)` draws it.
 
-## The everyday picture
-Sentence grammar. With a few rules (subject, verb, object) you can say anything. With a few plot rules (data, mapping, shape) you can draw any chart, instead of memorising a separate command for each chart type.
+Layers matter because a model figure is raw points plus a fitted line plus an uncertainty band, each one layer, possibly from a different data frame ([[Plotting Model Predictions with Ribbons]]). The 29 September session and all the lab figures use ggplot2 ([[Course Website]]). Two common slips: layers are joined with `+`, not the pipe; and ggplot cannot find a variable unless it is a column of the data named inside `aes()`.
 
-## Start from zero
-1. **Start with data:** `ggplot(d, ...)`.
-2. **Map variables to aesthetics:** `aes(x = tree, y = birds, colour = burn)` ([[Aesthetics]]).
-3. **Add a geom to draw:** `+ geom_point()` ([[Geoms]]).
-4. **Stack more layers with `+`:** lines, ribbons, text.
-5. **Refine:** scales, facets, labels, theme.
-6. **Why layers:** a model figure is raw points plus a fitted line plus an uncertainty band. Each is one layer, possibly from a different data frame.
-
-## See it
 ![[ggplot layers.png|700]]
 *What to look at:* the finished plot on the right is the three layers on the left laid over each other.
 
-## In R
 ```r
 library(ggplot2)
 set.seed(2)
@@ -45,18 +34,6 @@ p <- ggplot(d, aes(x = tree, y = birds, colour = burn)) +
   theme_bw()
 class(p)        # a plot is an object: print(p) draws it
 ```
-
-## In the course
-The Sep 29 session, "From data wrangling to figures", and all lab figures use ggplot2 ([[Course Website]]).
-
-## Common confusions
-- **"Layers are joined with the pipe."** ggplot layers use `+`.
-- **"ggplot can't find my variable."** Variables must be columns of the data and named inside `aes()`.
-
-## Explain it back
-- What are the three things every ggplot needs?
-
-*Pass test:* you can build a scatterplot with a second layer.
 
 ## Connections
 - **Builds on:** [[Tidy Data]], [[Tidyverse]]

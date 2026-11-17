@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "Uncertainty is how much you don't know about a quantity, expressed as the range of values that remain plausible."
 aliases:
   - "Statistical uncertainty"
   - "Doubt"
@@ -11,37 +12,12 @@ status: seedling
 
 # Uncertainty
 
-**In one line:** uncertainty is how much you don't know about a quantity, expressed as the range of values that remain plausible.
+"70% chance of rain" is more honest and more useful than "it will rain": it tells you what is likely and how sure the forecaster is, so you can decide about the umbrella. **Uncertainty** in statistics is how much you do not know about a quantity, expressed as the range of values that remain plausible. A single best value is a *point estimate* ([[Estimate]]); a range of plausible values around it is an *interval*. Every estimate comes from limited, noisy data, and a different sample would give a different estimate ([[Sampling Variation]]), so a number reported without its uncertainty is incomplete.
 
-> [!info] Before this, it helps to know
-> [[Estimate]] (a best guess from data) · [[Standard Error]] (the wobble of an estimate)
+Two surveys both estimate deer density at 12 per km². Survey A reports 12 with a [[Standard Error]] of 1, so the plausible range is roughly 10 to 14. Survey B reports 12 with a standard error of 5, a plausible range of roughly 2 to 22. Same point estimate, very different knowledge. A harvest that is safe at 10 deer per km² could be disastrous at 2, so the decision depends on how wrong you might be, not only on your best guess. Uncertainty has several sources: *sampling* (you only saw a sample), *observation* (imperfect measurement), *process* (nature itself varies), *parameter* (values not known exactly) and *model* (perhaps the wrong model altogether). It also carries forward: a prediction built on uncertain parameters must be at least as uncertain as they are.
 
-## The everyday picture
-A weather forecast. "70% chance of rain" is more honest and more useful than "it will rain". It tells you what is likely and how sure the forecaster is, so you can decide about the umbrella.
+Statistics is the craft of saying honestly how much you know, and Hobbs and Hooten frame their whole approach as gaining insight in the face of uncertainty ([[Hobbs and Hooten 2015 Ch1]]). Every unit of the course adds a tool for it: standard errors, a [[Confidence Interval]], a [[Credible Interval]], and model weights for [[Model Selection Uncertainty]]. Good models keep the sources apart; hierarchical models, for instance, separate process variation from observation error ([[Hierarchical Model]]). Two confusions to clear up: uncertainty does not mean the analysis is bad, it means the analysis is honest; and uncertainty is not the same as variability. Variability is real difference among things, such as deer differing in mass, and it does not go away. Uncertainty is your lack of knowledge, and more data shrink it.
 
-*Where the picture stops working:* forecasts get checked every day. Most ecological estimates are never checked against a known truth.
-
-## Words you'll need
-- **Point estimate:** a single best value.
-- **Interval:** a range of plausible values around it.
-- **Sampling uncertainty:** doubt because you saw only a sample.
-- **Model uncertainty:** doubt about which model is right.
-
-## A tiny example
-Two surveys estimate deer density at 12 per km².
-- Survey A: 12 ± 1 (SE). Plausible range roughly 10 to 14.
-- Survey B: 12 ± 5. Plausible range roughly 2 to 22.
-- Same point estimate, very different knowledge. A harvest decision that is safe at 10 could be disastrous at 2.
-
-## Start from zero
-1. **Every estimate comes from limited, noisy data.**
-2. **A different sample would give a different estimate.** ([[Sampling Variation]])
-3. **So report a range, not just a number.** *Why:* decisions depend on how wrong you might be, not only on your best guess.
-4. **Uncertainty has several sources.** Sampling, measurement error, natural variability, parameter doubt and model choice.
-5. **Good models keep the sources separate.** Hierarchical models split process variation from observation error ([[Hierarchical Model]]).
-6. **Uncertainty carries forward.** A prediction built on uncertain parameters must be at least as uncertain.
-
-## See it
 ```mermaid
 flowchart TD
   U[Uncertainty in a result] --> A[Sampling: only a sample seen]
@@ -52,30 +28,13 @@ flowchart TD
 ```
 *What to look at:* five different reasons a number could be off.
 
-## Why it is this way
-Statistics is the craft of saying honestly how much you know. A number without uncertainty invites overconfidence, and in management overconfidence costs populations. Hobbs and Hooten frame the whole Bayesian approach as a way to "gain insight in the face of uncertainty".
-
-## In R
 ```r
 set.seed(8)
-a <- rnorm(100, 12, 10); b <- rnorm(4, 12, 10)   # many plots vs few plots
-t.test(a)$conf.int      # narrow interval
-t.test(b)$conf.int      # wide interval around a similar centre
+a <- rnorm(100, 12, 10); b <- rnorm(4, 12, 10)   # many plots vs few plots, same truth (12)
+t.test(a)$conf.int      # about 8.9 to 13.2: narrow, and it contains 12
+t.test(b)$conf.int      # about -17 to 16: very wide
 ```
-Both samples come from the same truth. The interval width shows how much each one knows.
-
-## In the course
-Hobbs and Hooten open with uncertainty as the reason for statistical models ([[Hobbs and Hooten 2015 Ch1]]). Every unit adds a tool for it: standard errors, confidence and credible intervals, model weights.
-
-## Common confusions
-- **"Uncertainty means the analysis is bad."** It means the analysis is honest.
-- **"Uncertainty and variability are the same."** Variability is real difference among things. Uncertainty is your lack of knowledge, and more data shrink it.
-
-## Explain it back
-- Why is "12 ± 5" a different message from "12 ± 1"?
-- Name three sources of uncertainty in a population estimate.
-
-*Pass test:* you can explain why an estimate without an interval is incomplete.
+Both samples come from the same truth. With 4 plots the interval is about eight times wider, and even the centre has wandered far from 12.
 
 ## Connections
 - **Builds on:** [[Estimate]], [[Standard Error]]

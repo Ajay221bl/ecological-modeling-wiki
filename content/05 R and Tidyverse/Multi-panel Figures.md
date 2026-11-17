@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "A multi-panel figure arranges several separate plots side by side as one image with panel labels."
 aliases:
   - "cowplot"
   - "plot_grid()"
@@ -12,22 +13,12 @@ status: seedling
 
 # Multi-panel Figures
 
-**In one line:** a multi-panel figure arranges several separate plots side by side as one image with panel labels.
+A comic strip lays out separate drawings in order, labelled, to tell one story. A **multi-panel figure** arranges several separate plots side by side as one image with panel labels ([[ggplot2 Grammar of Graphics]]). Store each plot in an object, then call `cowplot::plot_grid(p1, p2, labels = c("A", "B"), ncol = 2)`; patchwork does the same with `p1 + p2`. The code below combines a histogram of fuel economy with a scatterplot of fuel economy against weight.
 
-> [!info] Before this, it helps to know
-> [[ggplot2 Grammar of Graphics]] (plots are objects) · [[Facets]] (the alternative when panels share a design)
+It differs from [[Facets]]: facets repeat one plot design across groups, while panels combine different plots, such as a histogram beside a scatterplot. You cannot use facets for everything, because facets need one shared plot specification ([[Facets|Multi-panel Plots]]).
 
-## The everyday picture
-A comic strip. Each frame is its own drawing. Laid out in order with letters A, B, C, they tell one story.
+It is worth the effort because journals limit figure counts and related plots are easier to compare together. The data exploration lab combines diagnostic plots this way ([[Course Website]]), and the combined figure is saved like any other ([[Saving Figures]]).
 
-## Start from zero
-1. **Store each plot in an object.**
-2. **`cowplot::plot_grid(p1, p2, labels = c("A", "B"), ncol = 2)`** arranges them.
-3. **Facets vs panels:** facets repeat one plot design across groups. Panels combine different plots, such as a histogram beside a scatterplot.
-4. **Why bother:** journals limit figure counts, and related plots are easier to compare together.
-5. **patchwork does the same with `p1 + p2`.**
-
-## In R
 ```r
 library(ggplot2); library(cowplot)
 p1 <- ggplot(mtcars, aes(mpg)) + geom_histogram(bins = 10)
@@ -35,17 +26,6 @@ p2 <- ggplot(mtcars, aes(wt, mpg)) + geom_point()
 both <- plot_grid(p1, p2, labels = c("A", "B"), ncol = 2)
 class(both)[1]
 ```
-
-## In the course
-The data exploration lab combines diagnostic plots with `cowplot::plot_grid()` ([[Course Website]]).
-
-## Common confusions
-- **"Use facets for everything."** Facets need one shared plot specification.
-
-## Explain it back
-- When do you need panels instead of facets?
-
-*Pass test:* you can combine two different plots into one labelled figure.
 
 ## Connections
 - **Builds on:** [[ggplot2 Grammar of Graphics]], [[Facets]]

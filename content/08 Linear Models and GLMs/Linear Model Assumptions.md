@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "The linear model assumptions are the conditions about the data that must roughly hold for a linear model's estimates, standard errors and tests to be trustworthy."
 aliases:
   - "Regression assumptions"
   - "Assumptions of linear regression"
@@ -12,26 +13,12 @@ status: seedling
 
 # Linear Model Assumptions
 
-**In one line:** the linear model assumptions are the conditions about the data that must roughly hold for a linear model's estimates, standard errors and tests to be trustworthy.
+A warranty guarantees a machine will work if you run it on the right voltage, keep it dry and do not overload it. Ignore the conditions and it may still run, but the guarantee is void. The **linear model assumptions** are the conditions under which a linear model's estimates, standard errors and tests can be trusted ([[Linear Regression]]). Most concern the [[Error Term]]. In order of importance, after Gelman and Hill: *validity*, that the data and model address the question at all; [[Linearity]] and additivity, that the mean of y is the straight-line function of the predictors the formula specifies; [[Independence of Observations|independence]], that one observation's deviation says nothing about another's; equal variance, that the scatter around the line is the same size everywhere ([[Homogeneity of Variance]]); and [[Normality]] of the errors. A last condition is that predictors are measured without error ([[Fixed X Assumption]]).
 
-> [!info] Before this, it helps to know
-> [[Linear Regression]] (the model) · [[Error Term]] (most assumptions concern it) · [[Residual]] (how they are checked)
+The violations do different damage. A wrong shape biases the estimates themselves. Dependence and unequal variance leave the estimates roughly right but corrupt the standard errors, so p-values and intervals become overconfident. Non-normality matters least, mainly affecting predictions of individual values. Each is checked with plots of the [[Residual|residuals]] rather than formal tests ([[plot() Diagnostics for lm]]), and the flowchart runs through them one question at a time: a curve in the residuals calls for added terms, a transformation or a GAM; a funnel for a GLM or a variance structure; grouped, spatial or temporal pattern for a mixed model or correlation structure; and a badly bent QQ plot for another distribution.
 
-## The everyday picture
-The small print on a warranty. The machine is guaranteed to work if you run it on the right voltage, keep it dry and don't overload it. Ignore the conditions and it may still run, but the guarantee is void.
+Zuur's Chapter 2 is organised around these violations, and each later unit of the course fixes one of them ([[Zuur et al. 2009 Ch2]]). Two confusions. It is not the response that must be normal but the errors, and that is the least important item. And assumptions are not pass or fail: they hold to a degree, and the useful question is whether a violation is big enough to change your conclusions.
 
-## Start from zero
-1. **Validity.** The data and model address the question. The most important and least statistical assumption.
-2. **Linearity.** The mean of y is a straight-line (additive) function of the predictors as specified.
-3. **Independence of errors.** One observation's deviation tells you nothing about another's.
-4. **Equal variance.** The scatter around the line is the same size everywhere.
-5. **Normality of errors.** The scatter is bell-shaped.
-6. **Fixed X.** Predictors are measured without error.
-7. **Order of importance** (after Gelman and Hill): validity, linearity and additivity, independence, equal variance, normality.
-8. **What each violation harms:** wrong shape biases the estimates. Dependence and unequal variance corrupt the standard errors. Non-normality mostly affects predictions of individual values.
-9. **Check with residual plots, not tests.** And each failure has a matching remedy: transform or add terms, mixed model or correlation structure, variance structure or GLM, another distribution.
-
-## See it
 ```mermaid
 flowchart TD
   A[Fit lm] --> B{Residuals vs fitted:<br/>curve?}
@@ -45,19 +32,6 @@ flowchart TD
   E -->|no| F[proceed]
 ```
 *What to look at:* one question per assumption, each with its usual remedy.
-
-## In the course
-[[Zuur et al. 2009 Ch2]] is organised around these violations. The course's later units each fix one.
-
-## Common confusions
-- **"The response must be normal."** The errors, and it is the least important item.
-- **"Assumptions are pass or fail."** They are matters of degree. Ask whether the violation is big enough to change conclusions.
-
-## Explain it back
-- List the assumptions in order of importance.
-- Which violations affect standard errors and which affect the estimates?
-
-*Pass test:* you can name each assumption, how to check it and what to do when it fails.
 
 ## Connections
 - **Builds on:** [[Linear Regression]], [[Error Term]]

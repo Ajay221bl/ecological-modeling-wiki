@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Detection probability p is the chance that an animal or species that is present at a survey is actually recorded."
 aliases:
   - "p (detection)"
   - "Detectability"
@@ -13,40 +14,16 @@ status: seedling
 
 # Detection Probability
 
-**In one line:** detection probability p is the chance that an animal or species that is present at a survey is actually recorded.
+Think of a goalkeeper's save rate flipped around: each animal that is really there either gets "seen" and recorded or slips through, and p is the share that gets seen. **Detection probability** p is the chance that an animal or species that is present at a survey is actually recorded ([[Imperfect Detection]], [[Probability]], [[Bernoulli Distribution]]). It is conditional on presence: in occupancy models it means "detected, given present". If p = 0.3 per visit, a present species is recorded on about 3 of every 10 visits, and over 4 visits the chance of at least one record is 1 − 0.7⁴ = 0.76, so about a quarter of occupied sites still look empty ([[Cumulative Detection Probability]]).
 
-> [!info] Before this, it helps to know
-> [[Imperfect Detection]] · [[Probability]] · [[Bernoulli Distribution]]
+Powell and Gale (Ch14) note that p mixes two things: availability, whether the animal is at the site and can be seen or heard, and detection given availability ([[Availability for Detection]]). It is estimated, not assumed, from repeated visits, marks, observers or distances, and it can depend on covariates such as observer, time of day, weather, effort and vegetation ([[Observation Covariates]]). Low p is the hard case, where estimates of occupancy or abundance become imprecise and sensitive to assumptions. In the code below four visits give at least one detection with probability 0.34 when p = 0.1, 0.76 when p = 0.3 and 0.97 when p = 0.6.
 
-## The everyday picture
-A goalkeeper's save rate, flipped around. Each shot that is really there either gets "seen" (recorded) or slips through. p is the share that gets seen.
+It is central to [[Powell and Gale 2015]] Ch7, Ch14 and Ch15 ([[Occupancy]], [[Capture Probability]]). Detection probability is not the proportion of sites where the species was seen; that is [[Naive Occupancy]]. p is per visit and conditional on presence.
 
-## A tiny example
-If p = 0.3 per visit, a present species is recorded on about 3 of every 10 visits. Over 4 visits the chance of at least one record is 1 − 0.7⁴ = 0.76, so about a quarter of occupied sites still look empty.
-
-## Start from zero
-1. **p is conditional on presence.** In occupancy models it is "detected, given present".
-2. **It mixes two things** (Powell and Gale Ch14): availability (the animal is at the site and can be seen or heard) and detection given availability.
-3. **It is estimated, not assumed,** from repeated visits, marks, observers or distances.
-4. **It can depend on covariates:** observer, time of day, weather, effort, vegetation.
-5. **Low p is the hard case:** estimates of occupancy or abundance become imprecise and sensitive to assumptions.
-
-## In R
 ```r
 p <- c(0.1, 0.3, 0.6); k <- 4
 round(1 - (1 - p)^k, 2)   # chance of at least one detection in k visits
 ```
-
-## In the course
-[[Powell and Gale 2015]] Ch7, Ch14 and Ch15.
-
-## Common confusions
-- **"Detection probability is the proportion of sites where the species was seen."** That is naive occupancy. p is per visit and conditional on presence.
-
-## Explain it back
-- What is p conditional on?
-
-*Pass test:* you can define p and compute the chance of at least one detection.
 
 ## Connections
 - **Builds on:** [[Imperfect Detection]], [[Probability]]

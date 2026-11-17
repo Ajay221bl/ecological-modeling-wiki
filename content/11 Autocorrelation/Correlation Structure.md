@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "A correlation structure is a small formula, with one or two parameters, that says how strongly two residuals are correlated given how far apart they are in time or space."
 aliases:
   - "Correlation structures"
   - "correlation argument"
@@ -14,35 +15,15 @@ status: seedling
 
 # Correlation Structure
 
-**In one line:** a correlation structure is a small formula, with one or two parameters, that says how strongly two residuals are correlated given how far apart they are in time or space.
+With n observations there are n(n − 1)/2 pairwise correlations, far too many to estimate freely. A **correlation structure** reduces them to a small formula, with one or two parameters, saying how strongly two residuals are correlated given how far apart they are in time or space ([[Variance-Covariance Matrix|Covariance Matrix]], [[Generalized Least Squares]]). In nlme, the temporal structures are `corCompSymm`, all pairs equally correlated ([[Compound Symmetry]]); `corAR1`, decaying as φ^lag ([[AR(1) Error Structure]]); `corCAR1` for continuous time; and `corARMA(p, q)` ([[ARMA Error Structure]]). The spatial ones are `corExp`, `corGaus`, `corSpher`, `corLin` and `corRatio`, each optionally with a nugget ([[Spatial Correlation Functions]]).
 
-> [!info] Before this, it helps to know
-> [[Variance-Covariance Matrix|Covariance Matrix]] (what it fills in) · [[Generalized Least Squares]] (where it is used)
+The syntax `correlation = corAR1(form = ~ year | site)` means within each site, ordered by year. Structures work in `gls()`, `lme()` and `gamm()`, and glmmTMB offers `ar1()`, `exp()` and others for GLMMs. In the code below `corAR1(0.6)` for five time points gives correlations of 0.60, 0.36, 0.22 and 0.13 at lags 1 to 4.
 
-## Start from zero
-1. **With n observations there are n(n − 1)/2 pairwise correlations.** Far too many to estimate freely.
-2. **A structure reduces them to a few parameters.**
-3. **Temporal (nlme):** `corCompSymm` (all pairs equally correlated), `corAR1` (decays as φ^lag), `corCAR1` (continuous time), `corARMA(p, q)`.
-4. **Spatial:** `corExp`, `corGaus`, `corSpher`, `corLin`, `corRatio`, each optionally with a nugget.
-5. **Syntax:** `correlation = corAR1(form = ~ year | site)`: within each site, ordered by year.
-6. **Works in `gls()`, `lme()`, and `gamm()`.** glmmTMB offers `ar1()`, `exp()` and others for GLMMs.
-7. **Choose among structures with AIC** and check with a variogram or ACF of normalised residuals.
+Choose among structures with AIC and check with a variogram or ACF of the normalised residuals. [[Zuur et al. 2009 Ch6]] and [[Zuur et al. 2009 Ch7]] work through each structure ([[Diniz-Filho et al. 2003]]). The correlation structure describes the residuals, not the raw data.
 
-## In R
 ```r
 library(nlme); round(corMatrix(Initialize(corAR1(0.6), data = data.frame(t = 1:5))), 2)       # correlations decay as 0.6^lag
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch6]] and [[Zuur et al. 2009 Ch7]] work through each structure. [[Diniz-Filho et al. 2003]].
-
-## Common confusions
-- **"The correlation structure is fitted to the raw data."** It describes the residuals.
-
-## Explain it back
-- Why can't all pairwise correlations be estimated freely?
-
-*Pass test:* you can write correlation = ... for time and space.
 
 ## Connections
 - **Builds on:** [[Variance-Covariance Matrix|Covariance Matrix]], [[Generalized Least Squares]]

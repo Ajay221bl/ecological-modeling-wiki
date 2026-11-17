@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "In full model averaging a coefficient counts as zero in models that leave its variable out, while in conditional averaging only the models that contain the variable are averaged."
 aliases:
   - "Zero method"
   - "Natural average"
@@ -14,32 +15,16 @@ status: seedling
 
 # Conditional vs Full Model Averaging
 
-**In one line:** in full model averaging a coefficient counts as zero in models that leave its variable out, while in conditional averaging only the models that contain the variable are averaged.
+When a variable is absent from some models, [[Model Averaging]] has to decide what its coefficient is there. In **full model averaging**, the "zero method", it counts as zero: θ̄ = Σ over all models of wᵢ θ̂ᵢ, with θ̂ᵢ = 0 where the variable is absent ([[Akaike Weight]]). This shrinks the estimate toward zero in proportion to the weight of models without the variable ([[Shrinkage]]). In **conditional averaging**, the "natural average", only the models that contain the variable are averaged, Σ wᵢ θ̂ᵢ / Σ wᵢ over those models, with no shrinkage.
 
-> [!info] Before this, it helps to know
-> [[Model Averaging]] (what is being done) · [[Akaike Weight]] (the weights)
+In the code below, weights 0.5, 0.3 and 0.2 and estimates −0.020, absent and −0.024 give a full average of −0.015 and a conditional average of −0.021. Use full averaging when you want the variable's overall expected contribution, as for prediction, and conditional averaging when you want its size given that it matters.
 
-## Start from zero
-1. **Full ("zero method"):** θ̄ = Σ over all models of wᵢ θ̂ᵢ, with θ̂ᵢ = 0 where absent.
-2. **Effect:** shrinks the estimate toward zero in proportion to the weight of models without the variable.
-3. **Conditional ("natural average"):** Σ over models containing it of wᵢ θ̂ᵢ / Σ of those wᵢ.
-4. **Effect:** no shrinkage. It says how big the effect is if it is present.
-5. **Which to use:** full averaging when you want the variable's overall expected contribution (for prediction). Conditional when you want its size given that it matters.
-6. **MuMIn reports both.** Say which you used.
+MuMIn reports both, so say which you used; [[Relative Variable Importance]] is the weight that separates them. They are not the same thing whenever some weight lies on models without the variable.
 
-## In R
 ```r
 w <- c(0.5, 0.3, 0.2); est <- c(-0.020, NA, -0.024)                     # the variable is absent from model 2
 c(full = sum(w * ifelse(is.na(est), 0, est)), conditional = sum((w * est)[!is.na(est)]) / sum(w[!is.na(est)]))
 ```
-
-## Common confusions
-- **"They are the same thing."** They differ whenever some weight lies on models without the variable.
-
-## Explain it back
-- Which method shrinks toward zero?
-
-*Pass test:* you can compute both.
 
 ## Connections
 - **Builds on:** [[Model Averaging]], [[Akaike Weight]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "Omitted variable bias is the distortion of an estimated effect when a variable that affects the response and is correlated with an included predictor is left out of the model."
 aliases:
   - "Omitted-variable bias"
   - "Missing covariate bias"
@@ -12,37 +13,16 @@ status: seedling
 
 # Omitted Variable Bias
 
-**In one line:** omitted variable bias is the distortion of an estimated effect when a variable that affects the response and is correlated with an included predictor is left out of the model.
+Ice cream sales predict sunburn, and if you leave sunshine out of the model, ice cream gets the credit for what the sun did. **Omitted variable bias** is the distortion of an estimated effect when a variable that affects the response and is correlated with an included predictor is left out of the model ([[Confounding Variable]], [[Multiple Regression]]). Both conditions are needed: the omitted variable affects y, and it is correlated with an included x. Then x's coefficient absorbs part of its effect, biasing it up or down, and more data does not fix it.
 
-> [!info] Before this, it helps to know
-> [[Confounding Variable]] · [[Multiple Regression]]
+In spatial data an omitted spatially structured covariate shows up as residual autocorrelation (Zuur et al. 2009 Section 7.5) ([[Spatial Autocorrelation]]). The fixes are to measure and include the variable, to design it away by randomisation, or to use random effects or spatial terms as proxies ([[Random Effect]], [[Spatial Smooths]]). In the code below sunburn depends only on sun, and ice cream is correlated with sun: the ice cream slope is 1.05 without sun in the model and 0.00 with it.
 
-## The everyday picture
-Ice cream sales predict sunburn. Leave out sunshine, and ice cream gets credit for what the sun did.
+It is discussed in [[Zuur et al. 2009 Ch7]] and [[Guthery and Bingham 2007]]. An uncorrelated omitted variable does not bias coefficients; it only adds noise, and bias needs correlation with an included predictor.
 
-## Start from zero
-1. **Two conditions:** the omitted variable affects y, and it is correlated with an included x.
-2. **Then x's coefficient absorbs part of its effect,** biasing it up or down.
-3. **More data does not fix it;** the bias stays.
-4. **In spatial data,** an omitted spatially structured covariate shows up as residual autocorrelation (Zuur et al. 2009 Section 7.5).
-5. **Fixes:** measure and include it, design (randomisation), or use random effects or spatial terms as proxies.
-
-## In R
 ```r
 set.seed(2); sun <- rnorm(500); ice <- sun + rnorm(500); burn <- 2 * sun + rnorm(500)
 round(c(without_sun = coef(lm(burn ~ ice))[2], with_sun = coef(lm(burn ~ ice + sun))[2]), 2)
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch7]]. [[Guthery and Bingham 2007]].
-
-## Common confusions
-- **"An uncorrelated omitted variable biases coefficients."** It only adds noise; bias needs correlation with an included predictor.
-
-## Explain it back
-- What two conditions create omitted variable bias?
-
-*Pass test:* you can predict when leaving out a variable biases an estimate.
 
 ## Connections
 - **Builds on:** [[Confounding Variable]], [[Multiple Regression]]

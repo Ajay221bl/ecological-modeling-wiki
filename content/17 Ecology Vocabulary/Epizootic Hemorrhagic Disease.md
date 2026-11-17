@@ -3,6 +3,7 @@ type: atomic
 tags:
   - ecology
   - flashcards/eco/ecology
+description: "Hemorrhagic disease is a viral disease of deer and other ruminants caused by epizootic hemorrhagic disease virus (EHDV) and bluetongue virus (BTV), spread by biting midges, often causing late-summer deer die-offs."
 aliases:
   - "Hemorrhagic disease"
   - "HD"
@@ -15,31 +16,11 @@ status: seedling
 
 # Epizootic Hemorrhagic Disease
 
-**In one line:** hemorrhagic disease is a viral disease of deer and other ruminants caused by epizootic hemorrhagic disease virus (EHDV) and bluetongue virus (BTV), spread by biting midges, often causing late-summer deer die-offs.
+**Haemorrhagic disease** (HD) is a viral disease of deer and other ruminants caused by epizootic haemorrhagic disease virus (EHDV) and bluetongue virus (BTV), spread by biting midges, and often causing late-summer deer die-offs ([[Vector-borne Disease]]). Both viruses are orbiviruses, and "HD" covers disease from either. Reports peak in late summer and early fall, when midges are abundant, and white-tailed deer (*Odocoileus virginianus*) were the focal host in the course reading.
 
-> [!info] Before this, it helps to know
-> [[Vector-borne Disease]]
+[[Christensen et al. 2020]] modelled annual presence or absence of HD reports in 1,830 counties of 23 eastern US states from 2000 to 2014 with a logistic GLMM in lme4 ([[GLMM]]). The fixed effects were drought severity, physiographic region, wetland cover, latitude and longitude, plus drought × latitude and drought × wetland interactions, with state and year as random effects ([[Crossed Random Effects]], [[Drought Index]]). Drought severity was a significant predictor of HD presence, and its importance depended on latitude ([[Latitudinal Gradient]]).
 
-## A tiny example
-Christensen et al. (2020) modelled annual presence or absence of HD reports in 1,830 counties of 23 eastern US states from 2000 to 2014 with a logistic GLMM (lme4): drought severity, physiographic region, wetland cover, latitude and longitude as fixed effects, plus drought × latitude and drought × wetland interactions, with state and year as random effects.
-
-## Start from zero
-1. **Both viruses are Orbiviruses;** "HD" covers disease from either.
-2. **Reports peak in late summer and early fall** when midges are abundant.
-3. **Christensen et al. (2020) found** drought severity was a significant predictor of HD presence, and its importance depended on latitude.
-4. **Data were presence-absence of reports,** a detection-type response (subject to reporting effort).
-5. **White-tailed deer** (*Odocoileus virginianus*) were the focal host.
-
-## In the course
-[[Christensen et al. 2020]]. Lab dataset ([[Course Website]]).
-
-## Common confusions
-- **"No report means no disease."** Reports depend on people finding and submitting dead deer.
-
-## Explain it back
-- What were the random effects in Christensen et al.'s model?
-
-*Pass test:* you can describe the HD study and its model.
+The response was presence-absence of reports, a detection-type response subject to reporting effort ([[Imperfect Detection]]). It is a lab dataset ([[Course Website]]). No report does not mean no disease: reports depend on people finding and submitting dead deer.
 
 ## Connections
 - **Builds on:** [[Vector-borne Disease]]

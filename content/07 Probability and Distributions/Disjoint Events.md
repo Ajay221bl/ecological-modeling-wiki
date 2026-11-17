@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "Two events are disjoint when they cannot both happen."
 aliases:
   - "Mutually exclusive events"
   - "Mutually exclusive"
@@ -11,39 +12,15 @@ status: seedling
 
 # Disjoint Events
 
-**In one line:** two events are disjoint when they cannot both happen.
+A single traffic light can be red or green, never both at once, and seeing red tells you for certain it is not green. Two events are **disjoint**, or mutually exclusive, when they cannot both happen, so their [[Joint Probability]] is 0 ([[Event]]). For one die roll, "roll a 2" and "roll a 5" are disjoint.
 
-> [!info] Before this, it helps to know
-> [[Event]] (the things) · [[Joint Probability]] (which is zero here)
+Because nothing is counted twice, the probability that one or the other happens is a plain sum: P(A or B) = P(A) + P(B), the simplest form of the addition rule ([[Union of Events]]). So P(2 or 5) = 1/6 + 1/6 = 1/3. The outcomes of a [[Sample Space]] are disjoint by construction, which is why their probabilities add to 1. The same fact is used every time you want the probability of a range of counts: "2 or fewer" means 0, 1 or 2, which are disjoint outcomes, so you add their probabilities from the [[Probability Mass Function]]. The code below does this for a Poisson with mean 3, and the sum matches `ppois(2, 3)`.
 
-## The everyday picture
-A single traffic light. It can be red or green, never both at once. Seeing red tells you with certainty it isn't green.
+Disjoint and independent are nearly opposites, though they are often confused. Independent events tell you nothing about each other; disjoint events are strongly dependent, because knowing A happened tells you for certain that B did not ([[Independent Events]], [[Independent vs Disjoint Events]], [[Hobbs and Hooten 2015 Ch3]]).
 
-## A tiny example
-One die roll. "Roll a 2" and "roll a 5" are disjoint. P(2 or 5) = 1/6 + 1/6 = 1/3.
-
-## Start from zero
-1. **P(A, B) = 0.**
-2. **So P(A or B) = P(A) + P(B).** The addition rule in its simplest form.
-3. **The outcomes of a sample space are disjoint by construction.** That is why their probabilities add to 1.
-4. **Disjoint events are strongly dependent.** Knowing A happened tells you B didn't.
-5. **Why it matters in modeling:** to get the probability of a range of counts, such as "2 or fewer", you add the probabilities of 0, 1 and 2, because those outcomes are disjoint.
-
-## In R
 ```r
 sum(dpois(0:2, 3)); ppois(2, 3)      # P(count <= 2) by adding disjoint outcomes
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch3]].
-
-## Common confusions
-- **"Disjoint and independent are the same."** They are nearly opposites.
-
-## Explain it back
-- Why are disjoint events dependent?
-
-*Pass test:* you can say when probabilities may be added.
 
 ## Connections
 - **Builds on:** [[Event]]

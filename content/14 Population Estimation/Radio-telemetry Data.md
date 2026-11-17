@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Radio-telemetry data come from transmitters attached to animals, letting researchers find each animal repeatedly to record its location and whether it is alive."
 aliases:
   - "Radio telemetry"
   - "Radio-collar data"
@@ -14,27 +15,11 @@ status: seedling
 
 # Radio-telemetry Data
 
-**In one line:** radio-telemetry data come from transmitters attached to animals, letting researchers find each animal repeatedly to record its location and whether it is alive.
+**Radio-telemetry data** come from transmitters attached to animals, letting researchers find each animal repeatedly to record its location and whether it is alive. They are the classic source of [[Known-fate Models|known-fate data]], since mortality sensors signal death. They are also used for movement, home range and habitat selection.
 
-> [!info] Before this, it helps to know
-> [[Known-fate Models]]
+The problems are collar failure, animals leaving the study area, and effects of the collar on survival, each of which becomes [[Censoring]] or bias. Locations from one animal are autocorrelated in time, so they are not independent observations ([[Temporal Autocorrelation]], [[Independence of Observations|Independence]]).
 
-## Start from zero
-1. **The classic source of known-fate data:** mortality sensors signal death.
-2. **Also used for** movement, home range and habitat selection.
-3. **Problems:** collar failure, animals leaving the study area, and effects of the collar on survival. Each becomes censoring or bias.
-4. **Locations from one animal are autocorrelated** in time, so they are not independent observations.
-
-## In the course
-[[Powell and Gale 2015]] Ch2 to Ch4 and Ch9 (examples).
-
-## Common confusions
-- **"Every radio-collared animal has a known fate."** Collar failure and dispersal create unknown fates that must be censored.
-
-## Explain it back
-- Why are repeated telemetry locations not independent?
-
-*Pass test:* you can say what telemetry data can estimate and how they fail.
+Telemetry examples run through [[Powell and Gale 2015]] Ch2 to Ch4 and Ch9 ([[Staggered Entry Design]]). Not every radio-collared animal has a known fate: collar failure and dispersal create unknown fates that must be censored.
 
 ## Connections
 - **Builds on:** [[Known-fate Models]]

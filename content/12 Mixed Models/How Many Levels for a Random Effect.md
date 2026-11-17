@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "A random-effect variance is estimated from the number of groups, so with very few groups it is imprecise, and the usual rule of thumb asks for at least about five levels."
 aliases:
   - "Number of levels"
   - "Few levels random effect"
@@ -13,34 +14,16 @@ status: seedling
 
 # How Many Levels for a Random Effect
 
-**In one line:** a random-effect variance is estimated from the number of groups, so with very few groups it is imprecise, and the usual rule of thumb asks for at least about five levels.
+A random-effect variance is estimated from the number of groups, not the number of rows, so a variance from 3 groups is as uncertain as a variance from 3 numbers ([[Random Effect]], [[Variance Components]], [[Sample Size]]). The usual rule of thumb asks for at least about five levels; [[Harrison et al. 2018]] say at least five for a random intercept to estimate the variance robustly, and with fewer the variance may collapse to zero ([[Singular Fit]]). In the code below the spread of an SD estimated from J groups (true SD 1) is 0.49 for J = 3, 0.37 for J = 5, 0.23 for J = 10 and 0.12 for J = 30: precision improves only slowly.
 
-> [!info] Before this, it helps to know
-> [[Random Effect]] · [[Variance Components]] · [[Sample Size]]
+[[Oberpriller et al. 2022]] simulated 2 to 8 levels. For random-intercept data, treating the grouping as fixed or random did not change Type I error or power for the population-level slope; with varying slopes, a random slope and intercept model avoided overconfidence. They recommend starting with a mixed model regardless of the number of levels and switching to fixed only after a singular fit. If the variance itself is the target, as with repeatability, you need many more groups, and Bayesian models with weakly informative priors handle few levels more gracefully ([[Priors on Standard Deviations]]).
 
-## Start from zero
-1. **A variance from 3 groups is like a variance from 3 numbers:** very uncertain.
-2. **Harrison et al. (2018):** at least five levels for a random intercept to estimate the variance robustly. With fewer the variance may collapse to zero.
-3. **Oberpriller et al. (2022),** simulating 2 to 8 levels: for random-intercept data, treating the grouping as fixed or random did not change Type I error or power for the population-level slope. With varying slopes, a random slope and intercept model avoided overconfidence. They recommend starting with a mixed model regardless of the number of levels and switching to fixed only after a singular fit.
-4. **If the variance itself is the target** (repeatability), you need many more groups.
-5. **Bayesian models with weakly informative priors** handle few levels more gracefully.
+These are readings for the mixed models week. Fewer than five levels does not forbid a random effect; the rule is about the precision of the variance.
 
-## In R
 ```r
 set.seed(11); sds <- sapply(c(3, 5, 10, 30), function(J) sd(replicate(200, sd(rnorm(J, 0, 1)))))
 setNames(round(sds, 2), paste0("J=", c(3, 5, 10, 30)))         # spread of an SD estimate shrinks slowly as groups increase
 ```
-
-## In the course
-[[Harrison et al. 2018]]. [[Oberpriller et al. 2022]] (reading for the mixed models week).
-
-## Common confusions
-- **"Below five levels a random effect is forbidden."** It is a rule of thumb about precision of the variance.
-
-## Explain it back
-- What did Oberpriller et al. find for random-intercept data with few levels?
-
-*Pass test:* you can justify fixed or random for a small grouping factor.
 
 ## Connections
 - **Builds on:** [[Random Effect]], [[Variance Components]], [[Sample Size]]

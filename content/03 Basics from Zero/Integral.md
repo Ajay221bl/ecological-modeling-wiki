@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "An integral adds up a continuous curve, giving the area between the curve and the horizontal axis."
 aliases:
   - "Area under a curve"
   - "Integration"
@@ -12,44 +13,15 @@ status: seedling
 
 # Integral
 
-**In one line:** an integral adds up a continuous curve, giving the area between the curve and the horizontal axis.
+Rain falls into a gauge at a rate that changes minute by minute. The water collected is that rate added up over the whole storm. An **integral** is such a running total of something that changes smoothly: it adds up a continuous curve, giving the area between the curve and the horizontal axis. It is written ∫ f(x) dx, where ∫ is a stretched S for "sum", f(x) is the curve, dx stands for a very thin slice of the x-axis, and the *limits* say where the adding starts and stops. A plain sum, written with Σ ([[Summation Notation]]), adds a list of separate items; a curve has no separate items, so you cut the area into thin strips, each roughly height × width, and add those. As the strips get thinner, the total settles on the exact area, and that limiting total is the integral.
 
-> [!info] Before this, it helps to know
-> [[Summation Notation]] (adding up a list) · [[Derivative]] (the opposite operation)
+Try the area under y = 2x from x = 0 to x = 3. It is a triangle with base 3 and height 6, so the area is ½ × 3 × 6 = 9. With strips of width 1 measured at their midpoints (0.5, 1.5, 2.5), the heights are 1, 3 and 5, and their total is again 9. Integration is the reverse of differentiation: the integral of 2x is x², whose [[Derivative]] is 2x again. Many integrals have no formula, so computers do them numerically, or by simulation: draw many random values and average them ([[Monte Carlo Integration]]).
 
-## The everyday picture
-Rain in a gauge. The rain rate changes minute by minute. The water collected is the rate added up over the whole storm. An integral is that running total of something that changes smoothly.
+Statistics needs integrals constantly, because probability for a continuous variable is an area. A [[Probability Density Function]] is a curve whose total area is 1, and the probability of landing between two values is the area between them: the area under the standard normal curve between −1.96 and 1.96 is 0.95. Any single exact value, such as a mass of exactly 20.000 g, has probability zero, because a line has no width; only ranges have probability. That clears up a common confusion: the height of a density curve is not a probability (heights can exceed 1), the area is. The denominator of Bayes' theorem, the [[Marginal Likelihood]], is also an integral, and it is usually impossible to do exactly, which is the whole reason MCMC exists ([[Hobbs and Hooten 2015 Ch3]], [[Hobbs and Hooten 2015 Ch7]]).
 
-*Where the picture stops working:* a gauge adds automatically. Many integrals in statistics have no formula and must be approximated.
-
-## Words you'll need
-- **∫:** a stretched S for "sum". ∫ f(x) dx is the area under f.
-- **dx:** a very thin slice of the x-axis.
-- **Limits:** where the adding starts and stops.
-- **Density:** a curve whose area, not height, gives probability ([[Probability Density Function]]).
-
-## A tiny example
-Area under y = 2x from x = 0 to x = 3.
-- It is a triangle: base 3, height 6, area = ½ × 3 × 6 = **9**.
-- By thin slices of width 1 (midpoints 0.5, 1.5, 2.5): 1 + 3 + 5 = **9**.
-- For a probability density, the whole area is 1, and the area between two values is the probability of landing there.
-
-## Start from zero
-1. **A sum adds separate items.** Σ handles lists.
-2. **A curve has no separate items.** So cut the area into thin strips, each about height × width.
-3. **Add the strips.** As they get thinner, the total settles on the exact area. That limit is the integral.
-4. **Integration undoes differentiation.** The integral of 2x is x², whose derivative is 2x again.
-5. **Probability for continuous variables is an area.** *Why:* any single exact value has probability zero, so only ranges have probability.
-6. **Hard integrals are done by simulation.** Draw many random values and average ([[Monte Carlo Integration]]).
-
-## See it
 ![[Integral as area.png|700]]
 *What to look at:* the strips approximate the shaded area, and thinner strips fit better.
 
-## Why it is this way
-Continuous quantities can't be totalled by counting, so you need a way to add infinitely many infinitely thin pieces. Statistics needs this constantly: the chance a bird weighs between 18 and 22 g, the average of a distribution, and the denominator of Bayes' theorem are all integrals. The last one is usually impossible to do exactly, which is the whole reason MCMC exists.
-
-## In R
 ```r
 integrate(function(x) 2 * x, 0, 3)$value        # 9
 integrate(dnorm, -1.96, 1.96)$value             # 0.95: area = probability
@@ -58,19 +30,6 @@ pnorm(1.96) - pnorm(-1.96)                      # the same, via the CDF
 set.seed(1); mean(abs(rnorm(1e5)) < 1.96)       # about 0.95
 ```
 Area under the normal curve between −1.96 and 1.96 is 0.95.
-
-## In the course
-Hobbs and Hooten define probabilities and marginal distributions as integrals ([[Hobbs and Hooten 2015 Ch3]]) and replace them with MCMC in Chapter 7 ([[Hobbs and Hooten 2015 Ch7]]).
-
-## Common confusions
-- **"The height of a density curve is a probability."** The area is. Heights can exceed 1.
-- **"Integrals need formulas."** Computers do them numerically or by simulation.
-
-## Explain it back
-- Why is the probability of an exact mass, such as 20.000 g, zero?
-- How is an integral like a sum?
-
-*Pass test:* you can explain probability as an area and say why Bayes' theorem's denominator is hard.
 
 ## Connections
 - **Builds on:** [[Summation Notation]], [[Derivative]]

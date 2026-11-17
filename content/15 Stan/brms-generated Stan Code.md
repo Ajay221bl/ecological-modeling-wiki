@@ -3,6 +3,7 @@ type: atomic
 tags:
   - stan
   - flashcards/eco/stan
+description: "Brms translates a model formula into a full Stan program, which you can print with `make_stancode()` to see exactly what model and priors it fits."
 aliases:
   - "make_stancode()"
   - "stancode()"
@@ -13,34 +14,16 @@ status: seedling
 
 # brms-generated Stan Code
 
-**In one line:** brms translates a model formula into a full Stan program, which you can print with `make_stancode()` to see exactly what model and priors it fits.
+brms translates a model formula into a full Stan program, which you can print with `make_stancode()` to see exactly what model and priors it fits ([[brms]], [[Stan Program Blocks]]). `make_stancode(formula, data, family, prior)` prints the Stan code without fitting, and `make_standata()` shows the data list brms would pass. You will see a design matrix X, centred predictors, non-centred random effects (`z_1`, `r_1_1`) and default priors such as student_t(3, ...) on intercepts and SDs ([[Non-centered Parameterization]], [[Default Priors in brms]]).
 
-> [!info] Before this, it helps to know
-> [[brms]] · [[Stan Program Blocks]]
+Use it to learn Stan from models you already understand, and to start a custom model by copying and editing. In the code below brms writes 62 lines of Stan for the `sleepstudy` random-intercept model `Reaction ~ Days + (1 | Subject)` ([[Random Intercepts in Stan]]).
 
-## Start from zero
-1. **`make_stancode(formula, data, family, prior)`** prints the Stan code without fitting.
-2. **`make_standata()`** shows the data list brms would pass.
-3. **What you will see:** a design matrix X, centred predictors, non-centred random effects (`z_1`, `r_1_1`), default priors such as student_t(3, ...) on intercepts and SDs.
-4. **Use it to learn Stan** from models you already understand.
-5. **Use it to start a custom model:** copy, then edit.
+It is used in the Stan labs ([[Course Website]]). brms does not use a different engine; it writes and runs Stan.
 
-## In R
 ```r
 code <- brms::make_stancode(Reaction ~ Days + (1 | Subject), data = lme4::sleepstudy)
 length(strsplit(code, "\n")[[1]])   # lines of Stan written for you
 ```
-
-## In the course
-Stan labs ([[Course Website]]). [[brms]].
-
-## Common confusions
-- **"brms uses a different engine."** It writes and runs Stan.
-
-## Explain it back
-- How do you see brms's priors without fitting?
-
-*Pass test:* you can print and read brms's Stan code.
 
 ## Connections
 - **Builds on:** [[brms]], [[Stan Program Blocks]]

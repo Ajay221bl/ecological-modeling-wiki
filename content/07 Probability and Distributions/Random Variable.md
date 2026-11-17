@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "A random variable is a quantity whose value is a number determined by chance, described by the probabilities of the values it can take."
 aliases:
   - "Random variables"
   - "Stochastic variable"
@@ -11,43 +12,17 @@ status: seedling
 
 # Random Variable
 
-**In one line:** a random variable is a quantity whose value is a number determined by chance, described by the probabilities of the values it can take.
+Picture an unopened envelope containing a number. Before you open it you cannot say what the number is, but you may know a lot about it: "a whole number from 0 to 10, most likely about 6". The envelope is a **random variable**, a quantity whose value is a number determined by chance, described by the probabilities of the values it can take ([[Variable]], [[Probability]]). The number inside, once opened, is an observation. Convention writes the variable with a capital letter (Y) and an observed value in lower case (y). Y = the number of eggs that hatch from a clutch of 4 is a random variable before the season; in June you count 3, the realised value y = 3.
 
-> [!info] Before this, it helps to know
-> [[Variable]] (a quantity that varies) · [[Probability]] (attached to its values)
+A random variable comes with a [[Probability Distribution]], the rule giving the probability of each value or range of values. It is a [[Discrete Random Variable]] if its values can be listed, like counts, or a [[Continuous Random Variable]] if they fill a continuum, like mass. In the code below, `rbinom(1, 4, 0.6)` produces one realisation of the hatching count, and a thousand realisations tabulated show the shape of its distribution. Its long-run average is its [[Expected Value]].
 
-## The everyday picture
-An unopened envelope containing a number. Before you open it you can't say what the number is, but you may know a lot about what it could be: "a whole number from 0 to 10, most likely about 6". The envelope is the random variable. The number inside, once opened, is an observation.
+Statistics needs the idea because your data are single realisations: to say anything about uncertainty you must treat them as draws from random variables and ask what else could have been drawn. Bayesian statistics goes one step further and treats unknown parameters as random variables too; that is its defining move, giving everything unobserved a distribution. Two confusions: "random" does not mean anything could happen, since a random variable is tightly described by its distribution; and the data are not the random variable but realisations of it ([[Hobbs and Hooten 2015 Ch3]], [[Powell and Gale 2015 Ch2]]).
 
-## A tiny example
-Y = number of eggs that hatch from a clutch of 4. Before the season Y is a random variable. In June you count 3. That 3 is a realised value, written y = 3.
-
-## Start from zero
-1. **Take a random process** and attach a number to each outcome.
-2. **Capital letter for the variable (Y),** lower case for an observed value (y).
-3. **It comes with a distribution:** the rule giving the probability of each value or range.
-4. **Discrete or continuous,** depending on whether its values can be listed or fill a continuum.
-5. **Why statistics needs the idea:** your data are single realisations. To say anything about uncertainty you must treat them as draws from random variables and ask what else could have been drawn.
-6. **In Bayesian statistics, unknown parameters are also treated as random variables.** *That is the defining move:* anything unobserved gets a distribution.
-
-## In R
 ```r
 set.seed(7)
 rbinom(1, 4, 0.6)            # one realisation of Y
 table(rbinom(1000, 4, 0.6))  # many realisations show its distribution
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch3]] opens with random variables. [[Powell and Gale 2015 Ch2]] uses them for stochastic model components.
-
-## Common confusions
-- **"Random means anything could happen."** A random variable is tightly described by its distribution.
-- **"The data are the random variable."** The data are realisations of it.
-
-## Explain it back
-- What is the difference between Y and y?
-
-*Pass test:* you can identify the random variable and a realisation in a study.
 
 ## Connections
 - **Builds on:** [[Variable]], [[Probability]]

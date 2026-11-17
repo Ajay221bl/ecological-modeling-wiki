@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "A grouping factor is the categorical variable that defines which observations belong together in a mixed model, such as Subject, Site or Year, and its categories are the levels."
 aliases:
   - "Grouping variable"
   - "Random-effect grouping factor"
@@ -14,34 +15,15 @@ status: seedling
 
 # Grouping Factor
 
-**In one line:** a grouping factor is the categorical variable that defines which observations belong together in a mixed model, such as Subject, Site or Year, and its categories are the levels.
+A **grouping factor** is the categorical variable that defines which observations belong together in a mixed model, such as Subject, Site or Year; its categories are the levels, which are the groups ([[Categorical Variable]], [[Hierarchical Data]]). It appears to the right of the bar, as in `(1 | Site)`. In the code below `sleepstudy$Subject` is a factor with 18 levels.
 
-> [!info] Before this, it helps to know
-> [[Categorical Variable]] · [[Hierarchical Data]]
+It must be a factor or character, not a number, so a site coded 1, 2, 3 as numeric needs `factor(Site)`. Unique labels matter for nesting: plot "A" in site 1 and plot "A" in site 2 must get different labels, or use `(1 | site/plot)` ([[Nested Random Effects]]). The number of levels limits what can be estimated, and a variance from 3 levels is very uncertain ([[How Many Levels for a Random Effect]]).
 
-## Start from zero
-1. **It appears to the right of the bar:** `(1 | Site)`.
-2. **Its levels are the groups.** 18 subjects means 18 levels.
-3. **It must be a factor or character,** not a number. Site coded 1, 2, 3 as numeric needs `factor(Site)`.
-4. **Unique labels matter for nesting:** plot "A" in site 1 and plot "A" in site 2 must get different labels, or use `(1 | site/plot)`.
-5. **The number of levels limits what can be estimated:** a variance from 3 levels is very uncertain.
-6. **Choose groupings from the design:** the units that were sampled repeatedly or that share conditions.
+Choose groupings from the design: the units that were sampled repeatedly or that share conditions. It is used in the linear and generalized linear mixed models labs ([[Course Website]]). Not every factor should be a grouping factor: one whose levels you want to compare directly, such as treatments, is usually a [[Fixed Effect]].
 
-## In R
 ```r
 library(lme4); str(sleepstudy$Subject); nlevels(sleepstudy$Subject)
 ```
-
-## In the course
-Linear and generalized linear mixed models labs ([[Course Website]]).
-
-## Common confusions
-- **"Any factor can be a grouping factor."** A factor whose levels you want to compare directly (treatments) is usually fixed.
-
-## Explain it back
-- What must you check about plot labels before using (1 | plot)?
-
-*Pass test:* you can set up a grouping factor correctly.
 
 ## Connections
 - **Builds on:** [[Categorical Variable]], [[Hierarchical Data]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "Sampling effort is how much work went into collecting the data, such as hours searched, traps set or area covered."
 aliases:
   - "Effort"
   - "Survey effort"
@@ -11,30 +12,12 @@ status: seedling
 
 # Sampling Effort
 
-**In one line:** sampling effort is how much work went into collecting the data, such as hours searched, traps set or area covered.
+Ten fish in one hour and ten fish in ten hours are very different fishing days, and you cannot compare catches until you know how long each line was in the water. **Sampling effort** is how much work went into collecting the data: hours searched, traps set, area covered or visits made. Every count has two parents, how many animals are really there and how hard you looked, and only one of them is biology ([[Count Data]]). Effort is not the same as [[Sample Size]]: sample size counts units, while effort measures the work spent per unit. An hour of fishing is an hour, but an hour of searching varies in quality with observer skill, weather and habitat.
 
-> [!info] Before this, it helps to know
-> [[Count Data]] (how many were seen) · [[Sample Size]] (how many units)
+Two wetlands are surveyed for frogs. Wetland A gives 12 frogs in 2 hours, 6 per hour. Wetland B gives 20 frogs in 10 hours, 2 per hour. Raw counts say B has more frogs; per unit effort, A has three times as many. The simplest fix is to divide each count by its effort, but that throws away the fact that 2 hours gives a much shakier number than 10. The better fix is to keep the raw count and put effort into the model as an [[Offset]]: in a Poisson model, `glm(frogs ~ site + offset(log(hours)), family = poisson)` makes the model about frogs per hour while keeping the counts as counts, with their proper uncertainty. Here it returns 6 frogs per hour at A and a rate at B one third as large ([[Poisson Regression]]).
 
-## The everyday picture
-Fishing. Ten fish in one hour and ten fish in ten hours are very different days. You can't compare catches until you know how long each line was in the water.
+Unequal effort is one of the most common hidden causes of spurious patterns in field data: sites near the field station get visited more, and good years attract more volunteers. Without accounting for it, the model ends up studying the observers instead of the animals. More effort also raises the chance of detecting a species at all, which links effort to [[Detection Probability]]. Zuur and colleagues cover offsets for unequal effort ([[Zuur et al. 2009 Ch9]]), and course datasets such as the DeSoto deer harvest include harvest per unit effort.
 
-*Where the picture stops working:* an hour of fishing is an hour. Search effort varies in quality with observer skill, weather and habitat.
-
-## A tiny example
-Two wetlands surveyed for frogs.
-- Wetland A: 12 frogs in 2 hours = **6 per hour**.
-- Wetland B: 20 frogs in 10 hours = **2 per hour**.
-- Raw counts say B has more. Per unit effort, A has three times as many.
-
-## Start from zero
-1. **A count depends on how many are there and how hard you looked.**
-2. **Record the effort** for every count.
-3. **Divide to compare.** Count per unit effort.
-4. **Better, put effort in the model.** *Why:* dividing first throws away the fact that 2 hours gives a shakier number than 10. An [[Offset]] keeps the raw count and its proper uncertainty.
-5. **More effort also raises the chance of detecting a species at all** ([[Detection Probability]]).
-
-## See it
 ```mermaid
 flowchart LR
   N[True abundance] --> C[Count]
@@ -43,10 +26,6 @@ flowchart LR
 ```
 *What to look at:* the count has two parents, and only one of them is biology.
 
-## Why it is this way
-Unequal effort is the most common hidden cause of spurious patterns in field data. Sites near the station get visited more, and good years get more volunteers. Without accounting for effort, the model studies the observers.
-
-## In R
 ```r
 d <- data.frame(site = c("A", "B"), frogs = c(12, 20), hours = c(2, 10))
 d$frogs / d$hours                                  # 6 and 2 per hour
@@ -54,19 +33,6 @@ m <- glm(frogs ~ site + offset(log(hours)), family = poisson, data = d)
 exp(coef(m))                                       # 6 per hour at A, and B is 0.33 times A
 ```
 The offset makes the model about frogs per hour while keeping the counts as counts.
-
-## In the course
-The DeSoto deer data include harvest per unit effort ([[Course Website]]). Zuur covers offsets for unequal effort ([[Zuur et al. 2009 Ch9]]).
-
-## Common confusions
-- **"Just analyse the ratio."** Ratios lose the information about how much effort stands behind them.
-- **"Effort is the same as sample size."** Sample size counts units. Effort measures work per unit.
-
-## Explain it back
-- Why can raw counts from different sites mislead?
-- What does an offset do that dividing doesn't?
-
-*Pass test:* you can turn counts and effort into comparable rates and name the modeling tool for it.
 
 ## Connections
 - **Builds on:** [[Count Data]], [[Sample Size]]

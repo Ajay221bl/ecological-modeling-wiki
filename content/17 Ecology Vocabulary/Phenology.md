@@ -3,6 +3,7 @@ type: atomic
 tags:
   - ecology
   - flashcards/eco/ecology
+description: "Phenology is the timing of recurring life-cycle events, such as flowering, migration, egg laying or spring green-up, and how it shifts with climate."
 aliases:
   - "Timing of life events"
   - "Phenological shift"
@@ -13,31 +14,11 @@ status: seedling
 
 # Phenology
 
-**In one line:** phenology is the timing of recurring life-cycle events, such as flowering, migration, egg laying or spring green-up, and how it shifts with climate.
+The date your street's cherry tree blossoms each spring comes earlier in warmer springs. **Phenology** is the timing of recurring life-cycle events, such as flowering, migration, egg laying or spring green-up, and how it shifts with climate ([[Time Series]]). It is measured as the [[Dates in R|Day of Year]], or Julian day, of an event. Climate warming advances many spring events, and range shifts, phenology shifts and smaller body size are the predicted universal responses (cited in [[Shipley et al. 2022]]).
 
-> [!info] Before this, it helps to know
-> [[Dates in R|Day of Year]] · [[Time Series]]
+When predator and prey shift timing at different rates, food peaks and breeding peaks drift apart, a mismatch ([[Climate Change Effects on Wildlife]]). Phenology is modelled with GAMs, using cyclic smooths for season, or with date as the response in mixed models ([[Cyclic Spline]], [[Generalized Additive Model]]). NDVI green-up curves are a satellite view of plant phenology, and [[Lawton et al. 2022]] used NDVI with locust data ([[NDVI]]).
 
-## The everyday picture
-The date your street's cherry tree blossoms each spring. Warmer springs bring it earlier.
-
-## Start from zero
-1. **Measured as day of year** (Julian day) of an event.
-2. **Climate warming advances many spring events;** range shifts, phenology and smaller body size are the predicted universal responses (cited in Shipley et al. 2022).
-3. **Mismatch:** when predator and prey shift timing at different rates, food peaks and breeding peaks drift apart.
-4. **Modelled with GAMs** (cyclic smooths for season) or with date as a response in mixed models.
-5. **NDVI green-up** curves (Lawton et al. 2022 used NDVI with locust data) are a satellite view of plant phenology.
-
-## In the course
-[[Shipley et al. 2022]]. [[Lawton et al. 2022]].
-
-## Common confusions
-- **"Phenology is the same as season."** Phenology is the timing of biological events, which can shift within the same season.
-
-## Explain it back
-- Why use a cyclic smooth for day of year?
-
-*Pass test:* you can define phenology and how it is measured.
+Phenology is not the same as season: it is the timing of biological events, which can shift within the same season.
 
 ## Connections
 - **Builds on:** [[Dates in R|Day of Year]], [[Time Series]]

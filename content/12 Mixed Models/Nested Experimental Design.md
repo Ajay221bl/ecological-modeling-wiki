@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "A nested experimental design applies treatments to large units and then measures smaller units inside them, so the large units, not the small ones, are the replicates for the treatment."
 aliases:
   - "Nested design"
   - "Split-plot design"
@@ -13,34 +14,16 @@ status: seedling
 
 # Nested Experimental Design
 
-**In one line:** a nested experimental design applies treatments to large units and then measures smaller units inside them, so the large units, not the small ones, are the replicates for the treatment.
+A **nested experimental design** applies treatments to large units and then measures smaller units inside them, so the large units, not the small ones, are the replicates for the treatment ([[Replication]], [[Sampling Unit]], [[Nested Random Effects]]). With 6 ponds, 3 fertilised and 3 controls, and 10 fish measured in each pond, the treatment n is 3 ponds per group, not 30 fish. In a split-plot design whole plots get one treatment and subplots inside them another, and each factor has its own error level.
 
-> [!info] Before this, it helps to know
-> [[Replication]] · [[Sampling Unit]] · [[Nested Random Effects]]
+Analyse it with a random effect for the large unit, `lmer(size ~ treatment + (1 | pond))`, so the treatment effect is tested against pond-to-pond variation. Ignoring the nesting is [[Pseudoreplication]] (Hurlbert 1984). In the code below there is no real treatment effect, only pond differences: a plain `lm()` on the 60 fish gives a falsely significant p = 0.004, while the mixed model gives p = 0.46.
 
-## Start from zero
-1. **Example:** 6 ponds, 3 fertilised and 3 controls, 10 fish measured in each pond. Treatment n is 3 ponds per group, not 30 fish.
-2. **Split-plot:** whole plots get one treatment, subplots inside them another. Each factor has its own error level.
-3. **Analyse with a random effect for the large unit:** `lmer(size ~ treatment + (1 | pond))`.
-4. **The treatment effect is tested against pond-to-pond variation,** which the mixed model handles automatically.
-5. **Ignoring the nesting is pseudoreplication** (Hurlbert 1984).
+It is used in the mixed models labs ([[Course Website]], [[Zuur et al. 2009 Ch5]]). Subsamples do not add replication for the treatment; they improve the estimate for each unit, not the number of units.
 
-## In R
 ```r
 set.seed(7); d <- data.frame(pond = factor(rep(1:6, each = 10)), trt = rep(c("fert", "ctrl"), each = 30)); d$size <- 10 + rnorm(6, 0, 2)[d$pond] + rnorm(60)
 round(c(p_wrong_lm = summary(lm(size ~ trt, d))$coef[2, 4], p_mixed = anova(lmerTest::lmer(size ~ trt + (1 | pond), d))[["Pr(>F)"]]), 3)
 ```
-
-## In the course
-Mixed models labs ([[Course Website]]). [[Zuur et al. 2009 Ch5]].
-
-## Common confusions
-- **"Subsamples add replication for the treatment."** They improve the estimate of each unit, not the number of units.
-
-## Explain it back
-- In the pond example, what is n for the treatment?
-
-*Pass test:* you can identify the replicate in a nested design.
 
 ## Connections
 - **Builds on:** [[Replication]], [[Sampling Unit]], [[Nested Random Effects]]

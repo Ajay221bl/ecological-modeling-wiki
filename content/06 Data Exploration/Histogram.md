@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "A histogram cuts a variable's range into equal intervals called bins and draws a bar for how many observations fall in each."
 aliases:
   - "geom_histogram()"
   - "hist()"
@@ -12,27 +13,15 @@ status: seedling
 
 # Histogram
 
-**In one line:** a histogram cuts a variable's range into equal intervals called bins and draws a bar for how many observations fall in each.
+Sort coins into a row of jars by decade, 1970s, 1980s, 1990s, and the height of the coins in each jar shows at a glance which decades are common. A **histogram** cuts a numeric variable's range into equal intervals called *bins*, counts how many observations fall into each, and draws a bar of that height ([[Continuous Data]], [[Count Data]]). Unlike a bar chart, which has one bar per category, a histogram's bars touch, because the bins cover a continuous range.
 
-> [!info] Before this, it helps to know
-> [[Continuous Data]] (what it displays) · [[Count Data]] (the bar heights)
+Read the shape: symmetric or skewed, one peak or two, gaps, a spike at zero. The shape suggests which [[Probability Distribution]] to consider for the response. But bin width changes the picture, so try several. The figure and code below show the same body masses, a mixture of two groups, with wide, moderate and narrow bins: wide bins hide the two peaks, narrow bins turn noise into false detail, and only the middle one shows the structure clearly. The two peaks are two *modes* ([[Mode]]).
 
-## The everyday picture
-Sorting coins into a row of jars by date: 1970s, 1980s, 1990s. The height of the coins in each jar shows at a glance which decades are common.
+Histograms are protocol step 3, the check of shape and [[Normality]] ([[Zuur et al. 2010]]). One common mistake: a skewed histogram of the raw response does not by itself break a linear model. The normality assumption is about the residuals, and a response can look skewed simply because its predictors are skewed. A smoothed version of the histogram is the [[Density Plot]].
 
-## Start from zero
-1. **Divide the range into bins.**
-2. **Count the observations in each.**
-3. **Draw bars with those heights.**
-4. **Read the shape.** Symmetric or skewed? One peak or two? Gaps? A spike at zero?
-5. **Bin width changes the picture.** *Why to try several:* wide bins hide structure, narrow bins turn noise into false detail.
-6. **The shape suggests a distribution** to consider for the response.
-
-## See it
 ![[Histogram bin widths.png|700]]
 *What to look at:* the same data with wide, moderate and narrow bins. Only the middle one shows the two peaks clearly.
 
-## In R
 ```r
 set.seed(5)
 mass <- c(rnorm(60, 18, 1.5), rnorm(40, 24, 1.5))     # two groups mixed
@@ -41,19 +30,6 @@ h$counts
 hist(mass, breaks = 4); hist(mass, breaks = 40)        # too coarse, too fine
 library(ggplot2); p <- ggplot(data.frame(mass), aes(mass)) + geom_histogram(binwidth = 1)
 ```
-
-## In the course
-Protocol step 3. The lab plots histograms of richness ([[Course Website]]; [[Zuur et al. 2010]]).
-
-## Common confusions
-- **"A histogram is a bar chart."** A bar chart has one bar per category. A histogram bins a numeric variable and its bars touch.
-- **"A non-normal histogram of Y breaks the linear model."** The assumption is about residuals. A response can look skewed simply because the predictors are.
-
-## Explain it back
-- Why try more than one bin width?
-- What does a spike at zero suggest?
-
-*Pass test:* you can read shape, skew and modes from a histogram.
 
 ## Connections
 - **Builds on:** [[Continuous Data]]

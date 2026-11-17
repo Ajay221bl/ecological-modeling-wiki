@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "Data exploration is looking at your data with plots and simple summaries before fitting any model, to catch problems and learn the data's shape."
 aliases:
   - "Exploratory data analysis"
   - "EDA"
@@ -11,47 +12,18 @@ status: seedling
 
 # Data Exploration
 
-**In one line:** data exploration is looking at your data with plots and simple summaries before fitting any model, to catch problems and learn the data's shape.
+A doctor examines a patient before prescribing: pulse, temperature, a look at the throat. None of it is the treatment, but prescribing without it would be malpractice. In analysis, models are the treatment and **data exploration** is the examination: looking at your data with plots and simple summaries before fitting any model, to catch problems and learn the data's shape. It starts where the first quick look at a dataset ends ([[Inspecting Data]]). The question should already exist; exploration checks whether the data can answer it, not which answer to shop for.
 
-> [!info] Before this, it helps to know
-> [[Inspecting Data]] (the first quick look) · [[Statistical Model]] (what exploration protects)
+The reason is that every [[Statistical Model]] makes assumptions about the data, and software does not check them: it fits whatever you give it and prints tidy output either way. So you look first, mostly with graphs, because a mean and a standard deviation can be identical for wildly different data, while a plot shows the odd point, the skew or the cluster. The work moves from one variable at a time (outliers, shape, zeros), to pairs of variables (correlated predictors, the response against each predictor), to the structure of the data (groups, space, time), as the diagram shows. What you find shapes the model: counts with many zeros, spread that changes, correlated predictors or grouped observations each point to a specific tool, and Zuur, Ieno and Elphick turned this into a checklist ([[Data Exploration Protocol]]).
 
-## The everyday picture
-A doctor examining a patient before prescribing. Pulse, temperature, a look at the throat. None of it is the treatment, but prescribing without it is malpractice. Models are the treatment. Exploration is the examination.
+They wrote it after seeing the same avoidable errors in paper after paper: outliers driving results, correlated predictors, non-independence ignored. Each makes estimates or standard errors wrong without any warning, and a few plots catch nearly all of them ([[Zuur et al. 2010]]). Zuur's book suggests that up to half the time of an analysis can go into this stage, and that it should be reported in the methods ([[Zuur et al. 2009 Ch2]]). Two confusions. Exploration is not hunting for significant variables; that is [[Data Dredging|Data Snooping]], which manufactures false findings. And diagnostics after fitting are not a substitute: many problems are easier to see, and fix, before the model exists, though checking the fitted model still follows ([[Model Validation]], [[Why explore data before modeling]]). The course covers this on 25 and 27 August, with a lab on Loess Canyons bird richness ([[Course Website]]).
 
-*Where the picture stops working:* a doctor examines to find the diagnosis. In data analysis the question should already exist. Exploration checks whether the data can answer it, and shouldn't be used to shop for a finding.
-
-## Start from zero
-1. **Every model makes assumptions** about the data's shape and structure.
-2. **Software doesn't check them for you.** It fits whatever you give it and prints tidy output either way.
-3. **So you look first.** One variable at a time, then pairs, then structure.
-4. **Mostly with graphs.** *Why graphs:* a mean and SD can be identical for wildly different data. A plot shows the odd point, the skew, the cluster.
-5. **What you find shapes the model.** Counts with many zeros, unequal spread, correlated predictors, grouped observations: each points to a specific tool.
-6. **You report it.** Zuur and colleagues argue exploration should be described in the methods.
-
-## See it
 ```mermaid
 flowchart LR
   A[One variable at a time<br/>outliers, shape, zeros] --> B[Pairs of variables<br/>collinearity, Y against X] --> C[Structure<br/>groups, space, time]
   C --> D[Choose and fit a model]
 ```
 *What to look at:* exploration moves from single columns to relationships to dependence.
-
-## Why it is this way
-Zuur, Ieno and Elphick wrote their protocol after seeing the same avoidable errors in paper after paper: outliers driving results, correlated predictors, non-independence ignored. Each of these makes standard errors or estimates wrong without any warning. A few plots catch nearly all of them.
-
-## In the course
-Aug 25 and 27, with the lab on Loess Canyons bird richness ([[Course Website]]). Reading: [[Zuur et al. 2010]]. Zuur's book says up to half the time of an analysis can go here ([[Zuur et al. 2009 Ch2]]).
-
-## Common confusions
-- **"Exploration is finding the significant variables."** That is data dredging. Exploration checks data quality and assumptions.
-- **"Diagnostics after fitting are enough."** Many problems are easier to see, and to fix, before.
-
-## Explain it back
-- Why do plots beat summary statistics for exploration?
-- What is the difference between exploring and dredging?
-
-*Pass test:* you can say what exploration is for and what it is not for.
 
 ## Connections
 - **Builds on:** [[Inspecting Data]]

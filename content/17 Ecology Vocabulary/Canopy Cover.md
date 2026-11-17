@@ -3,6 +3,7 @@ type: atomic
 tags:
   - ecology
   - flashcards/eco/ecology
+description: "Canopy or tree cover is the proportion of ground covered by tree crowns when viewed from above, a common predictor of habitat for birds, plants and mammals."
 aliases:
   - "Canopy and Tree Cover"
   - "Tree cover"
@@ -13,27 +14,11 @@ status: seedling
 
 # Canopy Cover
 
-**In one line:** canopy or tree cover is the proportion of ground covered by tree crowns when viewed from above, a common predictor of habitat for birds, plants and mammals.
+**Canopy or tree cover** is the proportion of ground covered by tree crowns when viewed from above, a common predictor of habitat for birds, plants and mammals ([[Proportion]], [[Habitat Structure]]). It runs from 0 to 1, or 0 to 100%, so as a response it suits beta regression or binomial models ([[Beta Regression]], [[Logistic Regression|Binomial GLM]]). It is measured with densiometers, photos, lidar or satellite products.
 
-> [!info] Before this, it helps to know
-> [[Proportion]] · [[Habitat Structure]]
+As a predictor it is often nonlinear: birds of open grassland vanish quickly as cover rises ([[Woody Encroachment]], [[Generalized Additive Model]]). It is collinear with tree density, basal area and DBH ([[Diameter at Breast Height]], [[Collinearity]]).
 
-## Start from zero
-1. **A proportion from 0 to 1** (or 0 to 100%); as a response it suits beta regression or binomial models.
-2. **Measured** with densiometers, photos, lidar or satellite products.
-3. **As a predictor,** often nonlinear (birds of open grassland vanish quickly as cover rises).
-4. **Collinear** with tree density, basal area and DBH.
-
-## In the course
-Lab datasets ([[Course Website]]).
-
-## Common confusions
-- **"Canopy cover is tree density."** Few large trees can cover as much as many small ones.
-
-## Explain it back
-- What model suits canopy cover as a response?
-
-*Pass test:* you can use canopy cover in a model.
+It is a predictor in the lab datasets, including quail counts and tree cover in the GAM lab ([[Course Website]]). Canopy cover is not tree density: a few large trees can cover as much as many small ones.
 
 ## Connections
 - **Builds on:** [[Proportion]], [[Habitat Structure]]

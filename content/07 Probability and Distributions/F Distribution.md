@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "The F distribution describes the ratio of two independent variance estimates, and is used to judge whether one source of variation is larger than another."
 aliases:
   - "F"
   - "df()"
@@ -12,41 +13,18 @@ status: seedling
 
 # F Distribution
 
-**In one line:** the F distribution describes the ratio of two independent variance estimates, and is used to judge whether one source of variation is larger than another.
+To compare the noise in two rooms, divide one loudness reading by the other. If both rooms are equally noisy the ratio hovers around 1; a ratio of 6 suggests the first room really is louder. The **F distribution** tells you how far from 1 such a ratio wanders by chance alone. It is the ratio of two independent chi-square variables, each divided by its own degrees of freedom ([[Chi-square Distribution]], [[Degrees of Freedom]]), so it has two parameters, the numerator df and the denominator df. It lives on positive numbers and is centred near 1 when the two [[Variance|variances]] are equal.
 
-> [!info] Before this, it helps to know
-> [[Chi-square Distribution]] (its building block) · [[Variance]] (what is being compared) · [[Degrees of Freedom]] (it has two)
+In [[ANOVA]] and regression, F = (variation explained per parameter) ÷ (residual variation per residual df). If the predictors do nothing, both pieces estimate the same noise variance and F is about 1; a large F is evidence that the model explains real variation. With 3 groups and 30 observations the df are 2 and 27, and the 5% critical value is 3.35. The simulation in the code below fits pure noise to three groups 5,000 times: the F values centre near 1 and exceed 3.35 about 5% of the time, as they should.
 
-## The everyday picture
-Comparing the noise in two rooms by dividing one loudness reading by the other. If both rooms are equally noisy, the ratio hovers around 1. A ratio of 6 suggests the first room is truly louder. The F distribution tells you how far from 1 the ratio wanders by chance alone.
+F is used instead of chi-square in linear models because the residual variance is estimated, and the F's denominator accounts for that, just as t does compared with z. In fact an F with 1 numerator df is the square of a t, which the last line checks ([[Student t Distribution]]). This is the F statistic printed by `summary(lm())` and `anova()` ([[F-test]], [[Zuur et al. 2009 Ch2]]). A big F says only that some variation is explained, not which groups differ.
 
-## Start from zero
-1. **Take two independent chi-square variables.** Divide each by its df. Take the ratio.
-2. **Two parameters:** numerator df and denominator df.
-3. **Support:** positive. Centred near 1 when the two variances are equal.
-4. **In ANOVA and regression:** F = (variation explained per parameter) ÷ (residual variation per residual df).
-5. **If the predictors do nothing, both estimate the same noise variance** and F is about 1. A large F is evidence that the model explains real variation.
-6. **Link to t:** an F with 1 numerator df is the square of a t.
-7. **Why F and not chi-square in linear models:** the residual variance is estimated, and the denominator accounts for that, just as t does compared with z.
-
-## In R
 ```r
 qf(0.95, 2, 27)                                  # critical value for 3 groups, 30 observations: 3.35
 set.seed(9); g <- gl(3, 10); Fs <- replicate(5000, anova(lm(rnorm(30) ~ g))$F[1])
 c(mean(Fs), mean(Fs > qf(0.95, 2, 27)))          # centred near 1, exceeds the cut-off 5% of the time
 qt(0.975, 20)^2; qf(0.95, 1, 20)                 # t squared equals F with 1 numerator df
 ```
-
-## In the course
-The F statistic in `summary(lm())` and `anova()` ([[Zuur et al. 2009 Ch2]]).
-
-## Common confusions
-- **"A big F says which groups differ."** It says only that some variation is explained.
-
-## Explain it back
-- What value does F take on average when the null is true?
-
-*Pass test:* you can explain F as a ratio of explained to unexplained variance.
 
 ## Connections
 - **Builds on:** [[Chi-square Distribution]], [[Variance]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - autocorrelation
   - flashcards/eco/autocorrelation
+description: "A time series is a sequence of measurements of the same thing taken in time order, usually at regular intervals."
 aliases:
   - "Time-series data"
   - "ts object"
@@ -12,34 +13,15 @@ status: seedling
 
 # Time Series
 
-**In one line:** a time series is a sequence of measurements of the same thing taken in time order, usually at regular intervals.
+A **time series** is a sequence of measurements of the same thing taken in time order, usually at regular intervals: annual counts of a bird population, daily water temperature, ice-on dates by year. Order matters, so shuffling the rows destroys information. Typical features are trend, seasonality, [[Temporal Autocorrelation]] and occasional breaks.
 
-> [!info] Before this, it helps to know
-> [[Temporal Autocorrelation]] (its typical feature)
+R's `ts()` object stores values with a start and a frequency, as in the code below, which makes a 12-year series starting in 2010; many ecological series are kept instead as data frames with a date column. Regression on a time series must handle autocorrelated residuals, with AR errors or GLS, or the standard errors will be too small ([[AR(1) Error Structure]]). Short series, under about 25 points, give little power to estimate a correlation structure.
 
-## Start from zero
-1. **Examples:** annual counts of a bird population, daily water temperature, ice-on dates by year.
-2. **Order matters.** Shuffling the rows destroys information.
-3. **Typical features:** trend, seasonality, autocorrelation, occasional breaks.
-4. **R's `ts()` object** stores values with a start and frequency. Many ecological series are kept as data frames with a date column instead.
-5. **Regression on time series** must handle autocorrelated residuals (AR errors, GLS) or standard errors will be too small.
-6. **Short series** (under about 25 points) give little power to estimate correlation structure.
+The lake ice-cover series in the autocorrelation lab are the course's example ([[Course Website]], [[Zuur et al. 2009 Ch6]]), checked with the [[Autocorrelation Function]] and assumed to have [[Stationarity]] after trends are removed. Time cannot just be another predictor with the rest ordinary regression, unless the residuals are independent.
 
-## In R
 ```r
 set.seed(5); s <- ts(round(50 + cumsum(rnorm(12, 0, 3))), start = 2010); s
 ```
-
-## In the course
-Lake ice-cover series in the autocorrelation lab ([[Course Website]]). [[Zuur et al. 2009 Ch6]].
-
-## Common confusions
-- **"Time can just be another predictor and the rest is ordinary regression."** Only if the residuals are independent.
-
-## Explain it back
-- What does shuffling a time series destroy?
-
-*Pass test:* you can name the features of a time series.
 
 ## Connections
 - **Builds on:** [[Temporal Autocorrelation]]

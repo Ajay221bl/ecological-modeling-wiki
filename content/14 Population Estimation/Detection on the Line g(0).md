@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "G(0) is the probability of detecting an animal exactly on the transect line or at the point, and standard distance sampling assumes it equals 1."
 aliases:
   - "g(0)"
   - "g(0) = 1"
@@ -12,27 +13,11 @@ status: seedling
 
 # Detection on the Line g(0)
 
-**In one line:** g(0) is the probability of detecting an animal exactly on the transect line or at the point, and standard distance sampling assumes it equals 1.
+**g(0)** is the probability of detecting an animal exactly on the transect line or at the point, and standard distance sampling assumes it equals 1 ([[Detection Function]], [[Distance Sampling]]). Everything else is estimated relative to g(0), so if g(0) is really 0.7, density is underestimated by 30 percent. It fails for diving whales, burrowing animals and birds in the canopy directly overhead ([[Availability for Detection]]).
 
-> [!info] Before this, it helps to know
-> [[Detection Function]]
+Fixes are double-observer or mark-recapture distance sampling to estimate g(0), and dive-cycle corrections for marine mammals ([[Double-observer Methods]]). Powell and Gale (Ch14) cite Johnson (2010): a survey that violates such assumptions may be no better than an index ([[Population Index]]).
 
-## Start from zero
-1. **Everything else is estimated relative to g(0).** If g(0) is really 0.7, density is underestimated by 30 percent.
-2. **Fails for** diving whales, burrowing animals, birds in canopy directly overhead.
-3. **Fixes:** double-observer or mark-recapture distance sampling to estimate g(0); dive-cycle corrections.
-4. **Powell and Gale (Ch14)** cite Johnson (2010): a survey that violates such assumptions may be no better than an index.
-
-## In the course
-[[Powell and Gale 2015]] Ch14 and Ch19.
-
-## Common confusions
-- **"g(0) = 1 is checked by the model fit."** The fit cannot tell; it is a design assumption.
-
-## Explain it back
-- What happens to D̂ if g(0) = 0.8?
-
-*Pass test:* you can explain why g(0) = 1 matters and how to relax it.
+It is discussed in [[Powell and Gale 2015]] Ch14 and Ch19. g(0) = 1 is not checked by the model fit: the fit cannot tell, because it is a design assumption.
 
 ## Connections
 - **Builds on:** [[Detection Function]]

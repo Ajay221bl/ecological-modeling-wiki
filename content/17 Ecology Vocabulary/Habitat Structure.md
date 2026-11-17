@@ -3,6 +3,7 @@ type: atomic
 tags:
   - ecology
   - flashcards/eco/ecology
+description: "Habitat structure is the physical arrangement of vegetation and other features, such as layers of canopy, shrubs, dead wood and open ground, that shapes which species can live there."
 aliases:
   - "Vegetation structure"
   - "Structural complexity"
@@ -12,27 +13,11 @@ status: seedling
 
 # Habitat Structure
 
-**In one line:** habitat structure is the physical arrangement of vegetation and other features, such as layers of canopy, shrubs, dead wood and open ground, that shapes which species can live there.
+**Habitat structure** is the physical arrangement of vegetation and other features, such as layers of canopy, shrubs, dead wood and open ground, that shapes which species can live there ([[Habitat]]). It is measured with canopy cover, tree density and size (DBH), shrub cover, coarse woody debris and ground cover ([[Canopy Cover]], [[Diameter at Breast Height]], [[Coarse Woody Debris]]).
 
-> [!info] Before this, it helps to know
-> [[Habitat]]
+Many structural variables are collinear, so combine or select them with care, using VIF or PCA ([[Collinearity]], [[Variance Inflation Factor]]). Disturbance changes structure: fire, grazing, logging and woody encroachment ([[Fire History Variables]], [[Woody Encroachment]]). Dense structure also hides animals, so it affects detection ([[Detection Probability]]).
 
-## Start from zero
-1. **Measured with** canopy cover, tree density and size (DBH), shrub cover, coarse woody debris, ground cover.
-2. **Many structural variables are collinear;** combine or select them with care (VIF, PCA).
-3. **Disturbance changes structure:** fire, grazing, logging, woody encroachment.
-4. **Affects detection too:** dense structure hides animals.
-
-## In the course
-Lab datasets ([[Course Website]]). [[Shipley et al. 2022]]. [[Christensen et al. 2020]] (wetland cover).
-
-## Common confusions
-- **"Structure and composition are the same."** Composition is which species; structure is their physical arrangement.
-
-## Explain it back
-- Name three measures of habitat structure.
-
-*Pass test:* you can list structural variables and their pitfalls.
+It appears in the lab datasets, [[Shipley et al. 2022]] and [[Christensen et al. 2020]] (wetland cover) ([[Course Website]]). Structure and composition are not the same: composition is which species, structure is their physical arrangement.
 
 ## Connections
 - **Builds on:** [[Habitat]]

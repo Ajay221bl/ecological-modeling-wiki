@@ -3,6 +3,7 @@ type: atomic
 tags:
   - distributions
   - flashcards/eco/distributions
+description: "A probability distribution is the complete description of a random variable: which values it can take and how probability is spread across them."
 aliases:
   - "Distribution"
   - "Statistical distribution"
@@ -11,45 +12,20 @@ status: seedling
 
 # Probability Distribution
 
-**In one line:** a probability distribution is the complete description of a random variable: which values it can take and how probability is spread across them.
+Spread a pile of sand weighing exactly one kilogram along a number line. Where the sand is heaped, values are common; where it is thin, they are rare. The shape of the pile is the **probability distribution**: the complete description of a [[Random Variable]], saying which values it can take (its *support*) and how the total probability of 1 is shared among them. For discrete variables it is a bar for each value ([[Probability Mass Function]]); for continuous ones a smooth curve ([[Probability Density Function]]). A [[Histogram]] of data is a noisy picture of the distribution that produced them, not the distribution itself.
 
-> [!info] Before this, it helps to know
-> [[Random Variable]] (what it describes) · [[Histogram]] (its picture in data)
+Named distributions, such as the normal, Poisson, binomial, gamma and beta, are families of shapes controlled by a few [[Distribution Parameters]]. The figure shows several, each living on a different set of values with a characteristic shape. In the code below, the Poisson with mean 3 is written out as a table of probabilities that add to 1, and the area under a normal curve is integrated to 1. R handles each distribution with four functions: d for the height, p for the cumulative probability, q for quantiles and r for random draws ([[Distribution Functions in R]]).
 
-## The everyday picture
-A pile of sand weighing exactly one kilogram, spread along a number line. Where the sand is heaped, values are common. Where it is thin, they are rare. The shape of the pile is the distribution.
+Models are built on distributions because the distribution is a model's stochastic part: it says how real data scatter around the predicted value, and it lets you compute how probable your data are. Choosing one is choosing what kinds of data are possible: only whole numbers? only positive values? bounded between 0 and 1? ([[Choosing a Distribution for Your Response]]). "Distribution" does not mean the normal curve; the normal is one of many. The course covers distributions on 8 September and in its "data-generating distributions" lab ([[Course Website]], [[Hobbs and Hooten 2015 Ch3]]).
 
-## Start from zero
-1. **List the possible values** (the support).
-2. **Say how the total probability of 1 is shared among them.**
-3. **For discrete variables this is a bar for each value.** For continuous variables a smooth curve.
-4. **Named distributions are families of shapes** controlled by a few parameters: normal, Poisson, binomial, gamma, beta.
-5. **Why models are built on them:** the distribution is the model's stochastic part. It says how real data scatter around the predicted value, and it lets you compute how probable your data are.
-6. **Choosing one is choosing what kinds of data are possible:** only whole numbers? Only positive? Bounded between 0 and 1?
-7. **R handles each with four functions:** d (height), p (cumulative), q (quantile), r (random draws).
-
-## See it
 ![[Distribution gallery.png|700]]
 *What to look at:* each distribution lives on a different set of values and has a characteristic shape.
 
-## In R
 ```r
 x <- 0:12; round(dpois(x, 3), 3)                # a discrete distribution as a table of probabilities
 sum(dpois(0:1000, 3))                           # total probability 1
 integrate(dnorm, -Inf, Inf, mean = 10, sd = 2)$value   # a continuous one: total area 1
 ```
-
-## In the course
-Sep 8 lecture and the "Data-generating distributions" lab ([[Course Website]]). Catalogue of distributions: [[Hobbs and Hooten 2015 Ch3]].
-
-## Common confusions
-- **"Distribution means the normal curve."** The normal is one of many.
-- **"The histogram of my data is the distribution."** It is a noisy picture of it.
-
-## Explain it back
-- What two things does a distribution specify?
-
-*Pass test:* you can say what a distribution is and why a model needs one.
 
 ## Connections
 - **Builds on:** [[Random Variable]]

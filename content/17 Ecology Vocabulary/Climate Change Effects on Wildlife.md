@@ -3,6 +3,7 @@ type: atomic
 tags:
   - ecology
   - flashcards/eco/ecology
+description: "Climate change affects wildlife through shifts in range, timing, body size, survival, reproduction and disease, which ecologists detect by modelling long time series against climate variables."
 aliases:
   - "Climate change"
   - "Climate effects"
@@ -13,28 +14,11 @@ status: seedling
 
 # Climate Change Effects on Wildlife
 
-**In one line:** climate change affects wildlife through shifts in range, timing, body size, survival, reproduction and disease, which ecologists detect by modelling long time series against climate variables.
+**Climate change** affects wildlife through shifts in range, timing, body size, survival, reproduction and disease, which ecologists detect by modelling long time series against climate variables ([[Phenology]], [[Body Size]], [[Time Series]]). The three predicted universal responses are range shifts, phenology shifts and smaller body size. [[Shipley et al. 2022]] found that selection for larger chicks counteracted developmental plasticity, yet adults still shrank, a change linked to winter conditions. [[Christensen et al. 2020]] found drought severity predicted haemorrhagic disease in white-tailed deer, with an effect that depended on latitude and disease expanding north ([[Drought Index]], [[Epizootic Hemorrhagic Disease]]).
 
-> [!info] Before this, it helps to know
-> [[Phenology]] · [[Body Size|Body Size and Morphology]] · [[Time Series]]
+The statistical challenges are temporal autocorrelation, confounding with other long-term trends, and choosing the right climate window ([[Temporal Autocorrelation]], [[Confounding Variable]]). Typical models are mixed models with year and site effects, GAMs for nonlinear trends, and spatiotemporal GLMMs ([[Mixed Effects Model]], [[Generalized Additive Model]], [[GLMM]]).
 
-## Start from zero
-1. **Three predicted universal responses:** range shifts, phenology shifts and smaller body size (Shipley et al. 2022).
-2. **Shipley et al. (2022):** selection for larger chicks counteracted developmental plasticity, yet adults still shrank, linked to winter conditions.
-3. **Christensen et al. (2020):** drought severity predicted hemorrhagic disease in white-tailed deer, and the effect depended on latitude, with disease expanding north.
-4. **Statistical challenges:** temporal autocorrelation, confounding with other long-term trends, and choosing the right climate window.
-5. **Models:** mixed models with year and site effects, GAMs for nonlinear trends, spatiotemporal GLMMs.
-
-## In the course
-[[Shipley et al. 2022]]. [[Christensen et al. 2020]]. [[Lawton et al. 2022]].
-
-## Common confusions
-- **"A trend over years proves climate caused it."** Many things trend over time; you need climate variables and mechanisms.
-
-## Explain it back
-- Why is year often a confounder?
-
-*Pass test:* you can describe climate effects and how to test them.
+The course readings [[Shipley et al. 2022]], [[Christensen et al. 2020]] and [[Lawton et al. 2022]] each show one route. A trend over years does not prove climate caused it: many things trend over time, so you need climate variables and mechanisms.
 
 ## Connections
 - **Builds on:** [[Phenology]], [[Body Size|Body Size and Morphology]], [[Time Series]]

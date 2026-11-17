@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "Calling `plot()` on a fitted linear model draws four standard diagnostic plots that check its assumptions."
 aliases:
   - "Diagnostic plots"
   - "Diagnostic Plots for lm"
@@ -14,42 +15,20 @@ status: seedling
 
 # plot() Diagnostics for lm
 
-**In one line:** calling `plot()` on a fitted linear model draws four standard diagnostic plots that check its assumptions.
+Calling **`plot()` on a fitted linear model** draws four standard diagnostic plots that check its assumptions; `par(mfrow = c(2, 2)); plot(m)` shows them together, and `plot(m, which = 1)` picks one. The first is the [[Residuals vs Fitted Plot]], which checks linearity: you want a flat red line. The second is a normal [[QQ Plot]] of the residuals, which checks normality: you want points along the diagonal. The third, Scale-Location, plots the square root of the absolute standardised residuals against fitted values, which checks equal variance: you want a flat line and an even band. The fourth, Residuals vs Leverage, flags influential points: watch for points beyond the [[Cook's Distance]] contours ([[Leverage]]).
 
-> [!info] Before this, it helps to know
-> [[Residuals vs Fitted Plot]] (plot 1) · [[QQ Plot]] (plot 2) · [[Leverage]] and [[Cook's Distance]] (plot 4)
+The figure shows all four for a well-behaved model. The code below fits fuel economy against weight and horsepower in `mtcars`, draws the four panels, and lists the cars whose Cook's distance exceeds the common rule of thumb of 4/n. `performance::check_model()` gives a ggplot version ([[Course Website]]).
 
-## Start from zero
-1. **`par(mfrow = c(2, 2)); plot(m)`** shows all four at once.
-2. **Residuals vs Fitted.** Checks linearity. Want a flat red line.
-3. **Normal Q-Q.** Checks normality of residuals. Want points on the diagonal.
-4. **Scale-Location.** √|standardised residuals| against fitted. Checks equal variance. Want a flat line and even band.
-5. **Residuals vs Leverage.** Flags influential points. Watch for points beyond the Cook's distance contours.
-6. **`plot(m, which = 1)`** picks one.
-7. **These don't check independence.** Plot residuals against time, space or group yourself.
-8. **For GLMs these plots are hard to read.** Use simulated residuals (DHARMa) instead.
+These plots have blind spots. They do not check independence, so plot residuals against time, space or group yourself, and they cannot see missing confounders; four clean plots do not prove a model valid ([[Linear Model Assumptions]], [[Model Validation]]). For GLMs they are hard to read, and simulated residuals from [[DHARMa Simulated Residuals|DHARMa]] work better.
 
-## See it
 ![[lm diagnostic four.png|700]]
 *What to look at:* the four panels for a well-behaved model.
 
-## In R
 ```r
 m <- lm(mpg ~ wt + hp, data = mtcars)
 op <- par(mfrow = c(2, 2)); plot(m); par(op)
 which(cooks.distance(m) > 4 / nrow(mtcars))       # cars flagged by a common rule of thumb
 ```
-
-## In the course
-Linear regression lab ([[Course Website]]). `performance::check_model()` gives a ggplot version.
-
-## Common confusions
-- **"Four clean plots mean the model is valid."** They can't see non-independence or missing confounders.
-
-## Explain it back
-- Which assumption does each of the four plots address?
-
-*Pass test:* you can produce and read the four plots.
 
 ## Connections
 - **Builds on:** [[Residuals vs Fitted Plot]], [[QQ Plot]], [[Cook's Distance]]

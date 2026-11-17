@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "A proportion is a part divided by its whole, so it always lies between 0 and 1."
 aliases:
   - "Fraction"
   - "Percentage"
@@ -11,35 +12,12 @@ status: seedling
 
 # Proportion
 
-**In one line:** a proportion is a part divided by its whole, so it always lies between 0 and 1.
+Picture a pizza cut into 8 slices. If you eat 3, you ate 3/8 = 0.375 of it. You cannot eat less than none or more than all of it, so the answer is trapped between 0 and 1. A **proportion** is a part divided by its whole: the part is the *numerator* (the number of "successes") and the whole is the *denominator* (the number of trials). Multiply by 100 and you have a percentage. Survival, detection, germination and occupancy are all proportions in disguise, because they answer "how many out of how many?"
 
-> [!info] Before this, it helps to know
-> [[Count Data]] (the part and the whole are counts) · [[Binary Variable]] (yes or no outcomes)
+A worked example. You monitor 20 nests and 14 fledge young. The proportion successful is 14 / 20 = 0.70, or 70%, and the proportion that failed is 0.30. Now compare that with watching only 2 nests and seeing 1 succeed: you get 0.50, but you would trust it far less. This is the key point about proportions: the bare fraction hides how much evidence stands behind it. Each trial is one piece of evidence, so the standard error, the typical size of the error in the estimate, is √(p(1 − p)/n). For the 20 nests that is √(0.7 × 0.3 / 20) = 0.10. With 200 nests and the same 0.70 it would be about 0.03. That is why you should always keep both counts, the successes and the trials, and not just the ratio.
 
-## The everyday picture
-A pizza cut into 8 slices. If you eat 3, you ate 3/8 = 0.375 of the pizza. You can't eat less than none or more than all of it, so the answer is trapped between 0 and 1.
+Because a proportion is fenced in at 0 and 1, straight lines and bell curves misbehave near those fences: a straight line will happily predict 110% survival, and the spread of a proportion shrinks as it nears 0 or 1 instead of staying constant. So proportions get a model built for them, the [[Binomial Distribution]], usually with a logit link that keeps predictions inside the fence ([[Binomial GLM for Proportions]]). One confusion is worth clearing up: a proportion is what you *observed*, while a [[Probability]] is the underlying chance that produced it. The 0.70 from your 20 nests is an estimate of the nest-success probability, not the probability itself. Proportions can also be rewritten as [[Odds]], which is the step that leads to logistic regression.
 
-*Where the picture stops working:* 3 of 8 slices and 300 of 800 slices give the same proportion, but the second is known far more precisely. A proportion alone hides how much data stand behind it.
-
-## Words you'll need
-- **Numerator:** the part (successes).
-- **Denominator:** the whole (trials).
-- **Percentage:** a proportion multiplied by 100.
-
-## A tiny example
-20 nests are monitored and 14 fledge young.
-- Proportion successful = 14 / 20 = **0.70**, or 70%.
-- Proportion failed = 1 − 0.70 = **0.30**.
-- With only 2 nests and 1 success you would get 0.50, a far shakier number.
-
-## Start from zero
-1. **Count the successes and the trials.** 14 and 20.
-2. **Divide.** The proportion is successes / trials.
-3. **It is bounded.** It cannot go below 0 or above 1.
-4. **Its wobble depends on the denominator.** *Why:* each trial is one piece of evidence. SE = √(p(1 − p)/n), here √(0.7 × 0.3 / 20) = 0.10.
-5. **So keep both numbers.** Models for proportions use successes and failures, not the bare fraction ([[Binomial Distribution]]).
-
-## See it
 ```mermaid
 flowchart LR
   A[14 fledged] --> C[14 / 20 = 0.70]
@@ -48,10 +26,6 @@ flowchart LR
 ```
 *What to look at:* two counts go in, one bounded number comes out.
 
-## Why it is this way
-Survival, detection, germination and occupancy are all "how many out of how many". Because the answer is fenced in at 0 and 1, straight lines and bell curves break near the fences. That is why proportions get the binomial distribution and the logit link ([[Logit Link]]).
-
-## In R
 ```r
 fledged <- 14; nests <- 20
 p <- fledged / nests                 # 0.70
@@ -63,22 +37,10 @@ plogis(coef(m))                      # 0.70 again
 ```
 `cbind(successes, failures)` tells R how many trials stand behind the proportion.
 
-## In the course
-Powell and Gale build survival estimates from proportions ([[Powell and Gale 2015 Ch2]]). Homework 2 models the proportion of coral bleaching events ([[Course Website]]).
-
-## Common confusions
-- **"A proportion is continuous, so use the normal."** It is bounded and its variance depends on its mean.
-- **"Proportion and probability are the same."** A proportion is what you observed. A probability is the underlying chance that produced it ([[Probability]]).
-
-## Explain it back
-- Why is 1 of 2 less convincing than 50 of 100?
-- Why can't a straight line model a proportion well near 0 or 1?
-
-*Pass test:* you can compute a proportion and its standard error and say why the denominator matters.
-
 ## Connections
 - **Builds on:** [[Count Data]], [[Binary Variable]]
 - **Leads to:** [[Probability]], [[Binomial Distribution]], [[Odds]], [[Binomial GLM for Proportions]]
+- **See also:** [[Logit Link]], [[Powell and Gale 2015 Ch2]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
 
 ## Flashcards

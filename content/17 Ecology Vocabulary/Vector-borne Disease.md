@@ -3,6 +3,7 @@ type: atomic
 tags:
   - ecology
   - flashcards/eco/ecology
+description: "A vector-borne disease is caused by a pathogen carried between hosts by another organism, the vector, such as a biting midge, mosquito or tick."
 aliases:
   - "Vector-borne pathogens"
   - "Arthropod vector"
@@ -12,28 +13,11 @@ status: seedling
 
 # Vector-borne Disease
 
-**In one line:** a vector-borne disease is caused by a pathogen carried between hosts by another organism, the vector, such as a biting midge, mosquito or tick.
+A **vector-borne disease** is caused by a pathogen carried between hosts by another organism, the vector, such as a biting midge, mosquito or tick ([[Population Dynamics]]). There are three players, pathogen, vector and host, and climate affects all three. [[Christensen et al. 2020]] cite vector-borne pathogens as responsible for nearly 30% of emerging infectious diseases in the decade before their study.
 
-> [!info] Before this, it helps to know
-> [[Population Dynamics]]
+Haemorrhagic disease viruses, EHDV and bluetongue, are carried by biting midges of the genus *Culicoides* ([[Epizootic Hemorrhagic Disease]]). Warmer temperatures can speed virus replication in vectors and extend vector seasons northward ([[Climate Change Effects on Wildlife]]). The modelling challenge is that vector data are usually missing, so climate variables such as a [[Drought Index]] stand in for vector activity.
 
-## Start from zero
-1. **Three players:** pathogen, vector and host. Climate affects all three.
-2. **Christensen et al. (2020)** cite vector-borne pathogens as responsible for nearly 30% of emerging infectious diseases in the decade before their study.
-3. **Hemorrhagic disease viruses** (EHDV and bluetongue) are carried by biting midges of the genus *Culicoides*.
-4. **Warmer temperatures** can speed virus replication in vectors and extend vector seasons northward.
-5. **Modeling challenge:** vector data are usually missing, so climate variables stand in for vector activity.
-
-## In the course
-[[Christensen et al. 2020]].
-
-## Common confusions
-- **"Vector means the host animal."** The vector carries the pathogen between hosts.
-
-## Explain it back
-- What vectors transmit hemorrhagic disease viruses?
-
-*Pass test:* you can explain how climate can affect a vector-borne disease.
+It is the frame of Christensen et al. The vector is not the host animal; it carries the pathogen between hosts.
 
 ## Connections
 - **Builds on:** [[Population Dynamics]]

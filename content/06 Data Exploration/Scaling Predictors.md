@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "Scaling a predictor means dividing it by a constant, usually its standard deviation, so that one unit becomes a typical-sized difference."
 aliases:
   - "Scaling"
   - "Rescaling"
@@ -12,27 +13,12 @@ status: seedling
 
 # Scaling Predictors
 
-**In one line:** scaling a predictor means dividing it by a constant, usually its standard deviation, so that one unit becomes a typical-sized difference.
+A house and a loaf of bread are hard to compare in dollars, but expressed as days of typical wages both sit on a scale where 1 means the same thing. **Scaling** a predictor means dividing it by a constant, usually its [[Standard Deviation]], so that one unit becomes a typical-sized difference. The slope is multiplied by that constant and now means "change in Y per SD of x" ([[Slope]]). A meaningful unit, such as per 100 m or per decade, is a fine alternative to the SD.
 
-> [!info] Before this, it helps to know
-> [[Standard Deviation]] (the usual divisor) · [[Slope]] (what changes) · [[Centering]] (its usual partner)
+An example. Elevation in metres has a slope of −0.02 species per metre, and tree cover has −0.3 species per percent. Which matters more? You cannot tell, because a metre and a percent are not comparable. If elevation's SD is 60 m and tree cover's is 15%, the per-SD slopes are −0.02 × 60 = −1.2 and −0.3 × 15 = −4.5, and now they can be compared ([[Effect Size]]). The code below shows this, and also that the t-value is identical before and after scaling: the fit, predictions, t-values and p-values do not change, only the units.
 
-## The everyday picture
-Converting prices to "days of wages". A house and a loaf of bread are hard to compare in dollars. Expressed as days of typical pay, both are on a scale where 1 means the same thing.
+There are three reasons to scale. Comparability, as above. Numerics: optimisers struggle when one predictor ranges over 0.001 and another over 100,000, and `lmer()` and `glmer()` warn that "predictor variables are on very different scales" ([[Convergence Warnings]]). And priors: one default prior such as Normal(0, 1) is sensible for every slope when every predictor has SD 1 ([[Prior Distribution]]). Scaling is usually paired with [[Centering]], and the combination is [[Standardizing]]. One caution: per-SD slopes depend on the SD of x in this sample, which another study may not share, so scaled slopes are not a permanent ranking of importance.
 
-## A tiny example
-Elevation in metres has slope −0.02 species per metre. Tree cover in percent has slope −0.3 per percent. Which matters more? You can't tell: a metre and a percent aren't comparable. If elevation's SD is 60 m and cover's is 15%, the per-SD slopes are −1.2 and −4.5. Now they can be compared.
-
-## Start from zero
-1. **Pick the constant.** The standard deviation is standard. A meaningful unit (per 100 m, per decade) is also fine.
-2. **Divide every value by it.**
-3. **The slope is multiplied by that constant.** It now means "change in Y per SD of x".
-4. **The fit doesn't change.** Predictions, t-values and p-values are identical.
-5. **Why do it: comparability.** Slopes of different predictors are on a common footing.
-6. **Why do it: numerics.** Optimisers struggle when one predictor ranges over 0.001 and another over 100 000. `lmer` and `glmer` warn "predictor variables are on very different scales".
-7. **Why do it: priors.** One default prior such as Normal(0, 1) is sensible for all slopes when all predictors have SD 1.
-
-## In R
 ```r
 set.seed(17)
 d <- data.frame(elev = rnorm(80, 900, 60), tree = rnorm(80, 30, 15))
@@ -41,18 +27,6 @@ coef(lm(rich ~ elev + tree, d))[-1]                                  # per metre
 coef(lm(rich ~ I(elev / sd(elev)) + I(tree / sd(tree)), d))[-1]      # per SD: comparable
 summary(lm(rich ~ elev, d))$coefficients[2, 3]; summary(lm(rich ~ I(elev / sd(elev)), d))$coefficients[2, 3]   # same t
 ```
-
-## In the course
-`scale()` is applied to predictors in the GLMM and Bayesian labs ([[Course Website]]).
-
-## Common confusions
-- **"Scaling changes significance."** It changes units only.
-- **"Scaled slopes rank importance for good."** They depend on the SD of x in this sample, which another study may not share.
-
-## Explain it back
-- What does a slope mean after dividing x by its SD?
-
-*Pass test:* you can convert a raw slope to a per-SD slope.
 
 ## Connections
 - **Builds on:** [[Standard Deviation]], [[Slope]]

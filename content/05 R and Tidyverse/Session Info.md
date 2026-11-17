@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "Session info is a printed record of the R version, operating system and package versions that produced an analysis."
 aliases:
   - "sessionInfo()"
   - "Package versions"
@@ -12,37 +13,18 @@ status: seedling
 
 # Session Info
 
-**In one line:** session info is a printed record of the R version, operating system and package versions that produced an analysis.
+The batch number on a medicine bottle is the first thing checked if something turns out different next year. **Session info** is the batch number of an analysis: a printed record of the R version, operating system and package versions that produced it. Packages update, and their defaults and algorithms change, so the same code can give different numbers later ([[Packages in R]]). `sessionInfo()` lists what was loaded and its versions; put it at the end of your report.
 
-> [!info] Before this, it helps to know
-> [[Packages in R]] (which change over time) · [[Reproducibility]] (the purpose)
+The code below prints the R version string, the version of the stats package, the names of loaded add-on packages, and the title of R's own citation. Cite R and the key packages in your methods with `citation()` ([[Writing Methods Sections]], [[CRAN]]).
 
-## The everyday picture
-The batch number on a medicine bottle. If something turns out different next year, the first question is "same batch?". Package versions are the batch numbers of your analysis.
+`renv` goes further, saving and restoring an exact package library per project. "Same code, same result, forever" holds only with the same versions, which is why session info is part of [[Reproducibility]].
 
-## Start from zero
-1. **Packages update, and defaults and algorithms change.**
-2. **The same code can then give different numbers.**
-3. **`sessionInfo()` lists what was loaded and its versions.**
-4. **Put it at the end of your report.**
-5. **Cite R and key packages in the methods** with `citation()`.
-6. **`renv` goes further,** saving and restoring an exact package library per project.
-
-## In R
 ```r
 R.version.string
 packageVersion("stats")
 si <- sessionInfo(); si$R.version$version.string; names(si$otherPkgs)
 citation()$title
 ```
-
-## Common confusions
-- **"Same code, same result, forever."** Only with the same versions.
-
-## Explain it back
-- Why might a script give different results two years later?
-
-*Pass test:* you can add version information to a report and cite a package.
 
 ## Connections
 - **Builds on:** [[Packages in R]], [[Reproducibility]]

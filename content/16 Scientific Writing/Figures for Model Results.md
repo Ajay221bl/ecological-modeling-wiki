@@ -3,6 +3,7 @@ type: atomic
 tags:
   - writing
   - flashcards/eco/writing
+description: "Figures for model results show the fitted relationship or effect sizes with uncertainty on the response scale, usually over the raw data, with captions that stand on their own."
 aliases:
   - "Effect plots"
   - "Prediction plots"
@@ -14,29 +15,11 @@ status: seedling
 
 # Figures for Model Results
 
-**In one line:** figures for model results show the fitted relationship or effect sizes with uncertainty on the response scale, usually over the raw data, with captions that stand on their own.
+**Figures for model results** show the fitted relationship or effect sizes with uncertainty on the response scale, usually over the raw data, with captions that stand on their own ([[ggplot2 Grammar of Graphics]], [[Confidence Interval]]). A prediction plot shows the predicted response across a predictor, with a ribbon for uncertainty and the data points underneath ([[Confidence Envelopes]], [[Prediction from a GAM]]). A coefficient plot shows estimates and intervals for several predictors on one axis, and standardised predictors make them comparable ([[Standardizing|Standardization]]).
 
-> [!info] Before this, it helps to know
-> [[ggplot2 Grammar of Graphics]] · [[Confidence Interval]] · [[Prediction from a GAM]]
+Use the response scale, not the link scale, unless you explain it ([[Predictions on Link vs Response Scale]]). Captions say what is plotted, which model, what the ribbon means, and n. Give one message per figure, and let the text tell the reader what to see ([[Writing Results Sections]]). Use colour-blind safe palettes and readable axis labels with units.
 
-## Start from zero
-1. **Prediction plot:** predicted response across a predictor, with a ribbon for uncertainty, data points underneath.
-2. **Coefficient plot:** estimates and intervals for several predictors on one axis (standardized predictors make them comparable).
-3. **Response scale,** not the link scale, unless you explain it.
-4. **Captions** say what is plotted, the model, what the ribbon means, and n.
-5. **One message per figure;** the text tells the reader what to see.
-6. **Colour-blind safe palettes** and readable axis labels with units.
-
-## In the course
-Reproducible coding and figures unit ([[Course Website]]). [[Zuur et al. 2010]] (exploration figures).
-
-## Common confusions
-- **"A table of coefficients is enough."** Readers grasp a curve with a ribbon far faster than a table of logit coefficients.
-
-## Explain it back
-- What should a model-results caption include?
-
-*Pass test:* you can design a results figure and caption.
+This belongs to the reproducible coding and figures unit ([[Course Website]]), and [[Zuur et al. 2010]] show exploration figures. A table of coefficients is not enough: readers grasp a curve with a ribbon far faster than a table of logit coefficients.
 
 ## Connections
 - **Builds on:** [[ggplot2 Grammar of Graphics]], [[Confidence Interval]]

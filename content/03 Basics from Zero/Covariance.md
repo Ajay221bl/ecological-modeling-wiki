@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "Covariance measures whether two variables tend to be above their averages at the same time (positive), in opposite directions (negative), or with no pattern (near zero)."
 aliases:
   - "cov()"
   - "Covariation"
@@ -11,69 +12,21 @@ status: seedling
 
 # Covariance
 
-**In one line:** covariance measures whether two variables tend to be above their averages at the same time (positive), in opposite directions (negative), or with no pattern (near zero).
+Think of two friends' moods over a week. If they tend to be cheerful on the same days and glum on the same days, their moods *co-vary* positively; if one is up whenever the other is down, negatively; if there is no link, about zero. **Covariance** puts a number on that for any two variables measured on the same observations: it says whether they tend to be above their averages at the same time (positive), in opposite directions (negative), or with no pattern (near zero). It is built from *deviations*, each value minus its [[Mean]].
 
-> [!info] Before this, it helps to know
-> [[Mean]] · [[Variance]] (covariance is variance for two variables)
+The recipe is: for each observation, multiply its x deviation by its y deviation, then average the products, dividing by n − 1 for a sample. Multiplying is the trick: both above average (+ × +) or both below (− × −) gives a positive product, meaning "moving together", while one above and one below gives a negative product. Three sites have rain x = 1, 2, 3 and grass y = 2, 4, 7, with means 2 and 4.33. The products are (−1)(−2.33) = 2.33, (0)(−0.33) = 0 and (1)(2.67) = 2.67, which add to 5, so the covariance is 5 / (3 − 1) = 2.5. It is positive: wetter sites have more grass. Notice too that a variable's covariance with itself is its [[Variance]], because multiplying a deviation by itself is squaring it.
 
-## The everyday picture
-Two friends' moods over a week. On days one is cheerful, is the other cheerful too? If they tend to be up together and down together, their moods *co-vary* positively. If one is up whenever the other is down, negatively. If there's no link, near zero.
+The weakness of covariance is its units: here "rain units times grass units". Measure rain in millimetres instead of centimetres and every x deviation is 10 times bigger, so the covariance becomes 25, although nothing about the sites changed. A big covariance might just mean big units, so its size cannot tell you how strong a relationship is. Dividing by both standard deviations removes the units and gives the [[Correlation]], which always lies between −1 and +1 and has the same sign. Covariance still matters in its own right, because it is the raw ingredient of correlation, of regression slopes, and of the variance-covariance matrices that describe how observations are linked in mixed models and autocorrelation models ([[Correlation Structure|Correlation Structures]], [[Variance Components]]).
 
-*Where the picture stops working:* moods have no units. Real variables do, and covariance's size depends on them, which is why we usually convert it into a correlation.
-
-## Words you'll need
-- **Deviation:** a value minus its mean.
-- **Covariance:** the average of (x deviation × y deviation), dividing by n − 1 for a sample.
-- **Units of covariance:** x's units times y's units (cm × grams), awkward to read.
-- **Correlation:** covariance rescaled to sit between −1 and +1 ([[Correlation]]).
-
-## A tiny example
-Three sites: rain x = 1, 2, 3 and grass y = 2, 4, 7. Means 2 and 4.33.
-
-| x − 2 | y − 4.33 | product |
-|---|---|---|
-| −1 | −2.33 | +2.33 |
-| 0 | −0.33 | 0 |
-| +1 | +2.67 | +2.67 |
-| | | sum = **5** |
-
-Covariance = 5 / (3 − 1) = **2.5**. Positive: wetter sites have more grass. Measure rain in mm instead of cm and every x deviation is 10 times bigger, so the covariance becomes **25**, though nothing about the sites changed.
-
-## Start from zero
-1. **Take each observation's deviation from the mean, for both variables.**
-2. **Multiply the two deviations.** *Why:* both above (+ × +) or both below (− × −) gives a positive product, meaning "moving together"; one above and one below gives a negative product.
-3. **Average the products** (dividing by n − 1 for a sample). That's the covariance.
-4. **The variance is the covariance of a variable with itself.** *Why:* multiplying a deviation by itself is squaring it ([[Variance]]).
-5. **Covariance depends on units,** so its size is hard to judge. Dividing by both standard deviations gives the [[Correlation]], which doesn't.
-
-## See it
 ![[Correlation panels.png|700]]
 *What to look at:* positive covariance shows as a cloud tilted up, negative as tilted down.
 
-## Why it is this way
-Multiplying deviations is the simplest arithmetic that rewards "together" and penalises "opposite". Covariance is also the raw ingredient of correlation, regression slopes and the variance-covariance matrices in mixed models and autocorrelation models.
-
-## In R
 ```r
 x <- c(1, 2, 3); y <- c(2, 4, 7)
 cov(x, y)          # 2.5
 cov(x * 10, y)     # 25: same sites, different units
 cov(x, x); var(x)  # identical: variance is covariance with itself
 ```
-
-## In the course
-Covariance underlies correlation structures in the autocorrelation unit ([[Correlation Structure|Correlation Structures]]) and the variance components of mixed models ([[Variance Components]]).
-
-## Common confusions
-- **"A big covariance means a strong relationship."** It might just mean big units. Use correlation to judge strength.
-- **Covariance vs correlation.** Same sign, different scale: correlation is unit-free and lies between −1 and +1.
-
-## Explain it back
-- Use two friends' moods to explain positive and negative covariance.
-- Why does multiplying deviations capture "moving together"?
-- Why did changing cm to mm change the covariance?
-
-*Pass test:* you can compute a covariance for three points by hand and say why its size alone is hard to read.
 
 ## Connections
 - **Builds on:** [[Mean]], [[Variance]]

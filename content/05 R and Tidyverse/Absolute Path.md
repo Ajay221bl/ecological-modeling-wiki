@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "An absolute path gives a file's complete address from the top of the computer's drive, so it is valid on that one computer only."
 aliases:
   - "Full path"
   - "Hard-coded path"
@@ -11,28 +12,11 @@ status: seedling
 
 # Absolute Path
 
-**In one line:** an absolute path gives a file's complete address from the top of the computer's drive, so it is valid on that one computer only.
+Directions that start "from my front door" are perfect for you and useless to anyone living anywhere else. An **absolute path** gives a file's complete address from the top of the computer's drive, such as `C:/Users/ajay/Desktop/proj/data/birds.csv` or `/Users/ajay/...`. It works wherever R's [[Working Directory]] happens to be, but only on that one machine.
 
-> [!info] Before this, it helps to know
-> [[Working Directory]] (the alternative starting point)
+It contains your username and folder layout, so it breaks on every other computer, and on yours when you rename a folder. Legitimate uses are rare: a shared server location, or a URL, which is an absolute address everyone can reach.
 
-## The everyday picture
-Directions that start "from my front door". Perfect for you. Useless to anyone living anywhere else.
-
-## Start from zero
-1. **It starts at the drive root:** `C:/Users/ajay/Desktop/proj/data/birds.csv` or `/Users/ajay/...`.
-2. **It works wherever R's working directory is,** on that machine.
-3. **It contains your username and folder layout.**
-4. **So it breaks on every other computer,** and on yours when you rename a folder.
-5. **Legitimate uses are rare:** a shared server location, or a URL (which is an absolute address everyone can reach).
-
-## Common confusions
-- **"It works, so it's fine."** It works for exactly one person.
-
-## Explain it back
-- What in an absolute path makes it non-portable?
-
-*Pass test:* you can spot an absolute path and say why it will fail elsewhere.
+"It works, so it's fine" is the trap: it works for exactly one person. The portable alternative is a [[Relative Path]] from a project folder, ideally built with [[here()]].
 
 ## Connections
 - **Builds on:** [[Working Directory]]

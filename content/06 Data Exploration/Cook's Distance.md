@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "Cook's distance measures how much all of a model's fitted values would change if one observation were deleted."
 aliases:
   - "Cook's D"
   - "cooks.distance()"
@@ -14,24 +15,12 @@ status: seedling
 
 # Cook's Distance
 
-**In one line:** Cook's distance measures how much all of a model's fitted values would change if one observation were deleted.
+Remove one person from a tug-of-war team and see how far the rope moves: take out a child at the back and nothing shifts; take out the anchor and the whole rope slides. **Cook's distance** measures how much all of a model's fitted values would change if one observation were deleted. Conceptually, fit the model with all n observations, delete observation i and refit, and measure how far the fitted values moved, scaled by the model's error variance and number of coefficients; that is Dᵢ. In practice it is computed from each point's residual and [[Leverage]] without refitting ([[Linear Regression]]).
 
-> [!info] Before this, it helps to know
-> [[Leverage]] (power to pull) · [[Residual]] (how far off the line) · [[Linear Regression]] (the fit)
+Influence is leverage times discrepancy. A big [[Residual]] near the middle of X cannot tilt the line, and a high-leverage point lying on the line does not need to. The code below shows both kinds. Point 21 sits at x = 30, far from the other x values, and far below the trend; its Cook's distance is about 18.5, against a maximum of 0.04 for the ordinary points, and removing it changes the slope from 0.10 to 0.58. Point 22 has a large residual but sits in the middle of x; its Cook's distance is 0.3, and removing it barely changes anything.
 
-## The everyday picture
-Removing one person from a tug-of-war team to see how far the rope moves. Take out a child at the back and nothing shifts. Take out the anchor and the whole rope slides. Cook's distance is how far the rope moves for each person.
+Rules of thumb: Zuur looks closely at D above 1, others use 4/n, and values that stand well clear of the rest deserve a look whatever the cut-off ([[Zuur et al. 2009 Ch2]]). A large Cook's distance means investigate, not delete: is the point an error, or from a different population? Refit without it and report both if conclusions change, a small [[Sensitivity Analysis]]. Cook's distance appears in the standard diagnostic plots for linear models ([[plot() Diagnostics for lm]]), and the relation between outliers, leverage and influence is drawn together in [[Outlier, Leverage and Influence]] ([[Outlier]]).
 
-## Start from zero
-1. **Fit the model with all n observations.**
-2. **Delete observation i and refit.**
-3. **Measure how far the fitted values moved,** scaled by the model's error variance and number of coefficients.
-4. **That is Dᵢ.** In practice it is computed from the residual and the leverage without refitting.
-5. **Influence = leverage × discrepancy.** *Why both are needed:* a big residual near the middle of X can't tilt the line, and a high-leverage point on the line doesn't need to.
-6. **Rules of thumb:** look closely at D above 1 (Zuur), or at values that stand well clear of the rest. Some use 4/n.
-7. **Then investigate the point.** Error? Different population? Refit without it and report both if conclusions change.
-
-## In R
 ```r
 set.seed(10)
 x <- c(runif(20, 0, 10), 30, 5); y <- 2 + 0.5 * x + rnorm(22)
@@ -42,18 +31,6 @@ round(d[c(21, 22)], 2); round(max(d[1:20]), 2)
 rbind(all = coef(m), without_21 = coef(lm(y ~ x, subset = -21)), without_22 = coef(lm(y ~ x, subset = -22)))
 ```
 Point 21 has a Cook's distance far above the rest and removing it changes the slope. Point 22 has a large residual but little influence.
-
-## In the course
-[[Zuur et al. 2009 Ch2]] uses Cook's distance to check for influential observations.
-
-## Common confusions
-- **"Large Cook's distance means delete."** It means investigate.
-- **"A large residual is an influential point."** Not unless it also has leverage.
-
-## Explain it back
-- Which two ingredients make up influence?
-
-*Pass test:* you can tell an outlier, a high-leverage point and an influential point apart.
 
 ## Connections
 - **Builds on:** [[Leverage]], [[Residual]]

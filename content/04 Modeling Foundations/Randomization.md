@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "Randomization means letting chance decide which units receive which treatment."
 aliases:
   - "Random assignment"
   - "Random allocation"
@@ -11,30 +12,12 @@ status: seedling
 
 # Randomization
 
-**In one line:** randomization means letting chance decide which units receive which treatment.
+Picking teams by drawing straws instead of letting captains choose stops the captains from stacking their sides. Straws do not know who is fast, so over many games neither side has a built-in edge. **Randomization** (random assignment) means letting chance decide which units receive which treatment in an [[Experimental Study]]. Because a random number generator knows nothing about the units, the assignment is unrelated to every property they have, so nuisance variables, known and unknown, are balanced between groups on average. With only a few units, straws can still produce lopsided teams by bad luck.
 
-> [!info] Before this, it helps to know
-> [[Random Sampling]] (chance decides which units are in the study) · [[Experimental Study]] (the researcher assigns conditions)
+Eight plots have dryness scores 1 to 8, and four will be burned. If a manager chooses, say, the four driest (5, 6, 7, 8), their mean dryness is 6.5 against 2.5 for the rest, and burning and dryness are hopelessly confounded. A random draw, say plots 2, 3, 6 and 8, gives means of 4.75 against 4.25: nearly balanced, and nobody planned it. Over thousands of random draws the difference averages exactly zero. Any single draw is imperfect, though, so check the balance, and when units are few use blocking, which randomizes within matched sets of similar units.
 
-## The everyday picture
-Picking teams by drawing straws instead of letting captains choose. Captains would stack their sides. Straws don't know who is fast, so over many games neither side has a built-in edge.
+Why insist on chance? Because any rule a person uses to assign treatments, even an unconscious one, can correlate with the outcome, creating a [[Confounding Variable]]. Chance is the only assignment rule guaranteed to be unrelated to everything, and it also makes the probability statements of statistical tests literally true. Do not confuse it with [[Random Sampling]]: random sampling decides which units are in the study, which supports generalizing to a population, while randomization decides which units get the treatment, which supports causal claims. Both uses of chance appear in a good design, alongside a [[Control Group]] and [[Replication]].
 
-*Where the picture stops working:* with only a few players, straws can still give lopsided teams by luck.
-
-## A tiny example
-8 plots, 4 to be burned. Their dryness scores: 1, 2, 3, 4, 5, 6, 7, 8.
-- Manager's choice: burn the four driest (5, 6, 7, 8). Mean dryness 6.5 against 2.5. Hopelessly confounded.
-- Random draw, say plots 2, 3, 6, 8: mean 4.75 against 4.25. Nearly balanced, and nobody planned it.
-
-## Start from zero
-1. **List the units.**
-2. **Use a random number generator to assign treatments.**
-3. **Assignment is now unrelated to every property of the units.** *Why:* the generator knows nothing about them.
-4. **So known and unknown nuisance variables are balanced on average.**
-5. **Small experiments can be unlucky.** Blocking, which randomizes within matched sets, guards against that.
-6. **It differs from random sampling.** Sampling decides who is studied (and to whom results apply). Randomization decides who gets what (and whether effects are causal).
-
-## See it
 ```mermaid
 flowchart LR
   A[Random sampling] --> B[Which units are in the study<br/>supports generalizing]
@@ -42,10 +25,6 @@ flowchart LR
 ```
 *What to look at:* two uses of chance, answering two different questions.
 
-## Why it is this way
-Any rule a person uses to assign treatments, even an unconscious one, can correlate with the outcome. Chance is the only assignment rule guaranteed to be unrelated to everything. It also makes the probability statements of tests literally true.
-
-## In R
 ```r
 set.seed(42)
 dry <- 1:8
@@ -55,19 +34,6 @@ tapply(dry, burn, mean)                       # roughly balanced
 mean(replicate(5000, {b <- sample(rep(c(TRUE, FALSE), 4)); mean(dry[b]) - mean(dry[!b])}))
 ```
 Any one draw is imperfect. On average the groups are identical.
-
-## In the course
-Part of the design critique in Homework 4 ([[Course Website]]).
-
-## Common confusions
-- **"Randomization and random sampling are the same."** One assigns treatments, the other selects units.
-- **"Random assignment guarantees balance."** Only on average. Check, and block if units are few.
-
-## Explain it back
-- What can go wrong when a person chooses which plots to treat?
-- How does randomization differ from random sampling?
-
-*Pass test:* you can randomize treatments in R and say what that buys.
 
 ## Connections
 - **Builds on:** [[Random Sampling]], [[Experimental Study]]

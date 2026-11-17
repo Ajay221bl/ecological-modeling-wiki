@@ -3,6 +3,7 @@ type: atomic
 tags:
   - modeling
   - flashcards/eco/modeling
+description: "The line of inference is the chain of steps from the animals you measured to the population you want to talk about, and a conclusion is only as strong as its weakest link."
 aliases:
   - "Chain of inference"
   - "Scope of inference"
@@ -11,36 +12,12 @@ status: seedling
 
 # Line of Inference
 
-**In one line:** the line of inference is the chain of steps from the animals you measured to the population you want to talk about, and a conclusion is only as strong as its weakest link.
+Think of a relay race where the baton is your conclusion. It must pass from the sample to the sampled population to the population you actually care about, and if it is dropped at any handover it never reaches the finish, however fast the other runners were. The **line of inference** is that chain of steps from the animals you measured to the population you want to talk about, and a conclusion is only as strong as its weakest link. *Inference* means reasoning from data to something not directly observed. The *target population* is what you want to make statements about ([[Biological Population]]); the *sampled population* is what your methods could actually have reached ([[Statistical Population]], [[Study Population]]).
 
-> [!info] Before this, it helps to know
-> [[Statistical Population]] (what the sample represents) · [[Biological Population]] (what you care about) · [[Representative Sample]] (a fair sample)
+You want to know the survival of elk in a national forest, and you collar 40 elk caught near roads in winter. The first link, sample to sampled population, is fine if capture was random among roadside winter elk ([[Random Sampling]], [[Representative Sample]]). The second link, sampled population to target population, is weak: elk far from roads, and summer conditions, were never represented. A simulation shows the danger. If roadside elk survive at 0.85 and the rest at 0.70, the whole forest's survival is about 0.75, but a sample of 40 roadside elk reports about 0.85: a precise answer to a narrower question, and a wrong answer to the forest-wide one. The honest conclusion is "survival of roadside elk in winter was about 0.85".
 
-## The everyday picture
-A relay race. The baton is the conclusion. It passes from the sample to the sampled population to the target population. Drop it at any handover and it never reaches the finish, however fast the other runners were.
+The crucial point is which link statistics covers. A model's standard errors and confidence intervals describe only the first link; they say nothing about whether the sampled population resembles the one you care about. That gap can be closed only by study design or biological argument, never by more statistics ([[Study Design]]). So a narrow confidence interval does not make a conclusion safe beyond the sampled population, and a large sample of the wrong population is just precisely wrong. Keeping the whole chain in view stops a precise answer to the wrong question from being mistaken for knowledge, which is exactly why Powell and Gale separate biological and statistical populations ([[Powell and Gale 2015 Ch2]]).
 
-*Where the picture stops working:* in a relay you see a dropped baton. A broken inference looks just like a sound one in the output.
-
-## Words you'll need
-- **Target population:** what you want to make statements about.
-- **Sampled population:** what your sampling could actually have reached ([[Study Population]]).
-- **Inference:** reasoning from data to something not directly observed.
-
-## A tiny example
-You want to know survival of elk in a national forest.
-- You collar elk caught near roads in winter: 40 animals.
-- Sample to sampled population: fine, if capture was random among road-side winter elk.
-- Sampled to target: weak. Elk far from roads, or summer conditions, were never represented.
-- Honest conclusion: survival of road-side elk in winter was 0.85.
-
-## Start from zero
-1. **Name the target population.**
-2. **Name what your methods could reach.** That is the sampled population.
-3. **Check how units were chosen from it.** Random selection makes the first link strong.
-4. **Ask whether sampled and target populations differ.** *Why:* statistics can't fix this gap. Only design or argument can.
-5. **Limit claims to where the chain holds.**
-
-## See it
 ```mermaid
 flowchart LR
   S[Sample<br/>40 collared elk] -- random sampling --> SP[Sampled population<br/>road-side winter elk]
@@ -48,10 +25,6 @@ flowchart LR
 ```
 *What to look at:* the first arrow is statistics. The second is judgement.
 
-## Why it is this way
-A model's standard errors describe only the first link: sample to sampled population. They say nothing about whether that population resembles the one you care about. Keeping the whole chain in view stops a precise answer to the wrong question from being mistaken for knowledge.
-
-## In R
 ```r
 set.seed(3)
 forest <- data.frame(near_road = rep(c(TRUE, FALSE), c(300, 700)))
@@ -61,19 +34,6 @@ mean(sample(forest$surv[forest$near_road], 40))     # road-side sample: about 0.
 mean(sample(forest$surv, 40))                       # random sample: near 0.75
 ```
 The road-side sample answers a narrower question precisely and the forest-wide question wrongly.
-
-## In the course
-Powell and Gale separate biological and statistical populations to make this point ([[Powell and Gale 2015 Ch2]]).
-
-## Common confusions
-- **"A narrow confidence interval means the conclusion is safe."** It is safe only for the sampled population.
-- **"A large sample fixes it."** A large sample of the wrong population is precisely wrong.
-
-## Explain it back
-- What are the two links in the chain, and which one does statistics cover?
-- Give an example where the sampled and target populations differ.
-
-*Pass test:* you can say what population a given study can honestly speak about.
 
 ## Connections
 - **Builds on:** [[Statistical Population]], [[Biological Population]], [[Representative Sample]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "`separate_wider_delim()` splits one text column into several columns wherever a chosen separator character appears."
 aliases:
   - "separate()"
   - "Splitting a column"
@@ -11,22 +12,12 @@ status: seedling
 
 # separate_wider_delim()
 
-**In one line:** `separate_wider_delim()` splits one text column into several columns wherever a chosen separator character appears.
+A label such as "VC-03-T" packs three facts into one cell: site VC, plot 03, treatment T. Cut it along its dashes and you get three separate tags. **`separate_wider_delim()`**, from tidyr, does that: it splits one text column into several columns wherever a chosen separator, the *delimiter*, appears ([[Strings in R]]). You name the column, the delimiter and the new column names, as in `separate_wider_delim(d, code, delim = "-", names = c("site", "plot", "trt"))` in the example below.
 
-> [!info] Before this, it helps to know
-> [[Tidy Data]] (one value per cell) · [[Strings in R]] (text handling)
+A cell holding several facts breaks the [[Tidy Data]] rule of one value per cell, and the facts inside are often exactly the ones a model needs. Site codes commonly pack the grouping structure of a study, site within region, plot within site, so splitting them gives the separate [[Grouping Factor]] columns that a mixed model with [[Nested Random Effects]] requires. Homework 1 starts this way, by splitting the site code column of the Valles Caldera vegetation data ([[Course Website]]).
 
-## The everyday picture
-Cutting a combined label, "VC-03-T", along its dashes to get three separate tags: site VC, plot 03, treatment T.
+The pieces arrive as text, so convert any that are numbers. `unite()` does the reverse, pasting columns back together with a separator. Older code uses `separate()`, which still works, but the `separate_wider_*` family has replaced it.
 
-## Start from zero
-1. **A cell holding two facts breaks the "one value per cell" rule.**
-2. **Name the column, the delimiter and the new column names.**
-3. **Each piece becomes its own column.**
-4. **Pieces are text.** Convert numbers afterwards.
-5. **Why it matters:** site codes often pack the grouping structure (site, plot, subplot) that a mixed model needs as separate factors.
-
-## In R
 ```r
 library(tidyr)
 d <- data.frame(code = c("VC-03-T", "VC-04-C", "SA-01-T"), cover = c(40, 55, 20))
@@ -34,17 +25,6 @@ d2 <- separate_wider_delim(d, code, delim = "-", names = c("site", "plot", "trt"
 d2
 unite(d2, "code", site, plot, trt, sep = "-")     # the reverse
 ```
-
-## In the course
-Homework 1 starts by splitting a site code column in the Valles Caldera vegetation data ([[Course Website]]).
-
-## Common confusions
-- **"separate() is the function."** The older `separate()` still works. The `separate_wider_*` family replaced it.
-
-## Explain it back
-- Why split a combined site code before modeling?
-
-*Pass test:* you can split a code into site and plot columns.
 
 ## Connections
 - **Builds on:** [[Tidy Data]], [[Strings in R]]

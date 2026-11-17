@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "Zero inflation means a dataset has more zeros than the chosen count distribution can produce."
 aliases:
   - "Zero-inflated data"
   - "Excess zeros"
@@ -12,31 +13,15 @@ status: seedling
 
 # Zero Inflation
 
-**In one line:** zero inflation means a dataset has more zeros than the chosen count distribution can produce.
+Survey people at a lake about fish caught. Some fished all day and caught nothing, but many were only picnicking. The picnickers' zeros come from a different process, and they swell the zero pile beyond what fishing luck alone explains. **Zero inflation** means a dataset has more zeros than the chosen count distribution can produce ([[Count Data]]). Every count distribution predicts some zeros: for a [[Poisson Distribution]], P(0) = e^(−mean), so a Poisson with mean 3 gives zero only about 5% of the time (e⁻³ = 0.050). If 40% of your counts are zero and the rest average about 3, a plain Poisson cannot be right.
 
-> [!info] Before this, it helps to know
-> [[Count Data]] (where it arises) · [[Poisson Distribution]] (which sets the expected number of zeros)
+Many zeros on their own are not inflation. A species with a mean count of 0.2 gives 82% zeros under a plain Poisson (e^−0.2 = 0.82), so the test is always observed zeros against the zeros the fitted model expects, given its covariates. In the code below, 40% of sites are unsuitable and always give zero while the rest are Poisson with mean 3; observed zeros are 43%, against about 18% expected by a Poisson with the same overall mean. Ecologists distinguish two kinds of zero. *Structural* or false zeros come from places where the species could never be, or was present but missed. *Sampling* or true zeros come from suitable places where none happened to be present this time ([[Detection Probability]]).
 
-## The everyday picture
-Counting fish caught per angler at a lake. Some anglers fished all day and caught nothing. But many of the people you surveyed weren't fishing at all, only picnicking. Their zeros come from a different process, and they swell the zero pile beyond what fishing luck alone explains.
+Ignoring excess zeros biases the estimated mean and understates the variance. Check [[Overdispersion]] first, because a [[Negative Binomial Distribution]] often absorbs the extra zeros without any special zero component, and zero-inflated models are not automatically needed for ecological counts. If the zeros remain, a [[Zero-inflated Model]] or a [[Hurdle Model]] adds a second process for them; the example's zero-inflated fit recovers both the count mean of 3 and the 40% share of extra zeros. This is step 4 of the protocol ([[Zuur et al. 2010]], [[Zuur et al. 2009 Ch11]]).
 
-## A tiny example
-A Poisson with mean 3 gives zero about 5% of the time (e⁻³ = 0.0498). If 40% of your counts are zero and the mean of the rest is around 3, the plain Poisson can't be right.
-
-## Start from zero
-1. **Every count distribution predicts some zeros.** Poisson: P(0) = e^(−mean).
-2. **Compare observed with expected zeros** under your fitted model.
-3. **Many zeros alone isn't inflation.** A species with mean count 0.2 gives 82% zeros under a plain Poisson.
-4. **Two kinds of zero.** *Structural (false) zeros:* the species could never be there, or was there and missed. *Sampling (true) zeros:* suitable habitat, none present this time.
-5. **Why it matters:** ignoring excess zeros biases the estimated mean and understates the variance.
-6. **Check overdispersion first.** A negative binomial often absorbs the extra zeros without a special zero part.
-7. **If not, use a zero-inflated or hurdle model,** which adds a second process for the zeros.
-
-## See it
 ![[Zero inflation.png|700]]
 *What to look at:* the bar at zero towers over what the Poisson with the same mean predicts.
 
-## In R
 ```r
 set.seed(4)
 n <- 500; present <- rbinom(n, 1, 0.6); y <- present * rpois(n, 3)   # 40% structural zeros
@@ -47,19 +32,6 @@ sum(y == 0)
 library(pscl); z <- zeroinfl(y ~ 1 | 1, dist = "poisson")
 c(count_mean = exp(coef(z)[1]), p_extra_zero = plogis(coef(z)[2]))   # recovers 3 and 0.4
 ```
-
-## In the course
-Protocol step 4 ([[Zuur et al. 2010]]). Zero-inflated models: [[Zuur et al. 2009 Ch11]].
-
-## Common confusions
-- **"Lots of zeros means zero inflation."** Only if there are more than the distribution predicts given the covariates.
-- **"Zero-inflated models are always needed for ecological counts."** Often a negative binomial is enough.
-
-## Explain it back
-- How do you judge whether zeros are in excess?
-- What are the two sources of zeros?
-
-*Pass test:* you can compute expected zeros and compare them with observed.
 
 ## Connections
 - **Builds on:** [[Count Data]], [[Poisson Distribution]]

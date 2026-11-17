@@ -3,6 +3,7 @@ type: atomic
 tags:
   - lm-glm
   - flashcards/eco/lm-glm
+description: "Analysis of deviance compares nested GLMs by testing whether the drop in deviance from adding terms is larger than chance would give, using a chi-square distribution."
 aliases:
   - "Analysis of deviance table"
   - "anova() for GLMs"
@@ -13,44 +14,18 @@ status: seedling
 
 # Analysis of Deviance
 
-**In one line:** analysis of deviance compares nested GLMs by testing whether the drop in deviance from adding terms is larger than chance would give, using a chi-square distribution.
+Did the golf lessons improve your score by more than your scores bounce around anyway? **Analysis of deviance** asks that of nested GLMs: it tests whether the drop in [[Deviance]] from adding terms is larger than chance would give ([[Nested Models]]). Fit two nested models; the drop in deviance, deviance(small) − deviance(big), equals the likelihood ratio statistic ([[Likelihood Ratio Test]]); compare it with a [[Chi-square Distribution]] with df equal to the number of extra parameters. If the deviance without `tree` is 160 on 98 df and with `tree` 110 on 97 df, the drop is 50 on 1 df, far above the 5% cut-off of 3.84, so there is strong evidence for `tree`.
 
-> [!info] Before this, it helps to know
-> [[Deviance]] (what is compared) · [[Likelihood Ratio Test]] (it is one) · [[Nested Models]] (the requirement) · [[ANOVA]] (the linear-model counterpart)
+In R, `anova(m_small, m_big, test = "Chisq")` compares models, and `drop1(m, test = "Chisq")` tests each term in turn. The code below compares an intercept-only model, a tree-cover model and a model adding grass cover; tree cover gives a big drop and grass, which has no real effect, a small one. When a dispersion is estimated, as in quasi families, gamma or normal models, use `test = "F"` instead.
 
-## The everyday picture
-Asking whether the lessons improved your golf by more than your scores bounce around anyway.
+It is more reliable than [[Wald Test|Wald z-tests]] in small samples and for factors with several levels, because it gives one test for the whole factor; it is the GLM version of [[ANOVA]] ([[Zuur et al. 2009 Ch9]], [[Course Website]]). One trap: `anova(m)` on a single model is sequential, testing each term after those listed before it, so order matters with correlated predictors. `drop1()` or `car::Anova()` gives tests adjusted for all other terms. For non-nested models use [[AIC]].
 
-## A tiny example
-Deviance without `tree`: 160 on 98 df. With `tree`: 110 on 97 df. Drop = 50 on 1 df. The chi-square(1) 5% cutoff is 3.84. Strong evidence for `tree`.
-
-## Start from zero
-1. **Fit two nested models.**
-2. **Drop in deviance = deviance(small) − deviance(big).** This equals the likelihood ratio statistic.
-3. **Compare with chi-square,** df = number of extra parameters.
-4. **R:** `anova(m_small, m_big, test = "Chisq")`. Or `drop1(m, test = "Chisq")` for each term in turn.
-5. **`anova(m)` on one model is sequential:** each term is tested after those listed before it, so order matters with correlated predictors.
-6. **When a dispersion is estimated** (quasi families, gamma, normal), use `test = "F"`.
-7. **More reliable than Wald z-tests** for small samples and for factors with several levels (one test for the whole factor).
-
-## In R
 ```r
 set.seed(5); d <- data.frame(tree = runif(100, 0, 60), grass = runif(100, 0, 100)); d$y <- rpois(100, exp(2 - 0.02 * d$tree))
 m0 <- glm(y ~ 1, family = poisson, d); m1 <- glm(y ~ tree, family = poisson, d); m2 <- glm(y ~ tree + grass, family = poisson, d)
 anova(m0, m1, m2, test = "Chisq")
 drop1(m2, test = "Chisq")
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch9]] and Ch10. Used in the GLM labs to test factors ([[Course Website]]).
-
-## Common confusions
-- **"`anova(m)` tests each term adjusted for all others."** It is sequential. `drop1` or `car::Anova` gives the adjusted tests.
-
-## Explain it back
-- What distribution is the drop in deviance compared with, and with what df?
-
-*Pass test:* you can run and read an analysis of deviance table.
 
 ## Connections
 - **Builds on:** [[Deviance]], [[Likelihood Ratio Test]], [[Nested Models]]

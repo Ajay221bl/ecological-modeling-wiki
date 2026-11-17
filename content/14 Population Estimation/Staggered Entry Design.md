@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "A staggered entry design lets animals join a survival study at different times, each contributing to the risk set only from when it was first monitored."
 aliases:
   - "Staggered entry"
   - "Staggered-entry Kaplan-Meier"
@@ -12,31 +13,11 @@ status: seedling
 
 # Staggered Entry Design
 
-**In one line:** a staggered entry design lets animals join a survival study at different times, each contributing to the risk set only from when it was first monitored.
+New employees join a company throughout the year, and each one's "time at risk of quitting" starts on their own first day. A **staggered entry design** lets animals join a survival study at different times, each contributing to the risk set only from when it was first monitored ([[Kaplan-Meier Estimator]], [[Censoring]]). Animals are added as they are captured or nests are found, and the number at risk in each interval counts only the animals being monitored then.
 
-> [!info] Before this, it helps to know
-> [[Kaplan-Meier Estimator]] · [[Censoring]]
+Pollock et al. (1989) adapted Kaplan-Meier for staggered entry in wildlife, and [[Mayfield Nest Survival|Mayfield's method]] allows it too, assuming constant survival for new and old animals. The design assumes newly added animals have the same survival as those already in the study ([[Known-fate Models]], [[Exposure Days]]).
 
-## The everyday picture
-New employees joining a company throughout the year. Each one's "time at risk of quitting" starts on their own first day.
-
-## Start from zero
-1. **Animals are added** as they are captured or nests are found.
-2. **The number at risk** in each interval counts only animals being monitored then.
-3. **Pollock et al. (1989)** adapted Kaplan-Meier for staggered entry in wildlife.
-4. **Mayfield's method** allows it too, assuming constant survival for new and old animals.
-5. **Assumes newly added animals have the same survival** as those already in the study.
-
-## In the course
-[[Powell and Gale 2015]] Ch9 ("How is staggered entry handled with Kaplan-Meier methods?").
-
-## Common confusions
-- **"Late entrants should be backdated to the start."** That counts days when they were not watched and inflates survival.
-
-## Explain it back
-- How does a late entrant enter the risk set?
-
-*Pass test:* you can set up a staggered entry dataset.
+Powell and Gale (Ch9) ask "How is staggered entry handled with Kaplan-Meier methods?" ([[Powell and Gale 2015]]). Late entrants should not be backdated to the start: that counts days when they were not watched and inflates survival.
 
 ## Connections
 - **Builds on:** [[Kaplan-Meier Estimator]], [[Censoring]]

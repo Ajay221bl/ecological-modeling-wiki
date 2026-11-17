@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "A commit is one saved snapshot of the project, labelled with a short message saying what changed."
 aliases:
   - "git commit"
   - "Commit message"
@@ -11,29 +12,11 @@ status: seedling
 
 # Commit
 
-**In one line:** a commit is one saved snapshot of the project, labelled with a short message saying what changed.
+A save point in a video game: before the risky bit you save, and if things go wrong you reload from there instead of starting the game again. A **commit** is one saved snapshot of a project, labelled with a short message saying what changed. You stage the files that belong together, write the message and commit, and [[Git]] stores the snapshot with its author, time and a unique ID, adding it to the [[Repository]]'s history ([[Version Control]]).
 
-> [!info] Before this, it helps to know
-> [[Git]] (what records it) · [[Version Control]] (the idea)
+A good message finishes the sentence "This commit will...", for example "Fix site codes for 2021 surveys". Messages such as "update" tell you nothing six months later. Commit small and often: a commit that does one thing can be understood, and undone, on its own, while a single commit at the end of the day forces one message to describe six unrelated changes.
 
-## The everyday picture
-A save point in a video game. Before the risky bit you save. If things go wrong you reload from there instead of starting the game again.
-
-## Start from zero
-1. **Stage the files that belong together.**
-2. **Write a message that finishes the sentence "This commit will...".** For example "Fix site codes for 2021 surveys".
-3. **Commit.** Git stores the snapshot with author, time and a unique ID.
-4. **Commit small and often.** *Why:* a commit that does one thing can be understood and undone on its own.
-5. **Commit code and small data, not large outputs** ([[gitignore File]]).
-
-## Common confusions
-- **"One commit at the end of the day."** Then one message has to describe six unrelated changes.
-- **"Messages like 'update' are fine."** Six months later they tell you nothing.
-
-## Explain it back
-- What makes a good commit message?
-
-*Pass test:* you can describe when to commit and what to write.
+Commit code and small data, not large outputs that can be regenerated, such as knitted reports or cached model fits; the [[gitignore File]] keeps those out. A commit stays on your computer until you send it to a remote copy ([[Push and Pull]]).
 
 ## Connections
 - **Builds on:** [[Git]]

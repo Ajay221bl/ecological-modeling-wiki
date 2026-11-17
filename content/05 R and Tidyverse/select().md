@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "`select()` keeps, drops or reorders the columns of a table by name."
 aliases:
   - "dplyr select"
   - "Choosing columns"
@@ -11,22 +12,12 @@ status: seedling
 
 # select()
 
-**In one line:** `select()` keeps, drops or reorders the columns of a table by name.
+Printing a wide spreadsheet, you tick the columns you want, in the order you want them, and leave the rest off the page. **`select()`**, from dplyr, keeps, drops or reorders the columns of a table by name; rows are untouched. `select(data, a, b)` keeps columns a and b in that order, and a minus sign drops, so `select(data, -notes)` removes the notes column ([[Data Frame]], [[Pipe Operator]]).
 
-> [!info] Before this, it helps to know
-> [[Data Frame]] (columns are variables) · [[Pipe Operator]] (chaining)
+Helpers save typing when tables are wide. A range such as `a:d` takes every column from a to d; `starts_with("tree")` and `ends_with("_km")` match by name; `where(is.numeric)` keeps every numeric column; and `everything()` means "all the rest", so `select(birds, everything())` moves birds to the front. The code below uses each. The same helpers work inside [[across()]] for applying one function to many columns, and columns can be renamed while selecting, or separately with [[rename()]].
 
-## The everyday picture
-Choosing which columns of a wide spreadsheet to print. You tick the ones you want, in the order you want them, and leave the rest off the page.
+Remember the division of labour: select is for columns, [[filter()]] is for rows. One practical trap: the MASS package also has a function called `select()`, and if MASS is loaded after dplyr, `select()` fails with a strange error about unused arguments. Writing `dplyr::select()` names the right one explicitly, as in the last line of the example.
 
-## Start from zero
-1. **`select(data, a, b)` keeps columns a and b, in that order.**
-2. **A minus drops:** `select(data, -notes)`.
-3. **Ranges and helpers save typing:** `a:d`, `starts_with("tree")`, `ends_with("_km")`, `where(is.numeric)`.
-4. **Rows are untouched.**
-5. **MASS also has a `select()`.** *Why to know:* if MASS is loaded after dplyr, `select()` breaks with a strange error. Write `dplyr::select()`.
-
-## In R
 ```r
 library(dplyr)
 d <- data.frame(site = c("A", "B"), tree_2km = c(10, 30), tree_5km = c(12, 25), birds = c(9, 6), notes = c("ok", "windy"))
@@ -36,14 +27,6 @@ d |> select(site, starts_with("tree"))
 d |> select(where(is.numeric))
 d |> dplyr::select(birds, everything())     # move birds to the front
 ```
-
-## Common confusions
-- **"select() and filter() are interchangeable."** select is columns, filter is rows.
-
-## Explain it back
-- How do you keep every column whose name starts with "tree"?
-
-*Pass test:* you can keep, drop and reorder columns.
 
 ## Connections
 - **Builds on:** [[Data Frame]]

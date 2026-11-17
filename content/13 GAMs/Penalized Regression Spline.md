@@ -3,6 +3,7 @@ type: atomic
 tags:
   - gam
   - flashcards/eco/gam
+description: "A penalized regression spline uses more basis functions than needed and adds a penalty for wiggliness to the fitting criterion, so the data and the penalty together decide how bendy the curve is."
 aliases:
   - "Penalised spline"
   - "P-spline"
@@ -13,39 +14,19 @@ status: seedling
 
 # Penalized Regression Spline
 
-**In one line:** a penalized regression spline uses more basis functions than needed and adds a penalty for wiggliness to the fitting criterion, so the data and the penalty together decide how bendy the curve is.
+A **penalized regression spline** uses more basis functions than needed and adds a penalty for wiggliness to the fitting criterion, so the data and the penalty together decide how bendy the curve is ([[Spline]], [[Wiggliness Penalty]], [[Least Squares]]). The criterion is fit to the data (deviance or sum of squares) + λ × wiggliness. With λ = 0 you get an unpenalised, very wiggly spline; as λ grows the curve becomes the unpenalised part, a straight line for m = 2. λ itself is estimated by REML, ML or GCV ([[Smoothing Parameter]], [[REML for Smoothness Selection]], [[Generalized Cross-validation]]).
 
-> [!info] Before this, it helps to know
-> [[Spline]] · [[Wiggliness Penalty]] · [[Least Squares]]
+This solves the knot-choice problem of regression splines: just choose k large enough ([[Basis Dimension and gam.check()]]). The figure shows the same basis with three λ values and three very different curves. In the code below a 20-function basis through a sine wave uses 19.0 effective degrees of freedom with a tiny λ, 7.2 with the REML-chosen λ, and 1.0, a straight line, with a huge λ ([[Effective Degrees of Freedom]]).
 
-## Start from zero
-1. **Fitting criterion:** fit to data (deviance or sum of squares) + λ × wiggliness.
-2. **λ = 0:** an unpenalised, very wiggly spline.
-3. **λ → ∞:** the curve becomes the unpenalised part (a straight line for m = 2).
-4. **λ is estimated** by REML, ML or GCV.
-5. **Solves the knot-choice problem** of regression splines: just choose k large enough.
-6. **Zuur Ch3:** "smoothing splines alias penalised splines".
+Zuur Ch3 calls them "smoothing splines alias penalised splines" ([[Zuur et al. 2009 Ch3]], [[Pedersen et al. 2019]]). The penalty doesn't remove flexibility you need; it removes only what the data don't support.
 
-## See it
 ![[Smoothing parameter.png|700]]
 *What to look at:* the same basis, three λ values, three very different curves.
 
-## In R
 ```r
 library(mgcv); set.seed(8); d <- data.frame(x = runif(150)); d$y <- sin(2 * pi * d$x) + rnorm(150, 0, 0.3)
 sapply(c(1e-6, NA, 1e3), function(l) round(summary(if (is.na(l)) gam(y ~ s(x, k = 20), data = d, method = "REML") else gam(y ~ s(x, k = 20), data = d, sp = l))$edf, 1))    # tiny, REML-chosen, large lambda
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch3]]. [[Pedersen et al. 2019]].
-
-## Common confusions
-- **"The penalty removes flexibility you might need."** It removes only what the data don't support.
-
-## Explain it back
-- What does the curve become as λ grows very large?
-
-*Pass test:* you can write the penalised fitting criterion.
 
 ## Connections
 - **Builds on:** [[Spline]], [[Wiggliness Penalty]], [[Least Squares]]

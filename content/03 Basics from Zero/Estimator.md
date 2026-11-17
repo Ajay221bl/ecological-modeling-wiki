@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "An estimator is the recipe (a formula or procedure) that turns data into an estimate, such as \"add up the values and divide by how many there are\"."
 aliases:
   - "Estimators"
   - "Estimation formula"
@@ -11,38 +12,12 @@ status: seedling
 
 # Estimator
 
-**In one line:** an estimator is the recipe (a formula or procedure) that turns data into an estimate, such as "add up the values and divide by how many there are".
+At the sweet-jar stall, one person's method is "count one layer, then multiply by the number of layers". That *method* is an **estimator**: the recipe, a formula or procedure, that turns data into an [[Estimate]] of a [[Parameter]]. Apply the method on Monday and you get 480; apply it on Tuesday from a different side and you get 530. The method stays the same while its output changes. The sample [[Mean]], "add the values and divide by how many there are", is an estimator, and so is Powell and Gale's survival estimator, number alive divided by number tagged ([[Powell and Gale 2015 Ch1]]).
 
-> [!info] Before this, it helps to know
-> [[Parameter]] (what is being guessed) · [[Estimate]] (the number the recipe produces)
+Same data, different recipes, different answers. Suppose 8 of 10 tagged animals are alive. Recipe A, "alive ÷ tagged", gives 0.8. Recipe B, "always say 0.5", gives 0.5 whatever the data; it never wobbles, but it is useless. Recipe C, "alive ÷ (tagged + 1)", gives 8 / 11 = 0.73; it runs slightly low on average but is less jumpy when samples are tiny. Choosing the recipe is a real decision, and you can grade one without ever learning the truth: imagine, or simulate, applying it to thousands of samples. The spread of answers it would produce is its *sampling distribution*. If those answers centre on the truth the estimator is *unbiased* ([[Bias]]); how tightly they cluster is its [[Precision]], summarised by the [[Standard Error]]. Simulating 5,000 studies of 10 animals with true survival 0.8, recipe A averages 0.80 and recipe C about 0.73.
 
-## The everyday picture
-At the sweet-jar stall, one person's method is "count one layer, then multiply by the number of layers". That *method* is an estimator. Apply it on Monday and you get 480; apply it on Tuesday from a different side and you get 530. The method stays the same; its output changes. Because the method is written down, you can judge it before using it: does it tend to guess too high? Does it vary a lot?
+This is why statisticians talk about estimators and not just estimates. A single guess cannot be graded when the truth is hidden, but a recipe can be graded by how it behaves over many imagined samples, which is the only level at which "good" and "bad" can be judged. Recipe B shows that precision alone is not enough: an estimator that never varies but is always wrong is worthless. Most fitting methods are general-purpose estimators: [[Least Squares]] and [[Maximum Likelihood Estimation]] are recipes that work for whole families of models. Powell and Gale define an estimator as the formula that produces an estimate ([[Powell and Gale 2015 Ch2]]), and their primer is largely a catalogue of estimators for animal populations. Remember the pair: the estimator is the recipe, the estimate is the number it produced.
 
-*Where the picture stops working:* a sweet-jar method is judged by opening jars. A statistical estimator is judged with maths or with simulation, because the truth is never revealed.
-
-## Words you'll need
-- **Estimator:** a recipe for turning data into a guess about a parameter.
-- **Estimate:** one number produced by applying the recipe to one dataset ([[Estimate]]).
-- **Unbiased estimator:** one that is right on average over many samples ([[Bias]]).
-- **Sampling distribution:** the spread of estimates the recipe would give over many samples ([[Standard Error]]).
-
-## A tiny example
-Three recipes for the same parameter, the true survival rate:
-- **Recipe A:** "number alive ÷ number tagged". With 8 of 10 alive, A gives **0.8**.
-- **Recipe B:** "always say 0.5". It gives **0.5** whatever the data. It never wobbles, but it's useless (badly biased).
-- **Recipe C:** "number alive ÷ (number tagged + 1)". With 8 of 10 alive, C gives 8/11 = **0.73**. Slightly low on average, but less jumpy when n is tiny.
-
-Same data, three estimators, three estimates. Choosing the recipe is a real decision.
-
-## Start from zero
-1. **To guess a parameter, you need a rule for using the data.** That rule is the estimator.
-2. **The sample mean is an estimator:** x̄ = (sum of values) / n ([[Mean]]). So is Powell and Gale's survival estimator, Ŝ = n alive / n tagged ([[Powell and Gale 2015 Ch1]], p. 6).
-3. **Apply the recipe to one dataset and you get one estimate.**
-4. **You can judge a recipe without knowing the truth.** *How:* imagine (or simulate) applying it to thousands of samples, and look at whether its answers centre on the truth ([[Bias]]) and how tightly they cluster ([[Precision]]).
-5. **Most fitting methods are estimators.** Least squares ([[Least Squares]]) and maximum likelihood ([[Maximum Likelihood Estimation]]) are general-purpose recipes.
-
-## See it
 ```mermaid
 flowchart LR
   D1["Dataset 1"] --> E["Estimator (recipe)"]
@@ -52,10 +27,6 @@ flowchart LR
 ```
 *What to look at:* one recipe, many datasets, many estimates.
 
-## Why it is this way
-You can't grade a single guess when the truth is hidden, but you *can* grade a recipe by how it behaves over many imagined samples. That's why statisticians talk about estimators: it's the only level at which "good" and "bad" can be judged.
-
-## In R
 ```r
 estimator_A <- function(alive) mean(alive)                         # alive / tagged
 estimator_C <- function(alive) sum(alive) / (length(alive) + 1)
@@ -64,20 +35,6 @@ sims <- replicate(5000, rbinom(10, 1, 0.8), simplify = FALSE)     # 5000 studies
 mean(sapply(sims, estimator_A))   # about 0.80: unbiased
 mean(sapply(sims, estimator_C))   # about 0.73: biased low
 ```
-
-## In the course
-Powell and Gale define an estimator as the formula that produces an estimate ([[Powell and Gale 2015 Ch2]], p. 16), and their whole primer is a catalogue of estimators for animal populations.
-
-## Common confusions
-- **Estimator vs estimate.** The recipe vs the number it produced.
-- **"An estimator that never varies is precise, so good."** Recipe B never varies and is useless. Precision without lack of bias isn't enough.
-
-## Explain it back
-- Use the sweet-jar method to explain what an estimator is.
-- How can you judge an estimator if you never learn the truth?
-- In the tiny example, why is recipe B bad even though it never wobbles?
-
-*Pass test:* you can name the estimator behind any estimate you report.
 
 ## Connections
 - **Builds on:** [[Parameter]], [[Estimate]]

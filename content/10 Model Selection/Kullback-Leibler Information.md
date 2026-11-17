@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "Kullback-Leibler information measures how much information is lost when one probability distribution (a model) is used to approximate another (the truth)."
 aliases:
   - "Kullback-Leibler divergence"
   - "KL divergence"
@@ -14,45 +15,16 @@ status: seedling
 
 # Kullback-Leibler Information
 
-**In one line:** Kullback-Leibler information measures how much information is lost when one probability distribution (a model) is used to approximate another (the truth).
+A weather forecaster's average surprise is small if the forecast matches the real climate and grows the more the forecast differs. **Kullback-Leibler information** counts that extra surprise: it measures how much information is lost when one [[Probability Distribution]], a model g, is used to approximate another, the truth f. KL(f, g) = Σ f(x) log[f(x)/g(x)], an integral for continuous x ([[Logarithm]], [[Expected Value]]). If a coin truly lands heads 50% of the time and model A says 60%, KL = 0.5 log(0.5/0.6) + 0.5 log(0.5/0.4) = 0.020; model B, saying 90%, gives 0.511, losing 25 times more information.
 
-> [!info] Before this, it helps to know
-> [[Probability Distribution]] (what is compared) · [[Logarithm]] (in the formula) · [[Expected Value]] (it is an average)
+It is zero only if g equals f and otherwise positive. It isn't symmetric, KL(f, g) ≠ KL(g, f), so it isn't a true distance: in the code below KL from the fair coin to model B is 0.51 but from B to the fair coin 0.37. Splitting it as Σ f log f − Σ f log g, the first term depends only on the truth and is the same for every model, so comparing models needs only the second, the expected log-likelihood of the model under the truth.
 
-## The everyday picture
-A weather forecaster's average surprise. If the forecast distribution matches the real climate, outcomes are rarely surprising. The more the forecast differs, the more surprise per day on average, and KL counts the extra surprise.
+The data estimate that term, biased upward because the model was fitted to the same data, by about K, the number of parameters. Correcting for that bias and multiplying by −2 gives [[AIC]], which is how [[Anderson and Burnham 2002]] introduce it ([[Information Theory]], [[Full Reality]]). KL is not a distance like any other: it is asymmetric and violates the triangle inequality.
 
-## A tiny example
-Truth: a coin lands heads 50% of the time. Model A says 60%, model B says 90%.
-- KL(truth, A) = 0.5 log(0.5/0.6) + 0.5 log(0.5/0.4) = 0.020.
-- KL(truth, B) = 0.5 log(0.5/0.9) + 0.5 log(0.5/0.1) = 0.511.
-B loses 25 times more information.
-
-## Start from zero
-1. **KL(f, g) = Σ f(x) log[f(x)/g(x)]** (an integral for continuous x), with f the truth and g the model.
-2. **It is zero only if g equals f.** Otherwise positive.
-3. **It isn't symmetric:** KL(f, g) ≠ KL(g, f). So it isn't a true distance.
-4. **Split it:** Σ f log f − Σ f log g. The first term depends only on the truth and is the same for every model.
-5. **So comparing models only needs the second term:** the expected log-likelihood of the model under the truth.
-6. **The data provide an estimate of that,** biased upward because the model was fitted to the same data. The bias is about K, the number of parameters.
-7. **Correcting for that bias and multiplying by −2 gives AIC.**
-
-## In R
 ```r
 kl <- function(f, g) sum(f * log(f / g)); f <- c(0.5, 0.5)
 c(A = kl(f, c(0.6, 0.4)), B = kl(f, c(0.9, 0.1)), reversed_B = kl(c(0.9, 0.1), f))
 ```
-
-## In the course
-[[Anderson and Burnham 2002]] introduce AIC through it.
-
-## Common confusions
-- **"KL is a distance like any other."** It is asymmetric and violates the triangle inequality.
-
-## Explain it back
-- Why does the truth-only term drop out when comparing models?
-
-*Pass test:* you can compute KL for two discrete distributions.
 
 ## Connections
 - **Builds on:** [[Probability Distribution]], [[Logarithm]], [[Expected Value]]

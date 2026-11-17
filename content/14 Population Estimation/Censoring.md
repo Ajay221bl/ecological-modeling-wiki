@@ -3,6 +3,7 @@ type: atomic
 tags:
   - popest
   - flashcards/eco/popest
+description: "Censoring means an animal's fate is unknown after (or before) some time, so it contributes information only for the period when it was being monitored."
 aliases:
   - "Censored data"
   - "Right censoring"
@@ -14,32 +15,11 @@ status: seedling
 
 # Censoring
 
-**In one line:** censoring means an animal's fate is unknown after (or before) some time, so it contributes information only for the period when it was being monitored.
+A patient who moves away during a medical study was known to be alive for the eight months you saw them, but not what happened after. **Censoring** means an animal's fate is unknown after, or before, some time, so it contributes information only for the period when it was being monitored ([[Known-fate Models]]). Right censoring, the most common kind, is when monitoring stops before death because a collar fails, the animal leaves or the study ends; left censoring is when the event happened before monitoring started or the start time is unknown.
 
-> [!info] Before this, it helps to know
-> [[Known-fate Models]]
+Do not drop censored animals, because their days alive are real information, and do not count them as dead or alive at the end ([[Exposure Days]]). The key assumption is that censoring is unrelated to fate; a predator that also destroys collars breaks it ([[Radio-telemetry Data]]). In Powell and Gale's (Ch9) elk example, an elk lost on day 16 contributes 15 exposure days and no death. The [[Kaplan-Meier Estimator]] handles censoring by removing the animal from the risk set after its last check.
 
-## The everyday picture
-A patient who moves away during a medical study. You know they were alive for the eight months you saw them, but not what happened after.
-
-## Start from zero
-1. **Right censoring:** monitoring stops before death (collar fails, animal leaves, study ends). Most common.
-2. **Left censoring:** the event happened before monitoring started, or the start time is unknown.
-3. **Do not drop censored animals;** their days alive are real information.
-4. **Do not count them as dead or alive** at the end.
-5. **Key assumption:** censoring is unrelated to fate. A predator that also destroys collars breaks this.
-6. **Powell and Gale (Ch9) elk example:** an elk lost on day 16 contributes 15 exposure days and no death.
-
-## In the course
-[[Powell and Gale 2015]] Ch9 ("What is the difference between left- and right-censoring?").
-
-## Common confusions
-- **"Remove censored animals to keep data clean."** That throws away information and biases survival downward if the remaining animals are the shorter-monitored ones.
-
-## Explain it back
-- What assumption must censoring meet?
-
-*Pass test:* you can handle censored records correctly.
+Powell and Gale (Ch9) ask "What is the difference between left- and right-censoring?" ([[Powell and Gale 2015]]). Removing censored animals to keep the data clean throws away information and biases survival downward if the remaining animals are the shorter-monitored ones.
 
 ## Connections
 - **Builds on:** [[Known-fate Models]]

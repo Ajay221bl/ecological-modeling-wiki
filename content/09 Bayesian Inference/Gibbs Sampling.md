@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "Gibbs sampling updates one parameter at a time by drawing it directly from its full-conditional distribution, cycling through all parameters over and over."
 aliases:
   - "Gibbs sampler"
   - "Gibbs updates"
@@ -12,42 +13,17 @@ status: seedling
 
 # Gibbs Sampling
 
-**In one line:** Gibbs sampling updates one parameter at a time by drawing it directly from its full-conditional distribution, cycling through all parameters over and over.
+You can't tidy a whole house at once, but given the present state of the other rooms you can put this one in order; go round and round and the whole house gets there. **Gibbs sampling** updates one parameter at a time by drawing it directly from its [[Full-conditional Distribution]], cycling through all parameters over and over ([[MCMC]]). Start with values for all parameters; draw parameter 1 from [θ₁ | all others, data]; draw parameter 2 from [θ₂ | all others, data], using the new θ₁; continue through all parameters for one iteration, and repeat. The sequence converges to the joint posterior.
 
-> [!info] Before this, it helps to know
-> [[Full-conditional Distribution]] (what is drawn from) · [[Conjugate Prior]] (what makes those draws easy) · [[MCMC]] (the family)
+No proposals are rejected, since each draw comes from the exact conditional, but this needs recognisable full conditionals, which a [[Conjugate Prior]] provides. Its weakness is that when parameters are strongly correlated, moving one at a time is slow. In the code below, Gibbs sampling of two normal variables with correlation 0.9 reproduces the correlation (0.90) and sd (0.98), but successive draws of x have a lag-1 autocorrelation of 0.80, so the chain moves slowly ([[Chain Autocorrelation]]).
 
-## The everyday picture
-Tidying a house one room at a time. You can't clean it all at once. But given the present state of the other rooms, you can put this one in order. Go round and round, and the whole house gets there.
+JAGS stands for "Just Another Gibbs Sampler" and BUGS for "Bayesian inference Using Gibbs Sampling"; both mix Gibbs with other methods where needed ([[JAGS and BUGS]], [[Hobbs and Hooten 2015 Ch7]]). Gibbs is not a different idea from the [[Metropolis-Hastings Algorithm]]: it is the special case with acceptance probability 1. [[Hamiltonian Monte Carlo]] copes better with correlated parameters.
 
-## Start from zero
-1. **Start with values for all parameters.**
-2. **Draw parameter 1 from [θ₁ | all others, data].**
-3. **Draw parameter 2 from [θ₂ | all others (using the new θ₁), data].**
-4. **Continue through all parameters.** That is one iteration.
-5. **Repeat.** The sequence converges to the joint posterior.
-6. **No proposals are rejected.** Each draw comes from the exact conditional.
-7. **Needs recognisable full conditionals,** which conjugate priors provide.
-8. **Weakness:** when parameters are strongly correlated, moving one at a time is slow.
-9. **JAGS stands for "Just Another Gibbs Sampler".** BUGS: "Bayesian inference Using Gibbs Sampling". Both mix Gibbs with other methods where needed.
-
-## In R
 ```r
 set.seed(19); rho <- 0.9; x <- y <- 0; out <- matrix(NA, 5000, 2)        # Gibbs for a correlated bivariate normal
 for (i in 1:5000) { x <- rnorm(1, rho * y, sqrt(1 - rho^2)); y <- rnorm(1, rho * x, sqrt(1 - rho^2)); out[i, ] <- c(x, y) }
 round(c(cor = cor(out)[1, 2], sd_x = sd(out[, 1]), lag1_autocorrelation = acf(out[, 1], plot = FALSE)$acf[2]), 2)
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch7]].
-
-## Common confusions
-- **"Gibbs is a different idea from Metropolis-Hastings."** It is the special case with acceptance probability 1.
-
-## Explain it back
-- What does one Gibbs iteration consist of?
-
-*Pass test:* you can describe the cycle and say when it is slow.
 
 ## Connections
 - **Builds on:** [[Full-conditional Distribution]], [[Conjugate Prior]]

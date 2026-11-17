@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "R-hat compares the variation between chains with the variation within chains, and is close to 1 when all the chains are sampling the same distribution."
 aliases:
   - "Rhat"
   - "Gelman-Rubin statistic"
@@ -15,43 +16,17 @@ status: seedling
 
 # R-hat
 
-**In one line:** R-hat compares the variation between chains with the variation within chains, and is close to 1 when all the chains are sampling the same distribution.
+Four thermometers in one room each flicker a little. If the differences between thermometers are no bigger than each one's own flicker, they agree; if one reads steadily higher, something is wrong. **R-hat**, also called the Gelman-Rubin statistic or potential scale reduction factor, compares the variation between MCMC chains with the variation within them ([[MCMC Chains]], [[Variance]]). W is how much each chain moves around its own mean, B how much the chain means differ, and R-hat ≈ √(pooled variance estimate / W), where the pooled estimate mixes W and B. It is the same between-versus-within logic as [[ANOVA]].
 
-> [!info] Before this, it helps to know
-> [[MCMC Chains]] (several are needed) · [[Variance]] (what is compared) · [[ANOVA]] (the same between-versus-within logic)
+If the chains have converged, between-chain differences are just what within-chain noise would produce and R-hat is 1; above 1, the chains disagree or are still drifting ([[MCMC Convergence]]). Below 1.01 is the modern standard and below 1.1 the older rule. Modern versions, rank-normalised and using split chains, also catch chains that differ in spread and trends within a chain. In the code below, four chains with the same mean give R-hat 1.000 and four where one is shifted by 1 give 1.20; the `posterior` package's modern R-hat gives 1.00 for well-mixed chains.
 
-## The everyday picture
-Four thermometers in one room. Each flickers a little. If the differences between thermometers are no bigger than each one's own flicker, they agree. If one reads steadily higher than the others, something is wrong.
+It is reported for every parameter in brms and Stan summaries, in the `Rhat` column, and one bad R-hat is enough to distrust the fit; it needs at least two chains ([[Course Website]], [[Hobbs and Hooten 2015 Ch7]]). Check it alongside a [[Trace Plot]] and the [[Effective Sample Size]]. R-hat near 1 does not mean the model fits the data, only that the chains agree with each other. And 1.05 is not fine by current standards: investigate anything above 1.01.
 
-## Start from zero
-1. **Within-chain variance W:** how much each chain moves around its own mean.
-2. **Between-chain variance B:** how much the chain means differ.
-3. **If the chains have converged,** between-chain differences are just what within-chain noise would produce.
-4. **R-hat ≈ √(pooled variance estimate / W).** The pooled estimate mixes W and B.
-5. **R-hat = 1:** chains agree. **Above 1:** chains disagree, or are still drifting.
-6. **Thresholds:** below 1.01 is the modern standard. Below 1.1 was the older rule.
-7. **Modern versions** (rank-normalised, split chains) also catch chains that differ in spread, and trends within a chain.
-8. **Reported for every parameter** in brms and Stan summaries. One bad R-hat is enough to distrust the fit.
-9. **It needs at least two chains.**
-
-## In R
 ```r
 set.seed(25); library(coda); mk <- function(means) mcmc.list(lapply(means, function(m) mcmc(rnorm(1000, m))))
 c(agree = gelman.diag(mk(c(0, 0, 0, 0)))$psrf[1], disagree = gelman.diag(mk(c(0, 0, 0, 1)))$psrf[1])
 library(posterior); rhat(matrix(rnorm(4000), ncol = 4))
 ```
-
-## In the course
-The `Rhat` column of every brms summary ([[Course Website]]). [[Hobbs and Hooten 2015 Ch7]] describes the Gelman-Rubin diagnostic.
-
-## Common confusions
-- **"R-hat near 1 means the model fits the data."** It says only that the chains agree with each other.
-- **"R-hat of 1.05 is fine."** By current standards investigate anything above 1.01.
-
-## Explain it back
-- What two variances does R-hat compare?
-
-*Pass test:* you can read R-hat from a summary and act on it.
 
 ## Connections
 - **Builds on:** [[MCMC Chains]], [[Variance]]

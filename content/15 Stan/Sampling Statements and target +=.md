@@ -3,6 +3,7 @@ type: atomic
 tags:
   - stan
   - flashcards/eco/stan
+description: "In Stan, `y ~ normal(mu, sigma)` and `target += normal_lpdf(y | mu, sigma)` both add the log density of the data or prior to `target`, the running total of the log posterior that the sampler explores."
 aliases:
   - "target +="
   - "target"
@@ -17,36 +18,11 @@ status: seedling
 
 # Sampling Statements and target +=
 
-**In one line:** in Stan, `y ~ normal(mu, sigma)` and `target += normal_lpdf(y | mu, sigma)` both add the log density of the data or prior to `target`, the running total of the log posterior that the sampler explores.
+A scorekeeper adds points: each line of the model block adds its log density to one running score, and the sampler explores where that score is high. In Stan, `y ~ normal(mu, sigma)` and `target += normal_lpdf(y | mu, sigma)` both add the log density of the data or prior to `target`, the running total of the log posterior ([[Stan Program Blocks]], [[Log-likelihood]], [[Bayes' Theorem]]). The log posterior is log prior + log likelihood + a constant, and multiplying probabilities becomes adding logs, which avoids numbers too small for a computer.
 
-> [!info] Before this, it helps to know
-> [[Stan Program Blocks]] · [[Log-likelihood]] · [[Bayes' Theorem]]
+`~` drops constant terms while `target +=` with `_lpdf` keeps them; posteriors are the same, but only `target +=` gives a full log density, which some tools such as bridge sampling need. `_lpdf` is for continuous densities and `_lpmf` for discrete masses, such as `poisson_lpmf`. `target +=` is how you write custom likelihoods, such as mixtures for occupancy with `log_sum_exp(...)`. For example, an all-zero occupancy site is `target += log_sum_exp(log(psi) + binomial_lpmf(0 | K, p), log1m(psi));`, adding the "occupied but missed" and "unoccupied" routes on the probability scale ([[Detection History]], [[Occupancy]]).
 
-## The everyday picture
-A scorekeeper adding points. Each line of the model block adds its log density to one running score; the sampler then explores where that score is high.
-
-## A tiny example
-Occupancy likelihood for an all-zero site, written by hand:
-`target += log_sum_exp(log(psi) + binomial_lpmf(0 | K, p), log1m(psi));`
-
-## Start from zero
-1. **Log posterior = log prior + log likelihood + constant.**
-2. **`target`** holds that sum for the current parameter values.
-3. **`~` drops constant terms;** `target +=` with `_lpdf` keeps them. Posteriors are the same; only `target +=` gives a full log density (needed for some tools like bridge sampling).
-4. **`_lpdf`** is for continuous densities; **`_lpmf`** for discrete masses (poisson_lpmf).
-5. **`target +=` is how you write custom likelihoods,** such as mixtures for occupancy: `log_sum_exp(...)`.
-6. **Multiplying probabilities becomes adding logs,** which avoids numbers too small for a computer.
-
-## In the course
-Stan labs ([[Course Website]]).
-
-## Common confusions
-- **"`~` draws a random number."** In the model block it adds a log density; it does not simulate.
-
-## Explain it back
-- What is the difference between `~` and `target +=`?
-
-*Pass test:* you can write a likelihood with either form.
+These statements are used throughout the Stan labs ([[Course Website]], [[Vectorized Sampling Statements]]). In the model block `~` does not draw a random number; it adds a log density and does not simulate.
 
 ## Connections
 - **Builds on:** [[Stan Program Blocks]], [[Log-likelihood]], [[Bayes' Theorem]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - exploration
   - flashcards/eco/exploration
+description: "The variance inflation factor of a predictor says how many times larger the variance of its coefficient is because of that predictor's overlap with the others."
 aliases:
   - "VIF"
   - "GVIF"
@@ -12,31 +13,12 @@ status: seedling
 
 # Variance Inflation Factor
 
-**In one line:** the variance inflation factor of a predictor says how many times larger the variance of its coefficient is because of that predictor's overlap with the others.
+Think of a tax on precision. The **variance inflation factor** (VIF) of a predictor says how many times larger the variance of its coefficient is because of that predictor's overlap with the other predictors ([[Collinearity]]). To compute it, take one predictor, X_j, regress it on all the other predictors, and record that regression's [[R-squared]], R²_j. Then VIF_j = 1 / (1 − R²_j). With R²_j = 0 the VIF is 1, no tax at all; with R²_j = 0.9 it is 10. Because a standard error is the square root of a variance, √VIF is the multiplier on the [[Standard Error]].
 
-> [!info] Before this, it helps to know
-> [[Collinearity]] (the problem measured) · [[R-squared]] (used in its formula) · [[Standard Error]] (what gets inflated)
+An example. Regress tree cover on shrub cover and elevation and suppose R² = 0.80: the other predictors explain 80% of tree cover. Then VIF = 1 / (1 − 0.80) = 5, so the slope's variance is 5 times larger and its standard error √5 ≈ 2.2 times larger than if tree cover stood alone. The code below computes VIFs with `car::vif()`, reproduces the tree cover value by hand from the auxiliary regression, and shows that after dropping shrub cover the VIFs fall to near 1. VIF beats pairwise correlations because it catches a predictor that is a combination of several others even when no single pair is strongly correlated ([[Pairplot]]).
 
-## The everyday picture
-A tax on precision. With VIF = 1 you pay nothing. With VIF = 4 the variance of your slope estimate is four times what it would be if this predictor stood alone, so its standard error is doubled.
+Thresholds are conventions: Zuur and colleagues use 3 as a strict cut-off, others use 5 or 10 ([[Zuur et al. 2010]]). A common procedure is to drop the predictor with the largest VIF, recompute, and repeat until all are below the threshold, though which variable to keep should also be a biological choice ([[Model Selection]]). Factors with several levels and interactions get a generalised VIF (GVIF) from `car::vif()`, and `performance::check_collinearity()` does the same for mixed models. A high VIF does not mean the model is wrong, only that separate effects are poorly resolved. And ignore VIFs between x and x², or x and an interaction containing it: they are correlated by construction, which [[Centering]] x first largely removes.
 
-## A tiny example
-Regress tree cover on shrub cover and elevation. Suppose R² = 0.80: the others explain 80% of tree cover.
-- VIF = 1 / (1 − 0.80) = 5.
-- The slope's variance is 5 times larger, its standard error √5 = 2.2 times larger.
-
-## Start from zero
-1. **Take one predictor, X_j.**
-2. **Regress it on all the other predictors.** Record R²_j.
-3. **VIF_j = 1 / (1 − R²_j).**
-4. **R²_j = 0 gives VIF 1.** R²_j = 0.9 gives VIF 10.
-5. **√VIF is the multiplier on the standard error.**
-6. **Why it beats pairwise correlation:** it catches a predictor that is a combination of several others even when no single pair is strongly correlated.
-7. **Thresholds are conventions.** Zuur and colleagues use 3 as a strict cut-off. Others use 5 or 10.
-8. **Procedure:** drop the predictor with the largest VIF, recompute, repeat until all are below the threshold.
-9. **Factors with several levels and interactions** get a generalised VIF (GVIF) from `car::vif`.
-
-## In R
 ```r
 library(car)
 set.seed(6)
@@ -47,19 +29,6 @@ vif(m)
 1 / (1 - summary(lm(tree ~ shrub + elev))$r.squared)     # the same number for tree, by hand
 vif(lm(rich ~ tree + elev))                              # after dropping shrub: near 1
 ```
-
-## In the course
-Step 5 of the protocol ([[Zuur et al. 2010]]). `performance::check_collinearity()` gives the same for mixed models.
-
-## Common confusions
-- **"High VIF means the model is wrong."** It means the separate effects are poorly resolved.
-- **"VIF matters for polynomial or interaction terms."** x and x² are correlated by construction. Centre x first and ignore VIF among such terms.
-
-## Explain it back
-- Compute VIF for R² = 0.75.
-- What does √VIF tell you?
-
-*Pass test:* you can compute a VIF from an R² and interpret it.
 
 ## Connections
 - **Builds on:** [[Collinearity]], [[R-squared]]

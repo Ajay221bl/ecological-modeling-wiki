@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "∏ (capital pi) is shorthand for \"multiply all of these together\", just as Σ means \"add all of these up\"."
 aliases:
   - "Pi notation"
   - "Product"
@@ -12,36 +13,12 @@ status: seedling
 
 # Product Notation
 
-**In one line:** ∏ (capital pi) is shorthand for "multiply all of these together", just as Σ means "add all of these up".
+A door has three locks, each left open with its own chance: 0.5, 0.4 and 0.2. A burglar gets in only if all three are open, and the chance of that is 0.5 × 0.4 × 0.2 = 0.04. "Multiply every chance on the list" is exactly what **product notation** says. The symbol ∏, a capital Greek pi (P for "product"), is shorthand for "multiply all of these together", just as Σ means "add all of these up" ([[Summation Notation]]). The numbers written below and above it give the index range: $\prod_{i=1}^{n} p_i$ reads "for i from 1 to n, multiply p-i into the running total". Do not confuse capital ∏ with the lower-case π, the circle constant 3.14.
 
-> [!info] Before this, it helps to know
-> [[Summation Notation]] (the same idea with adding) · [[Greek Letters and Notation]]
+Two examples. Four nest boxes hold 4, 7, 2 and 5 eggs; $\prod_{i=1}^{4} x_i$ = 4 × 7 × 2 × 5 = 280. More usefully, four nests each survive with chances 0.9, 0.8, 0.9 and 0.7, so the chance that all four survive is 0.9 × 0.8 × 0.9 × 0.7 = 0.454. Multiplying chances like this is only allowed when the events are *independent*, meaning one happening does not change the chance of another ([[Independence of Observations|Independence]]); the notation does not check that for you, and dependent events need conditional probabilities instead ([[Conditional Probability]]).
 
-## The everyday picture
-Three locks on a door, each with its own chance of being left open: 0.5, 0.4 and 0.2. A burglar gets in only if *all three* are open. The chance of that is 0.5 × 0.4 × 0.2 = **0.04**. "Multiply every chance on the list" is what ∏ says.
+Products appear whenever several independent things must all happen, and the most important case is the [[Likelihood]]: the probability of a whole dataset under a model is each observation's probability multiplied together, a ∏ over the observations ([[Hobbs and Hooten 2015 Ch3]]). That creates a practical problem. Multiply 500 probabilities of 0.01 and the answer is so small that the computer rounds it to 0. The cure is the [[Logarithm]], which turns a product into a sum: $\log \prod p_i = \sum \log p_i$. The logs of those 500 probabilities add to a perfectly manageable −2,303. That is why software always works with log-likelihoods. The notation itself is just one of the road signs in [[Greek Letters and Notation]], short for a loop that multiplies everything on the list.
 
-*Where the picture stops working:* the locks have to be independent (one being open doesn't change the others). Product notation itself doesn't check that; you do.
-
-## Words you'll need
-- **∏ (capital pi, Greek P for "product"):** multiply together everything that follows.
-- **Index range ($i = 1$ to $n$):** where the list starts and stops, written below and above ∏.
-- **Independent events:** events whose chances don't affect each other, so their joint chance is the product ([[Independence of Observations|Independence]]).
-- **Likelihood:** the probability of the whole dataset under a model, a product over observations ([[Likelihood]]).
-
-## A tiny example
-Four nest boxes hold 4, 7, 2 and 5 eggs. $\prod_{i=1}^{4} x_i$ = 4 × 7 × 2 × 5 = **280**.
-
-Four independent nests each survive with chance 0.9, 0.8, 0.9, 0.7. The chance all four survive is $\prod p_i$ = 0.9 × 0.8 × 0.9 × 0.7 = **0.454**.
-
-## Start from zero
-1. **You have a list of numbers, numbered by i.** p₁, p₂, ..., pₙ.
-2. **You want all of them multiplied.** Writing p₁ × p₂ × ... gets long.
-3. **So write $\prod_{i=1}^{n} p_i$.** Read it: "for i from 1 to n, multiply p-i into the running total".
-4. **It shows up whenever several independent things must all happen.** *Why:* the chance of independent events all happening is their chances multiplied.
-5. **The likelihood of a dataset is a ∏.** Each observation's probability, multiplied together.
-6. **Logs turn a ∏ into a Σ:** $\log \prod p_i = \sum \log p_i$. *Why software cares:* 500 probabilities of 0.01 multiply to a number so small the computer rounds it to 0; their logs add to a sensible −2303 ([[Logarithm]]).
-
-## See it
 ```mermaid
 flowchart LR
   P1["p1 = 0.9"] --> X["multiply"]
@@ -52,10 +29,6 @@ flowchart LR
 ```
 *What to look at:* ∏ is one loop that multiplies everything on the list.
 
-## Why it is this way
-Probability of "this *and* this *and* this" is built by multiplying, so any formula about a whole dataset of independent observations is a product. Having a symbol for it keeps those formulas short.
-
-## In R
 ```r
 x <- c(4, 7, 2, 5)
 prod(x)                          # 280
@@ -63,20 +36,6 @@ prod(c(0.9, 0.8, 0.9, 0.7))      # 0.4536: all four nests survive
 prod(rep(0.01, 500))             # 0: too tiny for the computer
 sum(log(rep(0.01, 500)))         # -2302.6: the log version is fine
 ```
-
-## In the course
-Hobbs and Hooten write the joint probability of independent data as a product ([[Hobbs and Hooten 2015 Ch3]], §3.3).
-
-## Common confusions
-- **∏ the symbol vs π the number 3.14.** Capital ∏ means "multiply all"; lower-case π is the circle constant.
-- **"I can multiply any chances."** Only independent ones. Dependent events need conditional probabilities ([[Conditional Probability]]).
-
-## Explain it back
-- Use three locks to explain what ∏ does.
-- Why is a likelihood a product?
-- Why does software add logs instead of multiplying probabilities?
-
-*Pass test:* you can read any ∏ formula aloud as "for each value, multiply...".
 
 ## Connections
 - **Builds on:** [[Summation Notation]], [[Greek Letters and Notation]]

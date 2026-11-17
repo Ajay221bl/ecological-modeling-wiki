@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "A logarithm runs an exponent backwards: it answers \"how many times did I multiply to get here?\" Since 2³ = 8, the log base 2 of 8 is 3."
 aliases:
   - "Log"
   - "Logarithms"
@@ -12,43 +13,15 @@ status: seedling
 
 # Logarithm
 
-**In one line:** a logarithm runs an exponent backwards: it answers "how many times did I multiply to get here?" Since 2³ = 8, the log base 2 of 8 is 3.
+A pond started with 100 frogs and now has 800, and the number doubles every year. How many years passed? Count the doublings: 100 to 200 to 400 to 800, three doublings. That backwards question, "how many steps of multiplying got me here?", is a **logarithm**. It runs an [[Exponent]] in reverse: since 2³ = 8, the log base 2 of 8 is 3, written log₂(8) = 3. In general log_b(x) = y means b^y = x, where b is the *base*, the number being multiplied. Base 10 gives log₁₀(1000) = 3 because 10³ = 1000; base e ≈ 2.718 gives the [[Natural Logarithm]], which statistics uses by default. The answer need not be whole: log₂(10) ≈ 3.32 means "a bit more than three doublings".
 
-> [!info] Before this, it helps to know
-> [[Exponent]] (the log undoes it)
+The most useful property is that logs turn multiplying into adding. 100 × 1000 = 100,000, and in logs (base 10) that is 2 + 3 = 5, and log₁₀(100,000) is indeed 5. The reason: multiplying a by b stacks b's multiplication steps on top of a's, so the step counts add. In symbols, log(a × b) = log a + log b. Logs also squash big numbers and stretch small ones: 1, 10, 100 and 1000 become 0, 1, 2 and 3, so skewed data with a few huge values look far more even on a log scale ([[Transformation]]). And log(1) = 0 for any base, because b⁰ = 1.
 
-## The everyday picture
-A pond started with 100 frogs and now has 800. The number doubles each year. *How many years passed?* Count the doublings: 100 → 200 → 400 → 800, three doublings. That backwards question, "how many steps of multiplying?", is a logarithm: log₂(800 / 100) = log₂(8) = 3.
+Statistics turns multiplications into additions all the time. A likelihood multiplies hundreds of probabilities together, which quickly gives numbers too small for a computer to handle, so everyone works with the log-likelihood, which adds them instead ([[Likelihood]], [[Powell and Gale 2015 Ch3]]). Logs are also how a straight-line model can describe something that multiplies, such as population growth. Two practical warnings. You cannot take the log of zero or of a negative number, because no number of multiplications of a positive base ever reaches 0 or goes below it, so data containing zeros cannot be logged directly. And in R and most statistics papers, `log()` means the natural log; use `log10()` for base 10 and `log2()` for base 2.
 
-*Where the picture stops working:* the answer needn't be whole. log₂(10) ≈ 3.32 means "a bit more than three doublings".
-
-## Words you'll need
-- **Logarithm (log):** the exponent you'd need to reach a number. log_b(x) = y means b^y = x.
-- **Base (b):** the number being multiplied: 2, 10 or e.
-- **log₁₀:** base 10. log₁₀(1000) = 3.
-- **Natural log:** base e ≈ 2.718, the one statistics uses ([[Natural Logarithm]]).
-
-## A tiny example
-- log₁₀(100) = **2**, because 10² = 100.
-- log₁₀(1000) = **3**, because 10³ = 1000.
-- log₁₀(1) = **0**, because 10⁰ = 1.
-- **Multiplying becomes adding:** 100 × 1000 = 100,000. In logs: 2 + 3 = **5**, and log₁₀(100,000) = 5. Two numbers multiplied, their logs added.
-
-## Start from zero
-1. **An exponent goes forward:** start, multiply n times, arrive.
-2. **A log goes backward:** given where you arrived, how many multiplications? *Why it's useful:* growth data hand you the result, and you want the rate.
-3. **Logs turn multiplying into adding.** log(a × b) = log a + log b. *Why:* multiplying a by b stacks b's steps on top of a's, so the step counts add.
-4. **Logs squash big numbers and stretch small ones.** 1, 10, 100, 1000 become 0, 1, 2, 3. *Why it matters:* skewed data with a few huge values look more even on a log scale ([[Transformation]]).
-5. **You can't take the log of zero or a negative number.** *Why:* no number of multiplications of a positive base ever reaches 0 or goes negative.
-
-## See it
 ![[Logarithms and exponents.png|700]]
 *What to look at:* the log curve rises quickly then flattens: each extra unit of log means multiplying, not adding.
 
-## Why it is this way
-Statistics turns multiplications into additions all the time: a likelihood multiplies hundreds of probabilities, and its log adds them ([[Likelihood]]). Logs are also how a straight-line model can describe something that multiplies, like population growth.
-
-## In R
 ```r
 log10(100)                      # 2
 log10(100 * 1000)               # 5
@@ -56,20 +29,6 @@ log10(100) + log10(1000)        # 5: multiplying became adding
 log2(8)                         # 3 doublings
 log10(0)                        # -Inf: no log of zero
 ```
-
-## In the course
-Powell and Gale switch to the log of the likelihood because products of many probabilities get unmanageably small ([[Powell and Gale 2015 Ch3]]).
-
-## Common confusions
-- **"log means base 10."** In R and most stats papers, `log()` means the natural log; use `log10()` for base 10.
-- **log(0).** It doesn't exist. Data with zeros can't be logged directly.
-
-## Explain it back
-- Use the frogs to explain what a log answers.
-- Why does log(a × b) = log a + log b?
-- Why is there no log of zero?
-
-*Pass test:* you can say, without a calculator, that log₁₀(10,000) = 4 and why.
 
 ## Connections
 - **Builds on:** [[Exponent]]

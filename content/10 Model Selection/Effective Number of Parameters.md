@@ -3,6 +3,7 @@ type: atomic
 tags:
   - selection
   - flashcards/eco/selection
+description: "The effective number of parameters measures how flexible a fitted model really is, which can be fewer than its nominal parameter count when priors, pooling or penalties constrain the parameters."
 aliases:
   - "p_D"
   - "p_waic"
@@ -13,42 +14,17 @@ status: seedling
 
 # Effective Number of Parameters
 
-**In one line:** the effective number of parameters measures how flexible a fitted model really is, which can be fewer than its nominal parameter count when priors, pooling or penalties constrain the parameters.
+A team listed with eleven players, several told to stay near the goal, has fewer people roaming free than the team sheet says. The **effective number of parameters** measures how flexible a fitted model really is ([[Number of Parameters]]). In AIC each parameter counts as fully free, but in a hierarchical or penalised model parameters are pulled toward each other or toward zero, so they don't each use a full degree of freedom ([[Partial Pooling]], [[Regularization]]). Twenty group intercepts with strong pooling might count as only five effective parameters.
 
-> [!info] Before this, it helps to know
-> [[Number of Parameters]] (the nominal count) · [[Partial Pooling]] (one reason it shrinks) · [[Regularization]] (another)
+Different criteria estimate it differently. [[DIC]]'s pD is the mean deviance minus the deviance at the posterior mean; [[WAIC]]'s p_waic is the sum over observations of the posterior variance of log p(yᵢ | θ); and LOO's p_loo is lppd − elpd_loo ([[Leave-one-out Cross-validation]]). In the code below 20 group means with little true difference between groups are shrunk so strongly that they count as about 9.5 effective parameters.
 
-## The everyday picture
-A team listed with eleven players, several of whom are told to stay near the goal. On paper eleven, in practice fewer people roaming free.
+As a diagnostic, p_loo much larger than the nominal count, or larger than n/5, signals a misspecified model or very influential points. GAMs report [[Effective Degrees of Freedom]], the same idea for smooths ([[Hobbs and Hooten 2015 Ch9]]). pD need not be a whole number; it is a continuous measure.
 
-## Start from zero
-1. **In AIC, K counts parameters.** Each one is fully free.
-2. **In a hierarchical or penalised model** parameters are pulled toward each other or toward zero, so they don't each use a full degree of freedom.
-3. **The effective number estimates the actual flexibility.**
-4. **DIC's pD:** mean deviance minus deviance at the posterior mean.
-5. **WAIC's p_waic:** sum over observations of the posterior variance of log p(yᵢ | θ).
-6. **LOO's p_loo:** lppd − elpd_loo.
-7. **Example:** 20 group intercepts with strong pooling might count as only 5 effective parameters.
-8. **Diagnostic:** p_loo much larger than the nominal count, or larger than n/5, signals a misspecified model or very influential points.
-9. **GAMs report effective degrees of freedom** (edf), the same idea for smooths.
-
-## In R
 ```r
 set.seed(3); J <- 20; g <- rep(1:J, each = 3); a <- rnorm(J, 0, 0.3); y <- 5 + a[g] + rnorm(60)
 m <- lme4::lmer(y ~ 1 + (1 | g), REML = FALSE); vc <- as.data.frame(lme4::VarCorr(m))$vcov; tau2 <- vc[1]; s2 <- vc[2]
 shrink <- tau2 / (tau2 + s2 / 3); c(nominal_group_means = J, effective_approx = round(J * shrink, 1))      # strong pooling: far fewer effective parameters
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch9]].
-
-## Common confusions
-- **"pD must be a whole number."** It is a continuous measure.
-
-## Explain it back
-- Why is the effective number below the nominal count in a hierarchical model?
-
-*Pass test:* you can explain p_waic and p_loo.
 
 ## Connections
 - **Builds on:** [[Number of Parameters]], [[Partial Pooling]], [[Regularization]]

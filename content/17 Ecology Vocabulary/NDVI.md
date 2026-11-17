@@ -3,6 +3,7 @@ type: atomic
 tags:
   - ecology
   - flashcards/eco/ecology
+description: "NDVI is a satellite index of vegetation greenness, (NIR − Red) / (NIR + Red), ranging from −1 to 1, with higher values meaning more live green vegetation."
 aliases:
   - "Normalized Difference Vegetation Index"
   - "Greenness index"
@@ -12,34 +13,16 @@ status: seedling
 
 # NDVI
 
-**In one line:** NDVI is a satellite index of vegetation greenness, (NIR − Red) / (NIR + Red), ranging from −1 to 1, with higher values meaning more live green vegetation.
+**NDVI**, the Normalized Difference Vegetation Index, is a satellite index of vegetation greenness, (NIR − Red) / (NIR + Red), ranging from −1 to 1, with higher values meaning more live green vegetation ([[Explanatory Variable]]). Healthy plants reflect near-infrared and absorb red light, so their NDVI is high: water and bare ground sit near or below 0, and dense vegetation at 0.6 to 0.9. In the code below reflectances for dense vegetation, sparse vegetation and water give NDVI values of 0.72, 0.20 and −0.09.
 
-> [!info] Before this, it helps to know
-> [[Explanatory Variable]]
+Time series of NDVI show green-up and senescence, which is plant [[Phenology]]. NDVI saturates in dense forests, so it cannot distinguish high biomass levels. [[Lawton et al. 2022]] modelled desert locust and Australian plague locust outbreaks against prior NDVI with hierarchical GAMs at nested spatial levels ([[Hierarchical GAM]]).
 
-## Start from zero
-1. **Healthy plants reflect near-infrared and absorb red light,** so their NDVI is high.
-2. **Values:** water and bare ground near or below 0; dense vegetation 0.6 to 0.9.
-3. **Time series of NDVI** show green-up and senescence (phenology).
-4. **Lawton et al. (2022)** modelled desert locust and Australian plague locust outbreaks against prior NDVI with hierarchical GAMs at nested spatial levels.
-5. **Saturates** in dense forests, so it cannot distinguish high biomass levels.
+NDVI does not measure biomass; it measures greenness, which saturates at high biomass.
 
-## In R
 ```r
 nir <- c(0.50, 0.30, 0.05); red <- c(0.08, 0.20, 0.06)
 round((nir - red) / (nir + red), 2)   # dense vegetation, sparse, water
 ```
-
-## In the course
-[[Lawton et al. 2022]].
-
-## Common confusions
-- **"NDVI measures biomass."** It measures greenness, which saturates at high biomass.
-
-## Explain it back
-- Why is NDVI high for healthy vegetation?
-
-*Pass test:* you can compute and interpret NDVI.
 
 ## Connections
 - **Builds on:** [[Explanatory Variable]]

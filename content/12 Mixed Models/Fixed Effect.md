@@ -3,6 +3,7 @@ type: atomic
 tags:
   - mixed
   - flashcards/eco/mixed
+description: "A fixed effect is a parameter estimated directly as a single value, such as an average slope or the difference between treatments, that applies to the whole population of interest."
 aliases:
   - "Fixed effects"
   - "Population-level effect"
@@ -12,34 +13,15 @@ status: seedling
 
 # Fixed Effect
 
-**In one line:** a fixed effect is a parameter estimated directly as a single value, such as an average slope or the difference between treatments, that applies to the whole population of interest.
+A **fixed effect** is a [[Parameter]] estimated directly as a single value, such as an average slope or the difference between treatments, that applies to the whole population of interest. Every coefficient in an ordinary `lm()` is a fixed effect ([[Regression Coefficient]]). In a [[Mixed Effects Model]] the fixed effects are the "average", population-level relationships, which `fixef(m)` extracts. In the code below the `sleepstudy` fixed effects are an intercept of 251.4 ms and a slope of 10.5 ms per day.
 
-> [!info] Before this, it helps to know
-> [[Parameter]] · [[Regression Coefficient]]
+A grouping variable fitted as fixed gets one parameter per level, minus one, and each level is estimated on its own with no sharing of information ([[No Pooling]]). Use fixed effects for the predictors you want to test or interpret, for treatments, and for factors with few levels that are all of interest, such as sex or treatment; use a [[Random Effect]] for groups sampled from a larger population.
 
-## Start from zero
-1. **Every coefficient in an ordinary `lm()` is a fixed effect.**
-2. **In a mixed model, fixed effects are the "average" relationships,** the population-level part.
-3. **A grouping variable fitted as fixed** gets one parameter per level (minus one). Each level is estimated on its own, with no sharing of information.
-4. **Use fixed effects for:** the predictors you want to test or interpret, treatments, and factors with few levels that are all of interest (sex, treatment).
-5. **`fixef(m)`** extracts them from an lme4 model.
-6. **"Fixed" has several meanings in the literature** (Gelman lists five), so say what you mean.
+"Fixed" has several meanings in the literature, Gelman lists five, so say what you mean ([[Harrison et al. 2018]], [[Course Website]]). Fixed effects are not "the important ones"; they are the ones estimated individually.
 
-## In R
 ```r
 library(lme4); m <- lmer(Reaction ~ Days + (1 | Subject), data = sleepstudy); round(fixef(m), 2)
 ```
-
-## In the course
-[[Harrison et al. 2018]]. Linear mixed models lab ([[Course Website]]).
-
-## Common confusions
-- **"Fixed effects are the important ones."** They are the ones estimated individually.
-
-## Explain it back
-- What does fixef() return?
-
-*Pass test:* you can say which terms in your model are fixed.
 
 ## Connections
 - **Builds on:** [[Parameter]], [[Regression Coefficient]]

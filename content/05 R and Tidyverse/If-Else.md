@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "If-else makes code choose between actions depending on whether a condition is true."
 aliases:
   - "if statement"
   - "Conditional"
@@ -12,21 +13,12 @@ status: seedling
 
 # If-Else
 
-**In one line:** if-else makes code choose between actions depending on whether a condition is true.
+At a fork in a trail a signpost says: "If the river is high, take the bridge; otherwise wade across." One test, two paths. **If-else** makes code choose between actions depending on whether a condition is true. `if (test) { A } else { B }` checks a single TRUE or FALSE ([[Data Types in R]]) and runs A or B. In the first example below, `if (sum(larvae) > 0)` decides whether to report "some infection found".
 
-> [!info] Before this, it helps to know
-> [[Data Types in R]] (logical values) · [[Indexing in R]] (tests such as `x > 5`)
+Plain `if` looks at one value only; give it a whole column and R stops with an error. For a column you want `ifelse(test, yes, no)`, which tests every element and returns a vector: `ifelse(larvae > 0, 1, 0)` turns counts of 0, 3, 0 and 12 into presence and absence, 0, 1, 0, 1, which is how the GLMM lab builds its [[Presence-Absence Data]]. The test itself is the same kind of comparison used in indexing, such as `x > 5` ([[Indexing in R]]). When there are more than two outcomes, `case_when()` is clearer than nesting `ifelse()` calls ([[case_when()]]).
 
-## The everyday picture
-A fork in a trail with a signpost: "If the river is high, take the bridge. Otherwise wade across." One test, two paths.
+A single `if` is ideal for decisions about the workflow rather than the data. The last lines of the code show the course's caching pattern: if a saved result does not exist yet, fit the model and save it; then read it back. Slow models are then fitted once instead of every time the script runs ([[Caching Long Runs]]). One caution: `ifelse()` can strip factor and date attributes from its result, so check the type of what comes back.
 
-## Start from zero
-1. **`if (test) { A } else { B }` checks one TRUE or FALSE.**
-2. **It handles a single decision,** such as "is this file already downloaded?".
-3. **For a whole column use `ifelse(test, yes, no)`.** *Why:* `if` looks at one value only, while `ifelse` tests every element.
-4. **For several categories use `case_when()`** ([[case_when()]]).
-
-## In R
 ```r
 larvae <- c(0, 3, 0, 12)
 if (sum(larvae) > 0) "some infection found" else "no infection"
@@ -37,19 +29,6 @@ if (!file.exists(f)) saveRDS(lm(dist ~ speed, cars), f)
 fit <- readRDS(f)
 ```
 The last three lines are the "don't rerun slow code" pattern ([[Caching Long Runs]]).
-
-## In the course
-The GLMM lab turns larval counts into presence and absence this way ([[Presence-Absence Data]]).
-
-## Common confusions
-- **"`if` works on a column."** It uses a single TRUE/FALSE. A vector gives an error.
-- **"ifelse keeps types."** It can strip factor and date attributes. Check the result.
-
-## Explain it back
-- When do you need `ifelse()` instead of `if`?
-- Write a line turning counts into 0/1.
-
-*Pass test:* you can choose correctly between `if` and `ifelse()`.
 
 ## Connections
 - **Builds on:** [[Data Types in R]]

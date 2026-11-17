@@ -3,6 +3,7 @@ type: atomic
 tags:
   - r
   - flashcards/eco/r
+description: "An RProject is a folder marked with an `.Rproj` file, and opening it makes that folder the working directory with a fresh R session."
 aliases:
   - ".Rproj"
   - "RStudio Project"
@@ -11,24 +12,12 @@ status: seedling
 
 # RProject
 
-**In one line:** an RProject is a folder marked with an `.Rproj` file, and opening it makes that folder the working directory with a fresh R session.
+A labelled toolbox for one job holds everything for that job and nothing from other jobs; hand it to someone else and they have all they need. An **RProject** is a folder marked with an `.Rproj` file. Create one with File > New Project in RStudio. Double-clicking the `.Rproj` file opens RStudio with a fresh R session and the [[Working Directory]] set to that folder, so [[Relative Path|relative paths]] work with no `setwd()`: "here" is now the same place for everyone who opens the project.
 
-> [!info] Before this, it helps to know
-> [[Working Directory]] (what it sets) · [[Relative Path]] (what it makes reliable)
+Each project gets its own session, history and open files, so thesis and coursework do not contaminate each other. The flowchart shows a typical layout, with the `.Rproj` file at the top marking the root beside the data, scripts and figures folders and a README ([[Project Folder Structure]]). Turn off "restore .RData at startup" in Global Options, so every session starts empty, and pair the project with a Git [[Repository]].
 
-## The everyday picture
-A labelled toolbox for one job. Open the box and everything for that job is inside and nothing from other jobs is mixed in. Hand the box to someone else and they have all they need.
+The 24 September session covers RProjects, and the project instructions require submitting one ([[Course Website]], [[Final Project]], [[Reproducibility]]). Two confusions. The `.Rproj` file does not contain your code; it holds a few settings, and its job is to mark the folder. And opening a script directly does not set the working directory, so open the project, not the script. Inside a project, [[here()]] builds paths that work from any subfolder.
 
-## Start from zero
-1. **Create one:** File > New Project in RStudio.
-2. **An `.Rproj` file appears in the folder.**
-3. **Double-clicking it opens RStudio with the working directory set to that folder.**
-4. **So relative paths work with no `setwd()`.** *Why:* "here" is now the same place for everyone who opens the project.
-5. **Each project gets its own session, history and open files.** Thesis and coursework don't contaminate each other.
-6. **Turn off "restore .RData at startup"** in Global Options, so every session starts empty.
-7. **It pairs naturally with a Git repository** ([[Repository]]).
-
-## See it
 ```mermaid
 flowchart TD
   P[my-project/] --> A[my-project.Rproj]
@@ -38,18 +27,6 @@ flowchart TD
   P --> E[README.md]
 ```
 *What to look at:* the .Rproj file sits at the top and marks the root.
-
-## In the course
-The Sep 24 session, "RProjects, reproducible coding", and the syllabus project instructions require submitting an RProject ([[Course Website]]; [[Final Project]]).
-
-## Common confusions
-- **"The .Rproj file contains my code."** It holds a few settings. Its job is to mark the folder.
-- **"I can open scripts directly."** Opening a script by itself doesn't set the working directory. Open the project.
-
-## Explain it back
-- What two things happen when you open an `.Rproj` file?
-
-*Pass test:* you can explain how an RProject removes the need for `setwd()`.
 
 ## Connections
 - **Builds on:** [[Working Directory]], [[Relative Path]]

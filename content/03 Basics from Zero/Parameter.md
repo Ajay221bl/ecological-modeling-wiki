@@ -3,6 +3,7 @@ type: atomic
 tags:
   - basics
   - flashcards/eco/basics
+description: "A parameter is a fixed but unknown number that describes a whole population or process, such as the true survival rate of elk in a park."
 aliases:
   - "Parameters"
   - "True value"
@@ -11,61 +12,19 @@ status: seedling
 
 # Parameter
 
-**In one line:** a parameter is a fixed but unknown number that describes a whole population or process, such as the true survival rate of elk in a park.
+At a school fair there is a jar of sweets: guess how many and win the jar. There *is* a true number in the jar, say 512. It is real, it is fixed, and it is hidden. A **parameter** is that kind of number in statistics: a fixed but unknown quantity that describes a whole [[Population]] or the process producing the data, such as the true survival rate of elk in a park or the true average turtle mass in a pond. Everyone's guesses differ, but the number in the jar does not. The difference is that at the fair someone eventually opens the jar, and in science nobody ever does.
 
-> [!info] Before this, it helps to know
-> [[Population]] (a parameter describes it) · [[Greek Letters and Notation]] (parameters are written in Greek)
+An example from Powell and Gale ([[Powell and Gale 2015 Ch3]]): you tag 10 fish to see whether the tags stay on. The parameter is p, the true chance that a tag stays on a fish in this river; maybe it is 0.73, but you do not know. Today 7 of 10 tags stayed on; tomorrow, with new fish, perhaps 6 of 10. The numbers 0.7 and 0.6 are *estimates*, guesses calculated from data ([[Estimate]]). The parameter did not change overnight; only the sample did. Parameters are fixed because they are facts about the population, not about your sample, and unknown because you never measure the whole population.
 
-## The everyday picture
-A jar of sweets at a school fair: "guess how many and win the jar". There *is* a true number in the jar, say 512. It's real, it's fixed, and it's hidden. That hidden true number is a parameter. Everyone's guesses differ; the number in the jar doesn't.
+Models are built from parameters. A straight line has two, where it starts (the intercept) and how steep it is (the slope), and a claim such as "survival is 0.8" or "each centimetre of rain adds 1.2 g of grass" is a claim about parameter values. They are the knobs on your idea of how nature works: the parameters are what you want to learn, and the data are how you learn them. To keep them from being confused with data, parameters are written in Greek letters: θ ("theta") for any parameter, μ for a mean, β for a slope, σ for a standard deviation ([[Greek Letters and Notation]]). Keeping "parameter" separate from "the number I calculated" prevents the most common reading error in statistics, taking your estimate for the truth: the numbers `coef()` prints in R are estimates of the parameters, not the parameters themselves. Two more notes. In R, "parameter" can also mean a function's argument, which is unrelated. And Bayesians keep the parameter as a fixed unknown but describe their uncertainty about it with a probability distribution ([[Frequentist vs Bayesian Inference]]). Powell and Gale define a parameter as an unknown quantity characterizing a population ([[Powell and Gale 2015 Ch2]]).
 
-*Where the picture stops working:* at the fair someone opens the jar and tells you. In science nobody ever does.
-
-## Words you'll need
-- **Parameter:** a fixed, unknown number describing the population or process.
-- **θ ("theta"):** the general symbol for a parameter. μ ("mew") is a mean, β ("beta") a slope, σ ("sigma") a standard deviation.
-- **Fixed:** it doesn't change from one sample to the next.
-- **Estimate:** a guess at the parameter from data ([[Estimate]]).
-
-## A tiny example
-You tag 10 fish to see whether tags stay on ([[Powell and Gale 2015 Ch3]], p. 24).
-- **Parameter:** p, the true chance that a tag stays on a fish in this river. Maybe it's 0.73. You don't know.
-- Today 7 of 10 tags stayed on; tomorrow, with new fish, perhaps 6 of 10. Those are estimates (0.7, 0.6). The parameter p didn't change overnight.
-
-## Start from zero
-1. **Some numbers describe the whole population.** The true average turtle mass in a pond; the true chance an elk survives winter.
-2. **They're fixed.** *Why:* they're facts about the population (or the process producing the data), not about your sample.
-3. **They're unknown.** *Why:* you never measure the whole population ([[Population]]).
-4. **Models are built from parameters.** A straight line has two: where it starts (intercept) and how steep it is (slope). *Why:* the parameters are what you want to learn; the data are how you learn them.
-5. **We write them in Greek so they're never confused with data.** θ, μ, β, σ ([[Greek Letters and Notation]]).
-6. **Bayesians add a twist.** The parameter is still a fixed unknown, but your uncertainty about it is described by a probability distribution ([[Frequentist vs Bayesian Inference]]).
-
-## See it
 ![[Parameter vs estimate.png|700]]
 *What to look at:* the blue line is the parameter. It never moves.
 
-## Why it is this way
-A model is a claim about how nature works, and parameters are the knobs on that claim ("survival is 0.8", "each cm of rain adds 1.2 g of grass"). Keeping them as a separate idea from the numbers you calculate stops the most common reading error in statistics: taking your estimate for the truth.
-
-## In R
 ```r
 fit <- lm(dist ~ speed, data = cars)   # a model with two parameters: intercept and slope
 coef(fit)   # these are NOT the parameters; they are our estimates of them
 ```
-
-## In the course
-Powell and Gale define a parameter as "an unknown quantity or constant characterizing a population" ([[Powell and Gale 2015 Ch2]], p. 16).
-
-## Common confusions
-- **"Parameter" in R means a function argument.** In statistics it means an unknown population quantity.
-- **"The parameter is what `coef()` printed."** That's the estimate.
-
-## Explain it back
-- Use the sweet jar to explain what a parameter is.
-- Why doesn't the tag-retention parameter change when tomorrow's estimate does?
-- Why are parameters written in Greek?
-
-*Pass test:* you can name the parameters in a straight-line model and say why they're unknown.
 
 ## Connections
 - **Builds on:** [[Population]], [[Greek Letters and Notation]]
