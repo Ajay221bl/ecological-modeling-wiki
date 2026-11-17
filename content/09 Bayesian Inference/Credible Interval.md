@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "A credible interval is a range that contains a stated share, such as 95%, of the posterior probability for a parameter."
 aliases:
   - "Credible intervals"
   - "Bayesian credible interval"
@@ -15,49 +16,19 @@ status: seedling
 
 # Credible Interval
 
-**In one line:** a credible interval is a range that contains a stated share, such as 95%, of the posterior probability for a parameter.
+"I'm 95% sure the keys are in one of these three rooms" is a direct statement of where you believe something is, given what you know. A **credible interval** makes that statement about a parameter: it is a range that contains a stated share, such as 95%, of the [[Posterior Distribution]]. If the posterior draws of a slope have 2.5% quantile 0.21 and 97.5% quantile 0.88, then given the model and data there is a 95% probability that the slope lies between 0.21 and 0.88: P(lower < θ < upper | data) = 0.95. That is what most people wrongly think a [[Confidence Interval]] says.
 
-> [!info] Before this, it helps to know
-> [[Posterior Distribution]] (what it is cut from) · [[Quantile]] (how it is usually computed) · [[Confidence Interval]] (its frequentist counterpart)
+From draws it is `quantile(draws, c(0.025, 0.975))` ([[Quantile]]). There are two common constructions, shown in the figure: the [[Equal-tailed Interval]], which cuts 2.5% off each end, and the [[Highest Posterior Density Interval]], the narrowest range holding 95%; both hold 95% of the area. In the code below, 10,000 draws from the Beta(4, 8) posterior give an interval of 0.107 to 0.610, matching the exact 0.109 to 0.610, and that interval holds 95% of the draws. 95% is a habit: 89% or 90% intervals are also used and need fewer effective draws to estimate their ends.
 
-## The everyday picture
-"I'm 95% sure the keys are in one of these three rooms." A direct statement of where you believe the thing is, given what you know.
+It is conditional on the model and prior, so a wrong model gives a misleading interval. With weak priors and plentiful data it is often numerically close to a confidence interval, but the interpretation differs. It appears as `l-95% CI` and `u-95% CI` in brms output ([[Course Website]], [[Hobbs and Hooten 2015 Ch8]]). "If the 95% interval excludes zero the effect is significant" is a confusion: Bayesian analysis has no significance test, so report the [[Probability of Direction]] or the probability of a meaningful size instead.
 
-## A tiny example
-Posterior draws of a slope: 2.5% quantile 0.21, 97.5% quantile 0.88. "Given the model and data, there is a 95% probability that the slope lies between 0.21 and 0.88."
-
-## Start from zero
-1. **Take the posterior of a parameter.**
-2. **Find a range holding 95% of it.**
-3. **Meaning:** P(lower < θ < upper | data) = 0.95.
-4. **That is what most people wrongly think a confidence interval says.**
-5. **Two common constructions:** equal-tailed (cut 2.5% off each end) and highest posterior density (the narrowest range holding 95%).
-6. **From draws:** `quantile(draws, c(0.025, 0.975))`.
-7. **It is conditional on the model and prior.** A wrong model gives a misleading interval.
-8. **95% is a habit.** 89% or 90% intervals are also used, and estimating their ends needs fewer effective draws.
-9. **Often numerically close to a confidence interval** when priors are weak and data plentiful. The interpretation still differs.
-
-## See it
 ![[Credible intervals.png|700]]
 *What to look at:* a skewed posterior with the equal-tailed and the highest-density 95% intervals marked. Both hold 95% of the area.
 
-## In R
 ```r
 set.seed(3); draws <- rbeta(10000, 4, 8); quantile(draws, c(0.025, 0.975)); qbeta(c(0.025, 0.975), 4, 8)
 mean(draws > 0.109 & draws < 0.610)                                       # the interval holds 95% of the draws
 ```
-
-## In the course
-`l-95% CI` and `u-95% CI` in brms output ([[Course Website]]). [[Hobbs and Hooten 2015 Ch8]].
-
-## Common confusions
-- **"Credible and confidence intervals are the same thing."** They answer different questions and need different assumptions.
-- **"If the 95% interval excludes zero the effect is significant."** Bayesian analysis has no significance test. Report the probability of the effect's direction or size.
-
-## Explain it back
-- State in words what a 95% credible interval means.
-
-*Pass test:* you can compute and interpret a credible interval from draws.
 
 ## Connections
 - **Builds on:** [[Posterior Distribution]], [[Quantile]]

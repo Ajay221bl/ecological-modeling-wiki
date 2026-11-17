@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "A prior predictive check simulates data from the priors alone, before using any real data, to see whether your priors imply believable observations."
 aliases:
   - "Prior predictive simulation"
   - "Prior predictive distribution"
@@ -12,44 +13,17 @@ status: seedling
 
 # Prior Predictive Check
 
-**In one line:** a prior predictive check simulates data from the priors alone, before using any real data, to see whether your priors imply believable observations.
+Taste the sauce before it goes on the dish: if it is inedible, no amount of good pasta will rescue it. A **prior predictive check** tastes the priors: it simulates data from the priors alone, before using any real data, to see whether they imply believable observations ([[Prior Distribution]], [[Simulating Data|Simulation]]). Draw parameter values from the priors, simulate a dataset from the model with those values, repeat many times and look at the results. Are counts in a plausible range? Are probabilities all stuck at 0 or 1? If the simulations are absurd, tighten the priors. In a model of bird counts with a log link and an intercept prior of Normal(0, 10), one draw of the intercept at +20 implies e²⁰ = 485 million birds per plot.
 
-> [!info] Before this, it helps to know
-> [[Prior Distribution]] (what is being tested) · [[Simulating Data|Simulation]] (the method) · [[Posterior Predictive Check]] (the after-data counterpart)
+It is needed because priors act through the link function and combine across parameters, so priors that each look harmless can jointly imply nonsense. The aim is that simulated data cover what could plausibly be seen, plus a margin; they need not look like your data. In the code below, Normal(0, 10) priors on a Poisson intercept and slope make the median largest count among 50 plots about 900,000, with one simulation in ten above 10¹⁴; with Normal(0, 1.5) and Normal(0, 0.5) priors the largest count is usually 4 and below about 20 in nine runs out of ten ([[Weakly Informative Prior]]). In brms use `brm(..., sample_prior = "only")` then `pp_check()`.
 
-## The everyday picture
-Taste the sauce before it goes on the dish. You check the ingredients on their own first. If the sauce is inedible, no amount of good pasta will rescue it.
+The brms labs use `sample_prior`, and [[Hobbs and Hooten 2015 Ch5]] discusses choosing priors by what they imply ([[Course Website]]). It does not use the data to pick the prior: no real data are involved, only general knowledge. Its after-data counterpart is the [[Posterior Predictive Check]], and a [[Prior Sensitivity Analysis]] asks the related question of how much the priors change the conclusions.
 
-## A tiny example
-Model of bird counts with log link, intercept prior Normal(0, 10). One draw of the intercept at +20 implies exp(20) = 485 million birds per plot. The prior permits nonsense.
-
-## Start from zero
-1. **Draw parameter values from the priors.**
-2. **Simulate a dataset from the model with those values.**
-3. **Repeat many times.**
-4. **Look at the simulated data.** Are counts in a plausible range? Are probabilities all stuck at 0 or 1?
-5. **If the simulations are absurd, tighten the priors.**
-6. **Aim:** simulated data cover what could plausibly be seen, plus a margin. They need not look like your data.
-7. **Why needed:** priors act through the link function and combine across parameters. Priors that each look harmless can jointly imply nonsense.
-8. **In brms:** `brm(..., sample_prior = "only")`, then `pp_check()`.
-
-## In R
 ```r
 set.seed(11); x <- rnorm(50); sim <- function(sd_int, sd_slope) replicate(1000, max(rpois(50, exp(rnorm(1, 0, sd_int) + rnorm(1, 0, sd_slope) * x))))
 quantile(sim(10, 10), c(0.5, 0.9), na.rm = TRUE)                     # vague priors: the median largest count is near a million, and one run in ten exceeds a hundred trillion
 quantile(sim(1.5, 0.5), c(0.5, 0.9))                                 # weakly informative: the largest count is usually below about 20
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch5]] discusses choosing priors by what they imply. brms labs use `sample_prior` ([[Course Website]]).
-
-## Common confusions
-- **"This uses the data to pick the prior."** No real data are involved. It tests the prior against general knowledge.
-
-## Explain it back
-- Describe the steps of a prior predictive check.
-
-*Pass test:* you can simulate from priors for a Poisson regression and judge the result.
 
 ## Connections
 - **Builds on:** [[Prior Distribution]], [[Simulating Data|Simulation]]

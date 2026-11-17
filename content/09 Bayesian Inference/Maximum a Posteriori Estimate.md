@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "The maximum a posteriori estimate is the parameter value at the peak of the posterior distribution."
 aliases:
   - "MAP estimate"
   - "MAP"
@@ -12,38 +13,18 @@ status: seedling
 
 # Maximum a Posteriori Estimate
 
-**In one line:** the maximum a posteriori estimate is the parameter value at the peak of the posterior distribution.
+Naming the single most likely suspect is convenient and hides how close the runner-up was. The **maximum a posteriori (MAP) estimate** is the parameter value at the peak of the [[Posterior Distribution]], its [[Mode]], the value that maximises likelihood × prior. With a flat prior it equals the [[Maximum Likelihood Estimation|maximum likelihood estimate]]; with an informative prior it is pulled toward the prior. In the code below, 3 occupied ponds out of 10 give a MAP of 0.3 under a flat prior, but 0.5 under a Beta(12, 8) prior centred on 0.6, matching the formula (3 + 12 − 1)/(10 + 12 + 8 − 2).
 
-> [!info] Before this, it helps to know
-> [[Posterior Distribution]] (whose peak it is) · [[Maximum Likelihood Estimation]] (its frequentist cousin) · [[Mode]] (the idea of a peak)
+Penalised likelihood and ridge regression can be read as MAP estimates under a normal prior ([[Regularization]]). But a MAP is a single point with no uncertainty attached. For skewed posteriors the mode, median and mean differ, and the mode changes if you reparameterise, say from σ to σ², so the mean or median is more often reported ([[Posterior Summary]]).
 
-## The everyday picture
-The single most likely suspect. Naming them is convenient, and it hides how close the runner-up was.
+MAP is not "the Bayesian answer": the posterior distribution is the answer and the MAP one point of it.
 
-## Start from zero
-1. **MAP = the mode of the posterior.**
-2. **It maximises likelihood × prior.**
-3. **With a flat prior it equals the maximum likelihood estimate.**
-4. **With an informative prior it is pulled toward the prior.** This is how penalised likelihood and ridge regression can be read: a MAP estimate under a normal prior.
-5. **It is a point, with no uncertainty attached.**
-6. **For skewed posteriors** mode, median and mean differ. The mean or median is more often reported.
-7. **The mode changes if you reparameterise** (say, from σ to σ²). Mean-based and quantile-based summaries are less awkward.
-
-## In R
 ```r
 p <- seq(0, 1, 0.0001)
 p[which.max(dbinom(3, 10, p) * dbeta(p, 1, 1))]                     # flat prior: MAP = MLE = 0.3
 p[which.max(dbinom(3, 10, p) * dbeta(p, 12, 8))]                    # informative prior: pulled toward 0.6
 (3 + 12 - 1) / (10 + 12 + 8 - 2)
 ```
-
-## Common confusions
-- **"MAP is the Bayesian answer."** The posterior distribution is the answer. MAP is one point of it.
-
-## Explain it back
-- When does MAP equal the MLE?
-
-*Pass test:* you can relate MAP to MLE and to the prior.
 
 ## Connections
 - **Builds on:** [[Posterior Distribution]], [[Maximum Likelihood Estimation]]

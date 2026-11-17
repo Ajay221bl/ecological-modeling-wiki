@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "The proposal distribution is the rule an MCMC sampler uses to suggest the next candidate value given the current one."
 aliases:
   - "Proposal"
   - "Jumping distribution"
@@ -13,45 +14,21 @@ status: seedling
 
 # Proposal Distribution
 
-**In one line:** the proposal distribution is the rule an MCMC sampler uses to suggest the next candidate value given the current one.
+Exploring a dark room, tiny shuffles are safe but take for ever, and giant leaps mostly hit the wall and leave you where you were; a good stride is matched to the size of the room. The **proposal distribution** is the rule an MCMC sampler uses to suggest the next candidate value given the current one ([[Metropolis Algorithm]]). The typical choice is Normal(current value, s), a random walk ([[Normal Distribution]]). It is not the posterior and need not resemble it; it is only a way to generate candidates.
 
-> [!info] Before this, it helps to know
-> [[Metropolis Algorithm]] (where it is used) · [[Normal Distribution]] (the usual choice)
+Its width s matters for efficiency, not correctness. Too narrow, and nearly every step is accepted but the chain crawls; too wide, and nearly every step is rejected and the chain sticks. The figure shows three trace plots: crawling, sticking and a healthy fuzzy band ([[Trace Plot]]). In the code below, a proposal sd of 0.005 is accepted 96% of the time but yields an effective sample of only 17 from 5,000 draws; an sd of 2 is accepted 3% of the time and yields 86; an sd of 0.1 is accepted 47% of the time and yields about 1,180 ([[Acceptance Rate]], [[Tuning Parameter]]).
 
-## The everyday picture
-The length of your stride when exploring a dark room. Tiny shuffles are safe but take for ever. Giant leaps mostly hit the wall and leave you where you were. A good stride is matched to the size of the room.
+Symmetric proposals give plain Metropolis, and asymmetric ones need the Hastings correction ([[Metropolis-Hastings Algorithm]]). Modern samplers build clever proposals from the posterior's gradient, as in Hamiltonian Monte Carlo ([[Hobbs and Hooten 2015 Ch7]]). The proposal has nothing to do with the prior; they are unrelated.
 
-## Start from zero
-1. **Typical choice:** Normal(current value, s). A random walk.
-2. **It is not the posterior** and need not resemble it. It is only a way to generate candidates.
-3. **Its width s matters for efficiency,** not for correctness.
-4. **Too narrow:** nearly every step is accepted, but the chain crawls.
-5. **Too wide:** nearly every step is rejected, and the chain sticks.
-6. **Symmetric proposals** give plain Metropolis. Asymmetric ones need the Hastings correction.
-7. **Modern samplers build clever proposals** from the posterior's gradient (Hamiltonian Monte Carlo).
-
-## See it
 ![[Proposal width.png|700]]
 *What to look at:* three trace plots. Crawling (too narrow), sticking (too wide) and a healthy fuzzy band (about right).
 
-## In R
 ```r
 h <- function(p) if (p <= 0 || p >= 1) 0 else dbinom(30, 100, p)
 run <- function(s) { set.seed(18); cur <- 0.5; acc <- 0; out <- numeric(5000); for (i in 1:5000) { pr <- cur + rnorm(1, 0, s); if (runif(1) < h(pr) / h(cur)) { cur <- pr; acc <- acc + 1 }; out[i] <- cur }
   c(accept = acc / 5000, ess = unname(coda::effectiveSize(out))) }
 round(sapply(c(narrow = 0.005, good = 0.1, wide = 2), run), 2)           # acceptance rate and effective sample size for three widths
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch7]].
-
-## Common confusions
-- **"The proposal should match my prior."** They are unrelated.
-
-## Explain it back
-- What happens when the proposal is too wide?
-
-*Pass test:* you can diagnose a proposal width from a trace plot.
 
 ## Connections
 - **Builds on:** [[Metropolis Algorithm]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "A posterior summary condenses a posterior distribution into a few numbers, usually a central value, a spread and an interval."
 aliases:
   - "Posterior mean"
   - "Posterior median"
@@ -15,40 +16,16 @@ status: seedling
 
 # Posterior Summary
 
-**In one line:** a posterior summary condenses a posterior distribution into a few numbers, usually a central value, a spread and an interval.
+A weather forecast's headline gives the most representative temperature and a range, though behind it is a whole distribution of possible temperatures. A **posterior summary** condenses a posterior into a few numbers, usually a central value, a spread and an interval ([[Posterior Draws]]). The posterior [[Mean]] of the draws is the commonest point estimate. The posterior [[Median]] is the middle draw; it suits skewed posteriors and transforms cleanly, since the median of exp(θ) is exp of the median of θ. The posterior mode is the peak ([[Maximum a Posteriori Estimate]]) and is harder to estimate from draws. The posterior [[Standard Deviation]] is the spread of the draws, the Bayesian counterpart of a standard error, which brms calls `Est.Error`. The interval is usually a [[Credible Interval]] from the 2.5% and 97.5% quantiles.
 
-> [!info] Before this, it helps to know
-> [[Posterior Draws]] (what is summarised) · [[Mean]], [[Median]] and [[Standard Deviation]] (the tools)
+For symmetric posteriors the mean, median and mode coincide. For skewed ones, such as variance parameters and back-transformed quantities, they differ, so report the median and say so. In the code below, a right-skewed posterior like that of a group-level standard deviation has mean 0.98, median 0.82 and mode 0.58, standard deviation 0.65 and interval 0.26 to 2.67.
 
-## The everyday picture
-A weather forecast's headline. Behind it is a whole distribution of possible temperatures. The headline gives the most representative number and a range.
+Look at the whole distribution before trusting a summary, since two peaks or a pile-up at a boundary can't be seen in a mean ([[Marginal Posterior Distribution]]). The `Estimate`, `Est.Error`, `l-95% CI` and `u-95% CI` columns of a brms summary are these quantities ([[Course Website]], [[Hobbs and Hooten 2015 Ch8]]). `Est.Error` is not a standard error in the frequentist sense; it is the posterior standard deviation.
 
-## Start from zero
-1. **Posterior mean:** the average of the draws. The commonest point estimate.
-2. **Posterior median:** the middle draw. Better for skewed posteriors, and it transforms cleanly (the median of exp(θ) is exp of the median of θ).
-3. **Posterior mode (MAP):** the peak. Harder to estimate from draws.
-4. **Posterior standard deviation:** the spread of the draws. The Bayesian counterpart of a standard error. brms calls it `Est.Error`.
-5. **Credible interval:** usually the 2.5% and 97.5% quantiles.
-6. **For symmetric posteriors** mean, median and mode coincide.
-7. **For skewed posteriors** (variance parameters, back-transformed quantities) they differ. Report the median and say so.
-8. **Look at the whole distribution** before trusting a summary. Two peaks or a pile-up at a boundary can't be seen in a mean.
-
-## In R
 ```r
 set.seed(2); sigma_draws <- rlnorm(4000, log(0.8), 0.6)                  # a right-skewed posterior, as for a group-level sd
 d <- density(sigma_draws); round(c(mean = mean(sigma_draws), median = median(sigma_draws), mode = d$x[which.max(d$y)], sd = sd(sigma_draws), quantile(sigma_draws, c(.025, .975))), 2)
 ```
-
-## In the course
-The `Estimate`, `Est.Error`, `l-95% CI` and `u-95% CI` columns of a brms summary ([[Course Website]]). [[Hobbs and Hooten 2015 Ch8]].
-
-## Common confusions
-- **"Est.Error is a standard error in the frequentist sense."** It is the posterior standard deviation.
-
-## Explain it back
-- When do posterior mean and median differ noticeably?
-
-*Pass test:* you can read a brms summary table.
 
 ## Connections
 - **Builds on:** [[Posterior Draws]], [[Mean]], [[Median]]

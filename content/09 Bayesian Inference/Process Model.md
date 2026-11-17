@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "The process model is the layer of a hierarchical model that describes how the true state of nature behaves, including real variation that the deterministic part doesn't explain."
 aliases:
   - "Process layer"
   - "Ecological process model"
@@ -13,38 +14,16 @@ status: seedling
 
 # Process Model
 
-**In one line:** the process model is the layer of a hierarchical model that describes how the true state of nature behaves, including real variation that the deterministic part doesn't explain.
+The actual weather, as opposed to the thermometer reading, is your account of how the atmosphere really behaves, separate from how well any instrument measures it. The **process model** is that layer of a [[Hierarchical Model]]: it describes how the true state of nature behaves, written [z | θ_p], the distribution of the true state z given process parameters. It contains the science, a deterministic function g(θ, x) for the expected state, such as growth or a response to habitat ([[Deterministic Component]]), plus process variance: real differences that g doesn't capture ([[Process Variation]]).
 
-> [!info] Before this, it helps to know
-> [[Hierarchical Model]] (the structure) · [[Deterministic Component]] (the mechanism inside it) · [[Process Variation]] (the real noise around it)
+For example, true abundance Nᵢ ~ Poisson(λᵢ) with log(λᵢ) = β₀ + β₁ × habitatᵢ. The true state z is usually latent, seen only through the [[Data Model]] ([[Latent Variable]]). In the code below the deterministic part gives expected abundances such as 3.5, 9.1 and 4.8 at eight sites, while the true states, 4, 10, 5 and so on, vary around them.
 
-## The everyday picture
-The actual weather, as opposed to the thermometer reading. The process model is your account of how the atmosphere really behaves, separate from how well any instrument measures it.
+This is where hypotheses live: competing ideas are competing process models. [[Hobbs and Hooten 2015 Ch6]] builds it on the deterministic models of [[Hobbs and Hooten 2015 Ch2]], and its parameters get priors in the [[Parameter Model]]. Process variance is not error: it is real variation in nature, not a mistake of measurement.
 
-## Start from zero
-1. **Written [z | θ_p]:** the distribution of the true state z given process parameters.
-2. **It contains the science:** a deterministic function g(θ, x) for the expected state, such as growth or a response to habitat.
-3. **Plus process variance:** real differences that g doesn't capture.
-4. **Example:** true abundance N_i ~ Poisson(λ_i), with log(λ_i) = β₀ + β₁ × habitat_i.
-5. **z is usually latent,** seen only through the data model.
-6. **This is where hypotheses live.** Competing ideas are competing process models.
-
-## In R
 ```r
 set.seed(3); habitat <- runif(8); lambda <- exp(1 + 1.5 * habitat)   # deterministic part
 N <- rpois(8, lambda); round(rbind(expected = lambda, true_state = N), 1)       # the true state varies around its expectation
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch6]], building on the deterministic models of [[Hobbs and Hooten 2015 Ch2]].
-
-## Common confusions
-- **"Process variance is error."** It is real variation in nature, not a mistake of measurement.
-
-## Explain it back
-- What two things make up a process model?
-
-*Pass test:* you can write a process model for abundance as a function of habitat.
 
 ## Connections
 - **Builds on:** [[Hierarchical Model]], [[Deterministic Component]], [[Process Variation]]

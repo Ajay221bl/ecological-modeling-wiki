@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "Tidybayes is an R package that pulls posterior draws out of Bayesian model objects into tidy data frames and offers ggplot2 geoms for plotting distributions."
 aliases:
   - "tidybayes package"
   - "spread_draws()"
@@ -14,21 +15,12 @@ status: seedling
 
 # tidybayes
 
-**In one line:** tidybayes is an R package that pulls posterior draws out of Bayesian model objects into tidy data frames and offers ggplot2 geoms for plotting distributions.
+**tidybayes** is an R package that pulls [[Posterior Draws]] out of Bayesian model objects into tidy data frames and offers ggplot2 geoms for plotting distributions ([[Tidy Data]], [[ggplot2 Grammar of Graphics]]). `spread_draws(fit, b_tree, b_Intercept)` gives one row per draw and one column per parameter; `gather_draws()` gives long format, one row per draw per parameter; and indexed parameters such as `spread_draws(fit, r_site[site, term])` give one row per draw per site.
 
-> [!info] Before this, it helps to know
-> [[Posterior Draws]] (what it extracts) · [[Tidy Data]] (the format it produces) · [[ggplot2 Grammar of Graphics]] (how results are plotted)
+`add_epred_draws(newdata, fit)` gives draws of the expected value for each row of new data, `add_predicted_draws()` draws of new observations ([[Posterior Predictive Distribution]]) and `add_linpred_draws()` the linear predictor. `median_qi()` and `mean_hdi()` reduce draws to a point and an interval. For plots, `stat_halfeye()` shows a density plus interval, `stat_lineribbon()` a fitted line with uncertainty bands ([[Plotting Model Predictions with Ribbons]]) and `stat_pointinterval()` a point and interval. It works with [[brms]], rstanarm, rstan, JAGS and other outputs. The code below, not run in the wiki build because the package is not installed there, summarises a slope, plots two parameters' posteriors and draws a fitted curve with 50%, 80% and 95% bands.
 
-## Start from zero
-1. **`spread_draws(fit, b_tree, b_Intercept)`:** one row per draw, one column per parameter.
-2. **`gather_draws()`:** long format, one row per draw per parameter.
-3. **Indexed parameters:** `spread_draws(fit, r_site[site, term])` gives one row per draw per site.
-4. **`add_epred_draws(newdata, fit)`:** draws of the expected value for each row of new data. `add_predicted_draws()`: draws of new observations. `add_linpred_draws()`: the linear predictor.
-5. **Summaries:** `median_qi()`, `mean_hdi()` reduce draws to a point and an interval.
-6. **Plots:** `stat_halfeye()` (density plus interval), `stat_lineribbon()` (fitted line with uncertainty bands), `stat_pointinterval()`.
-7. **Works with** brms, rstanarm, rstan, JAGS and other outputs.
+It is used for plotting posteriors in the Bayesian labs ([[Course Website]]). epred and predicted draws are not the same: `epred` is the expected value, and `predicted` adds observation noise.
 
-## In R
 ```r
 # norun (the tidybayes package is not installed in the wiki's build environment)
 library(tidybayes); library(dplyr); library(ggplot2)
@@ -37,17 +29,6 @@ fit |> gather_draws(b_Intercept, b_tree) |> ggplot(aes(x = .value, y = .variable
 tibble(tree = seq(0, 60, 5)) |> add_epred_draws(fit) |>
   ggplot(aes(tree, .epred)) + stat_lineribbon(.width = c(0.5, 0.8, 0.95)) + scale_fill_brewer()
 ```
-
-## In the course
-Used for plotting posteriors in the Bayesian labs ([[Course Website]]).
-
-## Common confusions
-- **"epred and predicted draws are the same."** `epred` is the expected value. `predicted` adds observation noise.
-
-## Explain it back
-- Which function gives draws of fitted means for new data?
-
-*Pass test:* you can extract draws and plot a posterior with an interval.
 
 ## Connections
 - **Builds on:** [[Posterior Draws]], [[Tidy Data]]

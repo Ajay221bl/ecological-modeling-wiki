@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "A parameter is identifiable when the data can tell different values of it apart, and non-identifiable when different combinations of parameters fit the data equally well."
 aliases:
   - "Identifiable"
   - "Non-identifiability"
@@ -14,43 +15,17 @@ status: seedling
 
 # Identifiability
 
-**In one line:** a parameter is identifiable when the data can tell different values of it apart, and non-identifiable when different combinations of parameters fit the data equally well.
+"Two numbers multiply to 12. What are they?" 3 and 4, 2 and 6, 1 and 12: no amount of staring at the 12 will tell you. A parameter is **identifiable** when the data can tell different values of it apart, and non-identifiable when different combinations of parameters fit the data equally well ([[Parameter]], [[Likelihood Function]]). With one count per site, y ~ Binomial(N, p), a count of 20 could be N = 40 with p = 0.5 or N = 100 with p = 0.2; only the product N × p is identified, and repeat visits break the tie ([[Detection Probability]]).
 
-> [!info] Before this, it helps to know
-> [[Likelihood Function]] (flat when identifiability fails) · [[Parameter]] (what is or isn't pinned down) · [[Collinearity]] (a mild form of the same problem)
+An identifiable parameter has a likelihood with a single clear peak; a non-identifiable one has a ridge or plateau. Causes include parameters that enter only as a product or sum, more parameters than the design can separate, no variation in a predictor ([[Collinearity]] is a mild form), and process and observation variance with no replication ([[Separating Process and Observation Variance]]). In the code below, pairs from N = 40 with p = 0.5 to N = 200 with p = 0.1 give a count of 20 probabilities between 0.13 and 0.09, and even with five counts the profile log-likelihood over N changes by less than a third of a unit. Symptoms in maximum likelihood are failure to converge, huge standard errors and estimates on a boundary; in Bayes the posterior looks like the prior, chains mix poorly and parameters are strongly correlated in the posterior.
 
-## The everyday picture
-"Two numbers multiply to 12. What are they?" 3 and 4, 2 and 6, 1 and 12. No amount of staring at the 12 will tell you. You need another piece of information.
+Remedies are better design such as replication and repeat visits, informative priors from other studies, a simpler model or reparameterising. Check by [[Simulating Data]] from known values and seeing whether the model recovers them, and use a [[Prior Sensitivity Analysis]] to see how much the prior is doing ([[Hobbs and Hooten 2015 Ch6]]). More iterations will not fix it: non-identifiability is a property of model plus data, and computing longer adds no information.
 
-## A tiny example
-One count per site: y ~ Binomial(N, p). A count of 20 could be N = 40 with p = 0.5, or N = 100 with p = 0.2. Only the product N × p is identified. Repeat visits to each site break the tie.
-
-## Start from zero
-1. **Identifiable:** the likelihood has a single clear peak for the parameter.
-2. **Non-identifiable:** a ridge or plateau. Many values are equally supported.
-3. **Causes:** parameters that enter only as a product or sum. More parameters than the design can separate. No variation in a predictor. Process and observation variance with no replication.
-4. **Symptoms in maximum likelihood:** failure to converge, huge standard errors, estimates on a boundary.
-5. **Symptoms in Bayes:** the posterior looks like the prior. Chains mix poorly. Parameters are strongly correlated in the posterior.
-6. **Remedies:** better design (replication, repeat visits), informative priors from other studies, a simpler model, or reparameterising.
-7. **Check by simulation:** simulate from known values and see whether the model recovers them.
-
-## In R
 ```r
 N <- seq(40, 200, 20); p <- 20 / N; round(dbinom(20, N, p), 3)            # very different (N, p) pairs give the data similar probability
 set.seed(11); y <- rbinom(5, 60, 0.3); ll <- sapply(N, function(n) max(sapply(seq(.01, .99, .01), function(pp) sum(dbinom(y, n, pp, log = TRUE)))))
 round(ll - max(ll), 2)                                                    # even with 5 counts the profile over N is nearly flat
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch6]] on what data are needed to separate sources of variance.
-
-## Common confusions
-- **"More iterations will fix it."** Non-identifiability is a property of model plus data. Computing longer doesn't add information.
-
-## Explain it back
-- Why can't one count per site separate abundance from detection?
-
-*Pass test:* you can recognise a non-identified parameter and suggest a remedy.
 
 ## Connections
 - **Builds on:** [[Likelihood Function]], [[Collinearity]]

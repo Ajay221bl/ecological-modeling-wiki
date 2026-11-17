@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "A prior sensitivity analysis refits the model under different reasonable priors to see whether the conclusions change."
 aliases:
   - "Sensitivity analysis (priors)"
   - "Prior sensitivity"
@@ -12,40 +13,17 @@ status: seedling
 
 # Prior Sensitivity Analysis
 
-**In one line:** a prior sensitivity analysis refits the model under different reasonable priors to see whether the conclusions change.
+If two doctors who start from different assumptions reach the same diagnosis, you trust it more; if they disagree, the evidence alone hasn't settled the matter. A **prior sensitivity analysis** gets those second opinions: refit the model under different reasonable priors, wider, narrower or from a different family, and compare the posteriors for the quantities you care about ([[Prior Distribution]], [[Posterior Distribution]], [[Sensitivity Analysis]]). If they agree, the data dominate and you can say so; if they differ, the prior matters, so report that honestly and defend your choice, or collect more data.
 
-> [!info] Before this, it helps to know
-> [[Prior Distribution]] (what is varied) · [[Posterior Distribution]] (what is compared) · [[Sensitivity Analysis]] (the general idea)
+The code below fits a survival probability under a flat, a sceptical Beta(2, 8) and an optimistic Beta(8, 2) prior. With 2 survivors out of 8 the posterior means are 0.30, 0.22 and 0.56, so the prior matters; with 50 out of 200 they are 0.25, 0.25 and 0.28, so it barely does. A quick visual check is to overlay prior and posterior: a posterior that looks like its prior means the data said little.
 
-## The everyday picture
-A second opinion. If two doctors who begin from different assumptions reach the same diagnosis, you trust it more. If they disagree, the evidence alone hasn't settled the matter.
+The most sensitive parameters are variance parameters with few groups, parameters with little data and weakly identified parameters ([[Identifiability]]). It pairs naturally with an [[Informative Prior]] and with a [[Prior Predictive Check]], and [[Hobbs and Hooten 2015 Ch5]] recommends it. It does not mean trying priors until you like the result; it means reporting all of them.
 
-## Start from zero
-1. **Fit with your chosen priors.**
-2. **Refit with alternatives:** wider, narrower, a different family.
-3. **Compare posteriors** for the quantities you care about.
-4. **If they agree,** the data dominate. Say so.
-5. **If they differ,** the prior matters. Report this honestly and defend your choice, or collect more data.
-6. **Most sensitive:** variance parameters with few groups, parameters with little data, weakly identified parameters.
-7. **Quick visual check:** overlay prior and posterior. A posterior that looks like its prior means the data said little.
-
-## In R
 ```r
 y <- 2; n <- 8; pri <- list(flat = c(1, 1), skeptical = c(2, 8), optimistic = c(8, 2))
 t(sapply(pri, function(ab) round(c(mean = (ab[1] + y) / (sum(ab) + n), qbeta(c(.025, .975), ab[1] + y, ab[2] + n - y)), 2)))    # small n: the prior matters
 y <- 50; n <- 200; t(sapply(pri, function(ab) round(c(mean = (ab[1] + y) / (sum(ab) + n), qbeta(c(.025, .975), ab[1] + y, ab[2] + n - y)), 2)))   # large n: it barely does
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch5]] recommends checking how conclusions depend on priors.
-
-## Common confusions
-- **"Sensitivity analysis means trying priors until I like the result."** It means reporting all of them.
-
-## Explain it back
-- Which parameters are usually most sensitive to priors?
-
-*Pass test:* you can run and report a simple sensitivity analysis.
 
 ## Connections
 - **Builds on:** [[Prior Distribution]], [[Posterior Distribution]]

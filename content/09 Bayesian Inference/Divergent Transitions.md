@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "A divergent transition is a warning from Hamiltonian Monte Carlo that its simulated path went badly off course in a region of the posterior too sharply curved for its step size, which means that region may not have been sampled properly."
 aliases:
   - "Divergences"
   - "Divergent transition"
@@ -13,25 +14,12 @@ status: seedling
 
 # Divergent Transitions
 
-**In one line:** a divergent transition is a warning from Hamiltonian Monte Carlo that its simulated path went badly off course in a region of the posterior too sharply curved for its step size, which means that region may not have been sampled properly.
+A car taking a hairpin bend at motorway speed leaves the road: on open road, checking the steering every few metres is enough, but on a hairpin it is too coarse. A **divergent transition** is a warning from [[Hamiltonian Monte Carlo]] that its simulated path left the road in a region of the posterior too sharply curved for its step size ([[Tuning Parameter]]). HMC follows the posterior's surface in discrete steps; where it curves sharply the steps are too coarse and the path flies off, and Stan flags the iteration. It matters because the sampler is failing to enter that region, so draws under-represent it and estimates can be biased.
 
-> [!info] Before this, it helps to know
-> [[Hamiltonian Monte Carlo]] (where they occur) · [[Tuning Parameter]] (step size) · [[Hierarchical Model]] (where they are commonest)
+The classic cause is the "funnel" in a [[Hierarchical Model]]: when a group-level standard deviation is near zero, the group effects are squeezed into a narrow neck. In the code below, group effects θ drawn with a standard deviation τ have mean absolute size 0.08 when τ is below 0.2 and 12 when τ is above 5: a funnel that is very narrow at one end. Fixes are raising `adapt_delta` from 0.8 to 0.95 or 0.99, which forces smaller steps; reparameterising, since the non-centered parameterisation removes the funnel and brms does this automatically for group-level effects; and stronger priors on variance parameters ([[Weakly Informative Prior]]), or a simpler model if it is over-parameterised for the data.
 
-## The everyday picture
-A car taking a hairpin bend at motorway speed. On open road, checking the steering every few metres is enough. On a hairpin that sampling of the road is too coarse, and the car leaves the tarmac. A divergence is the sampler leaving the road.
+Ideally there are none; a handful among thousands may be harmless, but check where they occur with `pairs()` plots. They come up in the brms and Stan labs ([[Stan]], [[Course Website]], [[MCMC Convergence]]). Divergences are not harmless warnings: they signal possibly biased results. And more iterations do not fix them, they give more divergences; change the step size or the parameterisation.
 
-## Start from zero
-1. **HMC follows the posterior's surface in discrete steps.**
-2. **Where the surface curves sharply** the steps are too coarse and the simulated path flies off. Stan detects this and flags the iteration.
-3. **Why it matters:** the sampler is failing to enter that region. Draws under-represent it, so estimates can be biased.
-4. **Classic cause: the "funnel"** in hierarchical models. When a group-level standard deviation is near zero, the group effects are squeezed into a narrow neck.
-5. **Fix 1:** raise `adapt_delta` (0.8 by default) to 0.95 or 0.99, which forces smaller steps.
-6. **Fix 2:** reparameterise. The non-centered parameterisation removes the funnel (brms does this automatically for group-level effects).
-7. **Fix 3:** stronger priors on variance parameters. Simplify the model if it is over-parameterised for the data.
-8. **How many are acceptable?** Ideally none. A handful among thousands may be harmless, but check where they occur (`pairs()` plots).
-
-## In R
 ```r
 # norun (brms syntax)
 # fit <- brm(y ~ x + (1 | site), data = d, control = list(adapt_delta = 0.99))
@@ -39,19 +27,6 @@ A car taking a hairpin bend at motorway speed. On open road, checking the steeri
 set.seed(29); tau <- exp(rnorm(2000, 0, 1.5)); theta <- rnorm(2000, 0, tau)             # the funnel: when tau is small, theta is squeezed
 round(tapply(abs(theta), cut(tau, c(0, 0.2, 1, 5, Inf)), mean), 2)
 ```
-
-## In the course
-The brms and Stan labs ([[Course Website]]).
-
-## Common confusions
-- **"Divergences are harmless warnings."** They signal possibly biased results.
-- **"More iterations fix them."** More iterations give more divergences. Change the step size or the parameterisation.
-
-## Explain it back
-- What does a divergence say about the posterior's shape?
-- Name two remedies.
-
-*Pass test:* you can respond sensibly to a divergence warning.
 
 ## Connections
 - **Builds on:** [[Hamiltonian Monte Carlo]], [[Tuning Parameter]]

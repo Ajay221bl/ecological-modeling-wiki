@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "Cmdstanr is an R interface to CmdStan, the command-line version of Stan, and can be used as the engine behind brms in place of rstan."
 aliases:
   - "cmdstanr"
   - "CmdStan"
@@ -12,37 +13,18 @@ status: seedling
 
 # cmdstanr Backend
 
-**In one line:** cmdstanr is an R interface to CmdStan, the command-line version of Stan, and can be used as the engine behind brms in place of rstan.
+R can reach [[Stan]] in two ways: `rstan`, with Stan compiled into an R package, and **cmdstanr**, where R calls a separate installation of CmdStan, the command-line version of Stan. cmdstanr can be used as the engine behind [[brms]] in place of rstan. Its advantages are that it tracks the newest Stan release, often compiles and samples faster, and is less prone to installation problems when R is updated.
 
-> [!info] Before this, it helps to know
-> [[Stan]] (what it runs) · [[brms]] (which can call it)
+Install the `cmdstanr` package from the Stan repository, then run `cmdstanr::install_cmdstan()` once; it needs a C++ toolchain. Use it with `brm(..., backend = "cmdstanr")` or set `options(brms.backend = "cmdstanr")` ([[brm()]]). It can also be used directly: `mod <- cmdstan_model("model.stan"); fit <- mod$sample(data = data_list)`. The commented code below shows the installation and the brms call.
 
-## Start from zero
-1. **Two ways for R to reach Stan:** `rstan` (Stan compiled into an R package) and `cmdstanr` (R calls a separate CmdStan installation).
-2. **Why cmdstanr:** it tracks the newest Stan release, often compiles and samples faster, and is less prone to R-version installation problems.
-3. **Install:** the `cmdstanr` package from the Stan repository, then `cmdstanr::install_cmdstan()` once. It needs a C++ toolchain.
-4. **Use with brms:** `brm(..., backend = "cmdstanr")`. Or set `options(brms.backend = "cmdstanr")`.
-5. **Results are the same model and sampler.** Only the plumbing differs.
-6. **Direct use:** `mod <- cmdstan_model("model.stan"); fit <- mod$sample(data = data_list)`.
+It is covered in the course setup instructions and the Stan labs ([[Course Website]]). cmdstanr does not give different answers from rstan: the model and sampler are the same and only the plumbing differs, so apart from random-number differences they agree.
 
-## In R
 ```r
 # norun (needs CmdStan installed)
 # install.packages("cmdstanr", repos = c("https://stan-dev.r-universe.dev", getOption("repos")))
 # cmdstanr::install_cmdstan()
 # fit <- brm(y ~ x, data = d, backend = "cmdstanr")
 ```
-
-## In the course
-Course setup instructions and the Stan labs ([[Course Website]]).
-
-## Common confusions
-- **"cmdstanr gives different answers from rstan."** Apart from random-number differences, they agree.
-
-## Explain it back
-- What is the difference between rstan and cmdstanr?
-
-*Pass test:* you can switch the brms backend.
 
 ## Connections
 - **Builds on:** [[Stan]], [[brms]]

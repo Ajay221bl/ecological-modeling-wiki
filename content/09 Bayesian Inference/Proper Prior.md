@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "A proper prior is one that is a real probability distribution, meaning the area under it is finite and can be scaled to 1."
 aliases:
   - "Proper distribution"
 status: seedling
@@ -10,30 +11,15 @@ status: seedling
 
 # Proper Prior
 
-**In one line:** a proper prior is one that is a real probability distribution, meaning the area under it is finite and can be scaled to 1.
+A **proper prior** is a prior that is a real probability distribution: the area under it is finite and can be scaled to 1 ([[Prior Distribution]], [[Probability Density Function]]). Normal, beta and gamma distributions, and a uniform on a bounded range, are all proper. The code below integrates a Normal(0, 100) and a Beta(0.5, 0.5) and gets 1 for both.
 
-> [!info] Before this, it helps to know
-> [[Prior Distribution]] (what it is) · [[Probability Density Function]] (integrates to 1)
+Properness buys three things. A proper prior guarantees a proper posterior. You can simulate from it, so a [[Prior Predictive Check]] is possible. And marginal likelihoods and Bayes factors require it. Modern practice is to always use proper priors, in contrast with the [[Improper Prior]].
 
-## Start from zero
-1. **Proper:** integrates to 1. Normal, beta, gamma, uniform on a bounded range.
-2. **A proper prior guarantees a proper posterior.**
-3. **You can simulate from it,** so prior predictive checks are possible.
-4. **Marginal likelihoods and Bayes factors require it.**
-5. **Modern practice: always use proper priors.**
+"Proper" does not mean "correct"; it means only that the prior integrates to 1.
 
-## In R
 ```r
 integrate(dnorm, -Inf, Inf, mean = 0, sd = 100)$value; integrate(dbeta, 0, 1, shape1 = 0.5, shape2 = 0.5)$value
 ```
-
-## Common confusions
-- **"Proper means correct."** It only means it integrates to 1.
-
-## Explain it back
-- Name one thing only proper priors allow.
-
-*Pass test:* you can tell whether a given prior is proper.
 
 ## Connections
 - **Builds on:** [[Prior Distribution]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "The full-conditional distribution of a parameter is its distribution given the data and the current values of every other unknown in the model."
 aliases:
   - "Full conditional"
   - "Full conditional distribution"
@@ -12,24 +13,12 @@ status: seedling
 
 # Full-conditional Distribution
 
-**In one line:** the full-conditional distribution of a parameter is its distribution given the data and the current values of every other unknown in the model.
+In sudoku you ask what one cell can be, given everything else on the board, and solve the puzzle one cell at a time. The **full-conditional distribution** of a parameter is its distribution given the data and the current values of every other unknown in the model ([[Conditional Probability]], [[Joint Posterior Distribution]]). The joint posterior of many parameters is hard to sample all at once, but holding all but one fixed often leaves a simple, recognisable distribution, thanks to conjugacy ([[Conjugate Prior]]).
 
-> [!info] Before this, it helps to know
-> [[Conditional Probability]] (the idea) · [[Joint Posterior Distribution]] (what it is a slice of) · [[Directed Acyclic Graph]] (how to find it)
+To find it, collect every term of the joint distribution that contains the parameter and drop the rest as constants; on a [[Directed Acyclic Graph]] these are the terms for the node, its parents and its children. MCMC can then cycle through the parameters, updating each from its full conditional, which is [[Gibbs Sampling]] ([[MCMC]]). The code below samples the mean and precision of 30 normal observations by alternating between their two full conditionals; after 2,000 rounds the estimates, mean 4.31 and sd 1.78, match the sample's 4.31 and 1.73.
 
-## The everyday picture
-A sudoku cell. Given everything else on the board, what can this one cell be? You solve the puzzle one cell at a time, each time treating the rest as known.
+[[Hobbs and Hooten 2015 Ch7]] derives full conditionals as the basis of MCMC. A full conditional is not the marginal posterior: it conditions on the other parameters, while the marginal averages over them.
 
-## Start from zero
-1. **The joint posterior of many parameters is hard to sample at once.**
-2. **Take one parameter. Hold all the others fixed.**
-3. **Its distribution given everything else is its full conditional.**
-4. **To find it:** collect every term of the joint distribution that contains the parameter and drop the rest (constants).
-5. **On a DAG:** the terms involving a node, its parents and its children.
-6. **Often it is a simple, recognisable distribution** thanks to conjugacy.
-7. **MCMC cycles through parameters,** updating each from its full conditional. That is Gibbs sampling.
-
-## In R
 ```r
 set.seed(10); y <- rnorm(30, 5, 2); mu <- 0; tau <- 1                # sample a mean and a precision by alternating full conditionals
 out <- matrix(NA, 2000, 2)
@@ -39,17 +28,6 @@ for (i in 1:2000) {
   out[i, ] <- c(mu, 1 / sqrt(tau)) }
 round(colMeans(out[-(1:200), ]), 2); round(c(mean(y), sd(y)), 2)
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch7]] derives full conditionals as the basis of MCMC.
-
-## Common confusions
-- **"The full conditional is the marginal posterior."** It conditions on the other parameters. The marginal averages over them.
-
-## Explain it back
-- How do you find a full conditional from the joint distribution?
-
-*Pass test:* you can say what is held fixed in a full conditional.
 
 ## Connections
 - **Builds on:** [[Conditional Probability]], [[Joint Posterior Distribution]]

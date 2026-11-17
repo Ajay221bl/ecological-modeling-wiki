@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "BUGS and JAGS are programs that fit Bayesian models written in a simple model language, using Gibbs sampling and related methods."
 aliases:
   - "JAGS"
   - "BUGS"
@@ -16,26 +17,12 @@ status: seedling
 
 # JAGS and BUGS
 
-**In one line:** BUGS and JAGS are programs that fit Bayesian models written in a simple model language, using Gibbs sampling and related methods.
+**BUGS**, from the 1990s, was the first widely used "write the model, get the posterior" program, and **JAGS** ("Just Another Gibbs Sampler") is its open-source, cross-platform successor; Stan is a newer design with a different engine. You write the model as statements such as `y[i] ~ dpois(lambda[i])`, `log(lambda[i]) <- b0 + b1 * x[i]` and `b0 ~ dnorm(0, 0.001)`, where `~` means "is distributed as" and `<-` "is computed as". The language is declarative, so the order of lines doesn't matter, and the program works out the full conditionals and samples them, mainly by [[Gibbs Sampling]] ([[Directed Acyclic Graph]]).
 
-> [!info] Before this, it helps to know
-> [[Gibbs Sampling]] (their main algorithm) · [[Directed Acyclic Graph]] (how models are thought of) · [[Precision Parameter]] (their normal parameterisation)
+Normals use precision, `dnorm(mean, tau)`, so `dnorm(0, 0.001)` means a standard deviation of about 32 ([[Precision Parameter]]). The strength of JAGS is that discrete latent variables such as occupancy states or alive/dead status are handled directly, which Stan can't do without marginalising ([[Latent Variable]]); its weakness is slower mixing for correlated or hierarchical parameters. From R it is run with `rjags`, `R2jags` or `jagsUI`, and NIMBLE is a newer relative using the same language. The code below, not run in the wiki build because it needs JAGS, writes a Poisson regression in the JAGS language and shows the commented calls that would fit it.
 
-## The everyday picture
-An earlier generation of the same tool. BUGS (1990s) was the first widely used "write the model, get the posterior" program. JAGS is its open-source, cross-platform successor. Stan is the newer design with a different engine.
+Hobbs and Hooten's book and much of the ecological literature use JAGS ([[Hobbs and Hooten 2015 Ch7]]), and it is mentioned beside [[Stan]] in the lectures ([[Course Website]]). `dnorm(0, 0.001)` is not a tight prior: in JAGS the second argument is precision, so it is very wide.
 
-## Start from zero
-1. **You write the model as statements:** `y[i] ~ dpois(lambda[i])`, `log(lambda[i]) <- b0 + b1 * x[i]`, `b0 ~ dnorm(0, 0.001)`.
-2. **`~` means "is distributed as". `<-` means "is computed as".**
-3. **The program works out the full conditionals** and samples them.
-4. **Normals use precision:** `dnorm(mean, tau)`.
-5. **The language is declarative:** the order of lines doesn't matter.
-6. **Strength:** discrete latent variables (occupancy states, alive/dead) are handled directly, which Stan can't do without marginalising.
-7. **Weakness:** slower mixing for correlated or hierarchical parameters.
-8. **From R:** `rjags`, `R2jags`, `jagsUI`. NIMBLE is a newer relative using the same language.
-9. **Hobbs and Hooten's book and much of the ecological literature use JAGS.**
-
-## In R
 ```r
 # norun (needs JAGS; shown for the language)
 model_string <- "model {
@@ -49,17 +36,6 @@ model_string <- "model {
 # jm <- rjags::jags.model(textConnection(model_string), data = list(y = y, x = x, n = length(y)), n.chains = 3)
 # post <- rjags::coda.samples(jm, c("b0", "b1"), n.iter = 5000)
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch7]] and Ch8 give JAGS code. Mentioned beside Stan in the lectures ([[Course Website]]).
-
-## Common confusions
-- **"dnorm(0, 0.001) is a tight prior."** In JAGS the second argument is precision, so this is very wide.
-
-## Explain it back
-- What do `~` and `<-` mean in the BUGS language?
-
-*Pass test:* you can read a short JAGS model.
 
 ## Connections
 - **Builds on:** [[Gibbs Sampling]], [[Precision Parameter]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "`pp_check()` draws posterior predictive check plots for a fitted Bayesian model, overlaying data simulated from the model on the observed data."
 aliases:
   - "pp_check"
   - "ppc_dens_overlay"
@@ -12,21 +13,12 @@ status: seedling
 
 # pp_check()
 
-**In one line:** `pp_check()` draws posterior predictive check plots for a fitted Bayesian model, overlaying data simulated from the model on the observed data.
+**`pp_check()`** draws posterior predictive check plots for a fitted Bayesian model, overlaying data simulated from the model on the observed data ([[Posterior Predictive Check]], [[brms]]). By default it shows the density of the observed y as a dark line over the densities of several simulated datasets in light lines; `ndraws = 100` sets how many simulated datasets to show.
 
-> [!info] Before this, it helps to know
-> [[Posterior Predictive Check]] (the concept) · [[brms]] (where it is called)
+Other types suit other data: `type = "bars"` for counts, and `"hist"`, `"ecdf_overlay"`, `"scatter_avg"` and others. `type = "stat", stat = "mean"` (or `"sd"`, `"max"` or your own function) draws a histogram of the statistic across simulations with the observed value marked, which is the picture behind a [[Bayesian P-value]], and `type = "stat_grouped", group = "site"` does the same by group. For a custom statistic define a function, such as `prop_zero <- function(y) mean(y == 0)`, and pass `stat = "prop_zero"`, as in the code below, which is not run in the wiki build because it needs a brms fit. It comes from the bayesplot package, which brms calls for you.
 
-## Start from zero
-1. **`pp_check(fit)`:** density of the observed y (dark) over densities of several simulated datasets (light).
-2. **`ndraws = 100`:** how many simulated datasets to show.
-3. **`type = "bars"`:** for counts. `"hist"`, `"ecdf_overlay"`, `"scatter_avg"` and others are available.
-4. **`type = "stat", stat = "mean"`** (or `"sd"`, `"max"`, or your own function): a histogram of the statistic across simulations with the observed value marked.
-5. **`type = "stat_grouped", group = "site"`:** the same by group.
-6. **For a custom statistic** define a function, such as `prop_zero <- function(y) mean(y == 0)`, and pass `stat = "prop_zero"`.
-7. **It comes from the bayesplot package,** which brms calls for you.
+It is run after every model in the Bayesian labs ([[Course Website]], [[Posterior Predictive Distribution]]). The dark line need not match each light line exactly; it should look like one more member of the family of light lines.
 
-## In R
 ```r
 # norun (needs a brms fit)
 pp_check(fit, ndraws = 100)
@@ -34,17 +26,6 @@ pp_check(fit, type = "bars", ndraws = 200)
 prop_zero <- function(y) mean(y == 0)
 pp_check(fit, type = "stat", stat = "prop_zero")
 ```
-
-## In the course
-Run after every model in the Bayesian labs ([[Course Website]]).
-
-## Common confusions
-- **"The dark line should match each light line."** It should look like one more member of the family of light lines.
-
-## Explain it back
-- How do you check the proportion of zeros?
-
-*Pass test:* you can produce density and statistic checks.
 
 ## Connections
 - **Builds on:** [[Posterior Predictive Check]], [[brms]]

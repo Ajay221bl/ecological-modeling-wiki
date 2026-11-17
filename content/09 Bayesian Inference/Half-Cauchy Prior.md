@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "A half-Cauchy prior is a positive-only prior with its peak at zero and a very heavy tail, often used for group-level standard deviations because it favours small values while still allowing large ones."
 aliases:
   - "Half-Cauchy distribution"
   - "Half-Cauchy"
@@ -12,34 +13,16 @@ status: seedling
 
 # Half-Cauchy Prior
 
-**In one line:** a half-Cauchy prior is a positive-only prior with its peak at zero and a very heavy tail, often used for group-level standard deviations because it favours small values while still allowing large ones.
+A net with a long handle catches most things close in, but the handle lets it reach far out if needed. A **half-Cauchy prior** is a positive-only prior with its peak at zero and a very heavy tail. The Cauchy is a [[Student t Distribution]] with 1 degree of freedom, with tails so heavy it has no mean; Half-Cauchy(0, s) keeps its positive half, and s is the median. It is popular for a group-level standard deviation ([[Variance Components|Variance Component]], [[Hierarchical Model]]): with few groups the data say little about between-group variation, and this prior leans toward small values without forbidding big ones.
 
-> [!info] Before this, it helps to know
-> [[Half-Normal Prior]] (the lighter-tailed alternative) · [[Student t Distribution]] (Cauchy is t with 1 degree of freedom) · [[Variance Components|Variance Component]] (what it is usually put on)
+In the code below, with the same scale, the half-Cauchy has median 1.0, 95th percentile 12.7 and 99th percentile 64, against 0.67, 1.97 and 2.58 for the [[Half-Normal Prior]]. A half-t with 3 or more degrees of freedom is a tamer relative, and brms uses a half Student-t(3, 0, 2.5) by default for standard deviations, with the scale adapted to the response.
 
-## The everyday picture
-A net with a long handle. Most of the catch is close in, near zero. The long handle (the heavy tail) means that if the truth is far out, the net can still reach it.
+The downside is that the heavy tail can occasionally let samplers wander to huge values; half-normal or exponential priors are tighter. A half-Cauchy is not vague: it has a preferred scale, which makes it a [[Weakly Informative Prior]].
 
-## Start from zero
-1. **Cauchy = Student t with 1 degree of freedom.** Tails so heavy it has no mean.
-2. **Half-Cauchy(0, s):** keep the positive half. s is the median.
-3. **Why for hierarchical sds:** with few groups the data say little about between-group variation. This prior leans toward small values without forbidding big ones.
-4. **Half-t with 3 or more df** is a tamer relative. `brms` uses a half Student-t(3, 0, 2.5) by default for standard deviations (the scale adapts to the response).
-5. **Downside:** the heavy tail can occasionally let samplers wander to huge values. Half-normal or exponential priors are tighter.
-
-## In R
 ```r
 set.seed(10); hc <- abs(rcauchy(1e5, 0, 1)); hn <- abs(rnorm(1e5, 0, 1))
 rbind(half_cauchy = quantile(hc, c(.5, .95, .99)), half_normal = quantile(hn, c(.5, .95, .99)))        # same scale, very different tails
 ```
-
-## Common confusions
-- **"Half-Cauchy is vague."** It is weakly informative: it has a preferred scale.
-
-## Explain it back
-- How does its tail compare with the half-normal's?
-
-*Pass test:* you can say why it suits group-level standard deviations.
 
 ## Connections
 - **Builds on:** [[Half-Normal Prior]], [[Student t Distribution]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "Posterior draws are the thousands of parameter values an MCMC sampler returns, which together stand in for the posterior distribution."
 aliases:
   - "Posterior samples"
   - "MCMC draws"
@@ -15,43 +16,18 @@ status: seedling
 
 # Posterior Draws
 
-**In one line:** posterior draws are the thousands of parameter values an MCMC sampler returns, which together stand in for the posterior distribution.
+You can't see into a jar, but a few thousand marbles drawn from it tell you its colour mix almost exactly. **Posterior draws** are the thousands of parameter values an MCMC sampler returns, which together stand in for the [[Posterior Distribution]] ([[MCMC]]). The output is a table: one row per draw, the iterations after warm-up with all chains stacked, and one column per parameter. Each row is one plausible set of parameter values from the [[Joint Posterior Distribution]], and a column's histogram is that parameter's [[Marginal Posterior Distribution]]. A typical table has 4,000 rows.
 
-> [!info] Before this, it helps to know
-> [[MCMC]] (where they come from) · [[Posterior Distribution]] (what they represent) · [[Monte Carlo Integration]] (how they are used)
+Every summary is arithmetic on columns: `mean()`, `sd()` and `quantile()` give a [[Posterior Summary]] and a [[Credible Interval]], and probabilities are proportions, such as `mean(draws$b > 0)` ([[Monte Carlo Integration]]). [[Derived Quantities]] and predictions are computed row by row, and the results carry the uncertainty. In the code below a stand-in for `as_draws_df(fit)` has 4,000 rows; the slope column has mean 0.51, a 95% interval of 0.41 to 0.60, and a 0.98 probability of exceeding 0.4.
 
-## The everyday picture
-A bag of marbles drawn from a jar you can't see into. You can't look at the jar's contents directly. A few thousand marbles tell you its colour mix almost exactly.
+In brms use `as_draws_df(fit)`, in [[tidybayes]] `spread_draws()`, and in rstan `extract()`; the brms labs use `as_draws_df()` ([[Course Website]], [[Hobbs and Hooten 2015 Ch8]]). The draws are simulated parameter values, not simulated data; simulated data come from the [[Posterior Predictive Distribution]].
 
-## Start from zero
-1. **MCMC output is a table.** Rows: draws (iterations after warm-up, all chains stacked). Columns: parameters.
-2. **Each row is one plausible set of parameter values** from the joint posterior.
-3. **A column's histogram is that parameter's marginal posterior.**
-4. **Summaries are arithmetic on columns:** `mean()`, `sd()`, `quantile()`.
-5. **Probabilities are proportions:** `mean(draws$b > 0)`.
-6. **Derived quantities:** compute them row by row. The results are draws of the derived quantity.
-7. **Predictions:** for each row compute the prediction. The set of predictions carries the uncertainty.
-8. **In brms:** `as_draws_df(fit)`. With tidybayes: `spread_draws()`. In rstan: `extract()`.
-9. **Typical size:** 4,000 rows.
-
-## In R
 ```r
 set.seed(1); x <- runif(50, 0, 10); y <- 1 + 0.5 * x + rnorm(50); m <- lm(y ~ x)
 draws <- as.data.frame(MASS::mvrnorm(4000, coef(m), vcov(m))); names(draws) <- c("b_Intercept", "b_x")      # stand-in for as_draws_df(fit)
 head(round(draws, 3), 3); dim(draws)
 c(mean = mean(draws$b_x), quantile(draws$b_x, c(0.025, 0.975)), prob_above_0.4 = mean(draws$b_x > 0.4))
 ```
-
-## In the course
-`as_draws_df()` in the brms labs ([[Course Website]]). [[Hobbs and Hooten 2015 Ch8]].
-
-## Common confusions
-- **"The draws are simulated data."** They are simulated parameter values. Simulated data come from the posterior predictive distribution.
-
-## Explain it back
-- What is one row? What is one column?
-
-*Pass test:* you can compute any summary from a table of draws.
 
 ## Connections
 - **Builds on:** [[MCMC]], [[Posterior Distribution]], [[Monte Carlo Integration]]

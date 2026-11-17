@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "A Bayesian p-value is the proportion of replicate datasets simulated from the fitted model whose test statistic is more extreme than the same statistic in the real data."
 aliases:
   - "Posterior predictive p-value"
   - "Bayesian p value"
@@ -13,41 +14,17 @@ status: seedling
 
 # Bayesian P-value
 
-**In one line:** a Bayesian p-value is the proportion of replicate datasets simulated from the fitted model whose test statistic is more extreme than the same statistic in the real data.
+Rank the real dataset among its forgeries: if it sits in the middle of the pack on some feature, the model reproduces that feature, and if it sits at the very top or bottom, it doesn't. A **Bayesian p-value** does this ranking: choose a discrepancy statistic T, such as the variance, the maximum or the number of zeros ([[Test Statistic]]), compute it for the real data and for each replicate from a [[Posterior Predictive Check]], and take P_B as the proportion of replicates with T(y_rep) ≥ T(y).
 
-> [!info] Before this, it helps to know
-> [[Posterior Predictive Check]] (the procedure it summarises) · [[Test Statistic]] (what is compared) · [[P-value|p-value]] (what it is not)
+Near 0.5 means the model reproduces that feature; near 0 or 1 means lack of fit, with below about 0.05 or above 0.95 a common warning level. Unlike a classical [[P-value|p-value]], extreme in either direction is bad and the middle is good. In the code below, overdispersed counts have variance 13.6 and no Poisson replicate is as variable, so P_B = 0; for counts that really are Poisson, P_B is 0.76, comfortably inside the range.
 
-## The everyday picture
-Ranking the real dataset among its forgeries. If the real one sits in the middle of the pack on some feature, the model reproduces that feature. If it sits at the very top or bottom, it doesn't.
+It isn't uniformly distributed under a true model; it tends to cluster near 0.5, so it is conservative: a bad value is strong evidence, a good value weak reassurance. Test several statistics, each aimed at an assumption you worry about ([[Model Validation]], [[Hobbs and Hooten 2015 Ch8]]). A Bayesian p-value below 0.05 does not mean a significant effect: it means the model fails to reproduce a feature of the data, so it tests the model, not a hypothesis about a parameter.
 
-## Start from zero
-1. **Choose a discrepancy statistic T:** variance, maximum, number of zeros, a chi-square-type sum.
-2. **Compute T for the real data** and for each replicate.
-3. **P_B = proportion of replicates with T(y_rep) ≥ T(y).**
-4. **Near 0.5:** the model reproduces that feature.
-5. **Near 0 or 1:** lack of fit. Below about 0.05 or above 0.95 is a common warning level.
-6. **Unlike a classical p-value, extreme in either direction is bad** and the middle is good.
-7. **It isn't uniformly distributed under a true model.** It tends to cluster near 0.5, so it is conservative: a bad value is strong evidence, a good value is weak reassurance.
-8. **Test several statistics,** each aimed at an assumption you worry about.
-
-## In R
 ```r
 set.seed(12); y <- rnbinom(200, mu = 4, size = 0.8); lam <- rgamma(2000, 0.01 + sum(y), 0.01 + 200)
 T_rep <- sapply(lam, function(l) var(rpois(200, l))); c(T_obs = var(y), p_B = mean(T_rep >= var(y)))       # no Poisson replicate is as variable as the data
 y2 <- rpois(200, 4); lam2 <- rgamma(2000, 0.01 + sum(y2), 0.01 + 200); mean(sapply(lam2, function(l) var(rpois(200, l))) >= var(y2))     # a correct model: somewhere in the middle
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch8]].
-
-## Common confusions
-- **"A Bayesian p-value below 0.05 means a significant effect."** It means the model fails to reproduce a feature of the data. It tests the model, not a hypothesis about a parameter.
-
-## Explain it back
-- What value indicates a good fit, and why?
-
-*Pass test:* you can compute a Bayesian p-value for a chosen statistic.
 
 ## Connections
 - **Builds on:** [[Posterior Predictive Check]], [[Test Statistic]]

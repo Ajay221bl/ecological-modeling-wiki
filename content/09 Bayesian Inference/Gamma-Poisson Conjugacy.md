@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "With a Gamma(a, b) prior on a Poisson rate and n counts that sum to S, the posterior is Gamma(a + S, b + n)."
 aliases:
   - "Gamma-Poisson update"
   - "Gamma prior with Poisson likelihood"
@@ -11,40 +12,17 @@ status: seedling
 
 # Gamma-Poisson Conjugacy
 
-**In one line:** with a Gamma(a, b) prior on a Poisson rate and n counts that sum to S, the posterior is Gamma(a + S, b + n).
+A running total: the prior is "a events seen in b units of effort", new data add S events over n more units, and the rate estimate is total events over total effort. **Gamma-Poisson conjugacy** says exactly that: with a Gamma(a, b) prior on a Poisson rate, b being a rate parameter, and n counts summing to S, the posterior is Gamma(a + S, b + n) ([[Conjugate Prior]], [[Gamma Distribution]], [[Poisson Distribution]]). With a Gamma(2, 1) prior, about 2 birds per point, and five point counts 3, 5, 4, 6 and 2 (sum 20), the posterior is Gamma(22, 6), mean 22/6 = 3.7.
 
-> [!info] Before this, it helps to know
-> [[Conjugate Prior]] (the idea) · [[Gamma Distribution]] (prior and posterior) · [[Poisson Distribution]] (the likelihood)
+The prior is ∝ λ^(a−1) e^(−bλ) and the likelihood of n counts ∝ λ^S e^(−nλ), so the product is ∝ λ^(a+S−1) e^(−(b+n)λ), a Gamma(a + S, b + n). The posterior mean (a + S)/(b + n) lies between the prior mean a/b and the sample mean S/n, and b acts as the prior's number of observations. The code below gives the update and a 95% interval of 2.3 to 5.4 birds per point, against a sample mean of 4.
 
-## The everyday picture
-A running total. The prior is "a events seen in b units of effort". New data add S events over n more units. The rate estimate is total events over total effort.
+R's gamma functions accept either a rate or a scale, and the update above uses the rate. The same pairing explains the [[Negative Binomial Distribution]]: a Poisson whose rate is gamma-distributed has a negative binomial distribution. The binomial counterpart is [[Beta-Binomial Conjugacy]].
 
-## A tiny example
-Prior Gamma(2, 1): about 2 birds per point. Five point counts: 3, 5, 4, 6, 2 (sum 20). Posterior Gamma(22, 6), mean 22/6 = 3.7.
-
-## Start from zero
-1. **Prior:** λ ~ Gamma(shape a, rate b), mean a/b.
-2. **Likelihood for n counts:** ∝ λ^S e^(−nλ), where S is the sum.
-3. **Multiply:** ∝ λ^(a+S−1) e^(−(b+n)λ).
-4. **Recognise it:** Gamma(a + S, b + n).
-5. **Posterior mean = (a + S)/(b + n).** Between the prior mean a/b and the sample mean S/n.
-6. **b is the prior's "number of observations".**
-7. **Link to the negative binomial:** a Poisson whose rate is gamma-distributed has a negative binomial distribution.
-
-## In R
 ```r
 y <- c(3, 5, 4, 6, 2); a <- 2; b <- 1
 c(shape = a + sum(y), rate = b + length(y), mean = (a + sum(y)) / (b + length(y)))
 qgamma(c(0.025, 0.975), a + sum(y), b + length(y)); mean(y)
 ```
-
-## Common confusions
-- **"Gamma's second parameter is always a rate."** R allows rate or scale. The update above uses the rate.
-
-## Explain it back
-- Update Gamma(1, 1) with counts 0, 2, 1.
-
-*Pass test:* you can do the update for a set of counts.
 
 ## Connections
 - **Builds on:** [[Conjugate Prior]], [[Gamma Distribution]], [[Poisson Distribution]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "A marginal posterior distribution is the posterior of one parameter on its own, with the uncertainty in all other parameters averaged over."
 aliases:
   - "Marginal posterior"
   - "Marginal posterior density"
@@ -11,39 +12,17 @@ status: seedling
 
 # Marginal Posterior Distribution
 
-**In one line:** a marginal posterior distribution is the posterior of one parameter on its own, with the uncertainty in all other parameters averaged over.
+Seen from the side, a mountain range's silhouette against the sky collapses its width into a single profile. A **marginal posterior distribution** is the posterior of one parameter on its own, with the uncertainty in all other parameters averaged over ([[Joint Posterior Distribution]], [[Marginal Probability]]). Mathematically you integrate everything else out of the joint posterior; with MCMC draws it is trivial, since you take that parameter's column and ignore the others ([[Posterior Draws]]).
 
-> [!info] Before this, it helps to know
-> [[Joint Posterior Distribution]] (what it is cut from) · [[Marginal Probability]] (the same operation) · [[Posterior Draws]] (how it is obtained in practice)
+A histogram or density of that column is the marginal posterior, and the summaries reported in tables, the mean, standard deviation and [[Credible Interval]], describe marginals ([[Posterior Summary]]). In the code below, the slope column of a regression's draws has mean 0.58 and 95% interval 0.48 to 0.68.
 
-## The everyday picture
-Looking at a mountain range from the side. The full range has length and width. Its silhouette against the sky collapses one direction, leaving a single profile.
+The marginal posterior does not fix the other parameters at their best values; it averages over them, so their uncertainty is already included ([[Hobbs and Hooten 2015 Ch8]]).
 
-## Start from zero
-1. **Start from the joint posterior** of all parameters.
-2. **Integrate out everything except the parameter of interest.**
-3. **With MCMC draws this is trivial:** take that parameter's column and ignore the others.
-4. **A histogram or density of that column is the marginal posterior.**
-5. **Summaries reported in tables** (mean, sd, credible interval) describe marginals.
-6. **Uncertainty about the other parameters is already included.** Nothing was held fixed.
-
-## In R
 ```r
 set.seed(6); x <- runif(40, 10, 20); y <- 2 + 0.5 * x + rnorm(40); m <- lm(y ~ x)
 draws <- MASS::mvrnorm(4000, coef(m), vcov(m)); slope <- draws[, "x"]             # one column = marginal posterior of the slope
 c(mean = mean(slope), quantile(slope, c(0.025, 0.975)))
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch8]] on inference from a single model.
-
-## Common confusions
-- **"The marginal posterior fixes the other parameters at their best values."** It averages over them.
-
-## Explain it back
-- How do you obtain a marginal posterior from a table of draws?
-
-*Pass test:* you can summarise one parameter from joint draws.
 
 ## Connections
 - **Builds on:** [[Joint Posterior Distribution]], [[Marginal Probability]]

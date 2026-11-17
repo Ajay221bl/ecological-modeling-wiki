@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "The probability of direction is the share of the posterior that lies on one side of zero, read as the probability that an effect is positive (or negative)."
 aliases:
   - "pd"
   - "P(β > 0)"
@@ -14,40 +15,16 @@ status: seedling
 
 # Probability of Direction
 
-**In one line:** the probability of direction is the share of the posterior that lies on one side of zero, read as the probability that an effect is positive (or negative).
+"There is an 85% chance of rain tomorrow" is a direct probability about the thing you care about, which is how people naturally want results stated. The **probability of direction** is the share of the posterior on one side of zero, read as the probability that an effect is positive or negative ([[Posterior Distribution]]). From draws, P(β > 0 | data) is the proportion of draws above 0 ([[Posterior Draws]]), and it reads plainly: "the probability that tree cover reduces bird abundance is 0.97". Any threshold works, such as P(β > 0.1), P(odds ratio > 2) or P(survival in A > survival in B) ([[Derived Quantities]]).
 
-> [!info] Before this, it helps to know
-> [[Posterior Draws]] (how it is computed) · [[Posterior Distribution]] (what is being measured) · [[P-value|p-value]] (what it is often confused with)
+This is a statement about the hypothesis, which a [[P-value|p-value]] is not. With weak priors there is a rough numerical link, a one-sided p-value ≈ 1 − pd, but the meanings differ ([[Statistical Significance]]). In brms use `hypothesis(fit, "x > 0")`. In the code below, a slope with posterior mean −0.5 and sd 0.27 has a 0.97 probability of being negative and a 0.86 probability of being stronger than −0.2.
 
-## The everyday picture
-"There is an 85% chance of rain tomorrow." A direct probability about the thing you care about, which is how people naturally want results stated.
+Direction isn't importance: an effect can be almost surely positive and negligibly small, so ask about a meaningful size too, alongside the [[Credible Interval]]. It is used when interpreting brms fits ([[Course Website]], [[Hobbs and Hooten 2015 Ch8]]). P(β > 0) = 0.97 is not a p-value of 0.03; they are different quantities with different meanings, though sometimes numerically similar.
 
-## Start from zero
-1. **Take the posterior draws of a coefficient.**
-2. **P(β > 0 | data) = proportion of draws above 0.**
-3. **Read it plainly:** "the probability that tree cover reduces bird abundance is 0.97".
-4. **Any threshold works:** P(β > 0.1), P(odds ratio > 2), P(survival in A > survival in B).
-5. **This is a statement about the hypothesis,** which a p-value is not.
-6. **Rough numerical link:** with weak priors, a one-sided p-value ≈ 1 − pd. The meanings differ.
-7. **Direction isn't importance.** An effect can be almost surely positive and negligibly small. Ask about a meaningful size too.
-8. **In brms:** `hypothesis(fit, "x > 0")`.
-
-## In R
 ```r
 set.seed(6); b <- rnorm(4000, -0.5, 0.27)                                 # posterior draws of a slope
 c(prob_negative = mean(b < 0), prob_stronger_than_minus_0.2 = mean(b < -0.2))
 ```
-
-## In the course
-Used when interpreting brms fits ([[Course Website]]). [[Hobbs and Hooten 2015 Ch8]] on probabilities of statements about parameters.
-
-## Common confusions
-- **"P(β > 0) = 0.97 is a p-value of 0.03."** Different quantities with different meanings, though sometimes numerically similar.
-
-## Explain it back
-- How do you compute P(β > 0) from draws?
-
-*Pass test:* you can report the probability of any statement about a parameter.
 
 ## Connections
 - **Builds on:** [[Posterior Draws]], [[Posterior Distribution]]

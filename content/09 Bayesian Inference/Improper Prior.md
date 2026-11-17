@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "An improper prior is a \"prior\" whose area is infinite, such as a flat line over all real numbers, so it isn't a real probability distribution."
 aliases:
   - "Improper distribution"
   - "Improper flat prior"
@@ -11,33 +12,15 @@ status: seedling
 
 # Improper Prior
 
-**In one line:** an improper prior is a "prior" whose area is infinite, such as a flat line over all real numbers, so it isn't a real probability distribution.
+Spread a finite amount of butter over an infinitely long slice of bread and the layer has zero thickness everywhere. An **improper prior** tries to do that: its area is infinite, as with a flat line over all real numbers, P(β) ∝ 1 from −∞ to ∞, so it isn't a real probability distribution ([[Proper Prior]]). Such priors usually arise from trying to be as vague as possible ([[Vague Prior]]); the code below shows the area of a flat line growing without limit as its range widens.
 
-> [!info] Before this, it helps to know
-> [[Proper Prior]] (the contrast) · [[Vague Prior]] (where improper priors come from)
+It can still work: if the likelihood is informative enough, likelihood × prior has finite area and the [[Posterior Distribution]] is proper. But it can fail without warning. In some models, variance parameters in hierarchical models being the classic case, the posterior is improper too, and a sampler will still produce numbers that are meaningless. You also can't simulate from an improper prior. Stan and brms use improper flat priors by default for some parameters when you set none, so set proper priors yourself.
 
-## The everyday picture
-Spreading a finite amount of butter over an infinitely long slice of bread. The layer has zero thickness everywhere. A flat prior over the whole number line tries to do that.
+The comforting thought "if the sampler ran, the posterior exists" is not true under improper priors. The [[Jeffreys Prior]] is often improper too.
 
-## Start from zero
-1. **Example:** P(β) ∝ 1 for all β from −∞ to ∞. Area is infinite.
-2. **It can still work:** if the likelihood is informative enough, likelihood × prior has finite area and the posterior is proper.
-3. **It can fail without warning:** in some models (variance parameters in hierarchical models are the classic case) the posterior is improper too. A sampler will still produce numbers, and they are meaningless.
-4. **You can't simulate from an improper prior.**
-5. **Stan and brms use improper flat priors by default** for some parameters when you set none. Set proper priors yourself.
-
-## In R
 ```r
 f <- function(b) rep(1, length(b)); sapply(c(10, 1000, 1e5), function(L) integrate(f, -L, L)$value)       # the area grows without limit
 ```
-
-## Common confusions
-- **"If the sampler ran, the posterior exists."** Not necessarily under improper priors.
-
-## Explain it back
-- What risk does an improper prior carry?
-
-*Pass test:* you can explain why a flat prior over all reals is improper.
 
 ## Connections
 - **Builds on:** [[Proper Prior]], [[Vague Prior]]

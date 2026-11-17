@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "An equal-tailed interval is a credible interval that leaves the same amount of posterior probability outside each end, such as 2.5% below and 2.5% above."
 aliases:
   - "ETI"
   - "Quantile interval"
@@ -14,38 +15,16 @@ status: seedling
 
 # Equal-tailed Interval
 
-**In one line:** an equal-tailed interval is a credible interval that leaves the same amount of posterior probability outside each end, such as 2.5% below and 2.5% above.
+Trim the same length from both ends of a loaf. An **equal-tailed interval** (ETI) is a [[Credible Interval]] that leaves the same amount of posterior probability outside each end: a 95% ETI runs from the 2.5% [[Quantile]] to the 97.5% quantile. It is simple to compute, stable because quantiles are easy to estimate from draws, and the default in brms and Stan.
 
-> [!info] Before this, it helps to know
-> [[Credible Interval]] (the general idea) · [[Quantile]] (how it is found)
+It is invariant to transformation: the ETI of exp(θ) is exp of the ETI of θ, which is convenient for [[Back-transformation]]. In the code below, the 95% ETI of an exponential posterior is 0.027 to 3.76, and computing it on the log scale and transforming back gives the same interval. For symmetric posteriors it equals the highest density interval.
 
-## The everyday picture
-Trimming the same length from both ends of a loaf.
+For strongly skewed posteriors it can leave out the most probable values near a boundary and include less probable ones in the long tail. In the exponential example the most probable value, 0, lies outside the interval, so the ETI does not always contain the most probable value; the [[Highest Posterior Density Interval]] does ([[Hobbs and Hooten 2015 Ch8]]).
 
-## Start from zero
-1. **95% ETI = from the 2.5% quantile to the 97.5% quantile.**
-2. **Simple to compute** and the default in brms and Stan.
-3. **Stable:** quantiles are easy to estimate from draws.
-4. **Invariant to transformation:** the ETI of exp(θ) is exp of the ETI of θ. Convenient for back-transforming.
-5. **For symmetric posteriors** it equals the highest density interval.
-6. **For strongly skewed posteriors** it can leave out the most probable values near a boundary and include less probable ones in the long tail.
-
-## In R
 ```r
 set.seed(4); d <- rexp(20000, 1); quantile(d, c(0.025, 0.975))            # for this skewed posterior the mode (0) lies outside the equal-tailed interval
 exp(quantile(log(d), c(0.025, 0.975)))                                    # transformation-invariant: same interval via the log scale
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch8]].
-
-## Common confusions
-- **"The ETI always contains the most probable value."** Not when the posterior piles up against a boundary.
-
-## Explain it back
-- Why is the ETI convenient under back-transformation?
-
-*Pass test:* you can compute an ETI and name its weakness.
 
 ## Connections
 - **Builds on:** [[Credible Interval]], [[Quantile]]

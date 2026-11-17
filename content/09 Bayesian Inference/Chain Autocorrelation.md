@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "Chain autocorrelation is the correlation between an MCMC draw and the draws that came shortly before it, which reduces how much information the chain holds."
 aliases:
   - "MCMC autocorrelation"
   - "Autocorrelation of draws"
@@ -13,38 +14,17 @@ status: seedling
 
 # Chain Autocorrelation
 
-**In one line:** chain autocorrelation is the correlation between an MCMC draw and the draws that came shortly before it, which reduces how much information the chain holds.
+Ask the same person their opinion every five minutes and you get many answers but little new information, because each is nearly the previous one. **Chain autocorrelation** is the correlation between an MCMC draw and the draws shortly before it ([[Correlation]], [[Autocorrelation]]). It happens because each draw is generated from the previous one, so neighbours are alike ([[Markov Chain]]). Lag-k autocorrelation is the correlation between draws k iterations apart, and an autocorrelation plot shows bars for lags 1, 2, 3 and so on; in a good chain they fall to zero within a few lags.
 
-> [!info] Before this, it helps to know
-> [[Markov Chain]] (why it happens) · [[Correlation]] (what is measured) · [[Autocorrelation]] (the general concept)
+High autocorrelation means slow mixing: the chain needs many steps to cross the posterior. It doesn't bias the estimates, but it makes them noisier than the number of draws suggests, and the [[Effective Sample Size]] turns this into a number. In the code below a "sticky" chain has autocorrelations of 0.95, 0.80 and 0.35 at lags 1, 5 and 20, and its 5,000 draws are worth about 140 independent ones; independent draws have autocorrelations near 0 and an effective size near 4,000 or more.
 
-## The everyday picture
-Asking the same person for their opinion every five minutes. You get many answers and not much new information, because each answer is nearly the previous one.
+Causes are a poorly tuned proposal, strongly correlated parameters and a weakly identified model; remedies are running longer, centering predictors, reparameterising or switching to HMC. [[Thinning]] reduces it without adding information, and it shows in a [[Trace Plot]] as slow snaking. Autocorrelated draws are valid draws; there are effectively fewer of them. The same idea in field data over time is [[Temporal Autocorrelation]].
 
-## Start from zero
-1. **Each draw is generated from the previous one.** So neighbours are alike.
-2. **Lag-k autocorrelation:** the correlation between draws k iterations apart.
-3. **Autocorrelation plot:** bars for lags 1, 2, 3, ... In a good chain they fall to zero within a few lags.
-4. **High autocorrelation means slow mixing.** The chain needs many steps to cross the posterior.
-5. **It doesn't bias the estimates.** It makes them noisier than the number of draws suggests.
-6. **Effective sample size turns this into a number.**
-7. **Causes:** a poorly tuned proposal, strongly correlated parameters, a weakly identified model.
-8. **Remedies:** run longer, center predictors, reparameterise, switch to HMC.
-
-## In R
 ```r
 set.seed(27); sticky <- as.numeric(arima.sim(list(ar = 0.95), 5000)); free <- rnorm(5000)
 round(rbind(sticky = acf(sticky, plot = FALSE)$acf[c(2, 6, 21)], free = acf(free, plot = FALSE)$acf[c(2, 6, 21)]), 2)      # autocorrelation at lags 1, 5 and 20
 c(coda::effectiveSize(sticky), coda::effectiveSize(free))
 ```
-
-## Common confusions
-- **"Autocorrelated draws are invalid."** They are valid draws. There are effectively fewer of them.
-
-## Explain it back
-- What does high lag-1 autocorrelation imply for effective sample size?
-
-*Pass test:* you can read an autocorrelation plot of a chain.
 
 ## Connections
 - **Builds on:** [[Markov Chain]], [[Correlation]]

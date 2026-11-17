@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "The acceptance rate is the fraction of proposed moves that an MCMC sampler accepts, a gauge of whether its step size is well matched to the posterior."
 aliases:
   - "Acceptance ratio"
   - "Acceptance probability"
@@ -13,38 +14,15 @@ status: seedling
 
 # Acceptance Rate
 
-**In one line:** the acceptance rate is the fraction of proposed moves that an MCMC sampler accepts, a gauge of whether its step size is well matched to the posterior.
+A batting average for the sampler's suggestions: near 100% means it is only suggesting timid moves, near 0% that its suggestions are wild. The **acceptance rate** is the fraction of proposed moves that an MCMC sampler accepts, a gauge of whether its step size is well matched to the posterior ([[Metropolis Algorithm]], [[Proposal Distribution]]). For one step the acceptance probability is min(1, R), with R the ratio of posterior densities; over a run, the rate is accepted proposals divided by total proposals. In the code below, with 30 successes in 100 trials and a current value of 0.30, a move to 0.35 is accepted with probability 0.57 and a move to 0.28 with probability 0.91.
 
-> [!info] Before this, it helps to know
-> [[Metropolis Algorithm]] (where proposals are accepted or not) · [[Proposal Distribution]] (what determines it)
+For random-walk Metropolis, above about 90% means steps are too small and below about 5% that they are too large; a good range is about 20 to 50%, with theory suggesting about 44% for one parameter and about 23% for many ([[Tuning Parameter]]). Different algorithms have different targets. Gibbs accepts 100% by construction, and Stan's NUTS aims for about 80% on its own acceptance statistic, set by `adapt_delta = 0.8` ([[Hamiltonian Monte Carlo]]).
 
-## The everyday picture
-A batting average for the sampler's suggestions. Near 100% means it is only suggesting timid moves. Near 0% means its suggestions are wild.
+A good acceptance rate isn't proof of convergence; it is one check among several ([[Hobbs and Hooten 2015 Ch7]]). Higher is not better: in random-walk Metropolis a rate near 100% signals inefficiency.
 
-## Start from zero
-1. **For one step:** the acceptance probability is min(1, R), with R the ratio of posterior densities (the acceptance ratio).
-2. **Over a run:** acceptance rate = accepted proposals / total proposals.
-3. **Very high (above 90%)** in random-walk Metropolis: steps too small.
-4. **Very low (below 5%):** steps too large.
-5. **Good range for random-walk Metropolis:** about 20 to 50% (theory suggests about 44% for one parameter and about 23% for many).
-6. **Different algorithms have different targets.** Gibbs accepts 100% by construction. Stan's NUTS aims for about 80% (`adapt_delta = 0.8`) on its own acceptance statistic.
-7. **A good rate isn't proof of convergence.** It is one check among several.
-
-## In R
 ```r
 h <- function(p) if (p <= 0 || p >= 1) 0 else dbinom(30, 100, p); min(1, h(0.35) / h(0.30)); min(1, h(0.28) / h(0.30))      # acceptance probabilities for a downhill and a slightly downhill move
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch7]].
-
-## Common confusions
-- **"A higher acceptance rate is better."** In random-walk Metropolis a rate near 100% signals inefficiency.
-
-## Explain it back
-- What does a 99% acceptance rate tell you about a Metropolis sampler?
-
-*Pass test:* you can interpret an acceptance rate.
 
 ## Connections
 - **Builds on:** [[Metropolis Algorithm]], [[Proposal Distribution]]

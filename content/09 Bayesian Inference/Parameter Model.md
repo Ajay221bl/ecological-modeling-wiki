@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "The parameter model is the layer of a hierarchical model that gives prior distributions to all the parameters of the data and process models."
 aliases:
   - "Parameter layer"
   - "Prior layer"
@@ -12,37 +13,16 @@ status: seedling
 
 # Parameter Model
 
-**In one line:** the parameter model is the layer of a hierarchical model that gives prior distributions to all the parameters of the data and process models.
+Every floor of a building rests on something, and the foundations are where the structure finally rests on the ground. The **parameter model** is the foundation of a [[Hierarchical Model]]: the layer that gives a [[Prior Distribution]] to every parameter of the [[Data Model]] and the [[Process Model]], written [θ_d][θ_p]. Every unknown not given a distribution elsewhere needs a prior here.
 
-> [!info] Before this, it helps to know
-> [[Hierarchical Model]] (the structure) · [[Prior Distribution]] (what it consists of)
+It closes the model, so the joint distribution is fully specified and posterior ∝ [y | z, θ_d] [z | θ_p] [θ_d] [θ_p]. In the code below, one draw from a parameter model gives β₀ = 0.43, β₁ = −0.54 and a detection probability of 0.74; simulating many such draws shows what the priors allow. Where parameters have priors with unknowns of their own, those unknowns are a [[Hyperparameter]] layer.
 
-## The everyday picture
-The foundations of a building. Every floor above rests on something. The parameter model is where the model finally rests on stated assumptions and no further unknowns.
+A model missing a prior isn't a complete Bayesian model, so priors are not an optional extra; they are a required layer ([[Hobbs and Hooten 2015 Ch6]]).
 
-## Start from zero
-1. **Written [θ_d][θ_p]:** priors on data-model and process-model parameters.
-2. **Every unknown that isn't given a distribution elsewhere needs a prior here.**
-3. **It closes the model.** The joint distribution is now fully specified.
-4. **Posterior ∝ [y | z, θ_d] [z | θ_p] [θ_d] [θ_p].**
-5. **A model missing a prior isn't a complete Bayesian model.**
-
-## In R
 ```r
 set.seed(4); beta0 <- rnorm(1, 0, 2); beta1 <- rnorm(1, 0, 1); p <- rbeta(1, 2, 2)      # one draw from a parameter model
 round(c(beta0 = beta0, beta1 = beta1, p = p), 2)
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch6]].
-
-## Common confusions
-- **"Priors are an optional extra."** In a Bayesian model they are a required layer.
-
-## Explain it back
-- What does the parameter model contain?
-
-*Pass test:* you can list the priors a given hierarchical model needs.
 
 ## Connections
 - **Builds on:** [[Hierarchical Model]], [[Prior Distribution]]

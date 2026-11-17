@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "A derived quantity is anything computed from the model's parameters, and its full posterior is obtained by doing that computation on every posterior draw."
 aliases:
   - "Derived quantity"
   - "Derived parameter"
@@ -12,44 +13,17 @@ status: seedling
 
 # Derived Quantities
 
-**In one line:** a derived quantity is anything computed from the model's parameters, and its full posterior is obtained by doing that computation on every posterior draw.
+A spreadsheet with a formula column fills itself in: put thousands of plausible rows in the parameter columns and the formula column gives thousands of plausible results. A **derived quantity** is anything computed from the model's parameters, such as a difference, a ratio, a threshold, a predicted value or a population growth rate, and its full posterior is obtained by doing that computation on every posterior draw ([[Posterior Draws]]). If you estimated a logistic curve's intercept β₀ and slope β₁, the tree cover at which occupancy is 50% is −β₀/β₁; computed for each of 4,000 draws, the 4,000 results are its posterior.
 
-> [!info] Before this, it helps to know
-> [[Posterior Draws]] (the input) · [[Joint Posterior Distribution]] (why whole rows are used) · [[Equivariance Property of MCMC]] (why it works)
+Write the quantity as a function of the parameters, apply it row by row, and summarise the results like any posterior. Using whole rows propagates uncertainty and parameter correlations automatically ([[Joint Posterior Distribution]]), with no [[Delta Method]] or bootstrap; this works because of the [[Equivariance Property of MCMC]], and it is one of the main practical advantages of Bayesian analysis. In the code below, correlated draws of β₀ and β₁ give a 50% point with median 25 and 95% interval 19 to 32, and the occupancy probability at 40% tree cover has median 0.23 with a 0.86 probability of being below 0.3.
 
-## The everyday picture
-A spreadsheet with a formula column. Fill the parameter columns with thousands of plausible rows, and the formula column fills in by itself with thousands of plausible results.
+In Stan this is the `generated quantities` block, in JAGS extra lines in the model, and in brms operations on `as_draws_df()` or `hypothesis()`; the Stan labs use generated quantities ([[Course Website]], [[Hobbs and Hooten 2015 Ch8]]). Don't plug the posterior means into the formula: that gives one number, and for nonlinear functions it isn't even the mean of the derived quantity ([[Jensen's Inequality]]). Compute per draw, then summarise. Predictions for new data are the [[Posterior Predictive Distribution]].
 
-## A tiny example
-You estimated a logistic curve's intercept β₀ and slope β₁. The tree cover at which occupancy is 50% is −β₀/β₁. Compute it for each of 4,000 draws. The 4,000 results are its posterior.
-
-## Start from zero
-1. **Often the parameters aren't what you want.** You want a difference, a ratio, a threshold, a predicted value, a population growth rate.
-2. **Write the quantity as a function** of the parameters.
-3. **Apply it to every draw,** row by row.
-4. **Summarise the results** like any posterior: median, interval, probability of exceeding a threshold.
-5. **Uncertainty and parameter correlations are propagated automatically.**
-6. **No delta method, no bootstrap.**
-7. **This is one of the main practical advantages** of Bayesian analysis.
-8. **In Stan:** the `generated quantities` block. In JAGS: extra lines in the model. In brms: operate on `as_draws_df()` or use `hypothesis()`.
-
-## In R
 ```r
 set.seed(7); d <- data.frame(b0 = rnorm(4000, 2, 0.3)); d$b1 <- -0.08 + (d$b0 - 2) * (-0.02) + rnorm(4000, 0, 0.008)      # correlated posterior draws
 d$x50 <- -d$b0 / d$b1; round(quantile(d$x50, c(0.025, 0.5, 0.975)), 1)                                                # posterior of the 50% point
 d$p_at_40 <- plogis(d$b0 + d$b1 * 40); round(c(median = median(d$p_at_40), prob_below_0.3 = mean(d$p_at_40 < 0.3)), 2)
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch8]]. Used in the Stan labs' generated quantities ([[Course Website]]).
-
-## Common confusions
-- **"Plug the posterior means into the formula."** That gives one number, which for nonlinear functions isn't even the mean of the derived quantity. Compute per draw, then summarise.
-
-## Explain it back
-- How do you get an interval for a ratio of two parameters?
-
-*Pass test:* you can compute the posterior of a derived quantity.
 
 ## Connections
 - **Builds on:** [[Posterior Draws]], [[Joint Posterior Distribution]]

@@ -3,6 +3,7 @@ type: atomic
 tags:
   - bayes
   - flashcards/eco/bayes
+description: "The posterior predictive distribution is the distribution of new, not yet seen data implied by the model, averaging over all the uncertainty in the parameters."
 aliases:
   - "Posterior prediction"
   - "Posterior predictive"
@@ -14,45 +15,20 @@ status: seedling
 
 # Posterior Predictive Distribution
 
-**In one line:** the posterior predictive distribution is the distribution of new, not yet seen data implied by the model, averaging over all the uncertainty in the parameters.
+An honest forecast admits two kinds of doubt: "we aren't sure of the average rainfall for this month, and any given month varies around the average anyway". The **posterior predictive distribution** is the distribution of new, not yet seen data implied by the model, combining both: uncertainty about which parameter values are true ([[Posterior Distribution]]) and random variation given those values ([[Data Model]]). To sample it, for each posterior draw of the parameters simulate one new observation from the data model ([[Composition Sampling]]); the collection of simulated observations is a sample from the posterior predictive distribution.
 
-> [!info] Before this, it helps to know
-> [[Posterior Distribution]] (parameter uncertainty) · [[Data Model]] (sampling variation) · [[Prediction Interval]] (its frequentist cousin)
+It is wider than the posterior of the mean, as the figure shows: a narrow band for uncertainty in the mean inside a wide band where new observations will fall. In the code below, a Poisson rate with posterior Gamma(22, 6) has a 95% interval of 2.3 to 5.3, while a new count ranges from 0 to 8. Its quantiles give an interval for new data, the Bayesian [[Prediction Interval]] ([[Out-of-sample Prediction]]), and replicate datasets from it are used for model checking ([[Posterior Predictive Check]]).
 
-## The everyday picture
-A forecast that admits two kinds of doubt. "We aren't sure of the average rainfall for this month (parameter uncertainty), and any given month varies around the average anyway (sampling variation)." The forecast range has to include both.
+In brms `posterior_predict()` gives new observations, `posterior_epred()` the expected value only without observation noise, and `posterior_linpred()` the linear predictor; the labs use `posterior_predict()` and `pp_check()` ([[Course Website]], [[Hobbs and Hooten 2015 Ch8]]). The credible interval for the mean does not tell you where new data will fall: new data scatter far more widely than the mean is uncertain.
 
-## Start from zero
-1. **Two sources of uncertainty about a new observation:** which parameter values are true, and random variation given those values.
-2. **Recipe (composition sampling):** for each posterior draw of the parameters, simulate one new observation from the data model.
-3. **The collection of simulated observations** is a sample from the posterior predictive distribution.
-4. **It is wider than the posterior of the mean.**
-5. **Use 1, prediction:** quantiles give a prediction interval for new data.
-6. **Use 2, model checking:** simulate replicate datasets (y_rep) and compare with the real data.
-7. **In brms:** `posterior_predict()` gives new observations. `posterior_epred()` gives the expected value only (no observation noise). `posterior_linpred()` gives the linear predictor.
-
-## See it
 ![[Posterior predictive.png|700]]
 *What to look at:* the narrow band (uncertainty in the mean) inside the wide band (where new observations will fall).
 
-## In R
 ```r
 set.seed(9); lambda <- rgamma(4000, 22, 6)                                # posterior draws of a Poisson rate
 y_new <- rpois(4000, lambda)                                              # one new count per draw
 rbind(mean_rate = quantile(lambda, c(.025, .975)), new_count = quantile(y_new, c(.025, .975)))
 ```
-
-## In the course
-[[Hobbs and Hooten 2015 Ch8]]. `posterior_predict()` and `pp_check()` in the labs ([[Course Website]]).
-
-## Common confusions
-- **"The credible interval for the mean tells me where new data will fall."** New data scatter far more widely than the mean is uncertain.
-
-## Explain it back
-- What two uncertainties does it combine?
-- Which brms function leaves out observation noise?
-
-*Pass test:* you can simulate from a posterior predictive distribution.
 
 ## Connections
 - **Builds on:** [[Posterior Distribution]], [[Data Model]]
