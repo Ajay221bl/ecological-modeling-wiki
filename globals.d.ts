@@ -13,5 +13,10 @@ export declare global {
   interface Window {
     spaNavigate(url: URL, isBack: boolean = false)
     addCleanup(fn: (...args: any[]) => void)
+    quartzPopover?: {
+      graphNodeEnter(href: string, nodeId: string, clientX: number, clientY: number): void
+      graphNodeLeave(): void
+      closeAll(): void
+    }
   }
 }

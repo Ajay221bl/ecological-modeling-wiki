@@ -402,6 +402,14 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
       .fill({ color: isTagNode ? computedStyleMap["--light"] : color(n) })
       .on("pointerover", (e) => {
         updateHoverInfo(e.target.label)
+        if (!dragging) {
+          window.quartzPopover?.graphNodeEnter(
+            resolveRelative(fullSlug, nodeId as SimpleSlug),
+            nodeId,
+            e.clientX,
+            e.clientY,
+          )
+        }
         oldLabelOpacity = label.alpha
         if (!dragging) {
           renderPixiFromD3()
@@ -409,6 +417,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
       })
       .on("pointerleave", () => {
         updateHoverInfo(null)
+        window.quartzPopover?.graphNodeLeave()
         label.alpha = oldLabelOpacity
         if (!dragging) {
           renderPixiFromD3()
@@ -456,6 +465,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
         .container(() => app.canvas)
         .subject(() => graphData.nodes.find((n) => n.id === hoveredNodeId))
         .on("start", function dragstarted(event) {
+          window.quartzPopover?.closeAll()
           if (!event.active) simulation.alphaTarget(1).restart()
           event.subject.fx = event.subject.x
           event.subject.fy = event.subject.y
@@ -614,6 +624,7 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   }
 
   function hideGlobalGraph() {
+    window.quartzPopover?.closeAll()
     cleanupGlobalGraphs()
     for (const container of containers) {
       container.classList.remove("active")

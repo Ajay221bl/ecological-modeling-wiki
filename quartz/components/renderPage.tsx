@@ -23,6 +23,8 @@ interface RenderComponents {
 }
 
 const headerRegex = new RegExp(/h[1-6]/)
+// cache-busting stamp so browsers pick up new CSS/JS right after each deploy
+const buildVersion = Date.now().toString(36)
 export function pageResources(
   baseDir: FullSlug | RelativeURL,
   staticResources: StaticResources,
@@ -33,13 +35,13 @@ export function pageResources(
   const resources: StaticResources = {
     css: [
       {
-        content: joinSegments(baseDir, "index.css"),
+        content: joinSegments(baseDir, "index.css") + `?v=${buildVersion}`,
       },
       ...staticResources.css,
     ],
     js: [
       {
-        src: joinSegments(baseDir, "prescript.js"),
+        src: joinSegments(baseDir, "prescript.js") + `?v=${buildVersion}`,
         loadTime: "beforeDOMReady",
         contentType: "external",
       },
@@ -55,7 +57,7 @@ export function pageResources(
   }
 
   resources.js.push({
-    src: joinSegments(baseDir, "postscript.js"),
+    src: joinSegments(baseDir, "postscript.js") + `?v=${buildVersion}`,
     loadTime: "afterDOMReady",
     moduleType: "module",
     contentType: "external",
