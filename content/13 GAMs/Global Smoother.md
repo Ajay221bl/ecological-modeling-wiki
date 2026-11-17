@@ -3,6 +3,7 @@ type: atomic
 tags:
   - gam
   - flashcards/eco/gam
+description: "A global smoother is the single smooth curve shared by all groups in a hierarchical GAM, describing the average relationship."
 aliases:
   - "Global smooth"
   - "Common smoother"
@@ -12,29 +13,11 @@ status: seedling
 
 # Global Smoother
 
-**In one line:** a global smoother is the single smooth curve shared by all groups in a hierarchical GAM, describing the average relationship.
+A **global smoother** is the single smooth curve shared by all groups in a [[Hierarchical GAM]], describing the average relationship, much as a [[Fixed Effect]] describes the average in a mixed model. It is written as an ordinary `s(x)` term alongside the group-level smooths, and it is present in models G, GS and GI and absent in S and I. In GS and GI the [[Group-level Smoothers]] are deviations from it.
 
-> [!info] Before this, it helps to know
-> [[Hierarchical GAM]] · [[Fixed Effect]] (its role is similar)
+Use it when there is a shared response you want to report, and predict it alone with `exclude =` the group terms ([[Prediction from a GAM]]). There is an identifiability catch: in model GI, group smooths with m = 2 can overlap the global smooth, so Pedersen et al. use m = 1 for group smooths to reduce this ([[Thin Plate Regression Spline]]).
 
-## Start from zero
-1. **Written as an ordinary `s(x)` term** alongside group-level smooths.
-2. **Present in models G, GS and GI;** absent in S and I.
-3. **Group smooths in GS and GI are deviations from it.**
-4. **Use it when there is a shared response you want to report.**
-5. **Identifiability:** in GI, group smooths with m = 2 can overlap the global smooth; Pedersen et al. use m = 1 for group smooths to reduce this.
-6. **Predict it alone** with `exclude =` the group terms.
-
-## In the course
-[[Pedersen et al. 2019]].
-
-## Common confusions
-- **"The global smooth is the average of the group fits."** It is estimated jointly, with group deviations penalised.
-
-## Explain it back
-- Which HGAM types include a global smooth?
-
-*Pass test:* you can add and interpret a global smoother.
+It is defined in [[Pedersen et al. 2019]]. The global smooth is not the average of the group fits; it is estimated jointly, with the group deviations penalised ([[Shrinkage]]).
 
 ## Connections
 - **Builds on:** [[Hierarchical GAM]], [[Fixed Effect]]

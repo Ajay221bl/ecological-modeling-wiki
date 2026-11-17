@@ -3,6 +3,7 @@ type: atomic
 tags:
   - gam
   - flashcards/eco/gam
+description: "A spatial smooth is a two-dimensional smooth of the coordinates that captures spatial pattern in the response not explained by other predictors."
 aliases:
   - "s(lon, lat)"
   - "Spatial smooth"
@@ -14,35 +15,16 @@ status: seedling
 
 # Spatial Smooths
 
-**In one line:** a spatial smooth is a two-dimensional smooth of the coordinates that captures spatial pattern in the response not explained by other predictors.
+A **spatial smooth** is a two-dimensional smooth of the coordinates that captures spatial pattern in the response not explained by other predictors ([[Thin Plate Regression Spline]], [[Spatial Autocorrelation]]). `s(easting, northing, k = 50)` is an isotropic thin plate smooth, which needs the same units in both directions, so use projected coordinates such as UTM; on latitude and longitude use `bs = "sos"`, splines on the sphere. It acts as a flexible trend surface that absorbs broad spatial trends and some residual autocorrelation.
 
-> [!info] Before this, it helps to know
-> [[Thin Plate Regression Spline]] · [[Spatial Autocorrelation]]
+Watch for [[Concurvity]], since spatially structured covariates overlap with the spatial smooth, and check residual variograms after fitting ([[Variogram]]). In the code below the response has a spatial pattern plus a covariate effect: AIC is 723.8 without space and 160.5 with `s(e, n, k = 30)`.
 
-## Start from zero
-1. **`s(easting, northing, k = 50)`:** isotropic thin plate smooth (same units in both directions).
-2. **Use projected coordinates** (UTM); on lat-long use `bs = "sos"` (splines on the sphere).
-3. **Absorbs broad spatial trends and some residual autocorrelation.** A flexible trend surface.
-4. **Guélat and Kéry (2018)** used two-dimensional splines (and CAR) for spatial autocorrelation in N-mixture models.
-5. **Watch concurvity:** spatially structured covariates overlap with the spatial smooth.
-6. **Check residual variograms** after fitting.
+[[Guélat and Kéry 2018]] used two-dimensional splines, and CAR models, for spatial autocorrelation in N-mixture models ([[Course Website]]). A spatial smooth doesn't remove all autocorrelation; it removes broad pattern, so check the residuals.
 
-## In R
 ```r
 library(mgcv); set.seed(21); d <- data.frame(e = runif(300), n = runif(300)); d$x <- rnorm(300); d$y <- 0.5 * d$x + sin(3 * d$e) + cos(3 * d$n) + rnorm(300, 0, 0.3)
 m0 <- gam(y ~ x, data = d); m1 <- gam(y ~ x + s(e, n, k = 30), data = d, method = "REML"); round(c(AIC_no_space = AIC(m0), AIC_spatial_smooth = AIC(m1)), 1)
 ```
-
-## In the course
-[[Guélat and Kéry 2018]]. GAM lectures ([[Course Website]]).
-
-## Common confusions
-- **"A spatial smooth removes all autocorrelation."** It removes broad pattern; check residuals.
-
-## Explain it back
-- When should you use bs = "sos"?
-
-*Pass test:* you can add and check a spatial smooth.
 
 ## Connections
 - **Builds on:** [[Thin Plate Regression Spline]], [[Spatial Autocorrelation]]

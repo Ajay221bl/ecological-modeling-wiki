@@ -3,6 +3,7 @@ type: atomic
 tags:
   - gam
   - flashcards/eco/gam
+description: "Shared wiggliness means all group-level smooths use one smoothing parameter, so they are assumed equally complex, whereas individual wiggliness gives each group its own."
 aliases:
   - "Common smoothing parameter"
   - "Shared penalty"
@@ -12,28 +13,11 @@ status: seedling
 
 # Shared Wiggliness
 
-**In one line:** shared wiggliness means all group-level smooths use one smoothing parameter, so they are assumed equally complex, whereas individual wiggliness gives each group its own.
+**Shared wiggliness** means all group-level smooths use one smoothing parameter, so they are assumed equally complex; individual wiggliness gives each group its own ([[Smoothing Parameter]], [[Group-level Smoothers]]). Shared, one λ, is models GS and S with `bs = "fs"`; individual, one λ per group, is models GI and I with `by = group` ([[Factor-smooth Interaction]], [[by= Smooths]]).
 
-> [!info] Before this, it helps to know
-> [[Smoothing Parameter]] · [[Group-level Smoothers]]
+Shared is more parsimonious and more stable with many groups; individual suits groups with genuinely different dynamics, such as one species that cycles and another that trends. The analogy is a single variance for all random slopes against a separate variance for each group ([[Random Slope]]).
 
-## Start from zero
-1. **Shared (one λ):** models GS and S. `bs = "fs"`.
-2. **Individual (one λ per group):** models GI and I. `by = group`.
-3. **Shared is more parsimonious and stable** with many groups.
-4. **Individual suits groups with genuinely different dynamics** (one species cycles, another trends).
-5. **Analogy:** a shared variance for all random slopes versus a separate variance per group.
-
-## In the course
-[[Pedersen et al. 2019]]. [[Lawton et al. 2022]] (GS and S, shared penalty, selected).
-
-## Common confusions
-- **"Shared wiggliness means identical curves."** Curves differ in shape; only their overall complexity is shared.
-
-## Explain it back
-- Which HGAM types use individual wiggliness?
-
-*Pass test:* you can choose shared or individual wiggliness.
+It is one of the two choices that define Pedersen's model types ([[Pedersen et al. 2019]], [[Hierarchical GAM]]); [[Lawton et al. 2022]] usually selected the shared-penalty models GS and S. Shared wiggliness does not mean identical curves: the curves differ in shape, and only their overall complexity is shared.
 
 ## Connections
 - **Builds on:** [[Smoothing Parameter]], [[Group-level Smoothers]]

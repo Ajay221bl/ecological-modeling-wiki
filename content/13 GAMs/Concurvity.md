@@ -3,6 +3,7 @@ type: atomic
 tags:
   - gam
   - flashcards/eco/gam
+description: "Concurvity is the GAM version of collinearity: one smooth term can be closely approximated by a combination of the other smooths, so their separate effects are poorly identified."
 aliases:
   - "concurvity()"
   - "Non-linear collinearity"
@@ -11,36 +12,16 @@ status: seedling
 
 # Concurvity
 
-**In one line:** concurvity is the GAM version of collinearity: one smooth term can be closely approximated by a combination of the other smooths, so their separate effects are poorly identified.
+**Concurvity** is the GAM version of collinearity: one smooth term can be closely approximated by a combination of the other smooths, so their separate effects are poorly identified ([[Collinearity]], [[Generalized Additive Model]]). `concurvity(m, full = TRUE)` reports, for each smooth, how much of it the others can explain, from 0 (none) to 1 (total), in three versions: worst, observed and estimate, with "worst" the most pessimistic. Values above about 0.8 deserve attention.
 
-> [!info] Before this, it helps to know
-> [[Collinearity]] · [[Generalized Additive Model]]
+Common causes are a spatial smooth with spatially structured covariates and a time smooth with trending covariates ([[Spatial Smooths]]). The consequences are unstable smooths, wide intervals and effects shifting between terms; remedies are to drop or combine terms and rethink which smooth carries which hypothesis. In the code below x2 is x1 plus a little noise, and the worst-case concurvity is 0.98 for both smooths.
 
-## Start from zero
-1. **`concurvity(m, full = TRUE)`** reports, for each smooth, how much of it can be explained by the others: values from 0 (none) to 1 (total).
-2. **Three versions:** worst, observed, estimate. "Worst" is the most pessimistic.
-3. **Values above about 0.8** deserve attention.
-4. **Common causes:** spatial smooth plus spatially structured covariates; time smooth plus trending covariates.
-5. **Consequences:** unstable smooths, wide intervals, effects shifting between terms.
-6. **Remedies:** drop or combine terms, rethink which smooth carries which hypothesis.
-7. **Zuur Ch3 discusses dealing with collinearity in GAMs.**
+[[Zuur et al. 2009 Ch3]] discuss dealing with collinearity in GAMs. Low VIFs don't mean no concurvity, since a [[Variance Inflation Factor]] checks only linear relations.
 
-## In R
 ```r
 library(mgcv); set.seed(23); x1 <- runif(300); x2 <- x1 + rnorm(300, 0, 0.05); y <- sin(2 * pi * x1) + rnorm(300, 0, 0.3)
 round(concurvity(gam(y ~ s(x1) + s(x2), method = "REML"), full = TRUE)["worst", ], 2)
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch3]] (GAM example dealing with collinearity).
-
-## Common confusions
-- **"Low VIFs mean no concurvity."** VIF checks linear relations only.
-
-## Explain it back
-- What does a concurvity of 0.95 mean?
-
-*Pass test:* you can check and respond to concurvity.
 
 ## Connections
 - **Builds on:** [[Collinearity]], [[Generalized Additive Model]]

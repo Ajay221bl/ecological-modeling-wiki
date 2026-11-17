@@ -3,6 +3,7 @@ type: atomic
 tags:
   - gam
   - flashcards/eco/gam
+description: "A factor-smooth interaction fits a smooth for each level of a factor that all share one smoothing parameter and are penalised toward zero, behaving like random smooth curves."
 aliases:
   - "bs = \"fs\""
   - "Factor smooth"
@@ -13,35 +14,16 @@ status: seedling
 
 # Factor-smooth Interaction
 
-**In one line:** a factor-smooth interaction fits a smooth for each level of a factor that all share one smoothing parameter and are penalised toward zero, behaving like random smooth curves.
+A **factor-smooth interaction** fits a smooth for each level of a factor, all sharing one smoothing parameter and penalised toward zero, so they behave like random smooth curves ([[Smoothing Function s()]]; [[Random Slope]] is its linear analogue). It is written `s(x, f, bs = "fs", m = 2)`. With one λ for all levels the curves have similar wiggliness ([[Shared Wiggliness]]). Because the penalty null space is penalised too, it includes group-level intercepts and slopes, so no separate random intercept is needed.
 
-> [!info] Before this, it helps to know
-> [[Smoothing Function s()]] · [[Random Slope]] (its linear analogue)
+It is efficient for many levels each with modest data, and it is the group-level term in Pedersen's model GS, with a [[Global Smoother]], and model S, without ([[Hierarchical GAM]], [[Group-level Smoothers]]). In the code below the `CO2` uptake data of 12 plants get a global smooth with edf 3.8 and plant-level curves with a combined edf of 36.7.
 
-## Start from zero
-1. **`s(x, f, bs = "fs", m = 2)`.**
-2. **One λ shared by all levels:** curves have similar wiggliness.
-3. **Includes group-level intercepts and slopes** (the penalty null space is also penalised), so no separate random intercept is needed.
-4. **Efficient for many levels,** each with modest data.
-5. **This is the group-level term in Pedersen's model GS** (with a global smooth) and model S (without).
-6. **Like a random slope model, but with whole curves.**
+The example is Pedersen's CO2 model GS ([[Pedersen et al. 2019]]). `fs` doesn't need a separate random intercept; it already includes group-level intercepts.
 
-## In R
 ```r
 library(mgcv); CO2$Plant_uo <- factor(CO2$Plant, ordered = FALSE)
 m <- gam(log(uptake) ~ s(log(conc), k = 5, m = 2) + s(log(conc), Plant_uo, k = 5, bs = "fs", m = 2), data = CO2, method = "REML"); round(summary(m)$s.table[, "edf"], 1)
 ```
-
-## In the course
-[[Pedersen et al. 2019]] (CO2 model GS).
-
-## Common confusions
-- **"fs needs a separate random intercept."** It already includes group-level intercepts.
-
-## Explain it back
-- How many smoothing parameters does an fs term share across levels?
-
-*Pass test:* you can fit a factor smooth.
 
 ## Connections
 - **Builds on:** [[Smoothing Function s()]], [[Random Slope]]

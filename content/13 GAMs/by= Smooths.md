@@ -3,6 +3,7 @@ type: atomic
 tags:
   - gam
   - flashcards/eco/gam
+description: "A by= smooth fits a separate curve of x for each level of a factor, each with its own smoothing parameter."
 aliases:
   - "by ="
   - "by argument"
@@ -14,35 +15,16 @@ status: seedling
 
 # by= Smooths
 
-**In one line:** a by= smooth fits a separate curve of x for each level of a factor, each with its own smoothing parameter.
+A **by= smooth** fits a separate curve of x for each level of a factor, each with its own smoothing parameter ([[Smoothing Function s()]], [[Interaction Term]]). It is written `y ~ f + s(x, by = f)`; the factor main effect is needed because each by-smooth is centred. Each level gets its own λ, so the curves can differ in wiggliness. This is model I in [[Pedersen et al. 2019]], or GI if a global smooth is added ([[Hierarchical GAM]], [[Shared Wiggliness]]).
 
-> [!info] Before this, it helps to know
-> [[Smoothing Function s()]] · [[Interaction Term]]
+With a numeric `by`, the smooth is multiplied by that variable, a varying-coefficient model. Compare levels by differencing predictions with the lpmatrix or with gratia's `difference_smooths()` ([[Prediction from a GAM]]). With many levels and little data each, use a [[Factor-smooth Interaction]] (`bs = "fs"`) instead. In the code below the north curve is a sine wave and the others are straight lines: the by-smooths get edfs of 6.3 for north and 1.0 for east and south.
 
-## Start from zero
-1. **`y ~ f + s(x, by = f)`.** The factor main effect is needed because each by-smooth is centred.
-2. **Each level gets its own λ:** curves can differ in wiggliness.
-3. **This is model I in Pedersen et al.** (or GI if a global smooth is added).
-4. **With a numeric `by`,** the smooth is multiplied by that variable (varying-coefficient model).
-5. **Comparing levels:** compute differences of predictions with the lpmatrix, or gratia's `difference_smooths()`.
-6. **Many levels with little data each:** use a factor smooth (`bs = "fs"`) instead.
+[[Zuur et al. 2009 Ch3]] cover the interaction between a continuous and a nominal variable. `s(x, by = f)` does not include the group means; add f as a parametric term.
 
-## In R
 ```r
 library(mgcv); set.seed(20); d <- data.frame(x = runif(300), f = factor(rep(c("north", "south", "east"), 100))); d$y <- c(north = 1, south = 0, east = -1)[as.character(d$f)] + ifelse(d$f == "north", sin(2 * pi * d$x), 0.5 * d$x) + rnorm(300, 0, 0.3)
 round(summary(gam(y ~ f + s(x, by = f), data = d, method = "REML"))$s.table[, "edf"], 2)
 ```
-
-## In the course
-[[Zuur et al. 2009 Ch3]] (interaction between a continuous and nominal variable). [[Pedersen et al. 2019]].
-
-## Common confusions
-- **"s(x, by = f) includes the group means."** It doesn't; add f as a parametric term.
-
-## Explain it back
-- Why must f be added as a main effect?
-
-*Pass test:* you can fit and interpret by-smooths.
 
 ## Connections
 - **Builds on:** [[Smoothing Function s()]], [[Interaction Term]]

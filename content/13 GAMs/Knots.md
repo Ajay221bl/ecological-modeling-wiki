@@ -3,6 +3,7 @@ type: atomic
 tags:
   - gam
   - flashcards/eco/gam
+description: "Knots are the x values where the pieces of a spline join, and their number and placement limit where and how much the curve can bend."
 aliases:
   - "Knot"
   - "Knot locations"
@@ -11,28 +12,11 @@ status: seedling
 
 # Knots
 
-**In one line:** knots are the x values where the pieces of a spline join, and their number and placement limit where and how much the curve can bend.
+**Knots** are the x values where the pieces of a [[Spline]] join, and their number and placement limit where and how much the curve can bend. More knots give more potential flexibility. mgcv's cubic regression splines put knots at quantiles of x by default, so there are more knots where there is more data ([[Cubic Regression Spline]]).
 
-> [!info] Before this, it helps to know
-> [[Spline]]
+Thin plate splines don't use knots in the usual sense: they start from every data point and keep the best low-rank approximation ([[Thin Plate Regression Spline]]). With [[Penalized Regression Spline|penalised splines]] the exact number of knots matters less, so choose enough (k) and let the penalty decide ([[Basis Dimension and gam.check()]]). Custom knots, `knots = list(x = c(...))`, are mainly used for cyclic splines to set where the cycle starts and ends ([[Cyclic Spline]]).
 
-## Start from zero
-1. **More knots, more potential flexibility.**
-2. **mgcv's cubic regression splines put knots at quantiles of x** by default, so more knots where there is more data.
-3. **Thin plate splines don't use knots in the usual sense;** they start from every data point and keep the best low-rank approximation.
-4. **With penalised splines the exact knot number matters less:** choose enough (k) and let the penalty decide.
-5. **Custom knots:** `knots = list(x = c(...))`, used for cyclic splines to set where the cycle starts and ends.
-
-## In the course
-[[Zuur et al. 2009 Ch3]].
-
-## Common confusions
-- **"More knots always means a wigglier fit."** In a penalised spline the penalty can keep it smooth.
-
-## Explain it back
-- Where does mgcv place knots for bs = "cr"?
-
-*Pass test:* you can say what knots do.
+Knots are covered in [[Zuur et al. 2009 Ch3]]. More knots do not always mean a wigglier fit: in a penalised spline the penalty can keep it smooth ([[Wiggliness Penalty]]).
 
 ## Connections
 - **Builds on:** [[Spline]]

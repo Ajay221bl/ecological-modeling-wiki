@@ -3,6 +3,7 @@ type: atomic
 tags:
   - gam
   - flashcards/eco/gam
+description: "A thin plate regression spline is mgcv's default smoother, which avoids choosing knots by starting from a spline through every data point and keeping its smoothest low-rank version."
 aliases:
   - "TPRS"
   - "bs = \"tp\""
@@ -13,38 +14,16 @@ status: seedling
 
 # Thin Plate Regression Spline
 
-**In one line:** a thin plate regression spline is mgcv's default smoother, which avoids choosing knots by starting from a spline through every data point and keeping its smoothest low-rank version.
+Imagine a thin metal sheet bent to pass near a set of pins: it takes the shape that needs the least bending energy. A **thin plate regression spline** (TPRS) is mgcv's default smoother, which avoids choosing knots by starting from a spline through every data point and keeping its smoothest low-rank version ([[Spline]], [[Basis Function]]). It is the default in `s()`, with `bs = "tp"` and `k = 10`, and needs no knot-placement decisions ([[Knots]]).
 
-> [!info] Before this, it helps to know
-> [[Spline]] · [[Basis Function]]
+It works in several dimensions with equal smoothness in every direction (isotropic), so `s(x, y)` suits spatial coordinates on the same scale ([[Spatial Smooths]]). Its penalty order m matters: m = 2 penalises curvature, the second derivative, leaving straight lines unpenalised, while m = 1 penalises slope, leaving only flat lines unpenalised ([[Wiggliness Penalty]]). It is slower for very large data, where [[bam()]] or "cr" help. In the code below a two-dimensional thin plate smooth of a wavy surface in x and z uses 22.9 effective degrees of freedom.
 
-## The everyday picture
-A thin metal sheet bent to pass near a set of pins. It takes the shape that needs the least bending energy.
+[[Pedersen et al. 2019]] compare m = 1 with m = 2 and use m = 1 for group-level smooths in model GI to reduce overlap with the global smooth ([[Global Smoother]]). Don't use `s(x, z)` for any two variables, only for ones that share units; otherwise use a [[Tensor Product Smooth]].
 
-## Start from zero
-1. **Default in `s()`:** `bs = "tp"`, `k = 10`.
-2. **No knot placement** decisions.
-3. **Works in several dimensions with equal smoothness in every direction** (isotropic), so `s(x, y)` suits spatial coordinates on the same scale.
-4. **Penalty order m:** m = 2 penalises curvature (second derivative), leaving straight lines unpenalised. m = 1 penalises slope, leaving only flat lines unpenalised.
-5. **Pedersen et al. use m = 1 for group-level smooths in model GI** to reduce overlap with the global smooth.
-6. **Slower for very large data;** bam() or "cr" help.
-
-## In R
 ```r
 library(mgcv); set.seed(7); d <- data.frame(x = runif(200), z = runif(200)); d$y <- sin(3 * d$x) * cos(3 * d$z) + rnorm(200, 0, 0.1)
 round(summary(gam(y ~ s(x, z), data = d, method = "REML"))$edf, 1)          # 2-D thin plate smooth
 ```
-
-## In the course
-[[Pedersen et al. 2019]] (TPRS, m = 1 vs m = 2).
-
-## Common confusions
-- **"Use s(x, z) for any two variables."** Only when they share units; otherwise use a tensor product.
-
-## Explain it back
-- What does m = 1 penalise?
-
-*Pass test:* you can explain the default smoother.
 
 ## Connections
 - **Builds on:** [[Spline]], [[Basis Function]]
