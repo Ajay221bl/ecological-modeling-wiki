@@ -106,3 +106,13 @@ The maths and vocabulary every other note leans on, explained from nothing. If a
 
 ## Related MOCs
 [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]] · [[MOC 21 - Course Readings|MOC - Course Readings]] · [[Start Here]]
+
+## From the grassland bird project
+Notes first written for my project vault (EcoModeling-Vault) and merged in v1.5. Project home: [[MOC 23 - Grassland Bird Richness Project|MOC - Grassland Bird Richness Project]].
+
+- [[Average (Mean)]]: the mean is the total divided by how many values you have: one number that describes the "typical" or "middle" value.
+- [[Data Table Rows and Columns]]: a data table stores one observation per row and one variable per column, so every cell holds exactly one value.
+- [[Equation of a Line]]: a straight line is described by two numbers: where it starts (the intercept) and how much it goes up for every one step to the right (the slope).
+- [[Project Overview]]
+- [[Sample vs Population]]: the population is everything you want to know about; the sample is the part you actually measured; statistics is about using the sample to make...
+- [[Spread and Variability]]: spread (or variability) describes how much values differ from each other and from their mean; variance and standard deviation turn that into a number.

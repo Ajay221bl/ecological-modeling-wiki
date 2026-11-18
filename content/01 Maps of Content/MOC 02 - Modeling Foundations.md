@@ -98,3 +98,13 @@ Unit 1 (Tue Aug 18): what a model is, the kinds of models ecologists build, and 
 
 ## Related MOCs
 [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]] · [[MOC 21 - Course Readings|MOC - Course Readings]] · [[Start Here]]
+
+## From the grassland bird project
+Notes first written for my project vault (EcoModeling-Vault) and merged in v1.5. Project home: [[MOC 23 - Grassland Bird Richness Project|MOC - Grassland Bird Richness Project]].
+
+- [[Categorical Predictor and Reference Level]]: a categorical predictor is a predictor made of named groups (like site BK, CR, DC); the model picks one group as the baseline, the reference level,...
+- [[Frequentist vs Bayesian]]: two schools of statistics that disagree on one thing: whether "probability" can describe an unknown fixed quantity (Bayesian: yes, as degree of...
+- [[Independence Assumption]]: the independence assumption says each observation brings its own fresh information: once the model's predictors are known, one observation tells you...
+- [[Predictor Variable]]: a predictor is something you use to explain or predict the response; in R it goes on the right of the `~`.
+- [[Standardizing Predictors]]: rewriting a numeric predictor as "how many standard deviations above or below its average" a value is, so predictors measured in very different units...
+- [[Why the point-visit is the sampling unit]]

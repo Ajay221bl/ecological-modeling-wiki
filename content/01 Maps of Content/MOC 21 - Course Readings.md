@@ -63,3 +63,16 @@ One source note per reading or chapter. Each says what the reading covers and wh
 
 ## Related MOCs
 [[MOC 00 - Ecological Modeling Course|MOC - Ecological Modeling Course]] · [[Start Here]]
+
+## From the grassland bird project
+Notes first written for my project vault (EcoModeling-Vault) and merged in v1.5. Project home: [[MOC 23 - Grassland Bird Richness Project|MOC - Grassland Bird Richness Project]].
+
+- [[Batpurev et al. 2021]]
+- [[Berry et al. 2026]]
+- [[Bolker et al. 2009]]
+- [[Brennan and Kuvlesky 2005]]
+- [[Hurlbert 1984]]
+- [[McGill 2013]]
+- [[Roberts et al. 2025]]
+- [[Rosenberg et al. 2019]]
+- [[Savage and Yeh 2019]]

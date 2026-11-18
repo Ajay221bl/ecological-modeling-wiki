@@ -21,6 +21,21 @@ Every round of changes and checks on this wiki, newest first. Each round ("pass"
 
 ---
 
+## v1.5 (2026-11-17): grassland bird project notes merged in
+**Asked for:** add the notes built for my grassland bird richness project (EcoModeling-Vault in ClaudeProject_Setup) to this wiki, and publish them on the web wiki.
+
+**Changed**
+- 159 notes copied in from EcoModeling-Vault. 92 of its notes share a name with a note already here, so they were skipped and links to them now go to this wiki's version.
+- New folders: `18 Grassland Bird Project` (13 project notes: overview, hypotheses, dataset, study sites, EDA findings, analysis plan, preliminary results, decision log and more), `19 Grassland Bird Ecology` (26), `20 Landscape and Remote Sensing` (13) and `21 Survey Design and Detection` (17).
+- The rest went into the matching topic folders: 22 molecular notes, 9 sources, 12 ecology notes in Ecology Vocabulary, 15 R notes, and a few each in Basics, Modeling Foundations, GLMs, Bayesian Inference, Model Selection, Autocorrelation and Mixed Models.
+- New maps: [[MOC 23 - Grassland Bird Richness Project]], [[MOC 24 - Grassland Bird Ecology]], [[MOC 25 - Landscape and Remote Sensing]] and [[MOC 26 - Survey Design and Detection]], linked from [[Start Here]]. The project vault's other 11 MOCs overlapped maps already here, so their links now point to this wiki's MOCs, and each of those MOCs gains a "From the grassland bird project" section.
+- [[Index]] regenerated (1282 notes).
+
+**Checks**
+- Links: 0 broken links (the only `[[...]]` matches left are R list indexing inside code, like `x[[1]]`).
+- Every merged note has an H1, at least three links, and at least one note linking to it. Em dashes: 0.
+- Not yet matched to this wiki's style: the merged notes use the older "Check yourself" callouts instead of Flashcards sections with deck tags.
+
 ## v1.4 (2026-11-17): every course homework mapped and walked through
 **Asked for:** "what about all the homeworks?" Make sure the wiki covers everything the homework assignments ask for.
 
