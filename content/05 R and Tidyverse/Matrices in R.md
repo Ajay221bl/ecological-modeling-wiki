@@ -16,7 +16,7 @@ A chessboard of numbers: every square holds the same kind of thing, and you name
 
 The one-type rule is what separates a matrix from a [[Data Frame]] and what makes matrix algebra possible; one text entry turns the whole matrix into text. Matrix arithmetic has its own operators: `*` multiplies element by element, `%*%` does true matrix multiplication, and `t()` transposes. `apply(m, 1, sum)` runs a function along each row, giving row sums of 9 and 12 ([[apply()]]).
 
-You will rarely build matrices by hand in this course; you will meet them as outputs. A correlation table from `cor()`, the variance-covariance matrix of a model's coefficients from `vcov()`, the [[Model Matrix]] a regression is built on, and the draws from a Bayesian fit, with one row per draw and one column per parameter, are all matrices. Knowing how to index them ([[Indexing in R]]) is what lets you pull out the number you need ([[Vectors in R]]).
+You will rarely build matrices by hand in this course; you will meet them as outputs. A correlation table from `cor()`, the [[Variance-Covariance Matrix|variance-covariance matrix]] of a model's coefficients from `vcov()`, the [[Model Matrix]] a regression is built on, and the draws from a Bayesian fit, with one row per draw and one column per parameter, are all matrices. Knowing how to index them ([[Indexing in R]]) is what lets you pull out the number you need ([[Vectors in R]]).
 
 ```r
 m <- matrix(1:6, nrow = 2); m      # filled column by column
@@ -29,7 +29,7 @@ apply(m, 1, sum)                   # row sums: 9 12
 
 ## Connections
 - **Builds on:** [[Matrix]], [[Vectors in R]]
-- **Leads to:** [[apply()]], [[Model Matrix]], [[Indexing in R]]
+- **Leads to:** [[apply()]], [[Model Matrix]], [[Indexing in R]], [[Variance-Covariance Matrix]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 
 ## Flashcards

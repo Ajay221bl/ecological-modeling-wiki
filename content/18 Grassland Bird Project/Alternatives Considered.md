@@ -30,7 +30,7 @@ Options weighed while choosing the project, and why each was not chosen. Chosen 
 ## Other habitat measures (Oct 12)
 | Option | Why not chosen | Status |
 |---|---|---|
-| Field vegetation metrics: Robel visual obstruction (ROBEL_AVG), distance to trees (DENS_101), tree diameter (DBH_AVG) | Missing at 112 to 224 of the 416 points, mostly roadside points. Using them would shrink the data a lot and drop roadside points unevenly across properties, and AIC needs every model on the same rows ([[Visual Obstruction (Robel Pole)]], [[Tree Density and DBH]], [[Roadside Surveys]], [[Complete-Case Analysis]]) | Rejected |
+| Field vegetation metrics: Robel visual obstruction (ROBEL_AVG), distance to trees (DENS_101), tree diameter (DBH_AVG) | Missing at 112 to 224 of the 416 points, mostly roadside points. Using them would shrink the data a lot and drop roadside points unevenly across properties, and AIC needs every model on the same rows ([[Visual Obstruction (Robel Pole)]], [[Tree Density|Tree Density and DBH]], [[Roadside Surveys]], [[Complete-Case Analysis]]) | Rejected |
 | All three spatial covariance scales in one model | The scales are correlated (Spearman 0.47 to 0.76), which makes their separate effects unstable ([[Collinearity]]) | Rejected: one scale per model (M2a, M2b, M2c) |
 | A single, pre-chosen spatial scale only | Which window matters is itself unknown; comparing the three lets the data choose ([[Why the window size is a choice of scale]]) | Rejected |
 
@@ -41,7 +41,7 @@ Glossary: a **GLM** is a model for counts or yes/no data with no adjustment for 
 |---|---|---|
 | Plain GLM (no random effect) | Repeat visits to a point are not independent, so a GLM would pseudoreplicate (H3) ([[Why a random intercept for point]]) | Rejected |
 | Occupancy model as the main method | Not taught until the Nov 3-5 guest lecture ([[Occupancy Model]]) | Stretch goal for the Final Draft |
-| Bayesian hierarchical model as the main method | Steeper learning curve; Bayesian mixed models come later in the course ([[Frequentist vs Bayesian]]) | Planned later extension |
+| Bayesian hierarchical model as the main method | Steeper learning curve; Bayesian mixed models come later in the course ([[Frequentist vs Bayesian Inference|Frequentist vs Bayesian]]) | Planned later extension |
 | Linear regression on richness | Richness is a count; Normal errors and constant variance do not fit ([[Why Poisson instead of linear regression for richness]]) | Rejected |
 | Property as a random effect | Only 5 levels, and the property effects are the target ([[Why Site is fixed not random]]) | Rejected |
 | Negative binomial from the start | Variance/mean ratios near 1 do not call for it ([[Why check overdispersion before trusting Poisson]]) | Not needed (Oct 13): the fitted models are underdispersed, and a negative binomial can only add spread, not remove it ([[Preliminary Results]]). Distributions that allow less spread are Final Draft options ([[Next Steps]]) |
@@ -49,7 +49,7 @@ Glossary: a **GLM** is a model for counts or yes/no data with no adjustment for 
 | A separate functions script for the Report | The syllabus lists scripts with "e.g.", so it is not required; the two helper functions sit in the analysis script ([[Wrangling vs Analysis Scripts]]) | Deferred: possible in the Final Draft |
 | Adding Year as a predictor | Year is completely determined by property, so the model cannot estimate both ([[Confounding]]) | Rejected: stated as a limitation |
 
-Why "Normal errors and constant variance do not fit" counts, in one example: a straight-line model with bell-curve (Normal) scatter could predict -1 species at a poor point, which is impossible, and it assumes the scatter is the same size whether the average is 2 or 12, while real counts scatter more when their average is bigger ([[Normal Distribution]], [[Assumptions of Linear Models]]).
+Why "Normal errors and constant variance do not fit" counts, in one example: a straight-line model with bell-curve (Normal) scatter could predict -1 species at a poor point, which is impossible, and it assumes the scatter is the same size whether the average is 2 or 12, while real counts scatter more when their average is bigger ([[Normal Distribution]], [[Linear Model Assumptions|Assumptions of Linear Models]]).
 
 ## Why these alternatives still matter
 1. They are material for the Final Draft's Discussion: "future work could model detection explicitly" links to the occupancy and Dickcissel ideas ([[How the project could grow into Bayesian and occupancy models]]).

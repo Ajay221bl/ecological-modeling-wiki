@@ -3,7 +3,8 @@ type: atomic
 tags:
   - survey-design
   - data-cleaning
-  - flashcards
+  - flashcards/eco/survey
+description: "Four-letter species codes are short standard nicknames for bird species (DICK = Dickcissel, NOBO = Northern Bobwhite) so observers can write fast in the field."
 aliases:
   - "alpha codes"
   - "banding codes"
@@ -13,71 +14,31 @@ status: seedling
 ---
 
 # Four-Letter Species Codes
-**In one line:** Short four-letter nicknames for bird species (DICK = Dickcissel, NOBO = Northern Bobwhite) so observers can write fast in the field.
 
-> [!info] Before this, it helps to know
-> [[Data Table Rows and Columns]] (the code sits in one column) · [[Variable and Observation]] (a species code is a text variable)
+Birds call over each other during a count, and writing "Northern Bobwhite" each time is slow; "NOBO" is quick and clear. North American bird surveys use a standard set of these **four-letter species codes**, often called banding or alpha codes. The rule of thumb: a two-word name takes two letters from each word (**Fi**eld **Sp**arrow = FISP, **Eu**ropean **St**arling = EUST), and a one-word name takes its first four letters (**Dick**cissel = DICK). There are extra rules for clashes, so always check the official list rather than guessing. In a data file the code sits in one column, one [[Variable and Observation|variable]] whose values are text ([[Data Table Rows and Columns]]).
 
-## Start from zero
-You stand in a field for a few minutes and write down what you see and hear. Birds call over each other. Writing "Northern Bobwhite" each time is slow; "NOBO" is quick and clear.
+They are fast and consistent in the field, but there is a computer twist. To R a code is a string of characters ([[Strings in R]]), compared letter by letter, spaces included, so "FISP" and " FISP" look the same to you but are two different values to R, and a function that counts [[unique()|distinct values]], such as `n_distinct()`, counts them as two species. Take a visit with codes typed as FISP, DICK and "FISP " (trailing space). You see 2 species; R sees 3. After trimming spaces with [[str_trim()]], R also sees 2. That is exactly what happened in the grassland bird file: after trimming it has 89 species codes, each exactly four letters, but the raw file shows 91 because of " FISP" (1 row, against 296 for "FISP") and "EUST " (1 row, against 16). The Oct 13 wrangling script trims species and observer codes right after reading the data ([[Observer Effects]]), then counts species per visit with [[group_by()]] and `summarize()`, as in the code below: Richness is the number of different codes at a visit, and FocalRichness the number of those in the list of six [[Focal Species]].
 
-North American bird surveys use a standard set of these codes, often called banding codes or alpha codes. The rule of thumb:
-- Two-word names take two letters from each word: **Fi**eld **Sp**arrow = FISP, **Eu**ropean **St**arling = EUST.
-- One-word names take the first four letters: **Dick**cissel = DICK.
-(There are extra rules for clashes, so always check the official list rather than guessing.)
-
-## Why it exists
-Speed and consistency in the field. But there is a computer twist.
-
-To R, a code is **text** (a "string"). R compares text letter by letter, including spaces. So "FISP" and " FISP" (with a leading space) look the same to you but are **two different values** to R. A function that counts different values, like `n_distinct()`, would count them as two species.
-
-## A tiny example
-A visit has these codes typed in:
-
-| Row | SpeciesCode as typed |
-|---|---|
-| 1 | FISP |
-| 2 | DICK |
-| 3 | `FISP ` (trailing space) |
-
-You see 2 species. R's `n_distinct()` sees 3. After trimming spaces with [[str_trim()]], R also sees 2.
-
-## In my project
-After trimming spaces, the file has **89 species codes**, every one exactly four letters. The raw file shows 91 because of two stray spaces:
-- " FISP" (leading space, 1 row) vs "FISP" (296 rows): Field Sparrow
-- "EUST " (trailing space, 1 row) vs "EUST" (16 rows): European Starling
-
-GrasslandBirdRichness_Wrangling.R (Oct 13 version) trims the spaces right after reading the data, on species **and** observer codes ([[str_trim()]], [[Observer Effects]]):
+Three confusions. "It looks right, so it is right": invisible spaces are real characters to R, so trim first. Codes are not always the first letters, since clashes get special codes. And rows per code are not birds: rows count visits where a species was recorded. The Sep 10 script had no trim; no single visit held both spellings, so per-visit [[Species Richness]] was never inflated, but the species list showed 91 instead of 89 and any per-species summary would have split Field Sparrow and European Starling. Common codes in the data: INBU (Indigo Bunting, 873 rows), NOCA (Northern Cardinal, 691), RWBL (Red-winged Blackbird, 510), DICK ([[Dickcissel]], 331), FISP (297) and NOBO ([[Northern Bobwhite]], 204); aerial species such as CHSW (Chimney Swift) and TUVU (Turkey Vulture) appear mostly as [[Fly-over Detections]]. The codes are documented in the project [[README]].
 
 ```r
-  mutate(SpeciesCode = str_trim(SpeciesCode),
-         Obs = str_trim(Obs),
+library(stringr); library(dplyr)
+codes <- c("FISP", "DICK", "FISP ")
+n_distinct(codes)              # 3: R sees "FISP " as a different value
+n_distinct(str_trim(codes))    # 2: trimming the space fixes it
 ```
-
-Then it counts species per visit:
-
-```r
-  summarize(Richness = n_distinct(SpeciesCode),
-            FocalRichness = n_distinct(SpeciesCode[SpeciesCode %in% focalSpecies]),
-```
-
-In words: "for each visit, count how many different SpeciesCode values there are and call it Richness; then count how many of them are in the list of six focal codes and call it FocalRichness" ([[group_by and summarize]], [[Functions and Arguments]], [[Focal Species]]).
-
-History: the Sep 10 script had no trim (fixed Oct 13). Even then, no single visit held both spellings, so per-visit richness was never inflated. But the species list showed 91 "species" instead of 89, and any per-species summary would have split Field Sparrow and European Starling.
-
-Common codes in my data: INBU (Indigo Bunting, 873 rows), NOCA (Northern Cardinal, 691), RWBL (Red-winged Blackbird, 510), DICK ([[Dickcissel]], 331), FISP (297), NOBO ([[Northern Bobwhite]], 204). Aerial species such as CHSW (Chimney Swift), TUVU (Turkey Vulture) and MIKI (Mississippi Kite) appear mostly as [[Fly-over Detections]].
-
-## Common confusions
-- **"It looks right, so it is right."** Invisible spaces are real characters to R. Trim first.
-- **"Codes are always the first letters."** Mostly, but clashes get special codes; look them up.
-- **"Rows per code = number of birds."** Rows count visits where the species was recorded, not individuals.
 
 ## Connections
-- **Builds on:** [[Point Count Survey]], [[README Data Dictionary]], [[Data Table Rows and Columns]]
-- **Leads to:** [[str_trim()]], [[Species Richness]], [[group_by and summarize]]
-- **Part of:** [[MOC 26 - Survey Design and Detection|MOC - Survey Design and Detection]], [[MOC 12 - Reproducible Coding and Figures|MOC - R and Reproducibility]]
+- **Builds on:** [[Variable and Observation]], [[Data Table Rows and Columns]], [[Strings in R]], [[Point Count Survey]], [[unique()]]
+- **Leads to:** [[str_trim()]], [[group_by()]], [[Species Richness]], [[Focal Species]], [[Observer Effects]], [[README]]
+- **Part of:** [[MOC 26 - Survey Design and Detection|MOC - Survey Design and Detection]], [[MOC 12 - Reproducible Coding and Figures|MOC - Reproducible Coding and Figures]]
+- **Go deeper:** [[Fly-over Detections]], [[Dickcissel]], [[Northern Bobwhite]]
 
-> [!question]- Check yourself
-> Why does R count "EUST" and "EUST " as two species, and what one-line fix prevents it?
-> ?
-> R compares text exactly, so a trailing space makes a different value and `n_distinct()` counts it separately. Trimming with `str_trim(SpeciesCode)` before counting makes them identical.
+## Flashcards
+
+Why does R count "EUST" and "EUST " as two species, and what one-line fix prevents it?
+??
+R compares text exactly, so a trailing space makes a different value and `n_distinct()` counts it separately. Trimming with `str_trim(SpeciesCode)` before counting makes them identical.
+++++
+
+What is the code for a two-word bird name?::Two letters from each word, such as FISP for Field Sparrow (with special rules for clashes).

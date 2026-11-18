@@ -13,11 +13,11 @@ status: seedling
 
 # Integral
 
-Rain falls into a gauge at a rate that changes minute by minute. The water collected is that rate added up over the whole storm. An **integral** is such a running total of something that changes smoothly: it adds up a continuous curve, giving the area between the curve and the horizontal axis. It is written ∫ f(x) dx, where ∫ is a stretched S for "sum", f(x) is the curve, dx stands for a very thin slice of the x-axis, and the *limits* say where the adding starts and stops. A plain sum, written with Σ ([[Summation Notation]]), adds a list of separate items; a curve has no separate items, so you cut the area into thin strips, each roughly height × width, and add those. As the strips get thinner, the total settles on the exact area, and that limiting total is the integral.
+Rain falls into a gauge at a rate that changes minute by minute. The water collected is that rate added up over the whole storm. An **integral** is such a running total of something that changes smoothly: it adds up a continuous curve, giving the area between the curve and the horizontal axis. It is written ∫ [[Functions in Maths|f(x)]] dx, where ∫ is a stretched S for "sum", f(x) is the curve, dx stands for a very thin slice of the x-axis, and the *limits* say where the adding starts and stops. A plain sum, written with Σ ([[Summation Notation]]), adds a list of separate items; a curve has no separate items, so you cut the area into thin strips, each roughly height × width, and add those. As the strips get thinner, the total settles on the exact area, and that limiting total is the integral.
 
 Try the area under y = 2x from x = 0 to x = 3. It is a triangle with base 3 and height 6, so the area is ½ × 3 × 6 = 9. With strips of width 1 measured at their midpoints (0.5, 1.5, 2.5), the heights are 1, 3 and 5, and their total is again 9. Integration is the reverse of differentiation: the integral of 2x is x², whose [[Derivative]] is 2x again. Many integrals have no formula, so computers do them numerically, or by simulation: draw many random values and average them ([[Monte Carlo Integration]]).
 
-Statistics needs integrals constantly, because probability for a continuous variable is an area. A [[Probability Density Function]] is a curve whose total area is 1, and the probability of landing between two values is the area between them: the area under the standard normal curve between −1.96 and 1.96 is 0.95. Any single exact value, such as a mass of exactly 20.000 g, has probability zero, because a line has no width; only ranges have probability. That clears up a common confusion: the height of a density curve is not a probability (heights can exceed 1), the area is. The denominator of Bayes' theorem, the [[Marginal Likelihood]], is also an integral, and it is usually impossible to do exactly, which is the whole reason MCMC exists ([[Hobbs and Hooten 2015 Ch3]], [[Hobbs and Hooten 2015 Ch7]]).
+Statistics needs integrals constantly, because probability for a [[Continuous Data|continuous variable]] is an area. A [[Probability Density Function]] is a curve whose total area is 1, and the probability of landing between two values is the area between them: the area under the [[Standard Normal Distribution|standard normal]] curve between −1.96 and 1.96 is 0.95. Any single exact value, such as a mass of exactly 20.000 g, has probability zero, because a line has no width; only ranges have probability. That clears up a common confusion: the height of a density curve is not a probability (heights can exceed 1), the area is. The denominator of [[Bayes' Theorem|Bayes' theorem]], the [[Marginal Likelihood]], is also an integral, and it is usually impossible to do exactly, which is the whole reason MCMC exists ([[Hobbs and Hooten 2015 Ch3]], [[Hobbs and Hooten 2015 Ch7]]).
 
 ![[Integral as area.png|700]]
 *What to look at:* the strips approximate the shaded area, and thinner strips fit better.
@@ -32,8 +32,8 @@ set.seed(1); mean(abs(rnorm(1e5)) < 1.96)       # about 0.95
 Area under the normal curve between −1.96 and 1.96 is 0.95.
 
 ## Connections
-- **Builds on:** [[Summation Notation]], [[Derivative]]
-- **Leads to:** [[Probability Density Function]], [[Marginal Likelihood]], [[Monte Carlo Integration]]
+- **Builds on:** [[Summation Notation]], [[Derivative]], [[Functions in Maths]], [[Continuous Data]]
+- **Leads to:** [[Probability Density Function]], [[Marginal Likelihood]], [[Monte Carlo Integration]], [[Standard Normal Distribution]], [[Bayes' Theorem]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
 
 ## Flashcards

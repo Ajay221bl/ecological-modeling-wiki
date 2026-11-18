@@ -16,7 +16,7 @@ Think about your commute. The quickest and slowest days ever were freak events; 
 
 Take the mouse masses 14, 15, 16, 18, 19, 21, 22, 25 and 30 g. Q1 = 16 and Q3 = 22, so the IQR is 6 g. Now change the heaviest mouse from 30 to 60 g. The IQR is still 6, while the [[Range]] jumps from 16 to 46 and the [[Standard Deviation]] nearly triples. The IQR ignores the outer quarters of the data, which is where extreme values live, so odd values cannot inflate it. The range is too fragile and the standard deviation assumes a roughly symmetric shape, so the IQR is the robust middle ground: how spread out the typical observations are, whatever the tails are doing.
 
-The IQR also gives a rule for flagging unusual points. Build a *fence* 1.5 × IQR beyond each quartile: here the upper fence is 22 + 1.5 × 6 = 31 and the lower one is 16 − 9 = 7, so no mouse falls outside. On a [[Boxplot]] the box spans Q1 to Q3 and any point beyond a fence is drawn as a separate dot. The 1.5 comes from the normal distribution, where it flags only about 7 points in 1,000. A flag is a question, not a verdict: skewed data honestly produce many points beyond the fences, and a flagged point may be perfectly real ([[Outlier]]). Zuur and colleagues use these boxplots as a first outlier check ([[Zuur et al. 2010]]).
+The IQR also gives a rule for flagging unusual points. Build a *fence* 1.5 × IQR beyond each quartile: here the upper fence is 22 + 1.5 × 6 = 31 and the lower one is 16 − 9 = 7, so no mouse falls outside. On a [[Boxplot]] the box spans Q1 to Q3 and any point beyond a fence is drawn as a separate dot. The 1.5 comes from the [[Normal Distribution|normal distribution]], where it flags only about 7 points in 1,000. A flag is a question, not a verdict: skewed data honestly produce many points beyond the fences, and a flagged point may be perfectly real ([[Outlier]]). Zuur and colleagues use these boxplots as a first outlier check ([[Zuur et al. 2010]]).
 
 ![[Quantiles and IQR.png|700]]
 *What to look at:* the box spans Q1 to Q3, so its length is the IQR.
@@ -33,7 +33,7 @@ The IQR is unmoved by the extreme mouse. The standard deviation is not.
 
 ## Connections
 - **Builds on:** [[Quantile]], [[Range]]
-- **Leads to:** [[Boxplot]], [[Outlier]], [[Standard Deviation]]
+- **Leads to:** [[Boxplot]], [[Outlier]], [[Standard Deviation]], [[Normal Distribution]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
 
 ## Flashcards

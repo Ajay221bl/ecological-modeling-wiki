@@ -6,7 +6,6 @@ tags:
   - deadlines
 aliases:
   - "Deadlines"
-  - "Schedule"
 status: seedling
 ---
 
@@ -28,7 +27,7 @@ From the BIOL580V Fall 2026 syllabus. Final project = 50 of 100 course points. T
 ## Project Report specs (due Oct 13)
 - 1,000 to 3,000 words including citations.
 - **Written part (7 pts), Word docx:** Introduction (1-2 paragraphs), Hypotheses, Methods, Results, Citations. Revised intro/hypotheses/methods plus **preliminary** results (first results, not final). No Discussion.
-- **Code part (8 pts), zipped folder:** Data folder, Results and/or Figures folders, .Rproj file (the RStudio project file that tells R "this folder is home"), README (a plain-text guide to the folder and data), R scripts (e.g. wrangling, analysis). Dr. Roberts "will deduct up to 2 points for code errors" ([[Why a reproducible project structure matters]], [[RProject]], [[README Data Dictionary]]). "Reproducible" means someone else can run the folder and get the same results ([[Reproducibility]]).
+- **Code part (8 pts), zipped folder:** Data folder, Results and/or Figures folders, .Rproj file (the RStudio project file that tells R "this folder is home"), README (a plain-text guide to the folder and data), R scripts (e.g. wrangling, analysis). Dr. Roberts "will deduct up to 2 points for code errors" ([[Why a reproducible project structure matters]], [[RProject]], [[README|README Data Dictionary]]). "Reproducible" means someone else can run the folder and get the same results ([[Reproducibility]]).
 
 ## Final Draft specs (due Nov 19)
 - 3,000 to 9,000 words including citations, Word docx: Introduction (with Hypotheses), Methods, Results, Discussion, Citations.

@@ -5,7 +5,6 @@ tags:
   - reading
 aliases:
   - "Hobbs Ch9"
-  - "Inference from Multiple Models"
 status: seedling
 ---
 <!-- gen_sources -->

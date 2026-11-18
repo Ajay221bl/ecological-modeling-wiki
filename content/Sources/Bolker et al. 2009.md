@@ -31,7 +31,7 @@ The standard ecology review of GLMMs: models that combine a non-normal response 
 - Random effects handle grouped, non-independent data such as repeat visits -> [[Random Effect]], [[Why a random intercept for point]]
 - Estimating a random-effect variance needs enough groups; with very few levels, treat the factor as fixed -> [[Why Site is fixed not random]]
 - Check for overdispersion in Poisson and binomial GLMMs -> [[Overdispersion]]
-- Testing whether a variance is zero is a test "on the boundary," so ordinary likelihood ratio tests are conservative (also explained in [[Harrison et al. 2018]], p. 18) -> [[Variance Component]]
+- Testing whether a variance is zero is a test "on the boundary," so ordinary likelihood ratio tests are conservative (also explained in [[Harrison et al. 2018]], p. 18) -> [[Variance Components|Variance Component]]
 
 ## Notes that rely on it
 - [[GLMM]]

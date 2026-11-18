@@ -19,10 +19,10 @@ status: seedling
 
 Double tagging, with two tags per animal, estimates retention: animals that have kept only one tag show the loss rate. PIT tags, natural marks and genetic identification reduce the problem.
 
-It is discussed in [[Powell and Gale 2015]] Ch3, Ch8 and Ch10 ([[Apparent Survival]]). Tag loss does not only reduce sample size; it biases N upward and survival downward.
+It is discussed in [[Powell and Gale 2015]] Ch3, Ch8 and Ch10 ([[Apparent Survival]]). Tag loss does not only reduce [[Sample Size|sample size]]; it biases N upward and survival downward.
 
 ## Connections
-- **Builds on:** [[Mark-Recapture]]
+- **Builds on:** [[Mark-Recapture]], [[Sample Size]]
 - **Leads to:** [[Lincoln-Petersen Estimator]], [[Cormack-Jolly-Seber Model]]
 - **Part of:** [[MOC 19 - Ecology Vocabulary|MOC - Ecology Vocabulary]]
 

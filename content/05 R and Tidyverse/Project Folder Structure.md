@@ -16,10 +16,10 @@ In a kitchen where knives always go in one drawer and spices on one shelf, a gue
 
 The rules behind it are simple. Raw data are read-only, because if the original is edited by hand nothing can be reproduced. Scripts turn raw into processed, so processed data can always be rebuilt. Outputs live apart from inputs, so anything in results or figures can be deleted and regenerated. Scripts are numbered in run order ([[Splitting Scripts]]). And the folders themselves can be created from code, so the structure is reproducible too ([[File System Functions in R]]).
 
-The syllabus names these folders for the project, and the Analysis A to Z lab builds them ([[Final Project]], [[Course Website]], [[Reproducibility]]). One folder seems simpler until there are 60 files and you cannot tell inputs from outputs. And cleaning the raw file in Excel leaves the cleaning undocumented and unrepeatable; clean in a script. Generated and private files can be kept out of version control with a [[gitignore File]].
+The syllabus names these folders for the project, and the Analysis A to Z lab builds them ([[Final Project]], [[Course Website]], [[Reproducibility]]). One folder seems simpler until there are 60 files and you cannot tell inputs from outputs. And cleaning the raw file in Excel leaves the cleaning undocumented and unrepeatable; clean in a script. Generated and private files can be kept out of [[Version Control|version control]] with a [[gitignore File]].
 
 ## Connections
-- **Builds on:** [[RProject]]
+- **Builds on:** [[RProject]], [[Version Control]]
 - **Leads to:** [[README]], [[Splitting Scripts]], [[gitignore File]]
 - **Part of:** [[MOC 12 - Reproducible Coding and Figures|MOC - Reproducible Coding and Figures]], molecular note [[Why a reproducible project structure saves you]]
 

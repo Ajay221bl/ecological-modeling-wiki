@@ -15,7 +15,7 @@ Bookmakers talk in odds. "3 to 1 on" means a horse is expected to win 3 times fo
 
 A worked example. Of 20 nests, 15 survive and 5 fail. The probability of survival is 15 / 20 = 0.75. The odds of survival are 15 / 5 = 3, the same as 0.75 / 0.25. To go back, p = odds / (1 + odds) = 3 / 4 = 0.75. Watch what happens near the top: p = 0.5 gives odds 1, p = 0.9 gives odds 9, p = 0.99 gives odds 99. As p approaches 1 the failures in the denominator vanish, so odds have no ceiling; they run from 0 to infinity. Two common slips: odds of 3 do not mean 3%, they mean three successes per failure; and odds and probability are different numbers that agree only when both are tiny.
 
-Why bother with odds at all? Because a [[Proportion]] or probability is fenced in at 0 and 1, and a straight line does not respect fences. Odds remove the top fence, and taking their logarithm removes the bottom one ([[Log Odds]]), which is how logistic regression gets a scale where adding effects is always legal ([[Logit Link]]). Odds also behave multiplicatively: a predictor that "doubles the odds" can do so wherever you start, while "adds 0.2 to the probability" is impossible if you start at 0.9. That is why effects in logistic regression are naturally stated as an [[Odds Ratio]].
+Why bother with odds at all? Because a [[Proportion]] or probability is fenced in at 0 and 1, and a [[Equation of a Line|straight line]] does not respect fences. Odds remove the top fence, and taking their logarithm removes the bottom one ([[Log Odds]]), which is how logistic regression gets a scale where adding effects is always legal ([[Logit Link]]). Odds also behave multiplicatively: a [[Predictor Variable|predictor]] that "doubles the odds" can do so wherever you start, while "adds 0.2 to the probability" is impossible if you start at 0.9. That is why effects in logistic regression are naturally stated as an [[Odds Ratio]].
 
 ![[Probability odds log-odds.png|700]]
 *What to look at:* probability is trapped between 0 and 1, odds escape upward, log odds are free in both directions.
@@ -28,8 +28,8 @@ odds / (1 + odds)                  # back to the probabilities
 Probability and odds carry the same information on different scales.
 
 ## Connections
-- **Builds on:** [[Proportion]], [[Probability]]
-- **Leads to:** [[Log Odds]], [[Odds Ratio]], [[Logit Link]]
+- **Builds on:** [[Proportion]], [[Probability]], [[Equation of a Line]]
+- **Leads to:** [[Log Odds]], [[Odds Ratio]], [[Logit Link]], [[Predictor Variable]]
 - **See also:** [[Logistic Regression]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]], molecular note [[Probability, Odds and Log Odds]]
 

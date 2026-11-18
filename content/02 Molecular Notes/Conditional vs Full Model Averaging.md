@@ -1,10 +1,11 @@
 ---
-type: atomic
+type: molecular
 tags:
   - selection
   - flashcards/eco/selection
 description: "In full model averaging a coefficient counts as zero in models that leave its variable out, while in conditional averaging only the models that contain the variable are averaged."
 aliases:
+  - "Conditional vs Full Model Averaging"
   - "Zero method"
   - "Natural average"
   - "Full average"

@@ -4,6 +4,7 @@ tags:
   - molecular
   - grassland-ecology
   - community-ecology
+  - flashcards/eco/why
 aliases:
   - "All-species vs focal richness"
   - "Focal richness vs total richness"
@@ -69,3 +70,12 @@ Consequences for my plan:
 ## Connections
 - **Related:** [[Why richness instead of single-species counts]], [[Why grassland birds avoid trees]], [[Why observed richness is not true richness]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 24 - Grassland Bird Ecology|MOC - Grassland Bird Ecology]]
+
+## Flashcards
+
+Why do edges score high on all-species richness but low on focal richness?::They collect birds from both the grassland and the woods, but few grassland specialists.
+
+Which two sites show the two rankings nearly flipping?
+??
+Bald Knob has the lowest all-species richness but the highest focal richness; Camp Robinson has the highest all-species richness but among the lowest focal richness.
+++++

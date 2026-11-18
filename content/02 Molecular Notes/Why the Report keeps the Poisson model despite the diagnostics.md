@@ -5,6 +5,7 @@ tags:
   - diagnostics
   - count-data
   - project-report
+  - flashcards/eco/why
 aliases:
   - "Why keep the Poisson model for the Report"
 status: seedling
@@ -22,7 +23,7 @@ The Oct 13 diagnostics flagged two real problems with my Poisson GLMM. Why is it
 - [[Standard Error]]: what an interval is built from; both problems act on it.
 - [[Underdispersion]]: problem one, counts less spread out than a Poisson expects.
 - [[Spatial Autocorrelation]]: problem two, nearby points with similar leftovers.
-- [[Independence Assumption]]: why problem two matters at all.
+- [[Independence of Observations|Independence Assumption]]: why problem two matters at all.
 - [[DHARMa Simulated Residuals]] and [[check_overdispersion()]]: the checks that found the problems.
 - [[P-value]]: why a "significant" test can still mean a small problem.
 
@@ -51,5 +52,14 @@ Decision (Oct 13): the Project Report keeps the Poisson GLMM fit by `glmer()` an
 - **Reading the tiny Moran's I p-value as a big problem** would confuse "detectable" with "large".
 
 ## Connections
-- **Builds on:** [[Why check overdispersion before trusting Poisson]], [[Autocorrelation - Friend or Foe]], [[Residual Diagnostics]]
+- **Builds on:** [[Why check overdispersion before trusting Poisson]], [[Autocorrelation as Signal or Nuisance|Autocorrelation - Friend or Foe]], [[Residual Diagnostics]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 10 - Model Selection|MOC - Model Selection and Diagnostics]]
+
+## Flashcards
+
+Which two diagnostic problems were found, and which way does each push the error bars?
+??
+Underdispersion makes error bars too wide; spatial autocorrelation in the residuals makes them too narrow. They push in opposite directions and partly cancel.
+++++
+
+Why is keeping the Poisson GLMM acceptable for the Report?::The Report needs preliminary results, so the model is kept, both problems are reported honestly, and the fixes go in the Final Draft.

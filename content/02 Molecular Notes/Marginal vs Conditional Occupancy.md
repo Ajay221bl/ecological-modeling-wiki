@@ -61,7 +61,7 @@ Reading the slide's "Conditional" panel as conditional occupancy: its axis is P(
 *Pass test:* you can move between marginal, conditional and joint occupancy and say which one answers which question.
 
 ## Connections
-- **Related:** [[Multi-species Occupancy]], [[Species Interaction]], [[Assumptions of Occupancy Models]]
+- **Related:** [[Multi-species Occupancy Model|Multi-species Occupancy]], [[Species Interaction]], [[Assumptions of Occupancy Models]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 
 ## Flashcards

@@ -13,14 +13,14 @@ status: seedling
 
 # Design Matrix in Program MARK
 
-The **design matrix** in [[Program MARK]] writes each parameter as a linear model on the logit, or another link, scale, so survival or detection can depend on time trends, groups and covariates with few coefficients ([[Model Matrix]], [[Logit Link]], [[Parameter Index Matrix]]). It is the same idea as an R model matrix: rows are parameters from the PIMs, and columns are β coefficients.
+The **design matrix** in [[Program MARK]] writes each parameter as a [[Linear Model|linear model]] on the logit, or another link, scale, so survival or detection can depend on time trends, groups and [[Predictor Variable|covariates]] with few coefficients ([[Model Matrix]], [[Logit Link]], [[Parameter Index Matrix]]). It is the same idea as an R model matrix: rows are parameters from the PIMs, and columns are β coefficients.
 
 logit(φ_t) = β₀ + β₁ × t gives a linear trend in survival with two coefficients instead of one per year. Groups and interactions are dummy columns, exactly as in [[Dummy Coding|Dummy Variable]] coding, and individual covariates enter by name ([[Age and Time Structure in Survival Models]]).
 
-Powell and Gale (Ch6) introduce linear models for this purpose before the mark-recapture chapters ([[Powell and Gale 2015]] Ch6 and Ch10, [[Linear Regression|Linear Model]]). The design matrix is not the data; it describes the model for the parameters, not the capture histories.
+Powell and Gale (Ch6) introduce linear models for this purpose before the [[Mark-Recapture|mark-recapture]] chapters ([[Powell and Gale 2015]] Ch6 and Ch10, [[Linear Regression|Linear Model]]). The design matrix is not the data; it describes the model for the parameters, not the [[Capture History|capture histories]].
 
 ## Connections
-- **Builds on:** [[Model Matrix]], [[Logit Link]], [[Parameter Index Matrix]]
+- **Builds on:** [[Model Matrix]], [[Logit Link]], [[Parameter Index Matrix]], [[Linear Model]], [[Predictor Variable]], [[Mark-Recapture]], [[Capture History]]
 - **Leads to:** [[Age and Time Structure in Survival Models]]
 - **Part of:** [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 

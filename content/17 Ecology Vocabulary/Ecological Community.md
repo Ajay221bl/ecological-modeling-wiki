@@ -2,7 +2,8 @@
 type: atomic
 tags:
   - ecology-basics
-  - flashcards
+  - flashcards/eco/ecology
+description: "An ecological community is all the populations of different species that live in the same place at the same time and can affect each other."
 aliases:
   - "community"
   - "communities"
@@ -12,60 +13,24 @@ status: seedling
 ---
 
 # Ecological Community
-**In one line:** A community is all the populations of different species that live in the same place at the same time and can affect each other.
 
-> [!info] Before this, it helps to know
-> [[Population]] (a community is built from populations) · [[Species and Scientific Names]] (a community is described species by species)
+Stand at one survey point for five minutes in June and write down every bird you hear or see: a Dickcissel, a [[Northern Bobwhite]] calling its name, a Red-winged Blackbird, an Indigo Bunting at the hedge. That list is a snapshot of the local bird community. An **ecological community** is all the [[Biological Population|populations]] (groups of one species living in one place) of different species that live in the same place at the same time and can affect each other. The full community at that spot is bigger still, with grasses, wildflowers, grasshoppers, snakes, mice and soil microbes, so in practice ecologists study one slice, such as "the bird community" (strictly an *assemblage*, though most papers just say community). It is one step up from populations in the [[Levels of Ecological Organization]].
 
-## Start from zero
-Stand at one survey point for five minutes in June and write down every bird you hear or see: a Dickcissel, a Northern Bobwhite calling its name, a Red-winged Blackbird, an Indigo Bunting at the hedge. That list is a snapshot of the local **bird community**.
+Members of a community interact: competition (two species want the same food or nest sites), predation (a [[Loggerhead Shrike]] eats grasshoppers and mice), parasitism (a Brown-headed [[Brood Parasitism|Cowbird]] lays its eggs in another bird's nest) and mutualism (bees get nectar, plants get pollinated). A single species is rarely the whole story: whether a [[Eastern Meadowlark|meadowlark]] can nest in a field depends on the grass, the insects it feeds its chicks and the snakes and raccoons that hunt nests. Communities also have properties no single population has: richness, how many species ([[Species Richness]]); composition, which species; and [[Diversity Index|evenness]], whether they are about equally common ([[Biodiversity]]). Compare two points with 4 species each. Point A has Dickcissel, Eastern Meadowlark, Northern Bobwhite and Field Sparrow, an open-grassland community; Point B has Northern Cardinal, Indigo Bunting, Tufted Titmouse and American Crow, an edge or woodland community. Same richness, very different communities: only composition tells them apart. Each species' place in the community is its [[Ecological Niche]].
 
-The full ecological community at that spot is bigger still: grasses, wildflowers, grasshoppers, snakes, mice and soil microbes too. In practice ecologists usually study one slice, such as "the bird community" or "the plant community". (Strictly, a slice chosen by the researcher is sometimes called an **assemblage**, but most papers just say community.)
-
-Members of a community **interact**:
-- **Competition:** two species want the same food or nest sites.
-- **Predation:** one eats the other. A Loggerhead Shrike eats grasshoppers, lizards and mice.
-- **Parasitism:** a Brown-headed Cowbird lays its eggs in another bird's nest.
-- **Help (mutualism):** bees get nectar and plants get pollinated.
-
-## Why it exists
-A single species is rarely the whole story. Whether a meadowlark can nest in a field depends on the grass (plants), the insects it feeds its chicks (prey) and the snakes and raccoons that hunt nests (predators). Studying the community lets you see those connections.
-
-Communities also have properties no single population has:
-- **Richness:** how many species ([[Species Richness]]).
-- **Composition:** *which* species.
-- **Evenness:** whether species are about equally common or one dominates ([[Biodiversity]]).
-
-## A tiny example
-Two points, each with 4 species detected:
-
-| Point A | Point B |
-|---|---|
-| Dickcissel | Northern Cardinal |
-| Eastern Meadowlark | Indigo Bunting |
-| Northern Bobwhite | Tufted Titmouse |
-| Field Sparrow | American Crow |
-
-**Same richness (4), very different communities.** Point A is open grassland. Point B is an edge or woodland community. A richness number alone cannot tell them apart. Composition can.
-
-## In my project
-- My data hold 89 species. The birds detected on the most point-visits are mostly **generalists** and edge birds: Indigo Bunting (863 visits), Northern Cardinal (685), Red-winged Blackbird (501), American Crow (481), Yellow-breasted Chat (466), Common Yellowthroat (366) and Tufted Titmouse (350). Only then come Dickcissel (331), Field Sparrow (288) and Northern Bobwhite (202). See [[Grassland Specialists vs Generalists]].
-- My **all-species richness** counts all of them, so it measures the whole community at a point, grassland birds and woodland birds together.
-- [[Berry et al. 2026]] defined the "grassland bird community" more narrowly: six declining, grassland-dependent [[Focal Species]], modeled together in a [[Multi-species Occupancy Model]].
-- These two definitions rank my sites almost in opposite order. On the 376 model points, Bald Knob has the lowest all-species richness (4.73 per visit) but the most focal species (0.99 per visit). Camp Robinson has the highest all-species richness (7.58) but among the fewest focal species (0.25). See [[Why all-species and focal-species richness can disagree]].
-
-## Common confusions
-- **Community vs [[Ecosystem]].** A community is only living things. An ecosystem adds the non-living part: soil, water, weather, fire.
-- **"Same richness = same community."** No, as Points A and B show. Composition matters.
-- **"The community" always means everything.** In papers it often means one chosen group. Check the definition each time; in Berry et al. it means six focal species.
+Three confusions. A community is not an [[Ecosystem]]: a community is only living things, while an ecosystem adds soil, water, weather and fire. Same richness does not mean same community. And "the community" does not always mean everything, so check the definition each time. The grassland bird data hold 89 species, and the most detected are mostly [[Habitat Generalist|generalists]] and edge birds: Indigo Bunting (863 visits), Northern Cardinal (685), Red-winged Blackbird (501), American Crow (481), Yellow-breasted Chat (466), Common Yellowthroat (366) and Tufted Titmouse (350), and only then Dickcissel (331), Field Sparrow (288) and Northern Bobwhite (202) ([[Grassland Specialists vs Generalists]]). All-species richness measures that whole community at a point, while [[Berry et al. 2026]] defined the "grassland bird community" as six declining [[Focal Species]], modelled together in a [[Multi-species Occupancy Model]]. The two definitions rank the sites almost in opposite order (Bald Knob lowest richness at 4.73 but most focal species at 0.99; Camp Robinson highest richness at 7.58 but among the fewest focal species at 0.25; [[Why all-species and focal-species richness can disagree]]).
 
 ## Connections
-- **Builds on:** [[Population]], [[Levels of Ecological Organization]]
-- **Leads to:** [[Species Richness]], [[Biodiversity]], [[Ecosystem]], [[Ecological Niche]]
-- **Part of:** [[MOC 19 - Ecology Vocabulary|MOC - Ecology from Zero]]
-- **Go deeper:** [[Berry et al. 2026]] (how the focal community responds to tree-grass boundaries)
+- **Builds on:** [[Biological Population|population]], [[Levels of Ecological Organization]], [[Diversity Index]], [[Habitat Generalist]], [[Brood Parasitism]]
+- **Leads to:** [[Species Richness]], [[Biodiversity]], [[Ecological Niche]], [[Ecosystem]], [[Focal Species]], [[Multi-species Occupancy Model]], [[Northern Bobwhite]], [[Loggerhead Shrike]], [[Eastern Meadowlark]]
+- **Part of:** [[MOC 19 - Ecology Vocabulary|MOC - Ecology Vocabulary]]
+- **Go deeper:** [[Grassland Specialists vs Generalists]], [[Why all-species and focal-species richness can disagree]], [[Berry et al. 2026]]
 
-> [!question]- Check yourself
-> Two points both have a richness of 5. Can you conclude they hold the same bird community?
-> ?
-> No. Richness only counts species. One point could hold grassland specialists and the other woodland or edge birds. You need composition (which species) to compare communities.
+## Flashcards
+
+Two points both have a richness of 5. Can you conclude they hold the same bird community?
+??
+No. Richness only counts species. One point could hold grassland specialists and the other woodland or edge birds. You need composition (which species) to compare communities.
+++++
+
+How does a community differ from an ecosystem?::A community is only the living species; an ecosystem adds the non-living parts such as soil, water and fire.

@@ -8,6 +8,8 @@ aliases:
   - "data.frame"
   - "Data Frames and Tibbles"
   - "Dataset in R"
+  - "Data Frames"
+  - "dataframe"
 status: seedling
 ---
 

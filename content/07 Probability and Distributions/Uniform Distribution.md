@@ -17,7 +17,7 @@ The pointer on a board-game spinner is as likely to stop at one angle as at any 
 
 Because the density is flat, the probability of a sub-interval is just its length divided by the whole length. For Uniform(0, 10), the density is 0.1 everywhere and P(below 3) = 3/10 = 0.3; the code below checks that, and the simulated variance matches 100/12 = 8.3. Uniform draws are the raw material of randomness on a computer: `runif()` produces them, and other random draws and random locations are built from them ([[Random Numbers and set.seed()]]).
 
-It is often used as a "vague" prior, and that needs care ([[Vague Prior]], [[Hobbs and Hooten 2015 Ch3]]). Its hard edges forbid values outside the limits completely, and it is flat only on the scale you wrote it on. The last line of the code puts a uniform prior on a probability p and looks at the implied prior on logit(p): it is peaked, not flat. So uniform does not mean uninformative; it carries information in its limits and takes a specific shape on any other scale. Uniform(0, 1) is the same as Beta(1, 1) ([[Beta Distribution]]).
+It is often used as a "vague" prior, and that needs care ([[Vague Prior]], [[Hobbs and Hooten 2015 Ch3]]). Its hard edges forbid values outside the limits completely, and it is flat only on the scale you wrote it on. The last line of the code puts a uniform prior on a probability p and looks at the implied prior on [[Logit Link|logit]](p): it is peaked, not flat. So uniform does not mean uninformative; it carries information in its limits and takes a specific shape on any other scale. Uniform(0, 1) is the same as Beta(1, 1) ([[Beta Distribution]]).
 
 ```r
 dunif(3, 0, 10); punif(3, 0, 10)                 # density 0.1, P(below 3) = 0.3
@@ -27,7 +27,7 @@ p <- runif(1e5); hist(qlogis(p), breaks = 60)    # a flat prior on p is a peaked
 
 ## Connections
 - **Builds on:** [[Probability Density Function]]
-- **Leads to:** [[Vague Prior]], [[Random Numbers and set.seed()]], [[Beta Distribution]]
+- **Leads to:** [[Vague Prior]], [[Random Numbers and set.seed()]], [[Beta Distribution]], [[Logit Link]]
 - **Part of:** [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]]
 
 ## Flashcards

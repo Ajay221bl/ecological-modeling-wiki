@@ -4,6 +4,7 @@ tags:
   - project
   - grassland-bird-richness
   - data
+  - flashcards/eco/project
 aliases:
   - "The data"
   - "SSP data"
@@ -50,7 +51,7 @@ Both files come from Dr. Roberts' USGS data release [[Roberts et al. 2025]] (DOI
 | longitude, latitude | map location in decimal degrees | yes, for the residual map ([[Spatial Autocorrelation]]) |
 | 30m_PFG_TRE_3W_22, _9W_22, _27W_22 | [[Spatial Covariance]] between tree and perennial forb and grass cover in 3x3, 9x9 and 27x27 pixel windows (0.81, 7.29, 65.61 ha), from 2022 [[Rangeland Analysis Platform]] imagery; NA where flood-masked | yes, one per model; renamed SpCov3, SpCov9, SpCov27 in the code (R names cannot start with a number) |
 | ROBEL_AVG | average Robel pole visual obstruction ([[Visual Obstruction (Robel Pole)]]) | no, too many NAs |
-| DENS_NO101, DENS_101, DBH_AVG | distance from point to trees, and tree diameter ([[Tree Density and DBH]]) | no, too many NAs |
+| DENS_NO101, DENS_101, DBH_AVG | distance from point to trees, and tree diameter ([[Tree Density]], [[Diameter at Breast Height]]) | no, too many NAs |
 | CG50, CO50, FO50, GM50, IA50, LA50, NG50, OF50, RI50, SC50, SO50, WA50, WD50 | % cover within 50 m of: cool grass, corn, forest, grass mix, inactive agriculture, lawn, native warm-season grass, old field, rice, scrub, soybean, water, woodland ([[Percent Cover]]) | FO50 + WD50 = tree cover; SC50 = scrub cover |
 
 Missing values in the habitat file:
@@ -70,7 +71,7 @@ Three rows, one point-visit. The Turkey Vulture was only overhead, with nothing 
 
 ## Known data issues (bird file, re-checked Oct 12; code fixes done Oct 13)
 1. **Stray spaces:** " FISP", "EUST " (species) and "EAL " (observer). To a computer, " FISP" is a different word from "FISP", so without [[str_trim()]] Field Sparrow and European Starling are counted twice. **Fixed in code (Oct 13):** the wrangling script trims SpeciesCode and Obs.
-2. **Missing values despite "NAOMIT":** NA means "not available", an empty cell. Dist_50 has 1, FlyOver has 5. **Fixed (Oct 13):** the ground-detection sum wraps every band in `coalesce(..., 0)`, so a missing band counts as 0, and FlyOver is no longer used to filter. The README now describes the missing values correctly ([[README Data Dictionary]]).
+2. **Missing values despite "NAOMIT":** NA means "not available", an empty cell. Dist_50 has 1, FlyOver has 5. **Fixed (Oct 13):** the ground-detection sum wraps every band in `coalesce(..., 0)`, so a missing band counts as 0, and FlyOver is no longer used to filter. The README now describes the missing values correctly ([[README]]).
 3. **Mixed rows:** 90 rows have both a ground count and a fly-over count. The old `FlyOver == 0` filter dropped them. **Fixed in code (Oct 13):** the ground-detection rule keeps any row with at least one bird in a distance band. A visit with only fly-overs is kept with richness 0 (HO55 on Jun 20, 2022) ([[Why exclude fly-overs]]).
 4. **Wind and Sky never change within a visit,** so taking the first value per visit is safe.
 5. **Property is fully confounded with year** (BK, DC, HO 2022; CR, HB 2023): details in [[Study Sites]] and [[Why site and year cannot be separated]].
@@ -80,6 +81,14 @@ Three rows, one point-visit. The Turkey Vulture was only overhead, with nothing 
 - Fly-overs: 207 of 7,742 rows (2.7%), mostly aerial species (Turkey Vulture, Mississippi Kite, Chimney Swift).
 - Rows for the six focal species of the original paper: Dickcissel 331, Northern Bobwhite 204, Eastern Meadowlark 92, Scissor-tailed Flycatcher 33, Eastern Kingbird 9, Loggerhead Shrike 8 ([[Focal Species]], [[Dickcissel]], [[Northern Bobwhite]]).
 
-Related: [[EDA Findings]], [[Data Frames]] (what each table becomes once loaded into R)
+## Connections
+- **Builds on:** [[Data Table Rows and Columns]], [[Variable and Observation]], [[Roberts et al. 2025]], [[Study Sites]]
+- **Leads to:** [[Complete-Case Analysis]], [[Why exclude fly-overs]], [[str_trim()]], [[EDA Findings]], [[Data Frame]], [[R Scripts Walkthrough]]
+- **Part of:** [[MOC 23 - Grassland Bird Richness Project|MOC - Grassland Bird Richness Project]]
+- **Go deeper:** [[README]], [[Field vs Remote Vegetation Measures]], [[Berry et al. 2026]]
 
-**Part of:** [[MOC 23 - Grassland Bird Richness Project|MOC - Grassland Bird Richness Project]]
+## Flashcards
+
+How many rows, points and point-visits are in the bird file, and what is one row?::7,742 rows, 416 points, 1,250 point-visits; one row is one species detected at one point-visit.
+
+Why do the models use 376 points and 1,130 visits rather than all 416 points?::Spatial covariance is missing at 39 flood-masked points and one more point lacks land cover, and every model must use the same complete rows.

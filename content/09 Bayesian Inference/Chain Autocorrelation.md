@@ -18,7 +18,7 @@ Ask the same person their opinion every five minutes and you get many answers bu
 
 High autocorrelation means slow mixing: the chain needs many steps to cross the posterior. It doesn't bias the estimates, but it makes them noisier than the number of draws suggests, and the [[Effective Sample Size]] turns this into a number. In the code below a "sticky" chain has autocorrelations of 0.95, 0.80 and 0.35 at lags 1, 5 and 20, and its 5,000 draws are worth about 140 independent ones; independent draws have autocorrelations near 0 and an effective size near 4,000 or more.
 
-Causes are a poorly tuned proposal, strongly correlated parameters and a weakly identified model; remedies are running longer, centering predictors, reparameterising or switching to HMC. [[Thinning]] reduces it without adding information, and it shows in a [[Trace Plot]] as slow snaking. Autocorrelated draws are valid draws; there are effectively fewer of them. The same idea in field data over time is [[Temporal Autocorrelation]].
+Causes are a poorly tuned proposal, strongly correlated parameters and a weakly identified model; remedies are running longer, centering [[Predictor Variable|predictors]], reparameterising or switching to HMC. [[Thinning]] reduces it without adding information, and it shows in a [[Trace Plot]] as slow snaking. Autocorrelated draws are valid draws; there are effectively fewer of them. The same idea in field data over time is [[Temporal Autocorrelation]].
 
 ```r
 set.seed(27); sticky <- as.numeric(arima.sim(list(ar = 0.95), 5000)); free <- rnorm(5000)
@@ -27,7 +27,7 @@ c(coda::effectiveSize(sticky), coda::effectiveSize(free))
 ```
 
 ## Connections
-- **Builds on:** [[Markov Chain]], [[Correlation]]
+- **Builds on:** [[Markov Chain]], [[Correlation]], [[Predictor Variable]]
 - **Leads to:** [[Effective Sample Size]], [[Thinning]], [[Trace Plot]], [[Temporal Autocorrelation]]
 - **Part of:** [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]]
 

@@ -4,7 +4,6 @@ tags:
   - source
   - reading
 aliases:
-  - "Savage and Yeh 2019"
   - "Cormac McCarthy's writing advice"
   - "Tips from a Pulitzer prizewinner"
 status: seedling

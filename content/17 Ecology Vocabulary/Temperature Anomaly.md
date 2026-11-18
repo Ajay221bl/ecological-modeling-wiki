@@ -18,7 +18,7 @@ status: seedling
 
 Climate scientists use anomalies for two reasons. They take out the regular seasonal and local differences, so places and years can be compared directly, and they put the number that matters, the departure from normal, front and centre. Corals are adapted to their normal temperature, so it is the departure that stresses them, not the absolute temperature ([[Coral Bleaching]]).
 
-For a model, an anomaly is just a centred predictor whose zero has a meaning: the intercept is the expected response in an average year ([[Centering]], [[Intercept]]). It can be negative, so it cannot be log-transformed, and its baseline period must be reported, because a different baseline shifts every value by a constant.
+For a model, an anomaly is just a centred [[Predictor Variable|predictor]] whose zero has a meaning: the intercept is the expected response in an average year ([[Centering]], [[Intercept]]). It can be negative, so it cannot be log-transformed, and its baseline period must be reported, because a different baseline shifts every value by a constant.
 
 ```r
 sst <- c(26.9, 27.4, 27.1, 28.0, 27.6)        # five late-summer means, degrees C
@@ -27,7 +27,7 @@ round(sst - baseline, 2)                      # the anomalies
 ```
 
 ## Connections
-- **Builds on:** [[Centering]], [[Intercept]]
+- **Builds on:** [[Centering]], [[Intercept]], [[Predictor Variable]]
 - **Leads to:** [[Coral Bleaching]]
 - **Part of:** [[MOC 19 - Ecology Vocabulary|MOC - Ecology Vocabulary]], molecular note [[Homework 2 - Coral Bleaching]]
 

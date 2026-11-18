@@ -13,11 +13,11 @@ status: seedling
 
 # Random Intercepts in Stan
 
-A **random intercept model in Stan** gives each group a deviation u_j drawn from normal(0, σ_g), estimates σ_g with its own prior, and adds u[g] to the linear predictor ([[Random Intercept]], [[Group Index Vectors in Stan]], [[Hierarchical Model]]). Its parameters are the fixed effects, the residual σ, the between-group σ_g and the J group effects. The hierarchical prior is u_j ~ normal(0, σ_g), or in non-centred form u = σ_g × z with z ~ normal(0, 1) ([[Non-centered Parameterization]]). Priors on σ_g matter when J is small, and half-normal or exponential priors are common ([[Priors on Standard Deviations]]).
+A **random intercept model in Stan** gives each group a [[Deviation|deviation]] u_j drawn from normal(0, σ_g), estimates σ_g with its own prior, and adds u[g] to the [[Linear Predictor|linear predictor]] ([[Random Intercept]], [[Group Index Vectors in Stan]], [[Hierarchical Model]]). Its parameters are the [[Fixed Effect|fixed effects]], the residual σ, the between-group σ_g and the J group effects. The hierarchical prior is u_j ~ normal(0, σ_g), or in non-centred form u = σ_g × z with z ~ normal(0, 1) ([[Non-centered Parameterization]]). Priors on σ_g matter when J is small, and [[Half-Normal Prior|half-normal]] or exponential priors are common ([[Priors on Standard Deviations]]).
 
-In the code below the `sleepstudy` model `Reaction ~ Days + (1 | Subject)`, fitted in non-centred form with weakly informative priors, gives an intercept of 250.8 (95% interval 231 to 270), a slope of 10.45, σ_subject 37.3 and residual σ 31.1, all with R-hat 1; `lmer()` gives 251.4, 10.47, 37.1 and 31.0. Results match lmer closely when the data are informative, as here ([[lmer() and glmer()]]).
+In the code below the `sleepstudy` model `Reaction ~ Days + (1 | Subject)`, fitted in non-centred form with [[Weakly Informative Prior|weakly informative priors]], gives an intercept of 250.8 (95% interval 231 to 270), a slope of 10.45, σ_subject 37.3 and residual σ 31.1, all with R-hat 1; `lmer()` gives 251.4, 10.47, 37.1 and 31.0. Results match lmer closely when the data are informative, as here ([[lmer()|lmer() and glmer()]]).
 
-The model extends to slopes with a second group vector, and to correlated effects with an LKJ prior on a Cholesky factor ([[LKJ Prior]], [[Correlated Random Intercepts and Slopes]]). It is the core of the Stan lab on mixed models ([[Course Website]], [[Bayesian GLMM]]). The group effects don't need their own fixed priors: their prior is the hierarchical normal(0, σ_g), with σ_g estimated.
+The model extends to slopes with a second group vector, and to correlated effects with an LKJ prior on a Cholesky factor ([[LKJ Prior]], [[Correlated Random Intercepts and Slopes]]). It is the core of the Stan lab on [[Mixed Effects Model|mixed models]] ([[Course Website]], [[Bayesian GLMM]]). The group effects don't need their own fixed priors: their prior is the hierarchical normal(0, σ_g), with σ_g estimated.
 
 ```r
 library(rstan); library(lme4); options(mc.cores = 2)
@@ -32,7 +32,7 @@ m <- lmer(Reaction ~ Days + (1 | Subject), sleepstudy); round(c(fixef(m), sd_g =
 ```
 
 ## Connections
-- **Builds on:** [[Random Intercept]], [[Group Index Vectors in Stan]], [[Hierarchical Model]]
+- **Builds on:** [[Random Intercept]], [[Group Index Vectors in Stan]], [[Hierarchical Model]], [[Deviation]], [[Linear Predictor]], [[Fixed Effect]], [[Half-Normal Prior]], [[Weakly Informative Prior]], [[Mixed Effects Model]]
 - **Leads to:** [[Non-centered Parameterization]], [[LKJ Prior]], [[Bayesian GLMM]]
 - **Part of:** [[MOC 17 - Stan|MOC - Stan]], molecular note [[lme4 vs brms]], [[Centered vs Non-centered Parameterization]]
 

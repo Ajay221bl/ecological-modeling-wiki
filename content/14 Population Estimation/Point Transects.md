@@ -15,13 +15,13 @@ status: seedling
 
 **Point transects** are distance-sampling surveys where an observer stands at a point for a set time and records the radial distance to each animal detected ([[Distance Sampling]]). Because the area of each ring grows with distance, there are fewer detections close to the point than far, and the model accounts for this; the effective area is π × EDR², using the effective detection radius ([[Effective Strip Width]]).
 
-They suit dense habitat, birds detected mostly by sound, and multi-species point counts. Animals can move during the count, which violates "detected at initial position", so shorter counts help ([[Detection Function]]).
+They suit dense habitat, birds detected mostly by sound, and multi-species [[Point Count Survey|point counts]]. Animals can move during the count, which violates "detected at initial position", so shorter counts help ([[Detection Function]]).
 
 They are covered in [[Powell and Gale 2015]] Ch19; the line-based alternative is [[Line Transects]]. Close distances are not rare because detection is poor near the point; they are rare because there is little area near the point.
 
 ## Connections
 - **Builds on:** [[Distance Sampling]]
-- **Leads to:** [[Line Transects]], [[Effective Strip Width]]
+- **Leads to:** [[Line Transects]], [[Effective Strip Width]], [[Point Count Survey]]
 - **Part of:** [[MOC 16 - Population Estimation|MOC - Population Estimation]], molecular note [[Line vs Point Transects]]
 
 ## Flashcards

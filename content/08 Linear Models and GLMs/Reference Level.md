@@ -9,14 +9,16 @@ aliases:
   - "Treatment contrasts"
   - "Reference category"
   - "relevel()"
+  - "Categorical Predictor and Reference Level"
+  - "categorical predictor"
 status: seedling
 ---
 
 # Reference Level
 
-Mountain heights are all "metres above sea level". Measure from the valley floor instead and every number changes, while the mountains stay exactly as high. The **reference level** is a factor's sea level: the category a model uses as its baseline, against which every other category's coefficient is measured ([[Dummy Coding]]). The [[Intercept]] is the reference level's mean (with other predictors at zero), and each other coefficient is "this level minus reference". This scheme is called treatment contrasts and is R's default, which picks the first level alphabetically unless told otherwise ([[Factors in R]]).
+Mountain heights are all "metres above sea level". Measure from the valley floor instead and every number changes, while the mountains stay exactly as high. The **reference level** is a factor's sea level: the category a model uses as its baseline, against which every other category's [[Regression Coefficient|coefficient]] is measured ([[Dummy Coding]]). The [[Intercept]] is the reference level's mean (with other [[Predictor Variable|predictors]] at zero), and each other coefficient is "this level minus reference". This scheme is called treatment contrasts and is R's default, which picks the first level alphabetically unless told otherwise ([[Factors in R]]).
 
-In the code below, treatments burn, control and graze have means 9, 5 and 7. By default "burn" is the reference, so the coefficients are 9, −4 and −2. A meaningful reference, such as the control, the unburned or the commonest class, makes them easier to read: after `relevel(trt, ref = "control")` they are 5, +4 and +2. The coefficients and their p-values change, but the fit does not; the last line confirms the fitted values are identical. In an output table, `burnyes` means "burned compared with not burned", and the level whose name is missing is the reference.
+In the code below, treatments burn, control and graze have means 9, 5 and 7. By default "burn" is the reference, so the coefficients are 9, −4 and −2. A meaningful reference, such as the control, the unburned or the commonest class, makes them easier to read: after `relevel(trt, ref = "control")` they are 5, +4 and +2. The coefficients and their p-values change, but the fit does not; the last line confirms the [[Fitted Value|fitted values]] are identical. In an output table, `burnyes` means "burned compared with not burned", and the level whose name is missing is the reference.
 
 The common confusion is that a non-significant level coefficient means that level does not matter. It means only that the level does not differ clearly from the reference; it may differ from the other levels, which needs [[Pairwise Comparisons]]. Coding against the average of all groups instead is [[Sum-to-zero Contrasts]].
 
@@ -28,7 +30,7 @@ all.equal(fitted(lm(y ~ trt, d)), fitted(lm(y ~ trt2, d)))            # same fit
 ```
 
 ## Connections
-- **Builds on:** [[Dummy Coding]], [[Intercept]]
+- **Builds on:** [[Dummy Coding]], [[Intercept]], [[Regression Coefficient]], [[Predictor Variable]], [[Fitted Value]]
 - **Leads to:** [[Sum-to-zero Contrasts]], [[Factors in R]], [[Pairwise Comparisons]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 

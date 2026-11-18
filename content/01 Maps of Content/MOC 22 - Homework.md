@@ -17,7 +17,7 @@ Every course homework, in the order they are set, with the notes you need for ea
 
 ## Every homework
 - [[How to Approach a Course Homework]]: the arc every answer follows, and what the grader rewards.
-- [[librarian and shelf()]]: the package block at the top of every script.
+- [[librarian shelf()]]: `shelf()` from the librarian package installs any missing packages and loads them all in one line.
 - [[Reproducibility]], [[RProject]], [[R Markdown]]: a script that runs on the grader's computer.
 - [[Data Exploration Protocol]], [[Why explore data before modeling]]: the first half of every answer.
 - [[Why the response type decides the distribution]]: the choice behind every model.
@@ -46,7 +46,7 @@ Walkthrough: [[Homework 2 - Coral Bleaching]]
 
 ## Homework 3. Model selection (woodland birds, due Thu Sep 24)
 Walkthrough: [[Homework 3 - Woodland Birds and Landscape Scale]]
-- Ecology: [[Habitat Patch]], [[Landscape Metrics]], [[Spatial Scale]], [[Edge Effect]]
+- Ecology: [[Habitat Patch]], [[Landscape Metrics]], [[Spatial Scale]], [[Edge Effects|Edge Effect]]
 - Before the models: [[One-to-many Join]], [[Collinearity]], [[Pairplot]], [[Centering, Scaling and Standardizing]], [[Scale of Effect]]
 - Q1, six hypotheses: [[Candidate Model Set]], [[Patch vs Landscape Effects]], [[Why build the candidate model set before seeing the data]]
 - Q2, Bayesian binomial GLMs: [[Bayesian Logistic Regression]], [[brms]], [[Weakly Informative Prior]], [[Convergence]], [[R-hat]], [[Trace Plot]], [[How to check an MCMC fit]]
@@ -59,7 +59,7 @@ Walkthrough: [[Homework 4 - Thistle Seedlings and Enemy Release]]
 - Ecology: [[Invasive Species]], [[Enemy Release Hypothesis]]
 - The design: [[Nested Experimental Design]], [[Pseudoreplication]], [[Blocking]], [[Two-way ANOVA]], [[Two-way ANOVA vs Mixed Model]]
 - The response: [[Count Data]], [[Bounded Count]], [[Binomial vs Poisson]], [[Poisson vs Negative Binomial]], [[Overdispersion]]
-- The random effects: [[Random Intercept]], [[Nested Random Effects]], [[Random Effect with Few Levels]], [[Singular Fit]], [[Fixed vs Random Effects]]
+- The random effects: [[Random Intercept]], [[Nested Random Effects]], [[How Many Levels for a Random Effect|Random Effect with Few Levels]], [[Singular Fit]], [[Fixed vs Random Effects]]
 - Fitting the Bayesian way: [[GLMM|Generalized Linear Mixed Model]], [[Bayesian Mixed Model Workflow in R]], [[How to choose a prior]]
 - Diagnostics: [[DHARMa Simulated Residuals]], [[Zero Inflation]], [[Posterior Predictive Check]]
 - The write-up: [[Writing Methods Sections]], [[Writing Results Sections]], [[What to Report for a Model]]
@@ -76,7 +76,7 @@ Walkthrough: [[Homework 5 - Fire Weather HGAMs]]
 ## Homework 6. Bayesian models (Palmer penguins, website only)
 Walkthrough: [[Homework 6 - Penguin Body Mass in brms]]
 - Models and priors: [[brms]], [[Bayesian Linear Regression in R]], [[How to choose a prior]], [[Weakly Informative Prior]], [[Prior Predictive Check]]
-- Hierarchy: [[Random Intercept]], [[Random Slope]], [[Random Effect with Few Levels]]
+- Hierarchy: [[Random Intercept]], [[Random Slope]], [[How Many Levels for a Random Effect|Random Effect with Few Levels]]
 - Selection: [[AIC, WAIC and LOO]], [[Leave-one-out Cross-validation]]
 - Checking: [[R-hat]], [[Trace Plot]], [[Posterior Predictive Check]], [[How to check an MCMC fit]]
 - Predictions: [[conditional_effects()]], [[Conditional vs Marginal Predictions]], [[Posterior Predictive Distribution]]

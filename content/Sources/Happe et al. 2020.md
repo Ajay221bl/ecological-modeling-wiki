@@ -31,12 +31,12 @@ status: seedling
 - Design → [[Spatially Balanced Sampling]], [[Site Independence Assumption]], [[Camera Trap]], [[Hair Snare]], [[Home Range]]
 - Model → [[Single-season Occupancy]], [[Stacked Occupancy Design]], [[Observation Covariates]], [[Unexplained Heterogeneity in Detection]]
 - Selection and fit → [[Goodness of Fit and c-hat]], [[QAIC]], [[Evidence Ratio]], [[Model Averaging]]
-- Findings → [[Edge Effect]], [[Naive Occupancy]]
+- Findings → [[Edge Effects|Edge Effect]], [[Naive Occupancy]]
 - Other tests → [[Chi-square Test]], [[Kruskal-Wallis Test]]
 - Worked walk-through → [[Fisher Occupancy Case Study]]
 
 ## Notes that rely on it (22)
-[[Camera Trap]], [[Change Log]], [[Chi-square Test]], [[Course Schedule]], [[Edge Effect]], [[Hair Snare]], [[Home Range]], [[Kruskal-Wallis Test]], [[Local Extinction Probability]], [[Naive Occupancy]], [[Observation Covariates]], [[Occupancy Workflow in R]], [[Reintroduction]], [[Single-season Occupancy]], [[Single-season vs Multi-season Occupancy]], [[Site Covariates]], [[Site Independence Assumption]], [[Spatially Balanced Sampling]], [[Stacked Occupancy Design]], [[Translocation]], [[Unexplained Heterogeneity in Detection]], [[unmarked Package]]
+[[Camera Trap]], [[Change Log]], [[Chi-square Test]], [[Course Schedule]], [[Edge Effects|Edge Effect]], [[Hair Snare]], [[Home Range]], [[Kruskal-Wallis Test]], [[Local Extinction Probability]], [[Naive Occupancy]], [[Observation Covariates]], [[Occupancy Workflow in R]], [[Reintroduction]], [[Single-season Occupancy]], [[Single-season vs Multi-season Occupancy]], [[Site Covariates]], [[Site Independence Assumption]], [[Spatially Balanced Sampling]], [[Stacked Occupancy Design]], [[Translocation]], [[Unexplained Heterogeneity in Detection]], [[unmarked Package]]
 
 ## Connections
 - **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

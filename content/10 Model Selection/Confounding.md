@@ -3,67 +3,35 @@ type: atomic
 tags:
   - model-selection-diagnostics
   - study-design
-  - flashcards
+  - flashcards/eco/selection
+description: "Confounding is when two possible causes always show up together in your data, so any effect you credit to one might really belong to the other."
 aliases:
   - "confounded"
   - "confounding variable"
   - "confounder"
+  - "Lurking variable"
 status: seedling
 ---
 
 # Confounding
-**In one line:** When two possible causes always show up together in your data, so any effect you credit to one might really belong to the other.
 
-> [!info] Before this, it helps to know
-> [[Correlation vs Causation]] (the core idea) · [[Collinearity]] (the statistical cousin) · [[Study Sites]] (where it bites me)
+You try a new fertilizer on your tomatoes this summer; last summer you used none. This year's tomatoes are bigger. Was it the fertilizer? Maybe, but this summer was also sunnier, so fertilizer and "this year" arrived together and you cannot tell them apart from these data. The sunshine is a *confounder*: a second cause tangled up with the one you care about. **Confounding** is when two possible causes always show up together in your data, so any effect you credit to one might really belong to the other. It is the concrete reason behind the warning that correlation is not causation ([[Correlation vs Causation]]), and it is a constant risk in an [[Observational Study]], where the researcher watches rather than assigns treatments.
 
-## Start from zero
-You try a new fertilizer on your tomatoes this summer. Last summer you used none. This year's tomatoes are bigger. Was it the fertilizer?
+Take two sites: site A was surveyed in 2022 and averaged 5 species per visit; site B was surveyed in 2023 and averaged 8. B is 3 species higher, but is B better habitat, was 2023 a better year (wet spring, different crew), or both? The table cannot say. If one site had been surveyed in both years you could start to separate the two. No amount of clever maths splits two causes that always move together in the data; the only cures are a different design (fertilize half the plants in the same summer, as in an [[Experimental Study]]) or more data where the two causes come apart. [[Hurlbert 1984]] built his critique of field studies on this: when a treatment coincides with a different place or time, its effect cannot be told apart from theirs. [[Zuur et al. 2010]] advise that "one should always plot all [[Predictor Variable|covariates]] against temporal and spatial covariates" (p. 9), and [[Tredennick et al. 2021]] list "temporal and spatial confounding" among the reasons observational ecological data are hard to model (p. 2). Do not mix it up with [[Collinearity]]: collinearity is about predictors you put in the model making each other's estimates wobbly, while confounding is about meaning, since the credit may belong to something else, sometimes something you never measured.
 
-Maybe. But this summer was also sunnier. Fertilizer and "this year" arrived together. You cannot tell them apart from these data. The sunshine is a **confounder**: a second cause tangled up with the one you care about.
-
-This is the famous warning that correlation is not causation ([[Correlation vs Causation]]).
-
-## Why it exists
-No amount of clever math can split two causes that always move together in the data. The only cures are a different design (for example, fertilize half the plants in the same summer) or more data where the two causes come apart.
-
-[[Hurlbert 1984]] built his critique of field studies on this: when a treatment coincides with a different place or a different time, its effect cannot be told apart from theirs. [[Zuur et al. 2010]] advise "one should always plot all covariates against temporal and spatial covariates" (p. 9). [[Tredennick et al. 2021]] list "temporal and spatial confounding" among the reasons observational ecological data are hard to model (p. 2).
-
-**Collinearity vs confounding.** [[Collinearity]] is about predictors you put in the model making each other's estimates wobbly. Confounding is about meaning: the credit may belong to something else, sometimes something you never measured.
-
-## A tiny example
-| Site | Year surveyed | Mean species per visit |
-|---|---|---|
-| A | 2022 | 5 |
-| B | 2023 | 8 |
-
-B is 3 species higher. Possible reasons: B is better habitat, or 2023 was a better year (wet spring, different crew), or both. The table cannot tell you which. If one site had been surveyed in both years, you could start to separate them.
-
-## In my project
-**Site is fully confounded with year.** BK, DC and HO were surveyed only in 2022; CR and HB only in 2023; no point was surveyed in both years. So the estimated difference between CR and BK is really (difference between the properties) + (difference between 2023 and 2022: weather, crew, anything else about that year). If Year were added to a model that already has Site (such as the Property model, M1), [[glmer()]] would report that the fixed-effect model matrix is rank deficient and drop a column, because Year adds no information beyond Site.
-
-**Observers are partly confounded with site and year.** For example EAL appears only at CR and HB (2023) and KAS only at BK, DC and HO (2022). Observer skill leaks into the "site" effect too ([[Observer Effects]]).
-
-What I can do:
-- State it plainly in the Report's Methods as a limitation ([[Why site and year cannot be separated]]).
-- Note that comparisons within a year (BK vs DC vs HO; CR vs HB) are not confounded with year, though they still compare whole properties, not habitat.
-- Use habitat covariates, which Dr. Roberts suggested and the models now include (since Oct 13). Habitat varies from point to point within each property, where year and crew are constant, so a habitat effect is not confounded with year in the way a property effect is ([[Why site identity is a weak test of a habitat hypothesis]], [[Proposal Feedback from Dr Roberts]]).
-
-What this means for the Oct 13 results ([[Preliminary Results]]): property still mattered after habitat (M3 beat every habitat-only model), so H1 gets support. But a rate ratio like CR's 1.40 (relative to BK) is "CR in 2023 versus BK in 2022, with different dates and crews", not a pure property effect. The habitat effects, such as 45% fewer focal species per SD of tree cover, are the cleaner evidence.
-- Raise the issue with Dr. Roberts ([[Open Questions]]).
-
-## Common confusions
-- **"Adding the confounder to the model fixes it."** Only if the two causes vary somewhat independently. When they overlap perfectly (Site and Year here), the model simply cannot separate them.
-- **"A Bayesian or fancier model would fix it."** No method can. It is a design problem.
-- **"Confounding means my result is wrong."** It means the result has more than one explanation. Report it honestly.
+In the grassland bird project, Site is fully confounded with year. BK, DC and HO were surveyed only in 2022 and CR and HB only in 2023, with no point surveyed in both years ([[Study Sites]]), so the estimated difference between CR and BK is really the property difference plus the difference between 2023 and 2022 in weather, crew and anything else about that year. If Year were added to a model that already has Site, [[glmer()]] would report a rank-deficient fixed-effect matrix and drop a column, because Year adds nothing beyond Site. Observers are partly confounded too: EAL appears only at CR and HB (2023) and KAS only at BK, DC and HO (2022), so observer skill leaks into the "site" effect ([[Observer Effects]]). What helps: state it plainly in the Methods as a limitation ([[Why site and year cannot be separated]]); note that comparisons within a year (BK vs DC vs HO, CR vs HB) are not confounded with year; and use habitat covariates, as Dr. Roberts suggested, because habitat varies from point to point within a property where year and crew are constant ([[Why site identity is a weak test of a habitat hypothesis]], [[Proposal Feedback from Dr Roberts]]). In the Oct 13 results property still mattered after habitat, so H1 gets support, but CR's [[Rate Ratio|rate ratio]] of 1.40 against BK means "CR in 2023 versus BK in 2022, with different dates and crews"; habitat effects such as 45% fewer [[Focal Species|focal species]] per SD of tree cover are the cleaner evidence ([[Preliminary Results]], [[Open Questions]]). Three confusions: adding the confounder to the model fixes it only if the two causes vary somewhat independently; no Bayesian or fancier model can fix a design problem; and confounding does not make a result wrong, it gives it more than one explanation, which you report honestly.
 
 ## Connections
-- **Builds on:** [[Correlation vs Causation]], [[Collinearity]], [[Study Sites]], [[Data Exploration]]
-- **Leads to:** [[Why site and year cannot be separated]], [[Why site identity is a weak test of a habitat hypothesis]], [[Observer Effects]]
+- **Builds on:** [[Correlation vs Causation]], [[Observational Study]], [[Experimental Study]], [[Collinearity]], [[Predictor Variable]], [[Rate Ratio]]
+- **Leads to:** [[Study Sites]], [[Observer Effects]], [[Why site and year cannot be separated]], [[Why site identity is a weak test of a habitat hypothesis]], [[Focal Species]]
 - **Part of:** [[MOC 10 - Model Selection|MOC - Model Selection and Diagnostics]]
-- **Go deeper:** [[Hurlbert 1984]] (the classic on field design), [[Zuur et al. 2010]] (p. 9)
+- **Go deeper:** [[Proposal Feedback from Dr Roberts]], [[Preliminary Results]], [[Open Questions]], [[Hurlbert 1984]], [[Zuur et al. 2010]], [[Tredennick et al. 2021]]
 
-> [!question]- Check yourself
-> If CR has higher richness than BK in my model, why can't I conclude that the property CR is better habitat?
-> ?
-> CR was surveyed only in 2023 and BK only in 2022 (with partly different observers), so the CR vs BK difference mixes property, year and crew effects. The data cannot separate them.
+## Flashcards
+
+If CR has higher richness than BK in the model, why can't you conclude that the property CR is better habitat?
+??
+CR was surveyed only in 2023 and BK only in 2022 (with partly different observers), so the CR vs BK difference mixes property, year and crew effects. The data cannot separate them.
+++++
+
+How does confounding differ from collinearity?::Collinearity is correlated predictors in the model making estimates unstable; confounding is a second cause (measured or not) tangled with the one you care about, so the credit may belong to it.

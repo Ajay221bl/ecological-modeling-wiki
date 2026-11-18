@@ -19,7 +19,7 @@ Birds respond not just to the spot where they stand but to what surrounds it: ho
 ## 1. Thinking at the landscape level
 - [[Landscape Ecology]]: why arrangement in space matters, not just amount
 - [[Patch, Matrix and Corridor]]: the vocabulary for a map of grassland pieces in a sea of forest and farms
-- [[Spatial Scale (Grain and Extent)]]: how big a cell and how big a study area
+- [[Spatial Scale]]: Spatial scale describes the size of the units and of the area in a study, and patterns or processes can change when either changes.
 - [[Ecoregions]]: regions with similar geology, soils, climate and plants
 - [[Mississippi Alluvial Valley]] and [[Arkansas River Valley]]: the two ecoregions my sites sit in
 
@@ -42,7 +42,7 @@ Birds respond not just to the spot where they stand but to what surrounds it: ho
 - [[Why grassland birds avoid trees]]
 
 ## Field measurements to compare with
-[[Field vs Remote Vegetation Measures]] · [[Visual Obstruction (Robel Pole)]] · [[Tree Density and DBH]]
+[[Field vs Remote Vegetation Measures]] · [[Visual Obstruction (Robel Pole)]] · [[Tree Density|Tree Density and DBH]]
 
 ## Key sources
 [[Roberts et al. 2025]] (method in the metadata) · [[Berry et al. 2026]] (results) · [[McGill 2013]]

@@ -15,7 +15,7 @@ Judge a photograph by what is in it, not by what the photographer intended to sh
 
 The code below gives the classic example. One researcher planned 12 trials and saw 3 successes; another kept sampling until the 3rd success, which happened to take 12 trials. Their likelihood functions for p have a constant ratio, so they carry identical evidence about p. Yet one-sided p-values for p = 0.5 differ, 0.073 under the first design and 0.033 under the second, because a [[P-value]] is the probability of data "as or more extreme", which are outcomes that did not occur and depend on the stopping rule.
 
-So p-values violate the principle, while likelihood-based and Bayesian methods obey it: [[Bayes' Theorem]] uses the data only through the likelihood ([[Frequentist vs Bayesian Inference]]). Hobbs and Hooten state it because it justifies building all inference on the likelihood joined with priors ([[Hobbs and Hooten 2015 Ch4]]). It does not say to use maximum likelihood; it says the likelihood function is the evidence, and how to use it is a separate choice.
+So p-values violate the principle, while likelihood-based and [[Bayesian Inference|Bayesian methods]] obey it: [[Bayes' Theorem]] uses the data only through the likelihood ([[Frequentist vs Bayesian Inference]]). Hobbs and Hooten state it because it justifies building all inference on the likelihood joined with priors ([[Hobbs and Hooten 2015 Ch4]]). It does not say to use [[Maximum Likelihood Estimation|maximum likelihood]]; it says the likelihood function is the evidence, and how to use it is a separate choice.
 
 ```r
 p <- seq(0.01, 0.99, 0.01)
@@ -26,8 +26,8 @@ c(pbinom(3, 12, 0.5), pnbinom(8, 3, 0.5, lower.tail = FALSE))     # yet the one-
 ```
 
 ## Connections
-- **Builds on:** [[Likelihood Function]]
-- **Leads to:** [[P-value]], [[Bayes' Theorem]], [[Frequentist vs Bayesian Inference]]
+- **Builds on:** [[Likelihood Function]], [[Maximum Likelihood Estimation]]
+- **Leads to:** [[P-value]], [[Bayes' Theorem]], [[Frequentist vs Bayesian Inference]], [[Bayesian Inference]]
 - **Part of:** [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]]
 
 ## Flashcards

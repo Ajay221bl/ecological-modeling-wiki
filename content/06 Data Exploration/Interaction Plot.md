@@ -14,9 +14,9 @@ status: seedling
 
 # Interaction Plot
 
-Ask two friends how much coffee helps them stay awake. If both say "one cup adds an hour", the effect of coffee does not depend on who you are, and their lines on a graph of hours against cups run parallel. If one says "a lot" and the other "nothing", the lines cross or fan out. An **interaction plot** draws the mean response against one predictor, with a separate line for each level of a second predictor. Parallel lines say the two act separately and add up; lines that converge, diverge or cross say the effect of one depends on the level of the other, an interaction ([[Interaction Term]], [[Additive vs Interaction Model]]).
+Ask two friends how much coffee helps them stay awake. If both say "one cup adds an hour", the effect of coffee does not depend on who you are, and their lines on a graph of hours against cups run parallel. If one says "a lot" and the other "nothing", the lines cross or fan out. An **interaction plot** draws the mean response against one [[Predictor Variable|predictor]], with a separate line for each level of a second predictor. Parallel lines say the two act separately and add up; lines that converge, diverge or cross say the effect of one depends on the level of the other, an interaction ([[Interaction Term]], [[Additive vs Interaction Model]]).
 
-In Homework 1 the question is whether fencing out grazers changes plant richness *more over time*, because recovery is slow ([[Exclosure]]). Plot mean richness on the y axis against year on the x axis, one line per treatment. If the exclosure lines climb away from the control line year after year, the treatment effect grows with time and a year × treatment term belongs in the model. If the three lines move up and down together, year and treatment act separately. Plotting the individual plots as faint lines or points underneath the means shows whether a gap between lines is bigger than the scatter ([[Why explore data before modeling]]).
+In Homework 1 the question is whether fencing out [[Grazing|grazers]] changes plant [[Species Richness|richness]] *more over time*, because recovery is slow ([[Exclosure]]). Plot mean richness on the y axis against year on the x axis, one line per treatment. If the exclosure lines climb away from the control line year after year, the treatment effect grows with time and a year × treatment term belongs in the model. If the three lines move up and down together, year and treatment act separately. Plotting the individual plots as faint lines or points underneath the means shows whether a gap between lines is bigger than the scatter ([[Why explore data before modeling]]).
 
 An interaction plot is exploration, not proof: lines are never exactly parallel in real data, so the plot suggests what to test and the model with and without the interaction decides ([[Model Ranking Tables]]). Also beware of reading a gap that only exists at one or two time points, which may be one odd year rather than a trend.
 
@@ -33,8 +33,8 @@ round(tapply(d$rich, list(d$treatment, d$period), mean), 1)   # early vs late me
 ```
 
 ## Connections
-- **Builds on:** [[Interaction Term]], [[Mean]]
-- **Leads to:** [[Additive vs Interaction Model]], [[Model Ranking Tables]]
+- **Builds on:** [[Interaction Term]], [[Mean]], [[Predictor Variable]], [[Species Richness]]
+- **Leads to:** [[Additive vs Interaction Model]], [[Model Ranking Tables]], [[Grazing]]
 - **Part of:** [[MOC 04 - Data Exploration|MOC - Data Exploration]], molecular note [[Homework 1 - Riparian Plant Diversity]]
 
 ## Flashcards

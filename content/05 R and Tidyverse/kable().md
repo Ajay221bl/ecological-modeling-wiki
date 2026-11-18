@@ -12,9 +12,9 @@ status: seedling
 
 # kable()
 
-A data frame printed in a report looks like raw console output. **`kable()`**, from the knitr package, turns a data frame into a cleanly formatted table in a knitted [[R Markdown]] document. `knitr::kable(df)` does the basic job; `digits` rounds the numbers, `col.names` relabels the columns, and `caption` adds a title. The example below formats a small model selection table with model names, numbers of parameters, ΔAICc values and weights.
+A [[Data Frame|data frame]] printed in a report looks like raw [[Console|console]] output. **`kable()`**, from the [[Knitting|knitr]] package, turns a data frame into a cleanly formatted table in a knitted [[R Markdown]] document. `knitr::kable(df)` does the basic job; `digits` rounds the numbers, `col.names` relabels the columns, and `caption` adds a title. The example below formats a small model selection table with model names, numbers of parameters, [[Delta AIC|ΔAICc]] values and weights.
 
-The point is not only looks. Because the table is generated from the data or model objects, often via [[summarise()]] or a tidy table of coefficients ([[tidy()]]), it updates automatically when the analysis changes and is never retyped by hand. Tables typed into a word processor go stale and collect typos. Typical content in this course is model selection tables ([[Model Ranking Tables]]) and coefficient tables for a results section ([[Writing Results Sections]]).
+The point is not only looks. Because the table is generated from the data or model objects, often via [[summarise()]] or a tidy table of coefficients ([[tidy()]]), it updates automatically when the analysis changes and is never retyped by hand. Tables typed into a word processor go stale and collect typos. Typical content in this course is [[Model Selection|model selection]] tables ([[Model Ranking Tables]]) and [[Regression Coefficient|coefficient]] tables for a results section ([[Writing Results Sections]]).
 
 ```r
 library(knitr)
@@ -23,8 +23,8 @@ kable(tab, digits = 2, col.names = c("Model", "K", "ΔAICc", "Weight"), caption 
 ```
 
 ## Connections
-- **Builds on:** [[R Markdown]]
-- **Leads to:** [[Model Ranking Tables]], [[tidy()]], [[Writing Results Sections]]
+- **Builds on:** [[R Markdown]], [[Data Frame]], [[Console]], [[Knitting]]
+- **Leads to:** [[Model Ranking Tables]], [[tidy()]], [[Writing Results Sections]], [[Delta AIC]], [[Model Selection]], [[Regression Coefficient]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 
 ## Flashcards

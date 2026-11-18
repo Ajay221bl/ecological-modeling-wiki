@@ -6,6 +6,8 @@ tags:
   - basics
 aliases:
   - "Population vs sample"
+  - "Sample vs Population"
+  - "samples"
 status: seedling
 ---
 

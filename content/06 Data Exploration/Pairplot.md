@@ -13,9 +13,9 @@ status: seedling
 
 # Pairplot
 
-A round-robin tournament chart holds the result of every team playing every other once. A **pairplot**, or scatterplot matrix, is that chart for variables: a grid of scatterplots showing every variable plotted against every other ([[Scatterplot]]). The variables run along both the rows and the columns; the panel in row i and column j plots variable i against variable j; the diagonal names each variable or shows its histogram; and one half of the grid can print [[Correlation]] coefficients instead of mirror-image plots, as in the code below.
+A round-robin tournament chart holds the result of every team playing every other once. A **pairplot**, or scatterplot matrix, is that chart for variables: a grid of scatterplots showing every variable plotted against every other ([[Scatterplot]]). The variables run along both the rows and the columns; the panel in row i and column j plots variable i against variable j; the diagonal names each variable or shows its [[Histogram|histogram]]; and one half of the grid can print [[Correlation]] coefficients instead of mirror-image plots, as in the code below.
 
-Its main use is spotting [[Collinearity]], protocol step 5. Scan the panels where one predictor is plotted against another for tight clouds: in the example, tree cover and shrub cover form a tight band (correlation about −0.9), so they are a pair of predictors that will fight over the same information in a model. Its second use is step 6: the row for the response shows the shape of each Y-X relationship ([[Relationships Between Y and X]]). Zuur and colleagues use it for both ([[Zuur et al. 2010]]).
+Its main use is spotting [[Collinearity]], protocol step 5. Scan the panels where one [[Predictor Variable|predictor]] is plotted against another for tight clouds: in the example, tree cover and shrub cover form a tight band (correlation about −0.9), so they are a pair of predictors that will fight over the same information in a model. Its second use is step 6: the row for the response shows the shape of each Y-X relationship ([[Relationships Between Y and X]]). Zuur and colleagues use it for both ([[Zuur et al. 2010]]).
 
 Two limits. Past about ten variables the grid becomes unreadable. And low pairwise correlations do not rule out collinearity, because three or more predictors can be jointly dependent without any strong pair; the [[Variance Inflation Factor]] catches that.
 
@@ -32,7 +32,7 @@ round(cor(d), 2)
 ```
 
 ## Connections
-- **Builds on:** [[Scatterplot]], [[Correlation]]
+- **Builds on:** [[Scatterplot]], [[Correlation]], [[Histogram]], [[Predictor Variable]]
 - **Leads to:** [[Collinearity]], [[Variance Inflation Factor]], [[Relationships Between Y and X]]
 - **Part of:** [[MOC 04 - Data Exploration|MOC - Data Exploration]]
 

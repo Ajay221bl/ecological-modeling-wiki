@@ -29,7 +29,7 @@ The maths and vocabulary every other note leans on, explained from nothing. If a
 - [[Count Data]]: Count data are whole numbers, 0, 1, 2 and up, that record how many things or events were seen.
 - [[Proportion]]: A proportion is a part divided by its whole, so it always lies between 0 and 1.
 - [[Response Variable]]: The response variable is the thing you are trying to explain or predict, written y.
-- [[Explanatory Variable]]: An explanatory variable is something you measure because it might explain or predict the response, written x.
+- [[Predictor Variable]]: A predictor is something you use to explain or predict the response; in R it goes on the right of the ~.
 
 ## 2. Symbols and arithmetic
 - [[Greek Letters and Notation]]: Statistics uses a small set of symbols as shorthand: Greek letters stand for unknown true values, ordinary letters stand for data you measured, and a little...
@@ -53,6 +53,7 @@ The maths and vocabulary every other note leans on, explained from nothing. If a
 
 ## 3. Summaries of data
 - [[Mean]]: The mean is the \"fair share\" value: add all the values up and share the total out equally, one share per value.
+- [[Deviation]]: A deviation is how far one value sits above or below the mean: the value minus the mean.
 - [[Variance]]: Variance measures how spread out values are: it's the average of the squared distances of the values from their mean.
 - [[Standard Deviation]]: The standard deviation (SD) is the square root of the variance: roughly, the typical distance of a value from the mean, in the data's own units.
 - [[Standard Error]]: The standard error (SE) is the standard deviation of an *estimate*: how much your answer would wobble if you repeated the whole study with fresh samples.
@@ -110,9 +111,8 @@ The maths and vocabulary every other note leans on, explained from nothing. If a
 ## From the grassland bird project
 Notes first written for my project vault (EcoModeling-Vault) and merged in v1.5. Project home: [[MOC 23 - Grassland Bird Richness Project|MOC - Grassland Bird Richness Project]].
 
-- [[Average (Mean)]]: the mean is the total divided by how many values you have: one number that describes the "typical" or "middle" value.
 - [[Data Table Rows and Columns]]: a data table stores one observation per row and one variable per column, so every cell holds exactly one value.
+- [[Spread and Variability]]: spread (or variability) describes how much values differ from each other and from their mean; variance and standard deviation turn that into a number.
 - [[Equation of a Line]]: a straight line is described by two numbers: where it starts (the intercept) and how much it goes up for every one step to the right (the slope).
 - [[Project Overview]]
-- [[Sample vs Population]]: the population is everything you want to know about; the sample is the part you actually measured; statistics is about using the sample to make...
-- [[Spread and Variability]]: spread (or variability) describes how much values differ from each other and from their mean; variance and standard deviation turn that into a number.
+

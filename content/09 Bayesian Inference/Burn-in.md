@@ -15,11 +15,11 @@ status: seedling
 
 # Burn-in
 
-Let the tap run before filling a glass: the first water has been sitting in the pipes. **Burn-in**, or warm-up, is the early part of an MCMC chain that is thrown away because the sampler hadn't yet reached the posterior, or was still tuning itself ([[MCMC Chains]]). A chain starts at arbitrary [[Initial Values]] and takes a while to travel to the region of high posterior probability; those early draws aren't from the posterior, and keeping them would bias the summaries.
+Let the tap run before filling a glass: the first water has been sitting in the pipes. **Burn-in**, or warm-up, is the early part of an MCMC chain that is thrown away because the sampler hadn't yet reached the posterior, or was still tuning itself ([[MCMC Chains]]). A chain starts at arbitrary [[Initial Values]] and takes a while to travel to the region of high [[Posterior Distribution|posterior probability]]; those early draws aren't from the posterior, and keeping them would bias the summaries.
 
-How much to discard is judged from a [[Trace Plot]]: at least until all chains overlap in a stable band, as in the figure, where everything left of the dashed line is discarded. In Stan, warm-up also covers adaptation, when the step size and other settings are tuned ([[Tuning Parameter]]); brms discards the first half by default (`warmup = 1000` of `iter = 2000`). In JAGS, adaptation (`n.adapt`) and burn-in are separate phases. Reported sample sizes exclude it. In the code below, a chain started at 0.99 with small steps has a mean of 0.325 if its first 500 draws are kept and 0.312 once they are removed, against a true posterior mean of 0.304.
+How much to discard is judged from a [[Trace Plot]]: at least until all chains overlap in a stable band, as in the figure, where everything left of the dashed line is discarded. In Stan, warm-up also covers adaptation, when the [[Step Size and Maximum Tree Depth|step size]] and other settings are tuned ([[Tuning Parameter]]); brms discards the first half by default (`warmup = 1000` of `iter = 2000`). In JAGS, adaptation (`n.adapt`) and burn-in are separate phases. Reported sample sizes exclude it. In the code below, a chain started at 0.99 with small steps has a mean of 0.325 if its first 500 draws are kept and 0.312 once they are removed, against a true [[Posterior Summary|posterior mean]] of 0.304.
 
-Its use appears as `warmup` in the brms labs ([[Course Website]], [[Hobbs and Hooten 2015 Ch7]]). Burn-in does not fix a chain that hasn't converged: if the chains never settle, discarding more doesn't help ([[MCMC Convergence]]). It is different from [[Thinning]], which discards draws throughout the chain.
+Its use appears as `warmup` in the brms labs ([[Course Website]], [[Hobbs and Hooten 2015 Ch7]]). Burn-in does not fix a chain that hasn't [[Convergence|converged]]: if the chains never settle, discarding more doesn't help ([[MCMC Convergence]]). It is different from [[Thinning]], which discards draws throughout the chain.
 
 ![[Burn-in.png|700]]
 *What to look at:* chains starting far apart, then merging. Everything left of the dashed line is discarded.
@@ -31,8 +31,8 @@ round(c(with_burnin_kept = mean(out), burnin_removed = mean(out[-(1:500)]), trut
 ```
 
 ## Connections
-- **Builds on:** [[MCMC Chains]], [[Initial Values]]
-- **Leads to:** [[Trace Plot]], [[MCMC Convergence]], [[Thinning]]
+- **Builds on:** [[MCMC Chains]], [[Initial Values]], [[Posterior Distribution]], [[Posterior Summary]], [[Convergence]]
+- **Leads to:** [[Trace Plot]], [[MCMC Convergence]], [[Thinning]], [[Step Size and Maximum Tree Depth]]
 - **Part of:** [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]]
 
 ## Flashcards

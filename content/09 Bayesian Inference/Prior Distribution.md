@@ -15,7 +15,7 @@ status: seedling
 
 # Prior Distribution
 
-Before a match the bookmaker posts odds based on what is already known about the teams; as the game unfolds the odds change, but they had to start somewhere. A **prior distribution** is that starting point: a probability distribution describing which values of a [[Parameter]] are plausible before the current data are used ([[Probability Distribution]]). Every parameter in a Bayesian model needs one, and it enters through [[Bayes' Theorem]]. Its range should match the parameter, so a standard deviation gets a positive-only prior and a probability one on 0 to 1, and its width says how much you know. If earlier studies of similar birds found annual survival around 0.5 to 0.7, a Beta(12, 8) prior, with mean 0.6 and 95% of its mass between 0.38 and 0.80, says so; if nothing is known, Beta(1, 1) spreads plausibility evenly.
+Before a match the bookmaker posts odds based on what is already known about the teams; as the game unfolds the odds change, but they had to start somewhere. A **prior distribution** is that starting point: a probability distribution describing which values of a [[Parameter]] are plausible before the current data are used ([[Probability Distribution]]). Every parameter in a Bayesian model needs one, and it enters through [[Bayes' Theorem]]. Its range should match the parameter, so a [[Standard Deviation|standard deviation]] gets a positive-only prior and a probability one on 0 to 1, and its width says how much you know. If earlier studies of similar birds found annual survival around 0.5 to 0.7, a Beta(12, 8) prior, with mean 0.6 and 95% of its mass between 0.38 and 0.80, says so; if nothing is known, Beta(1, 1) spreads plausibility evenly.
 
 Priors come from earlier studies, pilot data, biological limits or the scale of the data, never from the data being analysed, which would use them twice. Their influence shrinks as data accumulate, and a sensible prior also regularises, stopping estimates running off to absurd values when data are thin. They come in three broad kinds, shown in the figure: [[Informative Prior]], [[Weakly Informative Prior]] and [[Vague Prior]]. The code below shows what Beta(12, 8) claims, plots it against a flat prior, and shows that a Normal(0, 2.5) prior on a logit-scale slope allows odds ratios from about 0.007 to 134.
 
@@ -31,7 +31,7 @@ qnorm(c(0.025, 0.975), 0, 2.5)                                  # a Normal(0, 2.
 ```
 
 ## Connections
-- **Builds on:** [[Bayes' Theorem]], [[Probability Distribution]]
+- **Builds on:** [[Bayes' Theorem]], [[Probability Distribution]], [[Standard Deviation]]
 - **Leads to:** [[Posterior Distribution]], [[Informative Prior]], [[Weakly Informative Prior]], [[Vague Prior]], [[Prior Predictive Check]], [[Prior Sensitivity Analysis]]
 - **Part of:** [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]], molecular note [[How to choose a prior]]
 

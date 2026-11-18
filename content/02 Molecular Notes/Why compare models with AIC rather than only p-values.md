@@ -3,6 +3,7 @@ type: molecular
 tags:
   - molecular
   - model-selection
+  - flashcards/eco/why
 aliases:
   - "Why AIC"
   - "AIC vs p-values"
@@ -21,7 +22,7 @@ I could fit one big model and look at which coefficients have p < 0.05. Why fit 
 - [[P-value]]: what a significance test actually measures.
 - [[Candidate Model Set]]: a small list of models, each standing for one hypothesis.
 - [[AIC]]: the score used to rank them.
-- [[Delta AIC and Akaike Weights]]: how to read the ranking as strength of evidence.
+- [[Akaike Weight|Delta AIC and Akaike Weights]]: how to read the ranking as strength of evidence.
 - [[Parsimony]]: the balance between fit and complexity that AIC enforces.
 - [[Null Model]]: the "weather and point-to-point variation only" baseline.
 
@@ -57,3 +58,12 @@ History: the Sep 10 set (Global, Additive, Site, Weather, Null) was replaced on 
 ## Connections
 - **Related:** [[Model Purpose - Exploration Inference Prediction]], [[Nested Models]], [[Johnson and Omland 2004]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 10 - Model Selection|MOC - Model Selection and Diagnostics]]
+
+## Flashcards
+
+What question does a p-value answer, and why is that not enough here?
+??
+Whether one effect could be zero. The project has several competing explanations (property, habitat at three scales, both, neither), so it needs to score whole models against each other, which AIC does.
+++++
+
+What two things does AIC trade off?::Goodness of fit against the number of estimated parameters (complexity).

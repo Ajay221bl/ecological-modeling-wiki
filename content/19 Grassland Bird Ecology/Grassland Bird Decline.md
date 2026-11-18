@@ -3,7 +3,8 @@ type: atomic
 tags:
   - grassland-bird-ecology
   - conservation
-  - flashcards
+  - flashcards/eco/grassland
+description: "Birds that need open grassland have lost a bigger share of their numbers over the last 50 or so years than almost any other group of North American birds."
 aliases:
   - "grassland bird declines"
   - "Decline of grassland birds"
@@ -11,50 +12,24 @@ status: seedling
 ---
 
 # Grassland Bird Decline
-**In one line:** Birds that need open grassland have lost a bigger share of their numbers over the last 50 or so years than almost any other group of North American birds.
 
-> [!info] Before this, it helps to know
-> Nothing technical. A picture of a prairie helps: wide, open, grassy, few or no trees.
+A [[Grassland]] is land where the main plants are grasses and wildflowers, with few trees: in North America the great natural ones are the prairies of the central states and provinces, and pastures and hayfields are human-made grasslands that some of the same birds use. A *grassland bird* is a species that nests and feeds in this open grass, often right on the ground: [[Eastern Meadowlark|meadowlarks]], many sparrows, the [[Dickcissel]], the [[Northern Bobwhite]]. Over the last century most native prairie was ploughed into crops, built on, or left to grow into woodland, and when the habitat shrinks, the birds that depend on it shrink with it. **Grassland bird decline** is the name for that loss: grassland birds have lost a bigger share of their numbers since about 1970 than almost any other group of North American birds.
 
-## Start from zero
-A **grassland** is land where the main plants are grasses and wildflowers, with few trees. In North America the big natural ones are the **prairies** of the central states and Canadian provinces. Pastures and hayfields are human-made grasslands that some of the same birds use.
+What does a "percent decline" mean? If a survey route averaged 20 meadowlarks in 1970 and 9 today, the loss is 20 − 9 = 11 birds, and 11 / 20 = 0.55, a 55% decline. Notice that this needs two time points at the same place, which is why long-running surveys such as the [[Breeding Bird Survey]] are the evidence. Two big syntheses frame the problem. [[Rosenberg et al. 2019]] estimated net bird losses across the US and Canada since 1970 and found grassland birds among the hardest hit (the commonly cited figures are about 2.9 billion birds lost overall, roughly 29%, and about half of grassland bird abundance; check them against the paper before quoting). [[Brennan and Kuvlesky 2005]] called it a conservation crisis and listed the drivers: habitat loss and conversion ([[Land-Use Change and Agriculture]]), [[Habitat Fragmentation]], changes in [[Grazing]] and fire, and [[Woody Encroachment]].
 
-A **grassland bird** is a species that nests and feeds in this open grass. Many nest right on the ground or in low plants. Examples: meadowlarks, many sparrows, the [[Dickcissel]], and the [[Northern Bobwhite]] (a quail).
-
-Over the last century most native prairie was ploughed into crops, built on, or let grow into woodland. When the habitat shrinks, the birds that depend on it shrink with it.
-
-## Why it exists
-This is the "why should anyone care" behind my project. If we know grassland birds are in trouble, the next questions are: which places still hold them, and what about those places helps?
-
-Two big syntheses frame the problem:
-- [[Rosenberg et al. 2019]] estimated net bird losses across the US and Canada since 1970 and found grassland birds among the hardest hit.
-- [[Brennan and Kuvlesky 2005]] called grassland bird declines a conservation crisis and listed the main drivers: habitat loss and conversion, [[Habitat Fragmentation]], changes in grazing and fire, and the spread of woody plants ([[Woody Plant Encroachment]]).
-
-> [!warning] Verify
-> Commonly cited figures from Rosenberg et al. (2019) are a net loss of about 2.9 billion birds (roughly 29%) since 1970, and a loss of roughly half (about 53%) of grassland bird abundance. Check these numbers against the paper before quoting them in the Report.
-
-## A tiny example
-How a "percent decline" works: if a survey route averaged 20 meadowlarks in 1970 and 9 today, the loss is 20 - 9 = 11 birds, and 11 / 20 = 0.55, a 55% decline. Note this needs **two time points** at the same place. One snapshot cannot show a decline.
-
-## In my project
-The decline motivates the Introduction of the Project Report: if grasslands are shrinking and breaking into pieces, do the remaining conservation properties differ in how many bird species they support?
-
-My data do **not** measure decline. They cover two years, and each site was surveyed in only one year ([[Why site and year cannot be separated]]). So I should not claim a trend. What the data can do is compare [[Species Richness]] among five properties at one snapshot.
-
-The study my data come from, [[Berry et al. 2026]], focused on six declining grassland species. Several appear in my file: Dickcissel (about 331 rows) and Northern Bobwhite (about 204 rows) are the most common of them.
-
-## Common confusions
-- **"My data show decline."** They cannot: no repeated years at the same sites.
-- **"Fewer birds here than there = decline."** That is a difference between places, not a change over time.
-- **"All birds are declining equally."** Grassland specialists have fared worse than many generalists.
+This is the "why should anyone care" behind the grassland bird project: if grassland birds are in trouble, which places still hold them, and what about those places helps? Three confusions. A dataset that covers two years, with each site surveyed in only one of them, cannot show a decline, because there is no [[Time Series|time series]] at any place ([[Why site and year cannot be separated]]). "Fewer birds here than there" is a difference between places, not a change over time. And not all birds are declining equally: [[Habitat Specialist|grassland specialists]] have fared worse than many [[Habitat Generalist|generalists]] ([[Grassland Specialists vs Generalists]]). What the project data can do is compare [[Species Richness]] among five properties at one snapshot, focusing on six declining [[Focal Species]] as in [[Berry et al. 2026]] ([[Hypotheses]], [[Project Overview]]).
 
 ## Connections
-- **Builds on:** [[Habitat Fragmentation]], [[Woody Plant Encroachment]], [[Correlation vs Causation]]
-- **Leads to:** [[Grassland Core Habitat]], [[Hypotheses]], [[Project Overview]]
+- **Builds on:** [[Grassland]], [[Breeding Bird Survey]], [[Eastern Meadowlark]], [[Time Series]], [[Habitat Specialist]], [[Habitat Generalist]]
+- **Leads to:** [[Land-Use Change and Agriculture]], [[Habitat Fragmentation]], [[Grazing]], [[Woody Encroachment]], [[Species Richness]], [[Focal Species]], [[Grassland Core Habitat]]
 - **Part of:** [[MOC 24 - Grassland Bird Ecology|MOC - Grassland Bird Ecology]]
-- **Go deeper:** [[Rosenberg et al. 2019]], [[Brennan and Kuvlesky 2005]]
+- **Go deeper:** [[Grassland Specialists vs Generalists]], [[Why site and year cannot be separated]], [[Hypotheses]], [[Project Overview]], [[Dickcissel]], [[Northern Bobwhite]], [[Rosenberg et al. 2019]], [[Brennan and Kuvlesky 2005]], [[Berry et al. 2026]]
 
-> [!question]- Check yourself
-> Can my dataset show that grassland birds are declining in Arkansas? Why or why not?
-> ?
-> No. It covers only 2022 and 2023, and each site was surveyed in only one of those years, so there is no time series at any place. The decline literature motivates the question; my data compare sites at one snapshot.
+## Flashcards
+
+Can the grassland bird project data show that grassland birds are declining in Arkansas?
+??
+No. They cover only 2022 and 2023, with each site surveyed in only one year, so there is no time series at any place. The decline literature motivates the question; the data compare sites at one snapshot.
+++++
+
+What do you need to measure a population decline?::Counts at the same places at two or more times.

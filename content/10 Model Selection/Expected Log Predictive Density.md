@@ -15,9 +15,9 @@ status: seedling
 
 # Expected Log Predictive Density
 
-The **expected log predictive density** (elpd) is the quantity [[WAIC]] and [[Leave-one-out Cross-validation|LOO]] aim to estimate: the log score a model would earn, on average, when predicting new data from the same process ([[Out-of-sample Prediction]]). The [[Log Pointwise Predictive Density]] scores the data used for fitting, and elpd scores new data, so elpd ≈ lppd minus a correction for overfitting. WAIC estimates it as lppd − p_waic, and LOO as Σ log p(yᵢ | y without i).
+The **expected log predictive density** (elpd) is the quantity [[WAIC]] and [[Leave-one-out Cross-validation|LOO]] aim to estimate: the [[Scoring Rules|log score]] a model would earn, on average, when [[Predicting New Data|predicting new data]] from the same process ([[Out-of-sample Prediction]]). The [[Log Pointwise Predictive Density]] scores the data used for fitting, and elpd scores new data, so elpd ≈ lppd minus a correction for overfitting. WAIC estimates it as lppd − [[Effective Number of Parameters|p_waic]], and LOO as Σ log p(yᵢ | y without i).
 
-Higher elpd is better, on the log-likelihood scale; on the information-criterion scale, −2 × elpd, smaller is better and comparable with AIC. It has a standard error from the spread of the pointwise contributions, so differences between models come with uncertainty ([[loo_compare()]]). In the code below `loo()` on a regression gives elpd_loo = −94.2 with SE 4.7, p_loo = 3.0 and looic = 188.5.
+Higher elpd is better, on the [[Log-likelihood|log-likelihood]] scale; on the information-criterion scale, −2 × elpd, smaller is better and comparable with AIC. It has a [[Standard Error|standard error]] from the spread of the pointwise contributions, so differences between models come with uncertainty ([[loo_compare()]]). In the code below `loo()` on a regression gives elpd_loo = −94.2 with SE 4.7, p_loo = 3.0 and looic = 188.5.
 
 It appears as the `elpd_loo` row of `loo()` output in the labs ([[Course Website]]). Higher elpd is not worse, as it would be for AIC: higher elpd is better, and LOOIC = −2 elpd is the AIC-like scale.
 
@@ -29,7 +29,7 @@ l <- suppressWarnings(loo::loo(ll)); l$estimates
 ```
 
 ## Connections
-- **Builds on:** [[Log Pointwise Predictive Density]], [[Out-of-sample Prediction]]
+- **Builds on:** [[Log Pointwise Predictive Density]], [[Out-of-sample Prediction]], [[Scoring Rules]], [[Predicting New Data]], [[Effective Number of Parameters]], [[Log-likelihood]], [[Standard Error]]
 - **Leads to:** [[WAIC]], [[Leave-one-out Cross-validation]], [[loo_compare()]]
 - **Part of:** [[MOC 11 - Bayesian Model Selection|MOC - Bayesian Model Selection]]
 

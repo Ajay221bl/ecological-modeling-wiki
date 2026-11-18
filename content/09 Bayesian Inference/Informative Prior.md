@@ -15,7 +15,7 @@ status: seedling
 
 An experienced doctor starts with firm expectations from thousands of patients, and when a single test is ambiguous those expectations rightly dominate. An **informative prior** concentrates plausibility on a narrow range of values because earlier evidence justifies it ([[Prior Distribution]]). It is built from real knowledge such as published estimates, a pilot study, a meta-analysis or physical limits, and it is narrow relative to what the data alone could say, so it visibly pulls the [[Posterior Distribution]] when the sample is small.
 
-The usual way to build one is [[Moment Matching]]: choose the prior's parameters so its mean and standard deviation match an earlier estimate and its uncertainty. In the code below an earlier survival estimate of 0.62 with standard error 0.05 becomes a Beta(57.8, 35.4) prior. With 4 survivors out of 12 new birds, the posterior median is 0.59 (95% interval 0.49 to 0.68); under a flat prior it would be 0.35 (0.14 to 0.61). The informative prior gives a far more precise estimate, and it would bias the answer if it were wrong.
+The usual way to build one is [[Moment Matching]]: choose the prior's parameters so its mean and [[Standard Deviation|standard deviation]] match an earlier estimate and its uncertainty. In the code below an earlier survival estimate of 0.62 with [[Standard Error|standard error]] 0.05 becomes a Beta(57.8, 35.4) prior. With 4 survivors out of 12 new birds, the [[Posterior Summary|posterior median]] is 0.59 (95% interval 0.49 to 0.68); under a flat prior it would be 0.35 (0.14 to 0.61). The informative prior gives a far more precise estimate, and it would bias the answer if it were wrong.
 
 [[Hobbs and Hooten 2015 Ch5]] argues that informative priors are a strength where knowledge exists. Using one carries obligations: cite the source and show a [[Prior Sensitivity Analysis]] with a weaker prior, such as a [[Weakly Informative Prior]] or [[Vague Prior]]. "Informative priors are biased, so avoid them" is a confusion: throwing away real prior knowledge is also a choice, with a cost in precision.
 
@@ -26,7 +26,7 @@ rbind(informative = qbeta(c(.025, .5, .975), a + y, b + n - y), flat = qbeta(c(.
 ```
 
 ## Connections
-- **Builds on:** [[Prior Distribution]]
+- **Builds on:** [[Prior Distribution]], [[Standard Deviation]], [[Standard Error]], [[Posterior Summary]]
 - **Leads to:** [[Vague Prior]], [[Weakly Informative Prior]], [[Prior Sensitivity Analysis]], [[Moment Matching]]
 - **Part of:** [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]], molecular note [[How to choose a prior]]
 

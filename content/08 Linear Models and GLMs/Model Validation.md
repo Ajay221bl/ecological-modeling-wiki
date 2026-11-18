@@ -6,7 +6,6 @@ tags:
 description: "Model validation is the step after fitting in which you check, mostly with residual plots, whether the model's assumptions hold well enough for its conclusions to be trusted."
 aliases:
   - "Model checking"
-  - "Model diagnostics"
   - "Validating a model"
   - "Goodness of fit"
 status: seedling
@@ -16,9 +15,9 @@ status: seedling
 
 Before take-off, a pilot walks around the plane looking at the tyres and the flaps, though it has been built, fuelled and given a flight plan; it takes five minutes, and skipping it is how avoidable accidents happen. **Model validation** is that walk-around for a fitted model: the step after fitting in which you check, mostly with residual plots, whether the model's assumptions hold well enough for its conclusions to be trusted ([[Linear Model Assumptions|Assumptions of Linear Regression]], [[Residual]]). It matters because a fitted model always returns numbers, whether or not it is appropriate, and software will not warn you.
 
-The checks are: residuals against fitted values, where a trend means the mean structure is wrong; residuals against each predictor, including ones left out, where a pattern means a missing term; the spread of the residuals, where a fan in scaled residuals means a wrong variance function, with a dispersion check for counts; independence, by plotting residuals against time, in space and by group, where patterns mean [[Autocorrelation]] or a missing grouping factor; the distribution, with a Q-Q plot of suitable residuals and a check of zeros for counts; and influence, whether any single observation drives the result. Use scaled residuals for GLMs, Pearson or quantile, and simulated residuals for mixed models ([[DHARMa Simulated Residuals]]); for `lm` the standard plots are in [[plot() Diagnostics for lm|Diagnostic Plots for lm]]. In the code below, a straight-line Poisson model fitted to humped data leaves Pearson residuals whose means swing negative, positive and negative across the range of x; adding a squared term brings them near zero.
+The checks are: [[Residuals vs Fitted Plot|residuals against fitted values]], where a trend means the mean structure is wrong; residuals against each [[Predictor Variable|predictor]], including ones left out, where a pattern means a missing term; the spread of the residuals, where a fan in [[Randomized Quantile Residuals|scaled residuals]] means a wrong [[Mean-Variance Relationship|variance function]], with a dispersion check for counts; [[Independence of Observations|independence]], by plotting residuals against time, in space and by group, where patterns mean [[Autocorrelation]] or a missing [[Grouping Variable|grouping factor]]; the distribution, with a [[QQ Plot|Q-Q plot]] of suitable residuals and a check of zeros for counts; and influence, whether any single observation drives the result. Use scaled residuals for [[Generalized Linear Model|GLMs]], Pearson or quantile, and simulated residuals for [[Mixed Effects Model|mixed models]] ([[DHARMa Simulated Residuals]]); for `lm` the standard plots are in [[plot() Diagnostics for lm|Diagnostic Plots for lm]]. In the code below, a straight-line Poisson model fitted to humped data leaves [[Pearson Residuals|Pearson residuals]] whose means swing negative, positive and negative across the range of x; adding a [[Quadratic Term|squared term]] brings them near zero.
 
-The flowchart shows the loop: a trend sends you to fix the mean, a wrong spread or dispersion far from 1 to fix the variance ([[Overdispersion]]), and a pattern in time, space or groups to fix dependence, each time refitting and checking again. Act on what you find and report what you checked; a Bayesian model is checked the same way with a [[Posterior Predictive Check]] ([[Zuur et al. 2009 Ch2]], [[Zuur et al. 2010]], [[Harrison et al. 2018]], [[Course Website]]). Two confusions. Checking assumptions does not mean testing the raw response for normality; check the residuals of the fitted model. And validation is not model selection: a model can win on AIC and still fail its checks, since AIC ranks models relative to each other and all of them may be poor.
+The flowchart shows the loop: a trend sends you to fix the mean, a wrong spread or dispersion far from 1 to fix the variance ([[Overdispersion]]), and a pattern in time, space or groups to fix dependence, each time refitting and checking again. Act on what you find and report what you checked; a Bayesian model is checked the same way with a [[Posterior Predictive Check]] ([[Zuur et al. 2009 Ch2]], [[Zuur et al. 2010]], [[Harrison et al. 2018]], [[Course Website]]). Two confusions. Checking assumptions does not mean testing the raw response for [[Normality|normality]]; check the residuals of the fitted model. And validation is not [[Model Selection|model selection]]: a model can win on AIC and still fail its checks, since AIC ranks models relative to each other and all of them may be poor.
 
 ```mermaid
 flowchart TD
@@ -44,8 +43,8 @@ rbind(straight = chk(m1), curved = chk(m2))             # straight-line model: r
 ```
 
 ## Connections
-- **Builds on:** [[Residual]], [[Linear Model Assumptions|Assumptions of Linear Regression]]
-- **Leads to:** [[DHARMa Simulated Residuals]], [[Overdispersion]], [[Autocorrelation]], [[Posterior Predictive Check]]
+- **Builds on:** [[Residual]], [[Linear Model Assumptions|Assumptions of Linear Regression]], [[Residuals vs Fitted Plot]], [[Predictor Variable]], [[Randomized Quantile Residuals]], [[Mean-Variance Relationship]], [[Independence of Observations]], [[QQ Plot]], [[Generalized Linear Model]], [[Pearson Residuals]], [[Quadratic Term]], [[Normality]]
+- **Leads to:** [[DHARMa Simulated Residuals]], [[Overdispersion]], [[Autocorrelation]], [[Posterior Predictive Check]], [[Grouping Variable]], [[Mixed Effects Model]], [[Model Selection]]
 - **Part of:** [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]], molecular note [[Which assumption violation leads to which model]]
 
 ## Flashcards

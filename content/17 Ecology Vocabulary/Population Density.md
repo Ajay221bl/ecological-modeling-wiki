@@ -18,7 +18,7 @@ A big country can have many people but a low density, while a small city-state c
 
 [[Distance Sampling]] estimates density directly, while [[Mark-Recapture]] gives N, which needs an effective trapping area to become D. Density drives many processes, including competition, disease transmission and density-dependent growth ([[Density Dependence]]). In the code below two sites each hold 120 animals, but one covers 4 km² and the other 30 km², so their densities are 30 and 4 per km².
 
-[[Christensen et al. 2020]] note that host (deer) density was not available as a predictor of haemorrhagic disease, a common gap in disease ecology ([[Powell and Gale 2015]] Ch14 and Ch19). High abundance means high density only for the same area.
+[[Christensen et al. 2020]] note that host (deer) density was not available as a [[Predictor Variable|predictor]] of haemorrhagic disease, a common gap in disease ecology ([[Powell and Gale 2015]] Ch14 and Ch19). High abundance means high density only for the same area.
 
 ```r
 N <- c(site_A = 120, site_B = 120); area_km2 <- c(4, 30)
@@ -26,7 +26,7 @@ round(N / area_km2, 1)   # same abundance, very different density
 ```
 
 ## Connections
-- **Builds on:** [[Abundance]]
+- **Builds on:** [[Abundance]], [[Predictor Variable]]
 - **Leads to:** [[Distance Sampling]], [[Carrying Capacity]], [[Density Dependence]]
 - **Part of:** [[MOC 19 - Ecology Vocabulary|MOC - Ecology Vocabulary]]
 

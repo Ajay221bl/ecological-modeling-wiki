@@ -15,15 +15,15 @@ status: seedling
 
 # Radio-telemetry Data
 
-**Radio-telemetry data** come from transmitters attached to animals, letting researchers find each animal repeatedly to record its location and whether it is alive. They are the classic source of [[Known-fate Models|known-fate data]], since mortality sensors signal death. They are also used for movement, home range and habitat selection.
+**Radio-telemetry data** come from transmitters attached to animals, letting researchers find each animal repeatedly to record its location and whether it is alive. They are the classic source of [[Known-fate Models|known-fate data]], since mortality sensors signal death. They are also used for movement, [[Home Range|home range]] and [[Habitat Selection|habitat selection]].
 
-The problems are collar failure, animals leaving the study area, and effects of the collar on survival, each of which becomes [[Censoring]] or bias. Locations from one animal are autocorrelated in time, so they are not independent observations ([[Temporal Autocorrelation]], [[Independence of Observations|Independence]]).
+The problems are collar failure, animals leaving the study area, and effects of the collar on survival, each of which becomes [[Censoring]] or bias. Locations from one animal are [[Autocorrelation|autocorrelated]] in time, so they are not independent observations ([[Temporal Autocorrelation]], [[Independence of Observations|Independence]]).
 
 Telemetry examples run through [[Powell and Gale 2015]] Ch2 to Ch4 and Ch9 ([[Staggered Entry Design]]). Not every radio-collared animal has a known fate: collar failure and dispersal create unknown fates that must be censored.
 
 ## Connections
-- **Builds on:** [[Known-fate Models]]
-- **Leads to:** [[Censoring]], [[Temporal Autocorrelation]]
+- **Builds on:** [[Known-fate Models]], [[Autocorrelation]]
+- **Leads to:** [[Censoring]], [[Temporal Autocorrelation]], [[Home Range]], [[Habitat Selection]]
 - **Part of:** [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 
 ## Flashcards

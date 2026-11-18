@@ -19,14 +19,14 @@ This note **owns the Oct 13 numbers**. Other notes quote one or two of them and 
 
 ## 1. The data that went into the models
 - **1,130 visits at 376 points** (the complete-case set, see [[Dataset]]): BK 94 points (282 visits), CR 35 (105), DC 93 (280), HB 62 (186), HO 92 (277).
-- **All-species richness** ranged from 0 to 14 species per visit, mean 5.96, standard deviation 2.25 ([[Average (Mean)]], [[Spread and Variability]]). A 0 is possible because a visit with only fly-overs is kept as 0 rather than dropped: HO55 on Jun 20, 2022 is one such visit ([[Decision Log]]).
+- **All-species richness** ranged from 0 to 14 species per visit, mean 5.96, standard deviation 2.25 ([[Mean|Average (Mean)]], [[Spread and Variability]]). A 0 is possible because a visit with only fly-overs is kept as 0 rather than dropped: HO55 on Jun 20, 2022 is one such visit ([[Decision Log]]).
 - **Mean richness by property:** BK 4.73, HO 5.56, DC 6.54, HB 6.64, CR 7.58.
 - **Focal richness** (the six [[Focal Species]]) ranged from 0 to 3, mean 0.55. No focal species was seen at 59% of visits.
 - **Focal mean by property:** BK 0.99, HO 0.58, CR 0.25, HB 0.25.
 - **Variance/mean ratios** of richness within each property: 0.56 to 0.93 on these 376 points (0.56 to 0.94 on all 416 points, see [[EDA Findings]]).
 
 ## 2. Which model wins (AIC table)
-[[AIC]] scores each model on fit minus a penalty for extra parameters; lower is better. ΔAIC is how far each model is behind the best one ([[Delta AIC and Akaike Weights]]). K is the number of estimated parameters. Ranked with `model.sel(fits, rank = "AIC")` ([[MuMIn model.sel()]]).
+[[AIC]] scores each model on fit minus a penalty for extra parameters; lower is better. ΔAIC is how far each model is behind the best one ([[Akaike Weight|Delta AIC and Akaike Weights]]). K is the number of estimated parameters. Ranked with `model.sel(fits, rank = "AIC")` ([[MuMIn model.sel()]]).
 
 | Model | K | All AIC | ΔAIC | Focal AIC | ΔAIC |
 |---|---|---|---|---|---|
@@ -45,7 +45,7 @@ This note **owns the Oct 13 numbers**. Other notes quote one or two of them and 
 ## 3. How big the effects are (rate ratios)
 A Poisson model's coefficients are on the log scale. Exponentiating one gives a **rate ratio**: the number the expected count is multiplied by. 1.40 means 40% more species; 0.55 means 45% fewer; 1.00 means no change ([[Interpreting Poisson Coefficients]]). The brackets are 95% [[Confidence Interval|confidence intervals]], computed as estimate ± 1.96 standard errors (a "Wald" interval, [[Standard Error]]). If the interval does not include 1, the effect is clearly different from zero.
 
-Property effects compare each property with BK, the reference level ([[Categorical Predictor and Reference Level]]). Habitat effects are per 1 standard deviation of the predictor ([[Standardizing Predictors]]).
+Property effects compare each property with BK, the reference level ([[Reference Level|Categorical Predictor and Reference Level]]). Habitat effects are per 1 standard deviation of the predictor ([[Standardizing|Standardizing Predictors]]).
 
 | Predictor (top model, M3) | All species | Focal species |
 |---|---|---|
@@ -72,8 +72,8 @@ Property effects compare each property with BK, the reference level ([[Categoric
 - After habitat, all four properties have fewer focal species than BK (0.43 to 0.76).
 
 ## 4. Point-to-point variation (H3)
-The [[Random Intercept|random intercept]] gives each point its own baseline. Its [[Variance Component|variance]] says how much points differ beyond what the predictors explain.
-- **All species: 0.** This is a "singular fit": lme4 prints `boundary (singular) fit`, which is a message, not an error ([[Singular Fits and Convergence Warnings]]). Once property, habitat and weather were in, visits to the same point were no more alike than visits to different points.
+The [[Random Intercept|random intercept]] gives each point its own baseline. Its [[Variance Components|variance]] says how much points differ beyond what the predictors explain.
+- **All species: 0.** This is a "singular fit": lme4 prints `boundary (singular) fit`, which is a message, not an error ([[Convergence Warnings|Singular Fits and Convergence Warnings]]). Once property, habitat and weather were in, visits to the same point were no more alike than visits to different points.
 - **Focal species: 0.20 (SD 0.45).** Points do differ in focal richness beyond the predictors.
 - The random intercept stays in every model as designed ([[Why a random intercept for point]]).
 

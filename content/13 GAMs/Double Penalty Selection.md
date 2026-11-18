@@ -15,7 +15,7 @@ status: seedling
 
 # Double Penalty Selection
 
-The usual penalty leaves the null space, a straight line, unpenalised, so a smooth can't vanish completely ([[Wiggliness Penalty]]). **Double penalty selection** adds a second penalty to that null space, so whole terms can be shrunk to zero and effectively dropped during fitting ([[Regularization]]). It is `gam(..., select = TRUE)`; the shrinkage bases `"ts"` and `"cs"` do something similar term by term ([[Cubic Regression Spline]]).
+The usual penalty leaves the null space, a [[Equation of a Line|straight line]], unpenalised, so a smooth can't vanish completely ([[Wiggliness Penalty]]). **Double penalty selection** adds a second penalty to that null space, so whole terms can be shrunk to zero and effectively dropped during fitting ([[Regularization]]). It is `gam(..., select = TRUE)`; the [[Shrinkage|shrinkage]] bases `"ts"` and `"cs"` do something similar term by term ([[Cubic Regression Spline]]).
 
 A term with an edf near 0 has been effectively removed ([[Effective Degrees of Freedom]]). It is a form of automatic model selection and still needs careful interpretation. In the code below x1 has a real sine effect and x2 is pure noise: with `select = TRUE`, s(x1) keeps an edf of 6.9 and s(x2) drops to 0.000.
 
@@ -27,7 +27,7 @@ round(summary(gam(y ~ s(x1) + s(x2), data = d, method = "REML", select = TRUE))$
 ```
 
 ## Connections
-- **Builds on:** [[Wiggliness Penalty]], [[Regularization]]
+- **Builds on:** [[Wiggliness Penalty]], [[Regularization]], [[Equation of a Line]], [[Shrinkage]]
 - **Leads to:** [[Model Selection]], [[Effective Degrees of Freedom]]
 - **Part of:** [[MOC 15 - GAMs|MOC - GAMs]]
 

@@ -15,7 +15,7 @@ Picture a dimmer knob with no end stops. Probability is like a slider that hits 
 
 Some values. p = 0.5 gives odds 1 and log odds log(1) = 0. p = 0.75 gives odds 3 and log odds 1.10. p = 0.25 gives odds 1/3 and log odds −1.10, the same size with the opposite sign, so the scale is *symmetric*: success and failure are treated alike. p = 0.99 gives 4.60. To go back you use the *inverse logit*, p = e^x / (1 + e^x) = 1 / (1 + e^(−x)), the [[Logistic Function]]: from 1.10, e^1.10 / (1 + e^1.10) = 3 / 4 = 0.75. The knob is not evenly spaced in probability terms, though. One unit of log odds moves the probability a lot near 0.5 and hardly at all near the ends. Near p = 0.5 a change of 1 shifts the probability by at most about 0.25, a handy guide called the "divide by 4" rule.
 
-Why use this strange scale? A linear model adds things up, and a sum can be any number, but a probability cannot. On the log odds scale, whatever a + bx produces converts back to a legal probability, so "adding effects" is safe for yes-or-no data. That is why the logit is the default link for binomial models ([[Logit Link]], [[Logistic Regression]]) and why `summary()` of a binomial `glm()` reports coefficients in log odds ([[Zuur et al. 2009 Ch10]]). Two confusions follow. A coefficient of 0.5 does not mean the probability rises by 0.5; it means the log odds rise by 0.5, and the change in probability depends on where you start. And negative log odds are not impossible; they simply mean the event is less likely than not. In R, `qlogis()` is the logit and `plogis()` its inverse.
+Why use this strange scale? A [[Linear Model|linear model]] adds things up, and a sum can be any number, but a probability cannot. On the log odds scale, whatever a + bx produces converts back to a legal probability, so "adding effects" is safe for yes-or-no data. That is why the logit is the default link for binomial models ([[Logit Link]], [[Logistic Regression]]) and why `summary()` of a binomial `glm()` reports coefficients in log odds ([[Zuur et al. 2009 Ch10]]). Two confusions follow. A [[Regression Coefficient|coefficient]] of 0.5 does not mean the probability rises by 0.5; it means the log odds rise by 0.5, and the change in probability depends on where you start. And negative log odds are not impossible; they simply mean the event is less likely than not. In R, `qlogis()` is the logit and `plogis()` its inverse.
 
 ![[Probability odds log-odds.png|700]]
 *What to look at:* the S-curve in the right panel. Equal steps in log odds give big probability changes in the middle and tiny ones at the ends.
@@ -31,7 +31,7 @@ plogis(c(-10, 0, 10))   # never leaves 0 to 1
 
 ## Connections
 - **Builds on:** [[Odds]], [[Natural Logarithm]]
-- **Leads to:** [[Logit Link]], [[Logistic Function]], [[Logistic Regression]]
+- **Leads to:** [[Logit Link]], [[Logistic Function]], [[Logistic Regression]], [[Linear Model]], [[Regression Coefficient]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]], molecular note [[Probability, Odds and Log Odds]]
 
 ## Flashcards

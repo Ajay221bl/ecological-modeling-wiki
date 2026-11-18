@@ -14,7 +14,7 @@ status: seedling
 
 # Nested Random Effects
 
-Random effects are **nested** when each level of a lower grouping belongs to exactly one level of a higher grouping, such as plots within sites or chicks within nests ([[Grouping Factor]], [[Hierarchical Data]]). Plot 1 at site A and plot 1 at site B are different plots. In lme4, `(1 | site/plot)` expands to `(1 | site) + (1 | site:plot)`; if plot labels are already unique across sites, `(1 | site) + (1 | plot)` gives the same model.
+[[Random Effect|Random effects]] are **nested** when each level of a lower grouping belongs to exactly one level of a higher grouping, such as plots within sites or chicks within nests ([[Grouping Variable|Grouping Factor]], [[Hierarchical Data]]). Plot 1 at site A and plot 1 at site B are different plots. In lme4, `(1 | site/plot)` expands to `(1 | site) + (1 | site:plot)`; if plot labels are already unique across sites, `(1 | site) + (1 | plot)` gives the same model.
 
 The danger is non-unique labels with `(1 | plot)` alone, which wrongly pools all "plot 1"s across sites. Each level gets its own variance component ([[Variance Components]]). In the code below six sites with four plots each give estimated SDs of 1.6 for sites, 1.1 for plots within sites and 0.86 for the residual (true 2, 1 and 1).
 
@@ -26,7 +26,7 @@ m <- lme4::lmer(y ~ 1 + (1 | site/plot), data = d); as.data.frame(lme4::VarCorr(
 ```
 
 ## Connections
-- **Builds on:** [[Grouping Factor]], [[Hierarchical Data]]
+- **Builds on:** [[Grouping Variable|Grouping Factor]], [[Hierarchical Data]], [[Random Effect]]
 - **Leads to:** [[Crossed Random Effects]], [[lme4 Random-effect Syntax]], [[Nested Experimental Design]]
 - **Part of:** [[MOC 14 - Mixed Models|MOC - Mixed Models]], molecular note [[Nested vs Crossed Random Effects]]
 

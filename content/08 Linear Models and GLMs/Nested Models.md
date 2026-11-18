@@ -15,9 +15,9 @@ status: seedling
 
 Take a car with extras and remove the sunroof and the radio, and you have the basic model; a motorbike, by contrast, is not a stripped-down car. Two models are **nested** when the simpler one can be obtained from the more complex one by fixing some of its parameters, usually at zero ([[Model]], [[Regression Coefficient]]). y ~ tree is nested in y ~ tree + elevation, by setting the elevation coefficient to 0. A Poisson is nested in a negative binomial, by letting k go to infinity. But y ~ tree and y ~ elevation are not nested, because neither contains the other. The small model is called "reduced" or "null", the big one "full".
 
-The full model always fits at least as well, so the question is whether its improvement is more than chance. In the code below, the bigger of two nested Poisson models has a log-likelihood that is never lower, and a likelihood ratio test asks whether the gain is real. The non-nested pair is compared by AIC instead.
+The [[Global Model|full model]] always fits at least as well, so the question is whether its improvement is more than chance. In the code below, the bigger of two nested Poisson models has a [[Log-likelihood|log-likelihood]] that is never lower, and a likelihood ratio test asks whether the gain is real. The non-nested pair is compared by AIC instead.
 
-The distinction matters because [[F-test|F-tests]] and [[Likelihood Ratio Test|likelihood ratio tests]] are valid only for nested pairs; non-nested models are compared with information criteria such as [[AIC]] or with cross-validation ([[Johnson and Omland 2004]], [[Anderson and Burnham 2002]], [[Zuur et al. 2009 Ch5]], [[Candidate Model Set]]). Both models must be fitted to exactly the same data: missing values in an extra predictor can silently drop rows and break this. And "nested models" is not "nested data", a different idea in which observations are grouped in units.
+The distinction matters because [[F-test|F-tests]] and [[Likelihood Ratio Test|likelihood ratio tests]] are valid only for nested pairs; non-nested models are compared with information criteria such as [[AIC]] or with [[Cross-validation|cross-validation]] ([[Johnson and Omland 2004]], [[Anderson and Burnham 2002]], [[Zuur et al. 2009 Ch5]], [[Candidate Model Set]]). Both models must be fitted to exactly the same data: [[Missing Values|missing values]] in an extra [[Predictor Variable|predictor]] can silently drop rows and break this. And "nested models" is not "[[Hierarchical Data|nested data]]", a different idea in which observations are grouped in units.
 
 ```r
 set.seed(7); d <- data.frame(tree = runif(60, 0, 60), elev = rnorm(60, 900, 50)); d$y <- rpois(60, exp(2.3 - 0.02 * d$tree))
@@ -28,8 +28,8 @@ AIC(m_small, m_other)                          # non-nested pair: compare by AIC
 ```
 
 ## Connections
-- **Builds on:** [[Regression Coefficient]], [[Model]]
-- **Leads to:** [[Likelihood Ratio Test]], [[F-test]], [[AIC]], [[Candidate Model Set]]
+- **Builds on:** [[Regression Coefficient]], [[Model]], [[Log-likelihood]], [[Missing Values]], [[Predictor Variable]]
+- **Leads to:** [[Likelihood Ratio Test]], [[F-test]], [[AIC]], [[Candidate Model Set]], [[Global Model]], [[Cross-validation]], [[Hierarchical Data]]
 - **Part of:** [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]]
 
 ## Flashcards

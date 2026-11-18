@@ -7,6 +7,8 @@ tags:
 aliases:
   - "Bayesian vs Frequentist"
   - "Frequentist and Bayesian"
+  - "Frequentist vs Bayesian"
+  - "frequentist"
 status: seedling
 ---
 

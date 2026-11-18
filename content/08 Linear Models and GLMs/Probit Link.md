@@ -12,7 +12,7 @@ status: seedling
 
 # Probit Link
 
-Each seed has its own threshold of moisture needed to germinate, and thresholds vary among seeds like a bell curve. The share of seeds germinating at a given moisture is the share of the bell below that moisture. The **probit link** builds on that picture: it converts a probability into the z-score that has that much of the [[Standard Normal Distribution]] below it, probit(p) = qnorm(p), and models that z-score as a linear function of predictors ([[Quantile Function]]). Its inverse is p = pnorm(η). The interpretation is a hidden normal variable crossing a threshold ([[Latent Variable]]).
+Each seed has its own threshold of moisture needed to germinate, and thresholds vary among seeds like a [[Normal Distribution|bell curve]]. The share of seeds germinating at a given moisture is the share of the bell below that moisture. The **probit link** builds on that picture: it converts a probability into the z-score that has that much of the [[Standard Normal Distribution]] below it, probit(p) = qnorm(p), and models that z-score as a [[Linear Function|linear function]] of [[Predictor Variable|predictors]] ([[Quantile Function]]). Its inverse is p = pnorm(η). The interpretation is a hidden normal variable crossing a threshold ([[Latent Variable]]).
 
 It is S-shaped like the logit, with slightly thinner tails, and fits are nearly indistinguishable from logit fits. The code below compares the probit and logit of 0.1, 0.5 and 0.9, then fits the same simulated data with both links: the probit coefficients are about the logit coefficients divided by 1.6 to 1.8 ([[Logit Link]]).
 
@@ -25,7 +25,7 @@ cl <- coef(glm(y ~ x, family = binomial)); cp <- coef(glm(y ~ x, family = binomi
 ```
 
 ## Connections
-- **Builds on:** [[Standard Normal Distribution]], [[Logit Link]]
+- **Builds on:** [[Standard Normal Distribution]], [[Logit Link]], [[Normal Distribution]], [[Linear Function]], [[Predictor Variable]]
 - **Leads to:** [[Complementary Log-log Link]], [[Latent Variable]], [[Logistic Regression]]
 - **Part of:** [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]]
 

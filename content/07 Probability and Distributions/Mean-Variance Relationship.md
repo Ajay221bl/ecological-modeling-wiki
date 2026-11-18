@@ -12,11 +12,11 @@ status: seedling
 
 # Mean-Variance Relationship
 
-Guess the number of people in a small room and you are off by two or three; guess the crowd in a stadium and you are off by thousands. For most things you count or measure, bigger quantities come with bigger errors. The **mean-variance relationship** of a distribution is its precise version of that rule: how its [[Variance]] changes as its [[Mean]] changes. Each family has its own. Normal: the variance is constant, unrelated to the mean. Poisson: variance = mean. Negative binomial: variance = mean + mean²/k. Binomial: variance = np(1 − p), largest in the middle and shrinking near 0 and n. Gamma and lognormal: variance proportional to mean², so the standard deviation grows in step with the mean.
+Guess the number of people in a small room and you are off by two or three; guess the crowd in a stadium and you are off by thousands. For most things you count or measure, bigger quantities come with bigger errors. The **mean-variance relationship** of a distribution is its precise version of that rule: how its [[Variance]] changes as its [[Mean]] changes. Each family has its own. Normal: the variance is constant, unrelated to the mean. Poisson: variance = mean. Negative binomial: variance = mean + mean²/k. Binomial: variance = np(1 − p), largest in the middle and shrinking near 0 and n. Gamma and lognormal: variance [[Proportional To|proportional to]] mean², so the [[Standard Deviation|standard deviation]] grows in step with the mean.
 
 The figure shows three of these as a flat line, a diagonal and an upward-bending curve. The code below simulates each family at means of 1, 5, 20 and 80. The normal's variance stays at 4 throughout; the Poisson's tracks the mean; the negative binomial with k = 2 reaches about 3,300 at a mean of 80; and the gamma with shape 4 grows with the mean squared, from 0.25 to 1,600.
 
-This is how you choose a distribution: plot the variance of your data against its mean, across groups or fitted values, and the pattern points to the family ([[Choosing a Distribution for Your Response]]). It is also why a [[Generalized Linear Model]] does not need equal variance: each family builds its rule in, so a Poisson GLM expects the fan shape that would count as [[Heteroscedasticity]] in a linear model ([[Zuur et al. 2009 Ch8]], [[Zuur et al. 2009 Ch9]]). So unequal variance is not always a problem; in a GLM it is expected, in the form the family dictates. Diagnostics then check the rule: [[Overdispersion]] means the data's variance grows faster than the family says, and the [[Dispersion Parameter]] is the knob that scales it.
+This is how you choose a distribution: plot the variance of your data against its mean, across groups or [[Fitted Value|fitted values]], and the pattern points to the family ([[Choosing a Distribution for Your Response]]). It is also why a [[Generalized Linear Model]] does not need [[Homogeneity of Variance|equal variance]]: each family builds its rule in, so a [[Poisson Regression|Poisson GLM]] expects the fan shape that would count as [[Heteroscedasticity]] in a [[Linear Model|linear model]] ([[Zuur et al. 2009 Ch8]], [[Zuur et al. 2009 Ch9]]). So unequal variance is not always a problem; in a GLM it is expected, in the form the family dictates. [[Residual Diagnostics|Diagnostics]] then check the rule: [[Overdispersion]] means the data's variance grows faster than the family says, and the [[Dispersion Parameter]] is the knob that scales it.
 
 ![[Mean variance relationships.png|700]]
 *What to look at:* one flat line, one diagonal, one curve bending upward. Three families, three rules.
@@ -31,8 +31,8 @@ rbind(mean = mu,
 ```
 
 ## Connections
-- **Builds on:** [[Mean]], [[Variance]]
-- **Leads to:** [[Overdispersion]], [[Dispersion Parameter]], [[Generalized Linear Model]], [[Heteroscedasticity]]
+- **Builds on:** [[Mean]], [[Variance]], [[Proportional To]], [[Standard Deviation]], [[Homogeneity of Variance]]
+- **Leads to:** [[Overdispersion]], [[Dispersion Parameter]], [[Generalized Linear Model]], [[Heteroscedasticity]], [[Fitted Value]], [[Poisson Regression]], [[Linear Model]], [[Residual Diagnostics]]
 - **See also:** [[Probability Distribution]]
 - **Part of:** [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]]
 

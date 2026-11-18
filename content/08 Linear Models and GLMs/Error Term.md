@@ -14,11 +14,11 @@ status: seedling
 
 # Error Term
 
-On a radio, the song is the systematic part and the hiss riding on top is unpredictable from moment to moment, though its loudness is steady and can be measured. The **error term**, ε, is the hiss: the part of each observation that the deterministic part of the model does not account for, treated as a random draw from a distribution ([[Stochastic Component]], [[Random Variable]]). In yᵢ = β₀ + β₁xᵢ + εᵢ, linear regression assumes εᵢ ~ Normal(0, σ), independent across observations ([[Normal Distribution]]). Mean zero means the line is right on average, and a single σ for all means equal variance ([[Linear Model Assumptions]]).
+On a radio, the song is the systematic part and the hiss riding on top is unpredictable from moment to moment, though its loudness is steady and can be measured. The **error term**, ε, is the hiss: the part of each observation that the deterministic part of the model does not account for, treated as a random draw from a distribution ([[Stochastic Component]], [[Random Variable]]). In yᵢ = β₀ + β₁xᵢ + εᵢ, [[Linear Regression|linear regression]] assumes εᵢ ~ Normal(0, σ), independent across observations ([[Normal Distribution]]). Mean zero means the line is right on average, and a single σ for all means [[Homogeneity of Variance|equal variance]] ([[Linear Model Assumptions]]).
 
-It stands for everything not in the model: unmeasured causes, individual differences, measurement error and pure chance ([[Process Variation]]). It is never observed; the [[Residual|residuals]] are its estimates. In the code below we simulate data so that the true errors are known, fit the model, and find the residuals track the errors very closely, with nearly the same standard deviation as the [[Residual Standard Error]].
+It stands for everything not in the model: unmeasured causes, individual differences, [[Observation Error|measurement error]] and pure chance ([[Process Variation]]). It is never observed; the [[Residual|residuals]] are its estimates. In the code below we simulate data so that the true errors are known, fit the model, and find the residuals track the errors very closely, with nearly the same [[Standard Deviation|standard deviation]] as the [[Residual Standard Error]].
 
-"Error" does not mean mistake; it means deviation. Nor is it only measurement error: it bundles measurement error with real unexplained variation. Modern notation often drops ε and writes yᵢ ~ Normal(μᵢ, σ) instead. That says the same thing and extends to Poisson or binomial data, where there is no additive error term to write.
+"Error" does not mean mistake; it means [[Deviation|deviation]]. Nor is it only measurement error: it bundles measurement error with real unexplained variation. Modern notation often drops ε and writes yᵢ ~ Normal(μᵢ, σ) instead. That says the same thing and extends to Poisson or binomial data, where there is no additive error term to write.
 
 ```r
 set.seed(2); x <- runif(100, 0, 60); eps <- rnorm(100, 0, 2); y <- 12 - 0.1 * x + eps      # we know the true errors
@@ -26,7 +26,7 @@ m <- lm(y ~ x); cor(eps, resid(m)); c(sd(eps), summary(m)$sigma)                
 ```
 
 ## Connections
-- **Builds on:** [[Stochastic Component]], [[Normal Distribution]]
+- **Builds on:** [[Stochastic Component]], [[Normal Distribution]], [[Linear Regression]], [[Homogeneity of Variance]], [[Observation Error]], [[Standard Deviation]], [[Deviation]]
 - **Leads to:** [[Residual]], [[Residual Standard Error]], [[Linear Model Assumptions]], [[Process Variation]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 

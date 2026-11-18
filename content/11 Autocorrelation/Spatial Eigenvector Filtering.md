@@ -16,9 +16,9 @@ status: seedling
 
 # Spatial Eigenvector Filtering
 
-Imagine a set of "wallpaper" patterns laid over the study area, from smooth to wiggly, and picking the ones that match the leftover structure in your residuals. **Spatial eigenvector filtering**, also called Moran eigenvector maps (MEM) or PCNM, turns the spatial arrangement of sites into such map-like variables and adds the useful ones as predictors to soak up spatial structure. Build a neighbour or distance matrix and double-centre it ([[Spatial Weights Matrix]]); its eigenvectors are spatial patterns, the first varying smoothly across the area and later ones at finer scales, with positive eigenvalues corresponding to positive autocorrelation. This is the same eigen-decomposition idea as [[Principal Component Analysis]].
+Imagine a set of "wallpaper" patterns laid over the study area, from smooth to wiggly, and picking the ones that match the leftover structure in your residuals. **Spatial eigenvector filtering**, also called Moran eigenvector maps (MEM) or PCNM, turns the spatial arrangement of sites into such map-like variables and adds the useful ones as [[Predictor Variable|predictors]] to soak up spatial structure. Build a neighbour or distance matrix and double-centre it ([[Spatial Weights Matrix]]); its eigenvectors are spatial patterns, the first varying smoothly across the area and later ones at finer scales, with positive eigenvalues corresponding to [[Positive Autocorrelation|positive autocorrelation]]. This is the same eigen-decomposition idea as [[Principal Component Analysis]].
 
-Select a subset, by forward selection or by which most reduce residual Moran's I, and add them as ordinary predictors in an lm, glm or glmm ([[Multiple Regression]]); no special software is needed afterwards. In the code below a response that follows the first eigenvector of a 100-site neighbour matrix is explained by that eigenvector with R² = 0.79. In R the adespatial package provides `dbmem()` and spdep `SpatialFiltering()` and `ME()`.
+Select a subset, by [[Stepwise Selection|forward selection]] or by which most reduce residual [[Moran's I]], and add them as ordinary predictors in an lm, glm or [[GLMM|glmm]] ([[Multiple Regression]]); no special software is needed afterwards. In the code below a response that follows the first eigenvector of a 100-site neighbour matrix is explained by that eigenvector with R² = 0.79. In R the adespatial package provides `dbmem()` and spdep `SpatialFiltering()` and `ME()`.
 
 It is flexible and works with any model family, but the selection step adds uncertainty and eigenvectors can absorb variation shared with environmental predictors ([[Residual Autocorrelation]]). It is one of the spatial methods listed in course materials, alongside [[Spatial Autoregressive Models]] and [[Trend Surface Analysis]] ([[Course Website]]). Eigenvector coefficients are not interpretable effects; they are nuisance terms describing spatial pattern.
 
@@ -29,8 +29,8 @@ round(c(eigenvalue1 = e$values[1], R2_with_first_eigvec = summary(lm(y ~ e$vecto
 ```
 
 ## Connections
-- **Builds on:** [[Spatial Weights Matrix]], [[Principal Component Analysis]], [[Multiple Regression]]
-- **Leads to:** [[Spatial Autoregressive Models]], [[Trend Surface Analysis]], [[Residual Autocorrelation]]
+- **Builds on:** [[Spatial Weights Matrix]], [[Principal Component Analysis]], [[Multiple Regression]], [[Predictor Variable]], [[Positive Autocorrelation]], [[Stepwise Selection]], [[Moran's I]]
+- **Leads to:** [[Spatial Autoregressive Models]], [[Trend Surface Analysis]], [[Residual Autocorrelation]], [[GLMM]]
 - **Part of:** [[MOC 13 - Autocorrelation|MOC - Autocorrelation]]
 
 ## Flashcards

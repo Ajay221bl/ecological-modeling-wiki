@@ -16,7 +16,7 @@ A hurricane track map shows a line, the best guess of where the storm will go, i
 
 A herd of 100 animals grows by about 5% a year, give or take 10 percentage points from year to year. One year ahead the best guess is 105, with a plausible (90%) range of about 88 to 121. Five years ahead the best guess is about 125, but the range has spread to roughly 87 to 174. The central guess grows slowly while the range grows fast, because errors compound: next year's starting point is itself uncertain, so each step forward adds new doubt on top of the old. A good forecast carries every source of uncertainty forward, including doubt about the parameters, natural year-to-year variation, and unknown future conditions ([[Uncertainty]]). Simulating thousands of possible futures and reading off quantiles each year is a simple way to draw the cone.
 
-Decisions are about the future (quotas, burns, reintroductions), which is why forecasting is one of the three modeling goals Tredennick and colleagues separate from exploration and inference ([[Predictive Modeling]], [[Tredennick et al. 2021]]). They stress that the model that explains best is often not the one that forecasts best, so explaining well and forecasting well are different tests. A forecast also has to be scored: you can test a model on data it never saw ([[Out-of-sample Prediction]]), or "forecast" held-back past data, a *hindcast*, and then check real forecasts as the future arrives. Hurricane forecasts are scored within days; ecological forecasts may wait decades. Hobbs and Hooten treat a forecast as a posterior predictive distribution ([[Posterior Predictive Distribution]]).
+Decisions are about the future (quotas, burns, reintroductions), which is why forecasting is one of the [[Model Purpose - Exploration Inference Prediction|three modeling goals]] Tredennick and colleagues separate from exploration and inference ([[Predictive Modeling]], [[Tredennick et al. 2021]]). They stress that the model that explains best is often not the one that forecasts best, so explaining well and forecasting well are different tests. A forecast also has to be scored: you can test a model on data it never saw ([[Out-of-sample Prediction]]), or "forecast" held-back past data, a *hindcast*, and then check real forecasts as the future arrives. Hurricane forecasts are scored within days; ecological forecasts may wait decades. Hobbs and Hooten treat a forecast as a posterior predictive distribution ([[Posterior Predictive Distribution]]).
 
 ![[Forecast cone.png|700]]
 *What to look at:* the shaded band widens with every year ahead.
@@ -30,7 +30,7 @@ The middle column is the forecast. The outer columns are a 90% interval that wid
 
 ## Connections
 - **Builds on:** [[Predictive Modeling]], [[Uncertainty]]
-- **Leads to:** [[Prediction Interval]], [[Out-of-sample Prediction]], [[Posterior Predictive Distribution]]
+- **Leads to:** [[Prediction Interval]], [[Out-of-sample Prediction]], [[Posterior Predictive Distribution]], [[Model Purpose - Exploration Inference Prediction]]
 - **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]], molecular note [[Exploration, Inference and Prediction]]
 
 ## Flashcards

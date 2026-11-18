@@ -8,6 +8,7 @@ aliases:
   - "Independence"
   - "Independence assumption"
   - "Non-independence"
+  - "independent observations"
 status: seedling
 ---
 
@@ -17,7 +18,7 @@ Ask 100 people their opinion. If they are 100 strangers, you have 100 opinions; 
 
 Dependent data hold less information than their count suggests, but the model does not know that. It uses n as given, so standard errors and p-values come out too small ([[Sample Size]], [[Effective Sample Size]]). The simulation below makes this concrete. A treatment is applied to whole sites, sites differ at random, and there is no true treatment effect, yet a model that ignores sites calls the effect significant in about 46% of datasets, instead of the 5% it should. Ignoring grouping manufactures findings, which is why this is the most serious of the assumptions: other violations distort a little, this one can turn noise into "significant" effects ([[Why non-independence inflates false positives|Why non-independence is the most dangerous violation]], [[Pseudoreplication]]).
 
-Think about independence from the design: how were the data collected, and what is the true unit of replication? Then check residuals ([[Residual]]) against group, time order and location; the figure shows 60 points that look like a tight trend until their six site colours reveal six clumps. Fix it by modeling the dependence, with random effects for groups ([[Mixed Effects Model|Mixed Model]]) and correlation structures for time and space ([[Autocorrelation]]), which is the subject of Units 9 to 13 of the course. Two confusions: independence is about the observations' errors, not about predictors being unrelated (that is collinearity); and random sampling of sites does not make repeated visits to one site independent. This is step 8 of the protocol ([[Zuur et al. 2010]]).
+Think about independence from the design: how were the data collected, and what is the true [[Sampling Unit|unit of replication]]? Then check residuals ([[Residual]]) against group, time order and location; the figure shows 60 points that look like a tight trend until their six site colours reveal six clumps. Fix it by modeling the dependence, with [[Random Effect|random effects]] for groups ([[Mixed Effects Model|Mixed Model]]) and [[Correlation Structure|correlation structures]] for time and space ([[Autocorrelation]]), which is the subject of Units 9 to 13 of the course. Two confusions: independence is about the observations' errors, not about [[Predictor Variable|predictors]] being unrelated (that is [[Collinearity|collinearity]]); and [[Random Sampling|random sampling]] of sites does not make [[Repeat-Visit Design|repeated visits]] to one site independent. This is step 8 of the protocol ([[Zuur et al. 2010]]).
 
 ![[Independence and grouping.png|700]]
 *What to look at:* the same 60 points. Ignoring the site colours suggests a tight trend. Seeing them shows six clumps.
@@ -33,8 +34,8 @@ mean(pvals < 0.05)        # far above the 5% it should be
 Around 45% of null datasets give p < 0.05. Ignoring grouping manufactures findings.
 
 ## Connections
-- **Builds on:** [[Observation]], [[Sample Size]]
-- **Leads to:** [[Pseudoreplication]], [[Autocorrelation]], [[Mixed Effects Model|Mixed Model]], [[Effective Sample Size]]
+- **Builds on:** [[Observation]], [[Sample Size]], [[Sampling Unit]], [[Predictor Variable]], [[Collinearity]], [[Random Sampling]]
+- **Leads to:** [[Pseudoreplication]], [[Autocorrelation]], [[Mixed Effects Model|Mixed Model]], [[Effective Sample Size]], [[Random Effect]], [[Correlation Structure]], [[Repeat-Visit Design]]
 - **Part of:** [[MOC 04 - Data Exploration|MOC - Data Exploration]], molecular note [[Why non-independence inflates false positives|Why non-independence is the most dangerous violation]]
 
 ## Flashcards

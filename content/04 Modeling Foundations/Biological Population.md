@@ -11,7 +11,7 @@ status: seedling
 
 # Biological Population
 
-Everyone who lives in one town this year counts as a resident: babies, grandparents, people who never leave the house, whether or not anyone ever surveys them. A **biological population** is defined the same way, by who is there: a group of organisms of one species living in a certain place at a certain time, such as all the turtles in one pond this summer ([[Powell and Gale 2015 Ch2]]). Every individual counts, however hard it is to find, because the definition is about nature, not about methods. Towns have borders and censuses, but animal populations have fuzzy edges and move around. The number of individuals in it is its *abundance*.
+Everyone who lives in one town this year counts as a resident: babies, grandparents, people who never leave the house, whether or not anyone ever surveys them. A **biological population** is defined the same way, by who is there: a group of organisms of one species living in a certain place at a certain time, such as all the turtles in one pond this summer ([[Powell and Gale 2015 Ch2]]). Every individual counts, however hard it is to find, because the definition is about nature, not about methods. Towns have borders and censuses, but animal populations have fuzzy edges and move around. The [[Abundance|number of individuals]] in it is its *abundance*.
 
 A pond holds 8 turtles with shells of 4, 5, 6, 12, 14, 15, 18 and 20 cm. The biological population is all 8 of them, with a mean shell length of 94 / 8 = 11.75 cm. That is what a biologist means by "the turtles in this pond", including the three small ones that never enter a trap. If your traps only ever catch the five large turtles, your data describe those five, whose mean is 15.8 cm, a quite different answer.
 
@@ -34,7 +34,7 @@ mean(turtles)                               # 11.75 cm
 
 ## Connections
 - **Builds on:** [[Population]]
-- **Leads to:** [[Statistical Population]], [[Sampling Unit]], [[Bias]]
+- **Leads to:** [[Statistical Population]], [[Sampling Unit]], [[Bias]], [[Abundance]]
 - **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]], molecular note [[Biological vs Statistical Population]]
 - **Go deeper:** [[Powell and Gale 2015 Ch2]]
 

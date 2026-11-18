@@ -10,6 +10,8 @@ aliases:
   - "Mixing"
   - "Well-mixed chains"
   - "Convergence diagnostics"
+  - "MCMC Convergence Diagnostics"
+  - "Gelman-Rubin"
 status: seedling
 ---
 
@@ -19,7 +21,7 @@ Stir cream into coffee: at first there are streaks, and after enough stirring th
 
 You can never prove convergence, only fail to find evidence against it. The four checks are: a [[Trace Plot]], where chains should overlap in a stable, fuzzy band with no trend, as on the left of the figure; [[R-hat]], close to 1 and below 1.01; [[Effective Sample Size]], large enough for stable summaries; and, in Stan, no [[Divergent Transitions]]. In the code below, three well-mixed chains give R-hat 1.0 and three that sit at different levels and drift give 1.8.
 
-If the checks fail, run longer, improve priors, center or standardise predictors, reparameterise or simplify the model; non-convergence is often a symptom of a poorly identified model. Checks are done after every fit in the Bayesian labs ([[Hobbs and Hooten 2015 Ch7]], [[Course Website]]). MCMC convergence is not the [[Convergence]] of a maximum likelihood optimiser, which is about reaching a peak. Convergence means the sampler worked, not that the model is good. And R-hat below the threshold does not prove convergence; it fails to show a problem, which is weaker.
+If the checks fail, run longer, improve priors, center or standardise [[Predictor Variable|predictors]], reparameterise or simplify the model; non-convergence is often a symptom of a poorly identified model. Checks are done after every fit in the Bayesian labs ([[Hobbs and Hooten 2015 Ch7]], [[Course Website]]). MCMC convergence is not the [[Convergence]] of a [[Maximum Likelihood Estimation|maximum likelihood]] optimiser, which is about reaching a peak. Convergence means the sampler worked, not that the model is good. And R-hat below the threshold does not prove convergence; it fails to show a problem, which is weaker.
 
 ![[Trace plots good bad.png|700]]
 *What to look at:* left, four chains braided together. Right, chains that sit at different levels and drift.
@@ -31,7 +33,7 @@ round(c(good = f(good), bad = f(bad)), 2)
 ```
 
 ## Connections
-- **Builds on:** [[MCMC Chains]], [[Markov Chain]]
+- **Builds on:** [[MCMC Chains]], [[Markov Chain]], [[Predictor Variable]], [[Maximum Likelihood Estimation]]
 - **Leads to:** [[R-hat]], [[Trace Plot]], [[Effective Sample Size]], [[Divergent Transitions]], [[Convergence]]
 - **Part of:** [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]], molecular note [[How to check an MCMC fit]]
 

@@ -17,7 +17,7 @@ If two neighbouring houses share one cat that wanders between them, seeing it at
 
 When sites are not independent, ψ̂ itself is often not badly biased, but the model thinks it has more information than it does, so standard errors are too small and confidence intervals too narrow ([[Pseudoreplication]], [[Standard Error]]). In the code below, 100 sites are really 50 pairs that share an animal. Over 300 simulated studies the true spread of the logit-scale ψ̂ is 0.357, but the average standard error the model reports is only 0.256, about 28% too small. The cures are design and modelling: space sites wider than a home range, sample every other cell of a grid, or add spatial structure to the model ([[Home Range]], [[Spatially Balanced Sampling]], [[Spatial Autocorrelation]]).
 
-[[Happe et al. 2020]] sampled every other 24 km² hexagon "to enhance independence", and checked the assumption with DNA: of 21 individual fishers, only one male was detected in two adjacent hexes ([[Occupancy Guest Lecture]]). Independence of sites is not the same as independence of visits: repeat visits to one site share a single true state z on purpose, and the model accounts for that.
+[[Happe et al. 2020]] sampled every other 24 km² hexagon "to enhance independence", and checked the assumption with DNA: of 21 individual fishers, only one male was detected in two adjacent hexes ([[Occupancy Guest Lecture]]). Independence of sites is not the same as independence of visits: [[Repeat-Visit Design|repeat visits]] to one site share a single true state z on purpose, and the model accounts for that.
 
 ```r
 set.seed(2); K <- 3
@@ -31,7 +31,7 @@ round(c(true_sd_logit = sd(res[, 1]), mean_reported_se = mean(res[, 2])), 3)
 
 ## Connections
 - **Builds on:** [[Independence of Observations]], [[Occupancy Likelihood]]
-- **Leads to:** [[Spatially Balanced Sampling]], [[Spatial Autocorrelation]], [[Home Range]]
+- **Leads to:** [[Spatially Balanced Sampling]], [[Spatial Autocorrelation]], [[Home Range]], [[Repeat-Visit Design]]
 - **Part of:** [[MOC 16 - Population Estimation|MOC - Population Estimation]], molecular note [[Assumptions of Occupancy Models]]
 
 ## Flashcards

@@ -137,11 +137,8 @@ Units 5 and 7 (Sep 8, 10, 22): updating what we believe with data. Priors, poste
 ## From the grassland bird project
 Notes first written for my project vault (EcoModeling-Vault) and merged in v1.5. Project home: [[MOC 23 - Grassland Bird Richness Project|MOC - Grassland Bird Richness Project]].
 
-- [[Ecological Similarity Assumption]]: the assumption, made by multi-species models, that the species grouped together are alike enough in how they live that it makes sense to treat their...
-- [[Frequentist vs Bayesian]]: two schools of statistics that disagree on one thing: whether "probability" can describe an unknown fixed quantity (Bayesian: yes, as degree of...
 - [[How the project could grow into Bayesian and occupancy models]]
-- [[MCMC Convergence Diagnostics]]: checks that the MCMC random walk has wandered long enough, and settled well enough, that its footprints really map the posterior.
 - [[Multi-species Occupancy Model]]: an occupancy model fitted to several species at once, where each species gets its own estimates but those estimates are tied together by a shared...
+- [[Ecological Similarity Assumption]]: the assumption, made by multi-species models, that the species grouped together are alike enough in how they live that it makes sense to treat their...
 - [[Next Steps]]
-- [[Posterior]]: your updated belief about an unknown quantity after combining what you believed before (the prior) with what the data say.
-- [[Prior]]: what you believed about an unknown quantity before seeing the new data, written as probabilities.
+

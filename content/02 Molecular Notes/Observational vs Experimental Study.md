@@ -21,7 +21,7 @@ When can I claim an effect is causal?
 ## Built from
 - [[Experimental Study]] and [[Observational Study]].
 - [[Randomization]], [[Replication]], [[Control Group]], [[Treatment]].
-- [[Confounding Variable]].
+- [[Confounding|Confounding Variable]].
 
 ## The reasoning, step by step
 1. **Experiment:** you control X, randomise it, replicate, and keep a control.

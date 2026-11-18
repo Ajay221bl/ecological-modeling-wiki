@@ -18,7 +18,7 @@ A smoke alarm that stays silent during a real fire, or a court acquitting a guil
 
 In the code below, a real slope of 0.4 is tested in 5,000 simulated studies of 15 observations each; about 70% of them fail to find it ([[Sample Size]]).
 
-It matters in conservation because a missed decline is often costlier than a false alarm, and "no significant trend" from a weak study can excuse inaction. So do not read "no significant effect" as "no effect": look at the interval and ask whether it includes effects big enough to matter ([[Harrison et al. 2018]], [[Johnson and Omland 2004]]). The β here is not a regression coefficient; it is the same Greek letter with an unrelated meaning.
+It matters in conservation because a missed decline is often costlier than a false alarm, and "no significant trend" from a weak study can excuse inaction. So do not read "no significant effect" as "no effect": look at the interval and ask whether it includes effects big enough to matter ([[Harrison et al. 2018]], [[Johnson and Omland 2004]]). The β here is not a [[Regression Coefficient|regression coefficient]]; it is the same Greek letter with an unrelated meaning.
 
 ```r
 set.seed(8); p <- replicate(5000, { x <- rnorm(15); y <- 0.4 * x + rnorm(15); summary(lm(y ~ x))$coefficients[2, 4] })
@@ -26,7 +26,7 @@ mean(p >= 0.05)         # a real slope of 0.4 is missed in about 70% of studies 
 ```
 
 ## Connections
-- **Builds on:** [[Null Hypothesis]]
+- **Builds on:** [[Null Hypothesis]], [[Regression Coefficient]]
 - **Leads to:** [[Type I Error]], [[Statistical Power]], [[Sample Size]]
 - **Part of:** [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]], molecular note [[Type I and Type II Errors]]
 

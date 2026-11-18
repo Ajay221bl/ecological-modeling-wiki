@@ -3,6 +3,7 @@ type: molecular
 tags:
   - molecular
   - mixed-models
+  - flashcards/eco/why
 aliases:
   - "Site as fixed effect"
 status: seedling
@@ -18,10 +19,10 @@ Points are a random effect. Sites are also groups of observations. Why is Site a
 ## Built from
 - [[Fixed Effect]]: estimates a separate, named effect for each level.
 - [[Random Effect]]: treats levels as a sample from a larger population and estimates their spread.
-- [[Sample vs Population]]: what "a sample of groups" means.
-- [[Variance Component]]: what a random effect actually estimates.
+- [[Population and Sample|Sample vs Population]]: what "a sample of groups" means.
+- [[Variance Components|Variance Component]]: what a random effect actually estimates.
 - [[Grouping Variable]]: both PtNum and Site are grouping variables, at different levels.
-- [[Factors]] and [[Categorical Predictor and Reference Level]]: how a fixed Site effect is coded.
+- [[Factors in R|Factors]] and [[Reference Level|Categorical Predictor and Reference Level]]: how a fixed Site effect is coded.
 
 ## The reasoning, step by step
 1. **Two kinds of question.** A random effect answers "how much do groups vary?" by estimating one spread (a variance) from many groups. A fixed effect answers "how does each named group differ?" by estimating one number per level (minus a reference level).
@@ -41,10 +42,19 @@ Points are a random effect. Sites are also groups of observations. Why is Site a
 The fixed choice paid off for H1: it gives a named answer per property. In the top model, all-species richness at CR was 1.40 times BK's, while for focal species every property had fewer than BK (0.43 to 0.76) ([[Preliminary Results]]). A random Site effect would only have said "properties vary by this much".
 
 ## What would go wrong otherwise
-- `(1|Site)` would estimate one shaky variance from 5 sites, might give a singular fit warning ([[Singular Fits and Convergence Warnings]]), and would not give direct site-by-site comparisons for H1.
+- `(1|Site)` would estimate one shaky variance from 5 sites, might give a singular fit warning ([[Convergence Warnings|Singular Fits and Convergence Warnings]]), and would not give direct site-by-site comparisons for H1.
 - It would also imply that the five properties are a random sample from a wider population, which they are not; they were chosen for the original study.
 - Treating point as fixed instead would waste 415 parameters ([[Why a random intercept for point]]).
 
 ## Connections
 - **Related:** [[Why site identity is a weak test of a habitat hypothesis]], [[Why site and year cannot be separated]], [[Partial Pooling]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 14 - Mixed Models|MOC - Mixed Models]]
+
+## Flashcards
+
+Give two reasons Site is a fixed effect in the project.
+??
+The question wants a named answer for each property ("CR versus BK"), and 5 groups are too few to estimate a spread of site effects reliably.
+++++
+
+Why is point a random effect rather than fixed?::Only the amount points vary matters, not each of the 376 points by name, and there are plenty of points to estimate that spread.

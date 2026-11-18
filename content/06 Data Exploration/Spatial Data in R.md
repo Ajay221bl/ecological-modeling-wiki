@@ -18,7 +18,7 @@ Imagine a spreadsheet in which each row also has a pin stuck in a map. You can s
 
 The `crs` argument declares the [[Coordinate Reference System]], and it is essential: without it the coordinates are bare numbers and distances are meaningless. Longitude and latitude are angles, not metres, so before measuring distance or area convert to a projected system with `st_transform()`. In the code below, three bird-count sites are converted to [[UTM Coordinates]] in zone 14 north, in metres, and `st_distance()` gives the distances between them in kilometres. Other functions answer other spatial questions: `st_join()` attaches map attributes to points and `st_buffer()` draws zones around them.
 
-Location matters for modeling because it is how you check for [[Spatial Autocorrelation]], where nearby sites resemble each other more than distant ones, and how covariates such as land cover are extracted from maps. The course labs use sf for the Loess Canyons route locations and in the spatial autocorrelation lab ([[Course Website]]).
+Location matters for modeling because it is how you check for [[Spatial Autocorrelation]], where nearby sites resemble each other more than distant ones, and how [[Predictor Variable|covariates]] such as land cover are extracted from maps. The course labs use sf for the [[LOESS Smoother|Loess]] Canyons route locations and in the spatial autocorrelation lab ([[Course Website]]).
 
 ```r
 library(sf)
@@ -31,7 +31,7 @@ round(units::drop_units(st_distance(s_utm)) / 1000, 1)   # pairwise distances in
 ```
 
 ## Connections
-- **Builds on:** [[Data Frame]]
+- **Builds on:** [[Data Frame]], [[Predictor Variable]], [[LOESS Smoother]]
 - **Leads to:** [[Coordinate Reference System]], [[UTM Coordinates]], [[Spatial Autocorrelation]]
 - **Part of:** [[MOC 04 - Data Exploration|MOC - Data Exploration]]
 

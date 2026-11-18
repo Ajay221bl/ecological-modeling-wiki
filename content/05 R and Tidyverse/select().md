@@ -12,7 +12,7 @@ status: seedling
 
 # select()
 
-Printing a wide spreadsheet, you tick the columns you want, in the order you want them, and leave the rest off the page. **`select()`**, from dplyr, keeps, drops or reorders the columns of a table by name; rows are untouched. `select(data, a, b)` keeps columns a and b in that order, and a minus sign drops, so `select(data, -notes)` removes the notes column ([[Data Frame]], [[Pipe Operator]]).
+Printing a wide spreadsheet, you tick the columns you want, in the order you want them, and leave the rest off the page. **`select()`**, from dplyr, keeps, drops or reorders the columns of a table by name; rows are untouched. `select(data, a, b)` keeps columns a and b in that order, and a minus sign drops, so `select(data, -notes)` removes the notes column ([[Data Frame]], [[Pipe|Pipe Operator]]).
 
 Helpers save typing when tables are wide. A range such as `a:d` takes every column from a to d; `starts_with("tree")` and `ends_with("_km")` match by name; `where(is.numeric)` keeps every numeric column; and `everything()` means "all the rest", so `select(birds, everything())` moves birds to the front. The code below uses each. The same helpers work inside [[across()]] for applying one function to many columns, and columns can be renamed while selecting, or separately with [[rename()]].
 

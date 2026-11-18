@@ -14,7 +14,7 @@ status: seedling
 
 # Reading Data into R
 
-A delivered parcel has a label saying how it was packed: commas between items, a header row on top. Tell R the packing, and it lays everything out on the table. **Reading data** means loading a file from disk into a [[Data Frame]]. The usual format is a CSV, plain text with commas between values and one line per row. `read.csv("path")` from base R, or `read_csv("path")` from the tidyverse package readr, loads it; `read.table()` handles other separators, such as tabs, with `sep = "\t"` and `header = TRUE`. The labs read files such as `DeerEcervi.txt` this way ([[Course Website]]).
+A delivered parcel has a label saying how it was packed: commas between items, a header row on top. Tell R the packing, and it lays everything out on the table. **Reading data** means loading a file from disk into a [[Data Frame]]. The usual format is a CSV, plain text with commas between values and one line per row. `read.csv("path")` from base R, or `read_csv("path")` from the [[Tidyverse|tidyverse package]] readr, loads it; `read.table()` handles other separators, such as tabs, with `sep = "\t"` and `header = TRUE`. The labs read files such as `DeerEcervi.txt` this way ([[Course Website]]).
 
 R guesses each column's type as it reads, and one stray entry can make it guess wrong. In the example below, a small file has "n/a" in its tree column, so `read.csv()` reads the whole column as text. Declaring how missing values are written, `na.strings = c("NA", "n/a")`, fixes it at import: the column becomes numeric with one `NA` ([[Missing Values]]). That is why the first thing to do after reading is to look, with `str()` and `summary()` ([[Inspecting Data]]). `read_csv()` does a similar job, faster, returns a [[Tibble]], reports the column types it chose, and never converts text to factors.
 
@@ -32,7 +32,7 @@ str(d)                                   # now numeric with one NA
 Declaring how missing values are written fixes the column type at import.
 
 ## Connections
-- **Builds on:** [[Data Frame]], [[Working Directory]]
+- **Builds on:** [[Data Frame]], [[Working Directory]], [[Tidyverse]]
 - **Leads to:** [[Reading Data from a URL]], [[Inspecting Data]], [[here()]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 

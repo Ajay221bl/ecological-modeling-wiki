@@ -10,7 +10,7 @@ status: seedling
 
 # Statistical Population
 
-Fish a lake with a net whose holes are 5 cm wide. The lake holds fish of every size, but anything smaller slips through, so however many times you cast, you only ever sample fish too big for the holes. That catchable group is the **statistical population**: all the units that could have ended up in your sample, given your method ([[Powell and Gale 2015 Ch2]]). The units are pieces of time and space you could sample, such as plots, trap-nights or survey visits ([[Sampling Unit]]). Seen from the results side, the same set is your *scope of inference*, the set your conclusions actually cover.
+Fish a lake with a net whose holes are 5 cm wide. The lake holds fish of every size, but anything smaller slips through, so however many times you cast, you only ever sample fish too big for the holes. That catchable group is the **statistical population**: all the units that could have ended up in your sample, given your method ([[Powell and Gale 2015 Ch2]]). The units are pieces of time and space you could sample, such as plots, trap-nights or survey visits ([[Sampling Unit]]). Seen from the results side, the same set is your *[[Line of Inference|scope of inference]]*, the set your conclusions actually cover.
 
 Powell and Gale's turtle example. A pond holds 8 turtles with shells of 4, 5, 6, 12, 14, 15, 18 and 20 cm, so the [[Biological Population]] has a mean of 11.75 cm. Floating traps catch only turtles of 10 cm or more, so the statistical population is the 5 trappable turtles, with a mean of 79 / 5 = 15.8 cm. Trap a thousand times and the estimate settles near 15.8, not 11.75. More effort cannot fix it, because the small turtles were never in the running; more of the same traps just estimates the same statistical population more precisely.
 
@@ -34,7 +34,7 @@ length(trappable); mean(trappable)    # 5 turtles, 15.8 cm: the estimate's real 
 ```
 
 ## Connections
-- **Builds on:** [[Population]], [[Biological Population]], [[Sampling Unit]]
+- **Builds on:** [[Population]], [[Biological Population]], [[Sampling Unit]], [[Line of Inference]]
 - **Leads to:** [[Representative Sample]], [[Bias]], [[Observation Error]]
 - **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]], molecular note [[Biological vs Statistical Population]]
 - **Go deeper:** [[Powell and Gale 2015 Ch2]]

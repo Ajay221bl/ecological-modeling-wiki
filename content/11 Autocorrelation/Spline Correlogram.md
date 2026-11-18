@@ -13,7 +13,7 @@ status: seedling
 
 # Spline Correlogram
 
-A **spline correlogram** fits a smooth curve, a [[Spline]], to the correlation between pairs of sites as a function of distance, with a [[Bootstrap]] confidence band, instead of computing one value per distance class ([[Correlogram]]). It comes from the ncf package as `spline.correlog(x, y, z, resamp = 1000)`. There are no distance classes to choose, and the band shows where correlation is clearly above or below zero.
+A **spline correlogram** fits a smooth curve, a [[Spline]], to the correlation between pairs of sites as a function of distance, with a [[Bootstrap]] [[Confidence Envelopes|confidence band]], instead of computing one value per [[Distance Classes|distance class]] ([[Correlogram]]). It comes from the ncf package as `spline.correlog(x, y, z, resamp = 1000)`. There are no distance classes to choose, and the band shows where correlation is clearly above or below zero.
 
 Its x-intercept, the distance at which similarity drops to that of random pairs, estimates the scale of patchiness ([[Spatial Autocorrelation]]). It works on raw values or model residuals ([[Residual Autocorrelation]]). The code below, not run in the wiki build because ncf is not installed there, applies it to a model's residuals with 200 resamples.
 
@@ -25,8 +25,8 @@ library(ncf); sc <- spline.correlog(x = d$easting, y = d$northing, z = resid(m),
 ```
 
 ## Connections
-- **Builds on:** [[Correlogram]], [[Spline]], [[Bootstrap]]
-- **Leads to:** [[Spatial Autocorrelation]], [[Residual Autocorrelation]]
+- **Builds on:** [[Correlogram]], [[Spline]], [[Bootstrap]], [[Distance Classes]]
+- **Leads to:** [[Spatial Autocorrelation]], [[Residual Autocorrelation]], [[Confidence Envelopes]]
 - **Part of:** [[MOC 13 - Autocorrelation|MOC - Autocorrelation]]
 
 ## Flashcards

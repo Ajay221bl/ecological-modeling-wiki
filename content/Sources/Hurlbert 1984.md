@@ -26,7 +26,7 @@ status: seedling
 The paper that named **pseudoreplication**: using inferential statistics to test for an effect with data where the "replicates" are not independent, or where the treatment is not actually replicated. One of the most cited papers in ecology.
 
 ## Key ideas I use
-- Pseudoreplication: treating non-independent observations as if they were independent replicates inflates the apparent sample size and gives false confidence -> [[Pseudoreplication]], [[Independence Assumption]]
+- Pseudoreplication: treating non-independent observations as if they were independent replicates inflates the apparent sample size and gives false confidence -> [[Pseudoreplication]], [[Independence of Observations|Independence Assumption]]
 - Repeated visits to the same point are not independent replicates; a random intercept for point is the modern fix -> [[Repeated Measures]], [[Why a random intercept for point]]
 - The true replicate is the unit that independently receives the "treatment". Applying that idea here (my reasoning, not a claim from the paper): for a site-level habitat claim, the five sites are the replicates, not the 416 points -> [[Sampling Unit]], [[Why site identity is a weak test of a habitat hypothesis]]
 

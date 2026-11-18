@@ -4,6 +4,7 @@ tags:
   - molecular
   - detection
   - survey-design
+  - flashcards/eco/why
 aliases:
   - "Observed vs true richness"
   - "apparent richness"
@@ -47,3 +48,9 @@ My response is "the number of species detected". Why is that not the same as the
 ## Connections
 - **Related:** [[Point Count Survey]], [[Species Richness]], [[Why site and year cannot be separated]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 26 - Survey Design and Detection|MOC - Survey Design and Detection]]
+
+## Flashcards
+
+When is observed richness still fine for comparing properties?::When the rate of missing species is the same everywhere.
+
+Name two things that could make the "missing rate" differ between properties.::Weather and observers (also season or survey dates).

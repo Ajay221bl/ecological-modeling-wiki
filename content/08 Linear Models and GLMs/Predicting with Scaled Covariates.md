@@ -13,11 +13,11 @@ status: seedling
 
 # Predicting with Scaled Covariates
 
-A thermostat calibrated in Celsius needs your Fahrenheit number converted before you dial it in, using the standard conversion, not one you make up on the day. **Predicting with scaled covariates** means the same for a model fitted on standardised predictors: convert new predictor values to the model's scale using the *original* mean and standard deviation, predict, and label the plot in original units ([[Standardizing]], [[Predicting New Data]]). The steps are: before fitting, save the mean and SD of each predictor you scale; fit on the scaled predictor; make a grid in real units, such as tree cover 0 to 60%; convert the grid with (value − saved mean) / saved SD; predict with the converted column ([[predict()]]); and plot against the real-unit column ([[Plotting Model Predictions with Ribbons]]).
+A thermostat calibrated in Celsius needs your Fahrenheit number converted before you dial it in, using the standard conversion, not one you make up on the day. **Predicting with scaled covariates** means the same for a model fitted on standardised [[Predictor Variable|predictors]]: convert new predictor values to the model's scale using the *original* mean and [[Standard Deviation|standard deviation]], predict, and label the plot in original units ([[Standardizing]], [[Predicting New Data]]). The steps are: before fitting, save the mean and SD of each predictor you scale; fit on the scaled predictor; make a grid in real units, such as tree cover 0 to 60%; convert the grid with (value − saved mean) / saved SD; predict with the converted column ([[predict()]]); and plot against the real-unit column ([[Plotting Model Predictions with Ribbons]]).
 
 The trap is calling `scale()` on the new grid. That standardises the grid by its own mean and SD, so the converted values are wrong, and the predictions are wrong with no error message. In the code below, a Poisson model is fitted on standardised tree cover. Converting the grid 0, 30, 60 with the saved numbers reproduces the true expected counts; calling `scale()` on the grid gives different, wrong predictions.
 
-Putting `scale()` inside the model formula works in `lm()`, where `predict()` handles it, but it is fragile across packages, so explicit columns are safer ([[Scaling Predictors]]). This step recurs in the GLMM and Bayesian labs ([[Course Website]]). "Standardise the new data the same way" means using the same numbers, not calling `scale()` again.
+Putting `scale()` inside the model formula works in `lm()`, where `predict()` handles it, but it is fragile across packages, so explicit columns are safer ([[Scaling Predictors]]). This step recurs in the [[GLMM]] and Bayesian labs ([[Course Website]]). "Standardise the new data the same way" means using the same numbers, not calling `scale()` again.
 
 ```r
 set.seed(10); d <- data.frame(tree = runif(100, 0, 60)); d$rich <- rpois(100, exp(2.4 - 0.02 * d$tree))
@@ -30,8 +30,8 @@ exp(2.4 - 0.02 * c(0, 30, 60))                                                  
 ```
 
 ## Connections
-- **Builds on:** [[Standardizing]], [[Predicting New Data]]
-- **Leads to:** [[Plotting Model Predictions with Ribbons]], [[Scaling Predictors]]
+- **Builds on:** [[Standardizing]], [[Predicting New Data]], [[Predictor Variable]], [[Standard Deviation]]
+- **Leads to:** [[Plotting Model Predictions with Ribbons]], [[Scaling Predictors]], [[GLMM]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 
 ## Flashcards

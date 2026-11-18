@@ -15,7 +15,7 @@ status: seedling
 
 To survey a hill, walk a line of evenly spaced stakes, measure the height at each, and join the dots. **Grid approximation** computes a posterior the same way: lay down a fine grid of candidate parameter values, such as p = 0, 0.001, ..., 1, compute prior × likelihood at each, and divide by the sum so the values become posterior probabilities ([[Bayes' Theorem]], [[Likelihood Function]], [[Normalizing Constant]]). Summaries are then sums over the grid, and `sample(grid, prob = post)` gives posterior draws ([[Posterior Draws]]).
 
-It shows Bayes' theorem with nothing hidden, which makes it good for learning. In the code below, with a Beta(2, 2) prior and 7 successes in 20, the grid posterior mean is 0.375, matching the exact answer (2 + 7)/(2 + 2 + 20) from the [[Conjugate Prior]] formula, and sampling from the grid gives a credible interval.
+It shows Bayes' theorem with nothing hidden, which makes it good for learning. In the code below, with a Beta(2, 2) prior and 7 successes in 20, the grid [[Posterior Summary|posterior mean]] is 0.375, matching the exact answer (2 + 7)/(2 + 2 + 20) from the [[Conjugate Prior]] formula, and sampling from the grid gives a [[Credible Interval|credible interval]].
 
 It fails beyond a few parameters, because the grid grows exponentially: 100 points for each of 10 parameters is 100¹⁰ = 10²⁰ evaluations, as the last line of the code shows. That cost is why [[MCMC]] exists, and grids are used only to introduce posteriors before it ([[Hobbs and Hooten 2015 Ch5]]). Real Bayesian software does not use grids; it samples.
 
@@ -28,7 +28,7 @@ set.seed(4); d <- sample(grid, 10000, replace = TRUE, prob = post); quantile(d, 
 ```
 
 ## Connections
-- **Builds on:** [[Bayes' Theorem]], [[Normalizing Constant]]
+- **Builds on:** [[Bayes' Theorem]], [[Normalizing Constant]], [[Posterior Summary]], [[Credible Interval]]
 - **Leads to:** [[MCMC]], [[Posterior Draws]], [[Conjugate Prior]]
 - **Part of:** [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]]
 

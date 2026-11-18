@@ -12,7 +12,7 @@ status: seedling
 
 # Slope
 
-On a hill path, a slope of 0.1 means you climb 10 cm for each metre forward, and a negative slope means you descend. In a model, the **slope** is the change in the expected response for a one-unit increase in a predictor ([[Rate of Change]], [[Linear Function]]). Its units are units of y per unit of x, which should always be stated, and its sign gives the direction of the relationship. A slope of −0.17 species per percent tree cover means that of two plots differing by 10% cover, the more wooded one is expected to hold 1.7 fewer species.
+On a hill path, a slope of 0.1 means you climb 10 cm for each metre forward, and a negative slope means you descend. In a model, the **slope** is the change in the expected response for a one-unit increase in a [[Predictor Variable|predictor]] ([[Rate of Change]], [[Linear Function]]). Its units are units of y per unit of x, which should always be stated, and its sign gives the direction of the relationship. A slope of −0.17 species per percent tree cover means that of two plots differing by 10% cover, the more wooded one is expected to hold 1.7 fewer species.
 
 The size of a slope depends on the units of x: per metre or per kilometre changes the number by a factor of 1,000 without changing the relationship. So a slope of 0.002 per metre is 2 per kilometre. In the code below, the slope per 10% cover is −1.7 rather than −0.17 ([[Scaling Predictors]]). The slope can also be computed directly as cov(x, y) / var(x), the correlation rescaled into real units, which gives the same number as `lm()`.
 
@@ -26,7 +26,7 @@ coef(lm(rich ~ I(tree / 10), d))[2]                # per 10% cover: -1.7
 ```
 
 ## Connections
-- **Builds on:** [[Rate of Change]], [[Linear Function]]
+- **Builds on:** [[Rate of Change]], [[Linear Function]], [[Predictor Variable]]
 - **Leads to:** [[Regression Coefficient]], [[Effect Size]], [[Scaling Predictors]], [[Random Slope]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 

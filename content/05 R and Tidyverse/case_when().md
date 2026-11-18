@@ -14,7 +14,7 @@ status: seedling
 
 Picture a sorting hat with a rulebook. It reads the rules from the top, and the first rule a row satisfies decides its label; later rules are never consulted. **`case_when()`**, from dplyr, assigns values that way: it checks a list of conditions in order and uses the value of the first one that is true. Each line is written `condition ~ value`. It is the many-way version of [[If-Else]], and it is used inside [[mutate()]] to build a new column.
 
-The example below turns years since fire into fire classes. Missing values become "unknown", up to 1 year becomes "recent", up to 10 years "intermediate", and everything else "old", via the final `.default =` (older code writes `TRUE ~` for the same catch-all). Without a catch-all, rows that match no rule become `NA`. All the values must be of one type, here text. The result can then be turned into a factor with the levels in a sensible order ([[Factors in R]]), such as a [[Fire History Variables|Burn Status]] variable for a model.
+The example below turns years since fire into fire classes. [[Missing Values|Missing values]] become "unknown", up to 1 year becomes "recent", up to 10 years "intermediate", and everything else "old", via the final `.default =` (older code writes `TRUE ~` for the same catch-all). Without a catch-all, rows that match no rule become `NA`. All the values must be of one type, here text. The result can then be turned into a factor with the levels in a sensible order ([[Factors in R]]), such as a [[Fire History Variables|Burn Status]] variable for a model.
 
 Order matters. Put the most specific rule first: if `ysf <= 10` came before `ysf <= 1`, every recent fire would already have matched "intermediate" and "recent" would never be assigned. Putting the `is.na()` rule first is a good habit, because missing values otherwise fall through to the default.
 
@@ -29,7 +29,7 @@ d |> mutate(fire_class = case_when(
 ```
 
 ## Connections
-- **Builds on:** [[If-Else]], [[mutate()]]
+- **Builds on:** [[If-Else]], [[mutate()]], [[Missing Values]]
 - **Leads to:** [[Factors in R]], [[Fire History Variables|Burn Status]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 

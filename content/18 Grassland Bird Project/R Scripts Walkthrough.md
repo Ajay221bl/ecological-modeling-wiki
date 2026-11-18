@@ -23,19 +23,19 @@ The scripts are `GrasslandBirdRichness_Wrangling.R` and `GrasslandBirdRichness_A
 ## R in 60 seconds (read this first)
 - **A script** is a text file of instructions R runs from top to bottom.
 - **`#` starts a comment.** R ignores everything after `#` on a line. The `####` banners and `#====` dividers are just comments used as headings.
-- **`<-` means "store this under this name".** `DataPath <- "GrasslandBirdRichness_Data"` puts that text into a box labelled `DataPath`. The box is an **object** ([[R Objects and Assignment]]).
-- **A function** is a named action, written `name(...)`. The things inside the brackets are its **arguments**: the inputs and settings. `mean(c(5, 7, 6))` gives 6 ([[Functions and Arguments]]).
-- **A package** is a bundle of extra functions someone else wrote, such as tidyverse or lme4 ([[R Packages]]).
-- **A data frame** is R's name for a table: rows and named columns ([[Data Frames]]).
+- **`<-` means "store this under this name".** `DataPath <- "GrasslandBirdRichness_Data"` puts that text into a box labelled `DataPath`. The box is an **object** ([[Objects and Assignment|R Objects and Assignment]]).
+- **A function** is a named action, written `name(...)`. The things inside the brackets are its **arguments**: the inputs and settings. `mean(c(5, 7, 6))` gives 6 ([[Functions in R|Functions and Arguments]]).
+- **A package** is a bundle of extra functions someone else wrote, such as tidyverse or lme4 ([[Packages in R|R Packages]]).
+- **A data frame** is R's name for a table: rows and named columns ([[Data Frame|Data Frames]]).
 - **`%>%` is the pipe**, read it as "then". `rawDat %>% filter(...)` means "take rawDat, then filter it" ([[Pipe]]).
 - **`$` picks one part by name:** `datClean$Site` is the Site column.
-- **A factor** is a column of categories (like site codes) that R treats as groups ([[Factors]]).
+- **A factor** is a column of categories (like site codes) that R treats as groups ([[Factors in R|Factors]]).
 - A command can run over several lines; R keeps reading until the brackets close.
 
 ## Before you press Source: open the project the right way
 Every file path in both scripts is built with `here()`, which starts from the folder holding `GrasslandBirdRichness.Rproj` ([[here()]], [[RProject]]). If RStudio was opened some other way (for example by double-clicking a script), `here()` may start from the wrong folder. Ajay hit exactly this: an error saying a path like `…/Users/ajaydeep/GrasslandBirdRichness_Data/…` "does not exist".
 
-The fix: **File > Open Project > GrasslandBirdRichness.Rproj**, check that the project name shows at the top right of RStudio, **Session > Restart R**, then Source the Analysis script. Typing `here::here()` in the Console should print the project folder. The README gives the same instruction ([[README Data Dictionary]]).
+The fix: **File > Open Project > GrasslandBirdRichness.Rproj**, check that the project name shows at the top right of RStudio, **Session > Restart R**, then Source the Analysis script. Typing `here::here()` in the Console should print the project folder. The README gives the same instruction ([[README|README Data Dictionary]]).
 
 ## Wrangling.R
 Its job: turn 7,742 detection rows plus a habitat file into **1,130 point-visits at 376 points**, each with two richness counts and standardized habitat values.
@@ -99,7 +99,7 @@ groundDat <-
 - `coalesce(Dist_50, 0)` means "use Dist_50, but if it is empty (NA) use 0". This matters because Dist_50 has one missing value, and in R anything plus NA is NA, so that row would vanish from the sum.
 - `filter(GroundCount > 0)` keeps a row only if at least one bird was on the ground. A species seen *only* flying over is dropped; a species seen on the ground *and* flying over is kept. (The old filter, `FlyOver == 0`, wrongly dropped 90 such mixed rows.)
 
-**List every visit with its weather** ([[Detection Covariates]], [[Why include wind and sky]], [[group_by and summarize]]):
+**List every visit with its weather** ([[Detection Covariates]], [[Why include wind and sky]], [[group_by()|group_by and summarize]]):
 ```r
 visitDat <-
   rawDat %>%
@@ -161,7 +161,7 @@ datClean <-
 ```
 Each visit gets its point's habitat values. `!is.na(x)` means "x is not missing", and commas inside `filter()` mean "and". So only visits with all five habitat values survive: **1,130 visits at 376 points**. Every model is fit to these same rows, because AIC can only compare models fit to identical data ([[AIC]]).
 
-**Standardize the habitat columns** ([[Standardizing Predictors]]):
+**Standardize the habitat columns** ([[Standardizing|Standardizing Predictors]]):
 ```r
 datClean <-
   datClean %>%
@@ -174,7 +174,7 @@ datClean <-
 - `across(columns, recipe)` applies the same recipe to each listed column. The recipe `~ as.numeric(scale(.x))` means "for each column `.x`, subtract its mean and divide by its standard deviation". `scale()` returns a one-column matrix, and `as.numeric()` turns it back into a plain column.
 - `.names = "{.col}_z"` names each new column after the old one plus `_z`, giving `SpCov3_z`, `SpCov9_z`, `SpCov27_z`, `Tree50_z` and `Scrub50_z`. The originals stay too.
 - Now "1 unit" of every habitat predictor means "1 standard deviation", so effects of very different measurements can be compared.
-- `factor()` makes Site and Survey categories ([[Factors]], [[Categorical Predictor and Reference Level]]). BK comes first alphabetically, so it becomes the reference property.
+- `factor()` makes Site and Survey categories ([[Factors in R|Factors]], [[Reference Level|Categorical Predictor and Reference Level]]). BK comes first alphabetically, so it becomes the reference property.
 
 **Final checks:** `nrow()`, `n_distinct()` and a `group_by(Site)` count print 1,130 visits, 376 points and the per-site split (BK 94 points, CR 35, DC 93, HB 62, HO 92). `colSums(is.na(datClean))` should show 0 missing in every column the models use.
 
@@ -203,7 +203,7 @@ datClean %>%
             FocalMean = mean(FocalRichness),
             n = n())
 ```
-For each site: average richness ([[Average (Mean)]]), variance ([[Variance]]), their ratio, average focal richness and the number of visits. A Poisson count expects the ratio to be about 1 ([[Mean-Variance Relationship]]). On the 376-point data the ratios are 0.56 to 0.93, slightly below 1 ([[Underdispersion]]).
+For each site: average richness ([[Mean|Average (Mean)]]), variance ([[Variance]]), their ratio, average focal richness and the number of visits. A Poisson count expects the ratio to be about 1 ([[Mean-Variance Relationship]]). On the 376-point data the ratios are 0.56 to 0.93, slightly below 1 ([[Underdispersion]]).
 - Spearman correlations among the habitat columns, one row per point:
 ```r
 datClean %>%
@@ -224,7 +224,7 @@ habTerms <-
 ```
 A named vector of three pieces of formula text, one per spatial scale. Each says "spatial covariance at this window, plus tree cover, plus scrub cover".
 
-**A home-made function that fits the whole candidate set** ([[Functions and Arguments]], [[Candidate Model Set]], [[glmer()]]):
+**A home-made function that fits the whole candidate set** ([[Functions in R|Functions and Arguments]], [[Candidate Model Set]], [[glmer()]]):
 ```r
 fitCandidates <- function(response) {
 
@@ -247,7 +247,7 @@ fitCandidates <- function(response) {
   names(fits) <- names(mods)
 ```
 - `lapply()` means "do the same thing to every item in a list". The thing to do is a tiny unnamed function: for each formula text `f`, `as.formula(f)` turns the text into a real formula, and `glmer()` fits a Poisson mixed model ([[GLMM]], [[Poisson Distribution]]).
-- `control = glmerControl(optimizer = "bobyqa")` picks the search method glmer uses to find the best estimates. The default gave a convergence warning; bobyqa removed it ([[Singular Fits and Convergence Warnings]], [[Maximum Likelihood Estimation]]).
+- `control = glmerControl(optimizer = "bobyqa")` picks the search method glmer uses to find the best estimates. The default gave a convergence warning; bobyqa removed it ([[Convergence Warnings|Singular Fits and Convergence Warnings]], [[Maximum Likelihood Estimation]]).
 - `names(fits) <- names(mods)` copies the model names onto the fitted models, a harmless safety step.
 
 ```r
@@ -271,7 +271,7 @@ fitsFocal <- fitCandidates("FocalRichness")
 ```
 Call the function twice: once per response.
 
-**Rank the models** ([[MuMIn model.sel()]], [[AIC]], [[Delta AIC and Akaike Weights]]):
+**Rank the models** ([[MuMIn model.sel()]], [[AIC]], [[Akaike Weight|Delta AIC and Akaike Weights]]):
 ```r
 selRich <- model.sel(fitsRich, rank = "AIC")
 selFocal <- model.sel(fitsFocal, rank = "AIC")
@@ -330,9 +330,9 @@ ranefVar <-
   bind_rows(as.data.frame(VarCorr(topRich)) %>% mutate(Response = "All species"),
             as.data.frame(VarCorr(topFocal)) %>% mutate(Response = "Focal species"))
 ```
-`VarCorr()` pulls out the random-intercept variance: how much points differ in baseline richness ([[Variance Component]]). This is the H3 test, saved as `TopModel_PointVariance.csv`. It was 0 for all species (a singular fit; R prints `boundary (singular) fit`, a message, not an error) and 0.20 for focal species.
+`VarCorr()` pulls out the random-intercept variance: how much points differ in baseline richness ([[Variance Components|Variance Component]]). This is the H3 test, saved as `TopModel_PointVariance.csv`. It was 0 for all species (a singular fit; R prints `boundary (singular) fit`, a message, not an error) and 0.20 for focal species.
 
-**Make plots** ([[ggplot2 and ggsave()]]). A ggplot is built in layers joined by `+`. Three plots:
+**Make plots** ([[ggsave()|ggplot2 and ggsave()]]). A ggplot is built in layers joined by `+`. Three plots:
 1. **Rate-ratio dot plot (`coefPlot`)**: one row per predictor, a dot at the rate ratio and a bar across its interval (`geom_point()`, `geom_errorbar()`), a dashed line at 1 (`geom_vline(xintercept = 1, ...)`) meaning "no change", and `facet_wrap(~ Response, scales = "free_x")` to put all species and focal species side by side, each with its own x-axis. The intercept row is dropped first with `filter(Covariate != "(Intercept)")` (`!=` means "is not").
 2. **Richness against spatial covariance (`spcovPlot`)**: `pivot_longer()` stacks Richness and FocalRichness into one column so both can be drawn as panels, `recode()` gives them readable labels, `geom_jitter(height = 0.15, alpha = 0.2)` draws faint, slightly nudged dots so whole-number counts do not pile up, and `geom_smooth(method = "loess")` adds a flexible trend line. It uses the middle window, SpCov9 (7.29 ha).
 3. **Boxplot by site (`richnessPlot`)**:
@@ -364,7 +364,7 @@ What the numbers mean: [[Preliminary Results]].
 - **Final Draft code:** possible upgrades (a spatial smooth, a less-spread-out count distribution, a Bayesian version) are listed in [[Next Steps]].
 
 ## Things to watch when running
-- `boundary (singular) fit` for the all-species models is a message, not an error: the point variance is estimated as 0 ([[Singular Fits and Convergence Warnings]]).
+- `boundary (singular) fit` for the all-species models is a message, not an error: the point variance is estimated as 0 ([[Convergence Warnings|Singular Fits and Convergence Warnings]]).
 - If something fails, read the first error message: it usually names the missing object, package, file or folder. A "does not exist" path almost always means the project was not opened through the .Rproj (see above).
 
 > [!note] History

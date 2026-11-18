@@ -14,19 +14,19 @@ status: seedling
 
 # Linear Mixed Model
 
-A **linear mixed model** (LMM) is a linear regression with normally distributed errors plus one or more normally distributed random effects for groups ([[Mixed Effects Model]], [[Linear Regression|Linear Model]], [[Normal Distribution]]). In matrix form it is y = Xβ + Zb + ε, with b ~ Normal(0, G) and ε ~ Normal(0, σ²I). X holds the predictors for the [[Fixed Effect|fixed effects]], and Z says which group each observation belongs to, plus the slope values for random slopes. It is fitted with `lme4::lmer()` or `nlme::lme()`, by [[REML]] by default.
+A **linear mixed model** (LMM) is a linear regression with normally distributed errors plus one or more normally distributed [[Random Effect|random effects]] for groups ([[Mixed Effects Model]], [[Linear Regression|Linear Model]], [[Normal Distribution]]). In matrix form it is y = Xβ + Zb + ε, with b ~ Normal(0, G) and ε ~ Normal(0, σ²I). X holds the [[Predictor Variable|predictors]] for the [[Fixed Effect|fixed effects]], and Z says which group each observation belongs to, plus the slope values for [[Random Slope|random slopes]]. It is fitted with `lme4::lmer()` or `nlme::lme()`, by [[REML]] by default.
 
-Its assumptions are a linear fixed part, normal residuals with constant variance, normal random effects, and independence once the random effects are accounted for. Check it with residuals against fitted values, a Q-Q plot of residuals, a Q-Q plot of the random effects, and residuals by group. In the code below the `sleepstudy` model with random intercepts and slopes gives an intercept of 251.4 ms (SE 6.8) and a Days slope of 10.5 ms per day (SE 1.5, t = 6.8).
+Its assumptions are a linear fixed part, normal residuals with [[Homogeneity of Variance|constant variance]], normal random effects, and [[Independence of Observations|independence]] once the random effects are accounted for. Check it with [[Residuals vs Fitted Plot|residuals against fitted values]], a [[QQ Plot|Q-Q plot]] of residuals, a Q-Q plot of the random effects, and residuals by group. In the code below the `sleepstudy` model with [[Random Intercept|random intercepts]] and slopes gives an intercept of 251.4 ms (SE 6.8) and a Days slope of 10.5 ms per day (SE 1.5, t = 6.8).
 
-[[Shipley et al. 2022]] used LMMs (lme4 and lmerTest) for tree swallow body size over decades, with nest as a random effect, and reported marginal and conditional R² ([[Marginal and Conditional R-squared]]). It is taught in the linear mixed models lab ([[Course Website]], [[Zuur et al. 2009 Ch5]]). The non-normal version is the [[GLMM]]. Checking that LMM residuals look like lm residuals is not enough: check them within groups too.
+[[Shipley et al. 2022]] used LMMs (lme4 and [[p-values in Mixed Models|lmerTest]]) for tree swallow [[Body Size|body size]] over decades, with nest as a random effect, and reported marginal and conditional R² ([[Marginal vs Conditional R-squared|Marginal and Conditional R-squared]]). It is taught in the linear mixed models lab ([[Course Website]], [[Zuur et al. 2009 Ch5]]). The non-normal version is the [[GLMM]]. Checking that LMM residuals look like lm residuals is not enough: check them within groups too.
 
 ```r
 library(lme4); m <- lmer(Reaction ~ Days + (Days | Subject), data = sleepstudy); round(summary(m)$coefficients, 2)
 ```
 
 ## Connections
-- **Builds on:** [[Mixed Effects Model]], [[Linear Regression|Linear Model]], [[Normal Distribution]]
-- **Leads to:** [[GLMM]], [[REML]], [[lmer() and glmer()]], [[Model Validation]]
+- **Builds on:** [[Mixed Effects Model]], [[Linear Regression|Linear Model]], [[Normal Distribution]], [[Random Effect]], [[Predictor Variable]], [[Random Slope]], [[Homogeneity of Variance]], [[Independence of Observations]], [[Residuals vs Fitted Plot]], [[QQ Plot]], [[Random Intercept]], [[p-values in Mixed Models]]
+- **Leads to:** [[GLMM]], [[REML]], [[lmer()|lmer() and glmer()]], [[Model Validation]], [[Body Size]]
 - **Part of:** [[MOC 14 - Mixed Models|MOC - Mixed Models]]
 
 ## Flashcards

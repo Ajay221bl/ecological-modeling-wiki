@@ -16,7 +16,7 @@ status: seedling
 
 A hiker whose compass is biased toward the east would drift east for no good reason if they simply followed the Metropolis rule. The **Metropolis-Hastings algorithm** discounts the moves a lopsided compass suggests too readily. The [[Metropolis Algorithm]] assumes the chance of proposing B from A equals that of proposing A from B, but sometimes you want an asymmetric [[Proposal Distribution]], such as a lognormal or gamma proposal for a positive parameter that never suggests negative values.
 
-The corrected ratio is R = [posterior(new) / posterior(current)] × [q(current | new) / q(new | current)], where q is the proposal density. The second factor is the Hastings correction; for symmetric proposals it equals 1, giving back Metropolis. Accept with probability min(1, R), as before. In the code below a lognormal proposal samples a Poisson rate with a Gamma(2, 1) prior and counts 3, 5, 4, 6 and 2; the chain's mean is 3.71 against the exact conjugate answer of 22/6 = 3.67.
+The corrected ratio is R = [posterior(new) / posterior(current)] × [q(current | new) / q(new | current)], where q is the proposal density. The second factor is the Hastings correction; for symmetric proposals it equals 1, giving back Metropolis. Accept with probability min(1, R), as before. In the code below a lognormal proposal samples a Poisson rate with a Gamma(2, 1) prior and counts 3, 5, 4, 6 and 2; the chain's mean is 3.71 against the exact [[Conjugate Prior|conjugate]] answer of 22/6 = 3.67.
 
 [[Gibbs Sampling]] is a special case in which every proposal is accepted ([[MCMC]], [[Hobbs and Hooten 2015 Ch7]]). Metropolis and Metropolis-Hastings are not different methods: one is the symmetric special case of the other.
 
@@ -30,7 +30,7 @@ c(mh_mean = mean(out[-(1:1000)]), exact = 22 / 6)
 ```
 
 ## Connections
-- **Builds on:** [[Metropolis Algorithm]], [[Proposal Distribution]]
+- **Builds on:** [[Metropolis Algorithm]], [[Proposal Distribution]], [[Conjugate Prior]]
 - **Leads to:** [[Gibbs Sampling]], [[MCMC]]
 - **Part of:** [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]]
 

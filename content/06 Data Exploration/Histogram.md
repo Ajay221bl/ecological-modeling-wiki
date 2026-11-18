@@ -15,9 +15,9 @@ status: seedling
 
 Sort coins into a row of jars by decade, 1970s, 1980s, 1990s, and the height of the coins in each jar shows at a glance which decades are common. A **histogram** cuts a numeric variable's range into equal intervals called *bins*, counts how many observations fall into each, and draws a bar of that height ([[Continuous Data]], [[Count Data]]). Unlike a bar chart, which has one bar per category, a histogram's bars touch, because the bins cover a continuous range.
 
-Read the shape: symmetric or skewed, one peak or two, gaps, a spike at zero. The shape suggests which [[Probability Distribution]] to consider for the response. But bin width changes the picture, so try several. The figure and code below show the same body masses, a mixture of two groups, with wide, moderate and narrow bins: wide bins hide the two peaks, narrow bins turn noise into false detail, and only the middle one shows the structure clearly. The two peaks are two *modes* ([[Mode]]).
+Read the shape: symmetric or skewed, one peak or two, gaps, a spike at zero. The shape suggests which [[Probability Distribution]] to consider for the response. But bin width changes the picture, so try several. The figure and code below show the same body masses, a [[Mixture Distribution|mixture]] of two groups, with wide, moderate and narrow bins: wide bins hide the two peaks, narrow bins turn noise into false detail, and only the middle one shows the structure clearly. The two peaks are two *modes* ([[Mode]]).
 
-Histograms are protocol step 3, the check of shape and [[Normality]] ([[Zuur et al. 2010]]). One common mistake: a skewed histogram of the raw response does not by itself break a linear model. The normality assumption is about the residuals, and a response can look skewed simply because its predictors are skewed. A smoothed version of the histogram is the [[Density Plot]].
+Histograms are protocol step 3, the check of shape and [[Normality]] ([[Zuur et al. 2010]]). One common mistake: a skewed histogram of the raw response does not by itself break a [[Linear Model|linear model]]. The normality assumption is about the residuals, and a response can look skewed simply because its [[Predictor Variable|predictors]] are skewed. A smoothed version of the histogram is the [[Density Plot]].
 
 ![[Histogram bin widths.png|700]]
 *What to look at:* the same data with wide, moderate and narrow bins. Only the middle one shows the two peaks clearly.
@@ -32,8 +32,8 @@ library(ggplot2); p <- ggplot(data.frame(mass), aes(mass)) + geom_histogram(binw
 ```
 
 ## Connections
-- **Builds on:** [[Continuous Data]]
-- **Leads to:** [[Density Plot]], [[Normality]], [[Probability Distribution]], [[Mode]]
+- **Builds on:** [[Continuous Data]], [[Predictor Variable]]
+- **Leads to:** [[Density Plot]], [[Normality]], [[Probability Distribution]], [[Mode]], [[Mixture Distribution]], [[Linear Model]]
 - **Part of:** [[MOC 04 - Data Exploration|MOC - Data Exploration]]
 
 ## Flashcards

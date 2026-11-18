@@ -14,7 +14,7 @@ status: seedling
 
 # Caching Long Runs
 
-Cook a big pot of stock on Sunday and freeze it, and all week you make soup in minutes, making new stock only when the recipe changes. **Caching** means saving the result of a slow computation, such as a Bayesian fit, a bootstrap or a spline correlogram, to a file so later runs load it instead of computing it again. After computing, save the object: `saveRDS(fit, "results/fit.rds")` for one object, or `save(a, b, file = "x.RData")` for several. Before computing, check whether the file exists, and if it does, load it ([[If-Else]], [[File System Functions in R]]).
+Cook a big pot of stock on Sunday and freeze it, and all week you make soup in minutes, making new stock only when the recipe changes. **Caching** means saving the result of a slow computation, such as a Bayesian fit, a [[Bootstrap|bootstrap]] or a [[Spline Correlogram|spline correlogram]], to a file so later runs load it instead of computing it again. After computing, save the object: `saveRDS(fit, "results/fit.rds")` for one object, or `save(a, b, file = "x.RData")` for several. Before computing, check whether the file exists, and if it does, load it ([[If-Else]], [[File System Functions in R]]).
 
 The code below does exactly that for 2,000 bootstrap means: if the cache file exists it is read, otherwise the means are computed and saved. `readRDS()` returns the object for you to name, while `load()` restores objects under their old names. brms does this itself with the `file` argument of [[brm()]], and slow [[bootMer()]] runs are good candidates too.
 
@@ -35,7 +35,7 @@ quantile(boot, c(0.025, 0.975))
 
 ## Connections
 - **Builds on:** [[If-Else]], [[File System Functions in R]]
-- **Leads to:** [[brm()]], [[bootMer()]], [[Knitting]]
+- **Leads to:** [[brm()]], [[bootMer()]], [[Knitting]], [[Bootstrap]], [[Spline Correlogram]]
 - **Part of:** [[MOC 12 - Reproducible Coding and Figures|MOC - Reproducible Coding and Figures]]
 
 ## Flashcards

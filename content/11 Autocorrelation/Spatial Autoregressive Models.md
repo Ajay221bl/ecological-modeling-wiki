@@ -17,7 +17,7 @@ status: seedling
 
 # Spatial Autoregressive Models
 
-**Simultaneous autoregressive (SAR) models** write each site's value, or its error, as depending on a weighted average of its neighbours' values or errors, with a parameter for the strength of that dependence ([[Spatial Weights Matrix]]). The spatial error model is y = Xβ + u with u = λWu + ε, so autocorrelation lives in the errors, close in spirit to [[Generalized Least Squares]]. The spatial lag model is y = ρWy + Xβ + ε, so the response itself depends on neighbours' responses, for example through spillover. λ or ρ near 0 means no spatial dependence.
+**Simultaneous autoregressive (SAR) models** write each site's value, or its error, as depending on a [[Weighted Mean|weighted average]] of its neighbours' values or errors, with a parameter for the strength of that dependence ([[Spatial Weights Matrix]]). The spatial error model is y = Xβ + u with u = λWu + ε, so autocorrelation lives in the errors, close in spirit to [[Generalized Least Squares]]. The spatial lag model is y = ρWy + Xβ + ε, so the response itself depends on neighbours' responses, for example through spillover. λ or ρ near 0 means no [[Spatial Autocorrelation|spatial dependence]].
 
 In R use `spatialreg::errorsarlm(y ~ x, listw = lw)` or `lagsarlm()`. In the code below data simulated with λ = 0.6 and slope 0.5 are fitted by the error model, which recovers λ = 0.57 and slope 0.50.
 
@@ -30,7 +30,7 @@ m <- errorsarlm(y ~ x, listw = lw); round(c(lambda = m$lambda, slope = coef(m)[[
 ```
 
 ## Connections
-- **Builds on:** [[Spatial Weights Matrix]], [[Generalized Least Squares]]
+- **Builds on:** [[Spatial Weights Matrix]], [[Generalized Least Squares]], [[Weighted Mean]], [[Spatial Autocorrelation]]
 - **Leads to:** [[Conditional Autoregressive Model]], [[Spatial Eigenvector Filtering]]
 - **Part of:** [[MOC 13 - Autocorrelation|MOC - Autocorrelation]], molecular note [[SAR vs CAR Models]]
 

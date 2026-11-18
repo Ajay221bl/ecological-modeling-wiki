@@ -17,7 +17,7 @@ An architect builds a cardboard model of a new house, with walls, windows and a 
 
 Follow a pine stand through the loop. The Real World has fire, deer, drought and 500 trees of many ages. The Model World has 500 identical trees, no fire, and steady 4% growth a year. The Model is $N_{t+1} = N_t \times 1.04$, and the Data are today's count of 500. The output, 500 × 1.04¹⁰ ≈ 740 trees in 10 years, is a fact about the Model World. The inference to the Real World is "*if* fire stays absent and growth stays near 4%, expect about 740 trees", and the "if" carries the Model World's assumptions back with it. That is why the simplifications must be listed as assumptions ([[Modeling Process]]).
 
-This picture solves a puzzle that trips up beginners: how can a model fit the data beautifully and still be wrong? A good fit shows only that the Model World is consistent with the data you fed it; it cannot show that you kept the right pieces of reality. Model checking, such as [[Posterior Predictive Check|posterior predictive checks]] and [[DHARMa Simulated Residuals|residual diagnostics]], is how the Real World gets a chance to push back. Two related confusions: the model tells you about your simplified version of nature, not about nature directly, and data are not the Real World either, only a sample of it collected by a method that can leave things out ([[Biological vs Statistical Population]]). Hobbs and Hooten describe the same path as a "line of inference" ending in "new insight qualified by uncertainty" ([[Hobbs and Hooten 2015 Ch1]], [[Model]]).
+This picture solves a puzzle that trips up beginners: how can a model fit the data beautifully and still be wrong? A good fit shows only that the Model World is consistent with the data you fed it; it cannot show that you kept the right pieces of reality. [[Model Validation|Model checking]], such as [[Posterior Predictive Check|posterior predictive checks]] and [[DHARMa Simulated Residuals|residual diagnostics]], is how the Real World gets a chance to push back. Two related confusions: the model tells you about your simplified version of nature, not about nature directly, and data are not the Real World either, only a sample of it collected by a method that can leave things out ([[Biological vs Statistical Population]]). Hobbs and Hooten describe the same path as a "[[Line of Inference|line of inference]]" ending in "new insight qualified by uncertainty" ([[Hobbs and Hooten 2015 Ch1]], [[Model]]).
 
 ```mermaid
 flowchart TD
@@ -37,8 +37,8 @@ round(N10)            # about 740
 ```
 
 ## Connections
-- **Builds on:** [[Model]]
-- **Leads to:** [[Conceptual Model]], [[Modeling Process]], [[Population and Sample]]
+- **Builds on:** [[Model]], [[Line of Inference]]
+- **Leads to:** [[Conceptual Model]], [[Modeling Process]], [[Population and Sample]], [[Model Validation]]
 - **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]
 - **Go deeper:** [[Powell and Gale 2015 Ch1]] (Fig. 1.4)
 

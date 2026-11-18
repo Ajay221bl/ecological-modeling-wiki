@@ -15,7 +15,7 @@ status: seedling
 
 On a map, height shown from dark green to white is instantly readable because lightness rises with height; a legend of random colours would have to be looked up for every spot. A **colour scale** is the rule that turns data values into colours, and a good one is readable by colour-blind viewers and in greyscale ([[Aesthetics]]). A continuous variable needs a gradient that gets steadily lighter or darker ([[Continuous Data]]). A categorical variable needs a few clearly distinct hues ([[Categorical Variable]]). Values around a meaningful midpoint, such as residuals or change, need a diverging scale: two hues meeting at a neutral centre.
 
-viridis scales are the safe default because their lightness changes evenly, so they survive colour-blindness and black-and-white printing; rainbow scales do not. Use `scale_colour_*` for points and lines and `scale_fill_*` for areas. The code below makes one plot of each kind: a continuous viridis fill, a discrete viridis colour for cylinder count, and a diverging gradient centred on zero for deviations from mean fuel economy. A diverging scale is also how a [[Bubble Plot of Residuals]] can be coloured.
+viridis scales are the safe default because their lightness changes evenly, so they survive colour-blindness and black-and-white printing; rainbow scales do not. Use `scale_colour_*` for points and lines and `scale_fill_*` for areas. The code below makes one plot of each kind: a continuous viridis fill, a discrete viridis colour for cylinder count, and a diverging gradient centred on zero for [[Deviation|deviations]] from mean fuel economy. A diverging scale is also how a [[Bubble Plot of Residuals]] can be coloured.
 
 More colours do not show more. Past six or seven categories people cannot tell them apart, so facet instead ([[Themes]]).
 
@@ -28,7 +28,7 @@ c(class(p$scales$scales[[1]])[1], class(q$scales$scales[[1]])[1])
 ```
 
 ## Connections
-- **Builds on:** [[Aesthetics]]
+- **Builds on:** [[Aesthetics]], [[Deviation]]
 - **Leads to:** [[Themes]], [[Bubble Plot of Residuals]]
 - **Part of:** [[MOC 12 - Reproducible Coding and Figures|MOC - Reproducible Coding and Figures]]
 

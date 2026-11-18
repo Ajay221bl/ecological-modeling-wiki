@@ -12,7 +12,7 @@ status: seedling
 
 # Axis Labels and Titles
 
-A graph with axes labelled `ysf` and `sr` is a locked door; "Years since fire" and "Grassland bird species per route" are the key. **Axis labels and titles** are the words on a figure that say what each axis measures, in what units, and what the colours mean ([[ggplot2 Grammar of Graphics]], [[Variable]]). In ggplot2, `labs(x = , y = , colour = , title = , caption = )` sets them. Use words and units, not column names, as in "Body mass (g)"; label the legend too; and state the scale if it is transformed.
+A graph with axes labelled `ysf` and `sr` is a locked door; "[[Fire History Variables|Years since fire]]" and "Grassland bird species per route" are the key. **Axis labels and titles** are the words on a figure that say what each axis measures, in what units, and what the colours mean ([[ggplot2 Grammar of Graphics]], [[Variable]]). In ggplot2, `labs(x = , y = , colour = , title = , caption = )` sets them. Use words and units, not column names, as in "Body mass (g)"; label the legend too; and state the scale if it is transformed.
 
 The code below relabels the `mtcars` axes as "Weight (1,000 lb)" and "Fuel economy (miles per gallon)", names the legend "Transmission", and replaces its 0 and 1 with "automatic" and "manual".
 
@@ -28,7 +28,7 @@ p$labels$x; p$labels$y
 
 ## Connections
 - **Builds on:** [[ggplot2 Grammar of Graphics]]
-- **Leads to:** [[Themes]], [[Writing Results Sections]]
+- **Leads to:** [[Themes]], [[Writing Results Sections]], [[Fire History Variables]]
 - **Part of:** [[MOC 12 - Reproducible Coding and Figures|MOC - Reproducible Coding and Figures]]
 
 ## Flashcards

@@ -13,11 +13,11 @@ status: seedling
 
 # Residuals vs Fitted Plot
 
-After sweeping a floor, the dust left behind tells you where the sweeping failed: a line along one wall or a pile in a corner. A **residuals-versus-fitted plot** shows a model's leftovers the same way. Each observation's [[Fitted Value]] goes on the horizontal axis and its [[Residual]] on the vertical axis. Fitted values are used because they summarise all the predictors in one dimension, so the plot works for any number of predictors.
+After sweeping a floor, the dust left behind tells you where the sweeping failed: a line along one wall or a pile in a corner. A **residuals-versus-fitted plot** shows a model's leftovers the same way. Each observation's [[Fitted Value]] goes on the horizontal axis and its [[Residual]] on the vertical axis. Fitted values are used because they summarise all the [[Predictor Variable|predictors]] in one dimension, so the plot works for any number of predictors.
 
-The ideal is a shapeless horizontal band centred on zero. A curve means the mean structure is wrong ([[Linearity]]); a funnel means the variance changes with the mean ([[Heteroscedasticity]]); isolated points far from zero are outliers; and diagonal stripes mean the response is discrete, which is normal for counts. The figure shows the good case, a curve, a funnel and an outlier. In the code below, one model has constant scatter and the other scatter that grows with x, and their residual plots show a flat band and a funnel; `plot(good, which = 1)` draws R's own version with a smoother through the points ([[plot() Diagnostics for lm]]).
+The ideal is a shapeless horizontal band centred on zero. A curve means the mean structure is wrong ([[Linearity]]); a funnel means the variance changes with the mean ([[Heteroscedasticity]]); isolated points far from zero are [[Outlier|outliers]]; and diagonal stripes mean the response is discrete, which is normal for counts. The figure shows the good case, a curve, a funnel and an outlier. In the code below, one model has constant scatter and the other scatter that grows with x, and their residual plots show a flat band and a funnel; `plot(good, which = 1)` draws R's own version with a smoother through the points ([[plot() Diagnostics for lm]]).
 
-Also plot residuals against each predictor, against predictors left out of the model, against time and against location: patterns there point to missing terms or dependence ([[Linear Model Assumptions]], [[Zuur et al. 2009 Ch2]]). The common mistake is to plot residuals against the *observed* response; that always shows a trend, even for a perfect model, so use fitted values. For GLMs, where raw residual plots are hard to read, use [[DHARMa Simulated Residuals]].
+Also plot residuals against each predictor, against predictors left out of the model, against time and against location: patterns there point to missing terms or dependence ([[Linear Model Assumptions]], [[Zuur et al. 2009 Ch2]]). The common mistake is to plot residuals against the *observed* response; that always shows a trend, even for a perfect model, so use fitted values. For [[Generalized Linear Model|GLMs]], where raw residual plots are hard to read, use [[DHARMa Simulated Residuals]].
 
 ![[Residual patterns.png|700]]
 *What to look at:* four panels showing the good case, a curve, a funnel and an outlier.
@@ -30,7 +30,7 @@ plot(good, which = 1)            # R's built-in version with a smoother
 ```
 
 ## Connections
-- **Builds on:** [[Residual]], [[Fitted Value]]
+- **Builds on:** [[Residual]], [[Fitted Value]], [[Predictor Variable]], [[Outlier]], [[Generalized Linear Model]]
 - **Leads to:** [[plot() Diagnostics for lm]], [[Linearity]], [[Heteroscedasticity]], [[DHARMa Simulated Residuals]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 

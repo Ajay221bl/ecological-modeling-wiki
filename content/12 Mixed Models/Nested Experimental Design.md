@@ -16,7 +16,7 @@ status: seedling
 
 A **nested experimental design** applies treatments to large units and then measures smaller units inside them, so the large units, not the small ones, are the replicates for the treatment ([[Replication]], [[Sampling Unit]], [[Nested Random Effects]]). With 6 ponds, 3 fertilised and 3 controls, and 10 fish measured in each pond, the treatment n is 3 ponds per group, not 30 fish. In a split-plot design whole plots get one treatment and subplots inside them another, and each factor has its own error level.
 
-Analyse it with a random effect for the large unit, `lmer(size ~ treatment + (1 | pond))`, so the treatment effect is tested against pond-to-pond variation. Ignoring the nesting is [[Pseudoreplication]] (Hurlbert 1984). In the code below there is no real treatment effect, only pond differences: a plain `lm()` on the 60 fish gives a falsely significant p = 0.004, while the mixed model gives p = 0.46.
+Analyse it with a [[Random Effect|random effect]] for the large unit, `lmer(size ~ treatment + (1 | pond))`, so the treatment effect is tested against pond-to-pond variation. Ignoring the nesting is [[Pseudoreplication]] (Hurlbert 1984). In the code below there is no real treatment effect, only pond differences: a plain `lm()` on the 60 fish gives a falsely significant p = 0.004, while the [[Mixed Effects Model|mixed model]] gives p = 0.46.
 
 It is used in the mixed models labs ([[Course Website]], [[Zuur et al. 2009 Ch5]]). Subsamples do not add replication for the treatment; they improve the estimate for each unit, not the number of units.
 
@@ -26,7 +26,7 @@ round(c(p_wrong_lm = summary(lm(size ~ trt, d))$coef[2, 4], p_mixed = anova(lmer
 ```
 
 ## Connections
-- **Builds on:** [[Replication]], [[Sampling Unit]], [[Nested Random Effects]]
+- **Builds on:** [[Replication]], [[Sampling Unit]], [[Nested Random Effects]], [[Random Effect]], [[Mixed Effects Model]]
 - **Leads to:** [[Pseudoreplication]], [[Two-way ANOVA]], [[Blocking]]
 - **Part of:** [[MOC 14 - Mixed Models|MOC - Mixed Models]]
 

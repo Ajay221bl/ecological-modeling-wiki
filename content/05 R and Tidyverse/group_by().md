@@ -7,6 +7,9 @@ description: "`group_by()` marks a table as split into groups, so that the verbs
 aliases:
   - "dplyr group_by"
   - "Grouped data frame"
+  - "group_by and summarize"
+  - "summarise"
+  - "group_by"
 status: seedling
 ---
 
@@ -14,9 +17,9 @@ status: seedling
 
 Before counting a deck of cards by suit, you sort it into four piles. You have not counted anything yet; you have only arranged things so that the next instruction, "count each pile", makes sense. **`group_by()`** does that to a table. It marks the table as split into groups defined by one or more categorical columns ([[Categorical Variable]]), so that the verbs after it work separately on each group. By itself it changes nothing visible: it neither sorts nor alters the data, it just attaches a grouping label.
 
-The next verb then acts within groups. [[summarise()]] gives one row per group; [[mutate()]] computes within groups, so `birds - mean(birds)` becomes each count's deviation from its own site's mean, as in the second line of the example below; and functions such as `slice_max()` pick rows per group. Grouping by several columns, such as site and year, makes groups for every combination. `count(site, year)` is a shortcut for grouping and counting rows. This pattern of splitting a table, applying a calculation to each piece and combining the results, called *split-apply-combine*, is the most common move in data analysis, and the diagram traces it.
+The next verb then acts within groups. [[summarise()]] gives one row per group; [[mutate()]] computes within groups, so `birds - mean(birds)` becomes each count's [[Deviation|deviation]] from its own site's mean, as in the second line of the example below; and functions such as `slice_max()` pick rows per group. Grouping by several columns, such as site and year, makes groups for every combination. `count(site, year)` is a shortcut for grouping and counting rows. This pattern of splitting a table, applying a calculation to each piece and combining the results, called *split-apply-combine*, is the most common move in data analysis, and the diagram traces it.
 
-When you are finished, call `ungroup()`. A grouping that is forgotten carries on silently and changes later calculations, so that a mean you think is overall is actually per site. Grouping variables in a table play the same role as the grouping factors of mixed models ([[Grouping Factor]]).
+When you are finished, call `ungroup()`. A grouping that is forgotten carries on silently and changes later calculations, so that a mean you think is overall is actually per site. Grouping variables in a table play the same role as the grouping factors of [[Mixed Effects Model|mixed models]] ([[Grouping Variable|Grouping Factor]]).
 
 ```mermaid
 flowchart LR
@@ -34,8 +37,8 @@ d |> count(site, year)          # shortcut for group_by + summarise(n = n())
 ```
 
 ## Connections
-- **Builds on:** [[Categorical Variable]]
-- **Leads to:** [[summarise()]], [[mutate()]], [[Grouping Factor]]
+- **Builds on:** [[Categorical Variable]], [[Deviation]]
+- **Leads to:** [[summarise()]], [[mutate()]], [[Grouping Variable|Grouping Factor]], [[Mixed Effects Model]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 
 ## Flashcards

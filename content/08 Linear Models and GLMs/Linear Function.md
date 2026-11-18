@@ -12,7 +12,7 @@ status: seedling
 
 # Linear Function
 
-A taxi fare is a fixed charge when you get in plus the same amount for every kilometre; double the distance and the per-kilometre part doubles. A **linear function** is a rule of that form, y = a + b·x, whose graph is a straight line. The number a is the intercept, the value of y when x = 0; b is the slope, the change in y per unit of x ([[Functions in Maths]]). Positive b rises, negative b falls, and b = 0 is flat.
+A taxi fare is a fixed charge when you get in plus the same amount for every kilometre; double the distance and the per-kilometre part doubles. A **linear function** is a rule of that form, y = a + b·x, whose graph is a [[Equation of a Line|straight line]]. The number a is the intercept, the value of y when x = 0; b is the slope, the change in y per unit of x ([[Functions in Maths]]). Positive b rises, negative b falls, and b = 0 is flat.
 
 Take y = 3 + 2x. At x = 0, y = 3; at x = 1, y = 5; at x = 2, y = 7. Every step of 1 in x adds 2 to y, and the code below shows those constant steps with `diff()`. That constancy is what "linear" means: the [[Rate of Change]] is the same everywhere.
 
@@ -25,7 +25,7 @@ curve(f, 0, 10)
 ```
 
 ## Connections
-- **Builds on:** [[Functions in Maths]], [[Rate of Change]]
+- **Builds on:** [[Functions in Maths]], [[Rate of Change]], [[Equation of a Line]]
 - **Leads to:** [[Linear Regression]], [[Nonlinear Function]], [[Linear Predictor]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]], molecular note [[Linear vs Nonlinear Function]]
 

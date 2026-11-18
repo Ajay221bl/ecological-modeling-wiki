@@ -11,11 +11,11 @@ status: seedling
 
 # Violin Plot
 
-A vase turned on a potter's wheel is fat where there is plenty of clay and pinched where there is little. A **violin plot** shows a variable's density curve ([[Density Plot]]) turned upright and mirrored on both sides of a centre line, one "violin" per group. The width at any height shows how common that value is, so two bulges mean two clusters. A small boxplot or the raw points are usually drawn inside to mark the median and quartiles.
+A vase turned on a potter's wheel is fat where there is plenty of clay and pinched where there is little. A **violin plot** shows a variable's [[Probability Density Function|density curve]] ([[Density Plot]]) turned upright and mirrored on both sides of a centre line, one "violin" per group. The width at any height shows how common that value is, so two bulges mean two clusters. A small boxplot or the raw points are usually drawn inside to mark the median and quartiles.
 
-Its advantage over a plain [[Boxplot]] is that two very different distributions can share the same five-number summary. In the code below, one group has a single peak and the other two separate peaks, but their quartiles are similar, so their boxes look almost the same; the violins show the difference immediately. Two peaks often signal a mixture of two kinds of unit, such as two species or two sexes ([[Mixture Distribution]], [[Mode]]). The course's data exploration lab adds violins alongside boxplots ([[Course Website]]).
+Its advantage over a plain [[Boxplot]] is that two very different distributions can share the same five-number summary. In the code below, one group has a single peak and the other two separate peaks, but their quartiles are similar, so their boxes look almost the same; the violins show the difference immediately. Two peaks often signal a mixture of two kinds of unit, such as two species or two sexes ([[Mixture Distribution]], [[Mode]]). The course's [[Data Exploration|data exploration]] lab adds violins alongside boxplots ([[Course Website]]).
 
-Two cautions. By default every violin has the same area whatever its sample size, so width does not show n. And with few observations, under about 20 per group, the smooth outline overpromises detail the data cannot support; show the points instead.
+Two cautions. By default every violin has the same area whatever its [[Sample Size|sample size]], so width does not show n. And with few observations, under about 20 per group, the smooth outline overpromises detail the data cannot support; show the points instead.
 
 ![[Violin vs boxplot.png|700]]
 *What to look at:* the two groups have nearly the same box, but one violin has two bulges.
@@ -30,8 +30,8 @@ p <- ggplot(d, aes(group, y)) + geom_violin(fill = "grey85") + geom_boxplot(widt
 ```
 
 ## Connections
-- **Builds on:** [[Density Plot]], [[Boxplot]]
-- **Leads to:** [[Mixture Distribution]], [[Mode]]
+- **Builds on:** [[Density Plot]], [[Boxplot]], [[Data Exploration]], [[Sample Size]]
+- **Leads to:** [[Mixture Distribution]], [[Mode]], [[Probability Density Function]]
 - **Part of:** [[MOC 04 - Data Exploration|MOC - Data Exploration]]
 
 ## Flashcards

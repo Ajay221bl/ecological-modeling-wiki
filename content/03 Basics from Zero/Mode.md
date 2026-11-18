@@ -16,7 +16,7 @@ Ask a shoe shop which size to stock most. The shop does not care about the avera
 
 For continuous measurements such as body mass, no two values repeat exactly, so the mode becomes the peak of a smoothed curve: the place where values are most densely packed. A distribution can have more than one peak. One peak is *unimodal*; two peaks is *bimodal*, and that is a clue worth chasing, because it often means two different groups are mixed together, such as males and females in a histogram of body mass ([[Mixture Distribution]]). Some datasets have no mode that stands out at all.
 
-The mean and the [[Median]] describe the centre; the mode describes the single most probable outcome, which is what you want when the question is "what will I most likely see?". It is also the only centre that works for unordered categories: you cannot average species names, but you can say which species is commonest. The idea reaches far into estimation: a maximum likelihood estimate is the mode of the likelihood curve ([[Maximum Likelihood Estimation]]), and Hobbs and Hooten note that a posterior can be summarised by its mean, median or mode ([[Hobbs and Hooten 2015 Ch8]]). One R trap: the function `mode()` does something unrelated (it reports how R stores the data, such as "numeric"), so find a mode with `table()` and `which.max()`.
+The mean and the [[Median]] describe the centre; the mode describes the single most probable outcome, which is what you want when the question is "what will I most likely see?". It is also the only centre that works for unordered categories: you cannot average species names, but you can say which species is commonest. The idea reaches far into estimation: a maximum likelihood estimate is the mode of the [[Likelihood Function|likelihood curve]] ([[Maximum Likelihood Estimation]]), and Hobbs and Hooten note that a posterior can be summarised by its mean, median or mode ([[Hobbs and Hooten 2015 Ch8]]). One R trap: the function `mode()` does something unrelated (it reports how R stores the data, such as "numeric"), so find a mode with `table()` and `which.max()`.
 
 ```mermaid
 flowchart LR
@@ -38,7 +38,7 @@ R's `mode()` does something unrelated (it reports storage type), so use `table()
 
 ## Connections
 - **Builds on:** [[Median]], [[Histogram]]
-- **Leads to:** [[Mixture Distribution]], [[Maximum Likelihood Estimation]]
+- **Leads to:** [[Mixture Distribution]], [[Maximum Likelihood Estimation]], [[Likelihood Function]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]], molecular note [[Mean, Median and Mode]]
 
 ## Flashcards

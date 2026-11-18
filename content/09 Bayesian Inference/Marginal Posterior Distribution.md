@@ -14,7 +14,7 @@ status: seedling
 
 Seen from the side, a mountain range's silhouette against the sky collapses its width into a single profile. A **marginal posterior distribution** is the posterior of one parameter on its own, with the uncertainty in all other parameters averaged over ([[Joint Posterior Distribution]], [[Marginal Probability]]). Mathematically you integrate everything else out of the joint posterior; with MCMC draws it is trivial, since you take that parameter's column and ignore the others ([[Posterior Draws]]).
 
-A histogram or density of that column is the marginal posterior, and the summaries reported in tables, the mean, standard deviation and [[Credible Interval]], describe marginals ([[Posterior Summary]]). In the code below, the slope column of a regression's draws has mean 0.58 and 95% interval 0.48 to 0.68.
+A [[Histogram|histogram]] or density of that column is the marginal posterior, and the summaries reported in tables, the mean, [[Standard Deviation|standard deviation]] and [[Credible Interval]], describe marginals ([[Posterior Summary]]). In the code below, the slope column of a regression's draws has mean 0.58 and 95% interval 0.48 to 0.68.
 
 The marginal posterior does not fix the other parameters at their best values; it averages over them, so their uncertainty is already included ([[Hobbs and Hooten 2015 Ch8]]).
 
@@ -25,7 +25,7 @@ c(mean = mean(slope), quantile(slope, c(0.025, 0.975)))
 ```
 
 ## Connections
-- **Builds on:** [[Joint Posterior Distribution]], [[Marginal Probability]]
+- **Builds on:** [[Joint Posterior Distribution]], [[Marginal Probability]], [[Histogram]], [[Standard Deviation]]
 - **Leads to:** [[Credible Interval]], [[Posterior Summary]], [[Posterior Draws]]
 - **Part of:** [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]]
 

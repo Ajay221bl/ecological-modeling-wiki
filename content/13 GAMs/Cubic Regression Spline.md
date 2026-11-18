@@ -16,7 +16,7 @@ status: seedling
 
 A **cubic regression spline** is a [[Spline]] made of cubic pieces joined at a set of [[Knots]], parameterised by the curve's values at those knots. In mgcv it is `s(x, bs = "cr", k = 10)`, with knots at quantiles of x by default. It is fast and easy to interpret, because its coefficients relate to heights at the knots.
 
-[[Zuur et al. 2009 Ch3]] use it for the bioluminescence examples, and tensor products often use "cr" marginals ([[Tensor Product Smooth]]). The shrinkage version, `"cs"`, lets the whole term shrink to zero ([[Double Penalty Selection]]). In the code below a sine wave fitted with `bs = "cr"` uses 8.33 effective degrees of freedom and the default thin plate spline 8.37: once penalised, the two bases agree closely ([[Thin Plate Regression Spline]]).
+[[Zuur et al. 2009 Ch3]] use it for the bioluminescence examples, and tensor products often use "cr" marginals ([[Tensor Product Smooth]]). The [[Shrinkage|shrinkage]] version, `"cs"`, lets the whole term shrink to zero ([[Double Penalty Selection]]). In the code below a sine wave fitted with `bs = "cr"` uses 8.33 [[Effective Degrees of Freedom|effective degrees of freedom]] and the default thin plate spline 8.37: once penalised, the two bases agree closely ([[Thin Plate Regression Spline]]).
 
 It is the basis used in Zuur's GAM chapter with mgcv. "cr" and "tp" do not give very different fits; with the penalty they usually agree closely.
 
@@ -26,7 +26,7 @@ round(c(edf_cr = summary(gam(y ~ s(x, bs = "cr"), data = d, method = "REML"))$ed
 ```
 
 ## Connections
-- **Builds on:** [[Spline]], [[Knots]]
+- **Builds on:** [[Spline]], [[Knots]], [[Shrinkage]], [[Effective Degrees of Freedom]]
 - **Leads to:** [[Thin Plate Regression Spline]], [[Tensor Product Smooth]]
 - **Part of:** [[MOC 15 - GAMs|MOC - GAMs]]
 

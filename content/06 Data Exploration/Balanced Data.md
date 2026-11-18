@@ -18,7 +18,7 @@ A pair of scales with the same number of weights in each pan gives a clean compa
 
 Balance is prized in designed experiments because the factors are then uncorrelated with each other, so each effect is estimated separately and with the best precision for the total effort ([[Study Design]]). Unbalanced data make factors partly collinear: in the example, "burned" and "grazed" travel together ([[Collinearity]]). One visible consequence is that sequential sums of squares in `anova()` depend on the order of terms. In the code below, the variation credited to burning is different when it is entered before grazing than after, for the same model. Another is that small cells, such as the 2 burned ungrazed plots, are estimated poorly.
 
-Field data are almost always unbalanced, and that is not a reason they cannot be analysed; interpretation just needs more care. Modern tools cope well: likelihood-based mixed models do not need balance, and they pull poorly sampled groups toward the overall mean ([[Partial Pooling]], [[Mixed Effects Model|Mixed Model]]), which Zuur notes classical repeated-measures ANOVA cannot do ([[Zuur et al. 2009 Ch5]]). Balance means equal group sizes, not equal group means.
+Field data are almost always unbalanced, and that is not a reason they cannot be analysed; interpretation just needs more care. Modern tools cope well: likelihood-based mixed models do not need balance, and they pull poorly sampled groups toward the overall mean ([[Partial Pooling]], [[Mixed Effects Model|Mixed Model]]), which Zuur notes classical repeated-measures [[ANOVA]] cannot do ([[Zuur et al. 2009 Ch5]]). Balance means equal group sizes, not equal group means.
 
 ```r
 set.seed(12)
@@ -32,7 +32,7 @@ With unbalanced cells, how much variation each factor "explains" depends on the 
 
 ## Connections
 - **Builds on:** [[Replication]], [[Study Design]]
-- **Leads to:** [[Collinearity]], [[Partial Pooling]], [[Mixed Effects Model|Mixed Model]]
+- **Leads to:** [[Collinearity]], [[Partial Pooling]], [[Mixed Effects Model|Mixed Model]], [[ANOVA]]
 - **Part of:** [[MOC 04 - Data Exploration|MOC - Data Exploration]]
 
 ## Flashcards

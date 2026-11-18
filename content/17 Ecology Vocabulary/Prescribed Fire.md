@@ -15,14 +15,14 @@ status: seedling
 
 # Prescribed Fire
 
-Grasslands of the Great Plains evolved with fire: lightning and people burned them every few years, and fire killed young trees while grasses regrew from their roots. Take fire away and trees such as eastern redcedar spread and turn prairie into woodland ([[Woody Encroachment]]). **Prescribed fire** is fire set on purpose to manage vegetation, under a written plan called a prescription that lists the weather it may be lit in: a range of wind speeds, relative humidity, temperature and fuel moisture.
+Grasslands of the Great Plains evolved with fire: lightning and people burned them every few years, and fire killed young trees while grasses regrew from their roots. Take fire away and trees such as eastern redcedar spread and turn [[Grassland|prairie]] into woodland ([[Woody Encroachment]]). **Prescribed fire** is fire set on purpose to manage vegetation, under a written plan called a prescription that lists the weather it may be lit in: a range of wind speeds, relative humidity, temperature and fuel moisture.
 
 The prescription is a window with two sides. Too dry or too windy, and the fire can escape and become dangerous; too humid or too calm, and it will not carry across the ground or will not be hot enough to kill the trees ([[Relative Humidity]]). Managers can only burn on days inside the window, so the number of usable days depends on how weather varies across a season, across years and across places.
 
-Homework 5 asks how daily minimum RH and maximum wind speed change across years, across the May to September season and from south to north along the Great Plains, because climate change could shrink or move those windows. That is a question about smooth curves over time that may differ between places, which is what a [[Hierarchical GAM]] is built for ([[Homework 5 - Fire Weather HGAMs]]).
+Homework 5 asks how daily minimum RH and maximum wind speed change across years, across the May to September season and from south to north along the Great Plains, because [[Climate Change Effects on Wildlife|climate change]] could shrink or move those windows. That is a question about smooth curves over time that may differ between places, which is what a [[Hierarchical GAM]] is built for ([[Homework 5 - Fire Weather HGAMs]]).
 
 ## Connections
-- **Builds on:** [[Woody Encroachment]]
+- **Builds on:** [[Woody Encroachment]], [[Grassland]], [[Climate Change Effects on Wildlife]]
 - **Leads to:** [[Relative Humidity]], [[Hierarchical GAM]]
 - **Part of:** [[MOC 19 - Ecology Vocabulary|MOC - Ecology Vocabulary]], molecular note [[Homework 5 - Fire Weather HGAMs]]
 

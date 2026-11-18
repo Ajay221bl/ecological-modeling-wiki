@@ -29,7 +29,7 @@ My data come from point counts: an observer stands at a point, records every bir
 
 ## 1b. How the habitat was measured on the ground
 - [[Visual Obstruction (Robel Pole)]]: how tall and dense the grass is
-- [[Tree Density and DBH]]: how close and how big the trees are
+- [[Tree Density]]: Tree density describes how crowded with trees the land around a survey point is, measured in the field as the average distance from the point to the nearest trees.
 - [[Field vs Remote Vegetation Measures]]: ground measures vs satellite measures, and why the habitat file has so many NAs
 
 ## 2. Detection

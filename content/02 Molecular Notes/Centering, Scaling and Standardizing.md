@@ -6,7 +6,6 @@ tags:
   - exploration
 aliases:
   - "Centering vs scaling vs standardizing"
-  - "z-scores"
   - "Rescaling predictors"
 status: seedling
 ---

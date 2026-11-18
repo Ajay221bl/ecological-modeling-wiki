@@ -14,9 +14,9 @@ status: seedling
 
 A restaurant menu with 3 starters and 4 mains offers 3 × 4 = 12 possible two-course meals, and listing them all is tedious by hand. **`expand.grid()`** writes that list: given named vectors, it returns a [[Data Frame]] with one row for every combination of their values. In the code below, four tree-cover values crossed with two burn states give 4 × 2 = 8 rows. The values themselves are usually made with [[seq()]].
 
-Its main use in this course is making *new data* for predictions. To draw a fitted curve you need the model's prediction at a neat, evenly spaced sequence of x values, for each group, with other predictors held at chosen values. Raw data do not provide that: their x values are uneven and tangled across groups, so lines drawn through them zigzag. A grid gives clean lines. In the example, a Poisson GLM of birds on tree cover and burning is fitted, and `predict(m, newdata = nd, type = "response")` gives the expected count at every grid row ([[predict()]], [[Predicting New Data]]), ready for plotting with confidence ribbons ([[Plotting Model Predictions with Ribbons]]).
+Its main use in this course is making *new data* for predictions. To draw a fitted curve you need the model's prediction at a neat, evenly spaced sequence of x values, for each group, with other [[Predictor Variable|predictors]] held at chosen values. Raw data do not provide that: their x values are uneven and tangled across groups, so lines drawn through them zigzag. A grid gives clean lines. In the example, a [[Poisson Regression|Poisson GLM]] of birds on tree cover and burning is fitted, and `predict(m, newdata = nd, type = "response")` gives the expected count at every grid row ([[predict()]], [[Predicting New Data]]), ready for plotting with confidence ribbons ([[Plotting Model Predictions with Ribbons]]).
 
-The grid's column names must match the model's predictor names exactly, or `predict()` will not find them. Keep the grid within the range of the observed data, because predictions beyond it are extrapolation. A second use is listing every combination of treatments or model terms in a design.
+The grid's column names must match the model's predictor names exactly, or `predict()` will not find them. Keep the grid within the range of the observed data, because predictions beyond it are [[Extrapolation|extrapolation]]. A second use is listing every combination of treatments or model terms in a design.
 
 ```r
 nd <- expand.grid(tree = seq(0, 60, by = 20), burn = c("no", "yes"))
@@ -29,8 +29,8 @@ nd$fit <- predict(m, newdata = nd, type = "response"); head(nd, 3)
 ```
 
 ## Connections
-- **Builds on:** [[Data Frame]], [[seq()]]
-- **Leads to:** [[predict()]], [[Predicting New Data]], [[Plotting Model Predictions with Ribbons]]
+- **Builds on:** [[Data Frame]], [[seq()]], [[Predictor Variable]]
+- **Leads to:** [[predict()]], [[Predicting New Data]], [[Plotting Model Predictions with Ribbons]], [[Poisson Regression]], [[Extrapolation]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 
 ## Flashcards

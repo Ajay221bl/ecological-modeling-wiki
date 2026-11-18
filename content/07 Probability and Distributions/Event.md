@@ -12,7 +12,7 @@ status: seedling
 
 # Event
 
-A bet that a die "lands on an even number" wins on 2, 4 or 6. An **event** is that set of winning outcomes: any collection of outcomes from the [[Sample Space]] that you might ask the probability of. Pick a statement that is true for some outcomes and false for others; the event is the set of outcomes that make it true, and its probability is the total probability of those outcomes. An event can be a single outcome or many.
+A bet that a die "lands on an even number" wins on 2, 4 or 6. An **event** is that set of winning outcomes: any collection of outcomes from the [[Sample Space]] that you might ask the probability of. Pick a statement that is true for some outcomes and false for others; the event is the set of outcomes that make it true, and its probability is the [[Law of Total Probability|total probability]] of those outcomes. An event can be a single outcome or many.
 
 Take a clutch of 4 eggs, with sample space {0, 1, 2, 3, 4} hatching. "At least one hatches" is the event {1, 2, 3, 4}; "all hatch" is {4}; "none hatch" is {0}, which is "not at least one". If each egg hatches with probability 0.6, the code below lists the probability of each outcome and finds P(at least one hatches) two ways: by adding the probabilities of 1, 2, 3 and 4, or as 1 minus P(none), giving 0.974 either way.
 
@@ -25,7 +25,7 @@ sum(p[c("1", "2", "3", "4")])                              # P(at least one hatc
 ```
 
 ## Connections
-- **Builds on:** [[Sample Space]]
+- **Builds on:** [[Sample Space]], [[Law of Total Probability]]
 - **Leads to:** [[Union of Events]], [[Joint Probability]], [[Independent Events]], [[Disjoint Events]]
 - **Part of:** [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]]
 

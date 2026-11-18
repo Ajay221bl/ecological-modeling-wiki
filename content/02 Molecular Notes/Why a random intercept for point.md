@@ -3,6 +3,7 @@ type: molecular
 tags:
   - molecular
   - mixed-models
+  - flashcards/eco/why
 aliases:
   - "Random intercept for PtNum"
   - "Why (1|PtNum)"
@@ -18,7 +19,7 @@ Almost all of my 376 modelled survey points were visited three times. Why add `(
 
 ## Built from
 - [[Repeated Measures]]: the same point is measured more than once.
-- [[Independence Assumption]]: the assumption that repeated visits break.
+- [[Independence of Observations|Independence Assumption]]: the assumption that repeated visits break.
 - [[Pseudoreplication]]: the error we commit if we ignore the repeats.
 - [[Grouping Variable]]: PtNum is the column that defines the clusters.
 - [[Random Intercept]]: the tool that gives each point its own baseline.
@@ -29,7 +30,7 @@ Almost all of my 376 modelled survey points were visited three times. Why add `(
 2. **Visits to a point are like family members.** Two visits to the same point share the same patch of grassland, the same nearby tree line, the same territory holders. BK1001 gave 6, 7 and 6 species; CR14 gave 14, 9 and 10 (ground detections, as the script counts them). A point that is rich on visit 1 tends to be rich on visit 2. Statisticians say the visits are correlated.
 3. **Standard models assume the opposite.** They assume each observation brings brand-new information: once predictors are known, one observation tells you nothing about another ([[Zuur et al. 2010]], p. 11).
 4. **Ignoring this inflates confidence.** If the model treats 1,130 related visits as 1,130 independent ones, it thinks it has more information than it does. [[Standard Error|Standard errors]] shrink, and differences look more certain than they are. Hurlbert called this [[Pseudoreplication]] ([[Hurlbert 1984]]).
-5. **The fix: a baseline per point.** A random intercept lets each point have its own starting level of richness. Those levels are assumed to come from one shared bell curve ([[Normal Distribution]]) centred on 0, and the model estimates how wide it is (a [[Variance Component]]). Harrison et al. describe this as "constraining non-independent 'units' to have the same intercept" ([[Harrison et al. 2018]], p. 5).
+5. **The fix: a baseline per point.** A random intercept lets each point have its own starting level of richness. Those levels are assumed to come from one shared bell curve ([[Normal Distribution]]) centred on 0, and the model estimates how wide it is (a [[Variance Components|Variance Component]]). Harrison et al. describe this as "constraining non-independent 'units' to have the same intercept" ([[Harrison et al. 2018]], p. 5).
 6. **Small samples per point are fine.** With only 3 visits, a point's own average is noisy. Partial pooling pulls each point's estimate toward the overall average, more strongly for points with less data ([[Harrison et al. 2018]], p. 6). Toy numbers: a point whose 3 visits average 6.3, among points averaging 4.8 overall, gets a baseline somewhat above average, but not the full +1.5. (Roughly: in a Poisson GLMM this pulling happens on the log scale.)
 7. **We have enough groups.** Estimating a spread needs many groups; "at least five" is the usual minimum ([[Harrison et al. 2018]], p. 7). With 376 points we have plenty.
 8. **The instructor agreed.** Dr. Roberts wrote on the proposal: "Good! Specifically, I would set 'point' as a random intercept." (see [[Proposal Feedback from Dr Roberts]]).
@@ -44,7 +45,7 @@ Every candidate model carries the same random part, for example the null model i
 
 What the Oct 13 run found in the top model, M3 ([[Preliminary Results]]):
 - **Focal richness: point variance 0.20 (SD 0.45).** Visits to the same point really are more alike, beyond property and habitat. Without the random intercept this would have been pseudoreplication. H3 supported.
-- **All-species richness: point variance 0.** lme4 printed `boundary (singular) fit`, a message, not an error. Property, habitat and weather already explain why some points are richer, so no point-to-point spread is left over ([[Singular Fits and Convergence Warnings]]). H3 not supported for this response.
+- **All-species richness: point variance 0.** lme4 printed `boundary (singular) fit`, a message, not an error. Property, habitat and weather already explain why some points are richer, so no point-to-point spread is left over ([[Convergence Warnings|Singular Fits and Convergence Warnings]]). H3 not supported for this response.
 - **The random intercept stays in every model anyway.** It reflects the repeated-visit design, it was decided before seeing the data, it keeps every model in the AIC table on the same footing, and with a variance of 0 it changes nothing, so keeping it costs nothing.
 
 ## What would go wrong otherwise
@@ -53,5 +54,11 @@ What the Oct 13 run found in the top model, M3 ([[Preliminary Results]]):
 - H3 in [[Hypotheses]] (repeated visits; numbered H2 in the Sep 10 proposal) would be ignored, and the property and habitat comparisons for H1 and H2 would look more certain than they are.
 
 ## Connections
-- **Related:** [[Why the point-visit is the sampling unit]], [[Why Site is fixed not random]], [[GLMM]], [[Sample vs Population]]
+- **Related:** [[Why the point-visit is the sampling unit]], [[Why Site is fixed not random]], [[GLMM]], [[Population and Sample|Sample vs Population]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 14 - Mixed Models|MOC - Mixed Models]]
+
+## Flashcards
+
+What goes wrong if repeat visits to a point are treated as independent?::The model thinks it has far more evidence than it does (pseudoreplication), so its standard errors are too small.
+
+The point variance was 0 for all species but 0.20 for focal species. Was the random intercept still kept?::Yes, in both models by design, because the repeat-visit structure is part of the study plan (H3).

@@ -16,7 +16,7 @@ A pond holds 100 frogs and the number doubles every year: 200 after one year, 40
 
 A few rules follow from "the exponent counts multiplications". Multiplying powers of the same base adds the exponents: 2³ × 2² = 2⁵, because three doublings and then two more is five doublings. Anything to the power 0 is 1, because you did no multiplying at all. A negative exponent divides: 2⁻¹ = 1/2. And exponents need not be whole numbers: 2^0.5, about 1.41, is "half a doubling", which has no frog story but works perfectly well in the maths (it is the [[Square Root]] of 2). A population of 500 trees growing 4% a year is multiplied by 1.04 each year, so after 10 years it is 500 × 1.04¹⁰ = 500 × 1.48 = 740 trees.
 
-That example hides a common surprise: 4% a year for 10 years is a 48% rise, not 40%, because each year's 4% is taken of a bigger number. Growth compounds. That is why exponents are everywhere in ecology: births make more breeders, and survival chances stack up year after year. The size of a population after t years is N₀ × λᵗ, where λ (lambda) is the growth multiplier per year, and the multiplying, not adding, is why small changes in a growth rate snowball over time ([[Sensitivity Analysis]]). Exponential growth is one of Hobbs and Hooten's core deterministic models ([[Hobbs and Hooten 2015 Ch2]]), and the special base e gives the [[Exponential Function]].
+That example hides a common surprise: 4% a year for 10 years is a 48% rise, not 40%, because each year's 4% is taken of a bigger number. Growth compounds. That is why exponents are everywhere in ecology: births make more breeders, and survival chances stack up year after year. The size of a population after t years is N₀ × λᵗ, where λ (lambda) is the growth multiplier per year, and the multiplying, not adding, is why small changes in a growth rate snowball over time ([[Sensitivity Analysis]]). [[Exponential Growth Model|Exponential growth]] is one of Hobbs and Hooten's core deterministic models ([[Hobbs and Hooten 2015 Ch2]]), and the special base e gives the [[Exponential Function]].
 
 ![[Logarithms and exponents.png|700]]
 *What to look at:* the exponential curve climbs slowly, then steeply, because each step multiplies a bigger number.
@@ -30,7 +30,7 @@ That example hides a common surprise: 4% a year for 10 years is a 48% rise, not 
 
 ## Connections
 - **Builds on:** multiplication
-- **Leads to:** [[Logarithm]], [[Exponential Function]], [[Sensitivity Analysis]]
+- **Leads to:** [[Logarithm]], [[Exponential Function]], [[Sensitivity Analysis]], [[Exponential Growth Model]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]], molecular note [[Logarithms and Exponents]]
 - **Go deeper:** [[Functions in Maths]]
 

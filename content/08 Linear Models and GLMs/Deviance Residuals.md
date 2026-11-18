@@ -12,9 +12,9 @@ status: seedling
 
 # Deviance Residuals
 
-Splitting a restaurant bill by what each person ordered itemises the total. A **deviance residual** itemises a GLM's total misfit: it is the signed square root of one observation's contribution dᵢ to the [[Deviance]], sign(yᵢ − μ̂ᵢ) × √dᵢ, with a plus or minus for whether the observation sat above or below its fitted value. Their squares sum to the [[Residual Deviance]], which the code below confirms.
+Splitting a restaurant bill by what each person ordered itemises the total. A **deviance residual** itemises a GLM's total misfit: it is the signed [[Square Root|square root]] of one observation's contribution dᵢ to the [[Deviance]], sign(yᵢ − μ̂ᵢ) × √dᵢ, with a plus or minus for whether the observation sat above or below its [[Fitted Value|fitted value]]. Their squares sum to the [[Residual Deviance]], which the code below confirms.
 
-`resid(m)` returns deviance residuals by default for a `glm`, not raw residuals. They do much the same job as [[Pearson Residuals]] and are usually a little closer to symmetric; the code prints the two types side by side for the first few observations.
+`resid(m)` returns deviance residuals by default for a `glm`, not [[Response Residuals|raw residuals]]. They do much the same job as [[Pearson Residuals]] and are usually a little closer to symmetric; the code prints the two types side by side for the first few observations.
 
 They share the same weakness for small counts and binary data: discrete bands that are hard to interpret. For those cases use [[Randomized Quantile Residuals]].
 
@@ -25,7 +25,7 @@ head(cbind(deviance = rd, pearson = resid(m, type = "pearson")), 4)
 ```
 
 ## Connections
-- **Builds on:** [[Deviance]], [[Pearson Residuals]]
+- **Builds on:** [[Deviance]], [[Pearson Residuals]], [[Square Root]], [[Fitted Value]], [[Response Residuals]]
 - **Leads to:** [[Residual Deviance]], [[Randomized Quantile Residuals]]
 - **Part of:** [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]], molecular note [[Which residuals to use for a GLM]]
 

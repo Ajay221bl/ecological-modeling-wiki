@@ -4,6 +4,7 @@ tags:
   - molecular
   - glm
   - mixed-models
+  - flashcards/eco/why
 aliases:
   - "LM GLM GLMM"
   - "One model family"
@@ -32,7 +33,7 @@ The course moves from linear models to GLMs to mixed models. Are these different
 3. **LM: use η directly.** The average *is* η (this is called the identity link), and the scatter is a bell curve ([[Normal Distribution]]) with the same width everywhere. Fine for continuous, symmetric data like body mass.
 4. **GLM: keep η, change two settings.** Choose a family for the scatter and a link between η and the average. For counts: log(average) = η, and the scatter is Poisson ([[Logarithms and Exponents]]). This is what Dr. Roberts' example does for bird richness with `glm()`.
 5. **A tiny example of the link.** Suppose η = 1.8 for some point. An LM would predict 1.8 species. A Poisson GLM predicts e^1.8 ≈ 6.0 species. If η dropped to -1, the LM would predict -1 species (impossible); the GLM predicts e^-1 ≈ 0.37 (small but possible).
-6. **GLMM: keep link and family, add groups.** Add a personal adjustment u for each point: log(average) = η + u(point). Each point's u is drawn from a bell curve centred on 0 with spread σ² (a [[Variance Component]]). This handles grouped data such as repeat visits ([[Harrison et al. 2018]], p. 5).
+6. **GLMM: keep link and family, add groups.** Add a personal adjustment u for each point: log(average) = η + u(point). Each point's u is drawn from a bell curve centred on 0 with spread σ² (a [[Variance Components|Variance Component]]). This handles grouped data such as repeat visits ([[Harrison et al. 2018]], p. 5).
 7. **So each step adds one idea.** GLM adds "the response is not bell-shaped". GLMM adds "observations come in groups". Everything learned earlier (coefficients, likelihood, AIC) carries forward.
 8. **And one more step is coming.** The same structure with a prior distribution on every parameter is a Bayesian hierarchical model, the next step in the course ([[How the project could grow into Bayesian and occupancy models]]).
 
@@ -48,9 +49,9 @@ The three levels, using real code where it exists:
     lapply(mods, function(f) glmer(as.formula(f), family = "poisson", data = datClean,
                                  control = glmerControl(optimizer = "bobyqa")))
 ```
-The main differences are the function ([[glm()]] versus [[glmer()]]) and the `(1|PtNum)` term inside each formula, which means "a separate intercept for each point". (The `control` part only picks the search method; [[Singular Fits and Convergence Warnings]].)
+The main differences are the function ([[glm()]] versus [[glmer()]]) and the `(1|PtNum)` term inside each formula, which means "a separate intercept for each point". (The `control` part only picks the search method; [[Convergence Warnings|Singular Fits and Convergence Warnings]].)
 
-My Oct 13 results show the family link in action. For all-species richness the point variance came out as 0, so that GLMM collapses back to a plain Poisson GLM: the "M" switch is on, but the data said it has nothing to add. For focal richness the variance was 0.20, so the GLMM really differs from the GLM there ([[Variance Component]], [[Preliminary Results]]).
+My Oct 13 results show the family link in action. For all-species richness the point variance came out as 0, so that GLMM collapses back to a plain Poisson GLM: the "M" switch is on, but the data said it has nothing to add. For focal richness the variance was 0.20, so the GLMM really differs from the GLM there ([[Variance Components|Variance Component]], [[Preliminary Results]]).
 
 ## What would go wrong otherwise
 - Thinking of these as unrelated tools makes it hard to know which to pick. Asking two questions instead (what distribution fits my response? are my observations grouped?) picks the model for you.
@@ -59,3 +60,12 @@ My Oct 13 results show the family link in action. For all-species richness the p
 ## Connections
 - **Related:** [[Random Effect]], [[Fixed Effect]], [[Log Link]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]], [[MOC 14 - Mixed Models|MOC - Mixed Models]]
+
+## Flashcards
+
+What does each step add, going from LM to GLM to GLMM?::The GLM adds a choice of family (scatter) and a link; the GLMM adds a random effect, a personal adjustment for each group.
+
+Why is the project's model a GLMM rather than an LM?
+??
+Richness is a count, so it needs a Poisson family and log link (the GLM step), and visits are grouped within points, so it needs a random intercept for point (the GLMM step).
+++++

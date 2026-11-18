@@ -15,9 +15,9 @@ status: seedling
 
 # by= Smooths
 
-A **by= smooth** fits a separate curve of x for each level of a factor, each with its own smoothing parameter ([[Smoothing Function s()]], [[Interaction Term]]). It is written `y ~ f + s(x, by = f)`; the factor main effect is needed because each by-smooth is centred. Each level gets its own λ, so the curves can differ in wiggliness. This is model I in [[Pedersen et al. 2019]], or GI if a global smooth is added ([[Hierarchical GAM]], [[Shared Wiggliness]]).
+A **by= smooth** fits a separate curve of x for each level of a factor, each with its own [[Smoothing Parameter|smoothing parameter]] ([[Smoothing Function s()]], [[Interaction Term]]). It is written `y ~ f + s(x, by = f)`; the factor main effect is needed because each by-smooth is centred. Each level gets its own λ, so the curves can differ in wiggliness. This is model I in [[Pedersen et al. 2019]], or GI if a [[Global Smoother|global smooth]] is added ([[Hierarchical GAM]], [[Shared Wiggliness]]).
 
-With a numeric `by`, the smooth is multiplied by that variable, a varying-coefficient model. Compare levels by differencing predictions with the lpmatrix or with gratia's `difference_smooths()` ([[Prediction from a GAM]]). With many levels and little data each, use a [[Factor-smooth Interaction]] (`bs = "fs"`) instead. In the code below the north curve is a sine wave and the others are straight lines: the by-smooths get edfs of 6.3 for north and 1.0 for east and south.
+With a numeric `by`, the smooth is multiplied by that variable, a varying-coefficient model. Compare levels by differencing predictions with the lpmatrix or with [[gratia]]'s `difference_smooths()` ([[Prediction from a GAM]]). With many levels and little data each, use a [[Factor-smooth Interaction]] (`bs = "fs"`) instead. In the code below the north curve is a sine wave and the others are straight lines: the by-smooths get edfs of 6.3 for north and 1.0 for east and south.
 
 [[Zuur et al. 2009 Ch3]] cover the interaction between a continuous and a nominal variable. `s(x, by = f)` does not include the group means; add f as a parametric term.
 
@@ -27,7 +27,7 @@ round(summary(gam(y ~ f + s(x, by = f), data = d, method = "REML"))$s.table[, "e
 ```
 
 ## Connections
-- **Builds on:** [[Smoothing Function s()]], [[Interaction Term]]
+- **Builds on:** [[Smoothing Function s()]], [[Interaction Term]], [[Smoothing Parameter]], [[Global Smoother]], [[gratia]]
 - **Leads to:** [[Factor-smooth Interaction]], [[Group-level Smoothers]]
 - **Part of:** [[MOC 15 - GAMs|MOC - GAMs]], molecular note [[by= Smooths vs Factor Smooths]]
 

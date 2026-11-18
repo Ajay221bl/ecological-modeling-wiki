@@ -12,7 +12,7 @@ status: seedling
 
 # Population Growth Rate
 
-Interest on savings multiplies your balance: a 5% rate multiplies it by 1.05 each year. The **population growth rate** λ (lambda, also called the finite rate of increase) is that multiplier for animals: next year's population size divided by this year's, λ = Nₜ₊₁ / Nₜ. So λ = 1.05 means 5% growth, λ = 0.90 means a 10% loss, and λ = 1 means holding steady. Compare it with 1: above means growing, below means declining. A bank fixes its rate, but a population's λ changes every year with weather and density. With no immigration or emigration, λ is simply the share of animals that survive plus the new recruits per animal ([[Population Dynamics]]).
+Interest on savings multiplies your balance: a 5% rate multiplies it by 1.05 each year. The **population growth rate** λ (lambda, also called the finite rate of increase) is that multiplier for animals: next year's [[Abundance|population size]] divided by this year's, λ = Nₜ₊₁ / Nₜ. So λ = 1.05 means 5% growth, λ = 0.90 means a 10% loss, and λ = 1 means holding steady. Compare it with 1: above means growing, below means declining. A bank fixes its rate, but a population's λ changes every year with weather and density. With no immigration or emigration, λ is simply the share of animals that survive plus the new recruits per animal ([[Population Dynamics]]).
 
 Counts of 200, 220 and 242 give λ = 220 / 200 = 1.10 and again 242 / 220 = 1.10. Growth multiplies, because each animal contributes survivors and offspring, so more animals add more animals; over t years the population is N₀ × λᵗ ([[Exponential Function]]). Ten years at 1.10 turns 200 into 200 × 1.10¹⁰ = 519, while ten years at 0.90 leaves 200 × 0.90¹⁰ = 70. On the log scale growth becomes addition: r = log(λ), here log(1.10) = 0.095 per year, where positive r means growth and λ = 1 corresponds to r = 0 ([[Natural Logarithm]]). λ and r are therefore not the same number: λ multiplies each year, r adds on the log scale.
 
@@ -32,7 +32,7 @@ Take the log to find how long a change takes.
 
 ## Connections
 - **Builds on:** [[Population Dynamics]], [[Exponential Function]]
-- **Leads to:** [[Exponential Growth Model]], [[Survival Rate]], [[Carrying Capacity]]
+- **Leads to:** [[Exponential Growth Model]], [[Survival Rate]], [[Carrying Capacity]], [[Abundance]]
 - **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]
 
 ## Flashcards

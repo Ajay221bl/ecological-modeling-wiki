@@ -18,7 +18,7 @@ If a model's predictions are darts and the data are the target, the **residual s
 
 For the bird plots, RSS = 1.1 from 5 observations and 2 coefficients, so σ̂ = √(1.1 / 3) = 0.61 species: a typical plot lies about 0.6 species from the line. As a rough reading, about 95% of observations lie within 2σ̂ of the line. The code below gets 0.61 from `summary(m)$sigma`, from `sigma(m)` and by hand.
 
-It estimates σ, the SD of the error term, and it feeds everything else: every coefficient's [[Standard Error]] is σ̂ times a factor that depends on the x values, and [[Prediction Interval|prediction intervals]] are built from it. The name is misleading. It is a standard deviation of residuals, not the standard error of any estimate, and in particular not the standard error of the slope. A related summary of how much scatter the model removed is [[R-squared]].
+It estimates σ, the SD of the [[Error Term|error term]], and it feeds everything else: every [[Regression Coefficient|coefficient]]'s [[Standard Error]] is σ̂ times a factor that depends on the x values, and [[Prediction Interval|prediction intervals]] are built from it. The name is misleading. It is a standard deviation of residuals, not the standard error of any estimate, and in particular not the standard error of the slope. A related summary of how much scatter the model removed is [[R-squared]].
 
 ```r
 d <- data.frame(tree = c(0, 10, 20, 30, 40), rich = c(12, 11, 9, 8, 5))
@@ -27,7 +27,7 @@ sqrt(sum(resid(m)^2) / (5 - 2))
 ```
 
 ## Connections
-- **Builds on:** [[Residual]], [[Standard Deviation]], [[Degrees of Freedom]]
+- **Builds on:** [[Residual]], [[Standard Deviation]], [[Degrees of Freedom]], [[Error Term]], [[Regression Coefficient]]
 - **Leads to:** [[Standard Error]], [[Prediction Interval]], [[R-squared]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 

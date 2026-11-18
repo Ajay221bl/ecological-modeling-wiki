@@ -17,7 +17,7 @@ Lay every data point out on a table in the order it was recorded, each pushed le
 
 Reading it is simple. A lone dot far to the right or left is a candidate outlier, like the wing length of 71 mm among values near 58 in the code below. A whole block of shifted dots hints at structure: data files are usually sorted by site or date, so a shifted block means one site or period differs. Grouping and colouring the dots by a factor, as in the second plot, compares spread between groups, a quick check of [[Homogeneity of Variance]].
 
-Why prefer it to a [[Boxplot]]? A boxplot reduces the data to five numbers and applies an automatic rule that flags many points in skewed data, while the dot plot shows every raw value and leaves the judgement to you. Two confusions: the vertical axis is only row order, which means something only if the file's order does; and it is not a scatterplot of two variables, but one variable against its position.
+Why prefer it to a [[Boxplot]]? A boxplot reduces the data to five numbers and applies an automatic rule that flags many points in skewed data, while the dot plot shows every raw value and leaves the judgement to you. Two confusions: the vertical axis is only row order, which means something only if the file's order does; and it is not a [[Scatterplot|scatterplot]] of two variables, but one variable against its position.
 
 ![[Cleveland dot plot.png|700]]
 *What to look at:* the single dot far to the right, and how easily it would hide inside a boxplot's whisker rule.
@@ -31,7 +31,7 @@ dotchart(wing, groups = site, xlab = "Wing length (mm)")   # by group
 ```
 
 ## Connections
-- **Builds on:** [[Outlier]]
+- **Builds on:** [[Outlier]], [[Scatterplot]]
 - **Leads to:** [[Boxplot]], [[Homogeneity of Variance]]
 - **See also:** [[Observation]]
 - **Part of:** [[MOC 04 - Data Exploration|MOC - Data Exploration]]

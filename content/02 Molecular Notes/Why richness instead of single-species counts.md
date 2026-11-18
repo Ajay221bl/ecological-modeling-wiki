@@ -4,6 +4,7 @@ tags:
   - molecular
   - grassland-ecology
   - count-data
+  - flashcards/eco/why
 aliases:
   - "Richness vs single species"
 status: seedling
@@ -33,7 +34,7 @@ I could have modelled the count of one bird, such as Dickcissel. Why use the num
 6. **That is why the original study did something else.** It focused on six declining grassland species with occupancy models ([[Berry et al. 2026]]). My richness question is simpler and complementary, not a replacement.
 
 ## So in my project
-- The main response is `Richness = n_distinct(SpeciesCode)` per point-visit: the number of distinct species detected on the ground ([[group_by and summarize]]), after trimming codes with [[str_trim()]] and leaving out fly-over-only detections.
+- The main response is `Richness = n_distinct(SpeciesCode)` per point-visit: the number of distinct species detected on the ground ([[group_by()|group_by and summarize]]), after trimming codes with [[str_trim()]] and leaving out fly-over-only detections.
 - **The cost in step 5 is partly paid back by a second response.** `FocalRichness` counts only the six declining grassland species from Berry et al. (0 to 3 per visit). It keeps the tidy "count of species" form but restores some identity.
 - **And the two disagreed, just as step 5 warned.** In the Oct 13 results, all-species richness rose toward tree-grass edges (about 7% more per SD) and showed no clear tree-cover effect, while focal richness fell about 45% per SD of tree cover and rose toward cores ([[Preliminary Results]], [[Why all-species and focal-species richness can disagree]]). All-species richness alone would have hidden the specialists' response.
 - In the Report, describe the main response as total richness of all detected species, not grassland-specialist richness.
@@ -47,3 +48,12 @@ I could have modelled the count of one bird, such as Dickcissel. Why use the num
 ## Connections
 - **Related:** [[Northern Bobwhite]], [[Why observed richness is not true richness]], [[Why check overdispersion before trusting Poisson]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 24 - Grassland Bird Ecology|MOC - Grassland Bird Ecology]]
+
+## Flashcards
+
+Why are single-species counts hard to model?::They are mostly zeros with a few big clumps.
+
+What does richness hide, and how does the project respond?
+??
+It hides which species are present, so a site could swap grassland specialists for edge species without richness changing. The project also models richness of the six focal grassland species.
+++++

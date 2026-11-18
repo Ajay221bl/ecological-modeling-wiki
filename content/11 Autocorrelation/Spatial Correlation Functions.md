@@ -20,7 +20,7 @@ status: seedling
 
 # Spatial Correlation Functions
 
-**Spatial correlation functions** describe how the correlation between two residuals falls as the distance d between them grows, each with its own shape controlled by a range parameter r ([[Correlation Structure]], [[Variogram Range]]). The exponential, `corExp`, is exp(−d/r): it drops fast at first and never reaches zero. The Gaussian, `corGaus`, is exp(−(d/r)²): very flat near zero, then dropping, implying a smooth surface. The spherical, `corSpher`, falls to exactly zero at d = r; the linear, `corLin`, is 1 − d/r until zero at d = r; and the rational quadratic, `corRatio`, is 1/(1 + (d/r)²), with a heavy tail. The figure plots the shapes against distance.
+**Spatial correlation functions** describe how the correlation between two residuals falls as the distance d between them grows, each with its own shape controlled by a range parameter r ([[Correlation Structure]], [[Variogram Range]]). The exponential, `corExp`, is exp(−d/r): it drops fast at first and never reaches zero. The [[Normal Distribution|Gaussian]], `corGaus`, is exp(−(d/r)²): very flat near zero, then dropping, implying a smooth surface. The spherical, `corSpher`, falls to exactly zero at d = r; the linear, `corLin`, is 1 − d/r until zero at d = r; and the rational quadratic, `corRatio`, is 1/(1 + (d/r)²), with a heavy tail. The figure plots the shapes against distance.
 
 `nugget = TRUE` multiplies the curve by (1 − nugget), letting very close points still differ ([[Nugget]]). The syntax is `corExp(form = ~ east + north, nugget = TRUE)`. In the code below, at distances 0, 0.5, 1 and 2 range units, the exponential gives 1, 0.61, 0.37 and 0.14; the Gaussian 1, 0.78, 0.37 and 0.02; the spherical 1, 0.31, 0 and 0; and the rational quadratic 1, 0.80, 0.50 and 0.20.
 
@@ -35,7 +35,7 @@ round(rbind(exponential = exp(-d / r), gaussian = exp(-(d / r)^2), spherical = i
 ```
 
 ## Connections
-- **Builds on:** [[Correlation Structure]], [[Variogram]], [[Variogram Range]]
+- **Builds on:** [[Correlation Structure]], [[Variogram]], [[Variogram Range]], [[Normal Distribution]]
 - **Leads to:** [[Nugget]], [[Generalized Least Squares]], [[UTM Coordinates]]
 - **Part of:** [[MOC 13 - Autocorrelation|MOC - Autocorrelation]]
 

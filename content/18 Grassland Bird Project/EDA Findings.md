@@ -20,7 +20,7 @@ Exploratory data analysis (EDA) means looking at the data with tables and plots 
 Computed in Python by Claude (R is not available in Claude's environment), copying what the wrangling script does plus [[str_trim()]]. These use the old `FlyOver == 0` rule on all 416 points. The final scripts (ground-detection rule, 376 complete-case points) were run in RStudio on Oct 13 and shifted them slightly: on the 376 points richness ranges 0 to 14 (mean 5.96) and BK still has the fewest species, CR the most. The model-ready numbers are in [[Preliminary Results]].
 
 - 7,742 rows, **89 species**, 416 points, **1,250 point-visits** (the Sep 10 script dropped the 2 fly-over-only visits, giving 1,248; the final script keeps them as 0). Each point has 3 visits except 2 points with 4.
-- Richness per point-visit ranges 1 to 14, mean about 6.0 ([[Average (Mean)]]).
+- Richness per point-visit ranges 1 to 14, mean about 6.0 ([[Mean|Average (Mean)]]).
 - **By property:** mean richness from 4.73 (BK) to 7.84 (CR); variance/mean from 0.56 to 0.94 on all 416 points, and **0.56 to 0.93 on the 376 model points** (Oct 13 run). The per-property table lives in [[Study Sites]]. (The Oct 12 figures, BK 4.53 and a ratio range of 0.55 to 1.08, came from the old `FlyOver == 0` filter; superseded Oct 13.)
 
 **How to read "variance/mean".** The variance measures how spread out the numbers are around their average ([[Variance]], [[Spread and Variability]]). A Poisson count has a built-in rule: its variance equals its mean, so variance divided by mean should be about 1 ([[Poisson Distribution]], [[Mean-Variance Relationship]]). Tiny example: visits with 5, 7 and 6 species have mean 6 and (sample) variance 1, so var/mean = 1/6 ≈ 0.17, much less spread than Poisson expects.

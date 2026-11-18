@@ -4,6 +4,7 @@ tags:
   - molecular
   - grassland-ecology
   - conservation
+  - flashcards/eco/why
 aliases:
   - "Why protect cores first"
   - "Core-first management"
@@ -51,3 +52,9 @@ Managers have a fixed budget and many acres of mixed grass and trees. Why do pro
 ## Connections
 - **Related:** [[Why grassland birds avoid trees]], [[Regime Shifts and Spatial Early Warning Signals]], [[Grassland Bird Decline]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 24 - Grassland Bird Ecology|MOC - Grassland Bird Ecology]]
+
+## Flashcards
+
+Why is keeping an intact grassland core cheaper than restoring woods to grass?::The core's fire-grass feedback still works, so light management keeps it; wooded land pushes back toward trees, so restoration is costly and often fails.
+
+How does spatial covariance help a manager defend the core?::It maps where intact cores (values near zero or slightly positive) and tree-grass boundaries (negative values) are.

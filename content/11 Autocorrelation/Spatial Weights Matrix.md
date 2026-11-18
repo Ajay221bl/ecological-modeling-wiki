@@ -16,7 +16,7 @@ status: seedling
 
 # Spatial Weights Matrix
 
-A **spatial weights matrix** records which pairs of sites count as neighbours, and how strongly, so that statistics like Moran's I know which pairs to compare ([[Matrix]], [[Spatial Autocorrelation]]). Entry wᵢⱼ is positive if sites i and j are neighbours and 0 otherwise, with 0 on the diagonal. Neighbours can be defined as sites within a distance band, the k nearest, polygons sharing a border, or with weights that decline with distance such as 1/d. Row-standardised weights make each row sum to 1, so each site's neighbours average out.
+A **spatial weights matrix** records which pairs of sites count as neighbours, and how strongly, so that statistics like Moran's I know which pairs to compare ([[Matrix]], [[Spatial Autocorrelation]]). Entry wᵢⱼ is positive if sites [[Subscripts and Indexing|i and j]] are neighbours and 0 otherwise, with 0 on the diagonal. Neighbours can be defined as sites within a [[Distance Bands|distance band]], the k nearest, polygons sharing a border, or with weights that decline with distance such as 1/d. Row-standardised weights make each row sum to 1, so each site's neighbours average out.
 
 In spdep, `dnearneigh()` or `knearneigh()` makes neighbour lists (`nb`) and `nb2listw()` turns them into weights. The code below builds a binary matrix for 8 random sites, each row marking that site's 2 nearest neighbours. Nearness is not always mutual, so the matrix need not be symmetric: site 5 counts site 7 as a neighbour, but site 7's two nearest are sites 2 and 8.
 
@@ -27,8 +27,8 @@ library(spdep); set.seed(10); xy <- cbind(runif(8), runif(8)); nb <- knn2nb(knea
 ```
 
 ## Connections
-- **Builds on:** [[Matrix]], [[Spatial Autocorrelation]]
-- **Leads to:** [[Moran's I]], [[Distance Classes]], [[Spatial Autoregressive Models]]
+- **Builds on:** [[Matrix]], [[Spatial Autocorrelation]], [[Subscripts and Indexing]]
+- **Leads to:** [[Moran's I]], [[Distance Classes]], [[Spatial Autoregressive Models]], [[Distance Bands]]
 - **Part of:** [[MOC 13 - Autocorrelation|MOC - Autocorrelation]]
 
 ## Flashcards

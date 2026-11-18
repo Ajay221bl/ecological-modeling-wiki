@@ -17,7 +17,7 @@ The frame and matting around a painting do not change the picture, but they deci
 
 `theme_set()` applies one theme to every plot in the script, so figures in a paper match; the code below sets `theme_bw(base_size = 14)` once and then moves one plot's legend to the bottom and removes its minor gridlines. The guiding principle is to remove ink that does not show data ([[Axis Labels and Titles]]).
 
-Order matters: a complete theme added after `theme()` overwrites your tweaks, so put `theme()` last. Font sizes also depend on the size at which the figure is saved ([[Saving Figures]], [[Multi-panel Figures]]).
+Order matters: a complete theme added after `theme()` overwrites your tweaks, so put `theme()` last. Font sizes also depend on the size at which the figure is saved ([[ggsave()|Saving Figures]], [[Multi-panel Figures]]).
 
 ```r
 library(ggplot2)
@@ -29,7 +29,7 @@ p$theme$legend.position
 
 ## Connections
 - **Builds on:** [[ggplot2 Grammar of Graphics]]
-- **Leads to:** [[Axis Labels and Titles]], [[Saving Figures]], [[Multi-panel Figures]]
+- **Leads to:** [[Axis Labels and Titles]], [[ggsave()|Saving Figures]], [[Multi-panel Figures]]
 - **Part of:** [[MOC 12 - Reproducible Coding and Figures|MOC - Reproducible Coding and Figures]]
 
 ## Flashcards

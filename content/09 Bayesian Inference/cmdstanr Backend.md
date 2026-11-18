@@ -13,9 +13,9 @@ status: seedling
 
 # cmdstanr Backend
 
-R can reach [[Stan]] in two ways: `rstan`, with Stan compiled into an R package, and **cmdstanr**, where R calls a separate installation of CmdStan, the command-line version of Stan. cmdstanr can be used as the engine behind [[brms]] in place of rstan. Its advantages are that it tracks the newest Stan release, often compiles and samples faster, and is less prone to installation problems when R is updated.
+R can reach [[Stan]] in two ways: `rstan`, with Stan compiled into an [[Packages in R|R package]], and **cmdstanr**, where R calls a separate installation of CmdStan, the command-line version of Stan. cmdstanr can be used as the engine behind [[brms]] in place of [[Running Stan from R|rstan]]. Its advantages are that it tracks the newest Stan release, often compiles and samples faster, and is less prone to installation problems when R is updated.
 
-Install the `cmdstanr` package from the Stan repository, then run `cmdstanr::install_cmdstan()` once; it needs a C++ toolchain. Use it with `brm(..., backend = "cmdstanr")` or set `options(brms.backend = "cmdstanr")` ([[brm()]]). It can also be used directly: `mod <- cmdstan_model("model.stan"); fit <- mod$sample(data = data_list)`. The commented code below shows the installation and the brms call.
+Install the `cmdstanr` package from the Stan [[Repository|repository]], then run `cmdstanr::install_cmdstan()` once; it needs a C++ toolchain. Use it with `brm(..., backend = "cmdstanr")` or set `options(brms.backend = "cmdstanr")` ([[brm()]]). It can also be used directly: `mod <- cmdstan_model("model.stan"); fit <- mod$sample(data = data_list)`. The commented code below shows the installation and the brms call.
 
 It is covered in the course setup instructions and the Stan labs ([[Course Website]]). cmdstanr does not give different answers from rstan: the model and sampler are the same and only the plumbing differs, so apart from random-number differences they agree.
 
@@ -27,8 +27,8 @@ It is covered in the course setup instructions and the Stan labs ([[Course Websi
 ```
 
 ## Connections
-- **Builds on:** [[Stan]], [[brms]]
-- **Leads to:** [[brm()]]
+- **Builds on:** [[Stan]], [[brms]], [[Packages in R]], [[Repository]]
+- **Leads to:** [[brm()]], [[Running Stan from R]]
 - **Part of:** [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]]
 
 ## Flashcards

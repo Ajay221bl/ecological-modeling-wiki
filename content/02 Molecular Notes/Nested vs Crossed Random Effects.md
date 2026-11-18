@@ -18,7 +18,7 @@ Is my design nested or crossed, and how do I write it?
 
 ## Built from
 - [[Nested Random Effects]] and [[Crossed Random Effects]].
-- [[Grouping Factor]]: labels.
+- [[Grouping Variable|Grouping Factor]]: labels.
 - [[lme4 Random-effect Syntax]].
 
 ## The reasoning, step by step

@@ -16,9 +16,9 @@ status: seedling
 
 # Simulating Data
 
-A pilot practises engine failure in a flight simulator, where it is safe and the "truth" is known. If they cannot land the simulator, they should not fly the plane. **Simulating data** means inventing a dataset from a model whose true parameters you chose, so you can see whether your analysis recovers them. The recipe follows the model itself: choose true values (say intercept 2, slope 0.5, residual SD 1), make the predictor values, compute the [[Deterministic Component]] (mu = 2 + 0.5x), add randomness from the [[Stochastic Component]] (here `rnorm(n, mu, 1)`), then fit the model and compare the estimates with the truth.
+A pilot practises engine failure in a flight simulator, where it is safe and the "truth" is known. If they cannot land the simulator, they should not fly the plane. **Simulating data** means inventing a dataset from a model whose true parameters you chose, so you can see whether your analysis recovers them. The recipe follows the model itself: choose true values (say intercept 2, slope 0.5, residual SD 1), make the [[Predictor Variable|predictor]] values, compute the [[Deterministic Component]] (mu = 2 + 0.5x), add randomness from the [[Stochastic Component]] (here `rnorm(n, mu, 1)`), then fit the model and compare the estimates with the truth.
 
-The example below does this for three model types. For a linear model, `lm()` returns estimates near 2 and 0.5. For counts, the deterministic part goes through `exp()` and the noise is Poisson, and a Poisson GLM returns estimates near 0.2 and 0.15. For grouped data, each of 10 sites gets its own intercept drawn from a normal distribution, the structure a mixed model assumes. Every model in the course can be simulated from by following its own equation, and the randomness is made repeatable with [[Random Numbers and set.seed()|set.seed()]] ([[Distribution Functions in R]]).
+The example below does this for three model types. For a [[Linear Model|linear model]], `lm()` returns estimates near 2 and 0.5. For counts, the deterministic part goes through `exp()` and the noise is Poisson, and a [[Poisson Regression|Poisson GLM]] returns estimates near 0.2 and 0.15. For [[Hierarchical Data|grouped data]], each of 10 sites gets its own intercept drawn from a [[Normal Distribution|normal distribution]], the structure a [[Mixed Effects Model|mixed model]] assumes. Every model in the course can be simulated from by following its own equation, and the randomness is made repeatable with [[Random Numbers and set.seed()|set.seed()]] ([[Distribution Functions in R]]).
 
 Simulation is so valuable because it is the only situation in which you know the right answer. It checks that model code works, Hobbs and Hooten's recommended habit before trusting any Bayesian model; it shows how much data a design needs to detect an effect; and it makes a method's behaviour visible. Simulated data are a test rig, not a result. Recovering the truth shows the code works *when the model is true*; it does not show the model is right for your real data, whose assumptions may still fail. The same machinery underlies the [[Parametric Bootstrap]], and almost every R example in this wiki uses it.
 
@@ -43,8 +43,8 @@ y2 <- rnorm(n, 2 + a[site] + 0.5 * x, 1)
 Every model in the course can be simulated from by following its own equation.
 
 ## Connections
-- **Builds on:** [[Random Numbers and set.seed()]], [[Deterministic Component]], [[Stochastic Component]]
-- **Leads to:** [[Distribution Functions in R]], [[Parametric Bootstrap]]
+- **Builds on:** [[Random Numbers and set.seed()]], [[Deterministic Component]], [[Stochastic Component]], [[Predictor Variable]]
+- **Leads to:** [[Distribution Functions in R]], [[Parametric Bootstrap]], [[Linear Model]], [[Poisson Regression]], [[Hierarchical Data]], [[Normal Distribution]], [[Mixed Effects Model]]
 - **See also:** [[Simulating Data|Simulated Data to Check Model Code]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 

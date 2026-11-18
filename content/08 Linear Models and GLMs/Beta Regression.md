@@ -13,7 +13,7 @@ status: seedling
 
 # Beta Regression
 
-The fill levels of glasses on a tray are each somewhere between empty and full, with no "trials" behind them: each is simply a fraction. **Beta regression** models such a response, a continuous value strictly between 0 and 1 like percent cover, fraction of time or a similarity index, using a [[Beta Distribution]] whose mean depends on predictors through a [[Logit Link]]. The model is yᵢ ~ Beta with mean μᵢ and precision φ, and logit(μᵢ) = ηᵢ. Its variance is μ(1 − μ)/(1 + φ): largest near 0.5, shrinking toward the ends, with φ setting the overall level. Coefficients are interpreted as in logistic regression, as log-odds of the mean proportion.
+The fill levels of glasses on a tray are each somewhere between empty and full, with no "trials" behind them: each is simply a fraction. **Beta regression** models such a response, a continuous value strictly between 0 and 1 like [[Percent Cover|percent cover]], fraction of time or a similarity index, using a [[Beta Distribution]] whose mean depends on [[Predictor Variable|predictors]] through a [[Logit Link]]. The model is yᵢ ~ Beta with mean μᵢ and precision φ, and logit(μᵢ) = ηᵢ. Its variance is μ(1 − μ)/(1 + φ): largest near 0.5, shrinking toward the ends, with φ setting the overall level. Coefficients are interpreted as in [[Logistic Regression|logistic regression]], as log-odds of the mean proportion.
 
 In the code below, proportions are simulated with logit-mean −1 + 2x and precision 10, and `glmmTMB(y ~ x, family = beta_family())` recovers coefficients close to −1 and 2 with φ near 10. Other routes are the `betareg` package and `brms` with `family = Beta()`.
 
@@ -27,8 +27,8 @@ range(y)
 ```
 
 ## Connections
-- **Builds on:** [[Beta Distribution]], [[Logit Link]]
-- **Leads to:** [[Binomial GLM for Proportions]], [[Choosing a Distribution for Your Response]]
+- **Builds on:** [[Beta Distribution]], [[Logit Link]], [[Predictor Variable]], [[Logistic Regression]]
+- **Leads to:** [[Binomial GLM for Proportions]], [[Choosing a Distribution for Your Response]], [[Percent Cover]]
 - **Part of:** [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]], molecular note [[Binomial vs Beta for Proportions]]
 
 ## Flashcards

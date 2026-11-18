@@ -14,7 +14,7 @@ status: seedling
 
 # Mean Square Prediction Error
 
-The **mean square prediction error** (MSPE) is the average squared difference between predictions and held-out observations, MSPE = (1/m) Σ (yᵢ − ŷᵢ)² over m held-out values, and its square root, the RMSE, is in the units of y ([[Cross-validation]]). It is the out-of-sample cousin of the [[Residual Sum of Squares]]. In the code below, observations 4, 7, 2 and 9 predicted as 5, 6, 3 and 6 give MSPE = (1 + 1 + 1 + 9)/4 = 3 and RMSE = 1.73.
+The **mean square prediction error** (MSPE) is the average squared difference between predictions and held-out observations, MSPE = (1/m) Σ (yᵢ − ŷᵢ)² over m held-out values, and its [[Square Root|square root]], the RMSE, is in the units of y ([[Cross-validation]]). It is the out-of-sample cousin of the [[Residual Sum of Squares]]. In the code below, observations 4, 7, 2 and 9 predicted as 5, 6, 3 and 6 give MSPE = (1 + 1 + 1 + 9)/4 = 3 and RMSE = 1.73.
 
 It penalises big misses heavily because errors are squared. It scores only the point prediction and ignores predictive uncertainty, while log scores reward a correct spread as well ([[Scoring Rules]]). It suits continuous responses; for counts and binary data consider log or Brier scores.
 
@@ -25,7 +25,7 @@ obs <- c(4, 7, 2, 9); pred <- c(5, 6, 3, 6); c(MSPE = mean((obs - pred)^2), RMSE
 ```
 
 ## Connections
-- **Builds on:** [[Cross-validation]], [[Residual Sum of Squares]]
+- **Builds on:** [[Cross-validation]], [[Residual Sum of Squares]], [[Square Root]]
 - **Leads to:** [[Scoring Rules]], [[Out-of-sample Prediction]]
 - **Part of:** [[MOC 10 - Model Selection|MOC - Model Selection]]
 

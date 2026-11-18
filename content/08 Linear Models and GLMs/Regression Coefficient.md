@@ -14,11 +14,11 @@ status: seedling
 
 # Regression Coefficient
 
-A recipe says "2 × flour + 1 × sugar + 0.5 × butter"; the numbers say how much each ingredient contributes to the result. A **regression coefficient** is one of the numbers a model multiplies its predictors by, estimated from the data, saying how the response changes with that predictor ([[Parameter]], [[Estimate]]). There is one per term: the intercept, each numeric predictor, each non-reference level of a factor and each interaction. The Greek β stands for the true value and b or β̂ for its estimate, and each is reported with a [[Standard Error]]. The simplest are the [[Intercept]] and the [[Slope]].
+A recipe says "2 × flour + 1 × sugar + 0.5 × butter"; the numbers say how much each ingredient contributes to the result. A **regression coefficient** is one of the numbers a model multiplies its [[Predictor Variable|predictors]] by, estimated from the data, saying how the response changes with that predictor ([[Parameter]], [[Estimate]]). There is one per term: the intercept, each numeric predictor, each non-reference level of a factor and each interaction. The Greek β stands for the true value and b or β̂ for its estimate, and each is reported with a [[Standard Error]]. The simplest are the [[Intercept]] and the [[Slope]].
 
-In the code below, richness is simulated as 20 − 0.1 × tree − 0.005 × elevation plus noise, and `lm(rich ~ tree + elev)` recovers coefficients close to those values. `coef(model)` extracts them, and `summary(model)$coefficients` adds standard errors and tests.
+In the code below, [[Species Richness|richness]] is simulated as 20 − 0.1 × tree − 0.005 × elevation plus noise, and `lm(rich ~ tree + elev)` recovers coefficients close to those values. `coef(model)` extracts them, and `summary(model)$coefficients` adds standard errors and tests.
 
-A coefficient's meaning depends on two things. First, what else is in the model: in multiple regression it is the effect of that predictor with the others held fixed, a "partial" effect ([[Holding Other Variables Constant]]). Second, the scale: in a GLM, coefficients live on the link scale, log units for Poisson and log-odds for logistic ([[Interpreting Regression Coefficients]]). The common mistake is to rank predictors by coefficient size, which depends on units; compare standardised effects or predicted changes over realistic ranges instead, for example with a [[Coefficient Plot]]. In mixed models these population-level coefficients are called [[Fixed Effect|fixed effects]].
+A coefficient's meaning depends on two things. First, what else is in the model: in [[Multiple Regression|multiple regression]] it is the effect of that predictor with the others held fixed, a "partial" effect ([[Holding Other Variables Constant]]). Second, the scale: in a GLM, coefficients live on the [[Link Scale|link scale]], log units for Poisson and log-odds for logistic ([[Interpreting Regression Coefficients]]). The common mistake is to rank predictors by coefficient size, which depends on units; compare [[Standardizing|standardised]] effects or predicted changes over realistic ranges instead, for example with a [[Coefficient Plot]]. In [[Mixed Effects Model|mixed models]] these population-level coefficients are called [[Fixed Effect|fixed effects]].
 
 ```r
 set.seed(1); d <- data.frame(tree = runif(50, 0, 60), elev = rnorm(50, 900, 50))
@@ -28,8 +28,8 @@ coef(m); round(summary(m)$coefficients, 3)
 ```
 
 ## Connections
-- **Builds on:** [[Parameter]], [[Slope]]
-- **Leads to:** [[Interpreting Regression Coefficients]], [[Standard Error]], [[Coefficient Plot]], [[Fixed Effect]]
+- **Builds on:** [[Parameter]], [[Slope]], [[Predictor Variable]], [[Species Richness]], [[Multiple Regression]], [[Link Scale]], [[Standardizing]]
+- **Leads to:** [[Interpreting Regression Coefficients]], [[Standard Error]], [[Coefficient Plot]], [[Fixed Effect]], [[Mixed Effects Model]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 
 ## Flashcards

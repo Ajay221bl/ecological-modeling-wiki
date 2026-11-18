@@ -13,9 +13,9 @@ status: seedling
 
 # Prior Predictive Check
 
-Taste the sauce before it goes on the dish: if it is inedible, no amount of good pasta will rescue it. A **prior predictive check** tastes the priors: it simulates data from the priors alone, before using any real data, to see whether they imply believable observations ([[Prior Distribution]], [[Simulating Data|Simulation]]). Draw parameter values from the priors, simulate a dataset from the model with those values, repeat many times and look at the results. Are counts in a plausible range? Are probabilities all stuck at 0 or 1? If the simulations are absurd, tighten the priors. In a model of bird counts with a log link and an intercept prior of Normal(0, 10), one draw of the intercept at +20 implies e²⁰ = 485 million birds per plot.
+Taste the sauce before it goes on the dish: if it is inedible, no amount of good pasta will rescue it. A **prior predictive check** tastes the priors: it simulates data from the priors alone, before using any real data, to see whether they imply believable observations ([[Prior Distribution]], [[Simulating Data|Simulation]]). Draw parameter values from the priors, simulate a dataset from the model with those values, repeat many times and look at the results. Are counts in a plausible range? Are probabilities all stuck at 0 or 1? If the simulations are absurd, tighten the priors. In a model of bird counts with a [[Log Link|log link]] and an intercept prior of Normal(0, 10), one draw of the intercept at +20 implies e²⁰ = 485 million birds per plot.
 
-It is needed because priors act through the link function and combine across parameters, so priors that each look harmless can jointly imply nonsense. The aim is that simulated data cover what could plausibly be seen, plus a margin; they need not look like your data. In the code below, Normal(0, 10) priors on a Poisson intercept and slope make the median largest count among 50 plots about 900,000, with one simulation in ten above 10¹⁴; with Normal(0, 1.5) and Normal(0, 0.5) priors the largest count is usually 4 and below about 20 in nine runs out of ten ([[Weakly Informative Prior]]). In brms use `brm(..., sample_prior = "only")` then `pp_check()`.
+It is needed because priors act through the [[Link Function|link function]] and combine across parameters, so priors that each look harmless can jointly imply nonsense. The aim is that simulated data cover what could plausibly be seen, plus a margin; they need not look like your data. In the code below, Normal(0, 10) priors on a Poisson intercept and slope make the median largest count among 50 plots about 900,000, with one simulation in ten above 10¹⁴; with Normal(0, 1.5) and Normal(0, 0.5) priors the largest count is usually 4 and below about 20 in nine runs out of ten ([[Weakly Informative Prior]]). In brms use `brm(..., sample_prior = "only")` then `pp_check()`.
 
 The brms labs use `sample_prior`, and [[Hobbs and Hooten 2015 Ch5]] discusses choosing priors by what they imply ([[Course Website]]). It does not use the data to pick the prior: no real data are involved, only general knowledge. Its after-data counterpart is the [[Posterior Predictive Check]], and a [[Prior Sensitivity Analysis]] asks the related question of how much the priors change the conclusions.
 
@@ -26,7 +26,7 @@ quantile(sim(1.5, 0.5), c(0.5, 0.9))                                 # weakly in
 ```
 
 ## Connections
-- **Builds on:** [[Prior Distribution]], [[Simulating Data|Simulation]]
+- **Builds on:** [[Prior Distribution]], [[Simulating Data|Simulation]], [[Log Link]], [[Link Function]]
 - **Leads to:** [[Posterior Predictive Check]], [[Weakly Informative Prior]], [[Prior Sensitivity Analysis]]
 - **Part of:** [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]], molecular note [[How to choose a prior]]
 

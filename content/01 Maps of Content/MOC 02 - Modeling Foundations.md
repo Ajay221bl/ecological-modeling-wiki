@@ -80,7 +80,7 @@ Unit 1 (Tue Aug 18): what a model is, the kinds of models ecologists build, and 
 - [[Randomization]]: Randomization means letting chance decide which units receive which treatment.
 - [[Treatment]]: A treatment is the condition a researcher deliberately applies to units in order to see its effect.
 - [[Control Group]]: A control group is the set of units that do not receive the treatment but are otherwise handled the same way, giving the baseline for comparison.
-- [[Confounding Variable]]: A confounding variable is one that influences both the explanatory variable and the response, creating an association between them that isn't cause and effect.
+- [[Confounding]]: Confounding is when two possible causes always show up together in your data, so any effect you credit to one might really belong to the other.
 
 ## Related molecular notes
 - [[Theoretical vs Empirical Modeling]]: A **theoretical** model starts from ideas about how nature works and asks, with maths, what must follow. An **empirical** model starts from data and...
@@ -102,9 +102,10 @@ Unit 1 (Tue Aug 18): what a model is, the kinds of models ecologists build, and 
 ## From the grassland bird project
 Notes first written for my project vault (EcoModeling-Vault) and merged in v1.5. Project home: [[MOC 23 - Grassland Bird Richness Project|MOC - Grassland Bird Richness Project]].
 
-- [[Categorical Predictor and Reference Level]]: a categorical predictor is a predictor made of named groups (like site BK, CR, DC); the model picks one group as the baseline, the reference level,...
-- [[Frequentist vs Bayesian]]: two schools of statistics that disagree on one thing: whether "probability" can describe an unknown fixed quantity (Bayesian: yes, as degree of...
-- [[Independence Assumption]]: the independence assumption says each observation brings its own fresh information: once the model's predictors are known, one observation tells you...
 - [[Predictor Variable]]: a predictor is something you use to explain or predict the response; in R it goes on the right of the `~`.
-- [[Standardizing Predictors]]: rewriting a numeric predictor as "how many standard deviations above or below its average" a value is, so predictors measured in very different units...
+- [[Reference Level]]: The reference level is the category of a factor that a model uses as its baseline, against which every other category's coefficient is measured.
+- [[Independence of Observations]]: Observations are independent when knowing the value of one tells you nothing extra about another beyond what the model already says.
 - [[Why the point-visit is the sampling unit]]
+- [[Standardizing]]: Standardizing a variable means subtracting its mean and dividing by its standard deviation, giving a z-score with mean 0 and standard deviation 1.
+- [[Frequentist vs Bayesian Inference]]: two schools of statistics that disagree on one thing: whether "probability" can describe an unknown fixed quantity (Bayesian: yes, as degree of...
+

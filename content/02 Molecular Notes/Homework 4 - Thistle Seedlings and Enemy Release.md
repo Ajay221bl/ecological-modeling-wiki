@@ -27,7 +27,7 @@ How do I approach Homework 4, including the post-mortem on the design?
 - [[Nested Experimental Design]], [[Nested Random Effects]], [[Pseudoreplication]]: the structure.
 - [[Bounded Count]], [[Poisson vs Negative Binomial]], [[Overdispersion]]: the response.
 - [[Two-way ANOVA vs Mixed Model]]: why the first analysis failed.
-- [[Random Effect with Few Levels]]: the region problem.
+- [[How Many Levels for a Random Effect|Random Effect with Few Levels]]: the region problem.
 - [[Bayesian Mixed Model Workflow in R]], [[How to write up a modeling analysis]]: the method and the report.
 
 ## The reasoning, step by step
@@ -35,7 +35,7 @@ How do I approach Homework 4, including the post-mortem on the design?
 2. **Explore.** Seedling counts run from 0 to 81 per subplot (mean 17.6, 56 zeros), right-skewed. Plot counts against distance, coloured by spray, faceted by site: the site-to-site spread is the first thing you will see.
 3. **Choose the distribution.** Counts out of about 538 / 4 ≈ 134 seeds per subplot, and the largest count (81) is a big share of that, so a binomial GLMM with `cbind(seedlings, 134 - seedlings)` is defensible; a Poisson or negative binomial GLMM is the common alternative. Say which and why ([[Bounded Count]]).
 4. **Choose the fixed effects.** Enemy release predicts a spray × distance interaction: insect damage (the control-vs-insecticide gap) should be largest near the tall thistle patch. Distance can be numeric (scaled, maybe log(distance + 1)) or a factor with 5 levels.
-5. **Choose the random effects.** `(1 | site/plot)` puts plots inside sites and gives subplots their plot's shared noise. Region has 4 levels with one single-site region; justify keeping, fixing or dropping it ([[Random Effect with Few Levels]]).
+5. **Choose the random effects.** `(1 | site/plot)` puts plots inside sites and gives subplots their plot's shared noise. Region has 4 levels with one single-site region; justify keeping, fixing or dropping it ([[How Many Levels for a Random Effect|Random Effect with Few Levels]]).
 6. **Fit it the Bayesian way** with brms, weakly informative priors on the fixed effects and on each σ, and check R-hat, ESS, trace plots and a posterior predictive check ([[Bayesian Mixed Model Workflow in R]]).
 7. **Diagnose.** Overdispersion (an observation-level random effect or negative binomial if needed), residuals against distance and site, and zeros: are there more than the model predicts ([[Zero Inflation]])?
 8. **Results.** The posterior for the interaction, a marginal effects plot of seedlings against distance for each spray level with credible bands, and the variance components for site and plot.

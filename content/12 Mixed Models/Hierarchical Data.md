@@ -27,7 +27,7 @@ library(lme4); data(sleepstudy); c(observations = nrow(sleepstudy), subjects = n
 
 ## Connections
 - **Builds on:** [[Independence of Observations|Independence]], [[Sampling Unit]]
-- **Leads to:** [[Grouping Factor]], [[Mixed Effects Model]], [[Pseudoreplication]], [[Nested Random Effects]]
+- **Leads to:** [[Grouping Variable|Grouping Factor]], [[Mixed Effects Model]], [[Pseudoreplication]], [[Nested Random Effects]]
 - **Part of:** [[MOC 14 - Mixed Models|MOC - Mixed Models]], molecular note [[Why use a random effect instead of a fixed effect]]
 
 ## Flashcards

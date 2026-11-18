@@ -15,11 +15,11 @@ status: seedling
 
 # Bayesian GLMM
 
-A **Bayesian GLMM** is the same model as a frequentist [[GLMM]], with priors on the fixed effects, the random-effect SDs and correlations, fitted by MCMC to give a full posterior for every parameter including each group's effect ([[Hierarchical Model]], [[brm()]]). The formula is lme4-style, `brm(y ~ x + (x | site), family = poisson(), data = d)`. It needs priors for the fixed effects (`class = b`), the SDs (`class = sd`, see [[Priors on Standard Deviations]]), the correlations (`class = cor`, see [[LKJ Prior]]), and family parameters such as `sigma` or `shape`.
+A **Bayesian GLMM** is the same model as a frequentist [[GLMM]], with priors on the [[Fixed Effect|fixed effects]], the random-effect SDs and correlations, fitted by MCMC to give a [[Joint Posterior Distribution|full posterior]] for every parameter including each group's effect ([[Hierarchical Model]], [[brm()]]). The formula is lme4-style, `brm(y ~ x + (x | site), family = poisson(), data = d)`. It needs priors for the fixed effects (`class = b`), the SDs (`class = sd`, see [[Priors on Standard Deviations]]), the correlations (`class = cor`, see [[LKJ Prior]]), and family parameters such as `sigma` or `shape`.
 
-Its advantages are that uncertainty in the variance components flows into everything else, there is no [[Boundary Problem When Testing Variances]], weakly informative priors stabilise fits with few groups, and predictions come with full uncertainty. Its costs are speed, the need for convergence checks (R-hat, ESS, divergences; see [[adapt_delta and Sampler Settings]]), and priors that must be justified. Output names are `b_x` for fixed effects, `sd_site__Intercept`, `cor_site__Intercept__x` and `r_site[3,Intercept]` for group effects; check it with `pp_check()` and compare models with LOO ([[Posterior Predictive Check]]). The code below, not run in the wiki build because brms fits take minutes, shows a Poisson seedling model with plot as a random intercept.
+Its advantages are that uncertainty in the [[Variance Components|variance components]] flows into everything else, there is no [[Boundary Problem When Testing Variances]], [[Weakly Informative Prior|weakly informative priors]] stabilise fits with few groups, and predictions come with full uncertainty. Its costs are speed, the need for convergence checks (R-hat, ESS, divergences; see [[adapt_delta and Sampler Settings]]), and priors that must be justified. Output names are `b_x` for fixed effects, `sd_site__Intercept`, `cor_site__Intercept__x` and `r_site[3,Intercept]` for group effects; check it with `pp_check()` and compare models with LOO ([[Posterior Predictive Check]]). The code below, not run in the wiki build because brms fits take minutes, shows a Poisson seedling model with plot as a [[Random Intercept|random intercept]].
 
-The Bayesian mixed models lab has pairs write their own analysis of `csd2003-2006kg.txt`, and Homework 4 analyses `C_vulgare_seedling_dataset.csv` with brms and cmdstanr ([[Course Website]]). Bayesian mixed models don't need informative priors; weakly informative ones usually suffice.
+The Bayesian [[Mixed Effects Model|mixed models]] lab has pairs write their own analysis of `csd2003-2006kg.txt`, and Homework 4 analyses `C_vulgare_seedling_dataset.csv` with brms and [[cmdstanr Backend|cmdstanr]] ([[Course Website]]). Bayesian mixed models don't need [[Informative Prior|informative priors]]; weakly informative ones usually suffice.
 
 ```r
 # norun (brms fits take minutes; shown for syntax)
@@ -29,7 +29,7 @@ summary(fit); pp_check(fit); ranef(fit)$plot[1:3, , "Intercept"]
 ```
 
 ## Connections
-- **Builds on:** [[GLMM]], [[Hierarchical Model]], [[brm()]]
+- **Builds on:** [[GLMM]], [[Hierarchical Model]], [[brm()]], [[Fixed Effect]], [[Joint Posterior Distribution]], [[Variance Components]], [[Weakly Informative Prior]], [[Random Intercept]], [[Mixed Effects Model]], [[cmdstanr Backend]], [[Informative Prior]]
 - **Leads to:** [[Priors on Standard Deviations]], [[LKJ Prior]], [[adapt_delta and Sampler Settings]], [[Posterior Predictive Check]]
 - **Part of:** [[MOC 14 - Mixed Models|MOC - Mixed Models]], molecular note [[lme4 vs brms]], [[Bayesian Mixed Model Workflow in R]]
 

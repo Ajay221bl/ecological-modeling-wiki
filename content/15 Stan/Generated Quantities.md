@@ -13,9 +13,9 @@ status: seedling
 
 # Generated Quantities
 
-The **generated quantities** block runs once for each saved posterior draw and computes anything derived from the parameters, such as predictions, simulated data, pointwise log-likelihoods or contrasts ([[Stan Program Blocks]], [[Posterior Predictive Distribution]]). It runs after sampling, so it does not slow the sampler or affect the posterior. `_rng` functions simulate random values, such as replicated data for posterior predictive checks ([[Posterior Predictive Check]]), and `log_lik` holds each observation's log-likelihood for LOO and WAIC ([[log_lik for LOO]]).
+The **generated quantities** block runs once for each saved posterior draw and computes anything derived from the parameters, such as predictions, simulated data, pointwise log-likelihoods or contrasts ([[Stan Program Blocks]], [[Posterior Predictive Distribution]]). It runs after sampling, so it does not slow the sampler or affect the posterior. `_rng` functions simulate random values, such as replicated data for posterior predictive checks ([[Posterior Predictive Check]]), and `log_lik` holds each observation's [[Log-likelihood|log-likelihood]] for LOO and WAIC ([[log_lik for LOO]]).
 
-Derived quantities such as differences between groups, predictions at new x or back-transformed probabilities get their uncertainty automatically, because each draw gives one value and so you get a full posterior. The code below adds `log_lik` and `y_rep` to the simple regression: the observed y has an SD of 0.720, and the replicated datasets average 0.729, so the model reproduces the spread of the data; `loo()` on the log_lik matrix then gives elpd_loo = −34.6.
+[[Derived Quantities|Derived quantities]] such as differences between groups, predictions at new x or back-transformed probabilities get their uncertainty automatically, because each draw gives one value and so you get a [[Joint Posterior Distribution|full posterior]]. The code below adds `log_lik` and `y_rep` to the simple regression: the observed y has an SD of 0.720, and the replicated datasets average 0.729, so the model reproduces the spread of the data; `loo()` on the [[Log Pointwise Predictive Density|log_lik matrix]] then gives [[Expected Log Predictive Density|elpd_loo]] = −34.6.
 
 It is used in the Stan labs ([[Course Website]], [[Transformed Parameters]]). Generated quantities don't change the fit; they are computed from it and never feed back into it.
 
@@ -33,7 +33,7 @@ ll <- loo::extract_log_lik(f, merge_chains = FALSE); loo::loo(ll, r_eff = loo::r
 ```
 
 ## Connections
-- **Builds on:** [[Stan Program Blocks]], [[Posterior Predictive Distribution]]
+- **Builds on:** [[Stan Program Blocks]], [[Posterior Predictive Distribution]], [[Log-likelihood]], [[Derived Quantities]], [[Joint Posterior Distribution]], [[Log Pointwise Predictive Density]], [[Expected Log Predictive Density]]
 - **Leads to:** [[log_lik for LOO]], [[Posterior Predictive Check]]
 - **Part of:** [[MOC 17 - Stan|MOC - Stan]]
 

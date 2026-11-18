@@ -9,11 +9,12 @@ status: seedling
 
 # Index
 
-Every note in the wiki, by folder. 1282 notes in total.
+Every note in the wiki, by folder (alphabetical within each folder, so you can scan for a name; for reading order use the [[Learning Path]] and the MOCs). 1256 notes in total.
 
-## 00 Start Here (5)
+## 00 Start Here (6)
 - [[Change Log]]
 - [[How This Wiki Works]]
+- [[Index]]
 - [[Learning Path]]
 - [[Open Questions]]
 - [[Start Here]]
@@ -47,7 +48,7 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[MOC 25 - Landscape and Remote Sensing]]
 - [[MOC 26 - Survey Design and Detection]]
 
-## 02 Molecular Notes (169)
+## 02 Molecular Notes (176)
 - [[ACF vs PACF]]
 - [[Additive vs Interaction Model]]
 - [[AIC vs BIC]]
@@ -71,6 +72,7 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Choosing an HGAM Model Type]]
 - [[Choosing Occupancy Software]]
 - [[Complete, No and Partial Pooling]]
+- [[Conditional vs Full Model Averaging]]
 - [[Conditional vs Marginal Predictions]]
 - [[Confidence vs Credible Interval]]
 - [[Console vs Script]]
@@ -83,6 +85,7 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Equal-tailed vs Highest Density Interval]]
 - [[Exploration, Inference and Prediction]]
 - [[Factorials and Binomial Coefficient]]
+- [[Field vs Remote Vegetation Measures]]
 - [[Fisher Occupancy Case Study]]
 - [[Fixed vs Random Effects]]
 - [[Frequentist vs Bayesian Inference]]
@@ -90,6 +93,7 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[GCV vs REML for Smoothing]]
 - [[Git vs GitHub]]
 - [[GLM vs GAM]]
+- [[Grassland Specialists vs Generalists]]
 - [[HGAM vs GLMM with Random Slopes]]
 - [[Homework 1 - Riparian Plant Diversity]]
 - [[Homework 2 - Coral Bleaching]]
@@ -121,6 +125,7 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Logarithms and Exponents]]
 - [[Loops, apply and map]]
 - [[Marginal vs Conditional Occupancy]]
+- [[Marginal vs Conditional R-squared]]
 - [[Mark-Recapture vs Unmarked Survey Methods]]
 - [[Mayfield vs Kaplan-Meier]]
 - [[Mean, Median and Mode]]
@@ -132,6 +137,7 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Null Hypothesis Testing vs Model Selection]]
 - [[Observational vs Experimental Study]]
 - [[Occupancy vs Abundance]]
+- [[Occupancy vs Abundance vs Richness]]
 - [[Occupancy vs Detection Probability]]
 - [[Occupancy Workflow in R]]
 - [[OLS vs GLS]]
@@ -153,6 +159,7 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Process vs Sampling Variance in Survival Estimates]]
 - [[Proper vs Improper Prior]]
 - [[Random Intercept vs Random Slope]]
+- [[Regime Shifts and Spatial Early Warning Signals]]
 - [[Relative vs Absolute Paths]]
 - [[REML vs ML]]
 - [[SAR vs CAR Models]]
@@ -215,13 +222,13 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Why trees take over grasslands without fire]]
 - [[Why use a random effect instead of a fixed effect]]
 - [[Wide vs Long Data]]
+- [[Wrangling vs Analysis Scripts]]
 - [[Writing a Stan Model Step by Step]]
 - [[Zero-inflated vs Hurdle Model]]
 
-## 03 Basics from Zero (69)
+## 03 Basics from Zero (67)
 - [[Absolute Value]]
 - [[Asymptote]]
-- [[Average (Mean)]]
 - [[Binary Variable]]
 - [[Binomial Coefficient]]
 - [[Categorical Variable]]
@@ -233,11 +240,11 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Data Table Rows and Columns]]
 - [[Degrees of Freedom]]
 - [[Derivative]]
+- [[Deviation]]
 - [[Discrete Data]]
 - [[Equation of a Line]]
 - [[Estimate]]
 - [[Estimator]]
-- [[Explanatory Variable]]
 - [[Exponent]]
 - [[Exponential Function]]
 - [[Factorial]]
@@ -273,7 +280,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Response Variable]]
 - [[Sample]]
 - [[Sample Size]]
-- [[Sample vs Population]]
 - [[Scientific Notation in R Output]]
 - [[Spearman Rank Correlation]]
 - [[Spread and Variability]]
@@ -289,7 +295,7 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Vector]]
 - [[Weighted Mean]]
 
-## 04 Modeling Foundations (66)
+## 04 Modeling Foundations (62)
 - [[Accuracy]]
 - [[Adaptive Resource Management]]
 - [[Analytical Model]]
@@ -298,9 +304,7 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Binomial Sampling]]
 - [[Biological Population]]
 - [[Bracket Notation]]
-- [[Categorical Predictor and Reference Level]]
 - [[Conceptual Model]]
-- [[Confounding Variable]]
 - [[Control Group]]
 - [[Deduction]]
 - [[Deterministic Component]]
@@ -310,7 +314,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Forecast]]
 - [[Hypothesis]]
 - [[Hypothetico-deductive Method]]
-- [[Independence Assumption]]
 - [[Individual Variation]]
 - [[Individual-based Model]]
 - [[Induction]]
@@ -345,7 +348,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Scientific Method]]
 - [[Sensitivity Analysis]]
 - [[Simulation Model]]
-- [[Standardizing Predictors]]
 - [[Statistical Model]]
 - [[Statistical Population]]
 - [[Stochastic Component]]
@@ -357,7 +359,7 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Unbiased Estimator]]
 - [[Underfitting]]
 
-## 05 R and Tidyverse (114)
+## 05 R and Tidyverse (104)
 - [[Absolute Path]]
 - [[across()]]
 - [[Aesthetics]]
@@ -374,7 +376,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Console]]
 - [[CRAN]]
 - [[Data Frame]]
-- [[Data Frames]]
 - [[Data Types in R]]
 - [[Dates in R]]
 - [[Debugging]]
@@ -384,23 +385,20 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Errors and Warnings in R]]
 - [[expand.grid()]]
 - [[Facets]]
-- [[Factors]]
 - [[Factors in R]]
 - [[File System Functions in R]]
 - [[filter()]]
 - [[For Loop]]
 - [[Fork]]
-- [[Function Arguments]]
-- [[Functions and Arguments]]
+- [[Functions in R]]
 - [[Geoms]]
-- [[ggplot2 and ggsave()]]
 - [[ggplot2 Grammar of Graphics]]
+- [[ggsave()]]
 - [[Git]]
 - [[GitHub]]
 - [[gitignore File]]
 - [[glm()]]
 - [[glmer()]]
-- [[group_by and summarize]]
 - [[group_by()]]
 - [[Help Files in R]]
 - [[here()]]
@@ -411,7 +409,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[kable()]]
 - [[Knitting]]
 - [[lapply()]]
-- [[librarian and shelf()]]
 - [[librarian shelf()]]
 - [[Lists in R]]
 - [[map()]]
@@ -426,7 +423,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Packages in R]]
 - [[paste()]]
 - [[Pipe]]
-- [[Pipe Operator]]
 - [[pivot_longer()]]
 - [[pivot_wider()]]
 - [[Plotting Model Predictions with Ribbons]]
@@ -434,13 +430,11 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Push and Pull]]
 - [[R and RStudio]]
 - [[R Markdown]]
-- [[R Objects and Assignment]]
-- [[R Packages]]
 - [[Random Numbers and set.seed()]]
 - [[Reading Data from a URL]]
 - [[Reading Data into R]]
 - [[README]]
-- [[README Data Dictionary]]
+- [[Regular Expression]]
 - [[Relative Path]]
 - [[rename()]]
 - [[rep()]]
@@ -448,7 +442,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Reproducibility]]
 - [[RProject]]
 - [[sapply()]]
-- [[Saving Figures]]
 - [[Script]]
 - [[select()]]
 - [[separate_wider_delim()]]
@@ -470,7 +463,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Vectors in R]]
 - [[Version Control]]
 - [[Working Directory]]
-- [[Wrangling vs Analysis Scripts]]
 - [[Writing Your Own Function]]
 
 ## 06 Data Exploration (44)
@@ -577,14 +569,13 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Uniform Distribution]]
 - [[Union of Events]]
 
-## 08 Linear Models and GLMs (147)
+## 08 Linear Models and GLMs (146)
 - [[Adjusted R-squared]]
 - [[Allometry]]
 - [[Alternative Hypothesis]]
 - [[Analysis of Deviance]]
 - [[ANCOVA]]
 - [[ANOVA]]
-- [[Assumptions of Linear Models]]
 - [[Back-transformation]]
 - [[Beta Regression]]
 - [[Beta-binomial Distribution]]
@@ -726,7 +717,7 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[z-test]]
 - [[Zero-inflated Model]]
 
-## 09 Bayesian Inference (87)
+## 09 Bayesian Inference (83)
 - [[Acceptance Rate]]
 - [[Bayes' Theorem]]
 - [[Bayesian Inference]]
@@ -752,7 +743,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Equal-tailed Interval]]
 - [[Equivariance Property of MCMC]]
 - [[Frequentist Inference]]
-- [[Frequentist vs Bayesian]]
 - [[Full-conditional Distribution]]
 - [[Gamma-Poisson Conjugacy]]
 - [[Gibbs Sampling]]
@@ -779,7 +769,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[MCMC]]
 - [[MCMC Chains]]
 - [[MCMC Convergence]]
-- [[MCMC Convergence Diagnostics]]
 - [[Metropolis Algorithm]]
 - [[Metropolis-Hastings Algorithm]]
 - [[Missing Data in Bayesian Models]]
@@ -788,7 +777,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Normalizing Constant]]
 - [[Other Convergence Diagnostics]]
 - [[Parameter Model]]
-- [[Posterior]]
 - [[Posterior Distribution]]
 - [[Posterior Draws]]
 - [[Posterior Predictive Check]]
@@ -796,7 +784,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Posterior Summary]]
 - [[pp_check()]]
 - [[Precision Parameter]]
-- [[Prior]]
 - [[Prior Distribution]]
 - [[Prior Predictive Check]]
 - [[Prior Sensitivity Analysis]]
@@ -815,7 +802,7 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Vague Prior]]
 - [[Weakly Informative Prior]]
 
-## 10 Model Selection (62)
+## 10 Model Selection (59)
 - [[AIC]]
 - [[AICc]]
 - [[Akaike Weight]]
@@ -826,7 +813,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[BIC]]
 - [[Candidate Model Set]]
 - [[Complete-Case Analysis]]
-- [[Conditional vs Full Model Averaging]]
 - [[Confidence Set of Models]]
 - [[Confounding]]
 - [[Criticisms of p-values]]
@@ -834,7 +820,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Cumulative Weight]]
 - [[Data Dredging]]
 - [[Delta AIC]]
-- [[Delta AIC and Akaike Weights]]
 - [[DIC]]
 - [[Effective Number of Parameters]]
 - [[Evidence Ratio]]
@@ -868,7 +853,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Relative Variable Importance]]
 - [[Residual Diagnostics]]
 - [[Residual Tests in DHARMa]]
-- [[Residuals]]
 - [[Reversible-jump MCMC]]
 - [[Scale of Effect]]
 - [[Scoring Rules]]
@@ -879,11 +863,10 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Uninformative Parameters]]
 - [[WAIC]]
 
-## 11 Autocorrelation (45)
+## 11 Autocorrelation (43)
 - [[AR(1) Error Structure]]
 - [[ARMA Error Structure]]
 - [[Autocorrelation]]
-- [[Autocorrelation - Friend or Foe]]
 - [[Autocorrelation Function]]
 - [[Bubble Plot of Residuals]]
 - [[Compound Symmetry]]
@@ -909,7 +892,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Pseudoreplication]]
 - [[Residual Autocorrelation]]
 - [[Sill]]
-- [[Smooth Function]]
 - [[Spatial Autocorrelation]]
 - [[Spatial Autoregressive Models]]
 - [[Spatial Correlation Functions]]
@@ -926,7 +908,7 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Variogram]]
 - [[Variogram Range]]
 
-## 12 Mixed Models (53)
+## 12 Mixed Models (48)
 - [[adapt_delta and Sampler Settings]]
 - [[Bayesian GLMM]]
 - [[Blocking]]
@@ -944,7 +926,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Fixed Effect]]
 - [[fixef(), ranef() and VarCorr()]]
 - [[GLMM]]
-- [[Grouping Factor]]
 - [[Grouping Variable]]
 - [[Hierarchical Data]]
 - [[How Many Levels for a Random Effect]]
@@ -953,8 +934,7 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Linear Mixed Model]]
 - [[LKJ Prior]]
 - [[lme4 Random-effect Syntax]]
-- [[lmer() and glmer()]]
-- [[Marginal and Conditional R-squared]]
+- [[lmer()]]
 - [[Marginal Model]]
 - [[Mixed Effects Model]]
 - [[Nested Experimental Design]]
@@ -968,16 +948,13 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[performance Package Checks]]
 - [[Priors on Standard Deviations]]
 - [[Random Effect]]
-- [[Random Effect with Few Levels]]
 - [[Random Intercept]]
 - [[Random Slope]]
 - [[REML]]
 - [[Repeated Measures]]
 - [[Shrinkage]]
 - [[Singular Fit]]
-- [[Singular Fits and Convergence Warnings]]
 - [[Top-down Model Selection Protocol]]
-- [[Variance Component]]
 - [[Variance Components]]
 - [[Variance Structures]]
 
@@ -1019,7 +996,7 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Tweedie Distribution]]
 - [[Wiggliness Penalty]]
 
-## 14 Population Estimation (91)
+## 14 Population Estimation (90)
 - [[Abundance]]
 - [[Acoustic Survey]]
 - [[Age and Time Structure in Survival Models]]
@@ -1078,7 +1055,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Mark-Recapture]]
 - [[Mayfield Nest Survival]]
 - [[Multi-season Occupancy]]
-- [[Multi-species Occupancy]]
 - [[Multi-state Models]]
 - [[N-mixture Model]]
 - [[Naive Occupancy]]
@@ -1141,11 +1117,12 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Writing Methods Sections]]
 - [[Writing Results Sections]]
 
-## 17 Ecology Vocabulary (55)
+## 17 Ecology Vocabulary (58)
 - [[Biodiversity]]
 - [[Biome]]
 - [[Body Condition]]
 - [[Body Size]]
+- [[Brood Parasitism]]
 - [[Canopy Cover]]
 - [[Carrying Capacity]]
 - [[Climate Change Effects on Wildlife]]
@@ -1160,7 +1137,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Ecological Succession]]
 - [[Ecology]]
 - [[Ecosystem]]
-- [[Edge Effect]]
 - [[Enemy Release Hypothesis]]
 - [[Environmental Gradient]]
 - [[Epizootic Hemorrhagic Disease]]
@@ -1172,7 +1148,9 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Grassland]]
 - [[Grazing]]
 - [[Habitat]]
+- [[Habitat Generalist]]
 - [[Habitat Patch]]
+- [[Habitat Specialist]]
 - [[Habitat Structure]]
 - [[Home Range]]
 - [[Invasive Species]]
@@ -1193,6 +1171,7 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Species Interaction]]
 - [[Tag Loss]]
 - [[Temperature Anomaly]]
+- [[Tipping Point]]
 - [[Translocation]]
 - [[Vector-borne Disease]]
 - [[Vital Rates]]
@@ -1213,10 +1192,9 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[R Scripts Walkthrough]]
 - [[Study Sites]]
 
-## 19 Grassland Bird Ecology (26)
+## 19 Grassland Bird Ecology (24)
 - [[Area Sensitivity]]
 - [[Breeding Season Timing]]
-- [[Climate Change and Birds]]
 - [[Defend the Core]]
 - [[Dickcissel]]
 - [[Disking]]
@@ -1228,7 +1206,6 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Grassland Bird Decline]]
 - [[Grassland Core Habitat]]
 - [[Grassland Restoration and Management]]
-- [[Grassland Specialists vs Generalists]]
 - [[Habitat Fragmentation]]
 - [[Habitat Selection]]
 - [[Land-Use Change and Agriculture]]
@@ -1236,12 +1213,12 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Mowing]]
 - [[Northern Bobwhite]]
 - [[Rangeland Health]]
-- [[Regime Shifts and Spatial Early Warning Signals]]
+- [[Regime Shift]]
 - [[Scissor-tailed Flycatcher]]
 - [[Spatial Covariance]]
-- [[Woody Plant Encroachment]]
+- [[Spatial Early Warning Signal]]
 
-## 20 Landscape and Remote Sensing (13)
+## 20 Landscape and Remote Sensing (12)
 - [[Arkansas River Valley]]
 - [[Ecoregions]]
 - [[Flood Masking]]
@@ -1254,25 +1231,22 @@ Every note in the wiki, by folder. 1282 notes in total.
 - [[Plant Functional Groups]]
 - [[Rangeland Analysis Platform]]
 - [[Remote Sensing]]
-- [[Spatial Scale (Grain and Extent)]]
 
-## 21 Survey Design and Detection (17)
+## 21 Survey Design and Detection (15)
 - [[Breeding Bird Survey]]
 - [[Detection Covariates]]
 - [[Distance Bands]]
 - [[Ecological Similarity Assumption]]
-- [[Field vs Remote Vegetation Measures]]
 - [[Fly-over Detections]]
 - [[Four-Letter Species Codes]]
 - [[Multi-species Occupancy Model]]
 - [[Observer Effects]]
 - [[Occupancy Model]]
-- [[Occupancy vs Abundance vs Richness]]
 - [[Point Count Survey]]
 - [[Repeat-Visit Design]]
 - [[Roadside Surveys]]
 - [[Systematic Grid Sampling]]
-- [[Tree Density and DBH]]
+- [[Tree Density]]
 - [[Visual Obstruction (Robel Pole)]]
 
 ## Course (5)

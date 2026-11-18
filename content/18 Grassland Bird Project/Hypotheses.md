@@ -46,7 +46,7 @@ Why the two can point in opposite directions: [[Why all-species and focal-specie
 ### H3, repeated visits
 Visits to the same point are more alike than visits to different points, because the point's location and habitat do not change between visits. Treating them as independent would be [[Pseudoreplication]] ([[Hurlbert 1984]]). **Expectation:** the variance of the [[Random Intercept]] for point is clearly greater than zero. The random intercept is in every model ([[Bolker et al. 2009]]), so H3 is built in rather than ranked by AIC ([[Why a random intercept for point]]).
 
-**Outcome (Oct 13): half supported.** For focal species the point variance is 0.20 (SD 0.45), clearly above zero. For all species it is 0, a singular fit: once property, habitat and weather were in, visits to the same point were no more alike than visits to different points ([[Variance Component]], [[Preliminary Results]]). The random intercept stays in every model as designed.
+**Outcome (Oct 13): half supported.** For focal species the point variance is 0.20 (SD 0.45), clearly above zero. For all species it is 0, a singular fit: once property, habitat and weather were in, visits to the same point were no more alike than visits to different points ([[Variance Components|Variance Component]], [[Preliminary Results]]). The random intercept stays in every model as designed.
 
 ### How the hypotheses map onto the models
 All models include Wind, Sky and the random intercept for point. Full formulas: [[Analysis Plan]].

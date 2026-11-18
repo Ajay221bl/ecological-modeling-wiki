@@ -4,6 +4,7 @@ tags:
   - molecular
   - grassland-ecology
   - behaviour
+  - flashcards/eco/why
 aliases:
   - "Tree avoidance by grassland birds"
   - "Boundary avoidance"
@@ -12,7 +13,7 @@ status: seedling
 
 # Why grassland birds avoid trees
 > [!summary] In plain words
-> Grassland birds nest on or near the ground in open country, where their main defence is seeing danger early and being hard to find. Trees break that: they give hawks, crows and cowbirds lookout posts, shelter nest predators, and block the view. Over many generations, birds that settled away from trees raised more young, so today's grassland birds tend to avoid tree lines. The strength varies: bobwhite like some shrubby cover, while Dickcissels and shrikes avoid forest edges strongly.
+> Grassland birds nest on or near the ground in open country, where their main defence is seeing danger early and being hard to find. Trees break that: they give hawks, crows and [[Brood Parasitism|cowbirds]] lookout posts, shelter nest predators, and block the view. Over many generations, birds that settled away from trees raised more young, so today's grassland birds tend to avoid tree lines. The strength varies: bobwhite like some shrubby cover, while Dickcissels and shrikes avoid forest edges strongly.
 
 ## The question
 The data release reports that the grassland bird community avoided tree-grass boundaries. A tree is just a plant. Why should a bird in a field care about one 100 m away?
@@ -23,7 +24,7 @@ The data release reports that the grassland bird community avoided tree-grass bo
 - [[Grassland Specialists vs Generalists]]: why some species avoid edges and others seek them.
 - [[Area Sensitivity]]: why some species need large open patches, not just some grass.
 - [[Focal Species]]: the six birds the response was measured on.
-- [[Woody Plant Encroachment]]: where the trees come from.
+- [[Woody Encroachment|Woody Plant Encroachment]]: where the trees come from.
 
 ## The reasoning, step by step
 1. **Grassland birds nest low.** Meadowlarks and bobwhite nest on the ground; Dickcissels nest in grass and low shrubs. A nest in the grass cannot be defended by size or strength, only by being hidden and by adults spotting danger early.
@@ -47,5 +48,11 @@ The data release reports that the grassland bird community avoided tree-grass bo
 - Ignoring the mechanism (predation, perches, view) would leave the pattern unexplained and make it harder to predict which management helps ([[Defend the Core]]).
 
 ## Connections
-- **Related:** [[Why trees take over grasslands without fire]], [[Grassland Core Habitat]], [[Habitat Fragmentation]]
+- **Related:** [[Why trees take over grasslands without fire]], [[Grassland Core Habitat]], [[Habitat Fragmentation]], [[Brood Parasitism]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 24 - Grassland Bird Ecology|MOC - Grassland Bird Ecology]]
+
+## Flashcards
+
+Give three ways trees harm ground-nesting grassland birds.::They give hawks, crows and cowbirds lookout posts, shelter nest predators, and block the birds' view of danger.
+
+Which focal species avoids tree lines least, and why?::Northern Bobwhite, because it uses some shrubby, woody cover.

@@ -15,7 +15,7 @@ status: seedling
 
 If two doctors who start from different assumptions reach the same diagnosis, you trust it more; if they disagree, the evidence alone hasn't settled the matter. A **prior sensitivity analysis** gets those second opinions: refit the model under different reasonable priors, wider, narrower or from a different family, and compare the posteriors for the quantities you care about ([[Prior Distribution]], [[Posterior Distribution]], [[Sensitivity Analysis]]). If they agree, the data dominate and you can say so; if they differ, the prior matters, so report that honestly and defend your choice, or collect more data.
 
-The code below fits a survival probability under a flat, a sceptical Beta(2, 8) and an optimistic Beta(8, 2) prior. With 2 survivors out of 8 the posterior means are 0.30, 0.22 and 0.56, so the prior matters; with 50 out of 200 they are 0.25, 0.25 and 0.28, so it barely does. A quick visual check is to overlay prior and posterior: a posterior that looks like its prior means the data said little.
+The code below fits a [[Survival Rate|survival probability]] under a flat, a sceptical Beta(2, 8) and an optimistic Beta(8, 2) prior. With 2 survivors out of 8 the posterior means are 0.30, 0.22 and 0.56, so the prior matters; with 50 out of 200 they are 0.25, 0.25 and 0.28, so it barely does. A quick visual check is to overlay prior and posterior: a posterior that looks like its prior means the data said little.
 
 The most sensitive parameters are variance parameters with few groups, parameters with little data and weakly identified parameters ([[Identifiability]]). It pairs naturally with an [[Informative Prior]] and with a [[Prior Predictive Check]], and [[Hobbs and Hooten 2015 Ch5]] recommends it. It does not mean trying priors until you like the result; it means reporting all of them.
 
@@ -26,7 +26,7 @@ y <- 50; n <- 200; t(sapply(pri, function(ab) round(c(mean = (ab[1] + y) / (sum(
 ```
 
 ## Connections
-- **Builds on:** [[Prior Distribution]], [[Posterior Distribution]]
+- **Builds on:** [[Prior Distribution]], [[Posterior Distribution]], [[Survival Rate]]
 - **Leads to:** [[Informative Prior]], [[Prior Predictive Check]], [[Identifiability]]
 - **Part of:** [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]], molecular note [[How to choose a prior]]
 

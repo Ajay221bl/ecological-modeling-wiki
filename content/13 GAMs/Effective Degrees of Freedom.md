@@ -14,7 +14,7 @@ status: seedling
 
 # Effective Degrees of Freedom
 
-The **effective degrees of freedom** (edf) of a smooth measure how flexible it turned out after penalisation, with 1 meaning a straight line and larger values meaning more wiggles ([[Degrees of Freedom]], [[Smoothing Parameter]]). The edf ranges from about 1, or 0 with shrinkage smooths, up to k − 1. An edf near 1 is effectively linear; 2 to 3 is a gentle curve; near k − 1, check whether k is too small ([[Basis Dimension and gam.check()]]). It is not an integer, because penalised coefficients count as partial parameters, the same idea as the [[Effective Number of Parameters]] of any penalised model.
+The **effective degrees of freedom** (edf) of a smooth measure how flexible it turned out after penalisation, with 1 meaning a [[Equation of a Line|straight line]] and larger values meaning more wiggles ([[Degrees of Freedom]], [[Smoothing Parameter]]). The edf ranges from about 1, or 0 with [[Double Penalty Selection|shrinkage smooths]], up to k − 1. An edf near 1 is effectively linear; 2 to 3 is a gentle curve; near k − 1, check whether k is too small ([[Basis Dimension and gam.check()]]). It is not an integer, because penalised coefficients count as partial parameters, the same idea as the [[Effective Number of Parameters]] of any penalised model.
 
 `summary(gam)` reports it with a test of whether the smooth differs from zero; Ref.df is a reference df used for that test. In the code below x1 has a truly linear effect and x2 a sine-shaped one: s(x1) gets an edf of 1.67, nearly straight, and s(x2) an edf of 7.49, clearly curved.
 
@@ -26,7 +26,7 @@ round(summary(gam(y ~ s(x1) + s(x2), data = d, method = "REML"))$s.table[, 1:2],
 ```
 
 ## Connections
-- **Builds on:** [[Degrees of Freedom]], [[Smoothing Parameter]], [[Effective Number of Parameters]]
+- **Builds on:** [[Degrees of Freedom]], [[Smoothing Parameter]], [[Effective Number of Parameters]], [[Equation of a Line]], [[Double Penalty Selection]]
 - **Leads to:** [[Basis Dimension and gam.check()]], [[Partial Effect Plots]]
 - **Part of:** [[MOC 15 - GAMs|MOC - GAMs]]
 

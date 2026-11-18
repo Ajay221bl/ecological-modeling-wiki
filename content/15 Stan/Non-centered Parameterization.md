@@ -17,9 +17,9 @@ status: seedling
 
 Picture a funnel: when τ is small, all group effects are squeezed into a narrow neck, and when τ is large they spread out, so a sampler taking fixed-size steps falls off the walls of the neck. A **non-centred parameterisation** writes group effects as u = μ + τ × z with z ~ normal(0, 1), instead of u ~ normal(μ, τ), which straightens the funnel into a tube and removes the dependence between u and τ that makes HMC diverge ([[Random Intercepts in Stan]], [[Divergent Transitions]], [[Hamiltonian Monte Carlo]]). The centred form, θⱼ ~ normal(μ, τ), is good when each group has lots of data; the non-centred form, zⱼ ~ normal(0, 1) with θⱼ = μ + τzⱼ, is good when groups have little data or τ is near zero.
 
-It is the same model with different geometry: the posterior for θ is identical in theory, and only sampling changes. Divergences in hierarchical models are the usual sign you need it, and brms uses non-centred random effects by default ([[Bayesian GLMM]]). In the code below the classic eight-schools data (Rubin 1981), with 4 chains of 2,000 iterations, give the centred model 51 divergent transitions, an effective sample size for τ of about 270 and R-hat 1.02; the non-centred model has 0 divergences, about 2,800 effective draws and R-hat 1.00.
+It is the same model with different geometry: the posterior for θ is identical in theory, and only sampling changes. Divergences in [[Hierarchical Model|hierarchical models]] are the usual sign you need it, and brms uses non-centred [[Random Effect|random effects]] by default ([[Bayesian GLMM]]). In the code below the classic eight-schools data (Rubin 1981), with 4 chains of 2,000 iterations, give the centred model 51 divergent transitions, an [[Effective Sample Size|effective sample size]] for τ of about 270 and R-hat 1.02; the non-centred model has 0 divergences, about 2,800 effective draws and R-hat 1.00.
 
-It is taught in the Stan lab on mixed models ([[Course Website]], [[Transformed Parameters]]). Raising adapt_delta until the divergences go away can hide them; reparameterising fixes the cause ([[adapt_delta and Sampler Settings]]).
+It is taught in the Stan lab on [[Mixed Effects Model|mixed models]] ([[Course Website]], [[Transformed Parameters]]). Raising adapt_delta until the divergences go away can hide them; reparameterising fixes the cause ([[adapt_delta and Sampler Settings]]).
 
 ```r
 library(rstan); options(mc.cores = 2)
@@ -35,7 +35,7 @@ round(rbind(centered = summary(f1, pars = "tau")$summary[, c("mean", "n_eff", "R
 ```
 
 ## Connections
-- **Builds on:** [[Random Intercepts in Stan]], [[Divergent Transitions]]
+- **Builds on:** [[Random Intercepts in Stan]], [[Divergent Transitions]], [[Hierarchical Model]], [[Random Effect]], [[Effective Sample Size]], [[Mixed Effects Model]]
 - **Leads to:** [[Transformed Parameters]], [[adapt_delta and Sampler Settings]]
 - **Part of:** [[MOC 17 - Stan|MOC - Stan]], molecular note [[Centered vs Non-centered Parameterization]]
 

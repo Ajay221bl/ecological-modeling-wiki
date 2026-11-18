@@ -5,6 +5,7 @@ tags:
   - bayesian
   - detection
   - future-work
+  - flashcards/eco/why
 aliases:
   - "Bayesian and occupancy extensions"
 status: seedling
@@ -19,8 +20,8 @@ The final proposal (Oct 12) plans a Bayesian version of the best model later ([[
 
 ## Built from
 - [[Probability]]: the language both extensions are written in.
-- [[Frequentist vs Bayesian]]: the difference in what parameters and intervals mean.
-- [[Prior]] and [[Posterior]]: the inputs and outputs of a Bayesian analysis.
+- [[Frequentist vs Bayesian Inference|Frequentist vs Bayesian]]: the difference in what parameters and intervals mean.
+- [[Prior Distribution|Prior]] and [[Posterior Distribution|Posterior]]: the inputs and outputs of a Bayesian analysis.
 - [[Hierarchical Model]]: the layered structure my random intercept already has.
 - [[MCMC]]: the computer method used to fit Bayesian models.
 - [[Occupancy Model]]: separates true presence from detection.
@@ -28,9 +29,9 @@ The final proposal (Oct 12) plans a Bayesian version of the best model later ([[
 
 ## The reasoning, step by step
 1. **My model already has layers.** Visits sit inside points, and point baselines come from a shared distribution whose spread is estimated. That is a hierarchical model.
-2. **Bayesian = same model, different bookkeeping.** A Bayesian model writes every unknown (the property or habitat effects, the spread σ²) as a probability distribution. You start with a [[Prior]] (what is plausible before the data) and update it with the data to get a [[Posterior]] (what is plausible after).
+2. **Bayesian = same model, different bookkeeping.** A Bayesian model writes every unknown (the property or habitat effects, the spread σ²) as a probability distribution. You start with a [[Prior Distribution|Prior]] (what is plausible before the data) and update it with the data to get a [[Posterior Distribution|Posterior]] (what is plausible after).
 3. **Models are linked parts.** Hobbs and Hooten frame models as an observation model, a process model and parameter models ([[Hobbs and Hooten 2015 Ch1]], p. 10, eq. 1.1.5). My current model has a process part (property or habitat, weather, point) and a Poisson data part, with no separate detection layer.
-4. **What Bayesian buys.** A [[Posterior]] for each parameter lets me say "the probability that richness rises with tree cover is ...", using [[Credible Interval|credible intervals]] instead of confidence intervals. The cost: it needs MCMC and convergence checks ([[MCMC Convergence Diagnostics]]).
+4. **What Bayesian buys.** A [[Posterior Distribution|Posterior]] for each parameter lets me say "the probability that richness rises with tree cover is ...", using [[Credible Interval|credible intervals]] instead of confidence intervals. The cost: it needs MCMC and convergence checks ([[MCMC Convergence|MCMC Convergence Diagnostics]]).
 5. **The missing layer is detection.** An occupancy model says each species at each point is either present or not (the true state), and if present it is detected on each visit with some probability. Hobbs and Hooten's lizard example shows the same idea of modelling detection explicitly ([[Hobbs and Hooten 2015 Ch6]], p. 129).
 6. **A tiny example of why repeats help.** Suppose a species is truly present and has a 50% chance of being detected per visit. On one visit you miss it half the time. Across 3 visits, the chance of missing it every time is 0.5 × 0.5 × 0.5 = 0.125, so you catch it at least once 87.5% of the time. The pattern of hits and misses across visits (say detected, missed, detected) is what lets the model estimate that 50%.
 7. **My data have that design.** Points have 3 visits each within a season, when presence should not change.
@@ -47,7 +48,7 @@ The final proposal (Oct 12) plans a Bayesian version of the best model later ([[
   6. Stretch: a multi-species occupancy model as in Berry et al. 2026, probably too much for this semester ([[Multi-species Occupancy Model]]).
   Recommendation: option 1 with option 2 as the main upgrade, then option 3. Options 1 and 2 fix the Report's two diagnostic problems ([[Why the Report keeps the Poisson model despite the diagnostics]]); options 3 to 6 are the growth this note is about.
 - Timing from the syllabus: Bayesian mixed models (Oct 13, lab Oct 15), occupancy guest lecture and lab (Nov 3 and 5), Stan labs for simple and mixed models (Nov 17 and 19). The Final Draft is due Nov 19, so an occupancy model is a stretch goal.
-- The Bayesian version would keep the formula of the best model, which on Oct 13 was M3 (Property + Habitat) for both responses ([[Preliminary Results]]), so results can be compared directly with the [[glmer()]] fit. A prior on the point variance would also give a more honest answer than the all-species singular fit at exactly 0 ([[Prior]]).
+- The Bayesian version would keep the formula of the best model, which on Oct 13 was M3 (Property + Habitat) for both responses ([[Preliminary Results]]), so results can be compared directly with the [[glmer()]] fit. A prior on the point variance would also give a more honest answer than the all-species singular fit at exactly 0 ([[Prior Distribution|Prior]]).
 - An occupancy model could also use the habitat file's spatial covariance as a predictor of where Dickcissels occur, which is close to what [[Berry et al. 2026]] did for six species.
 
 ## What would go wrong otherwise
@@ -58,3 +59,12 @@ The final proposal (Oct 12) plans a Bayesian version of the best model later ([[
 ## Connections
 - **Related:** [[Bayes' Theorem]], [[Dickcissel]], [[Next Steps]], [[Alternatives Considered]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]], [[MOC 26 - Survey Design and Detection|MOC - Survey Design and Detection]]
+
+## Flashcards
+
+What extra layer does an occupancy model add to the current richness model?::Whether a species is really present versus whether it was detected, which repeat visits make estimable.
+
+What would a Bayesian version of the current model let you say that the current one does not?
+??
+It describes every unknown with a probability distribution, so you could say things like "there is a 95% chance the tree-cover effect lies in this range".
+++++

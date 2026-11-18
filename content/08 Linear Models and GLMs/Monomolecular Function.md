@@ -17,7 +17,7 @@ Fill a cup by closing 30% of the remaining gap to the brim each minute: big gain
 
 With a = 8 and b = 0.5, y is 3.15, 5.06, 7.34 and 7.95 at x = 1, 2, 5 and 10. The code below checks that the gap to 8 shrinks by the same factor, e^(−0.5) = 0.61, with every step, then draws the curve beside a [[Michaelis-Menten Function]] with the same asymptote. Both saturate without an S shape, but the monomolecular reaches its ceiling faster.
 
-It describes body growth in length (the von Bertalanffy curve), light interception by a canopy and recovery after disturbance ([[Hobbs and Hooten 2015 Ch2]]). Despite the exponential in its formula it is not exponential growth: it is exponential decay of the gap to an asymptote. A related asymmetric S-shaped curve is the [[Gompertz Function]].
+It describes body growth in length (the von Bertalanffy curve), light interception by a canopy and recovery after disturbance ([[Hobbs and Hooten 2015 Ch2]]). Despite the exponential in its formula it is not [[Exponential Growth Model|exponential growth]]: it is exponential decay of the gap to an asymptote. A related asymmetric S-shaped curve is the [[Gompertz Function]].
 
 ```r
 mono <- function(x, a = 8, b = 0.5) a * (1 - exp(-b * x)); round(mono(c(1, 2, 5, 10)), 2)
@@ -26,7 +26,7 @@ curve(mono(x), 0, 12); curve(8 * x / (2 + x), add = TRUE, col = 2)      # red: M
 ```
 
 ## Connections
-- **Builds on:** [[Exponential Function]], [[Asymptote]]
+- **Builds on:** [[Exponential Function]], [[Asymptote]], [[Exponential Growth Model]]
 - **Leads to:** [[Michaelis-Menten Function]], [[Gompertz Function]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 

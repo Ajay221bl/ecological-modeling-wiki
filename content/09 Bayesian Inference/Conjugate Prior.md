@@ -18,7 +18,7 @@ Adding fractions that already share a denominator needs no conversion: add the n
 
 The pairs worth knowing are a [[Beta Distribution]] prior with binomial data ([[Beta-Binomial Conjugacy]]), a gamma prior with Poisson data ([[Gamma-Poisson Conjugacy]]), a normal prior for a normal mean with known variance, and a gamma prior on a normal precision. The update rules are sums: add the successes, add the counts. The prior's parameters read as "pretend data", so a Beta(a, b) acts like a − 1 successes and b − 1 failures seen earlier. In the code below, a Beta(2, 2) prior and 7 successes in 20 give Beta(9, 15), and a grid calculation gives the same curve.
 
-Conjugacy is used for teaching, for checking code and in [[Gibbs Sampling]], which relies on it for each parameter in turn; [[Hobbs and Hooten 2015 Ch5]] has a table of pairs. Bayesian analysis does not require conjugate priors; that was a constraint before fast computing, and modern samplers handle any prior.
+Conjugacy is used for teaching, for checking code and in [[Gibbs Sampling]], which relies on it for each parameter in turn; [[Hobbs and Hooten 2015 Ch5]] has a table of pairs. [[Bayesian Inference|Bayesian analysis]] does not require conjugate priors; that was a constraint before fast computing, and modern samplers handle any prior.
 
 ```r
 a <- 2; b <- 2; y <- 7; n <- 20
@@ -28,7 +28,7 @@ max(abs(g - dbeta(p, 9, 15)))                                       # grid poste
 ```
 
 ## Connections
-- **Builds on:** [[Prior Distribution]], [[Likelihood]]
+- **Builds on:** [[Prior Distribution]], [[Likelihood]], [[Bayesian Inference]]
 - **Leads to:** [[Beta-Binomial Conjugacy]], [[Gamma-Poisson Conjugacy]], [[Gibbs Sampling]]
 - **Part of:** [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]]
 

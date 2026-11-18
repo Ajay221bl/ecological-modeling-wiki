@@ -31,7 +31,7 @@ The U.S. Geological Survey data release holding the point-count surveys behind [
 - Columns include distance bands (Dist_50, Dist_100, Dist_400) and a FlyOver flag -> [[Distance Bands]], [[Fly-over Detections]]
 - Species are recorded as four-letter codes, two of which carry stray spaces; Wrangling.R trims them with `str_trim()` (fixed Oct 13) -> [[Four-Letter Species Codes]], [[str_trim()]]
 - Site is fully confounded with year (BK, DC, HO 2022 only; CR, HB 2023 only) -> [[Why site and year cannot be separated]]
-- Cite the release as the data source in the README. The README now says that, despite "NAOMIT" in the file name, Dist_50 has 1 missing value and FlyOver has 5 (its old "no missing values" line was fixed Oct 13) -> [[README Data Dictionary]]
+- Cite the release as the data source in the README. The README now says that, despite "NAOMIT" in the file name, Dist_50 has 1 missing value and FlyOver has 5 (its old "no missing values" line was fixed Oct 13) -> [[README|README Data Dictionary]]
 
 ## What the metadata adds (uploaded Oct 12, 2026)
 - **Two files in the release:** the bird file Ajay already uses, and `FieldVeg50m_RemoteVeg_JUNMASK_forDataRelease.csv`, one row per point with coordinates, a Roadside flag, spatial covariance at three scales, field vegetation measures and percent cover within 50 m -> [[Field vs Remote Vegetation Measures]], [[Percent Cover]]
@@ -45,7 +45,7 @@ The U.S. Geological Survey data release holding the point-count surveys behind [
 ## Notes that rely on it
 - [[Dataset]]
 - [[Preliminary Results]]
-- [[README Data Dictionary]]
+- [[README|README Data Dictionary]]
 - [[Study Sites]]
 - [[Point Count Survey]]
 

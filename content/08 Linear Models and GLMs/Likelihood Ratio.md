@@ -17,7 +17,7 @@ Two witnesses tell different stories. Under the first, the evidence found would 
 
 With 7 successes in 10 trials, L(p = 0.7) = 0.267 and L(p = 0.5) = 0.117, a ratio of 2.3: the data are 2.3 times more probable under 0.7. The code below computes it directly and from log-likelihoods, then shows that 70 successes in 100, the same proportion with ten times the data, gives a ratio in the thousands. More data make the evidence sharper.
 
-One caution: a bigger model always has a likelihood at least as high as a smaller one nested in it, so a raw ratio between such models always "favours" the bigger one. Tests and information criteria correct for that ([[Likelihood Ratio Test]], [[Evidence Ratio]]). Likelihood ratios appear everywhere: in likelihood ratio tests, AIC differences, [[Bayes Factor|Bayes factors]], [[Deviance]] and the Metropolis acceptance rule ([[Hobbs and Hooten 2015 Ch4]], [[Johnson and Omland 2004]]). A ratio of 2.3 does not mean A is 2.3 times more likely to be true; it means the data are 2.3 times more probable under A.
+One caution: a bigger model always has a likelihood at least as high as a smaller one nested in it, so a raw ratio between such models always "favours" the bigger one. Tests and information criteria correct for that ([[Likelihood Ratio Test]], [[Evidence Ratio]]). Likelihood ratios appear everywhere: in likelihood ratio tests, [[Delta AIC|AIC differences]], [[Bayes Factor|Bayes factors]], [[Deviance]] and the Metropolis acceptance rule ([[Hobbs and Hooten 2015 Ch4]], [[Johnson and Omland 2004]]). A ratio of 2.3 does not mean A is 2.3 times more likely to be true; it means the data are 2.3 times more probable under A.
 
 ```r
 dbinom(7, 10, 0.7) / dbinom(7, 10, 0.5)
@@ -27,7 +27,7 @@ dbinom(70, 100, 0.7) / dbinom(70, 100, 0.5)                               # same
 
 ## Connections
 - **Builds on:** [[Likelihood]], [[Log-likelihood]]
-- **Leads to:** [[Likelihood Ratio Test]], [[Evidence Ratio]], [[Bayes Factor]], [[Deviance]]
+- **Leads to:** [[Likelihood Ratio Test]], [[Evidence Ratio]], [[Bayes Factor]], [[Deviance]], [[Delta AIC]]
 - **Part of:** [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]]
 
 ## Flashcards
