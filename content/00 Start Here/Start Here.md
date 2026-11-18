@@ -34,7 +34,7 @@ flowchart LR
 
 ## Where to go next
 - **New to the maths or the symbols? Start with [[MOC 01 - Basics from Zero|MOC - Basics from Zero]].**
-- Then read [[How This Wiki Works]] and follow the [[Learning Path]].
+- Then read [[How This Wiki Works]] (what every kind of note contains, updated Nov 18 for v1.6) and follow the [[Learning Path]], which now runs through the project maps too.
 - Have a problem to solve? Use the [[Problem-Solving Guide]].
 - The units in order:
   - [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]: what a model is and why we model

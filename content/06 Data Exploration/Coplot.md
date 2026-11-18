@@ -12,7 +12,7 @@ status: seedling
 
 # Coplot
 
-Ask the same question in different rooms: "Does richness fall with tree cover?" In the burned room, steeply; in the unburned room, barely. If the answer changes from room to room, the room is changing the relationship. A **coplot**, or conditioning plot, shows that directly. It repeats the scatterplot of Y against X in several panels, each panel using only the observations within one level, or slice, of a third variable Z ([[Scatterplot]]). For a factor Z the panels are its levels; for a continuous Z they are overlapping slices of its range.
+Ask the same question in different rooms: "Does [[Species Richness|richness]] fall with tree cover?" In the burned room, steeply; in the unburned room, barely. If the answer changes from room to room, the room is changing the relationship. A **coplot**, or conditioning plot, shows that directly. It repeats the scatterplot of Y against X in several panels, each panel using only the observations within one level, or slice, of a third variable Z ([[Scatterplot]]). For a factor Z the panels are its levels; for a continuous Z they are overlapping slices of its range.
 
 Compare the slopes across panels. Similar slopes mean no interaction is needed; different slopes suggest an interaction between X and Z ([[Interaction Term]]). In the code below, richness was simulated to fall steeply with tree cover on burned plots and barely on unburned ones, and the coplot and the two separate slopes show it. This is step 7 of the protocol, because an interaction nobody planned for is hard to find any other way ([[Zuur et al. 2010]]); Homework 1 looks for a year-by-treatment interaction this way ([[Course Website]]). In ggplot2 the same picture is made with [[Facets]] ([[Facets|Multi-panel Plots]]).
 
@@ -31,7 +31,7 @@ library(ggplot2); p <- ggplot(d, aes(tree, rich)) + geom_point() + geom_smooth(m
 ```
 
 ## Connections
-- **Builds on:** [[Scatterplot]]
+- **Builds on:** [[Scatterplot]], [[Species Richness]]
 - **Leads to:** [[Interaction Term]], [[Facets]], [[Facets|Multi-panel Plots]]
 - **Part of:** [[MOC 04 - Data Exploration|MOC - Data Exploration]]
 

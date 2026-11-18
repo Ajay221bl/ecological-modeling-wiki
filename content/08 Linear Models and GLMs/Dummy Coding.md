@@ -16,7 +16,7 @@ status: seedling
 
 For three habitats, install two light switches: "is it forest?" and "is it wetland?". Grassland is both switches off, and each switch adds its own amount to the prediction when it is on. **Dummy coding** turns a [[Categorical Variable]] into columns of 0s and 1s so it can enter a regression equation, since a regression multiplies numbers and "forest" is not a number. Make one 0/1 column per level, except one ([[Binary Variable]]). The level left out is the [[Reference Level]]: it is represented by all zeros and absorbed into the intercept.
 
-With levels grass, forest and wetland, the model is y = β₀ + β₁·forest + β₂·wetland. Grass is predicted at β₀, forest at β₀ + β₁, wetland at β₀ + β₂, so each dummy's coefficient is the difference between that level and the reference. In the code below the group means are 11, 7 and 16, and `lm()` returns 11, −4 and +5: the grass mean, then forest minus grass and wetland minus grass. `model.matrix()` shows the columns R built ([[Model Matrix]]), as does the figure.
+With levels grass, forest and wetland, the model is y = β₀ + β₁·forest + β₂·wetland. Grass is predicted at β₀, forest at β₀ + β₁, wetland at β₀ + β₂, so each dummy's [[Regression Coefficient|coefficient]] is the difference between that level and the reference. In the code below the group means are 11, 7 and 16, and `lm()` returns 11, −4 and +5: the grass mean, then forest minus grass and wetland minus grass. `model.matrix()` shows the columns R built ([[Model Matrix]]), as does the figure.
 
 K levels need K − 1 dummies, not K, because the K columns would add up to the intercept column, leaving the model unable to separate them. R does this automatically for factors ([[Factors in R]]); other coding schemes ask different questions of the same fit ([[Sum-to-zero Contrasts]]), and a regression on dummies is exactly an [[ANOVA]] ([[Zuur et al. 2009 Appendix A]]). Two confusions. Coding habitats as 1, 2 and 3 would wrongly claim they lie on a line, wetland three times grass. And the reference level is not "no effect"; it is the baseline everything is compared with.
 
@@ -31,7 +31,7 @@ tapply(d$y, d$hab, mean)              # 11, 7, 16
 ```
 
 ## Connections
-- **Builds on:** [[Categorical Variable]], [[Factors in R]]
+- **Builds on:** [[Categorical Variable]], [[Factors in R]], [[Regression Coefficient]]
 - **Leads to:** [[Reference Level]], [[Sum-to-zero Contrasts]], [[Model Matrix]], [[ANOVA]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 

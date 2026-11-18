@@ -14,11 +14,11 @@ The order to read the wiki in, following the syllabus. Each step lists its map, 
 ## 0. [[MOC 01 - Basics from Zero]]
 The maths and vocabulary every other note leans on, explained from nothing. If a symbol in another note looks alien, it is explained here.
 
-**1. Data words:** [[Variable]] → [[Observation]] → [[Population]] → [[Sample]] → [[Parameter]] → [[Estimate]] → [[Estimator]] → [[Continuous Data]] → [[Discrete Data]] → [[Categorical Variable]] → [[Binary Variable]] → [[Sample Size]] → [[Ordinal Variable]] → [[Count Data]] → [[Proportion]] → [[Response Variable]] → [[Explanatory Variable]]
+**1. Data words:** [[Variable]] → [[Observation]] → [[Population]] → [[Sample]] → [[Parameter]] → [[Estimate]] → [[Estimator]] → [[Continuous Data]] → [[Discrete Data]] → [[Categorical Variable]] → [[Binary Variable]] → [[Sample Size]] → [[Ordinal Variable]] → [[Count Data]] → [[Proportion]] → [[Response Variable]] → [[Predictor Variable]]
 
 **2. Symbols and arithmetic:** [[Greek Letters and Notation]] → [[Summation Notation]] → [[Product Notation]] → [[Exponent]] → [[Logarithm]] → [[Natural Logarithm]] → [[Exponential Function]] → [[Scientific Notation in R Output]] → [[Functions in Maths]] → [[Factorial]] → [[Binomial Coefficient]] → [[Subscripts and Indexing]] → [[Absolute Value]] → [[Square Root]] → [[Nonlinear Function]] → [[Polynomial]] → [[Quadratic Term]] → [[Asymptote]]
 
-**3. Summaries of data:** [[Mean]] → [[Variance]] → [[Standard Deviation]] → [[Standard Error]] → [[Covariance]] → [[Correlation]] → [[Median]] → [[Mode]] → [[Range]] → [[Quantile]] → [[Interquartile Range]] → [[Coefficient of Variation]] → [[Spearman Rank Correlation]] → [[Sum of Squares]] → [[Degrees of Freedom]] → [[Weighted Mean]]
+**3. Summaries of data:** [[Mean]] → [[Deviation]] → [[Variance]] → [[Standard Deviation]] → [[Standard Error]] → [[Covariance]] → [[Correlation]] → [[Median]] → [[Mode]] → [[Range]] → [[Quantile]] → [[Interquartile Range]] → [[Coefficient of Variation]] → [[Spearman Rank Correlation]] → [[Sum of Squares]] → [[Degrees of Freedom]] → [[Weighted Mean]]
 
 **4. Odds:** [[Odds]] → [[Log Odds]] → [[Odds Ratio]]
 
@@ -27,6 +27,8 @@ The maths and vocabulary every other note leans on, explained from nothing. If a
 **6. Chance and doubt:** [[Uncertainty]] → [[Randomness]]
 
 **Then the why:** [[Variable and Observation]] · [[Population and Sample]] · [[Parameter vs Estimate]] · [[Continuous vs Discrete Data]] · [[Logarithms and Exponents]] · [[Factorials and Binomial Coefficient]] · [[Probability, Odds and Log Odds]] · [[What a p-value does and does not tell you]] · [[Statistical vs Biological Significance]] · [[Type I and Type II Errors]] · [[Why the variance divides by n minus 1]] · [[Standard Deviation vs Standard Error]] · [[Mean, Median and Mode]]
+
+**Also in this unit:** [[Data Table Rows and Columns]] → [[Spread and Variability]] → [[Equation of a Line]] → [[Project Overview]]
 
 ## 1. [[MOC 02 - Modeling Foundations]]
 Unit 1 (Tue Aug 18): what a model is, the kinds of models ecologists build, and why we model at all. Readings: Powell and Gale 2015 Ch1 and Ch2, Tredennick et al. 2021.
@@ -37,16 +39,18 @@ Unit 1 (Tue Aug 18): what a model is, the kinds of models ecologists build, and 
 
 **3. Where data come from:** [[Biological Population]] → [[Statistical Population]] → [[Sampling Unit]] → [[Representative Sample]] → [[Sampling Variation]] → [[Bias]] → [[Precision]] → [[Accuracy]] → [[Binomial Sampling]] → [[Deterministic Component]] → [[Stochastic Component]] → [[Process Variation]] → [[Observation Error]] → [[Individual Variation]] → [[Study Population]] → [[Random Sampling]] → [[Sampling Effort]] → [[Unbiased Estimator]] → [[Population Dynamics]] → [[Population Growth Rate]] → [[Survival Rate]]
 
-**4. Designing a study:** [[Study Design]] → [[Observational Study]] → [[Experimental Study]] → [[Replication]] → [[Randomization]] → [[Treatment]] → [[Control Group]] → [[Confounding Variable]]
+**4. Designing a study:** [[Study Design]] → [[Observational Study]] → [[Experimental Study]] → [[Replication]] → [[Randomization]] → [[Treatment]] → [[Control Group]] → [[Confounding]]
 
 **Then the why:** [[Theoretical vs Empirical Modeling]] · [[Exploration, Inference and Prediction]] · [[Induction vs Deduction]] · [[Biological vs Statistical Population]] · [[Bias and Precision]] · [[Deterministic and Stochastic Components]] · [[Process vs Observation Error]] · [[Why model at all]] · [[Why every statistical model has a deterministic and a stochastic part]] · [[Correlation vs Causation]] · [[Observational vs Experimental Study]] · [[Mechanistic vs Phenomenological Model]]
+
+**Also in this unit:** [[Why the point-visit is the sampling unit]]
 
 ## 2. [[MOC 03 - R for Ecological Modeling]]
 Units 2 and 8 (Aug 20, Sep 24, Sep 29): the R needed to wrangle data, fit models and make figures, and to keep the whole analysis reproducible.
 
-**1. R basics:** [[R and RStudio]] → [[Console]] → [[Script]] → [[Objects and Assignment]] → [[Vectors in R]] → [[Data Types in R]] → [[Factors in R]] → [[Data Frame]] → [[Tibble]] → [[Lists in R]] → [[Matrices in R]] → [[Indexing in R]] → [[Missing Values]] → [[Function Arguments]] → [[Writing Your Own Function]] → [[For Loop]] → [[If-Else]] → [[Vectorization]] → [[apply()]] → [[lapply()]] → [[sapply()]] → [[map()]] → [[Packages in R]] → [[librarian shelf()]] → [[CRAN]]
+**1. R basics:** [[R and RStudio]] → [[Console]] → [[Script]] → [[Objects and Assignment]] → [[Vectors in R]] → [[Data Types in R]] → [[Factors in R]] → [[Data Frame]] → [[Tibble]] → [[Lists in R]] → [[Matrices in R]] → [[Indexing in R]] → [[Missing Values]] → [[Functions in R]] → [[Writing Your Own Function]] → [[For Loop]] → [[If-Else]] → [[Vectorization]] → [[apply()]] → [[lapply()]] → [[sapply()]] → [[map()]] → [[Packages in R]] → [[librarian shelf()]] → [[CRAN]]
 
-**2. Tidyverse wrangling:** [[Tidyverse]] → [[Pipe Operator]] → [[filter()]] → [[select()]] → [[mutate()]] → [[summarise()]] → [[group_by()]] → [[rename()]] → [[case_when()]] → [[across()]] → [[Tidy Data]] → [[pivot_longer()]] → [[pivot_wider()]] → [[separate_wider_delim()]] → [[Joins]] → [[Binding Rows and Columns]]
+**2. Tidyverse wrangling:** [[Tidyverse]] → [[Pipe]] → [[filter()]] → [[select()]] → [[mutate()]] → [[summarise()]] → [[group_by()]] → [[rename()]] → [[case_when()]] → [[across()]] → [[Tidy Data]] → [[pivot_longer()]] → [[pivot_wider()]] → [[separate_wider_delim()]] → [[Joins]] → [[Binding Rows and Columns]]
 
 **3. Getting data in and looking at it:** [[Reading Data into R]] → [[Reading Data from a URL]] → [[Inspecting Data]] → [[table()]] → [[unique()]]
 
@@ -54,13 +58,13 @@ Units 2 and 8 (Aug 20, Sep 24, Sep 29): the R needed to wrangle data, fit models
 
 **5. Reports and version control:** [[R Markdown]] → [[Code Chunks]] → [[Knitting]] → [[Version Control]] → [[Git]] → [[GitHub]] → [[Repository]] → [[Commit]] → [[Push and Pull]] → [[Fork]] → [[gitignore File]]
 
-**6. Helpers and getting unstuck:** [[Help Files in R]] → [[Errors and Warnings in R]] → [[Debugging]] → [[expand.grid()]] → [[seq()]] → [[rep()]] → [[paste()]] → [[Strings in R]] → [[Dates in R]] → [[kable()]] → [[File System Functions in R]]
+**6. Helpers and getting unstuck:** [[Help Files in R]] → [[Errors and Warnings in R]] → [[Debugging]] → [[expand.grid()]] → [[seq()]] → [[rep()]] → [[paste()]] → [[Strings in R]] → [[Regular Expression]] → [[Dates in R]] → [[kable()]] → [[File System Functions in R]]
 
 **7. Reproducibility:** [[RProject]] → [[here()]] → [[Project Folder Structure]] → [[README]] → [[Splitting Scripts]] → [[Reproducibility]]
 
 **8. Figures:** [[ggplot2 Grammar of Graphics]]
 
-**9. Homework tools:** [[One-to-many Join]] → [[librarian and shelf()]]
+**9. Homework tools:** [[One-to-many Join]] → [[librarian shelf()]]
 
 **Then the why:** [[Why a reproducible project structure saves you]] · [[Console vs Script]] · [[Loops, apply and map]] · [[Data Frame vs Tibble]] · [[Wide vs Long Data]] · [[Relative vs Absolute Paths]]
 
@@ -147,6 +151,8 @@ Unit 4 (Sep 3 lab and Homework 2): the linear model stretched to counts, proport
 
 **Then the why:** [[Why GLMs need a link function]] · [[Linear Model vs GLM]] · [[Predictions on Link vs Response Scale]] · [[How to interpret a logistic regression coefficient]] · [[What to do about overdispersion]] · [[Poisson vs Negative Binomial]] · [[Zero-inflated vs Hurdle Model]] · [[Binomial vs Beta for Proportions]] · [[Which residuals to use for a GLM]]
 
+**Also in this unit:** [[Linear Model]] → [[Why Poisson instead of linear regression for richness]] → [[Error Distribution (Family)]] → [[glm()]] → [[Interpreting Poisson Coefficients]] → [[How LM, GLM and GLMM are one family]]
+
 ## 8. [[MOC 09 - Bayesian Inference]]
 Units 5 and 7 (Sep 8, 10, 22): updating what we believe with data. Priors, posteriors, hierarchical models, MCMC and checking Bayesian models. Readings: Hobbs and Hooten 2015 Ch5 to 8.
 
@@ -170,6 +176,8 @@ Units 5 and 7 (Sep 8, 10, 22): updating what we believe with data. Priors, poste
 
 **Then the why:** [[Frequentist vs Bayesian Inference]] · [[Why the posterior is proportional to likelihood times prior]] · [[How to choose a prior]] · [[Proper vs Improper Prior]] · [[Data Model, Process Model and Parameter Model]] · [[How MCMC turns a formula into a posterior]] · [[How to check an MCMC fit]] · [[Confidence vs Credible Interval]] · [[Equal-tailed vs Highest Density Interval]] · [[Prior Predictive vs Posterior Predictive Check]] · [[JAGS vs Stan]] · [[Bayesian Linear Regression in R]] · [[Homework 6 - Penguin Body Mass in brms]]
 
+**Also in this unit:** [[How the project could grow into Bayesian and occupancy models]] → [[Ecological Similarity Assumption]] → [[Next Steps]]
+
 ## 9. [[MOC 10 - Model Selection]]
 Units 6 and 7 (Sep 15, 17, 22): choosing among competing models fairly, in frequentist, information-theoretic and Bayesian ways, and checking that the chosen model is any good. Readings: Anderson and Burnham 2002, Powell and Gale 2015 Ch3 and Ch4, Johnson and Omland 2004.
 
@@ -189,6 +197,8 @@ Units 6 and 7 (Sep 15, 17, 22): choosing among competing models fairly, in frequ
 
 **Then the why:** [[Why AIC rewards fit but punishes complexity]] · [[Why build the candidate model set before seeing the data]] · [[Why AIC rewards fit but punishes complexity]] · [[Likelihood Ratio Test vs AIC]] · [[AIC vs BIC]] · [[Null Hypothesis Testing vs Model Selection]] · [[Why build the candidate model set before seeing the data]] · [[Model Selection for Explanation vs Prediction]] · [[Patch vs Landscape Effects]] · [[Homework 3 - Woodland Birds and Landscape Scale]]
 
+**Also in this unit:** [[Model Purpose - Exploration Inference Prediction]] → [[Why compare models with AIC rather than only p-values]] → [[Complete-Case Analysis]] → [[MuMIn model.sel()]] → [[Why site and year cannot be separated]] → [[Residual Diagnostics]] → [[check_overdispersion()]] → [[Why check overdispersion before trusting Poisson]] → [[Why the Report keeps the Poisson model despite the diagnostics]]
+
 ## 10. [[MOC 11 - Bayesian Model Selection]]
 Unit 7 (Sep 22): comparing and checking Bayesian models with DIC, WAIC, LOO and simulated residuals. Readings: Hobbs and Hooten 2015 Ch8 and Ch9, Vehtari et al. 2017.
 
@@ -203,9 +213,11 @@ Unit 8 (Sep 24, 29): an analysis someone else can rerun from raw data to final f
 
 **1. A project that reruns:** [[Reproducibility]] → [[Working Directory]] → [[Absolute Path]] → [[Relative Path]] → [[RProject]] → [[here()]] → [[Project Folder Structure]] → [[README]] → [[Splitting Scripts]] → [[Caching Long Runs]] → [[Session Info]] → [[End-to-end Analysis Plan]]
 
-**2. Figures with ggplot2:** [[ggplot2 Grammar of Graphics]] → [[Aesthetics]] → [[Geoms]] → [[Facets]] → [[Themes]] → [[Colour Scales]] → [[Axis Labels and Titles]] → [[Plotting Model Predictions with Ribbons]] → [[Error Bars]] → [[Multi-panel Figures]] → [[Saving Figures]] → [[tidy()]] → [[augment()]]
+**2. Figures with ggplot2:** [[ggplot2 Grammar of Graphics]] → [[Aesthetics]] → [[Geoms]] → [[Facets]] → [[Themes]] → [[Colour Scales]] → [[Axis Labels and Titles]] → [[Plotting Model Predictions with Ribbons]] → [[Error Bars]] → [[Multi-panel Figures]] → [[ggsave()]] → [[tidy()]] → [[augment()]]
 
 **Then the why:** [[Why a reproducible project structure saves you]] · [[Git vs GitHub]]
+
+**Also in this unit:** [[str_trim()]] → [[Four-Letter Species Codes]] → [[glmer()]] → [[Wrangling vs Analysis Scripts]] → [[Why a reproducible project structure matters]] → [[R Scripts Walkthrough]]
 
 ## 12. [[MOC 13 - Autocorrelation]]
 Unit 9 (Oct 1): when observations close in space or time resemble each other, ordinary models overstate how much they know. Readings: Diniz-Filho et al. 2003, Dynamic Ecology 'Autocorrelation: friend or foe?'.
@@ -223,34 +235,38 @@ Unit 9 (Oct 1): when observations close in space or time resemble each other, or
 ## 13. [[MOC 14 - Mixed Models]]
 Units 10 to 13 (Oct 6, 8, 13, 15, 22): models for grouped data, fitted with lme4 and with brms, with confidence intervals and Bayesian workflows. Readings: Harrison et al. 2018, Christensen et al. 2020, Shipley et al. 2022, Zuur et al. 2009 Ch5, Hobbs and Hooten 2015 Ch6.
 
-**1. Why mixed models:** [[Hierarchical Data]] → [[Mixed Effects Model]] → [[Fixed Effect]] → [[Random Effect]] → [[Grouping Factor]] → [[Random Intercept]] → [[Random Slope]] → [[Correlated Random Intercepts and Slopes]] → [[Variance Components]] → [[Intraclass Correlation]] → [[Nested Random Effects]] → [[Crossed Random Effects]]
+**1. Why mixed models:** [[Hierarchical Data]] → [[Mixed Effects Model]] → [[Fixed Effect]] → [[Random Effect]] → [[Grouping Variable]] → [[Random Intercept]] → [[Random Slope]] → [[Correlated Random Intercepts and Slopes]] → [[Variance Components]] → [[Intraclass Correlation]] → [[Nested Random Effects]] → [[Crossed Random Effects]]
 
 **2. Pooling and shrinkage:** [[Complete Pooling]] → [[No Pooling]] → [[Partial Pooling]] → [[Shrinkage]] → [[Conditional Modes]] → [[Marginal Model]]
 
-**3. Fitting in R:** [[Linear Mixed Model]] → [[GLMM]] → [[lme4 Random-effect Syntax]] → [[lmer() and glmer()]] → [[nlme lme()]] → [[fixef(), ranef() and VarCorr()]] → [[REML]] → [[Laplace Approximation]] → [[Penalized Quasi-likelihood]] → [[Variance Structures]] → [[Repeated Measures]] → [[Nested Experimental Design]] → [[Blocking]]
+**3. Fitting in R:** [[Linear Mixed Model]] → [[GLMM]] → [[lme4 Random-effect Syntax]] → [[lmer()]] → [[nlme lme()]] → [[fixef(), ranef() and VarCorr()]] → [[REML]] → [[Laplace Approximation]] → [[Penalized Quasi-likelihood]] → [[Variance Structures]] → [[Repeated Measures]] → [[Nested Experimental Design]] → [[Blocking]]
 
-**4. Diagnosing and testing:** [[Singular Fit]] → [[Convergence Warnings]] → [[performance Package Checks]] → [[How Many Levels for a Random Effect]] → [[Boundary Problem When Testing Variances]] → [[p-values in Mixed Models]] → [[Marginal and Conditional R-squared]] → [[Top-down Model Selection Protocol]] → [[Building All Fixed x Random Combinations]] → [[Observation-level Random Effect]]
+**4. Diagnosing and testing:** [[Singular Fit]] → [[Convergence Warnings]] → [[performance Package Checks]] → [[How Many Levels for a Random Effect]] → [[Boundary Problem When Testing Variances]] → [[p-values in Mixed Models]] → [[Marginal vs Conditional R-squared]] → [[Top-down Model Selection Protocol]] → [[Building All Fixed x Random Combinations]] → [[Observation-level Random Effect]]
 
 **5. Intervals and predictions:** [[Wald Confidence Interval]] → [[Profile Likelihood Confidence Interval]] → [[Parametric Bootstrap]] → [[Confidence Intervals for Variance Components]] → [[bootMer()]] → [[Parallel Computing in R]] → [[Confidence Envelopes]]
 
 **6. Bayesian mixed models:** [[Bayesian GLMM]] → [[Priors on Standard Deviations]] → [[LKJ Prior]] → [[adapt_delta and Sampler Settings]] → [[Divergent Transitions]]
 
-**7. Homework tools:** [[Random Effect with Few Levels]] → [[Bounded Count]]
+**7. Homework tools:** [[How Many Levels for a Random Effect]] → [[Bounded Count]]
 
 **Then the why:** [[Why use a random effect instead of a fixed effect]] · [[Fixed vs Random Effects]] · [[Why use a random effect instead of a fixed effect]] · [[Complete, No and Partial Pooling]] · [[Random Intercept vs Random Slope]] · [[Nested vs Crossed Random Effects]] · [[REML vs ML]] · [[Conditional vs Marginal Predictions]] · [[Prediction vs Confidence Interval]] · [[lme4 vs brms]] · [[Bayesian Mixed Model Workflow in R]] · [[Two-way ANOVA vs Mixed Model]] · [[Homework 4 - Thistle Seedlings and Enemy Release]]
+
+**Also in this unit:** [[Repeat-Visit Design]] → [[Why a random intercept for point]] → [[Why Site is fixed not random]]
 
 ## 14. [[MOC 19 - Ecology Vocabulary]]
 The ecology words the readings, labs and homework datasets assume you know, each explained from nothing.
 
-**1. Populations and demography:** [[Population Density]] → [[Vital Rates]] → [[Fecundity]] → [[Carrying Capacity]] → [[Density Dependence]] → [[Tag Loss]] → [[Metapopulation]] → [[Translocation]] → [[Reintroduction]]
+**1. Ecology from zero:** [[Ecology]] → [[Levels of Ecological Organization]] → [[Species and Scientific Names]] → [[Ecological Community]] → [[Brood Parasitism]] → [[Ecological Niche]] → [[Habitat Specialist]] → [[Habitat Generalist]] → [[Ecosystem]] → [[Biome]] → [[Ecoregions]] → [[Grassland]] → [[Biodiversity]] → [[Disturbance]] → [[Ecological Succession]] → [[Feedback Loops in Ecology]] → [[Tipping Point]] → [[Ecological Resilience and Alternative States]] → [[Landscape Ecology]]
 
-**2. Traits and climate:** [[Body Size]] → [[Body Condition]] → [[Phenology]] → [[Climate Change Effects on Wildlife]] → [[Drought Index]] → [[Evapotranspiration]] → [[Environmental Gradient]] → [[Latitudinal Gradient]] → [[Macroecology]]
+**2. Populations and demography:** [[Population Density]] → [[Vital Rates]] → [[Fecundity]] → [[Carrying Capacity]] → [[Density Dependence]] → [[Tag Loss]] → [[Metapopulation]] → [[Translocation]] → [[Reintroduction]]
 
-**3. Disease:** [[Vector-borne Disease]] → [[Epizootic Hemorrhagic Disease]]
+**3. Traits and climate:** [[Body Size]] → [[Body Condition]] → [[Phenology]] → [[Climate Change Effects on Wildlife]] → [[Drought Index]] → [[Evapotranspiration]] → [[Environmental Gradient]] → [[Latitudinal Gradient]] → [[Macroecology]]
 
-**4. Habitat and landscape:** [[Habitat]] → [[Habitat Structure]] → [[Canopy Cover]] → [[Diameter at Breast Height]] → [[Coarse Woody Debris]] → [[Fire History Variables]] → [[Landscape Metrics]] → [[Species Distribution Model]] → [[Enemy Release Hypothesis]] → [[Woody Encroachment]] → [[NDVI]] → [[Home Range]] → [[Edge Effect]] → [[Species Interaction]]
+**4. Disease:** [[Vector-borne Disease]] → [[Epizootic Hemorrhagic Disease]]
 
-**5. Words from the homework datasets:** [[Exclosure]] → [[Grazing]] → [[Riparian Zone]] → [[Coral Bleaching]] → [[Temperature Anomaly]] → [[Habitat Patch]] → [[Invasive Species]] → [[Relative Humidity]] → [[Prescribed Fire]]
+**5. Habitat and landscape:** [[Habitat]] → [[Habitat Structure]] → [[Canopy Cover]] → [[Diameter at Breast Height]] → [[Coarse Woody Debris]] → [[Fire History Variables]] → [[Landscape Metrics]] → [[Species Distribution Model]] → [[Enemy Release Hypothesis]] → [[Woody Encroachment]] → [[NDVI]] → [[Home Range]] → [[Edge Effects]] → [[Species Interaction]]
+
+**6. Words from the homework datasets:** [[Exclosure]] → [[Grazing]] → [[Riparian Zone]] → [[Coral Bleaching]] → [[Temperature Anomaly]] → [[Habitat Patch]] → [[Invasive Species]] → [[Relative Humidity]] → [[Prescribed Fire]]
 
 ## 15. [[MOC 15 - GAMs]]
 Oct 27 onward: generalized additive models let the data draw a smooth curve, and hierarchical GAMs let groups share or differ in that curve. Readings: Zuur et al. 2009 Ch3, Pedersen et al. 2019, Lawton et al. 2022, Noam Ross's GAM course.
@@ -268,7 +284,7 @@ Guest lectures and Powell and Gale 2015 Ch5 to 19: occupancy, mark-recapture, su
 
 **1. Counting animals you cannot always see:** [[Imperfect Detection]] → [[Detection Probability]] → [[Cumulative Detection Probability]] → [[Availability for Detection]] → [[Abundance]] → [[Census]] → [[Population Index]] → [[Catch per Unit Effort]] → [[Count-based Abundance Estimation]] → [[Survey Sampling Designs]] → [[Finite Population Correction]] → [[Spatially Balanced Sampling]] → [[Live Trapping]] → [[Coverboard]] → [[Track Survey]] → [[Acoustic Survey]] → [[Autonomous Recording Unit]] → [[Breeding Amphibian Survey]] → [[Camera Trap]] → [[Hair Snare]] → [[Environmental DNA]]
 
-**2. Occupancy:** [[Occupancy]] → [[Detection History]] → [[Occupancy Likelihood]] → [[Naive Occupancy]] → [[Closure Assumption]] → [[Site Independence Assumption]] → [[Unexplained Heterogeneity in Occupancy]] → [[Unexplained Heterogeneity in Detection]] → [[Single-season Occupancy]] → [[Stacked Occupancy Design]] → [[Multi-season Occupancy]] → [[Colonization Probability]] → [[Local Extinction Probability]] → [[Multi-species Occupancy]] → [[Marginal Occupancy]] → [[Conditional Occupancy]] → [[Co-occurrence Probability]] → [[Site Covariates]] → [[Observation Covariates]] → [[unmarked Package]] → [[ubms Package]] → [[spOccupancy Package]] → [[Program PRESENCE]]
+**2. Occupancy:** [[Occupancy]] → [[Detection History]] → [[Occupancy Likelihood]] → [[Naive Occupancy]] → [[Closure Assumption]] → [[Site Independence Assumption]] → [[Unexplained Heterogeneity in Occupancy]] → [[Unexplained Heterogeneity in Detection]] → [[Single-season Occupancy]] → [[Stacked Occupancy Design]] → [[Multi-season Occupancy]] → [[Colonization Probability]] → [[Local Extinction Probability]] → [[Multi-species Occupancy Model]] → [[Marginal Occupancy]] → [[Conditional Occupancy]] → [[Co-occurrence Probability]] → [[Site Covariates]] → [[Observation Covariates]] → [[unmarked Package]] → [[ubms Package]] → [[spOccupancy Package]] → [[Program PRESENCE]]
 
 **3. Mark-recapture and closed populations:** [[Mark-Recapture]] → [[Capture History]] → [[Cohort]] → [[Closed Population]] → [[Open Population]] → [[Encounter Probability]] → [[Capture Probability]] → [[Lincoln-Petersen Estimator]] → [[Chapman Estimator]] → [[Schnabel Estimator]] → [[Behavioral Response to Capture]] → [[Capture Heterogeneity Models]] → [[Huggins Closed Capture Model]] → [[Horvitz-Thompson Estimator]] → [[Removal Sampling]] → [[Double-observer Methods]]
 
@@ -299,3 +315,60 @@ Nov 24: turning an analysis into clear methods and results. Readings: Cormac McC
 **2. Writing up a model:** [[Writing Methods Sections]] → [[Writing Results Sections]] → [[Reporting Statistics in Text]] → [[What to Report for a Model]] → [[Figures for Model Results]]
 
 **Then the why:** [[How to write up a modeling analysis]] · [[How to Approach a Course Homework]]
+
+## 19. [[MOC 24 - Grassland Bird Ecology]]
+Grassland birds, woody encroachment, fragmentation and how grasslands are managed: the ecology behind the grassland bird project.
+
+**1. The problem:** [[Grassland Bird Decline]] → [[Woody Encroachment]] → [[Habitat Fragmentation]] → [[Edge Effects]] → [[Grassland Core Habitat]]
+
+**2. How to measure it:** [[Species Richness]] → [[Spatial Covariance]] → [[Regime Shifts and Spatial Early Warning Signals]]
+
+**3. The six focal species:** [[Focal Species]] → [[Grassland Specialists vs Generalists]] → [[Dickcissel]] → [[Northern Bobwhite]] → [[Eastern Meadowlark]] → [[Scissor-tailed Flycatcher]] → [[Eastern Kingbird]] → [[Loggerhead Shrike]]
+
+**4. How birds use space and time:** [[Habitat Selection]] → [[Area Sensitivity]] → [[Breeding Season Timing]]
+
+**5. Managing grasslands:** [[Grassland Restoration and Management]] → [[Prescribed Fire]] → [[Mowing]] → [[Disking]] → [[Defend the Core]]
+
+**6. The bigger picture:** [[Ecological Resilience and Alternative States]] → [[Regime Shift]] → [[Spatial Early Warning Signal]] → [[Land-Use Change and Agriculture]] → [[Climate Change Effects on Wildlife]] → [[Rangeland Health]]
+
+## 20. [[MOC 25 - Landscape and Remote Sensing]]
+Land cover from above: pixels, cover classes, landscape structure and the spatial covariance metric.
+
+**1. Thinking at the landscape level:** [[Landscape Ecology]] → [[Patch, Matrix and Corridor]] → [[Spatial Scale]] → [[Ecoregions]] → [[Mississippi Alluvial Valley]]
+
+**2. Seeing the land from above:** [[Remote Sensing]] → [[Pixels and Spatial Resolution]] → [[Percent Cover]] → [[Plant Functional Groups]] → [[Rangeland Analysis Platform]] → [[Flood Masking]]
+
+**3. Turning maps into a habitat metric:** [[Moving Window Analysis]] → [[Spatial Covariance]] → [[Regime Shifts and Spatial Early Warning Signals]]
+
+## 21. [[MOC 26 - Survey Design and Detection]]
+How the bird data were collected: point counts, repeat visits, distance bands and the detection problems they create.
+
+**1. How the data were collected:** [[Point Count Survey]] → [[Repeat-Visit Design]] → [[Distance Bands]] → [[Fly-over Detections]] → [[Four-Letter Species Codes]] → [[Systematic Grid Sampling]] → [[Roadside Surveys]] → [[Breeding Bird Survey]]
+
+**1b. How the habitat was measured on the ground:** [[Visual Obstruction (Robel Pole)]] → [[Tree Density]] → [[Field vs Remote Vegetation Measures]]
+
+**2. Detection:** [[Detection Probability]] → [[Imperfect Detection]] → [[Detection Covariates]] → [[Observer Effects]]
+
+**3. What to estimate:** [[Occupancy vs Abundance vs Richness]] → [[Occupancy Model]] → [[Multi-species Occupancy Model]] → [[Ecological Similarity Assumption]]
+
+## 22. [[MOC 23 - Grassland Bird Richness Project]]
+The project itself: question, data, methods, results and decisions. Read it after the three maps above.
+
+**The question:** [[Project Overview]] → [[Hypotheses]]
+
+**The data:** [[Dataset]] → [[Study Sites]] → [[EDA Findings]]
+
+**The method:** [[Analysis Plan]] → [[Standardizing]] → [[R Scripts Walkthrough]]
+
+**The results:** [[Preliminary Results]]
+
+**Decisions and feedback:** [[Proposal Feedback from Dr Roberts]] → [[Decision Log]] → [[Alternatives Considered]]
+
+**Planning:** [[Milestones and Deadlines]] → [[Next Steps]] → [[Open Questions]]
+
+## 23. [[MOC 22 - Homework]]
+Every homework, question by question, with a worked walkthrough. Use it alongside the unit each homework belongs to.
+
+**Every homework:** [[How to Approach a Course Homework]] → [[librarian shelf()]] → [[Reproducibility]] → [[Data Exploration Protocol]] → [[Why the response type decides the distribution]] → [[How to write up a modeling analysis]]
+
+**The six walkthroughs:** [[Homework 1 - Riparian Plant Diversity]] → [[Homework 2 - Coral Bleaching]] → [[Homework 3 - Woodland Birds and Landscape Scale]] → [[Homework 4 - Thistle Seedlings and Enemy Release]] → [[Homework 5 - Fire Weather HGAMs]] → [[Homework 6 - Penguin Body Mass in brms]]

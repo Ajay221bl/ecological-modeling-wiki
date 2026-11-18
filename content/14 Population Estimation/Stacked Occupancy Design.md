@@ -14,11 +14,11 @@ status: seedling
 
 # Stacked Occupancy Design
 
-Suppose you surveyed the same street's houses for cats in two different summers, but saw so few cats that tracking which houses gained or lost a cat is hopeless. You can still ask whether more houses had cats in one summer than the other by listing every house-summer as its own line and noting the year. A **stacked occupancy design** treats each site in each year as its own row of a [[Single-season Occupancy]] model, with year as a covariate on ψ (and often on p), so several years can be analysed without fitting colonization and extinction ([[Multi-season Occupancy]], [[Categorical Variable]]). Closure is still assumed within each year's visits, and the rows from one site in different years are treated as independent sites ([[Closure Assumption]], [[Site Independence Assumption]]).
+Suppose you surveyed the same street's houses for cats in two different summers, but saw so few cats that tracking which houses gained or lost a cat is hopeless. You can still ask whether more houses had cats in one summer than the other by listing every house-summer as its own line and noting the year. A **stacked occupancy design** treats each site in each year as its own row of a [[Single-season Occupancy]] model, with year as a [[Predictor Variable|covariate]] on ψ (and often on p), so several years can be analysed without fitting colonization and extinction ([[Multi-season Occupancy]], [[Categorical Variable]]). Closure is still assumed within each year's visits, and the rows from one site in different years are treated as independent sites ([[Closure Assumption]], [[Site Independence Assumption]]).
 
 It is the practical choice when detections are too sparse for a dynamic model, which needs many sites that switch state to estimate γ and ε. In the code below, 120 hexes surveyed in 2013 and 2014 become 240 rows; the stacked model with a year effect returns ψ̂ = 0.27 for 2013 and 0.09 for 2014 against true values of 0.26 and 0.09, with p̂ = 0.53. The price is that it cannot tell you whether the drop came from local extinctions or from different sites being occupied, and if the same site's years are strongly related the standard errors are optimistic, which a site [[Random Effect]] can absorb.
 
-[[Happe et al. 2020]] used exactly this design for reintroduced fishers: "each hex-by-year combination" was a site (263 site-years from 143 hexes), year was in every occupancy model, and they said plainly that with so few detections they "were not able to examine colonization and extinction dynamics" ([[Fisher Occupancy Case Study]]). A stacked model is not a dynamic model with fewer parameters; it simply never asks how a site changed from one year to the next.
+[[Happe et al. 2020]] used exactly this design for reintroduced fishers: "each hex-by-year combination" was a site (263 site-years from 143 hexes), year was in every [[Occupancy Model|occupancy model]], and they said plainly that with so few detections they "were not able to examine colonization and extinction dynamics" ([[Fisher Occupancy Case Study]]). A stacked model is not a dynamic model with fewer parameters; it simply never asks how a site changed from one year to the next.
 
 ```r
 set.seed(7); H <- 120; K <- 3
@@ -31,8 +31,8 @@ round(c(psi_2013 = plogis(o$par[1]), psi_2014 = plogis(sum(o$par[1:2])), p = plo
 ```
 
 ## Connections
-- **Builds on:** [[Single-season Occupancy]], [[Categorical Variable]]
-- **Leads to:** [[Multi-season Occupancy]], [[Random Effect]]
+- **Builds on:** [[Single-season Occupancy]], [[Categorical Variable]], [[Predictor Variable]]
+- **Leads to:** [[Multi-season Occupancy]], [[Random Effect]], [[Occupancy Model]]
 - **Part of:** [[MOC 16 - Population Estimation|MOC - Population Estimation]], molecular note [[Single-season vs Multi-season Occupancy]], [[Fisher Occupancy Case Study]]
 
 ## Flashcards

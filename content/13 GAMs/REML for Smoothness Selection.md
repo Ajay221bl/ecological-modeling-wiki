@@ -13,9 +13,9 @@ status: seedling
 
 # REML for Smoothness Selection
 
-Using **REML for smoothness selection** treats the wiggly parts of a smooth like random effects and picks λ by maximising their restricted likelihood, which is stable and resists overfitting ([[REML]], [[Smoothing Parameter]]). A penalised smooth is mathematically a mixed model: the penalised coefficients are random effects, and λ relates to their variance ([[Random Effect]]). So λ can be estimated like a variance component, by REML.
+Using **REML for smoothness selection** treats the wiggly parts of a smooth like random effects and picks λ by maximising their restricted likelihood, which is stable and resists overfitting ([[REML]], [[Smoothing Parameter]]). A penalised smooth is mathematically a [[Mixed Effects Model|mixed model]]: the penalised coefficients are random effects, and λ relates to their variance ([[Random Effect]]). So λ can be estimated like a [[Variance Components|variance component]], by REML.
 
-You must ask for it with `gam(..., method = "REML")`, because mgcv's default is `"GCV.Cp"` ([[Generalized Cross-validation]]). Compare models with different parametric terms using ML, as with mixed models. In the code below the truth is a straight line in 100 simulated datasets: GCV gives an edf above 1.5 in 28% of them and up to 8.2, REML in 23% and at most 4.8. GCV overfits a straight line more often and more wildly.
+You must ask for it with `gam(..., method = "REML")`, because mgcv's default is `"GCV.Cp"` ([[Generalized Cross-validation]]). Compare models with different parametric terms using ML, as with mixed models. In the code below the truth is a [[Equation of a Line|straight line]] in 100 simulated datasets: GCV gives an edf above 1.5 in 28% of them and up to 8.2, REML in 23% and at most 4.8. GCV overfits a straight line more often and more wildly.
 
 [[Pedersen et al. 2019]] strongly recommend REML or ML over GCV, and all their examples use REML ([[Bayesian GAMs]] take the same mixed-model view). mgcv does not use REML by default; the default is GCV.Cp.
 
@@ -26,7 +26,7 @@ round(rbind(share_with_edf_over_1.5 = colMeans(r > 1.5), max_edf = apply(r, 2, m
 ```
 
 ## Connections
-- **Builds on:** [[REML]], [[Smoothing Parameter]], [[Random Effect]]
+- **Builds on:** [[REML]], [[Smoothing Parameter]], [[Random Effect]], [[Mixed Effects Model]], [[Variance Components]], [[Equation of a Line]]
 - **Leads to:** [[Generalized Cross-validation]], [[Random-effect Smooth]]
 - **Part of:** [[MOC 15 - GAMs|MOC - GAMs]], molecular note [[GCV vs REML for Smoothing]]
 

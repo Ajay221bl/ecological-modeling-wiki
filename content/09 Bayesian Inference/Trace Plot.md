@@ -18,7 +18,7 @@ A seismograph at rest shows steady background tremor; trends, steps and flat str
 
 Bad patterns each have a meaning. A trend means the chain is still travelling and needs more warm-up ([[Burn-in]]). Chains at different levels mean no convergence, or a posterior with several peaks. Slow snaking means high autocorrelation and poor mixing ([[Chain Autocorrelation]]). Flat stretches mean the chain is stuck, through rejected proposals or divergences. The figure contrasts a braided band with separated, wandering lines. The code below draws a good and a bad set of three chains side by side; the good chains' means differ by 0.02, the bad ones' by 2.9.
 
-Look at every important parameter, including variance parameters, which misbehave most often, alongside [[R-hat]]. In R use `plot(fit)` or `mcmc_trace()` for brms, and `traceplot()` for coda and rstan objects, as in the brms labs ([[Course Website]], [[Hobbs and Hooten 2015 Ch7]]). A trace plot does not show the posterior; it shows the sampler's path, and the density of the draws shows the posterior.
+Look at every important parameter, including variance parameters, which misbehave most often, alongside [[R-hat]]. In R use `plot(fit)` or `mcmc_trace()` for brms, and `traceplot()` for coda and [[Running Stan from R|rstan]] objects, as in the brms labs ([[Course Website]], [[Hobbs and Hooten 2015 Ch7]]). A trace plot does not show the posterior; it shows the sampler's path, and the density of the draws shows the posterior.
 
 ![[Trace plots good bad.png|700]]
 *What to look at:* the difference between a braided band and separated, wandering lines.
@@ -31,7 +31,7 @@ round(c(good = diff(range(colMeans(good))), bad = diff(range(colMeans(bad)))), 2
 
 ## Connections
 - **Builds on:** [[MCMC Chains]], [[MCMC Convergence]]
-- **Leads to:** [[R-hat]], [[Burn-in]], [[Chain Autocorrelation]]
+- **Leads to:** [[R-hat]], [[Burn-in]], [[Chain Autocorrelation]], [[Running Stan from R]]
 - **Part of:** [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]], molecular note [[How to check an MCMC fit]]
 
 ## Flashcards

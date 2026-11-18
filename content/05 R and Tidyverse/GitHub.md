@@ -15,10 +15,10 @@ Your camera takes the pictures; uploading them to a shared online album lets col
 
 Public repositories make science checkable, and papers increasingly link their code and data there. GitHub can also serve raw files and whole websites: the course website and its data are served straight from the repository LivingLandscapes/Course_EcologicalModeling, which is why scripts can read the course data by URL ([[Reading Data from a URL]], [[Course Website]]). This wiki's public site is built from a GitHub repository too. To build on someone else's repository without permission to change it, you make your own copy, a [[Fork]].
 
-Two misconceptions. GitHub does not back up automatically: only what you commit *and* push arrives there. And public does not mean anyone can change your work: anyone can read and copy it, but only people you authorise can change it ([[Git vs GitHub]]).
+Two misconceptions. GitHub does not back up automatically: only what you [[Commit|commit]] *and* push arrives there. And public does not mean anyone can change your work: anyone can read and copy it, but only people you authorise can change it ([[Git vs GitHub]]).
 
 ## Connections
-- **Builds on:** [[Git]]
+- **Builds on:** [[Git]], [[Commit]]
 - **Leads to:** [[Push and Pull]], [[Fork]], [[Reading Data from a URL]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]], molecular note [[Git vs GitHub]]
 

@@ -4,7 +4,6 @@ tags:
   - source
   - reading
 aliases:
-  - "McGill 2013"
   - "Autocorrelation: friend or foe?"
   - "Dynamic Ecology post"
 status: seedling

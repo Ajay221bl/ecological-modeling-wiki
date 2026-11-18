@@ -14,7 +14,7 @@ status: seedling
 
 # Statistical Significance
 
-A metal detector beeping says "something metallic is probably here", not whether it is a gold ring or a bottle cap. A result is **statistically significant** when its [[P-value]] falls below the chosen [[Significance Level]], meaning the data would be unusual if the null hypothesis were true. It answers one narrow question: can chance alone, under H₀, plausibly explain this? And it turns a continuous measure into a yes/no, discarding information.
+A metal detector beeping says "something metallic is probably here", not whether it is a gold ring or a bottle cap. A result is **statistically significant** when its [[P-value]] falls below the chosen [[Significance Level]], meaning the data would be unusual if the [[Null Hypothesis|null hypothesis]] were true. It answers one narrow question: can chance alone, under H₀, plausibly explain this? And it turns a continuous measure into a yes/no, discarding information.
 
 Significant does not mean large. In the code below, with 100,000 observations a slope of 0.01 is highly significant, yet explains about 0.01% of the variation. Not significant does not mean absent, either, since small samples miss large effects ([[Effect Size]]). And the difference between significant and not significant is not itself significant: one study at p = 0.04 and another at p = 0.06 are in agreement, not conflict.
 
@@ -26,7 +26,7 @@ s <- summary(lm(y ~ x)); c(slope = s$coefficients[2, 1], p = s$coefficients[2, 4
 ```
 
 ## Connections
-- **Builds on:** [[P-value]], [[Significance Level]]
+- **Builds on:** [[P-value]], [[Significance Level]], [[Null Hypothesis]]
 - **Leads to:** [[Effect Size]], [[Null Hypothesis Significance Testing]], [[Writing Results Sections]]
 - **Part of:** [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]], molecular note [[Statistical vs Biological Significance]]
 

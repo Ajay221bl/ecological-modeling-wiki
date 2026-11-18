@@ -16,9 +16,9 @@ status: seedling
 
 # Vague Prior
 
-A juror who has heard nothing about a case will be led by the evidence, but even "no opinion" is a starting position, and it can look different depending on how the question is put. A **vague prior**, also called flat, diffuse or "non-informative", spreads plausibility so widely that the data, through the likelihood, almost entirely determine the posterior ([[Prior Distribution]]). Examples are Uniform(0, 1) on a probability ([[Uniform Distribution]]), Normal(0, 1000) on a slope and Uniform(0, 100) on a standard deviation. With plenty of data the posterior then resembles the likelihood and estimates resemble maximum likelihood.
+A juror who has heard nothing about a case will be led by the evidence, but even "no opinion" is a starting position, and it can look different depending on how the question is put. A **vague prior**, also called flat, diffuse or "non-informative", spreads plausibility so widely that the data, through the likelihood, almost entirely determine the posterior ([[Prior Distribution]]). Examples are Uniform(0, 1) on a probability ([[Uniform Distribution]]), Normal(0, 1000) on a slope and Uniform(0, 100) on a [[Standard Deviation|standard deviation]]. With plenty of data the posterior then resembles the likelihood and estimates resemble [[Maximum Likelihood Estimation|maximum likelihood]].
 
-It has three problems. Flat on one scale isn't flat on another: in the code below, a Normal(0, 10) prior on the logit scale puts 64% of its mass on probabilities within 1% of 0 or 1, a U shape on the probability scale. Vague priors allow absurd values, so Normal(0, 1000) on a logit slope gives real weight to odds ratios of e¹⁰⁰⁰. And they can make sampling slow or unstable, above all for variance parameters with few groups.
+It has three problems. Flat on one scale isn't flat on another: in the code below, a Normal(0, 10) prior on the [[Link Scale|logit scale]] puts 64% of its mass on probabilities within 1% of 0 or 1, a U shape on the probability scale. Vague priors allow absurd values, so Normal(0, 1000) on a [[Logit Link|logit]] slope gives real weight to odds ratios of e¹⁰⁰⁰. And they can make sampling slow or unstable, above all for variance parameters with few groups.
 
 So "vague" isn't automatically "safe", and a [[Weakly Informative Prior]] is now usually preferred; the opposite extreme is an [[Informative Prior]]. Very wide priors shade into the [[Improper Prior]], and the [[Jeffreys Prior]] was one attempt to fix the scale problem. [[Hobbs and Hooten 2015 Ch5]] warns that no prior is truly non-informative: they always assert something, sometimes something silly.
 
@@ -29,7 +29,7 @@ hist(p, breaks = 50, main = "Flat-looking on the logit scale, U-shaped on the pr
 ```
 
 ## Connections
-- **Builds on:** [[Prior Distribution]]
+- **Builds on:** [[Prior Distribution]], [[Standard Deviation]], [[Maximum Likelihood Estimation]], [[Link Scale]], [[Logit Link]]
 - **Leads to:** [[Weakly Informative Prior]], [[Informative Prior]], [[Improper Prior]], [[Jeffreys Prior]]
 - **Part of:** [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]], molecular note [[How to choose a prior]]
 

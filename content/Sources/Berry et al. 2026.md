@@ -30,7 +30,7 @@ Dr. Roberts' group's paper using the same point-count surveys as Ajay's project.
 (No page numbers: no PDF in the folder.)
 - Spatial covariance from remote sensing as a measure of grassland structure -> [[Spatial Covariance]], [[Grassland Core Habitat]]
 - Multi-species occupancy models that separate detection from occurrence -> [[Occupancy Model]], [[Imperfect Detection]]
-- Edges where trees meet grassland matter for grassland birds -> [[Edge Effects]], [[Woody Plant Encroachment]], [[Habitat Fragmentation]]
+- Edges where trees meet grassland matter for grassland birds -> [[Edge Effects]], [[Woody Encroachment|Woody Plant Encroachment]], [[Habitat Fragmentation]]
 - Five sites in north-central Arkansas, with codes confirmed by the data release metadata (CR = Camp Robinson, not Cache River) -> [[Study Sites]]
 - Dr. Roberts suggested its spatial covariance metric as a habitat covariate, and the final proposal (Oct 12) used it. H2 expected focal grassland richness to follow the paper's pattern (higher in cores, lower with more tree cover), and the Oct 13 results did -> [[Proposal Feedback from Dr Roberts]], [[Hypotheses]], [[Preliminary Results]]
 

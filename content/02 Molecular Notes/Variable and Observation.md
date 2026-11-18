@@ -6,7 +6,6 @@ tags:
   - basics
 aliases:
   - "Row and column"
-  - "Rows and columns"
 status: seedling
 ---
 
@@ -39,7 +38,7 @@ How do variables and observations fit together, and why does the difference matt
 - Independent places: only **20**. The 60 rows are not 60 separate pieces of evidence about places ([[Sampling Unit]]).
 
 ## So in practice
-Before any analysis, write one sentence: "one row is one ___". Then ask whether rows that share a place or animal should be grouped ([[Grouping Factor]]).
+Before any analysis, write one sentence: "one row is one ___". Then ask whether rows that share a place or animal should be grouped ([[Grouping Variable|Grouping Factor]]).
 
 ## What would go wrong otherwise
 - You'd treat repeat visits as independent and overstate your confidence ([[Pseudoreplication]]).

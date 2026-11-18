@@ -17,7 +17,7 @@ Planning a road trip, you first decide *why* you are going, because a quick visi
 
 Work through one. Question: will a pine stand exceed 700 trees in 10 years? The variables are the current number of trees N₀ and the yearly growth multiplier r ([[Variable and Observation]]). The model is N₁₀ = N₀ × r¹⁰. Solving with N₀ = 500 and r = 1.04 gives about 740, so yes. Interpreting: that is plausible for a young stand, with no negative trees and no millions. The [[Sensitivity Analysis]] nudges r to 1.03, which gives about 672, and the answer flips to no; the conclusion hangs on r, so r is what to measure better next season. Finally the assumptions, no fire, constant r and no crowding, are reported beside the answer.
 
-The order is not arbitrary; each step needs the one before. You cannot choose variables without a purpose, write a formula without variables, check results you have not calculated, or know which assumptions matter before seeing what the results depend on. The process is a loop, not a straight line: a nonsense result sends you back to rebuild the model, and a finished model usually raises a new question. "Interpret" means checking the answer makes biological sense, not just checking the arithmetic, and steps 6 and 7 are not optional extras; they are what make a model trustworthy, and reviewers ask about both. The same skeleton guides the [[Final Project]], and step 1 includes deciding whether the goal is exploration, inference or prediction ([[Exploration, Inference and Prediction]], [[Conceptual Model]], [[Model]]).
+The order is not arbitrary; each step needs the one before. You cannot choose variables without a purpose, write a formula without variables, check results you have not calculated, or know which assumptions matter before seeing what the results depend on. The process is a loop, not a [[Equation of a Line|straight line]]: a nonsense result sends you back to rebuild the model, and a finished model usually raises a new question. "Interpret" means checking the answer makes biological sense, not just checking the arithmetic, and steps 6 and 7 are not optional extras; they are what make a model trustworthy, and reviewers ask about both. The same skeleton guides the [[Final Project]], and step 1 includes deciding whether the goal is exploration, inference or prediction ([[Exploration, Inference and Prediction]], [[Conceptual Model]], [[Model]]).
 
 ```mermaid
 flowchart TD
@@ -39,7 +39,7 @@ N10(500, 1.03)     # step 6: about 672, so the conclusion is sensitive to r
 ```
 
 ## Connections
-- **Builds on:** [[Model]], [[Conceptual Model]]
+- **Builds on:** [[Model]], [[Conceptual Model]], [[Equation of a Line]]
 - **Leads to:** [[Sensitivity Analysis]], [[Data Exploration Protocol]], [[Why model at all]]
 - **See also:** [[Analytical Model]], [[Real World and Model World]], [[Start Here]], [[Statistical Model]]
 - **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]

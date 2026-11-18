@@ -16,7 +16,7 @@ A before-and-after photo for a diet cannot show that the diet worked: without so
 
 Here is the arithmetic. In one wet spring, sprayed thistle plots see seedling survival rise from 0.30 to 0.55, which looks like +0.25 from spraying. But unsprayed controls over the same spring rise from 0.30 to 0.45, so the season alone gave +0.15. The spray's own effect is the difference of the differences: (0.55 − 0.30) − (0.45 − 0.30) = +0.10. Things change over time anyway (weather, season, observers learning), treated units experience both the treatment and those changes, and control units experience only the changes, so subtracting removes what the two have in common. Comparing changes rather than levels is the idea behind before-after-control-impact designs.
 
-Controls must be handled identically: visited, marked and disturbed in the same way. When applying a treatment has side effects, such as the wetting and trampling that come with spraying, the controls get a *sham treatment*, a procedure that mimics the handling without the active ingredient, such as spraying plain water. Two confusions: a before measurement on the treated unit is not a control, because it controls for the unit but not for what changed over time; and controls should not be left completely alone, they should get everything except the active ingredient. In a fitted model the control usually becomes the [[Reference Level]] against which treatment coefficients are measured, and a control group is a key defence against a [[Confounding Variable]] in any [[Experimental Study]].
+Controls must be handled identically: visited, marked and disturbed in the same way. When applying a treatment has side effects, such as the wetting and trampling that come with spraying, the controls get a *sham treatment*, a procedure that mimics the handling without the active ingredient, such as spraying plain water. Two confusions: a before measurement on the treated unit is not a control, because it controls for the unit but not for what changed over time; and controls should not be left completely alone, they should get everything except the active ingredient. In a fitted model the control usually becomes the [[Reference Level]] against which treatment coefficients are measured, and a control group is a key defence against a [[Confounding|Confounding Variable]] in any [[Experimental Study]].
 
 ```mermaid
 flowchart LR
@@ -35,7 +35,7 @@ Comparing changes, not levels, is the before-after-control-impact idea.
 
 ## Connections
 - **Builds on:** [[Treatment]], [[Experimental Study]]
-- **Leads to:** [[Reference Level]], [[Confounding Variable]], [[Randomization]]
+- **Leads to:** [[Reference Level]], [[Confounding|Confounding Variable]], [[Randomization]]
 - **See also:** [[Treatment|Treatment and Control]]
 - **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]
 

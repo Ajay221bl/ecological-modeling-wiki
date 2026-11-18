@@ -27,7 +27,7 @@ A review arguing that grassland birds have shown long, widespread declines and a
 
 ## Key ideas I use
 - Grassland birds as a group have declined for decades -> [[Grassland Bird Decline]]
-- Loss and fragmentation of grassland habitat, including conversion and woody plant invasion, as drivers -> [[Habitat Fragmentation]], [[Woody Plant Encroachment]]
+- Loss and fragmentation of grassland habitat, including conversion and woody plant invasion, as drivers -> [[Habitat Fragmentation]], [[Woody Encroachment|Woody Plant Encroachment]]
 - Northern Bobwhite is a classic declining grassland-associated species (one of the focal species in Ajay's data) -> [[Northern Bobwhite]]
 
 ## Notes that rely on it

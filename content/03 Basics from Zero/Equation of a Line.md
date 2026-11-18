@@ -3,85 +3,42 @@ type: atomic
 tags:
   - basics-from-zero
   - math
-  - flashcards
+  - flashcards/eco/basics
+description: "A straight line is described by two numbers: where it starts (the intercept) and how much it goes up for every one step to the right (the slope)."
 aliases:
   - "straight line"
-  - "slope"
-  - "intercept"
   - "slope and intercept"
 status: seedling
 ---
 
 # Equation of a Line
 
-**In one line:** a straight line is described by two numbers: where it starts (the intercept) and how much it goes up for every one step to the right (the slope).
+You take a taxi. It costs $3 the moment you get in, plus $2 for every kilometre: 0 km costs 3, 1 km costs 5, 2 km costs 7, 3 km costs 9. Written as a rule, cost = 3 + 2 × km. The **equation of a line** is this kind of rule, y = a + b x, linking one [[Variable]] (x, the input) to another (y, the output) with two numbers. The *intercept* a is the value of y when x is 0 (3: you have not moved yet). The *slope* b is how much y changes for each one-unit step in x (2 dollars per km), a constant [[Rate of Change]]. Draw it and you get a straight line that crosses the vertical axis at 3 and climbs 2 for each step right. A negative slope means the line goes down; a slope of 0 means flat, so x makes no difference.
 
-> [!info] Before this, it helps to know
-> [[Variable and Observation]] (the line links two variables) · [[Average (Mean)]] (a line predicts a mean)
+A line is the simplest possible way to say "y depends on x", and it turns a vague idea ("windier mornings, fewer birds?") into two numbers you can estimate and argue about: is the slope different from 0, and how big is it? Take a made-up rule, expected [[Species Richness|richness]] = 6 − 0.5 × Wind, with Wind coded 0 to 3. Wind 0 gives 6, 1 gives 5.5, 2 gives 5 and 3 gives 4.5; the intercept 6 is the expected richness on a calm morning, and the slope −0.5 says each step up in wind costs half a species on average. Now push it: with a steeper slope, 6 − 2.5 × Wind, Wind 3 gives 6 − 7.5 = −1.5 species, which is impossible. A straight line does not know that counts stop at 0, the problem the [[Log Link]] solves by making the line straight on the log scale instead ([[Logarithm]]). If x is a category such as Site rather than a number, R picks one category as the baseline, the [[Reference Level]]: the intercept becomes the baseline's value and each other category gets its own jump from it. With raw means, Bald Knob is 4.73 (the intercept) and Camp Robinson is 4.73 + 2.85 = 7.58.
 
-## Start from zero
-You take a taxi. It costs $3 the moment you get in, plus $2 for every kilometre.
+```mermaid
+xychart-beta
+  title "cost = 3 + 2 x km"
+  x-axis "km" [0, 1, 2, 3]
+  y-axis "cost ($)" 0 --> 10
+  line [3, 5, 7, 9]
+```
+*What to look at:* the line starts at 3 when km is 0 (the intercept) and rises 2 for every step right (the slope).
 
-| km | 0 | 1 | 2 | 3 |
-|---|---|---|---|---|
-| cost | 3 | 5 | 7 | 9 |
-
-Written as a rule: **cost = 3 + 2 x km**.
-
-- **3 is the intercept:** the value when the input is 0 (you have not moved yet).
-- **2 is the slope:** how much the output changes for each one-unit step of the input.
-
-Draw it and you get a straight line that crosses the vertical axis at 3 and climbs 2 for each step right. The general form is **y = a + b x**: a is the intercept, b is the slope. That is the whole idea.
-
-A negative slope means the line goes down. A slope of 0 means flat: x makes no difference.
-
-## Why it exists
-A line is the simplest possible way to say "y depends on x". It turns a vague idea ("windier mornings, fewer birds?") into two numbers you can estimate from data and argue about:
-- Does the slope differ from 0? (Is there any effect?)
-- How big is it, and which direction?
-
-Almost every model in this course is built on this. A [[Linear Model]] is this equation plus an honest admission that real points scatter around the line. A [[Linear Predictor]] is the same thing with several x's: y = a + b1 x1 + b2 x2 + ...
-
-## A tiny example
-A made-up rule for richness and wind (Wind is 0 to 3 in my data):
-
-**expected richness = 6 - 0.5 x Wind**
-
-| Wind | 0 | 1 | 2 | 3 |
-|---|---|---|---|---|
-| Expected richness | 6 | 5.5 | 5 | 4.5 |
-
-Intercept 6 = expected richness on a calm morning. Slope -0.5 = each step up in wind costs half a species, on average.
-
-Now the warning. Push the line further: with a steeper slope, say 6 - 2.5 x Wind, Wind = 3 gives 6 - 7.5 = **-1.5 species**. Impossible. A straight line does not know that counts stop at 0. That is the problem the [[Log Link]] solves (see [[Logarithms and Exponents]]).
-
-**Categories instead of numbers.** What if x is Site, not a number? R picks one site as the baseline. The intercept becomes "the baseline site's value", and each other site gets its own "jump" from the baseline. With raw means, BK = 4.73 (intercept) and CR = 4.73 + 2.85 = 7.58. Same idea: a starting point plus a step. See [[Categorical Predictor and Reference Level]].
-
-## In my project
-My property model (M1), `Richness ~ Site + Wind + Sky + (1|PtNum)`, is a line in disguise:
-
-> log(expected richness) = intercept + (jump for this site) + slope x Wind + slope x Sky + (this point's own adjustment)
-
-The top model (M3) just adds three more slopes, one each for spatial covariance, tree cover and scrub cover ([[Candidate Model Set]]).
-
-- The **intercept** is the baseline: BK (the reference site), with Wind = 0 and Sky = 0, at a typical point.
-- **Slopes** for Wind and Sky say how much log richness changes per step.
-- The `(1|PtNum)` part gives each point its own small shift of the intercept: a [[Random Intercept]].
-- Everything is on the log scale, so slopes get read through exp(). See [[Interpreting Poisson Coefficients]].
-
-## Common confusions
-- **The intercept may be meaningless if x = 0 never happens.** It is fine here (Wind = 0 is the most common value), but for something like body mass, "mass = 0" is not a real animal.
-- **Slope is per one unit of x.** Change the units (km to m) and the slope changes size, not meaning.
-- **A fitted line is an estimate.** The slope from data is a guess at the true slope ([[Parameter vs Estimate]]).
-- **Straight on which scale?** In my model the line is straight on the log scale, which is curved on the count scale.
+Almost every model in the course is built on this line. A [[Linear Model]] is this equation plus an honest admission that real points scatter around it; a [[Linear Predictor]] is the same thing with several x's, y = a + b₁x₁ + b₂x₂ + .... The project's property model, `Richness ~ Site + Wind + Sky + (1|PtNum)`, is a line in disguise: log(expected richness) = intercept + (jump for this site) + slope × Wind + slope × Sky + (this point's own adjustment, a [[Random Intercept]]). The intercept is the reference site, Bald Knob, with Wind = 0 and Sky = 0 at a typical point, and because everything is on the log scale the slopes are read through [[Exponential Function|exp()]] ([[Interpreting Poisson Coefficients]]); the top model adds three more slopes for [[Spatial Covariance|spatial covariance]], tree cover and scrub cover ([[Candidate Model Set]]). Four confusions. The intercept may be meaningless if x = 0 never happens (fine for Wind, where 0 is the commonest value, but "body mass = 0" is not an animal). A slope is per one unit of x, so changing units (km to m) changes its size, not its meaning. A fitted slope is an [[Estimate]], a guess at the true slope from data. And "straight" depends on the scale: the project's line is straight on the log scale, which is curved on the count scale.
 
 ## Connections
-- **Builds on:** [[Variable and Observation]], [[Average (Mean)]]
-- **Leads to:** [[Linear Model]], [[Linear Predictor]], [[Logarithms and Exponents]], [[Categorical Predictor and Reference Level]]
+- **Builds on:** [[Variable]], [[Rate of Change]], [[Exponential Function]]
+- **Leads to:** [[Log Link]], [[Logarithm]], [[Reference Level]], [[Linear Model]], [[Linear Predictor]], [[Random Intercept]], [[Interpreting Poisson Coefficients]], [[Candidate Model Set]], [[Estimate]], [[Species Richness]], [[Spatial Covariance]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
-- **Go deeper:** [[Guthery and Bingham 2007]] (how to read intercepts and slopes biologically), [[Hobbs and Hooten 2015 Ch2]] (lines and other model shapes)
+- **Go deeper:** [[Guthery and Bingham 2007]], [[Hobbs and Hooten 2015 Ch2]]
 
-> [!question]- Check yourself
-> In y = 10 - 3x, what are the intercept and slope, and what is y when x = 2?
-> ?
-> Intercept 10 (value at x = 0), slope -3 (y drops 3 for every one-step increase in x). At x = 2, y = 10 - 6 = 4.
+## Flashcards
+
+In y = 10 - 3x, what are the intercept and slope, and what is y when x = 2?
+??
+Intercept 10 (value at x = 0), slope -3 (y drops 3 for every one-step increase in x). At x = 2, y = 10 - 6 = 4.
+++++
+
+Why can a straight line on the count scale predict impossible values for species richness?::A line keeps going below zero for large enough x, but counts cannot be negative; a log link avoids this.

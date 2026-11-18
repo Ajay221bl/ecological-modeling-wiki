@@ -16,7 +16,7 @@ Draw names from a well-mixed hat and nobody's preferences, convenience or hunche
 
 Why does it matter? Say you have 200 numbered plots and need 20, and birds are more common far from roads. The convenient choice, the 20 plots nearest the road, is easy and probably unlike the rest: in a simulation where the true average is about 9 birds per plot, those 20 roadside plots average about 4 to 5. A random choice, `sample(1:200, 20)`, gives each plot a probability of 20/200 = 0.10 of selection, and averaged over many random samples the estimate lands right on the truth. Human judgement in picking units tends to follow access, visibility and habitat, all of which can affect the response, and that creates [[Bias]]. Randomization makes selection independent of every property of the units, including ones nobody thought to list, and it also licenses the maths: standard errors and tests assume chance selection ([[Unbiased Estimator]]).
 
-Two cautions. "Random" does not mean haphazard: wandering about and picking plots "at random" by eye is not random, because people are bad at it, so use a random number generator. And a random sample is representative only on average; a small random sample can still be lopsided by bad luck ([[Representative Sample]]). Variants such as stratified, systematic and cluster sampling keep the chance element but add structure to improve efficiency ([[Survey Sampling Designs]]). Do not confuse random sampling, which decides which units are studied and so to whom results apply, with [[Randomization]], which decides which units get a treatment and so whether an effect can be called causal. Powell and Gale tie random sampling to unbiased estimation ([[Powell and Gale 2015 Ch2]]), and the result is a [[Sample]] you can generalize from.
+Two cautions. "Random" does not mean haphazard: wandering about and picking plots "at random" by eye is not random, because people are bad at it, so use a [[Random Numbers and set.seed()|random number generator]]. And a random sample is representative only on average; a small random sample can still be lopsided by bad luck ([[Representative Sample]]). Variants such as stratified, systematic and cluster sampling keep the chance element but add structure to improve efficiency ([[Survey Sampling Designs]]). Do not confuse random sampling, which decides which units are studied and so to whom results apply, with [[Randomization]], which decides which units get a treatment and so whether an effect can be called causal. Powell and Gale tie random sampling to unbiased estimation ([[Powell and Gale 2015 Ch2]]), and the result is a [[Sample]] you can generalize from.
 
 ![[Random vs convenience sampling.png|700]]
 *What to look at:* the convenience sample hugs the road while the random sample covers the whole area.
@@ -33,7 +33,7 @@ The convenience sample is badly biased. The random one centres on the truth.
 
 ## Connections
 - **Builds on:** [[Study Population]], [[Sample]]
-- **Leads to:** [[Representative Sample]], [[Randomization]], [[Survey Sampling Designs]], [[Unbiased Estimator]]
+- **Leads to:** [[Representative Sample]], [[Randomization]], [[Survey Sampling Designs]], [[Unbiased Estimator]], [[Random Numbers and set.seed()]]
 - **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]
 
 ## Flashcards

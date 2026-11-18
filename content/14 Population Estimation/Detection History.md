@@ -17,7 +17,7 @@ A loyalty card stamped on the visits when the café had your favourite cake read
 
 An all-zero history has two routes, occupied but missed every time or unoccupied, and their probabilities add: 00000 has probability ψ(1 − p₁)(1 − p₂)(1 − p₃)(1 − p₄)(1 − p₅) + (1 − ψ). The likelihood multiplies the probabilities of all sites' histories, and missing visits are coded NA and skipped ([[Likelihood Function]]). In the code below, with ψ = 0.6 and p = 0.3, history 01010 has probability 0.0185 and 00000 has 0.5008, so half the sites would look empty.
 
-The guest lecture works through a table of 30 sites sampled four times: site 1 reads 1001 (detected on the first and fourth surveys), site 3 reads 1100, and sites 2 and 30 read 0000, which raises the key question, "undetected or unoccupied?" The [[Occupancy Likelihood]] answers it by adding both routes ([[Occupancy Guest Lecture]]). Unlike mark-recapture [[Capture History|capture histories]], occupancy histories can be all zeros, because sites, not captured animals, are the units ([[Powell and Gale 2015]] Ch15, [[Single-season Occupancy]]). An all-zero history does not mean absent; it means absent or missed every time.
+The guest lecture works through a table of 30 sites sampled four times: site 1 reads 1001 (detected on the first and fourth surveys), site 3 reads 1100, and sites 2 and 30 read 0000, which raises the key question, "undetected or unoccupied?" The [[Occupancy Likelihood]] answers it by adding both routes ([[Occupancy Guest Lecture]]). Unlike [[Mark-Recapture|mark-recapture]] [[Capture History|capture histories]], occupancy histories can be all zeros, because sites, not captured animals, are the units ([[Powell and Gale 2015]] Ch15, [[Single-season Occupancy]]). An all-zero history does not mean absent; it means absent or missed every time.
 
 ```r
 psi <- 0.6; p <- 0.3
@@ -27,7 +27,7 @@ round(c(h01010 = h1, h00000 = h0), 4)
 ```
 
 ## Connections
-- **Builds on:** [[Binary Variable]], [[Occupancy]]
+- **Builds on:** [[Binary Variable]], [[Occupancy]], [[Mark-Recapture]]
 - **Leads to:** [[Capture History]], [[Single-season Occupancy]], [[Occupancy Likelihood]], [[Camera Trap]]
 - **Part of:** [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 

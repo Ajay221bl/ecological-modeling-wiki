@@ -6,7 +6,6 @@ tags:
 description: "Distance classes group pairs of sites by how far apart they are, so that autocorrelation can be computed separately for near, middle and far pairs."
 aliases:
   - "Distance bins"
-  - "Distance bands"
   - "Distance class"
 status: seedling
 ---

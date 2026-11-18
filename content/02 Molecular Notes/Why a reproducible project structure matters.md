@@ -4,6 +4,7 @@ tags:
   - molecular
   - r
   - reproducibility
+  - flashcards/eco/why
 aliases:
   - "Why reproducible structure"
   - "Why an RProject"
@@ -21,9 +22,9 @@ Why organize the analysis as an R project with separate folders, a README and tw
 - [[Reproducibility]]: someone else can rerun the work and get the same results.
 - [[RProject]]: the .Rproj file that defines the project's home folder.
 - [[here()]]: builds file paths relative to that home folder.
-- [[R Packages]] and [[librarian shelf()]]: extra tools, installed and loaded in one line.
+- [[Packages in R|R Packages]] and [[librarian shelf()]]: extra tools, installed and loaded in one line.
 - [[Wrangling vs Analysis Scripts]]: separating "make clean data" from "analyse it".
-- [[README Data Dictionary]]: explains every column and where the data came from.
+- [[README|README Data Dictionary]]: explains every column and where the data came from.
 
 ## The reasoning, step by step
 1. **Start with the grader.** Dr. Roberts will unzip my folder on his computer and run it. The Report's code part is 8 points, and he "will deduct up to 2 points for code errors" (syllabus). So the code must run start to finish on a machine I have never touched.
@@ -48,9 +49,9 @@ dir.create(here(FiguresPath), showWarnings = FALSE)
 
 source(here("GrasslandBirdRichness_Wrangling.R"))
 ```
-`<-` stores the folder names as text ([[R Objects and Assignment]]); `dir.create()` makes each folder, staying quiet if it already exists; `source()` runs the other script.
+`<-` stores the folder names as text ([[Objects and Assignment|R Objects and Assignment]]); `dir.create()` makes each folder, staying quiet if it already exists; `source()` runs the other script.
 
-Status (Oct 13): the gaps listed on Oct 12 are closed. The folders are made by `dir.create()`, `str_trim()` is in the wrangling script, and the README now states the real missing values, how to run the project, and every output file ([[README Data Dictionary]]). The code was tested in a cloud copy of R and then run start to finish in ajay's RStudio, with identical numbers both times ([[Preliminary Results]]). R is not installed in Claude's normal environment, so any later change still needs a run in RStudio. What is left before zipping: one final clean run (open the .Rproj, Session > Restart R, Source the Analysis script).
+Status (Oct 13): the gaps listed on Oct 12 are closed. The folders are made by `dir.create()`, `str_trim()` is in the wrangling script, and the README now states the real missing values, how to run the project, and every output file ([[README|README Data Dictionary]]). The code was tested in a cloud copy of R and then run start to finish in ajay's RStudio, with identical numbers both times ([[Preliminary Results]]). R is not installed in Claude's normal environment, so any later change still needs a run in RStudio. What is left before zipping: one final clean run (open the .Rproj, Session > Restart R, Source the Analysis script).
 
 ## What would go wrong otherwise
 - Dr. Roberts opens the zip, the code stops at a missing folder or a hard-coded path, and points are lost.
@@ -58,5 +59,14 @@ Status (Oct 13): the gaps listed on Oct 12 are closed. The folders are made by `
 - Mixing cleaning and modelling in one long script makes errors like the double-counted species codes hard to spot.
 
 ## Connections
-- **Related:** [[R Scripts Walkthrough]], [[ggplot2 and ggsave()]], [[Milestones and Deadlines]]
+- **Related:** [[R Scripts Walkthrough]], [[ggsave()|ggplot2 and ggsave()]], [[Milestones and Deadlines]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 12 - Reproducible Coding and Figures|MOC - R and Reproducibility]]
+
+## Flashcards
+
+Name three common reasons a script fails on someone else's computer.::Hard-coded file paths, missing packages and missing folders.
+
+How does an .Rproj file plus here() fix the file-path problem?
+??
+here() builds paths from the folder holding the .Rproj file, so the same code finds the files wherever the project folder is unzipped.
+++++

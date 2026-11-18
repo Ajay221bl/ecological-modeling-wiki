@@ -17,7 +17,7 @@ Think of a light switch: on or off, nothing in between. A **binary variable** ha
 
 Coding as 1 and 0 has a lovely payoff. Five nests are recorded as survived = 1, 0, 1, 1, 0. The sum, 3, counts the survivors, and the mean, 3 / 5 = 0.6, is the proportion that survived, which is the natural estimate of the *probability* p that a nest survives. In ecology each switch has a chance of being on, and that chance is what you model. One yes-or-no outcome with chance p follows the [[Bernoulli Distribution]]; the number of yeses out of n tries follows the binomial ([[Binomial Sampling]]). Do not mix up the two words: *binary* describes one yes/no outcome, *binomial* the count of yeses among n of them.
 
-Why does recognising a binary response matter so much? Because a straight-line model ignores the fact that a probability must stay between 0 and 1. Fit a straight line to survival against nest height and it may predict 1.3 or −0.2 for some nest, and neither is a possible probability. So binary responses get [[Logistic Regression]], which passes the straight line through a [[Link Function]] (the logit) that keeps every prediction between 0 and 1. Many of the most important questions in ecology are yes-or-no questions in disguise: survival and detection in Powell and Gale ([[Powell and Gale 2015 Ch3]]), occupancy, and presence or absence of a parasite, all of which are handled in the GLM unit ([[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]).
+Why does recognising a binary response matter so much? Because a straight-line model ignores the fact that a probability must stay between 0 and 1. Fit a [[Equation of a Line|straight line]] to survival against nest height and it may predict 1.3 or −0.2 for some nest, and neither is a possible probability. So binary responses get [[Logistic Regression]], which passes the straight line through a [[Link Function]] (the [[Logit Link|logit]]) that keeps every prediction between 0 and 1. Many of the most important questions in ecology are yes-or-no questions in disguise: survival and detection in Powell and Gale ([[Powell and Gale 2015 Ch3]]), occupancy, and presence or absence of a parasite, all of which are handled in the GLM unit ([[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]).
 
 ```mermaid
 flowchart LR
@@ -36,8 +36,8 @@ plogis(coef(fit))                            # 0.6 back on the probability scale
 ```
 
 ## Connections
-- **Builds on:** [[Discrete Data]]
-- **Leads to:** [[Bernoulli Distribution]], [[Binomial Sampling]], [[Logistic Regression]], [[Link Function]]
+- **Builds on:** [[Discrete Data]], [[Equation of a Line]]
+- **Leads to:** [[Bernoulli Distribution]], [[Binomial Sampling]], [[Logistic Regression]], [[Link Function]], [[Logit Link]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]], molecular note [[Continuous vs Discrete Data]]
 - **Go deeper:** [[Powell and Gale 2015 Ch3]]
 

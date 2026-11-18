@@ -21,7 +21,7 @@ status: seedling
 What steps should every homework answer go through, and what is the grader looking for?
 
 ## Built from
-- [[librarian and shelf()]], [[Reproducibility]], [[R Markdown]]: a script that runs on someone else's computer.
+- [[librarian shelf()|librarian and shelf()]], [[Reproducibility]], [[R Markdown]]: a script that runs on someone else's computer.
 - [[Why explore data before modeling]], [[Data Exploration Protocol]]: look first.
 - [[Why the response type decides the distribution]], [[Which assumption violation leads to which model]]: choose the model.
 - [[How to check an MCMC fit]], [[Which residuals to use for a GLM]]: check it.
@@ -29,7 +29,7 @@ What steps should every homework answer go through, and what is the grader looki
 - [[How to write up a modeling analysis]], [[Writing Methods Sections]], [[Writing Results Sections]]: explain it.
 
 ## The reasoning, step by step
-1. **Make it run anywhere.** Start with the shelf() block the homework gives, read data from the repository URL, never use setwd(), and run the whole script in a fresh R session before handing it in. Each error the grader must fix costs 0.5 points ([[librarian and shelf()]]).
+1. **Make it run anywhere.** Start with the shelf() block the homework gives, read data from the repository URL, never use setwd(), and run the whole script in a fresh R session before handing it in. Each error the grader must fix costs 0.5 points ([[librarian shelf()|librarian and shelf()]]).
 2. **Restate the question.** One sentence: what is the response, what are the predictors, and what would count as an answer?
 3. **Explore.** Outliers, the response's distribution, balance across groups, relationships, collinearity and interactions, in Zuur's order ([[Data Exploration Protocol]]).
 4. **Draw the design.** Which observations share a site, a plot, a year? That decides the random effects or whether you need them ([[Nested Experimental Design]]).

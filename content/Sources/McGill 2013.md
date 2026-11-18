@@ -29,11 +29,11 @@ A short essay arguing that autocorrelation is a universal fact in ecology (Toble
 ## Key ideas I use
 - Everything in ecology is autocorrelated in space, time and phylogeny; formally corr(x_i, x_j) is not zero, usually shrinking with distance (PDF p. 1) -> [[Spatial Autocorrelation]]
 - Stationarity and isotropy are the usual simplifying assumptions; GLS handles the correlation by estimating a full error covariance matrix (PDF p. 1) -> [[Spatial Autocorrelation]] (remedies). Note: this "error covariance" is a statistical idea, not the grass-tree [[Spatial Covariance]] metric used in my habitat data.
-- Four attitudes: unimportant (ignore it), foe (it violates the independence of errors), friend (its scale and shape reveal dispersal, environmental and other processes), and an ignorance measure or null model to beat (PDF pp. 2-3) -> [[Autocorrelation - Friend or Foe]], [[Independence Assumption]], [[Null Model]]
+- Four attitudes: unimportant (ignore it), foe (it violates the independence of errors), friend (its scale and shape reveal dispersal, environmental and other processes), and an ignorance measure or null model to beat (PDF pp. 2-3) -> [[Autocorrelation as Signal or Nuisance|Autocorrelation - Friend or Foe]], [[Independence of Observations|Independence Assumption]], [[Null Model]]
 - Explicitly mentions the debate in [[Diniz-Filho et al. 2003]] (PDF p. 3)
 
 ## Notes that rely on it
-- [[Autocorrelation - Friend or Foe]]
+- [[Autocorrelation as Signal or Nuisance|Autocorrelation - Friend or Foe]]
 - [[Spatial Autocorrelation]]
 - [[Preliminary Results]]: the Oct 13 Moran's I check found weak residual autocorrelation between nearby points. In McGill's "friend" view, that leftover pattern hints at something spatial the predictors miss.
 

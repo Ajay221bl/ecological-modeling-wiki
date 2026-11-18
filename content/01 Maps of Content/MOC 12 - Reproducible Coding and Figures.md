@@ -37,7 +37,7 @@ Unit 8 (Sep 24, 29): an analysis someone else can rerun from raw data to final f
 - [[Plotting Model Predictions with Ribbons]]: A prediction plot shows what the fitted model expects across a predictor's range as a line, with a shaded ribbon for uncertainty, over the raw data.
 - [[Error Bars]]: Error bars are lines extending from a plotted estimate to show its uncertainty or the spread of the data.
 - [[Multi-panel Figures]]: A multi-panel figure arranges several separate plots side by side as one image with panel labels.
-- [[Saving Figures]]: Saving a figure with `ggsave()` writes a plot to a file at a size and resolution you state in code.
+- [[ggsave()]]: ggsave() is the ggplot2 function that writes a finished figure to an image file, at a size and resolution you choose.
 - [[tidy()]]: `tidy()` from the broom package turns a fitted model's coefficient table into an ordinary data frame.
 - [[augment()]]: `augment()` from the broom package returns the original data with the model's fitted values and residuals added as new columns.
 
@@ -53,21 +53,20 @@ Unit 8 (Sep 24, 29): an analysis someone else can rerun from raw data to final f
 ## From the grassland bird project
 Notes first written for my project vault (EcoModeling-Vault) and merged in v1.5. Project home: [[MOC 23 - Grassland Bird Richness Project|MOC - Grassland Bird Richness Project]].
 
-- [[check_overdispersion()]]: `check_overdispersion()`, from the **performance** package, asks a fitted Poisson model "are the data more spread out than a Poisson allows?" and...
-- [[Data Frames]]: a data frame is R's version of a spreadsheet table: columns are variables, rows are observations, and each column holds one kind of value.
-- [[Factors]]: a factor is R's way of storing a categorical variable: a column of labels plus a fixed list of the allowed groups (levels), in a set order.
+- [[Objects and Assignment]]: An object is a named container holding something in R's memory, and assignment (`<-`) is how you put something into it.
+- [[Functions in R]]: A function is a named action in R that takes inputs (arguments) inside round brackets and gives back a result.
+- [[Packages in R]]: A package is a bundle of extra functions and data that someone wrote for R, which you install once and load each session.
+- [[Data Frame]]: A data frame is R's table for data: each column is a variable, each row an observation, and columns may be of different types.
+- [[Factors in R]]: A factor is R's way of storing a categorical variable: each value is one of a fixed list of allowed categories called levels.
+- [[Pipe]]: the pipe `%>%` takes whatever is on its left and hands it to the function on its right as that function's first input, so you can write a chain of...
+- [[str_trim()]]: `str_trim()`, from the **stringr** package (part of the tidyverse), removes invisible spaces from the start and end of text, so `" FISP"` and...
 - [[Four-Letter Species Codes]]: short four-letter nicknames for bird species (DICK = Dickcissel, NOBO = Northern Bobwhite) so observers can write fast in the field.
-- [[Functions and Arguments]]: a function is a named action in R that takes inputs (arguments) inside round brackets and gives back a result.
-- [[ggplot2 and ggsave()]]: **ggplot2** draws a figure in layers (first the data and which column goes on which axis, then shapes like boxes and dots, then labels), and...
+- [[group_by()]]: `group_by()` marks a table as split into groups, so that the verbs after it work separately on each group.
 - [[glm()]]: `glm()` is the R function that fits a [[Generalized Linear Model]]: you tell it what you are predicting from what (a formula), what kind of numbers...
 - [[glmer()]]: `glmer()`, from the **lme4** package, fits a [[GLMM]]: the same kind of model as [[glm()]], plus "random effects" that let each group (here, each...
-- [[group_by and summarize]]: `group_by()` sorts the rows of a table into piles that share the same values, and `summarize()` boils each pile down to one row of summary numbers.
 - [[MuMIn model.sel()]]: `model.sel()`, from the **MuMIn** package, takes several fitted models and returns one table that ranks them from best to worst by an AIC score,...
-- [[Pipe]]: the pipe `%>%` takes whatever is on its left and hands it to the function on its right as that function's first input, so you can write a chain of...
-- [[R Objects and Assignment]]: an object is a named box that holds something (a number, some text, a whole data table, a fitted model), and `<-` puts a value into that box.
-- [[R Packages]]: a package is a free add-on bundle of functions that other people wrote; you install it once, then load it every session before using its functions.
-- [[R Scripts Walkthrough]]
-- [[README Data Dictionary]]: a README data dictionary is a plain-text file that says where the data came from and what every column means (and in what units), so a stranger could...
-- [[str_trim()]]: `str_trim()`, from the **stringr** package (part of the tidyverse), removes invisible spaces from the start and end of text, so `" FISP"` and...
-- [[Why a reproducible project structure matters]]
+- [[check_overdispersion()]]: `check_overdispersion()`, from the **performance** package, asks a fitted Poisson model "are the data more spread out than a Poisson allows?" and...
 - [[Wrangling vs Analysis Scripts]]: the wrangling script turns the messy raw file into one clean table; the analysis script explores that table, fits models and makes figures, and it...
+- [[Why a reproducible project structure matters]]
+- [[R Scripts Walkthrough]]
+

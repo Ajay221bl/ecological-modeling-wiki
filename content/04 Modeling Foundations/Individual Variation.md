@@ -15,7 +15,7 @@ A class sits the same exam after the same lessons, and the scores still differ, 
 
 Hidden differences can quietly change a group average. Take twenty hens in the same habitat and year with an average annual survival of 0.6, but half are robust (survival 0.8) and half are frail (0.4). After three years, 10 × 0.8³ = 5.1 robust hens and 10 × 0.4³ = 0.6 frail hens are left. The surviving flock is now 89% robust, and its average survival has risen to about 0.76, although no hen changed at all. The frail left first, so the survivors are not a fair sample of the starters. A model with one shared survival parameter averages over all this, and that average can be fine or can badly mislead about what is happening to the group.
 
-Ignoring individual variation has two classic symptoms. Counts look more variable than a simple binomial or Poisson model expects, which is [[Overdispersion]], one of the main reasons those simple models fail on real data. And abundance estimates become biased when some animals are far easier to catch than others, the problem that [[Capture Heterogeneity Models]] address. Models can include individual differences through covariates such as age or body condition, or through a [[Random Effect]] for each individual, which appears in the mixed model labs. Individual variation is not noise to be wished away; it is real biology and often the thing of interest, and a large sample does not remove it, because it can still hide a changing mix of individuals. Powell and Gale list it among the sources of variation in estimates ([[Powell and Gale 2015 Ch2]]). Variation of this kind is summarised as a [[Variance]].
+Ignoring individual variation has two classic symptoms. Counts look more variable than a simple binomial or Poisson model expects, which is [[Overdispersion]], one of the main reasons those simple models fail on real data. And abundance estimates become biased when some animals are far easier to catch than others, the problem that [[Capture Heterogeneity Models]] address. Models can include individual differences through [[Predictor Variable|covariates]] such as age or [[Body Condition|body condition]], or through a [[Random Effect]] for each individual, which appears in the [[Mixed Effects Model|mixed model]] labs. Individual variation is not noise to be wished away; it is real biology and often the thing of interest, and a large sample does not remove it, because it can still hide a changing mix of individuals. Powell and Gale list it among the sources of variation in estimates ([[Powell and Gale 2015 Ch2]]). Variation of this kind is summarised as a [[Variance]].
 
 ```mermaid
 flowchart LR
@@ -31,8 +31,8 @@ round(rbind(robust, frail, share_robust = robust / (robust + frail),
 The last row climbs from 0.60 to 0.76 purely through selective loss of frail birds.
 
 ## Connections
-- **Builds on:** [[Process Variation]]
-- **Leads to:** [[Overdispersion]], [[Random Effect]], [[Capture Heterogeneity Models]]
+- **Builds on:** [[Process Variation]], [[Predictor Variable]]
+- **Leads to:** [[Overdispersion]], [[Random Effect]], [[Capture Heterogeneity Models]], [[Body Condition]], [[Mixed Effects Model]]
 - **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]], molecular note [[Process vs Observation Error]]
 
 ## Flashcards

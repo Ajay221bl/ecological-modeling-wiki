@@ -4,6 +4,7 @@ tags:
   - molecular
   - landscape-ecology
   - remote-sensing
+  - flashcards/eco/why
 aliases:
   - "Choosing the window size"
   - "Which spatial covariance scale"
@@ -18,7 +19,7 @@ status: seedling
 The habitat file gives three spatial covariance columns for each point: 3x3, 9x9 and 27x27 windows. Why three, why do their values differ so much, and how should I pick one?
 
 ## Built from
-- [[Spatial Scale (Grain and Extent)]]: grain is the pixel size, extent is the window size.
+- [[Spatial Scale|Spatial Scale (Grain and Extent)]]: grain is the pixel size, extent is the window size.
 - [[Pixels and Spatial Resolution]]: each pixel is 30 m x 30 m.
 - [[Moving Window Analysis]]: the window slides across the map, scoring every pixel.
 - [[Spatial Covariance]]: the score computed inside each window.
@@ -56,3 +57,12 @@ The habitat file gives three spatial covariance columns for each point: 3x3, 9x9
 ## Connections
 - **Related:** [[Why negative spatial covariance marks a tree-grass boundary]], [[Landscape Ecology]], [[Why compare models with AIC rather than only p-values]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 25 - Landscape and Remote Sensing|MOC - Landscape and Remote Sensing]]
+
+## Flashcards
+
+What question does each spatial covariance window size answer?
+??
+The small window (90 m) asks whether there is a tree line right here; the large one (810 m) asks whether the point sits in a wooded neighbourhood.
+++++
+
+Why are larger windows' values usually more negative?::Bigger windows almost always catch more forest edge.

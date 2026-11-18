@@ -21,6 +21,28 @@ Every round of changes and checks on this wiki, newest first. Each round ("pass"
 
 ---
 
+## v1.6 (2026-11-18): self-contained atomic notes, first-use links, guide pages brought up to date
+**Asked for:** How This Wiki Works still described the old outline, so bring every guide page and every note to the latest format. Make every atomic note self-contained and explained from first principles, with every term used for the first time linked to its own atomic note (and a new note written when none exists).
+
+**Changed**
+- **New atomic template (approved Nov 18):** paragraph 1 gives the picture and the idea, paragraph 2 builds it from zero with real numbers and gives the formula last, an optional paragraph 3 covers why, the usual confusion and the source. Then a figure or Mermaid chart, an R block with no heading, Connections (Builds on, Leads to, Part of, Go deeper) and Flashcards. Every technical word gets a link and a few plain words of meaning the first time it appears.
+- **First-use links:** about 2,620 links added where a term appears for the first time in a note, each also listed under Connections. Generic words (average, chance, distribution and similar) were kept out so they do not link to the wrong note.
+- **Duplicates merged:** 35 pairs left over from the v1.5 import were merged (for example Edge Effect and Edge Effects, Woody Encroachment and Woody Plant Encroachment) and 11 notes renamed. Links to the old names now go to the kept note. 81 aliases that pointed at two notes at once were removed.
+- **Old-format notes rewritten:** about 84 atomic notes, mostly the v1.5 imports, rewritten to the new template. 5 notes that compared two ideas became molecular notes. 86 "Check yourself" callouts became flashcards, and 22 molecular notes that had none got flashcards.
+- **8 new atomic notes** for terms that had no note: Deviation, Habitat Specialist, Habitat Generalist, Tipping Point, Brood Parasitism, Regime Shift, Spatial Early Warning Signal, Regular Expression.
+- **Fixes:** the Population link now points to the population note, not a project note. Frontmatter that broke on quotes inside aliases (16 notes) was repaired. 12 notes in folder 20 got their landscape deck tag. The Howell tract (HO) label was corrected.
+- **MOCs:** reordered basic to advanced, in syllabus order, never alphabetical. [[Learning Path]] now covers sections 0 to 23, including the v1.3 to v1.5 material (MOCs 22 to 26).
+- **Guide pages rewritten:** [[How This Wiki Works]] (describes the v1.6 note formats), [[Start Here]], [[Index]] (1,256 notes), the three templates in Templates and the style guide.
+
+**Checks**
+- Links: 0 broken links. The only hits are R code such as `[["a"]]` inside notes and the examples on this page.
+- Aliases: 0 aliases shared by two notes.
+- Cards: every atomic and molecular note has Flashcards with a deck tag, and every `??` card is closed.
+- Style: 0 em dashes, 0 atomic notes with extra headings, 0 notes in the old section format. Every atomic and molecular note links to at least three others and to its MOC.
+- To consider later: 34 atomic titles contain "and", "vs" or a comma (for example Spread and Variability; Patch, Matrix and Corridor). Most name one concept, but some may be worth splitting.
+
+---
+
 ## v1.5 (2026-11-17): grassland bird project notes merged in
 **Asked for:** add the notes built for my grassland bird richness project (EcoModeling-Vault in ClaudeProject_Setup) to this wiki, and publish them on the web wiki.
 
@@ -46,7 +68,7 @@ Every round of changes and checks on this wiki, newest first. Each round ("pass"
 **New molecular notes (9):** one worked-approach note per homework, giving the reasoning and R steps rather than an answer key: [[Homework 1 - Riparian Plant Diversity]], [[Homework 2 - Coral Bleaching]], [[Homework 3 - Woodland Birds and Landscape Scale]], [[Homework 4 - Thistle Seedlings and Enemy Release]], [[Homework 5 - Fire Weather HGAMs]], [[Homework 6 - Penguin Body Mass in brms]]; plus [[How to Approach a Course Homework]], [[Patch vs Landscape Effects]] and [[Two-way ANOVA vs Mixed Model]].
 
 **New atomic notes (20):**
-- Statistics and R: [[Inverse Simpson Index]], [[Interaction Plot]], [[One-to-many Join]], [[librarian and shelf()]], [[Inverse Prediction]], [[Marginal Effects Plot]], [[Bayesian Logistic Regression]], [[conditional_effects()]], [[Scale of Effect]], [[Random Effect with Few Levels]], [[Bounded Count]].
+- Statistics and R: [[Inverse Simpson Index]], [[Interaction Plot]], [[One-to-many Join]], [[librarian shelf()|librarian and shelf()]], [[Inverse Prediction]], [[Marginal Effects Plot]], [[Bayesian Logistic Regression]], [[conditional_effects()]], [[Scale of Effect]], [[How Many Levels for a Random Effect|Random Effect with Few Levels]], [[Bounded Count]].
 - Ecology from the homework datasets: [[Exclosure]], [[Grazing]], [[Riparian Zone]], [[Coral Bleaching]], [[Temperature Anomaly]], [[Habitat Patch]], [[Invasive Species]], [[Relative Humidity]], [[Prescribed Fire]].
 
 **New figures (2):** an interaction plot (parallel vs diverging lines) and the Homework 2 logistic fit with its link-scale band, showing an open-ended inverse prediction.
@@ -63,10 +85,10 @@ Every round of changes and checks on this wiki, newest first. Each round ("pass"
 **Read:** all 44 slides, including the image-only ones (detection-history equations, likelihood, spotted owl example, dynamic and multi-species slides), viewed as rendered pages; the whole Happe et al. paper (abstract, study area, methods, results, Tables 1 to 3, discussion, management implications).
 
 **New atomic notes (32):**
-- Occupancy core: [[Occupancy Likelihood]], [[Site Independence Assumption]], [[Unexplained Heterogeneity in Occupancy]], [[Unexplained Heterogeneity in Detection]], [[Stacked Occupancy Design]], [[Colonization Probability]], [[Local Extinction Probability]], [[Multi-species Occupancy]], [[Marginal Occupancy]], [[Conditional Occupancy]], [[Co-occurrence Probability]].
+- Occupancy core: [[Occupancy Likelihood]], [[Site Independence Assumption]], [[Unexplained Heterogeneity in Occupancy]], [[Unexplained Heterogeneity in Detection]], [[Stacked Occupancy Design]], [[Colonization Probability]], [[Local Extinction Probability]], [[Multi-species Occupancy Model|Multi-species Occupancy]], [[Marginal Occupancy]], [[Conditional Occupancy]], [[Co-occurrence Probability]].
 - Software: [[ubms Package]], [[spOccupancy Package]], [[Program PRESENCE]].
 - Field methods: [[Spatially Balanced Sampling]], [[Live Trapping]], [[Coverboard]], [[Track Survey]], [[Acoustic Survey]], [[Autonomous Recording Unit]], [[Breeding Amphibian Survey]], [[Camera Trap]], [[Hair Snare]], [[Environmental DNA]].
-- Ecology: [[Metapopulation]], [[Translocation]], [[Reintroduction]], [[Home Range]], [[Edge Effect]], [[Species Interaction]].
+- Ecology: [[Metapopulation]], [[Translocation]], [[Reintroduction]], [[Home Range]], [[Edge Effects|Edge Effect]], [[Species Interaction]].
 - Tests used in the paper: [[Chi-square Test]], [[Kruskal-Wallis Test]].
 
 **New molecular notes (6):** [[Assumptions of Occupancy Models]], [[Single-season vs Multi-season Occupancy]], [[Marginal vs Conditional Occupancy]], [[Choosing a Survey Method for Occupancy]], [[Choosing Occupancy Software]], and [[Fisher Occupancy Case Study]], a step-by-step walk through the paper from design to conclusion with every number interpreted.

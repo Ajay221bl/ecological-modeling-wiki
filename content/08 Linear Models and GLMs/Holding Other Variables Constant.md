@@ -15,9 +15,9 @@ status: seedling
 
 # Holding Other Variables Constant
 
-To see whether a degree raises salary, you might compare people with different degrees but only among people of the same age. Within each age group, age cannot explain any difference, because you have taken it out of the comparison. **Holding other variables constant** means comparing units that differ in one predictor but are alike in all the other predictors in the model. It is what a [[Multiple Regression]] coefficient answers: "among units with identical values of the other predictors, how does y differ per unit of this one?" The model does this by arithmetic, not by finding exact matches, relying on its assumed linear form to adjust.
+To see whether a degree raises salary, you might compare people with different degrees but only among people of the same age. Within each age group, age cannot explain any difference, because you have taken it out of the comparison. **Holding other variables constant** means comparing units that differ in one [[Predictor Variable|predictor]] but are alike in all the other predictors in the model. It is what a [[Multiple Regression]] [[Regression Coefficient|coefficient]] answers: "among units with identical values of the other predictors, how does y differ per unit of this one?" The model does this by arithmetic, not by finding exact matches, relying on its assumed linear form to adjust.
 
-It is powerful because it separates the contributions of predictors that vary together in the field. In the code below, older animals are heavier and survive better, but mass itself has no effect. Regress survival on mass alone and the slope is positive, because mass is standing in for age, a [[Confounding Variable]]. Add age to the model and the mass slope falls to about zero; restrict the data to a narrow age band and the slope also shrinks toward zero, showing the model's adjustment does what a matched comparison would.
+It is powerful because it separates the contributions of predictors that vary together in the field. In the code below, older animals are heavier and survive better, but mass itself has no effect. Regress survival on mass alone and the slope is positive, because mass is standing in for age, a [[Confounding|Confounding Variable]]. Add age to the model and the mass slope falls to about zero; restrict the data to a narrow age band and the slope also shrinks toward zero, showing the model's adjustment does what a matched comparison would.
 
 It has three limits. It only holds constant what is in the model, so unmeasured confounders remain. The comparison may be imaginary: Guthery and Bingham warn that if tree cover and shrub cover always change together in nature, "more trees with shrubs held constant" describes plots that do not exist ([[Guthery and Bingham 2007]], [[Collinearity]]). And it breaks down with interactions or polynomials, since you cannot change x while holding x² constant ([[Interaction Term]]). So controlling for a variable removes only its linear influence as specified, and only if it is measured well ([[Interpreting Regression Coefficients]]).
 
@@ -30,7 +30,7 @@ coef(lm(surv ~ mass, subset = age > 5 & age < 6))["mass"]    # within a narrow a
 ```
 
 ## Connections
-- **Builds on:** [[Multiple Regression]], [[Confounding Variable]]
+- **Builds on:** [[Multiple Regression]], [[Confounding|Confounding Variable]], [[Predictor Variable]], [[Regression Coefficient]]
 - **Leads to:** [[Interpreting Regression Coefficients]], [[Collinearity]], [[Interaction Term]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 

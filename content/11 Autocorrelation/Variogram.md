@@ -18,7 +18,7 @@ status: seedling
 
 A **variogram** is an upside-down correlogram: neighbouring samples differ little, and distant samples differ as much as any random pair. It plots the semivariance, half the average squared difference between pairs of values, against the distance between them: γ(h) = (1 / 2N(h)) × Σ (z(sᵢ) − z(sⱼ))² over the N(h) pairs about distance h apart ([[Distance Classes]], [[Variance]]). Under positive [[Spatial Autocorrelation]] it rises with distance, then levels off; a flat variogram means no spatial correlation.
 
-It has three features, shown in the figure: the [[Nugget]], its value near distance zero; the [[Sill]], its plateau; and the [[Variogram Range]], the distance to the plateau. There are two R tools: `gstat::variogram(z ~ 1, data)` for raw data and `nlme::Variogram(gls_model, form = ~ x + y)` for model residuals. In the code below a smooth surface plus noise gives semivariances rising from 0.12 at distance 0.2 to 0.62 at 1.7. A fitted variogram model, exponential, spherical or Gaussian, guides the choice of a correlation structure ([[Spatial Correlation Functions]]).
+It has three features, shown in the figure: the [[Nugget]], its value near distance zero; the [[Sill]], its [[Asymptote|plateau]]; and the [[Variogram Range]], the distance to the plateau. There are two R tools: `gstat::variogram(z ~ 1, data)` for raw data and `nlme::Variogram(gls_model, form = ~ x + y)` for model residuals. In the code below a smooth surface plus noise gives semivariances rising from 0.12 at distance 0.2 to 0.62 at 1.7. A fitted variogram model, exponential, spherical or [[Normal Distribution|Gaussian]], guides the choice of a [[Correlation Structure|correlation structure]] ([[Spatial Correlation Functions]]).
 
 It assumes [[Stationarity]] and [[Isotropy]], and directional variograms check isotropy. [[Zuur et al. 2009 Ch7]] uses variograms of residuals to detect and choose spatial correlation, as does the autocorrelation lab ([[Course Website]]); its mirror image is the [[Correlogram]]. High semivariance does not mean strong autocorrelation; the opposite is true, since low semivariance at short distance means strong autocorrelation.
 
@@ -31,7 +31,7 @@ v <- variogram(z ~ 1, st_as_sf(d, coords = c("x", "y"))); round(head(v[, c("dist
 ```
 
 ## Connections
-- **Builds on:** [[Distance Classes]], [[Variance]], [[Spatial Autocorrelation]]
+- **Builds on:** [[Distance Classes]], [[Variance]], [[Spatial Autocorrelation]], [[Asymptote]], [[Normal Distribution]], [[Correlation Structure]]
 - **Leads to:** [[Nugget]], [[Sill]], [[Variogram Range]], [[Spatial Correlation Functions]]
 - **Part of:** [[MOC 13 - Autocorrelation|MOC - Autocorrelation]], molecular note [[Correlogram vs Variogram]]
 

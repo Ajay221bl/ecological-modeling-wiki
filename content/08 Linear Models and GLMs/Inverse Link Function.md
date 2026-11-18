@@ -14,11 +14,11 @@ status: seedling
 
 # Inverse Link Function
 
-The link carried the mean out to the unrestricted number line so the model could do its arithmetic there; the **inverse link function** is the return ticket, converting a value of the [[Linear Predictor]] back into a mean on the scale of the data, μ = g⁻¹(η) ([[Link Function]]). For a log link it is `exp()`; for a logit link, `plogis()`, the [[Logistic Function]]; for probit, `pnorm()`; for cloglog, 1 − exp(−exp(η)); and for identity, nothing. It guarantees valid means, since exp() is always positive and plogis() always between 0 and 1.
+The link carried the mean out to the unrestricted number line so the model could do its arithmetic there; the **inverse link function** is the return ticket, converting a value of the [[Linear Predictor]] back into a mean on the scale of the data, μ = g⁻¹(η) ([[Link Function]]). For a [[Log Link|log link]] it is `exp()`; for a [[Logit Link|logit link]], `plogis()`, the [[Logistic Function]]; for [[Probit Link|probit]], `pnorm()`; for [[Complementary Log-log Link|cloglog]], 1 − exp(−exp(η)); and for identity, nothing. It guarantees valid means, since [[Exponential Function|exp()]] is always positive and [[plogis()]] always between 0 and 1.
 
-The code below applies `exp()` and `plogis()` to −3, 0 and 3, then predicts a Poisson regression's mean at x = 5 with an interval. The interval is built on the link scale, fit ± 1.96 SE, and then the inverse link is applied to each end. `family(model)$linkinv` gives the right inverse link for any fitted model, so your code does not have to assume which link was used ([[predict()]]).
+The code below applies `exp()` and `plogis()` to −3, 0 and 3, then predicts a [[Poisson Regression|Poisson regression]]'s mean at x = 5 with an interval. The interval is built on the [[Link Scale|link scale]], fit ± 1.96 SE, and then the inverse link is applied to each end. `family(model)$linkinv` gives the right inverse link for any fitted model, so your code does not have to assume which link was used ([[predict()]]).
 
-That is the rule to remember: apply the inverse link to the interval's endpoints, never to the standard error ([[Back-transformation]]). The result is on the [[Response Scale]], which is how every prediction plot in the GLM labs is made ([[Course Website]]).
+That is the rule to remember: apply the inverse link to the interval's endpoints, never to the [[Standard Error|standard error]] ([[Back-transformation]]). The result is on the [[Response Scale]], which is how every [[Plotting Model Predictions with Ribbons|prediction plot]] in the GLM labs is made ([[Course Website]]).
 
 ```r
 exp(c(-3, 0, 3)); plogis(c(-3, 0, 3))
@@ -28,7 +28,7 @@ inv(p$fit + c(-1.96, 0, 1.96) * p$se.fit)             # lower, estimate, upper o
 ```
 
 ## Connections
-- **Builds on:** [[Link Function]], [[Linear Predictor]]
+- **Builds on:** [[Link Function]], [[Linear Predictor]], [[Log Link]], [[Logit Link]], [[Probit Link]], [[Complementary Log-log Link]], [[Exponential Function]], [[plogis()]], [[Poisson Regression]], [[Link Scale]], [[Standard Error]], [[Plotting Model Predictions with Ribbons]]
 - **Leads to:** [[Logistic Function]], [[Response Scale]], [[Back-transformation]], [[predict()]]
 - **Part of:** [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]]
 

@@ -28,7 +28,7 @@ Walks through interpreting slopes, intercepts, transformed and polynomial terms,
 - Correlation is not causation → [[Correlation vs Causation]]
 
 ## Notes that rely on it (21)
-[[Back-transformation]], [[Carrying Capacity]], [[Confounding Variable]], [[Course Schedule]], [[Criticisms of p-values]], [[Effect Size]], [[Explanatory Variable]], [[Extrapolation]], [[Holding Other Variables Constant]], [[Interpreting Regression Coefficients]], [[Log-log Model]], [[Logistic Function]], [[Logistic Regression]], [[Logit Link]], [[Multiple Regression]], [[Observational Study]], [[Omitted Variable Bias]], [[Phenomenological Model]], [[Rate of Change]], [[Semi-log Model]], [[Statistical Significance]]
+[[Back-transformation]], [[Carrying Capacity]], [[Confounding|Confounding Variable]], [[Course Schedule]], [[Criticisms of p-values]], [[Effect Size]], [[Predictor Variable|Explanatory Variable]], [[Extrapolation]], [[Holding Other Variables Constant]], [[Interpreting Regression Coefficients]], [[Log-log Model]], [[Logistic Function]], [[Logistic Regression]], [[Logit Link]], [[Multiple Regression]], [[Observational Study]], [[Omitted Variable Bias]], [[Phenomenological Model]], [[Rate of Change]], [[Semi-log Model]], [[Statistical Significance]]
 
 ## Connections
 - **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

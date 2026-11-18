@@ -4,6 +4,7 @@ tags:
   - molecular
   - detection
   - survey-design
+  - flashcards/eco/why
 aliases:
   - "Why weather covariates"
   - "Why Wind and Sky"
@@ -43,11 +44,11 @@ visitDat <-
             Sky = first(Sky),
             .groups = "drop")
 ```
-In words: take the raw data, and then make one group per point-visit, and then keep the first Wind and Sky value in each group ([[group_by and summarize]]). They then enter every candidate model. In `GrasslandBirdRichness_Analysis.R` the Null model is:
+In words: take the raw data, and then make one group per point-visit, and then keep the first Wind and Sky value in each group ([[group_by()|group_by and summarize]]). They then enter every candidate model. In `GrasslandBirdRichness_Analysis.R` the Null model is:
 ```r
 M0_Null     = paste(response, "~ Wind + Sky + (1|PtNum)"),
 ```
-and every other model adds property or habitat terms in front of `+ Wind + Sky + (1|PtNum)`. (The Sep 10 script's separate "Weather" model is gone; the Null model now plays that role.) They are treated as numbers, which assumes each step up in the code has the same effect on log richness. Treating them as categories instead ([[Factors]]), perhaps grouping the rare high codes, would be a sensible check (see [[Open Questions]]).
+and every other model adds property or habitat terms in front of `+ Wind + Sky + (1|PtNum)`. (The Sep 10 script's separate "Weather" model is gone; the Null model now plays that role.) They are treated as numbers, which assumes each step up in the code has the same effect on log richness. Treating them as categories instead ([[Factors in R|Factors]]), perhaps grouping the rare high codes, would be a sensible check (see [[Open Questions]]).
 
 **What came out (Oct 13, [[Preliminary Results]]):**
 - **Wind:** all-species richness was about 11% lower per one-step rise in the wind code (rate ratio 0.89, 95% CI 0.85 to 0.92). That is a real detection effect, so including wind was worth it. For focal species the effect was unclear (0.95, 0.84 to 1.08).
@@ -61,3 +62,9 @@ and every other model adds property or habitat terms in front of `+ Wind + Sky +
 ## Connections
 - **Related:** [[Why observed richness is not true richness]], [[Interaction Term]] (the old Sep 10 Global model's `Site * Wind`, dropped in the final proposal and gone from the Oct 13 script), [[Correlation vs Causation]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 26 - Survey Design and Detection|MOC - Survey Design and Detection]]
+
+## Flashcards
+
+Why can a windier property look poorer even with the same birds?::Wind and bad sky make birds harder to hear and see, so fewer species get recorded.
+
+What does putting Wind and Sky in the model let you do?::Compare properties as if surveyed at the same weather.

@@ -14,7 +14,7 @@ status: seedling
 
 Pour a whole table through a sieve and only the rows that meet your rule stay in the pan. **`filter()`**, from dplyr, keeps the rows of a table that pass a test and drops the rest. The call is `filter(data, condition)`, and the condition is the same kind of TRUE/FALSE test used in base R indexing, such as `year == 2020` ([[Indexing in R]], [[Data Frame]]). It works on rows only; columns are untouched, and choosing columns is the job of [[select()]].
 
-Conditions combine in the usual ways. Several conditions separated by commas mean "and", so `filter(site %in% c("A", "C"), birds > 4)` keeps rows from sites A or C *and* with more than 4 birds; `|` means "or"; and `%in%` matches any of a set of values. Equality is tested with `==`, never a single `=`. The code below shows each of these in a pipe ([[Pipe Operator]]).
+Conditions combine in the usual ways. Several conditions separated by commas mean "and", so `filter(site %in% c("A", "C"), birds > 4)` keeps rows from sites A or C *and* with more than 4 birds; `|` means "or"; and `%in%` matches any of a set of values. Equality is tested with `==`, never a single `=`. The code below shows each of these in a pipe ([[Pipe|Pipe Operator]]).
 
 One behaviour deserves attention: rows where the test comes out `NA` are dropped, because an unknown is not TRUE. In the example, site B's bird count is missing, so it silently disappears from `filter(birds > 4 | year == 2021)` even though we never asked to remove it. Sometimes that is what you want, and `filter(!is.na(birds))` does it explicitly; often it is a surprise, so count rows before and after ([[Missing Values]]). Filtered tables are commonly the starting point for new columns ([[mutate()]]).
 
@@ -28,7 +28,7 @@ d |> filter(!is.na(birds))                        # drop rows with missing count
 ```
 
 ## Connections
-- **Builds on:** [[Indexing in R]], [[Pipe Operator]]
+- **Builds on:** [[Indexing in R]], [[Pipe|Pipe Operator]]
 - **Leads to:** [[select()]], [[mutate()]], [[Missing Values]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 

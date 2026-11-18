@@ -16,7 +16,7 @@ Incomes are lopsided: most people earn modest amounts, a few earn enormous ones,
 
 Its parameters live on the log scale, which causes the usual mistake. μ ("meanlog" in R) is the mean of log Y, not of Y. The median of Y is exp(μ), and the mean of Y is exp(μ + σ²/2), pulled above the median by the long upper tail. With meanlog 2 and sdlog 0.6, the median is exp(2) = 7.4 and the mean is exp(2.18) = 8.8; the code below confirms both by simulation and recovers 2 and 0.6 as the mean and SD of the logs. The figure shows the same data skewed on the raw scale and symmetric after taking logs.
 
-It arises the way the normal does, but with multiplication: multiply many small independent factors together, such as growth each day or survival at each stage, and the product is lognormal, because the log of a product is a sum of logs. The last line of the code shows it, with products of 30 random growth factors whose logs form a bell. Its standard deviation grows in proportion to its mean, a constant coefficient of variation. Ecologists use it for body sizes, concentrations, continuous abundances and multiplicative process error, and Hobbs and Hooten favour it for positive continuous quantities ([[Hobbs and Hooten 2015 Ch3]], [[Multiplicative Effects]]). It is the distributional form of a [[Log Transformation]], and going back to the original scale needs care ([[Back-transformation]]). The [[Gamma Distribution]] is the other common choice for positive skewed data.
+It arises the way the normal does, but with multiplication: multiply many small independent factors together, such as growth each day or survival at each stage, and the product is lognormal, because the log of a product is a sum of logs. The last line of the code shows it, with products of 30 random growth factors whose logs form a bell. Its [[Standard Deviation|standard deviation]] grows in proportion to its mean, a constant [[Coefficient of Variation|coefficient of variation]]. Ecologists use it for body sizes, concentrations, continuous abundances and multiplicative [[Process Variation|process error]], and Hobbs and Hooten favour it for positive continuous quantities ([[Hobbs and Hooten 2015 Ch3]], [[Multiplicative Effects]]). It is the distributional form of a [[Log Transformation]], and going back to the original scale needs care ([[Back-transformation]]). The [[Gamma Distribution]] is the other common choice for positive skewed data.
 
 ![[Lognormal distribution.png|700]]
 *What to look at:* skewed on the raw scale, symmetric after taking logs.
@@ -29,7 +29,7 @@ prod_growth <- replicate(1e4, prod(runif(30, 0.8, 1.25))); hist(log(prod_growth)
 ```
 
 ## Connections
-- **Builds on:** [[Normal Distribution]], [[Natural Logarithm]]
+- **Builds on:** [[Normal Distribution]], [[Natural Logarithm]], [[Standard Deviation]], [[Coefficient of Variation]], [[Process Variation]]
 - **Leads to:** [[Log Transformation]], [[Back-transformation]], [[Gamma Distribution]], [[Multiplicative Effects]]
 - **Part of:** [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]]
 

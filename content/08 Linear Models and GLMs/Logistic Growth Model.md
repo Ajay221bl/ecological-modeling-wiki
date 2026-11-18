@@ -16,7 +16,7 @@ Lilies spreading over a pond double quickly at first, because each new lily has 
 
 Growth in numbers is fastest at N = K/2, the steepest point of the S in the figure. The solution is N(t) = K / (1 + ((K − N₀)/N₀) e^(−rt)). In the code below, with K = 500, r = 0.4 and N₀ = 10, the population is about 66, 264 and 492 after 5, 10 and 20 years, and its fastest one-year increase, from about 214 to 264, straddles 250, half of K. The brake is [[Density Dependence]]: the per-capita growth rate falls as the population rises ([[Population Growth Rate]]).
 
-Hobbs and Hooten use it as a standard [[Process Model]], with r and K as the biologically meaningful parameters to estimate ([[Hobbs and Hooten 2015 Ch2]], [[Powell and Gale 2015 Ch2]]). Logistic growth is not logistic regression: they share the S-curve formula ([[Logistic Function]]), but one is a population process and the other a model for probabilities.
+Hobbs and Hooten use it as a standard [[Process Model]], with r and K as the biologically meaningful parameters to estimate ([[Hobbs and Hooten 2015 Ch2]], [[Powell and Gale 2015 Ch2]]). Logistic growth is not [[Logistic Regression|logistic regression]]: they share the S-curve formula ([[Logistic Function]]), but one is a population process and the other a model for probabilities.
 
 ![[Logistic growth curve.png|700]]
 *What to look at:* the S shape, the steepest point at K/2 and the flattening at K.
@@ -28,7 +28,7 @@ t[which.max(diff(N))]; N[which.max(diff(N))]          # fastest growth near N = 
 ```
 
 ## Connections
-- **Builds on:** [[Exponential Growth Model]], [[Asymptote]]
+- **Builds on:** [[Exponential Growth Model]], [[Asymptote]], [[Logistic Regression]]
 - **Leads to:** [[Carrying Capacity]], [[Logistic Function]], [[Process Model]], [[Density Dependence]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 

@@ -18,7 +18,7 @@ A school has one table of students' home addresses and another of every test eac
 
 Two checks keep it honest. Count rows before and after: a correct join of bird rows to landscape keeps the bird table's row count exactly. If it grows, the key was not unique in the landscape table, and some rows were duplicated. dplyr can check this for you with `relationship = "many-to-one"`, which stops with an error if any landscape key appears twice. Then look for NAs in the joined columns, which mark bird rows whose key had no match, often from a typo or a different spelling of the site name ([[Missing Values]]).
 
-The join also creates a modeling issue. The two years at one patch share all their landscape values and are not independent observations of the landscape effect, so the second year adds less information than a new patch would. Including Year as a predictor, or a [[Random Intercept]] for Patch, accounts for this ([[Pseudoreplication]], [[Repeated Measures]]).
+The join also creates a modeling issue. The two years at one patch share all their landscape values and are not [[Independence of Observations|independent observations]] of the landscape effect, so the second year adds less information than a new patch would. Including Year as a [[Predictor Variable|predictor]], or a [[Random Intercept]] for Patch, accounts for this ([[Pseudoreplication]], [[Repeated Measures]]).
 
 ```r
 library(dplyr)
@@ -29,8 +29,8 @@ c(bird = nrow(bird), joined = nrow(j), missing = sum(is.na(j$PA))); j
 ```
 
 ## Connections
-- **Builds on:** [[Joins]], [[Tidy Data]]
-- **Leads to:** [[Repeated Measures]], [[Random Intercept]]
+- **Builds on:** [[Joins]], [[Tidy Data]], [[Predictor Variable]]
+- **Leads to:** [[Repeated Measures]], [[Random Intercept]], [[Independence of Observations]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]], molecular note [[Homework 3 - Woodland Birds and Landscape Scale]]
 
 ## Flashcards

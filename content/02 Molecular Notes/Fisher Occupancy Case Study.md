@@ -24,7 +24,7 @@ What does a real occupancy analysis look like from design to conclusion, and how
 - [[Spatially Balanced Sampling]], [[Camera Trap]], [[Hair Snare]]: the design and the detectors.
 - [[Stacked Occupancy Design]], [[Single-season Occupancy]], [[Observation Covariates]], [[Site Covariates]]: the model.
 - [[Goodness of Fit and c-hat]], [[QAIC]], [[Evidence Ratio]], [[Model Averaging]]: choosing and summarising models.
-- [[Edge Effect]] and [[Home Range]]: the ecology behind the covariates.
+- [[Edge Effects|Edge Effect]] and [[Home Range]]: the ecology behind the covariates.
 
 ## See it
 ![[Fisher naive vs estimated occupancy.png|700]]

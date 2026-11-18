@@ -17,7 +17,7 @@ In a relay race, the chance the baton reaches the finish is the chance the first
 
 A nest example: P(egg laid, hatches, fledges) = P(laid) × P(hatches | laid) × P(fledges | hatched) = 0.9 × 0.7 × 0.5 = 0.315. The simulation below follows 100,000 eggs through the three stages and gets close to 0.315. The chain simplifies with [[Conditional Independence]]: if fledging depends only on hatching, then P(fledges | hatched, laid) = P(fledges | hatched).
 
-This is exactly how hierarchical models are written. Hobbs and Hooten factor the joint distribution of data y, true state z and parameters θ as P(y, z, θ) = P(y | z) × P(z | θ) × P(θ): an observation model, a process model and priors, each an arrow in the diagram ([[Hierarchical Model]], [[Directed Acyclic Graph]]). Combined with [[Bayes' Theorem]], this factoring is used to write every model in their book ([[Hobbs and Hooten 2015 Ch3]], [[Hobbs and Hooten 2015 Ch6]]).
+This is exactly how hierarchical models are written. Hobbs and Hooten factor the joint distribution of data y, true state z and parameters θ as P(y, z, θ) = P(y | z) × P(z | θ) × [[Prior Distribution|P(θ)]]: an [[Data Model|observation model]], a [[Process Model|process model]] and priors, each an arrow in the diagram ([[Hierarchical Model]], [[Directed Acyclic Graph]]). Combined with [[Bayes' Theorem]], this factoring is used to write every model in their book ([[Hobbs and Hooten 2015 Ch3]], [[Hobbs and Hooten 2015 Ch6]]).
 
 ```mermaid
 flowchart LR
@@ -34,7 +34,7 @@ mean(fledge)            # close to 0.315
 
 ## Connections
 - **Builds on:** [[Joint Probability]], [[Conditional Probability]]
-- **Leads to:** [[Hierarchical Model]], [[Directed Acyclic Graph]], [[Bayes' Theorem]], [[Conditional Independence]]
+- **Leads to:** [[Hierarchical Model]], [[Directed Acyclic Graph]], [[Bayes' Theorem]], [[Conditional Independence]], [[Prior Distribution]], [[Data Model]], [[Process Model]]
 - **Part of:** [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]]
 
 ## Flashcards

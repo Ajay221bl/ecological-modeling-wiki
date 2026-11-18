@@ -4,6 +4,7 @@ tags:
   - molecular
   - grassland-ecology
   - inference
+  - flashcards/eco/why
 aliases:
   - "Site vs habitat"
   - "Why habitat covariates"
@@ -20,13 +21,13 @@ My Sep 10 proposal said less fragmented properties should have higher richness, 
 ## Built from
 - [[Hypothesis]]: what a habitat claim says and what would count as a test.
 - [[Habitat Fragmentation]]: the mechanism the Sep 10 hypothesis was about.
-- [[Categorical Predictor and Reference Level]]: Site enters the model as a label with 5 levels, not as a measurement of habitat.
+- [[Reference Level|Categorical Predictor and Reference Level]]: Site enters the model as a label with 5 levels, not as a measurement of habitat.
 - [[Confounding]] and [[Correlation vs Causation]]: everything else that differs between properties rides along with the label.
 - [[Spatial Covariance]] and [[Grassland Core Habitat]]: the kind of habitat measurement that would test the mechanism directly.
 - [[Candidate Model Set]]: where a Site model and a Habitat model can compete.
 
 ## The reasoning, step by step
-1. **A habitat hypothesis is a cause-and-effect story.** Fragmentation (more edges, less core grassland, trees and shrubs creeping in, see [[Woody Plant Encroachment]]) lowers richness.
+1. **A habitat hypothesis is a cause-and-effect story.** Fragmentation (more edges, less core grassland, trees and shrubs creeping in, see [[Woody Encroachment|Woody Plant Encroachment]]) lowers richness.
 2. **Site is only a name.** In the model, Site is BK, CR, DC, HB or HO. A Site effect says "these places differ" but not why.
 3. **Each property differs in many ways at once.** Amount of grassland, tree cover, surrounding landscape, management, the year it was surveyed, the dates, and who counted. My data add a sharp example: Site is completely tied to year (BK, DC, HO in 2022 only; CR, HB in 2023 only), see [[Why site and year cannot be separated]].
 4. **Five properties is very few data points.** For "fragmentation level" I effectively have 5 values. Rank 5 properties by richness and by fragmentation: by chance alone, the two rankings match exactly 1 time in 120 (5 x 4 x 3 x 2 x 1 possible orders), and come *close* to matching much more often than that. So a neat match is weak evidence.
@@ -49,3 +50,9 @@ My Sep 10 proposal said less fragmented properties should have higher richness, 
 ## Connections
 - **Related:** [[Why Site is fixed not random]], [[Proposal Feedback from Dr Roberts]], [[Edge Effects]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 24 - Grassland Bird Ecology|MOC - Grassland Bird Ecology]]
+
+## Flashcards
+
+Why does a significant Site effect not show that habitat matters?::Site is a name tag bundling habitat, year, dates and observers, so it shows that properties differ, not why.
+
+What tests the habitat idea more directly?::Habitat variables measured at each point, such as tree cover, scrub cover and spatial covariance.

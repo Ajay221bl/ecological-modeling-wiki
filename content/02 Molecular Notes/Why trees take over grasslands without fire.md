@@ -4,6 +4,7 @@ tags:
   - molecular
   - grassland-ecology
   - disturbance
+  - flashcards/eco/why
 aliases:
   - "Why grasslands need fire"
   - "Fire keeps grassland open"
@@ -23,7 +24,7 @@ An abandoned lawn in Arkansas becomes a thicket, then a young forest, within a f
 - [[Prescribed Fire]]: the managed version of the historic disturbance.
 - [[Feedback Loops in Ecology]]: how grass and fire, or trees and shade, reinforce themselves.
 - [[Ecological Resilience and Alternative States]]: why a grassland can tip into woodland and stay there.
-- [[Woody Plant Encroachment]]: the name for the takeover itself.
+- [[Woody Encroachment|Woody Plant Encroachment]]: the name for the takeover itself.
 
 ## The reasoning, step by step
 1. **Plants compete for light.** Trees are the tallest plants, so wherever they can grow and nothing stops them, they eventually win.
@@ -48,5 +49,14 @@ An abandoned lawn in Arkansas becomes a thicket, then a young forest, within a f
 - Recommending "add fire" everywhere would ignore that places past the tipping point need tree removal first ([[Why defend the core instead of restoring everywhere]]).
 
 ## Connections
-- **Related:** [[Why negative spatial covariance marks a tree-grass boundary]], [[Grassland Restoration and Management]], [[Tree Density and DBH]]
+- **Related:** [[Why negative spatial covariance marks a tree-grass boundary]], [[Grassland Restoration and Management]], [[Tree Density|Tree Density and DBH]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 24 - Grassland Bird Ecology|MOC - Grassland Bird Ecology]], [[MOC 19 - Ecology Vocabulary|MOC - Ecology from Zero]]
+
+## Flashcards
+
+Why is forest the default vegetation in Arkansas?::The climate is wet enough for trees, so grass persists only where something kills young trees.
+
+How does removing fire flip the grass-fire loop?
+??
+Without fire, saplings grow too big to kill, shade out the grass, and so remove the fuel that fire needed; the loop then favours trees.
+++++

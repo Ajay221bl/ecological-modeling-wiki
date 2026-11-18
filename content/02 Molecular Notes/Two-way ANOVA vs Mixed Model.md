@@ -24,7 +24,7 @@ Why can a two-way ANOVA miss an effect that a mixed model detects in the same da
 - [[Nested Experimental Design]] and [[Pseudoreplication]]: subplots inside plots inside sites inside regions.
 - [[Random Intercept]] and [[Variance Components]]: soaking up the variation between sites.
 - [[GLMM|Generalized Linear Mixed Model]], [[Bounded Count]], [[Count Data]]: a distribution that fits seedling counts.
-- [[Random Effect with Few Levels]]: the region problem.
+- [[How Many Levels for a Random Effect|Random Effect with Few Levels]]: the region problem.
 
 ## The reasoning, step by step
 1. **What the ANOVA assumes.** Every one of the 400 subplot counts is an independent draw from a Normal distribution with the same variance, and the only structure is spray, distance and their interaction ([[ANOVA]]).
@@ -33,7 +33,7 @@ Why can a two-way ANOVA miss an effect that a mixed model detects in the same da
 4. **Where it can also mislead.** Counts near zero are skewed and their variance grows with their mean, so Normal errors are wrong: some groups look more variable than others, and tests are unreliable ([[Homogeneity of Variance|Homoscedasticity]], [[Why the response type decides the distribution]]).
 5. **What the mixed model changes.** A random intercept for site (and for plot within site) moves site-level variation out of the residual, so the treatment effects are judged against within-site noise. The comparison is now "at the same site, does distance change seedlings?", which is the experiment's real question ([[Why use a random effect instead of a fixed effect]]).
 6. **And the distribution.** A Poisson, negative binomial or binomial GLMM fits counts that cannot go below zero and whose spread grows with the mean ([[Poisson vs Negative Binomial]], [[Bounded Count]]).
-7. **Then check it.** Overdispersion, residuals by site and distance, and whether the region variance is estimable ([[DHARMa Simulated Residuals]], [[Random Effect with Few Levels]]).
+7. **Then check it.** Overdispersion, residuals by site and distance, and whether the region variance is estimable ([[DHARMa Simulated Residuals]], [[How Many Levels for a Random Effect|Random Effect with Few Levels]]).
 
 **A worked example in numbers.** In the thistle data the site means are not shown here, but the treatment means are: control plots average 10.9 seedlings at 0 m and 14.0 to 19.7 farther away, while insecticide plots sit at 17.9 to 21.8 everywhere. The insecticide-minus-control gap is about 9.2 at 0 m, 7.6 at 7.5 m, 2.0 at 15 m, 4.3 at 30 m and 0.1 at 60 m: herbivores seem to cut seedlings most close to the tall thistle patch, which is a spray × distance interaction, the pattern enemy release predicts. Site means range from 2.1 to 34.7 seedlings per subplot. The two-way ANOVA on these data finds spray (p = 0.002) but not distance (p = 0.20) or the interaction (p = 0.26). A Poisson GLMM with plots nested in sites finds a positive distance effect for control plots (0.34 per SD of distance, SE 0.13) and a negative spray × distance interaction (−0.43, SE 0.17): the signal was there, hidden under site noise. That quick Poisson fit is likely overdispersed, so a final analysis should check that and may move to a negative binomial or observation-level random effect.
 

@@ -13,9 +13,9 @@ status: seedling
 
 # Unconditional Variance
 
-Each model in an averaged set has its own standard error for an estimate, the conditional SE, which assumes that model is true; but the models also disagree about the estimate itself. The **unconditional variance** of a model-averaged estimate adds that between-model spread to each model's own sampling variance, so that uncertainty about which model is best is included ([[Model Averaging]], [[Variance]], [[Model Selection Uncertainty]]). Burnham and Anderson's formula is SE_unc = Σ wᵢ √(SEᵢ² + (θ̂ᵢ − θ̄)²).
+Each model in an averaged set has its own [[Standard Error|standard error]] for an estimate, the conditional SE, which assumes that model is true; but the models also disagree about the estimate itself. The **unconditional variance** of a model-averaged estimate adds that between-model spread to each model's own [[Variance of an Estimate|sampling variance]], so that uncertainty about which model is best is included ([[Model Averaging]], [[Variance]], [[Model Selection Uncertainty]]). Burnham and Anderson's formula is SE_unc = Σ wᵢ √(SEᵢ² + (θ̂ᵢ − θ̄)²).
 
-It is never smaller than the weighted average of the conditional SEs. In the code below, estimates of 5.9, 5.2 and 7.4 with weights 0.6, 0.3 and 0.1 and SEs of 0.40, 0.35 and 0.50 average to 5.84; the weighted conditional SE is 0.40, but the unconditional SE is 0.63. Use it for model-averaged intervals, θ̄ ± 1.96 SE_unc ([[Confidence Interval]]); [[modavg()]] reports it.
+It is never smaller than the [[Weighted Mean|weighted average]] of the conditional SEs. In the code below, estimates of 5.9, 5.2 and 7.4 with weights 0.6, 0.3 and 0.1 and SEs of 0.40, 0.35 and 0.50 average to 5.84; the weighted conditional SE is 0.40, but the unconditional SE is 0.63. Use it for model-averaged intervals, θ̄ ± 1.96 SE_unc ([[Confidence Interval]]); [[modavg()]] reports it.
 
 Reporting the top model's SE with the averaged estimate omits selection uncertainty ([[Anderson and Burnham 2002]]).
 
@@ -25,7 +25,7 @@ c(average = avg, weighted_conditional_se = sum(w * se), unconditional_se = sum(w
 ```
 
 ## Connections
-- **Builds on:** [[Model Averaging]], [[Variance]], [[Model Selection Uncertainty]]
+- **Builds on:** [[Model Averaging]], [[Variance]], [[Model Selection Uncertainty]], [[Standard Error]], [[Variance of an Estimate]], [[Weighted Mean]]
 - **Leads to:** [[Confidence Interval]], [[modavg()]]
 - **Part of:** [[MOC 10 - Model Selection|MOC - Model Selection]]
 

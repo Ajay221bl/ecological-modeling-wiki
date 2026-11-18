@@ -12,7 +12,7 @@ status: seedling
 
 # summarise()
 
-The totals at the bottom of a receipt shrink dozens of items into a few numbers: how many items, how much in all. Grouped by department, you get one totals line per department. **`summarise()`** (also spelled `summarize()`) collapses many rows into one row of summary numbers, such as a [[Mean]] or a standard deviation, or into one row per group. The call is `summarise(data, name = summary_function(column))`, and each expression must produce one value per group.
+The totals at the bottom of a receipt shrink dozens of items into a few numbers: how many items, how much in all. Grouped by department, you get one totals line per department. **`summarise()`** (also spelled `summarize()`) collapses many rows into one row of summary numbers, such as a [[Mean]] or a [[Standard Deviation|standard deviation]], or into one row per group. The call is `summarise(data, name = summary_function(column))`, and each expression must produce one value per group.
 
 Without grouping you get a single row. After [[group_by()]] you get one row per group, which is why the two travel together: most questions are of the form "what is the mean per site, or per year?". The example below summarises bird counts per site with a mean, a standard deviation, the number of rows `n()` and the number of missing counts. Always include `n()`, so readers know how many observations stand behind each mean. Note `na.rm = TRUE` in the means: without it, site B's missing count would make its mean `NA` ([[Missing Values]]).
 
@@ -31,7 +31,7 @@ d |>
 ```
 
 ## Connections
-- **Builds on:** [[group_by()]], [[Mean]]
+- **Builds on:** [[group_by()]], [[Mean]], [[Standard Deviation]]
 - **Leads to:** [[Plotting Model Predictions with Ribbons]], [[kable()]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 

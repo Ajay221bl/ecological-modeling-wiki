@@ -17,7 +17,7 @@ Tape two sheets of paper together. Top to bottom makes a longer list; side to si
 
 Binding rows is the common and safe case: the same variables from different files, such as one file per year. `rbind()` insists that the tables have identical columns, while dplyr's `bind_rows()` matches columns by name and fills gaps with `NA`, and its `.id` argument records which table each row came from. In the example below, the 2021 table has an extra `observer` column, so the 2020 rows get `NA` there and a new `year` column says which file each row came from.
 
-Binding columns, with `cbind()` or `bind_cols()`, attaches values by row position, and that is where the risk lies: if one table was sorted differently, values land on the wrong rows with no warning. So `cbind()` is not a quick join; when the tables share a key, join them instead. `cbind()` is still the natural tool for building a matrix column by column, as the last line shows, where a column of 1s beside a predictor is the start of a [[Matrices in R|matrix]] for regression.
+Binding columns, with `cbind()` or `bind_cols()`, attaches values by row position, and that is where the risk lies: if one table was sorted differently, values land on the wrong rows with no warning. So `cbind()` is not a quick join; when the tables share a key, join them instead. `cbind()` is still the natural tool for building a matrix column by column, as the last line shows, where a column of 1s beside a [[Predictor Variable|predictor]] is the start of a [[Matrices in R|matrix]] for regression.
 
 ```r
 library(dplyr)
@@ -29,7 +29,7 @@ X <- cbind(1, c(2, 5, 9)); X                          # building a matrix column
 ```
 
 ## Connections
-- **Builds on:** [[Data Frame]]
+- **Builds on:** [[Data Frame]], [[Predictor Variable]]
 - **Leads to:** [[Joins]], [[Matrices in R]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 

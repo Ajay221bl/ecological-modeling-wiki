@@ -13,7 +13,7 @@ status: seedling
 
 # Semi-log Model
 
-Graph paper whose vertical axis is marked 1, 10, 100, 1000 turns a curve of steady percentage growth into a straight line. A **semi-log model** is a regression in which the response is logged and the predictor left on its original scale: log(y) = β₀ + β₁x ([[Log Transformation]]). Back on the original scale that is y = e^(β₀) · e^(β₁x), an exponential curve ([[Exponential Function]]). So β₁ is the proportional change in y per unit of x, with multiplier e^(β₁) ([[Multiplicative Effects]]).
+Graph paper whose vertical axis is marked 1, 10, 100, 1000 turns a curve of steady percentage growth into a [[Equation of a Line|straight line]]. A **semi-log model** is a regression in which the response is logged and the [[Predictor Variable|predictor]] left on its original scale: log(y) = β₀ + β₁x ([[Log Transformation]]). Back on the original scale that is y = e^(β₀) · e^(β₁x), an exponential curve ([[Exponential Function]]). So β₁ is the proportional change in y per unit of x, with multiplier e^(β₁) ([[Multiplicative Effects]]).
 
 It suits growth or decay through time, decline with distance, and anything changing by a constant percentage ([[Exponential Growth Model]]). In the code below, a population starting near 50 and growing about 8% a year is fitted with `lm(log(N) ~ t)`: the intercept back-transforms to about 50 and the slope to a multiplier of about 1.08 ([[Back-transformation]]). The same model fitted on the mean scale is a GLM with a [[Log Link]].
 
@@ -26,7 +26,7 @@ plot(t, N); lines(t, exp(fitted(m)))
 ```
 
 ## Connections
-- **Builds on:** [[Log Transformation]], [[Multiplicative Effects]]
+- **Builds on:** [[Log Transformation]], [[Multiplicative Effects]], [[Equation of a Line]], [[Predictor Variable]]
 - **Leads to:** [[Log-log Model]], [[Exponential Growth Model]], [[Back-transformation]], [[Log Link]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]], molecular note [[Linear, Semi-log and Log-log Models]]
 

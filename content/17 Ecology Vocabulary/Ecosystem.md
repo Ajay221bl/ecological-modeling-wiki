@@ -2,7 +2,8 @@
 type: atomic
 tags:
   - ecology-basics
-  - flashcards
+  - flashcards/eco/ecology
+description: "An ecosystem is a community of living things together with its non-living surroundings (sunlight, water, soil, weather, fire), linked by flows of energy and the recycling of materials."
 aliases:
   - "ecosystems"
   - "food chain"
@@ -11,62 +12,24 @@ status: seedling
 ---
 
 # Ecosystem
-**In one line:** An ecosystem is a community of living things together with its non-living surroundings (sunlight, water, soil, weather, fire), linked by flows of energy and the recycling of materials.
 
-> [!info] Before this, it helps to know
-> [[Ecological Community]] (the living part) · [[Levels of Ecological Organization]] (ecosystem is one level up from community)
+Follow the energy in a summer grassland. Sunlight hits grass leaves and the grass uses it to make sugar from air and water, so plants are *producers*. A grasshopper eats the grass and is a *consumer*; a Dickcissel catches the grasshopper and feeds it to its chicks; a [[Loggerhead Shrike]] might catch a grasshopper too, or a small bird or mouse. When anything dies, *decomposers* (fungi, bacteria, worms) break it down and the nutrients go back to the soil for the grass. That chain is a food chain, and because real feeding links cross and branch, the whole tangle is a food web. Now add the non-living parts: rain that grows the grass, a hot dry spell that cures it into fuel, a lightning strike or [[Prescribed Fire|prescribed burn]], a spring flood. An **ecosystem** is an [[Ecological Community]] (all the living species in one place) together with those non-living surroundings, linked by flows of energy and the recycling of materials. It is one step above the community in the [[Levels of Ecological Organization]].
 
-## Start from zero
-Follow the energy in a summer grassland:
-1. **Sunlight** hits grass leaves. The grass uses it to make sugar from air and water. Plants are **producers**.
-2. A **grasshopper** eats the grass. It is a **consumer**.
-3. A **Dickcissel** catches the grasshopper and feeds it to its chicks.
-4. A **Loggerhead Shrike** might catch a grasshopper too, or a small bird or mouse.
-5. When anything dies, **decomposers** (fungi, bacteria, worms) break it down, and the nutrients go back into the soil for the grass.
+Why do we need this bigger frame? Because some things cannot be understood from organisms alone. Fire needs fuel (dead grass, made by the living world) and dry, windy weather (a non-living condition), and its effect, killing tree seedlings, feeds back into which plants grow ([[Feedback Loops in Ecology]]). Floods change which plants survive and where birds can nest, and nutrients cycle, so the nitrogen in a bird's feather was once in the soil. Energy, unlike nutrients, does not cycle: some is lost at every step of a food chain as body heat and movement, and a rough rule of thumb is that about 10% passes to the next level (real figures range from under 5% to over 20%). Start with 10,000 units in the grass: grasshoppers get about 1,000, insect-eating birds about 100, and predators of those birds about 10. That is why grasshoppers far outnumber shrikes and why top predators are always rarer. Land managers work mostly at this level: burning, mowing, disking and controlling water are all ecosystem actions ([[Disturbance]]).
 
-That chain is a **food chain**. Real feeding links cross and branch, so ecologists call the whole tangle a **food web**.
-
-Now add the non-living parts: rain that grows the grass, a hot dry spell that cures it into fuel, a lightning strike or prescribed burn, a spring flood. Living plus non-living, all interacting: that is an **ecosystem**.
-
-## Why it exists
-Some things cannot be understood by looking at organisms alone.
-- **Fire** needs fuel (dead grass, a living-world product) and dry, windy weather (a non-living condition). Its effect (killing tree seedlings) feeds back into which plants grow ([[Feedback Loops in Ecology]]).
-- **Floods** change which plants survive and where birds can nest.
-- **Nutrients** cycle: the nitrogen in a bird's feather was once in the soil.
-
-The ecosystem view keeps these physical processes in the picture. Land managers work mostly at this level: they burn, mow, disk and control water, all ecosystem-level actions ([[Disturbance]]).
-
-## A tiny example
-Energy is lost at every step of a food chain, mostly as body heat and movement. A rough rule of thumb is that only about **10%** passes to the next level (the real figure varies widely, from under 5% to over 20%).
-
-| Level | Energy available (units) |
-|---|---|
-| Grass | 10,000 |
-| Grasshoppers | 1,000 |
-| Insect-eating birds | 100 |
-| Predators of those birds | 10 |
-
-This is why there are far more grasshoppers than shrikes, and why top predators are always rarer.
-
-## In my project
-- The USGS data release opens by calling grasslands "an imperiled ecosystem" ([[Roberts et al. 2025]]).
-- My sites are grassland ecosystems shaped by **non-living** forces as well as birds. Annual rainfall is about 127 to 137 cm, and temperatures during the study ran about 15.5 to 35 °C.
-- **Water** matters a lot here. Part of the study area lies in the [[Mississippi Alluvial Valley]], a floodplain region of wetlands and swamps, and the sites were often partly flooded into early summer. Grid points that could not be reached because of flooding were dropped from the survey. Standing water also confuses satellite measures of grass and trees, so flooded pixels were removed before computing spatial covariance ([[Flood Masking]]).
-- **Fire, mowing and disking** are used at every site to keep the ecosystem in a grassy state ([[Grassland Restoration and Management]]).
-
-## Common confusions
-- **Ecosystem vs community.** A community is only the living species. Add soil, water, weather and fire and it becomes an ecosystem.
-- **"An ecosystem has fixed edges."** Boundaries are chosen by the researcher. A pond, a field or a whole watershed can each be called an ecosystem.
-- **Ecosystem vs [[Biome]].** A biome is a huge climate region containing many ecosystems.
-- **"Ecosystems are in a perfect balance."** They change constantly through [[Disturbance]] and [[Ecological Succession]]. Some stay roughly stable only because something (like fire) keeps pushing them back.
+Four confusions. An ecosystem is not a community: add soil, water, weather and fire to the living species and you have an ecosystem. An ecosystem has no fixed edges: the researcher chooses them, so a pond, a field or a whole watershed can each be one. An ecosystem is not a [[Biome]], a huge climate region containing many ecosystems. And ecosystems are not in perfect balance: they change constantly through disturbance and [[Ecological Succession]], and some stay roughly stable only because something like fire keeps pushing them back. The USGS data release opens by calling grasslands "an imperiled ecosystem" ([[Roberts et al. 2025]]). The project sites are [[Grassland]] ecosystems shaped by non-living forces: rainfall of about 127 to 137 cm a year, temperatures of about 15.5 to 35 °C during the study, and water. Part of the study area lies in the [[Mississippi Alluvial Valley]], a floodplain region often partly flooded into early summer; unreachable flooded points were dropped, and flooded pixels were removed before computing [[Spatial Covariance|spatial covariance]] ([[Flood Masking]]). Fire, mowing and disking keep every site grassy ([[Grassland Restoration and Management]]), and zooming out to how patches of ecosystems fit together across a region is [[Landscape Ecology]].
 
 ## Connections
-- **Builds on:** [[Ecological Community]], [[Levels of Ecological Organization]]
-- **Leads to:** [[Disturbance]], [[Feedback Loops in Ecology]], [[Biome]], [[Grassland]], [[Landscape Ecology]]
-- **Part of:** [[MOC 19 - Ecology Vocabulary|MOC - Ecology from Zero]]
-- **Go deeper:** [[Roberts et al. 2025]] (site climate and setting in the metadata)
+- **Builds on:** [[Ecological Community]], [[Levels of Ecological Organization]], [[Prescribed Fire]]
+- **Leads to:** [[Feedback Loops in Ecology]], [[Disturbance]], [[Biome]], [[Ecological Succession]], [[Grassland]], [[Flood Masking]], [[Landscape Ecology]], [[Loggerhead Shrike]], [[Spatial Covariance]]
+- **Part of:** [[MOC 19 - Ecology Vocabulary|MOC - Ecology Vocabulary]]
+- **Go deeper:** [[Mississippi Alluvial Valley]], [[Grassland Restoration and Management]], [[Roberts et al. 2025]]
 
-> [!question]- Check yourself
-> Why is fire an ecosystem-level process rather than just a community-level one?
-> ?
-> Fire depends on both living material (grass fuel) and non-living conditions (dry, windy weather), and it changes both. Only the ecosystem view includes the non-living parts.
+## Flashcards
+
+Why is fire an ecosystem-level process rather than just a community-level one?
+??
+Fire depends on both living material (grass fuel) and non-living conditions (dry, windy weather), and it changes both. Only the ecosystem view includes the non-living parts.
+++++
+
+Starting with 10,000 units of energy in grass, roughly how much reaches predators of insect-eating birds, and why?::About 10 units, because only about 10% passes up each of the three steps (grass to grasshoppers to birds to predators).

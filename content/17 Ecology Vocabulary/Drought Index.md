@@ -15,14 +15,14 @@ status: seedling
 
 # Drought Index
 
-A **drought index** is a number summarising how dry conditions are relative to normal for a place and time, such as the U.S. Drought Monitor categories D0 (abnormally dry), D1 (moderate), D2 (severe), D3 (extreme) and D4 (exceptional) ([[Explanatory Variable]], [[Ordinal Variable]]). Other indices are the Palmer Drought Severity Index (PDSI) and the Standardized Precipitation Index (SPI). [[Christensen et al. 2020]] summed the percentage of each county in categories D0 to D4 for the last week of August, giving a cumulative drought severity from 0 to 500 per county and year.
+A **drought index** is a number summarising how dry conditions are relative to normal for a place and time, such as the U.S. Drought Monitor categories D0 (abnormally dry), D1 (moderate), D2 (severe), D3 (extreme) and D4 (exceptional) ([[Predictor Variable|Explanatory Variable]], [[Ordinal Variable]]). Other indices are the Palmer Drought Severity Index (PDSI) and the [[Standardizing|Standardized]] Precipitation Index (SPI). [[Christensen et al. 2020]] summed the percentage of each county in categories D0 to D4 for the last week of August, giving a cumulative drought severity from 0 to 500 per county and year.
 
-Choose a time window that matches the biology: Christensen et al. used late August, when haemorrhagic disease peaks ([[Epizootic Hemorrhagic Disease]]). Indices are relative to the local normal, so the same rainfall can be "drought" in one place and not another. They are often spatially and temporally autocorrelated, so models need random effects or spatial terms ([[Spatial Autocorrelation]], [[Random Effect]]).
+Choose a time window that matches the biology: Christensen et al. used late August, when haemorrhagic disease peaks ([[Epizootic Hemorrhagic Disease]]). Indices are relative to the local normal, so the same rainfall can be "drought" in one place and not another. They are often spatially and temporally [[Autocorrelation|autocorrelated]], so models need random effects or spatial terms ([[Spatial Autocorrelation]], [[Random Effect]]).
 
 It appears in Christensen et al., [[Shipley et al. 2022]] and the lab datasets ([[Course Website]]). A drought index is not total rainfall; it is dryness relative to the local normal, often combining several measures.
 
 ## Connections
-- **Builds on:** [[Explanatory Variable]], [[Ordinal Variable]]
+- **Builds on:** [[Predictor Variable|Explanatory Variable]], [[Ordinal Variable]], [[Standardizing]], [[Autocorrelation]]
 - **Leads to:** [[Epizootic Hemorrhagic Disease]], [[Climate Change Effects on Wildlife]]
 - **Part of:** [[MOC 19 - Ecology Vocabulary|MOC - Ecology Vocabulary]]
 

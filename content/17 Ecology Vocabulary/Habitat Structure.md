@@ -13,7 +13,7 @@ status: seedling
 
 # Habitat Structure
 
-**Habitat structure** is the physical arrangement of vegetation and other features, such as layers of canopy, shrubs, dead wood and open ground, that shapes which species can live there ([[Habitat]]). It is measured with canopy cover, tree density and size (DBH), shrub cover, coarse woody debris and ground cover ([[Canopy Cover]], [[Diameter at Breast Height]], [[Coarse Woody Debris]]).
+**Habitat structure** is the physical arrangement of vegetation and other features, such as layers of canopy, shrubs, dead wood and open ground, that shapes which species can live there ([[Habitat]]). It is measured with canopy cover, [[Tree Density|tree density]] and size (DBH), shrub cover, coarse woody debris and ground cover ([[Canopy Cover]], [[Diameter at Breast Height]], [[Coarse Woody Debris]]).
 
 Many structural variables are collinear, so combine or select them with care, using VIF or PCA ([[Collinearity]], [[Variance Inflation Factor]]). Disturbance changes structure: fire, grazing, logging and woody encroachment ([[Fire History Variables]], [[Woody Encroachment]]). Dense structure also hides animals, so it affects detection ([[Detection Probability]]).
 
@@ -21,7 +21,7 @@ It appears in the lab datasets, [[Shipley et al. 2022]] and [[Christensen et al.
 
 ## Connections
 - **Builds on:** [[Habitat]]
-- **Leads to:** [[Canopy Cover|Canopy and Tree Cover]], [[Diameter at Breast Height]], [[Coarse Woody Debris]], [[Collinearity]]
+- **Leads to:** [[Canopy Cover|Canopy and Tree Cover]], [[Diameter at Breast Height]], [[Coarse Woody Debris]], [[Collinearity]], [[Tree Density]]
 - **Part of:** [[MOC 19 - Ecology Vocabulary|MOC - Ecology Vocabulary]]
 
 ## Flashcards

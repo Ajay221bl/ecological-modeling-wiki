@@ -14,11 +14,11 @@ status: seedling
 
 # Logistic Function
 
-A dimmer switch with soft ends: turn the knob far left and the light is essentially off, far right and it is essentially full, and in the middle a small turn makes a big difference. However far you turn, the light cannot go below off or above full. The **logistic function** squashes any number on the whole real line into a value between 0 and 1 along that S-shaped curve: f(x) = 1 / (1 + e^(−x)) = e^x / (1 + e^x) ([[Exponential Function]]). f(0) = 0.5, and it is symmetric: f(−x) = 1 − f(x). In R it is `plogis(x)` ([[plogis()|plogis() and qlogis()]]).
+A dimmer switch with soft ends: turn the knob far left and the light is essentially off, far right and it is essentially full, and in the middle a small turn makes a big difference. However far you turn, the light cannot go below off or above full. The **logistic function** squashes any number on the whole real line into a value between 0 and 1 along that S-shaped curve: [[Functions in Maths|f(x)]] = 1 / (1 + e^(−x)) = e^x / (1 + e^x) ([[Exponential Function]]). f(0) = 0.5, and it is symmetric: f(−x) = 1 − f(x). In R it is `plogis(x)` ([[plogis()|plogis() and qlogis()]]).
 
 Inputs −4, −1, 0, 1 and 4 give 0.018, 0.269, 0.5, 0.731 and 0.982. The curve is steepest in the middle, with slope 1/4 at x = 0, so near p = 0.5 a change of 1 in x moves p by at most 0.25; the code below checks that slope numerically. It is the inverse of the logit: if x = log(p/(1 − p)), the [[Log Odds]], then p = f(x), and the code confirms that applying `qlogis()` then `plogis()` to 0.3 returns 0.3.
 
-Models need it because a linear predictor can be any number while a [[Probability]] cannot. The logistic function converts one to the other in [[Logistic Regression]], occupancy and survival models, where it serves as the [[Inverse Link Function]] of the [[Logit Link]] ([[Hobbs and Hooten 2015 Ch2]], [[Guthery and Bingham 2007]], [[Course Website]]). Logistic and logit are not the same: they are inverses. Logit takes a probability to the real line; logistic takes the real line to a probability.
+Models need it because a [[Linear Predictor|linear predictor]] can be any number while a [[Probability]] cannot. The logistic function converts one to the other in [[Logistic Regression]], occupancy and survival models, where it serves as the [[Inverse Link Function]] of the [[Logit Link]] ([[Hobbs and Hooten 2015 Ch2]], [[Guthery and Bingham 2007]], [[Course Website]]). Logistic and logit are not the same: they are inverses. Logit takes a probability to the real line; logistic takes the real line to a probability.
 
 ![[Logistic function.png|700]]
 *What to look at:* the S curve flattening at 0 and 1, with the steepest point at 0.5.
@@ -31,7 +31,7 @@ plogis(qlogis(0.3))                       # logit then inverse logit returns 0.3
 ```
 
 ## Connections
-- **Builds on:** [[Exponential Function]], [[Log Odds]]
+- **Builds on:** [[Exponential Function]], [[Log Odds]], [[Functions in Maths]], [[Linear Predictor]]
 - **Leads to:** [[Logit Link]], [[Logistic Regression]], [[plogis()|plogis() and qlogis()]], [[Inverse Link Function]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]], molecular note [[Probability, Odds and Log Odds]]
 

@@ -19,7 +19,7 @@ status: seedling
 Should I fit my mixed model with lme4 or brms, and how do I read one against the other?
 
 ## Built from
-- [[lmer() and glmer()]] and [[brm()]].
+- [[lmer()|lmer() and glmer()]] and [[brm()]].
 - [[Bayesian GLMM]]: what brms fits.
 - [[Frequentist vs Bayesian Inference]]: the philosophy.
 - [[Singular Fit]] and [[Boundary Problem When Testing Variances]]: lme4 pain points brms avoids.

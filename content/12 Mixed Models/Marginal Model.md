@@ -14,9 +14,9 @@ status: seedling
 
 # Marginal Model
 
-A **marginal model** describes how the average response across the whole population changes with predictors, handling within-group correlation in the errors rather than with group-specific effects ([[Correlation Structure]], [[Generalized Least Squares]]). A [[Mixed Effects Model]] is conditional, giving effects for a typical or a given group; a marginal model is population-averaged, giving effects on the mean over all groups. Examples are GLS with `corCompSymm` and generalized estimating equations (GEE, `geepack::geeglm()`).
+A **marginal model** describes how the average response across the whole population changes with [[Predictor Variable|predictors]], handling within-group correlation in the errors rather than with group-specific effects ([[Correlation Structure]], [[Generalized Least Squares]]). A [[Mixed Effects Model]] is conditional, giving effects for a typical or a given group; a marginal model is population-averaged, giving effects on the mean over all groups. Examples are GLS with `corCompSymm` and generalized estimating equations (GEE, `geepack::geeglm()`).
 
-For normal models with an identity link, conditional and marginal slopes coincide. For non-linear links they differ, and marginal logit effects are smaller in magnitude than conditional ones. In the code below binary data with large group differences give a conditional GLMM slope of 1.00, the true value, but a marginal logistic slope of 0.64. GEE gives robust "sandwich" SEs but no likelihood, so no AIC.
+For normal models with an [[Identity Link|identity link]], conditional and marginal slopes coincide. For non-linear links they differ, and marginal [[Logit Link|logit]] effects are smaller in [[Absolute Value|magnitude]] than conditional ones. In the code below binary data with large group differences give a conditional GLMM slope of 1.00, the [[Parameter|true value]], but a marginal logistic slope of 0.64. GEE gives robust "sandwich" SEs but no likelihood, so no AIC.
 
 Choose by the question: "what happens to a typical individual" is conditional, "what happens to the population average" marginal. The distinction appears in the mixed models lab when predicting for "a typical farm" ([[Course Website]]). A GLMM slope is not the population-average effect; it is the effect within a typical group.
 
@@ -26,7 +26,7 @@ round(c(conditional_GLMM = fixef(glmer(y ~ x + (1 | g), family = binomial))[["x"
 ```
 
 ## Connections
-- **Builds on:** [[Mixed Effects Model]], [[Correlation Structure]], [[Generalized Least Squares]]
+- **Builds on:** [[Mixed Effects Model]], [[Correlation Structure]], [[Generalized Least Squares]], [[Predictor Variable]], [[Identity Link]], [[Logit Link]], [[Absolute Value]], [[Parameter]]
 - **Leads to:** [[Conditional vs Marginal Predictions]], [[GLMM]]
 - **Part of:** [[MOC 14 - Mixed Models|MOC - Mixed Models]]
 

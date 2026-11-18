@@ -14,7 +14,7 @@ status: seedling
 
 # Distribution Parameters
 
-A mixing desk has dials: one slides the sound left and right, another stretches it, and on some instruments a third changes its whole character. **Distribution parameters** are the few numbers that pick out one specific member of a distribution family by setting where it sits, how wide it is and what shape it has ([[Parameter]], [[Probability Distribution]]). *Location* parameters shift a distribution along the axis without changing its shape, like the normal's mean. *Scale* parameters stretch or squeeze it, like the normal's standard deviation: doubling the scale doubles the spread. A *rate* is 1/scale, so a high rate means a tight distribution; the gamma and exponential are usually written with rates. *Shape* parameters change the form itself, like the gamma's shape, the beta's a and b, or the t distribution's degrees of freedom.
+A mixing desk has dials: one slides the sound left and right, another stretches it, and on some instruments a third changes its whole character. **Distribution parameters** are the few numbers that pick out one specific member of a distribution family by setting where it sits, how wide it is and what shape it has ([[Parameter]], [[Probability Distribution]]). *Location* parameters shift a distribution along the axis without changing its shape, like the normal's mean. *Scale* parameters stretch or squeeze it, like the normal's [[Standard Deviation|standard deviation]]: doubling the scale doubles the spread. A *rate* is 1/scale, so a high rate means a tight distribution; the gamma and exponential are usually written with rates. *Shape* parameters change the form itself, like the gamma's shape, the beta's a and b, or the [[Student t Distribution|t distribution]]'s [[Degrees of Freedom|degrees of freedom]].
 
 Count distributions use natural parameters: the Poisson has its mean λ, and the binomial has n and p. The figure shows shifting, stretching and reshaping as three different operations, and the code checks them: a normal shifted by 5 has the same height at the shifted point; a gamma with rate 0.5 is identical to one with scale 2; and doubling a gamma's rate halves its spread.
 
@@ -31,7 +31,7 @@ set.seed(13); c(sd(rgamma(1e5, 2, rate = 1)), sd(rgamma(1e5, 2, rate = 2)))   # 
 ```
 
 ## Connections
-- **Builds on:** [[Parameter]], [[Probability Distribution]]
+- **Builds on:** [[Parameter]], [[Probability Distribution]], [[Standard Deviation]], [[Student t Distribution]], [[Degrees of Freedom]]
 - **Leads to:** [[Moments of a Distribution]], [[Moment Matching]], [[Dispersion Parameter]], [[Precision Parameter]]
 - **Part of:** [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]]
 

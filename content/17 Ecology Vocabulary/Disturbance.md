@@ -2,7 +2,8 @@
 type: atomic
 tags:
   - ecology-basics
-  - flashcards
+  - flashcards/eco/ecology
+description: "A disturbance is a fairly sudden event, such as a fire, flood, mowing or ploughing, that kills or removes living things and frees up space, light and nutrients for others."
 aliases:
   - "disturbances"
   - "ecological disturbance"
@@ -11,63 +12,24 @@ status: seedling
 ---
 
 # Disturbance
-**In one line:** A disturbance is a fairly sudden event, such as a fire, flood, mowing or plowing, that kills or removes living things and frees up space, light and nutrients for others.
 
-> [!info] Before this, it helps to know
-> [[Ecosystem]] (disturbances act on the whole system) · [[Grassland]] (a habitat that needs disturbance)
+Mow a lawn every week and it stays short grass; stop mowing and within a season it is tall grass and weeds, and in a few years tree seedlings poke through. The mower was a **disturbance**: a fairly sudden event that kills or removes living things and frees up space, light and nutrients for others, here repeated so the lawn never turned into something else. Nature has its own mowers: fire burns dead grass and kills young trees, floods drown plants and move soil, grazing animals eat and trample plants ([[Grazing]]), and storms knock down trees. People add more: [[Mowing]], [[Disking]] (cutting up the soil with a row of steel discs), [[Prescribed Fire]] (a planned, controlled burn) and ploughing. Disturbance acts on a whole [[Ecosystem]].
 
-## Start from zero
-Think of a lawn. Mow it every week and it stays short grass. Stop mowing and within a season it is tall grass and weeds. In a few years tree seedlings poke through. The mower was a **disturbance**: a repeated event that kept the lawn from changing into something else.
+Why does it matter? Without disturbance, most land in a humid climate slowly turns to forest, the process called [[Ecological Succession]], and disturbance resets that clock. Ecologists describe a *disturbance regime* with four questions: how often, how strong (a light ground fire or one that kills mature trees), how big, and when. Follow three made-up fields with the same soil and rain for 20 years: burned every 3 years, tree cover ends at 5%; burned every 10 years, 25%; never burned, 60%. Frequent disturbance keeps the field grassy, rare disturbance lets shrubs and trees gain ground between fires, and none lets succession run. That is why a [[Grassland]] in a wet climate exists only with regular disturbance, and why grassland birds, which need that open state, depend on it. The feedbacks that make fire self-sustaining in grass and self-defeating in woods are in [[Feedback Loops in Ecology]].
 
-Nature has its own mowers:
-- **Fire:** burns dead grass and kills young trees.
-- **Flood:** drowns plants, moves soil.
-- **Grazing:** animals eat and trample plants.
-- **Storms:** knock down trees, opening gaps.
-
-People add more: **mowing**, **disking** (cutting up the soil with a plow-like set of discs), **prescribed fire** (a planned, controlled burn), and plowing for crops.
-
-Ecologists describe a **disturbance regime** with four questions:
-1. **How often?** (every year, every 10 years)
-2. **How strong?** (light ground fire vs one that kills mature trees)
-3. **How big?** (one hectare or a thousand)
-4. **When?** (spring vs midsummer)
-
-## Why it exists
-Without disturbance, most land in a humid climate slowly turns to forest ([[Ecological Succession]]). Disturbance resets that clock. Many species exist only because disturbance keeps opening up space. Grassland birds are a prime example: they need the open, grassy state that only regular disturbance maintains.
-
-"Disturbance" sounds bad, but it is neutral. The same fire that is a disaster for a forest bird's nest is what makes a grassland possible. The **timing** matters too: mowing in June can destroy ground nests that would have been safe after the breeding season ([[Breeding Season Timing]]).
-
-## A tiny example
-Three made-up fields, same soil and rain, followed for 20 years:
-
-| Fire regime | Tree cover after 20 years |
-|---|---|
-| Burned every 3 years | 5% |
-| Burned every 10 years | 25% |
-| Never burned | 60% |
-
-Frequent disturbance keeps the field grassy. Rare disturbance lets shrubs and trees gain ground between fires. No disturbance lets succession run.
-
-## In my project
-- The metadata says all sites have had **grassland restoration including mowing, burning and disking**, in varying amounts ([[Roberts et al. 2025]], [[Mowing]], [[Prescribed Fire]], [[Disking]]).
-- **Flooding** is a natural disturbance here. Grid points that could not be reached because of flooding were removed, and flooded pixels were masked out of the satellite data ([[Flood Masking]]).
-- Differences in disturbance history between sites are one of the many things bundled inside my `Site` variable, which is why Site alone is a weak test of a habitat idea ([[Why site identity is a weak test of a habitat hypothesis]]).
-- How management differs from site to site (from a summary of Berry's 2024 thesis, still to be verified) is listed once, in [[Study Sites]].
-
-## Common confusions
-- **"Disturbance = damage."** Ecologically it is neutral. Many habitats depend on it.
-- **"More disturbance is always better for grassland."** Too much (for example, mowing during nesting, or disking every year) can remove the cover birds need. The right regime is a balance.
-- **Disturbance vs stress.** A disturbance is an event (a fire). Stress is an ongoing condition (drought, poor soil).
-- **"Natural vs human disturbance are totally different."** Mowing can partly mimic grazing, and prescribed fire mimics natural fire, but neither is a perfect copy.
+Four confusions. Disturbance does not mean damage: ecologically it is neutral, and the same fire that destroys a forest bird's nest is what makes a grassland possible. More is not always better: mowing during nesting, or disking every year, removes the cover birds need, and timing matters ([[Breeding Season Timing]]). A disturbance is an event (a fire), unlike *stress*, an ongoing condition such as drought. And human disturbances only partly mimic natural ones: mowing is a rough stand-in for grazing. In the grassland bird project the metadata say all sites have had restoration including mowing, burning and disking in varying amounts ([[Roberts et al. 2025]], [[Grassland Restoration and Management]]); flooding is the natural disturbance here, and unreachable flooded points and flooded pixels were removed ([[Flood Masking]]). Differences in disturbance history between sites are among the many things bundled inside `Site`, which is why site alone is a weak test of a habitat idea ([[Why site identity is a weak test of a habitat hypothesis]]); per-site management is listed in [[Study Sites]].
 
 ## Connections
-- **Builds on:** [[Ecosystem]], [[Grassland]]
-- **Leads to:** [[Ecological Succession]], [[Prescribed Fire]], [[Mowing]], [[Disking]], [[Grassland Restoration and Management]], [[Feedback Loops in Ecology]]
-- **Part of:** [[MOC 19 - Ecology Vocabulary|MOC - Ecology from Zero]]
-- **Go deeper:** [[Brennan and Kuvlesky 2005]]
+- **Builds on:** [[Ecosystem]], [[Grazing]]
+- **Leads to:** [[Mowing]], [[Disking]], [[Prescribed Fire]], [[Ecological Succession]], [[Grassland]], [[Feedback Loops in Ecology]], [[Grassland Restoration and Management]], [[Flood Masking]]
+- **Part of:** [[MOC 19 - Ecology Vocabulary|MOC - Ecology Vocabulary]]
+- **Go deeper:** [[Breeding Season Timing]], [[Why site identity is a weak test of a habitat hypothesis]], [[Study Sites]], [[Brennan and Kuvlesky 2005]]
 
-> [!question]- Check yourself
-> Why do ecologists not treat "disturbance" as a bad word?
-> ?
-> Because disturbance is what keeps many habitats, like grasslands, from turning into forest. Whether it helps or harms depends on the species and on how often, how strong, how big and when it happens.
+## Flashcards
+
+Why do ecologists not treat "disturbance" as a bad word?
+??
+Disturbance is what keeps many habitats, like grasslands, from turning into forest. Whether it helps or harms depends on the species and on how often, how strong, how big and when it happens.
+++++
+
+What four questions describe a disturbance regime?::How often, how strong, how big, and when.

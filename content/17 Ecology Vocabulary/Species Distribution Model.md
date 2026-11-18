@@ -15,9 +15,9 @@ status: seedling
 
 # Species Distribution Model
 
-A **species distribution model** (SDM) relates where a species occurs, or how abundant it is, to environmental variables, so it can predict and map occurrence across a region ([[Logistic Regression]], [[Habitat]], [[Occupancy]]). The response can be presence-absence, presence-only or counts, and methods include GLMs, GAMs, random forests, MaxEnt, and occupancy and N-mixture models ([[Generalized Additive Model]], [[N-mixture Model]]).
+A **species distribution model** (SDM) relates where a species occurs, or how abundant it is, to environmental variables, so it can predict and map occurrence across a region ([[Logistic Regression]], [[Habitat]], [[Occupancy]]). The response can be presence-absence, presence-only or counts, and methods include [[Generalized Linear Model|GLMs]], GAMs, random forests, MaxEnt, and occupancy and N-mixture models ([[Generalized Additive Model]], [[N-mixture Model]]).
 
-[[Guélat and Kéry 2018]] found that imperfect detection and residual spatial autocorrelation both damaged SDM abundance maps, especially together, and spatial N-mixture models recovered the true maps; spatial terms such as CAR random effects or 2-D splines handle autocorrelation ([[Conditional Autoregressive Model]], [[Spatial Smooths]]). Validate on independent data, as Guélat and Kéry did with an independent monitoring dataset. In the code below occurrence peaks at middle temperatures, and a quadratic logistic model predicts probabilities of 0.10, 0.82 and 0.78 at 5, 15 and 25 °C, against true values of 0.08, 0.82 and 0.82 ([[Polynomial|Polynomial Regression]]).
+[[Guélat and Kéry 2018]] found that imperfect detection and residual [[Spatial Autocorrelation|spatial autocorrelation]] both damaged SDM abundance maps, especially together, and spatial N-mixture models recovered the true maps; spatial terms such as CAR [[Random Effect|random effects]] or 2-D splines handle autocorrelation ([[Conditional Autoregressive Model]], [[Spatial Smooths]]). Validate on independent data, as Guélat and Kéry did with an independent monitoring dataset. In the code below occurrence peaks at middle temperatures, and a quadratic logistic model predicts probabilities of 0.10, 0.82 and 0.78 at 5, 15 and 25 °C, against true values of 0.08, 0.82 and 0.82 ([[Polynomial|Polynomial Regression]]).
 
 SDMs appear in Guélat and Kéry and the lab datasets ([[Course Website]]). An SDM map does not show where the species lives; it shows predicted suitability, which depends on detection and model assumptions ([[Imperfect Detection]]).
 
@@ -28,7 +28,7 @@ round(predict(m, data.frame(temp = c(5, 15, 25)), type = "response"), 2)
 ```
 
 ## Connections
-- **Builds on:** [[Logistic Regression]], [[Habitat]], [[Occupancy]]
+- **Builds on:** [[Logistic Regression]], [[Habitat]], [[Occupancy]], [[Generalized Linear Model]], [[Spatial Autocorrelation]], [[Random Effect]]
 - **Leads to:** [[N-mixture Model]], [[Spatial Smooths]], [[Conditional Autoregressive Model]]
 - **Part of:** [[MOC 19 - Ecology Vocabulary|MOC - Ecology Vocabulary]]
 

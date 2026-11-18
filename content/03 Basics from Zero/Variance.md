@@ -13,11 +13,11 @@ status: seedling
 
 # Variance
 
-Two bus routes both arrive "on average at 9:00". Route A is always within a minute of 9:00; route B turns up at 8:40 one day and 9:25 the next. Same average, very different experience at the stop, because the average hides how much the arrivals vary. **Variance** is a number for that wobble, or *spread*: roughly, the average squared distance of the values from their [[Mean]]. It is written s² for a sample and σ² ("sigma squared") for a whole population. Route A gets a small variance, route B a big one.
+Two bus routes both arrive "on average at 9:00". Route A is always within a minute of 9:00; route B turns up at 8:40 one day and 9:25 the next. Same average, very different wait at the stop, because an average hides how much the values wobble. **Variance** is one number for that wobble, which statisticians call *spread*: roughly, the average squared distance of the values from their [[Mean]] (the ordinary average: add the values up and divide by how many there are). It is written s² when it is worked out from a [[Sample]] (the handful of values we actually measured) and σ², "sigma squared", for the whole [[Population]] (every value we could ever measure). Route A gets a small variance, route B a big one.
 
-Here is the recipe, with the reason for each step. Five visits recorded 2, 3, 3, 5 and 7 bird species, with mean 4. First find each value's *deviation*, how far it sits from the mean: −2, −1, −1, +1 and +3. You cannot simply average these, because they always add to zero; the mean is the balance point, so the minuses cancel the pluses. So square each deviation first: 4, 1, 1, 1 and 9. Squares are never negative, so nothing cancels, and squaring makes big misses count much more than small ones (a miss of 3 counts 9, a miss of 1 counts 1), which matches how surprising they are. The squares add to 16 ([[Summation Notation]]). Finally divide, but for a sample divide by n − 1 = 4, not by n = 5: s² = 16 / 4 = 4. The reason for n − 1 is that the deviations were measured from x̄, which was calculated from these same data and therefore sits closer to them than the true mean μ does, so the squared deviations run a little too small; dividing by a slightly smaller number corrects for it. R's `var()` always does this. A site that recorded 4, 4, 4, 4, 4 would have a variance of 0: no spread at all.
+Here is the recipe, with the reason for each step. Five visits to a pond recorded 2, 3, 3, 5 and 7 bird species, so the mean is 20 / 5 = 4. First find each value's [[Deviation]], how far it sits above or below the mean: −2, −1, −1, +1 and +3. You cannot just average these, because they always add to exactly zero; the mean is the balance point, so the minuses cancel the pluses. So square each deviation: 4, 1, 1, 1 and 9. A square is never negative, so nothing cancels, and squaring makes a big miss count much more than a small one (a miss of 3 counts 9, a miss of 1 counts 1). Add the squares, a step written with the Σ sign of [[Summation Notation]], to get 16, the [[Sum of Squares]]. Finally divide, but for a sample divide by n − 1 = 4 rather than n = 5: s² = 16 / 4 = 4. Why n − 1? The deviations were measured from the sample mean, which was calculated from these same five numbers and so sits closer to them than the true population mean does. The squared deviations come out a little too small, and dividing by one less makes up for it on average; the n − 1 is the number of [[Degrees of Freedom]], and it makes s² an [[Unbiased Estimator]] of σ² (right on average over many samples). R's `var()` always divides by n − 1. A pond that recorded 4, 4, 4, 4, 4 has variance 0: no spread at all.
 
-The units come out squared: 4 "species squared", which nobody can picture, so the variance is usually reported through its square root, the [[Standard Deviation]], here 2 species. A variance of 4 does not mean values are 4 away from the mean; the typical distance is √4 = 2. Why squares rather than plain distances with the sign dropped? Both stop the cancelling, but squares have two special properties: the mean is exactly the value that makes the sum of squared deviations smallest, which ties variance to the mean and to [[Least Squares]]; and the variances of independent things simply add, which is how every [[Standard Error]] in the course is built. Variance turns up everywhere in modeling: the residual variance σ² of a linear model, [[Overdispersion]] when the variance of counts is bigger than their mean, and the variance of a random effect in a mixed model ([[Variance Components]]). Hobbs and Hooten call it a distribution's second central moment and use mean and variance together to pick parameters for distributions ([[Moments of a Distribution|Moments]], [[Moment Matching]], [[Hobbs and Hooten 2015 Ch3]]).
+The units come out squared, here 4 "species squared", which nobody can picture, so spread is usually reported as the [[Square Root]] of the variance, the [[Standard Deviation]]: √4 = 2 species. That clears up the most common confusion: a variance of 4 does not mean values sit 4 away from the mean; the typical distance is 2. Why squares, rather than dropping the minus signs? Both stop the cancelling, but squares have two special properties. The mean is exactly the value that makes the sum of squared deviations as small as possible, which ties variance to the mean and to [[Least Squares]] fitting; and the variances of independent things simply add, which is how every [[Standard Error]] in the course is built. That is why variance turns up everywhere in modeling: the leftover scatter around a fitted line in a [[Linear Model]], [[Overdispersion]] when counts vary more than their mean, and the [[Variance Components]] of a [[Mixed Effects Model|mixed model]]. Hobbs and Hooten call it the second central moment of a distribution and use mean and variance together to choose a distribution's parameters ([[Moments of a Distribution]], [[Hobbs and Hooten 2015 Ch3]]).
 
 ![[Deviations and variance.png|700]]
 *What to look at:* each orange line is a deviation. Square them, add them up and divide by n − 1 to get the variance.
@@ -25,16 +25,16 @@ The units come out squared: 4 "species squared", which nobody can picture, so th
 ```r
 x <- c(2, 3, 3, 5, 7)
 var(x)                                  # 4 (R divides by n - 1)
-sum((x - mean(x))^2) / (length(x) - 1)  # same by hand
+sum((x - mean(x))^2) / (length(x) - 1)  # same by hand: 16 / 4
 sum(x - mean(x))                        # 0: why we can't skip the squaring
 sd(x)                                   # 2 = sqrt(var(x))
 ```
 
 ## Connections
-- **Builds on:** [[Mean]], [[Summation Notation]]
-- **Leads to:** [[Standard Deviation]], [[Standard Error]], [[Least Squares]], [[Overdispersion]], [[Variance Components]]
+- **Builds on:** [[Mean]], [[Sample]], [[Population]], [[Deviation]], [[Summation Notation]], [[Sum of Squares]], [[Degrees of Freedom]], [[Square Root]]
+- **Leads to:** [[Unbiased Estimator]], [[Standard Deviation]], [[Least Squares]], [[Standard Error]], [[Linear Model]], [[Overdispersion]], [[Variance Components]], [[Moments of a Distribution]], [[Mixed Effects Model]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
-- **Go deeper:** [[Moments of a Distribution|Moments]]
+- **Go deeper:** [[Standard Deviation vs Standard Error]], [[Hobbs and Hooten 2015 Ch3]]
 
 ## Flashcards
 
@@ -46,5 +46,10 @@ Raw deviations always sum to zero (the mean is the balance point); squaring make
 
 Why divide by n − 1 for a sample variance?
 ??
-Deviations are measured from x̄, which was fitted to the same data and sits closer to them than μ does, so dividing by n would underestimate the true variance.
+Deviations are measured from the sample mean, which was fitted to the same data and sits closer to them than the true mean does, so dividing by n would underestimate the true variance.
+++++
+
+A sample has variance 9. What is the typical distance of a value from the mean?
+??
+About 3, the standard deviation (√9), not 9.
 ++++

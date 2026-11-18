@@ -15,9 +15,9 @@ status: seedling
 
 # Generalized Cross-validation
 
-**Generalized cross-validation** (GCV) chooses the smoothing parameter that minimises an approximation to leave-one-out prediction error, and UBRE (Mallows' Cp) is its counterpart when the scale parameter is known, as for Poisson and binomial ([[Leave-one-out Cross-validation]], [[Smoothing Parameter]]). The GCV score is roughly n × RSS / (n − edf)²: small residuals help, and a high edf hurts. It is computed from one fit, without refitting n times.
+**Generalized cross-validation** (GCV) chooses the smoothing parameter that minimises an approximation to leave-one-out prediction error, and UBRE (Mallows' Cp) is its counterpart when the [[Distribution Parameters|scale parameter]] is known, as for Poisson and binomial ([[Leave-one-out Cross-validation]], [[Smoothing Parameter]]). The GCV score is roughly n × RSS / (n − edf)²: small residuals help, and a high edf hurts. It is computed from one fit, without refitting n times.
 
-It is mgcv's default (`method = "GCV.Cp"`). Its known weakness is that the score can be flat or have several minima, and it occasionally under-smooths, which is overfitting; REML is more stable ([[REML for Smoothness Selection]]). In the code below GCV picks a smooth with 5.46 effective degrees of freedom for a sine wave, with a GCV score of 0.091, close to the noise variance of 0.09.
+It is mgcv's default (`method = "GCV.Cp"`). Its known weakness is that the score can be flat or have several minima, and it occasionally under-smooths, which is overfitting; [[REML]] is more stable ([[REML for Smoothness Selection]]). In the code below GCV picks a smooth with 5.46 [[Effective Degrees of Freedom|effective degrees of freedom]] for a sine wave, with a GCV score of 0.091, close to the noise variance of 0.09.
 
 [[Zuur et al. 2009 Ch3]] explain cross-validation for choosing smoothness ([[Cross-validation]]). GCV and REML usually agree closely, but not always: GCV is more variable.
 
@@ -27,7 +27,7 @@ round(c(gcv_score = m$gcv.ubre, edf = summary(m)$edf), 3)
 ```
 
 ## Connections
-- **Builds on:** [[Leave-one-out Cross-validation]], [[Smoothing Parameter]]
+- **Builds on:** [[Leave-one-out Cross-validation]], [[Smoothing Parameter]], [[Distribution Parameters]], [[REML]], [[Effective Degrees of Freedom]]
 - **Leads to:** [[REML for Smoothness Selection]]
 - **Part of:** [[MOC 15 - GAMs|MOC - GAMs]], molecular note [[GCV vs REML for Smoothing]]
 

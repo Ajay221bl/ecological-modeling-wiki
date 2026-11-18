@@ -16,7 +16,7 @@ Stir a pot of soup and taste one spoonful. The spoonful is the **sample**: the p
 
 A pond holds 200 turtles, and you trap 40 of them: the sample, n = 40. Ten of the 40 are female, so in the sample the proportion female is 10 / 40 = 0.25. That is a fact about these 40 turtles. "25% of the pond is female" is a guess, an [[Estimate]]. Trap a different 40 tomorrow and you might get 8 or 13 females, 0.20 or 0.33: same pond, different sample, different answer. Different samples always give somewhat different answers, a fact called [[Sampling Variation]], and the [[Standard Error]] measures how much they differ. Soup can be stirred until every spoonful tastes the same, but nature cannot be stirred, so this variation never goes away.
 
-Measuring everything is almost never possible, so all of science runs on samples, and naming the sample separately keeps two kinds of number apart: certain facts about your data and uncertain guesses about the world. The guess is only as good as the window. A sample must look like the population in the ways that matter, which is what a [[Representative Sample]] means, and a larger sample makes the guess more precise but cannot fix a method that systematically looks in the wrong place ([[Bias]]). Powell and Gale define the sample as the subset of the study population for which you have data ([[Powell and Gale 2015 Ch2]]).
+Measuring everything is almost never possible, so all of science runs on samples, and naming the sample separately keeps two kinds of number apart: certain facts about your data and uncertain guesses about the world. The guess is only as good as the window. A sample must look like the population in the ways that matter, which is what a [[Representative Sample]] means, and a larger sample makes the guess more precise but cannot fix a method that systematically looks in the wrong place ([[Bias]]). Powell and Gale define the sample as the subset of the [[Study Population|study population]] for which you have data ([[Powell and Gale 2015 Ch2]]).
 
 ![[Population and sample.png|700]]
 *What to look at:* the orange dots are the sample, the only part we see.
@@ -31,7 +31,7 @@ mean(sample(population, 40))                 # another sample: a different answe
 
 ## Connections
 - **Builds on:** [[Population]], [[Observation]]
-- **Leads to:** [[Estimate]], [[Representative Sample]], [[Standard Error]], [[Sampling Variation]]
+- **Leads to:** [[Estimate]], [[Representative Sample]], [[Standard Error]], [[Sampling Variation]], [[Study Population]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]], molecular note [[Population and Sample]]
 - **Go deeper:** [[Powell and Gale 2015 Ch2]]
 

@@ -26,7 +26,7 @@ Units 2 and 8 (Aug 20, Sep 24, Sep 29): the R needed to wrangle data, fit models
 - [[Matrices in R]]: A matrix in R is a rectangular grid of values that are all the same type, addressed by row and column.
 - [[Indexing in R]]: Indexing is picking out part of an object, by position, by name or by a true/false test.
 - [[Missing Values]]: `NA` is R's marker for \"this value exists but we don't know it\", and it spreads through calculations unless you say how to handle it.
-- [[Function Arguments]]: Arguments are the inputs you hand to a function, either by position or by name, and many have default values that apply when you say nothing.
+- [[Functions in R]]: A function is a named action in R that takes inputs (arguments) inside round brackets and gives back a result.
 - [[Writing Your Own Function]]: Writing a function means packaging a few lines of code under a name so the same steps can be reused with different inputs.
 - [[For Loop]]: A for loop repeats a block of code once for each item in a list of values.
 - [[If-Else]]: If-else makes code choose between actions depending on whether a condition is true.
@@ -41,7 +41,7 @@ Units 2 and 8 (Aug 20, Sep 24, Sep 29): the R needed to wrangle data, fit models
 
 ## 2. Tidyverse wrangling
 - [[Tidyverse]]: The tidyverse is a family of R packages that share one design, so data import, cleaning, reshaping and plotting all work the same way.
-- [[Pipe Operator]]: The pipe passes the result on its left into the function on its right, so a chain of steps reads in the order it happens.
+- [[Pipe]]: The pipe %>% takes whatever is on its left and hands it to the function on its right as that function's first input, so a chain of data steps reads in the order you...
 - [[filter()]]: `filter()` keeps the rows of a table that pass a test and drops the rest.
 - [[select()]]: `select()` keeps, drops or reorders the columns of a table by name.
 - [[mutate()]]: `mutate()` adds new columns, or changes existing ones, by calculating from the columns already there.
@@ -92,6 +92,7 @@ Units 2 and 8 (Aug 20, Sep 24, Sep 29): the R needed to wrangle data, fit models
 - [[rep()]]: `rep()` repeats values, either the whole set several times or each value several times.
 - [[paste()]]: `paste()` glues pieces of text and values together into one string.
 - [[Strings in R]]: A string is a piece of text, and string functions search, cut, replace and tidy text values.
+- [[Regular Expression]]: A regular expression is a short pattern written in a mini-language that describes a family of text strings, such as "letters at the start", so R can find, extract or replace matching text.
 - [[Dates in R]]: R stores a date as a count of days from a fixed starting day, which lets it sort, subtract and extract parts such as year or day of the year.
 - [[kable()]]: `kable()` turns a data frame into a cleanly formatted table in a knitted report.
 - [[File System Functions in R]]: R can create folders, download files and build file paths itself, so a script can set up everything it needs without manual clicking.
@@ -109,7 +110,6 @@ Units 2 and 8 (Aug 20, Sep 24, Sep 29): the R needed to wrangle data, fit models
 
 ## 9. Homework tools
 - [[One-to-many Join]]: A one-to-many join copies each row of a small table (one row per site) onto every matching row of a big table (many rows per site), such as one-time...
-- [[librarian and shelf()]]: The librarian package's shelf() function installs any missing packages and loads them in one line, and the course asks for it so a homework script runs on...
 
 ## Related molecular notes
 - [[Why a reproducible project structure saves you]]: a project with one folder, an RProject, relative paths via here(), separate folders for raw data, scripts and outputs, and version control lets anyone,...
@@ -118,7 +118,6 @@ Units 2 and 8 (Aug 20, Sep 24, Sep 29): the R needed to wrangle data, fit models
 - [[Loops, apply and map]]: a for loop, the apply family (`sapply`, `lapply`) and purrr's `map()` all repeat the same code over many elements; vectorised functions do it in one call,...
 - [[Data Frame vs Tibble]]: a tibble is the tidyverse's version of a data frame: it prints only what fits on screen with column types, never turns strings into factors, does not...
 - [[Wide vs Long Data]]: wide data spread repeated measurements across columns (one column per year), while long data stack them in rows with a column naming the measurement, and...
-- [[Why a reproducible project structure saves you]]: a project with one folder, an RProject, relative paths via here(), separate folders for raw data, scripts and outputs, and version control lets anyone,...
 - [[Relative vs Absolute Paths]]: an absolute path spells out a file's location from the top of one computer's file system, while a relative path gives it from the project folder, so only...
 - [[Choosing Occupancy Software]]: the occupancy software tools fit the same likelihood; choose unmarked for standard frequentist work in R, ubms for random effects in a Bayesian setting,...
 

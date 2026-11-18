@@ -16,7 +16,7 @@ A dimmer switch instead of an off switch: the log squeezes large values hard, wh
 
 It was the classical fix for counts. For [[Poisson Distribution|Poisson]] counts the variance equals the mean, so spread grows with the mean ([[Mean-Variance Relationship]]). After a square root, the variance is roughly constant at about ¼, whatever the mean, as long as the mean is not tiny. The code below checks this for means of 2, 5, 20 and 80: the raw variance tracks the mean, while the variance of the square roots stays near 0.25 once the mean is above a few.
 
-Its drawbacks explain why it is used less today. A slope is in square-root units, with no tidy multiplier to report. And it evens the variance of counts without making them normal: small counts stay discrete and skewed. A Poisson or negative binomial GLM, which models counts as counts, is now preferred ([[Poisson Regression]]). Zuur's exploration chapter lists it among the transformations ([[Zuur et al. 2009 Ch2]]).
+Its drawbacks explain why it is used less today. A slope is in square-root units, with no tidy multiplier to report. And it evens the variance of counts without making them normal: small counts stay discrete and skewed. A Poisson or [[Negative Binomial GLM|negative binomial GLM]], which models counts as counts, is now preferred ([[Poisson Regression]]). Zuur's exploration chapter lists it among the transformations ([[Zuur et al. 2009 Ch2]]).
 
 ```r
 set.seed(15)
@@ -26,7 +26,7 @@ Raw variance tracks the mean. After the square root it stays near 0.25 once the 
 
 ## Connections
 - **Builds on:** [[Square Root]], [[Transformation]]
-- **Leads to:** [[Poisson Distribution]], [[Poisson Regression]], [[Mean-Variance Relationship]]
+- **Leads to:** [[Poisson Distribution]], [[Poisson Regression]], [[Mean-Variance Relationship]], [[Negative Binomial GLM]]
 - **Part of:** [[MOC 04 - Data Exploration|MOC - Data Exploration]]
 
 ## Flashcards

@@ -13,7 +13,7 @@ status: seedling
 
 # Horvitz-Thompson Estimator
 
-If each student in a class had a one-in-four chance of being chosen for a survey, each chosen student "stands for" four students. The **Horvitz-Thompson estimator** estimates a population total by weighting each sampled unit by one over its probability of being included in the sample: total = Σ yᵢ / πᵢ over sampled units, where πᵢ is the inclusion probability ([[Probability]]). For abundance, yᵢ = 1 for each animal detected and πᵢ is its [[Detection Probability]], giving N̂ = Σ 1/πᵢ.
+If each student in a class had a one-in-four chance of being chosen for a survey, each chosen student "stands for" four students. The **Horvitz-Thompson estimator** estimates a population total by weighting each sampled unit by one over its probability of being included in the sample: total = Σ yᵢ / πᵢ over sampled units, where πᵢ is the [[Indicator Variable Selection|inclusion probability]] ([[Probability]]). For abundance, yᵢ = 1 for each animal detected and πᵢ is its [[Detection Probability]], giving N̂ = Σ 1/πᵢ.
 
 It is unbiased if the πᵢ are correct and above zero. It is used after Huggins models, in distance sampling, and in survey sampling generally ([[Huggins Closed Capture Model]], [[Distance Sampling]], [[Survey Sampling Designs]]). In the code below four detected animals with detection probabilities 0.5, 0.5, 0.25 and 0.8 give an estimated total of 2 + 2 + 4 + 1.25 = 9.25 animals.
 
@@ -25,7 +25,7 @@ sum(1 / p_i)                     # estimated total
 ```
 
 ## Connections
-- **Builds on:** [[Probability]], [[Detection Probability]]
+- **Builds on:** [[Probability]], [[Detection Probability]], [[Indicator Variable Selection]]
 - **Leads to:** [[Huggins Closed Capture Model]], [[Distance Sampling]]
 - **Part of:** [[MOC 16 - Population Estimation|MOC - Population Estimation]]
 

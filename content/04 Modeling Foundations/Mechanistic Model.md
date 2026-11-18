@@ -15,7 +15,7 @@ Explain a bathtub's water level by the tap and the drain: the level changes beca
 
 Example: population next year = this year × (1 + births − deaths). With 100 animals, a birth rate of 0.4 and a death rate of 0.3, next year holds 100 × 1.1 = 110, and after 10 years about 259. Now ask a what-if: protection halves the death rate to 0.15. Next year = 100 × (1 + 0.4 − 0.15) = 125. The model can answer because death is an explicit term in it; a curve merely fitted through past counts could not tell you what happens when mortality changes.
 
-That is the great advantage. Describing a pattern is safe only inside the conditions you observed, but managers and climate researchers need predictions for conditions nobody has seen, and only a model that carries the causes can make that leap with any justification. Each parameter can also be checked against separate knowledge, such as a birth rate measured in another study. The price of that ambition is risk: if the assumed mechanism is wrong, the predictions are wrong, however good the fit. And mechanistic models still need data, because their parameters must be estimated. Hobbs and Hooten argue for deterministic models that express ecological ideas instead of generic curves ([[Hobbs and Hooten 2015 Ch2]], [[Deterministic Functions in Ecology]]), and the same thinking is the "process model" layer of a hierarchical model ([[Process Model]], [[Population Dynamics]]).
+That is the great advantage. Describing a pattern is safe only inside the conditions you observed, but managers and climate researchers need predictions for conditions nobody has seen, and only a model that carries the causes can make that leap with any justification. Each parameter can also be checked against separate knowledge, such as a birth rate measured in another study. The price of that ambition is risk: if the assumed mechanism is wrong, the predictions are wrong, however good the fit. And mechanistic models still need data, because their parameters must be estimated. Hobbs and Hooten argue for deterministic models that express ecological ideas instead of generic curves ([[Hobbs and Hooten 2015 Ch2]], [[Deterministic Functions in Ecology]]), and the same thinking is the "process model" layer of a [[Hierarchical Model|hierarchical model]] ([[Process Model]], [[Population Dynamics]]).
 
 ```mermaid
 flowchart LR
@@ -35,7 +35,7 @@ Because deaths are an explicit term, the model can be asked about a change in de
 
 ## Connections
 - **Builds on:** [[Model]], [[Theoretical Model]]
-- **Leads to:** [[Deterministic Functions in Ecology]], [[Process Model]], [[Population Dynamics]]
+- **Leads to:** [[Deterministic Functions in Ecology]], [[Process Model]], [[Population Dynamics]], [[Hierarchical Model]]
 - **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]], molecular note [[Mechanistic vs Phenomenological Model]]
 
 ## Flashcards

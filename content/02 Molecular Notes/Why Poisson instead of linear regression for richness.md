@@ -4,6 +4,7 @@ tags:
   - molecular
   - glm
   - count-data
+  - flashcards/eco/why
 aliases:
   - "Why Poisson"
   - "Poisson vs linear regression"
@@ -20,7 +21,7 @@ My response is the number of species detected at a point-visit. Why model it wit
 ## Built from
 - [[Count Data]]: tells us what kind of numbers richness is (whole numbers, never negative).
 - [[Linear Model]]: the default tool we are deciding against.
-- [[Assumptions of Linear Models]]: the promises a linear model makes that counts break.
+- [[Linear Model Assumptions|Assumptions of Linear Models]]: the promises a linear model makes that counts break.
 - [[Poisson Distribution]]: the probability distribution built for counts.
 - [[Mean-Variance Relationship]]: why the spread of counts changes with their average.
 - [[Log Link]]: the piece that keeps predicted counts positive (needs [[Logarithms and Exponents]]).
@@ -55,3 +56,9 @@ The fitted models (Oct 13) showed the Poisson is not perfect: the counts are a l
 ## Connections
 - **Leads to:** [[Why check overdispersion before trusting Poisson]], [[How LM, GLM and GLMM are one family]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]]
+
+## Flashcards
+
+Name two ways linear regression mismatches species richness.::It can predict negative or fractional values, and it assumes the same spread everywhere while count spread grows with the average.
+
+Why does a Poisson model with a log link never predict negative richness?::Its predictions are exp() of the linear predictor, and exp() of any number is positive.

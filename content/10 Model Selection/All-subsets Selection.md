@@ -14,7 +14,7 @@ status: seedling
 
 # All-subsets Selection
 
-**All-subsets selection** fits every combination of a list of predictors and ranks them all. With p predictors there are 2^p models: 10 predictors give 1,024 and 20 give over a million. `MuMIn::dredge()` does this from a global model. It is thorough in a mechanical sense and a form of [[Data Dredging]] when used without hypotheses, because the top model among thousands is often a fluke ([[Candidate Model Set]]).
+**All-subsets selection** fits every combination of a list of [[Predictor Variable|predictors]] and ranks them all. With p predictors there are 2^p models: 10 predictors give 1,024 and 20 give over a million. `MuMIn::dredge()` does this from a [[Global Model|global model]]. It is thorough in a mechanical sense and a form of [[Data Dredging]] when used without hypotheses, because the top model among thousands is often a fluke ([[Candidate Model Set]]).
 
 In the code below, six noise predictors give 64 models; in this dataset the empty model wins, but across 100 noise-only datasets the winner contains at least one predictor 73% of the time.
 
@@ -31,7 +31,7 @@ best_size <- sapply(1:100, function(s) { set.seed(s); d <- as.data.frame(matrix(
 ```
 
 ## Connections
-- **Builds on:** [[Candidate Model Set]], [[Data Dredging]]
+- **Builds on:** [[Candidate Model Set]], [[Data Dredging]], [[Predictor Variable]], [[Global Model]]
 - **Leads to:** [[Stepwise Selection]], [[Balanced Model Set]], [[Model Averaging]]
 - **Part of:** [[MOC 10 - Model Selection|MOC - Model Selection]]
 

@@ -15,7 +15,7 @@ status: seedling
 
 Writing your address by hand twenty times invites twenty chances for a slip; carve a rubber stamp once, check it once, and every impression is identical. **Writing your own function** means packaging a few lines of code under a name so the same steps can be reused with different inputs. The signal to do it is repetition: if you have copy-pasted a block of code three times, it wants to be a function. The form is `name <- function(inputs) { steps }`, and the value of the last line is returned (or you can use `return()`).
 
-In the code below, `cv()` computes a coefficient of variation, the standard deviation divided by the mean; for 8, 9, 7 and 8 it returns 0.10. Its `na.rm = TRUE` is a default argument, just like those of built-in functions ([[Function Arguments]]). Variables created inside a function stay inside it, and a function works on a copy of its inputs, so it cannot quietly change your data; if you want to keep its result, assign it. The second function, `fit_all()`, is the coding crash course's challenge: it fits every formula in a list to one dataset, using [[lapply()]], and returns a list of models whose AICs can then be compared.
+In the code below, `cv()` computes a [[Coefficient of Variation|coefficient of variation]], the [[Standard Deviation|standard deviation]] divided by the mean; for 8, 9, 7 and 8 it returns 0.10. Its `na.rm = TRUE` is a default argument, just like those of built-in functions ([[Functions in R|Function Arguments]]). Variables created inside a function stay inside it, and a function works on a copy of its inputs, so it cannot quietly change your data; if you want to keep its result, assign it. The second function, `fit_all()`, is the coding crash course's challenge: it fits every formula in a list to one dataset, using [[lapply()]], and returns a list of models whose AICs can then be compared.
 
 The real payoff is maintenance. When a function has a bug, you fix it once and it is fixed everywhere it is used; with copy-pasted code you have to find every copy. Test each function on a case where you know the answer before trusting it. Functions are not only for programmers: any repeated calculation qualifies, and the course suggests keeping custom functions in a separate script that the analysis loads ([[Splitting Scripts]], [[Debugging]]).
 
@@ -32,7 +32,7 @@ sapply(m, AIC)
 ```
 
 ## Connections
-- **Builds on:** [[Function Arguments]]
+- **Builds on:** [[Functions in R|Function Arguments]], [[Coefficient of Variation]], [[Standard Deviation]]
 - **Leads to:** [[lapply()]], [[Splitting Scripts]], [[Debugging]]
 - **See also:** [[Script]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]

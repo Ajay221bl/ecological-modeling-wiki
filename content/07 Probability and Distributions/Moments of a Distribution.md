@@ -16,7 +16,7 @@ status: seedling
 
 # Moments of a Distribution
 
-Describe a person by a few measurements: height first, then width, then posture, each adding a refinement. The **moments** of a distribution do this for its shape. The first moment is the mean, μ = E(Y), where the distribution is centred ([[Expected Value]]). The second *central* moment, "central" meaning measured from the mean, is the [[Variance]], σ² = E[(Y − μ)²], how spread out it is. The third, standardised, is *skewness*, which tail is longer; the fourth, standardised, is *kurtosis*, how heavy the tails are.
+Describe a person by a few measurements: height first, then width, then posture, each adding a refinement. The **moments** of a distribution do this for its shape. The first moment is the mean, μ = E(Y), where the distribution is centred ([[Expected Value]]). The second *central* moment, "central" meaning measured from the mean, is the [[Variance]], σ² = E[(Y − μ)²], how spread out it is. The third, [[Standardizing|standardised]], is *skewness*, which tail is longer; the fourth, standardised, is *kurtosis*, how heavy the tails are.
 
 Moments matter because people think in means and variances, while many distributions are written with other parameters, such as the gamma's shape and rate or the beta's a and b ([[Distribution Parameters]]). Each family has formulas for its moments in terms of its parameters, and those formulas are the bridge between the two. A gamma with shape 4 and rate 2 has mean shape/rate = 2 and variance shape/rate² = 1; a beta with a = 2 and b = 6 has mean a/(a + b) = 0.25 and variance ab / ((a + b)²(a + b + 1)) ≈ 0.021. The code below checks the gamma's moments against 100,000 simulated draws.
 
@@ -30,7 +30,7 @@ a <- 2; b <- 6; c(mean = a / (a + b), var = a * b / ((a + b)^2 * (a + b + 1)))  
 ```
 
 ## Connections
-- **Builds on:** [[Expected Value]], [[Variance]]
+- **Builds on:** [[Expected Value]], [[Variance]], [[Standardizing]]
 - **Leads to:** [[Moment Matching]], [[Distribution Parameters]], [[Mean-Variance Relationship]]
 - **Part of:** [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]]
 

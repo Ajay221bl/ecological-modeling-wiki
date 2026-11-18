@@ -18,7 +18,7 @@ Grassland birds have declined more steeply than almost any other bird group in N
 
 ## 1. The problem
 - [[Grassland Bird Decline]]: the conservation context ([[Rosenberg et al. 2019]])
-- [[Woody Plant Encroachment]]: trees and shrubs taking over grasslands
+- [[Woody Encroachment]]: Woody encroachment is trees and shrubs slowly spreading into grassland, turning open prairie into shrubland or woods.
 - [[Habitat Fragmentation]]: grassland broken into small, separated patches
 - [[Edge Effects]]: why the edges of a patch are worse habitat than its middle
 - [[Grassland Core Habitat]]: the open interior, away from trees, that grassland specialists need (in Arkansas it can be small)
@@ -52,8 +52,10 @@ Grassland birds have declined more steeply than almost any other bird group in N
 
 ## 6. The bigger picture
 - [[Ecological Resilience and Alternative States]]: grassland and forest as two stable states
+- [[Regime Shift]]: A regime shift is when an ecosystem flips into a different, lasting state, such as grassland to juniper woodland, held in place by its own feedbacks and hard to reverse.
+- [[Spatial Early Warning Signal]]: A spatial early warning signal is a change in the map pattern of an ecosystem, such as trees clumping and grass neighbourhoods breaking up, that hints a regime shift is coming before the average looks alarming.
 - [[Land-Use Change and Agriculture]]: why most grassland disappeared
-- [[Climate Change and Birds]]: a slower, wider pressure ([[Shipley et al. 2022]])
+- [[Climate Change Effects on Wildlife]]: Climate change affects wildlife through shifts in range, timing, body size, survival, reproduction and disease, which ecologists detect by modelling long time series...
 - [[Rangeland Health]]: judging how well grassland is doing ([[Batpurev et al. 2021]])
 
 ## Related molecular notes

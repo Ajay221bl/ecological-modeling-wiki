@@ -18,7 +18,7 @@ Exploring a dark room, tiny shuffles are safe but take for ever, and giant leaps
 
 Its width s matters for efficiency, not correctness. Too narrow, and nearly every step is accepted but the chain crawls; too wide, and nearly every step is rejected and the chain sticks. The figure shows three trace plots: crawling, sticking and a healthy fuzzy band ([[Trace Plot]]). In the code below, a proposal sd of 0.005 is accepted 96% of the time but yields an effective sample of only 17 from 5,000 draws; an sd of 2 is accepted 3% of the time and yields 86; an sd of 0.1 is accepted 47% of the time and yields about 1,180 ([[Acceptance Rate]], [[Tuning Parameter]]).
 
-Symmetric proposals give plain Metropolis, and asymmetric ones need the Hastings correction ([[Metropolis-Hastings Algorithm]]). Modern samplers build clever proposals from the posterior's gradient, as in Hamiltonian Monte Carlo ([[Hobbs and Hooten 2015 Ch7]]). The proposal has nothing to do with the prior; they are unrelated.
+Symmetric proposals give plain Metropolis, and asymmetric ones need the Hastings correction ([[Metropolis-Hastings Algorithm]]). Modern samplers build clever proposals from the posterior's gradient, as in [[Hamiltonian Monte Carlo]] ([[Hobbs and Hooten 2015 Ch7]]). The proposal has nothing to do with the prior; they are unrelated.
 
 ![[Proposal width.png|700]]
 *What to look at:* three trace plots. Crawling (too narrow), sticking (too wide) and a healthy fuzzy band (about right).
@@ -31,7 +31,7 @@ round(sapply(c(narrow = 0.005, good = 0.1, wide = 2), run), 2)           # accep
 ```
 
 ## Connections
-- **Builds on:** [[Metropolis Algorithm]]
+- **Builds on:** [[Metropolis Algorithm]], [[Hamiltonian Monte Carlo]]
 - **Leads to:** [[Tuning Parameter]], [[Acceptance Rate]], [[Metropolis-Hastings Algorithm]], [[Trace Plot]]
 - **Part of:** [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]]
 

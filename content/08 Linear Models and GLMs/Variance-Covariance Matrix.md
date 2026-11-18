@@ -14,11 +14,11 @@ status: seedling
 
 # Variance-Covariance Matrix
 
-A mileage chart between cities lists every pair. Now imagine one for uncertainty: the diagonal says how much each quantity wobbles alone, and each off-diagonal cell how much two of them wobble together. A **variance-covariance matrix** is that square table, holding the [[Variance]] of each of several quantities on its diagonal and the [[Covariance]] of each pair off the diagonal ([[Matrix]]). It is symmetric, since entry (i, j) equals entry (j, i). The square roots of the diagonal are standard deviations, or standard errors; divide an off-diagonal entry by the two standard deviations and you get a correlation.
+A mileage chart between cities lists every pair. Now imagine one for uncertainty: the diagonal says how much each quantity wobbles alone, and each off-diagonal cell how much two of them wobble together. A **variance-covariance matrix** is that square table, holding the [[Variance]] of each of several quantities on its diagonal and the [[Covariance]] of each pair off the diagonal ([[Matrix]]). It is symmetric, since entry (i, j) equals entry (j, i). The square roots of the diagonal are standard [[Deviation|deviations]], or standard errors; divide an off-diagonal entry by the two standard deviations and you get a correlation.
 
-Its most common use is for model coefficients. `vcov(model)` is the covariance matrix of the estimated coefficients, and `sqrt(diag(vcov(m)))` gives their [[Standard Error|standard errors]], as the code below confirms for `lm(mpg ~ wt)`. The off-diagonals matter because a prediction combines several coefficients, so its uncertainty depends on how their errors move together: the standard error of a prediction is √(x V xᵀ), where x holds the predictor values. The code computes it by hand at weight 3 and matches `predict(..., se.fit = TRUE)`, and `cov2cor()` shows the intercept and slope estimates are strongly negatively correlated.
+Its most common use is for model coefficients. `vcov(model)` is the covariance matrix of the estimated coefficients, and `sqrt(diag(vcov(m)))` gives their [[Standard Error|standard errors]], as the code below confirms for `lm(mpg ~ wt)`. The off-diagonals matter because a prediction combines several coefficients, so its uncertainty depends on how their errors move together: the standard error of a prediction is √(x V xᵀ), where x holds the [[Predictor Variable|predictor]] values. The code computes it by hand at weight 3 and matches `predict(..., se.fit = TRUE)`, and `cov2cor()` shows the intercept and slope estimates are strongly negatively correlated.
 
-It turns up in two more places. In mixed models it holds the variances of random intercepts and slopes and their covariance ([[Random Slope]]). In models with correlated errors, an n × n matrix describes how every pair of observations covaries ([[Correlation Structure]]). In each case it is the covariance of a [[Multivariate Normal Distribution]] ([[Zuur et al. 2009 Ch5]], [[Course Website]]). Standard errors alone are not enough for prediction bands; without the covariances the band is wrong.
+It turns up in two more places. In [[Mixed Effects Model|mixed models]] it holds the variances of [[Random Intercept|random intercepts]] and slopes and their covariance ([[Random Slope]]). In models with [[Residual Autocorrelation|correlated errors]], an n × n matrix describes how every pair of observations covaries ([[Correlation Structure]]). In each case it is the covariance of a [[Multivariate Normal Distribution]] ([[Zuur et al. 2009 Ch5]], [[Course Website]]). Standard errors alone are not enough for prediction bands; without the covariances the band is wrong.
 
 ```r
 m <- lm(mpg ~ wt, mtcars); V <- vcov(m); round(V, 3)
@@ -28,8 +28,8 @@ round(cov2cor(V), 2)
 ```
 
 ## Connections
-- **Builds on:** [[Variance]], [[Covariance]], [[Matrix]]
-- **Leads to:** [[Standard Error]], [[Multivariate Normal Distribution]], [[Correlation Structure]], [[Random Slope]]
+- **Builds on:** [[Variance]], [[Covariance]], [[Matrix]], [[Deviation]], [[Predictor Variable]]
+- **Leads to:** [[Standard Error]], [[Multivariate Normal Distribution]], [[Correlation Structure]], [[Random Slope]], [[Mixed Effects Model]], [[Random Intercept]], [[Residual Autocorrelation]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 
 ## Flashcards

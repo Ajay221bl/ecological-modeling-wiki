@@ -14,7 +14,7 @@ status: seedling
 
 # Coordinate Reference System
 
-A street address needs a city: "12 Main Street" is useless until you know which town. Coordinates such as (500000, 4530000) are equally useless until you know the system they belong to. A **coordinate reference system** (CRS) is the rule that says which place on Earth a pair of coordinate numbers refers to ([[Spatial Data in R]]). It starts with a *datum*, a mathematical model of the Earth's lumpy shape, such as WGS84 or NAD83. A *geographic* CRS gives positions as angles, longitude and latitude in degrees; WGS84 longitude-latitude, what GPS units report, has the catalogue number EPSG:4326. A *projected* CRS flattens the curved surface onto a plane and gives positions in metres, as UTM zones and Albers projections do.
+A street address needs a city: "12 Main Street" is useless until you know which town. Coordinates such as (500000, 4530000) are equally useless until you know the system they belong to. A **coordinate reference system** (CRS) is the rule that says which place on Earth a pair of coordinate numbers refers to ([[Spatial Data in R]]). It starts with a *datum*, a [[Analytical Model|mathematical model]] of the Earth's lumpy shape, such as WGS84 or NAD83. A *geographic* CRS gives positions as angles, longitude and latitude in degrees; WGS84 longitude-latitude, what GPS units report, has the catalogue number EPSG:4326. A *projected* CRS flattens the curved surface onto a plane and gives positions in metres, as UTM zones and Albers projections do.
 
 Every flattening distorts something, area, shape, distance or direction, and each projection chooses what to preserve. Geographic coordinates have their own trap: a degree of longitude is not a fixed distance. It is about 111 km at the equator and about 84 km at 41° north, as the code below confirms, because meridians converge toward the poles. EPSG codes are catalogue numbers for CRSs: 4326 is WGS84 longitude-latitude, and 32614 is UTM zone 14 north ([[UTM Coordinates]]).
 
@@ -30,7 +30,7 @@ st_crs(32614)$proj4string
 ```
 
 ## Connections
-- **Builds on:** [[Spatial Data in R]]
+- **Builds on:** [[Spatial Data in R]], [[Analytical Model]]
 - **Leads to:** [[UTM Coordinates]], [[Variogram]], [[Moran's I]]
 - **Part of:** [[MOC 04 - Data Exploration|MOC - Data Exploration]]
 

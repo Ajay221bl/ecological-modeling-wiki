@@ -4,6 +4,7 @@ tags:
   - molecular
   - survey-design
   - data-cleaning
+  - flashcards/eco/why
 aliases:
   - "Why drop fly-overs"
 status: seedling
@@ -63,3 +64,12 @@ History (marked so the change is traceable): the Sep 10 script used `filter(is.n
 ## Connections
 - **Related:** [[Why observed richness is not true richness]], [[Why explore data before modeling]], [[Pipe]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 26 - Survey Design and Detection|MOC - Survey Design and Detection]]
+
+## Flashcards
+
+Which species are left out of richness under the fly-over rule?::Species seen only flying over, with no bird in any ground distance band.
+
+A species had 5 birds on the ground and 4 flying over. Does it count, and what did the Sep 10 code do?
+??
+It counts, because it was using the place. The Sep 10 FlyOver == 0 filter wrongly dropped such mixed rows (90 of them); fixed Oct 13.
+++++

@@ -14,11 +14,11 @@ status: seedling
 
 # Rate Ratio
 
-A **rate ratio** is like an exchange rate between plots one unit apart: a rate ratio of 0.8 says that whatever the count is here, expect 80% of it one unit further along. It is the factor by which the expected count is multiplied for a one-unit increase in a predictor, RR = exp(β), from a [[Log Link]] coefficient ([[Multiplicative Effects]]). RR = 1 is no change, above 1 an increase, below 1 a decrease. The percent change is (RR − 1) × 100, so RR 1.25 is +25% and RR 0.8 is −20%; for k units it is RR^k. For a factor level, it is the ratio of that level's mean to the reference level's mean.
+A **rate ratio** is like an exchange rate between plots one unit apart: a rate ratio of 0.8 says that whatever the count is here, expect 80% of it one unit further along. It is the factor by which the expected count is multiplied for a one-unit increase in a [[Predictor Variable|predictor]], RR = exp(β), from a [[Log Link]] [[Regression Coefficient|coefficient]] ([[Multiplicative Effects]]). RR = 1 is no change, above 1 an increase, below 1 a decrease. The percent change is (RR − 1) × 100, so RR 1.25 is +25% and RR 0.8 is −20%; for k units it is RR^k. For a factor level, it is the ratio of that level's mean to the [[Reference Level|reference level]]'s mean.
 
 A coefficient of 0.223 gives RR = 1.25, a 25% increase, and a coefficient of −0.36 gives 0.70, a 30% decrease. The interval comes from exponentiating the ends of the coefficient's interval: 0.05 to 0.40 becomes 1.05 to 1.49. In the code below, a Poisson model compares burned with control plots, and the rate ratio equals the ratio of the two group means.
 
-Rate ratios are easier to grasp than odds ratios because they act directly on the mean ([[Odds Ratio]], [[Interpreting Regression Coefficients]]). They are the natural way to report a [[Poisson Regression]]. A rate ratio of 2 means twice as many, not 2 more.
+[[Interpreting Poisson Coefficients|Rate ratios]] are easier to grasp than odds ratios because they act directly on the mean ([[Odds Ratio]], [[Interpreting Regression Coefficients]]). They are the natural way to report a [[Poisson Regression]]. A rate ratio of 2 means twice as many, not 2 more.
 
 ```r
 b <- 0.223; ci <- c(0.05, 0.40); exp(b); exp(ci); (exp(b) - 1) * 100
@@ -27,7 +27,7 @@ exp(coef(m)[2]); mean(y[g == "burned"]) / mean(y[g == "control"])       # the ra
 ```
 
 ## Connections
-- **Builds on:** [[Log Link]], [[Multiplicative Effects]]
+- **Builds on:** [[Log Link]], [[Multiplicative Effects]], [[Predictor Variable]], [[Regression Coefficient]], [[Reference Level]], [[Interpreting Poisson Coefficients]]
 - **Leads to:** [[Poisson Regression]], [[Odds Ratio]], [[Interpreting Regression Coefficients]]
 - **Part of:** [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]]
 

@@ -16,7 +16,7 @@ On a child's growth chart, "on the 90th percentile for height" means taller than
 
 Sorted masses of 9 mice are 14, 15, 16, 18, 19, 21, 22, 25 and 30 g. The median is the 5th value, 19 g. Q1 is the 3rd value, 16 g, and Q3 is the 7th, 22 g, so the middle half of the mice weigh between 16 and 22 g. R finds the position with 1 + (n − 1) × p, which for p = 0.25 gives 1 + 8 × 0.25 = 3, the third value. When the position is not a whole number the quantile falls between two observations, and R takes a weighted mix of them. R actually offers nine slightly different rules (`type = 1` to `9`), which agree for large samples. With small samples, an extreme quantile such as the 90th is only a rough guess between two values.
 
-Quantiles matter because they describe any shape. The mean and standard deviation summarise well only when data are roughly bell-shaped, but "where do chosen fractions of the data sit?" works for lopsided data too. A pair of quantiles makes an interval: the 0.025 and 0.975 quantiles hold the middle 95% of values. That is exactly how intervals are read off thousands of bootstrap or MCMC draws ([[Percentile Bootstrap Interval]], [[Credible Interval]]), which is why Bayesian and resampling methods lean on quantiles. Quantiles of named distributions come from functions such as `qnorm(0.975)` = 1.96 ([[Quantile Function]]). Quartiles also build the [[Boxplot]] and the [[Interquartile Range]], and comparing your data's quantiles with a distribution's quantiles is what a [[QQ Plot]] does.
+Quantiles matter because they describe any shape. The mean and [[Standard Deviation|standard deviation]] summarise well only when data are roughly bell-shaped, but "where do chosen fractions of the data sit?" works for lopsided data too. A pair of quantiles makes an interval: the 0.025 and 0.975 quantiles hold the middle 95% of values. That is exactly how intervals are read off thousands of [[Bootstrap|bootstrap]] or [[Posterior Draws|MCMC draws]] ([[Percentile Bootstrap Interval]], [[Credible Interval]]), which is why Bayesian and resampling methods lean on quantiles. Quantiles of named distributions come from functions such as `qnorm(0.975)` = 1.96 ([[Quantile Function]]). Quartiles also build the [[Boxplot]] and the [[Interquartile Range]], and comparing your data's quantiles with a distribution's quantiles is what a [[QQ Plot]] does.
 
 ![[Quantiles and IQR.png|700]]
 *What to look at:* the quartiles cut the sorted data into four equal-sized groups, whatever the shape.
@@ -31,8 +31,8 @@ qnorm(0.975)                          # 1.96
 `quantile()` works on data. `qnorm()` and friends give quantiles of named distributions ([[Quantile Function]]).
 
 ## Connections
-- **Builds on:** [[Median]], [[Proportion]]
-- **Leads to:** [[Interquartile Range]], [[Boxplot]], [[QQ Plot]], [[Quantile Function]]
+- **Builds on:** [[Median]], [[Proportion]], [[Standard Deviation]]
+- **Leads to:** [[Interquartile Range]], [[Boxplot]], [[QQ Plot]], [[Quantile Function]], [[Bootstrap]], [[Posterior Draws]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
 
 ## Flashcards

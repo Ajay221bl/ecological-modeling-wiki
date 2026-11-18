@@ -1,20 +1,20 @@
 ---
-type: atomic
+type: molecular
 tags:
   - mixed
   - flashcards/eco/mixed
 description: "For mixed models, the marginal R² is the share of variance explained by the fixed effects alone and the conditional R² is the share explained by fixed and random effects together."
 aliases:
+  - "Marginal and Conditional R-squared"
   - "Marginal R2"
   - "Conditional R2"
   - "Nakagawa R2"
   - "R2 for mixed models"
-  - "Marginal vs Conditional R-squared"
   - "r.squaredGLMM()"
 status: seedling
 ---
 
-# Marginal and Conditional R-squared
+# Marginal vs Conditional R-squared
 
 For mixed models, the **marginal R²** is the share of variance explained by the fixed effects alone, and the **conditional R²** the share explained by fixed and random effects together ([[R-squared]], [[Variance Components]]). Split the variance into σ²_f, the variance of the fixed-effect predictions; σ²_random, the sum of random-effect variances; and σ²_ε, the residual. Then marginal R² = σ²_f / (σ²_f + σ²_random + σ²_ε), and conditional R² = (σ²_f + σ²_random) / (σ²_f + σ²_random + σ²_ε).
 

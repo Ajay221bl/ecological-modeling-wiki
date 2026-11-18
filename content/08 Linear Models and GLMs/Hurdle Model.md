@@ -15,7 +15,7 @@ status: seedling
 
 # Hurdle Model
 
-On a running track, the first question is whether a runner cleared the hurdle; only for those who did do we ask how far they then ran. Everyone who did not clear it scores zero, and nobody who cleared it does. A **hurdle model** splits count data into the same two questions. Part 1 asks whether y > 0, with a binary model using a logit link ([[Logistic Regression]]). Part 2 asks, given y > 0, how many, with a zero-truncated Poisson or negative binomial ([[Truncated Distribution]]). All zeros come from part 1, so there is only one kind of zero. The two parts are fitted separately and can have different predictors. Ecologically, part 1 is presence or use and part 2 is abundance where present.
+On a running track, the first question is whether a runner cleared the hurdle; only for those who did do we ask how far they then ran. Everyone who did not clear it scores zero, and nobody who cleared it does. A **hurdle model** splits [[Count Data|count data]] into the same two questions. Part 1 asks whether y > 0, with a binary model using a [[Logit Link|logit link]] ([[Logistic Regression]]). Part 2 asks, given y > 0, how many, with a zero-truncated Poisson or negative binomial ([[Truncated Distribution]]). All zeros come from part 1, so there is only one kind of zero. The two parts are fitted separately and can have different [[Predictor Variable|predictors]]. Ecologically, part 1 is presence or use and part 2 is abundance where present.
 
 In the code below, presence rises with x, and where present the counts come from a Poisson with mean 3 with the zeros removed. `pscl::hurdle()` recovers a count part of log(3) = 1.1 and a zero part in which P(y > 0) rises with x. In glmmTMB the same model is `ziformula = ~ z` with `family = truncated_poisson`. Zuur calls these zero-altered models, ZAP and ZANB ([[Zuur et al. 2009 Ch11]]).
 
@@ -28,7 +28,7 @@ m <- hurdle(y ~ 1 | x, dist = "poisson"); round(coef(m), 2)                     
 ```
 
 ## Connections
-- **Builds on:** [[Logistic Regression]], [[Truncated Distribution]]
+- **Builds on:** [[Logistic Regression]], [[Truncated Distribution]], [[Count Data]], [[Logit Link]], [[Predictor Variable]]
 - **Leads to:** [[Zero-inflated Model]], [[Zero Inflation]]
 - **Part of:** [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]], molecular note [[Zero-inflated vs Hurdle Model]]
 

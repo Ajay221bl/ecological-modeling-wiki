@@ -13,9 +13,9 @@ status: seedling
 
 # predict()
 
-**`predict()`** is the R function that takes a fitted model and returns its predictions, either for the original data or for new predictor values you supply ([[lm()]]). `predict(m)` returns fitted values for the original data; `predict(m, newdata = nd)` predicts for the rows of the data frame `nd` ([[Data Frame]]). `nd` must contain every predictor in the model, with the same names and, for factors, the same levels. The standard recipe for a plot is to build a grid of the focal predictor with [[expand.grid()]], hold the other predictors at typical values, predict, and draw a line with a ribbon ([[Plotting Model Predictions with Ribbons]]).
+**`predict()`** is the R function that takes a fitted model and returns its predictions, either for the original data or for new [[Predictor Variable|predictor]] values you supply ([[lm()]]). `predict(m)` returns [[Fitted Value|fitted values]] for the original data; `predict(m, newdata = nd)` predicts for the rows of the data frame `nd` ([[Data Frame]]). `nd` must contain every predictor in the model, with the same names and, for factors, the same levels. The standard recipe for a plot is to build a grid of the focal predictor with [[expand.grid()]], hold the other predictors at typical values, predict, and draw a line with a ribbon ([[Plotting Model Predictions with Ribbons]]).
 
-For `lm`, uncertainty comes from `interval = "confidence"` for the mean response or `interval = "prediction"` for a new observation, or from `se.fit = TRUE`. In the code below, fuel economy is predicted at five weights with horsepower held at its mean, each with a confidence interval. For `glm`, `predict()` returns the link scale by default, and `type = "response"` gives the data scale. Intervals are made by predicting on the link scale with `se.fit = TRUE`, adding ±1.96 standard errors, then back-transforming; the last lines of the code do this for the probability that a 3,000 lb car has a manual gearbox ([[Predictions on Link vs Response Scale]]). For mixed models, `re.form = NA` gives population-level predictions with the random effects set to zero.
+For `lm`, uncertainty comes from `interval = "confidence"` for the mean response or `interval = "prediction"` for a new observation, or from `se.fit = TRUE`. In the code below, fuel economy is predicted at five weights with horsepower held at its mean, each with a [[Confidence Interval|confidence interval]]. For `glm`, `predict()` returns the [[Link Scale|link scale]] by default, and `type = "response"` gives the data scale. Intervals are made by predicting on the link scale with `se.fit = TRUE`, adding ±1.96 standard errors, then back-transforming; the last lines of the code do this for the probability that a 3,000 lb car has a manual gearbox ([[Predictions on Link vs Response Scale]]). For [[Mixed Effects Model|mixed models]], `re.form = NA` gives population-level predictions with the [[Random Effect|random effects]] set to zero.
 
 The common slip is to assume `predict()` on a GLM gives probabilities or counts; by default it gives the link scale. Its output for new data is the main way to present a fitted model ([[Predicting New Data]], [[augment()]], [[Course Website]]).
 
@@ -28,8 +28,8 @@ round(plogis(p$fit + c(-1.96, 0, 1.96) * p$se.fit), 3)        # lower, estimate,
 ```
 
 ## Connections
-- **Builds on:** [[lm()]], [[expand.grid()]]
-- **Leads to:** [[Predicting New Data]], [[Plotting Model Predictions with Ribbons]], [[Predictions on Link vs Response Scale]], [[augment()]]
+- **Builds on:** [[lm()]], [[expand.grid()]], [[Predictor Variable]], [[Fitted Value]], [[Confidence Interval]], [[Link Scale]]
+- **Leads to:** [[Predicting New Data]], [[Plotting Model Predictions with Ribbons]], [[Predictions on Link vs Response Scale]], [[augment()]], [[Mixed Effects Model]], [[Random Effect]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 
 ## Flashcards

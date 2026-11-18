@@ -19,9 +19,9 @@ status: seedling
 
 Ask each student in turn to leave the room while the class works out what they would have said, then call them back to check, and repeat for every student. **Leave-one-out cross-validation** (LOO) predicts each observation from a model fitted to all the others and adds up how well those predictions did: for each i, fit to all data except yᵢ and compute log p(yᵢ | y₋ᵢ), and elpd_loo = Σᵢ log p(yᵢ | y₋ᵢ) ([[Cross-validation]] with k = n, [[Expected Log Predictive Density]], [[Posterior Predictive Distribution]]).
 
-Doing n refits is expensive, especially with MCMC. PSIS-LOO avoids refitting by reweighting the full-data posterior draws to approximate each leave-one-out posterior, stabilised with Pareto smoothing ([[PSIS and Pareto k]]). `loo()` reports elpd_loo with its SE, p_loo, looic and a Pareto k diagnostic for each observation; k above about 0.7 means the approximation is unreliable for that observation, usually an influential or outlying point, so refit for those points (`reloo = TRUE`) or use k-fold CV. In the code below PSIS-LOO from one fit gives elpd_loo = −85.45, against −85.35 from 60 exact refits, with 59 observations having good k and one ok.
+Doing n refits is expensive, especially with MCMC. PSIS-LOO avoids refitting by reweighting the full-data [[Posterior Draws|posterior draws]] to approximate each leave-one-out posterior, stabilised with Pareto smoothing ([[PSIS and Pareto k]]). `loo()` reports elpd_loo with its SE, [[Effective Number of Parameters|p_loo]], looic and a Pareto k diagnostic for each observation; k above about 0.7 means the approximation is unreliable for that observation, usually an influential or outlying point, so refit for those points (`reloo = TRUE`) or use k-fold CV. In the code below PSIS-LOO from one fit gives elpd_loo = −85.45, against −85.35 from 60 exact refits, with 59 observations having good k and one ok.
 
-Its developers (Vehtari, Gelman and Gabry 2017) prefer it to [[WAIC]] because of the diagnostic, and models are compared with [[loo_compare()]]; [[AIC]] approximates it for maximum likelihood fits. For structured data, leaving out single observations may be too easy, so leave out whole groups if you want to predict new groups. It is used with `loo()` in the Bayesian model comparison lab ([[Course Website]], [[Hobbs and Hooten 2015 Ch9]]). PSIS-LOO does not refit the model n times, it approximates that from one fit; and Pareto k warnings should not be ignored, since the estimate for those points may be badly off.
+Its developers (Vehtari, Gelman and Gabry 2017) prefer it to [[WAIC]] because of the diagnostic, and models are compared with [[loo_compare()]]; [[AIC]] approximates it for [[Maximum Likelihood Estimation|maximum likelihood]] fits. For structured data, leaving out single observations may be too easy, so leave out whole groups if you want to predict new groups. It is used with `loo()` in the Bayesian [[Model Selection|model comparison]] lab ([[Course Website]], [[Hobbs and Hooten 2015 Ch9]]). PSIS-LOO does not refit the model n times, it approximates that from one fit; and Pareto k warnings should not be ignored, since the estimate for those points may be badly off.
 
 ```r
 set.seed(6); x <- runif(60, 0, 10); y <- 1 + 0.5 * x + rnorm(60); m <- lm(y ~ x)
@@ -31,7 +31,7 @@ l <- suppressWarnings(loo::loo(ll)); c(psis_loo = l$estimates["elpd_loo", "Estim
 ```
 
 ## Connections
-- **Builds on:** [[Cross-validation]], [[Expected Log Predictive Density]]
+- **Builds on:** [[Cross-validation]], [[Expected Log Predictive Density]], [[Posterior Draws]], [[Effective Number of Parameters]], [[Maximum Likelihood Estimation]], [[Model Selection]]
 - **Leads to:** [[PSIS and Pareto k]], [[loo_compare()]], [[WAIC]], [[AIC]]
 - **Part of:** [[MOC 11 - Bayesian Model Selection|MOC - Bayesian Model Selection]], molecular note [[AIC, WAIC and LOO]]
 

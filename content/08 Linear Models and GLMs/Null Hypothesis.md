@@ -13,7 +13,7 @@ status: seedling
 
 # Null Hypothesis
 
-A courtroom starts from the presumption of innocence, "the accused did nothing", and asks whether the evidence is strong enough to abandon that position; failing to convict does not prove innocence. The **null hypothesis**, H₀, is the specific claim a test sets up to be challenged by the data, usually that an effect or difference is exactly zero ([[Hypothesis]], [[Parameter]]). An example: "tree cover has no relationship with bird richness: the slope β₁ = 0".
+A courtroom starts from the presumption of innocence, "the accused did nothing", and asks whether the evidence is strong enough to abandon that position; failing to convict does not prove innocence. The **null hypothesis**, H₀, is the specific claim a test sets up to be challenged by the data, usually that an effect or difference is exactly zero ([[Hypothesis]], [[Parameter]]). An example: "tree cover has no relationship with bird [[Species Richness|richness]]: the slope β₁ = 0".
 
 The logic runs: state a precise value for a parameter, assume it is true, work out what data would look like under that assumption, and compare with the data you have. If your data would be very unusual under H₀, reject it; otherwise "fail to reject". In the code below, the last column of the slope's row in `summary(lm())` is exactly that test of H₀: slope = 0 ([[P-value]]). The wording is "fail to reject" rather than "accept" because absence of evidence against H₀ may only mean the study was small.
 
@@ -25,7 +25,7 @@ summary(lm(y ~ x))$coefficients[2, ]         # the last column tests H0: slope =
 ```
 
 ## Connections
-- **Builds on:** [[Hypothesis]], [[Parameter]]
+- **Builds on:** [[Hypothesis]], [[Parameter]], [[Species Richness]]
 - **Leads to:** [[Alternative Hypothesis]], [[P-value]], [[Null Hypothesis Significance Testing]], [[Multiple Working Hypotheses]]
 - **Part of:** [[MOC 07 - Likelihood and Estimation|MOC - Likelihood and Estimation]]
 

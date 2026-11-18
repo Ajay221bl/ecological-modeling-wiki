@@ -15,9 +15,9 @@ status: seedling
 
 A vending machine with labelled slots: `map_dbl` only ever gives numbers, `map_chr` only text. If the machine cannot deliver what the label promises, it stops and tells you instead of handing over a surprise. **`map()`**, from the tidyverse package purrr, is the tidyverse's version of [[lapply()]]: `map(x, f)` applies f to each element of x and returns a list ([[Tidyverse]]). Its variants guarantee the type of the result: `map_dbl()` returns numbers, `map_chr()` text and `map_lgl()` TRUE/FALSE values.
 
-Small functions can be written in a shorthand: `\(m) AIC(m)` means "a function of m that returns AIC(m)", and the older form `~ AIC(.x)` means the same, where `.x` simply stands for the current element. In the code below, `map()` fits a Poisson GLM to each formula, `map_dbl(mods, AIC)` returns a named numeric vector of AICs, and `map_chr()` returns each model's class as text. `map2()` walks two inputs in step, so `map2_dbl(c(1, 2, 3), c(10, 20, 30), \(a, b) a * b)` gives 10, 40, 90.
+Small functions can be written in a shorthand: `\(m) AIC(m)` means "a function of m that returns AIC(m)", and the older form `~ AIC(.x)` means the same, where `.x` simply stands for the current element. In the code below, `map()` fits a [[Poisson Regression|Poisson GLM]] to each formula, `map_dbl(mods, AIC)` returns a named numeric vector of AICs, and `map_chr()` returns each model's class as text. `map2()` walks two inputs in step, so `map2_dbl(c(1, 2, 3), c(10, 20, 30), \(a, b) a * b)` gives 10, 40, 90.
 
-The strictness is the point. [[sapply()]] changes its output shape depending on the data, which can break code far from the cause; a typed `map_` function fails immediately and visibly when a result is not what was promised. Otherwise it is the same idea as `lapply()` with a more consistent interface, and it fits naturally into chains of steps built with the [[Pipe Operator]]. Fitting every model in a [[Candidate Model Set]] is a typical use ([[Loops, apply and map]]).
+The strictness is the point. [[sapply()]] changes its output shape depending on the data, which can break code far from the cause; a typed `map_` function fails immediately and visibly when a result is not what was promised. Otherwise it is the same idea as `lapply()` with a more consistent interface, and it fits naturally into chains of steps built with the [[Pipe|Pipe Operator]]. Fitting every model in a [[Candidate Model Set]] is a typical use ([[Loops, apply and map]]).
 
 ```r
 library(purrr)
@@ -31,7 +31,7 @@ map2_dbl(c(1, 2, 3), c(10, 20, 30), \(a, b) a * b)
 
 ## Connections
 - **Builds on:** [[lapply()]], [[Tidyverse]]
-- **Leads to:** [[Pipe Operator]], [[Candidate Model Set]]
+- **Leads to:** [[Pipe|Pipe Operator]], [[Candidate Model Set]], [[Poisson Regression]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]], molecular note [[Loops, apply and map]]
 
 ## Flashcards

@@ -19,10 +19,10 @@ status: seedling
 
 Burnham (1993) introduced the model, and Barker's extension adds resightings between occasions. It needs both kinds of data in useful numbers ([[Encounter Probability]], [[Program MARK]]).
 
-It is covered in [[Powell and Gale 2015]] Ch11 and Ch12. Adding recoveries does not just increase sample size: it changes what is estimable, S and F separately.
+It is covered in [[Powell and Gale 2015]] Ch11 and Ch12. Adding recoveries does not just increase [[Sample Size|sample size]]: it changes what is estimable, S and F separately.
 
 ## Connections
-- **Builds on:** [[Cormack-Jolly-Seber Model]], [[Dead Recovery Models]]
+- **Builds on:** [[Cormack-Jolly-Seber Model]], [[Dead Recovery Models]], [[Sample Size]]
 - **Leads to:** [[Multi-state Models]]
 - **Part of:** [[MOC 16 - Population Estimation|MOC - Population Estimation]], molecular note [[True vs Apparent Survival]]
 

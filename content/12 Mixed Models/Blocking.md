@@ -16,7 +16,7 @@ status: seedling
 
 **Blocking** groups similar experimental units, such as plots in the same field or runs on the same day, and applies every treatment within each block, so differences between blocks don't blur treatment comparisons ([[Study Design|Experimental Design]]). For example, four fields are each split into plots and every fertiliser level goes in every field. Treatments are compared within blocks, removing field-to-field variation from the error.
 
-Blocks are usually a [[Random Effect]], `(1 | field)`, because they are a sample of possible fields; with only 2 or 3 blocks a fixed block effect is also common ([[How Many Levels for a Random Effect]]). Blocks and treatments are crossed, unlike a [[Nested Experimental Design]] where treatments are applied to whole units. In the code below five fields with large differences give a standard error of 1.41 for the high-fertiliser effect if blocks are ignored, and 0.34 with a random block effect.
+Blocks are usually a [[Random Effect]], `(1 | field)`, because they are a sample of possible fields; with only 2 or 3 blocks a fixed block effect is also common ([[How Many Levels for a Random Effect]]). Blocks and treatments are crossed, unlike a [[Nested Experimental Design]] where treatments are applied to whole units. In the code below five fields with large differences give a [[Standard Error|standard error]] of 1.41 for the high-fertiliser effect if blocks are ignored, and 0.34 with a random block effect.
 
 [[Shipley et al. 2022]] use nest as a blocking variable. Blocking is not the same as nesting: in a block design every treatment occurs in every block.
 
@@ -26,7 +26,7 @@ round(c(SE_ignoring_blocks = summary(lm(y ~ fert, d))$coef["ferthi", 2], SE_with
 ```
 
 ## Connections
-- **Builds on:** [[Study Design|Experimental Design]], [[Random Effect]]
+- **Builds on:** [[Study Design|Experimental Design]], [[Random Effect]], [[Standard Error]]
 - **Leads to:** [[Nested Experimental Design]], [[Crossed Random Effects]]
 - **Part of:** [[MOC 14 - Mixed Models|MOC - Mixed Models]]
 

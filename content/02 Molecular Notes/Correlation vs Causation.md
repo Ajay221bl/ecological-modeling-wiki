@@ -20,7 +20,7 @@ Two variables are strongly related. Can I say one causes the other?
 
 ## Built from
 - [[Correlation]].
-- [[Confounding Variable]] and [[Omitted Variable Bias]].
+- [[Confounding|Confounding Variable]] and [[Omitted Variable Bias]].
 - [[Randomization]] and [[Experimental Study]].
 - [[Observational Study]].
 

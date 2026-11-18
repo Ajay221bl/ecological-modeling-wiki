@@ -3,7 +3,8 @@ type: atomic
 tags:
   - grassland-bird-ecology
   - management
-  - flashcards
+  - flashcards/eco/grassland
+description: "Mowing is cutting a field's plants to a set height with a machine; it knocks back woody sprouts and resets the grass, but unlike fire it leaves the roots and the cut material in place."
 aliases:
   - "mow"
   - "mowed"
@@ -13,61 +14,27 @@ status: seedling
 ---
 
 # Mowing
-**In one line:** Cutting a field's plants to a set height with a machine; it knocks back woody sprouts and resets the grass, but unlike fire it leaves the roots and the cut material in place.
 
-> [!info] Before this, it helps to know
-> [[Disturbance]] (mowing is a human-made disturbance) · [[Prescribed Fire]] (the tool mowing often stands in for)
+A suburban lawn can be decades old without a single tree growing in it, though tree seeds land in it all the time: they sprout, and a week later the mower cuts them off. Grass does not mind, because it grows from the base, not the tip. **Mowing** a grassland is the same idea done much less often and much higher, perhaps once a year or once every few years; *haying* is mowing followed by baling and hauling the cut grass away. It is a [[Disturbance]], an event that removes plant material, and it holds back [[Ecological Succession]], the drift from grass to shrubs to forest. It often stands in for [[Prescribed Fire]] where burning is hard: near roads, houses or crops, without a trained crew, or when the weather never lines up with the burn plan. It is cheap, precise and possible in almost any season.
 
-## Start from zero
-Think of a suburban lawn. It has been there for decades, yet no tree ever grows in it. Why? Tree seeds land in lawns all the time. They sprout, and a week later the mower cuts them off. Grass does not mind, because it grows from the base, not from the tip.
+But it is not the same as fire. Woody plants resprout: mowing cuts a sapling's top but leaves its roots alive, and many hardwoods come back with several stems, so repeated mowing keeps them short but rarely kills them. Thatch stays: unless the hay is removed, the cut grass lies as a mat that can shade out wildflowers and seedlings. And it makes things uniform, one height everywhere, while fire burns patchily, which matters because many grassland birds pick fields by structure ([[Habitat Selection]]). Right after mowing a [[Visual Obstruction (Robel Pole)|Robel pole]] reading shows almost no cover. The biggest bird problem is timing, because many grassland birds nest on or near the ground in early summer. Take a made-up 10 ha field with one nest per hectare. Mow on June 15, when say 60% of nests are still active, and about 10 × 0.60 = 6 nests are destroyed; mow on August 1, when 5% are active, and about 0.5 are. Same field, machine and cost; only the date changed. So managers often delay mowing until after the main nesting season ([[Breeding Season Timing]]).
 
-Mowing a grassland is the same idea, done much less often and much higher. A refuge field might be mowed once a year, or once every few years. **Haying** is mowing followed by baling and hauling the cut grass away.
-
-## Why it exists
-Mowing is a stand-in for fire where burning is hard: near roads, houses or crops, where there is no trained burn crew, or when the weather never lines up with the burn plan. It is cheap, precise and possible in almost any season.
-
-It is not the same as fire, though:
-- **Woody plants resprout.** Mowing cuts a sapling's top but leaves its roots alive. Many hardwoods come back with several stems, like a hedge that has been trimmed. Repeated mowing keeps them short but rarely kills them.
-- **Thatch stays.** Unless the hay is removed, the cut grass lies on the ground as a mat. That mat can shade out wildflowers and seedlings.
-- **It makes things uniform.** A mower cuts everything to one height. Fire burns patchily. Many grassland birds pick fields by structure, so uniform is not always good ([[Habitat Selection]]).
-
-The biggest bird problem is **timing**. Many grassland birds nest on or near the ground in early summer. A mower passing in June can destroy eggs and kill chicks that cannot yet fly. Hay mowing in early summer is a well-known cause of nest loss for ground-nesting songbirds. So managers often delay mowing until after the main nesting season ([[Breeding Season Timing]]).
-
-Mowing also changes how much cover a bird has. Right after mowing, a [[Visual Obstruction (Robel Pole)|Robel pole]] would show almost no obstruction; the field looks open but offers little hiding cover.
-
-## A tiny example
-A made-up 10 ha field with 1 nest per hectare, so 10 nests.
-
-| Mowing date | Share of nests still active (made-up) | Nests destroyed |
-|---|---|---|
-| June 15 | 60% | 10 × 0.60 = 6 |
-| August 1 | 5% | 10 × 0.05 = 0.5 |
-
-Same field, same machine, same cost. The only change is the date, and nest loss drops from about 6 to under 1.
-
-## In my project
-The metadata ([[Roberts et al. 2025]]) lists mowing as one of the restoration treatments used at all five sites, in varying amounts ([[Grassland Restoration and Management]]).
-
-> [!warning] Verify
-> From Berry's 2024 thesis summary (less certain): the Cache River tracts, Dark Corner (DC) and Howell (HO), are frequently disked and mowed. Confirm with Dr. Roberts.
-
-Two things to keep in mind:
-- The 2022 sites (BK, DC, HO) were counted between June 6 and July 12. If a field was mowed between visit 1 and visit 3, the same point offered different cover on different visits. My data do not record mowing dates, so I cannot check this. It is worth asking about ([[Open Questions]]).
-- The habitat file has a column `LA50`: percent **lawn** within 50 m of the point. Lawn is mowed short and often. It is a reminder that "grass" is not one habitat: a lawn and a tall native-grass field are very different to a [[Dickcissel]].
-
-## Common confusions
-- **"Mowing is just fire without smoke."** It leaves roots alive, keeps thatch, and cuts evenly.
-- **"Mowing once clears saplings."** They resprout; it has to be repeated.
-- **"Any date is fine."** Mowing during nesting kills nests and chicks.
-- **"Short grass is grassland habitat."** Few grassland specialists nest in lawn-height grass.
+Four confusions: mowing is not fire without smoke (roots survive, thatch stays, the cut is even); mowing once does not clear saplings; not any date is fine; and short grass is not grassland habitat, since few specialists nest in lawn-height grass. In the grassland bird project the metadata list mowing among the restoration treatments at all five sites ([[Roberts et al. 2025]], [[Grassland Restoration and Management]]), and Berry's thesis summary says DC and HO are often disked and mowed ([[Disking]]; to confirm with Dr. Roberts). The 2022 sites were counted between June 6 and July 12, so a field mowed between visits would offer different cover on different visits; the data do not record mowing dates, so this cannot be checked ([[Open Questions]]). The habitat file's `LA50` column, percent lawn within 50 m, is a reminder that "grass" is not one habitat: a lawn and a tall native-grass field are very different to a [[Dickcissel]].
 
 ## Connections
-- **Builds on:** [[Disturbance]], [[Prescribed Fire]], [[Ecological Succession]]
-- **Leads to:** [[Grassland Restoration and Management]], [[Disking]], [[Breeding Season Timing]]
+- **Builds on:** [[Disturbance]], [[Ecological Succession]], [[Prescribed Fire]]
+- **Leads to:** [[Habitat Selection]], [[Visual Obstruction (Robel Pole)]], [[Breeding Season Timing]], [[Grassland Restoration and Management]], [[Disking]]
 - **Part of:** [[MOC 24 - Grassland Bird Ecology|MOC - Grassland Bird Ecology]]
-- **Go deeper:** [[Brennan and Kuvlesky 2005]] (changes in land management as a driver of decline)
+- **Go deeper:** [[Open Questions]], [[Dickcissel]], [[Roberts et al. 2025]], [[Brennan and Kuvlesky 2005]]
 
-> [!question]- Check yourself
-> A manager mows a field every summer for 10 years, yet the sweetgum saplings are still there. Why?
-> ?
-> Mowing cuts the top but leaves the roots alive, and many hardwoods resprout from the roots. Mowing keeps them short, but it rarely kills them the way repeated fire or cutting plus herbicide can.
+## Flashcards
+
+A manager mows a field every summer for 10 years, yet the sweetgum saplings are still there. Why?
+??
+Mowing cuts the top but leaves the roots alive, and many hardwoods resprout from the roots. It keeps them short but rarely kills them the way repeated fire or cutting plus herbicide can.
+++++
+
+Why does the date of mowing matter so much for grassland birds?
+??
+Many nest on the ground in early summer; mowing then destroys nests and chicks, while mowing after the nesting season does little harm.
+++++

@@ -14,9 +14,9 @@ status: seedling
 
 Add a formula column to a spreadsheet and fill it down: every row gets its own answer computed from that row's other cells. **`mutate()`**, from dplyr, does this. It adds new columns, or overwrites existing ones, by calculating from the columns already there: `mutate(data, new = expression)`. The expression is vectorized, computed for every row at once ([[Vectorization]]), and reusing an existing name replaces that column. Columns created earlier in the same call can be used by later ones.
 
-The example below makes three new columns in one call. `present` turns larval counts into 1 or 0 for presence and absence; `length_c` *centres* length by subtracting its mean ([[Centering]]); and `length_z` divides that by the standard deviation to *standardize* it, using the column just made ([[Standardizing]]). Both transformations come up constantly when preparing predictors for models.
+The example below makes three new columns in one call. `present` turns larval counts into 1 or 0 for presence and absence; `length_c` *centres* length by subtracting its mean ([[Centering]]); and `length_z` divides that by the [[Standard Deviation|standard deviation]] to *standardize* it, using the column just made ([[Standardizing]]). Both transformations come up constantly when preparing [[Predictor Variable|predictors]] for models.
 
-After [[group_by()]], calculations happen within each group, so `mean(length_cm)` becomes the mean of that site, repeated on each of its rows, as the last line shows. That is how you centre a variable within sites. Two confusions: `mutate()` never changes the number of rows (collapsing rows to summaries is [[summarise()]]), and the data frame is not changed until you assign the result, because each step in a [[Pipe Operator]] chain returns a new table.
+After [[group_by()]], calculations happen within each group, so `mean(length_cm)` becomes the mean of that site, repeated on each of its rows, as the last line shows. That is how you centre a variable within sites. Two confusions: `mutate()` never changes the number of rows (collapsing rows to summaries is [[summarise()]]), and the [[Data Frame|data frame]] is not changed until you assign the result, because each step in a [[Pipe|Pipe Operator]] chain returns a new table.
 
 ```r
 library(dplyr)
@@ -29,7 +29,7 @@ d |> group_by(site) |> mutate(site_mean = mean(length_cm))   # group means repea
 ```
 
 ## Connections
-- **Builds on:** [[Vectorization]], [[Pipe Operator]]
+- **Builds on:** [[Vectorization]], [[Pipe|Pipe Operator]], [[Standard Deviation]], [[Predictor Variable]], [[Data Frame]]
 - **Leads to:** [[summarise()]], [[group_by()]], [[Centering]], [[Standardizing]]
 - **Part of:** [[MOC 03 - R for Ecological Modeling|MOC - R for Ecological Modeling]]
 

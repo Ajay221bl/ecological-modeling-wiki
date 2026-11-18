@@ -4,6 +4,7 @@ tags:
   - molecular
   - diagnostics
   - count-data
+  - flashcards/eco/why
 aliases:
   - "Why check overdispersion"
 status: seedling
@@ -31,7 +32,7 @@ The Poisson distribution assumes the variance equals the mean. Why do I have to 
 3. **Real counts often wobble more.** Birds cluster, some points are much better than others, and some causes were never measured. Anderson and Burnham note that "count data often are overdispersed" ([[Anderson and Burnham 2002]], p. 915).
 4. **A tiny example.** Four counts, 0, 2, 10 and 12, average 6. Poisson expects variance about 6. Their actual variance is about 34.7, nearly six times more. A Poisson model fitted to data like these would treat the wobble as six times smaller than it is.
 5. **Too little expected wobble means overconfidence.** Standard errors come out too small, confidence intervals too narrow and p-values too small. Harrison et al. warn that ignoring overdispersion "leads to artificially small standard errors and spurious significance" ([[Harrison et al. 2018]], p. 16). It also distorts model selection, which is why [[Anderson and Burnham 2002]] recommend QAICc when it is present (p. 915).
-6. **Check the model, not just the raw data.** What matters is the spread left over after property, habitat, Wind, Sky and the point effect are accounted for ([[Residuals]]). A raw variance/mean ratio is only a first clue.
+6. **Check the model, not just the raw data.** What matters is the spread left over after property, habitat, Wind, Sky and the point effect are accounted for ([[Residual|Residuals]]). A raw variance/mean ratio is only a first clue.
 7. **Fixes exist.** From simplest: switch to a negative binomial family, which adds a parameter so the variance can exceed the mean, or add an observation-level random effect ([[Harrison et al. 2018]], p. 16).
 8. **The opposite problem is milder.** Underdispersion (ratio below 1) makes the model a bit too cautious: standard errors slightly too wide, so conclusions are conservative rather than overconfident. Worth reporting, not usually worth fixing.
 
@@ -54,5 +55,14 @@ Contrast: Dickcissel counts alone have a variance/mean of about 12 (pre-trim val
 - Without the check I would not know about the underdispersion either, and could not tell the reader which way the intervals lean.
 
 ## Connections
-- **Builds on:** [[Why Poisson instead of linear regression for richness]], [[Average (Mean)]]
+- **Builds on:** [[Why Poisson instead of linear regression for richness]], [[Mean|Average (Mean)]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 10 - Model Selection|MOC - Model Selection and Diagnostics]]
+
+## Flashcards
+
+What happens to a Poisson model's error bars if the counts are overdispersed and you ignore it?::They are too narrow, so weak effects look real.
+
+What did the project's dispersion check find, and why is it the milder problem?
+??
+Ratios of 0.66 and 0.60, underdispersion. It makes error bars somewhat too wide (conservative) rather than too narrow.
+++++

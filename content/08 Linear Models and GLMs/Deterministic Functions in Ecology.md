@@ -17,7 +17,7 @@ A drafting toolbox holds curve templates: a ruler, a French curve, an S-shaped s
 
 The figure shows eight of these curves, each labelled with the question it answers, and the code below draws seven of them from their formulas so you can compare their shapes on the same axis. Hobbs and Hooten catalogue them, and the 2 September "Model building" lecture introduces them ([[Hobbs and Hooten 2015 Ch2]], [[Course Website]]).
 
-Choosing on biological grounds pays off three ways: the parameters mean something, such as a maximum rate, a half-saturation point or a carrying capacity; predictions behave sensibly outside the data; and prior knowledge about the parameters can be used ([[Mechanistic Model]]). The curve is then connected to data by adding a stochastic part. "Use a straight line unless forced" is the wrong default: if biology says there is a ceiling, a function with a ceiling is the simpler assumption.
+Choosing on biological grounds pays off three ways: the parameters mean something, such as a maximum rate, a half-saturation point or a [[Carrying Capacity|carrying capacity]]; predictions behave sensibly outside the data; and prior knowledge about the parameters can be used ([[Mechanistic Model]]). The curve is then connected to data by adding a [[Stochastic Component|stochastic part]]. "Use a [[Equation of a Line|straight line]] unless forced" is the wrong default: if biology says there is a ceiling, a function with a ceiling is the simpler assumption.
 
 ![[Deterministic function bestiary.png|700]]
 *What to look at:* eight curves, each labelled with the question it answers.
@@ -30,8 +30,8 @@ op <- par(mfrow = c(2, 4)); for (n in names(fs)) plot(x, fs[[n]], type = "l", ma
 ```
 
 ## Connections
-- **Builds on:** [[Deterministic Component]], [[Functions in Maths]]
-- **Leads to:** [[Linear Function]], [[Exponential Growth Model]], [[Power Function]], [[Michaelis-Menten Function]], [[Logistic Function]], [[Threshold Model]]
+- **Builds on:** [[Deterministic Component]], [[Functions in Maths]], [[Stochastic Component]], [[Equation of a Line]]
+- **Leads to:** [[Linear Function]], [[Exponential Growth Model]], [[Power Function]], [[Michaelis-Menten Function]], [[Logistic Function]], [[Threshold Model]], [[Carrying Capacity]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 
 ## Flashcards

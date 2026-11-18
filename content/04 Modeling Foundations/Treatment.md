@@ -13,7 +13,7 @@ status: seedling
 
 # Treatment
 
-When you try a new cake recipe with less sugar, the change you made is the treatment, and everything else stays as in the usual recipe, so any difference in the cake can be blamed on the sugar. In research, a **treatment** is a condition a researcher deliberately applies to units in order to see its effect, as in an [[Experimental Study]]. The thing being manipulated is a *factor*, and its different versions are its *levels*: present or absent, or several doses. "Treatment" is not a medical word here; fire, grazing, watering and removal are all treatments. In a model, the treatment enters as an [[Explanatory Variable]], usually a categorical one.
+When you try a new cake recipe with less sugar, the change you made is the treatment, and everything else stays as in the usual recipe, so any difference in the cake can be blamed on the sugar. In research, a **treatment** is a condition a researcher deliberately applies to units in order to see its effect, as in an [[Experimental Study]]. The thing being manipulated is a *factor*, and its different versions are its *levels*: present or absent, or several doses. "Treatment" is not a medical word here; fire, grazing, watering and removal are all treatments. In a model, the treatment enters as an [[Predictor Variable|Explanatory Variable]], usually a categorical one.
 
 The thistle experiment from Homework 4 is a good example. Half the subplots are sprayed with insecticide and half are not, so the factor "insecticide" has two levels, sprayed and unsprayed. A second factor, distance from tall thistle, has five levels (0, 7.5, 15, 30 and 60 m). Together they make 2 × 5 = 10 treatment combinations, which R can list with `expand.grid()` ([[expand.grid()]]). The effect of a treatment is the difference in response between its levels, because that difference is what the manipulation, and nothing else, changed; with two crossed factors the analysis is a [[Two-way ANOVA]], and R codes the levels as 0/1 columns ([[Dummy Coding]]). The experiment tests the [[Enemy Release Hypothesis]].
 
@@ -32,10 +32,10 @@ flowchart LR
 design <- expand.grid(spray = c("no", "yes"), distance = c(0, 7.5, 15, 30, 60))
 nrow(design); head(design, 4)          # 10 combinations
 ```
-`expand.grid()` lists every combination of factor levels ([[expand.grid()]]).
+`expand.grid()` lists every combination of [[Categorical Variable|factor levels]] ([[expand.grid()]]).
 
 ## Connections
-- **Builds on:** [[Experimental Study]]
+- **Builds on:** [[Experimental Study]], [[Categorical Variable]]
 - **Leads to:** [[Control Group]], [[Two-way ANOVA]], [[Dummy Coding]]
 - **See also:** [[Treatment|Treatment and Control]]
 - **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]

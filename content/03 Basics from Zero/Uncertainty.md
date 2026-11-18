@@ -16,7 +16,7 @@ status: seedling
 
 Two surveys both estimate deer density at 12 per km². Survey A reports 12 with a [[Standard Error]] of 1, so the plausible range is roughly 10 to 14. Survey B reports 12 with a standard error of 5, a plausible range of roughly 2 to 22. Same point estimate, very different knowledge. A harvest that is safe at 10 deer per km² could be disastrous at 2, so the decision depends on how wrong you might be, not only on your best guess. Uncertainty has several sources: *sampling* (you only saw a sample), *observation* (imperfect measurement), *process* (nature itself varies), *parameter* (values not known exactly) and *model* (perhaps the wrong model altogether). It also carries forward: a prediction built on uncertain parameters must be at least as uncertain as they are.
 
-Statistics is the craft of saying honestly how much you know, and Hobbs and Hooten frame their whole approach as gaining insight in the face of uncertainty ([[Hobbs and Hooten 2015 Ch1]]). Every unit of the course adds a tool for it: standard errors, a [[Confidence Interval]], a [[Credible Interval]], and model weights for [[Model Selection Uncertainty]]. Good models keep the sources apart; hierarchical models, for instance, separate process variation from observation error ([[Hierarchical Model]]). Two confusions to clear up: uncertainty does not mean the analysis is bad, it means the analysis is honest; and uncertainty is not the same as variability. Variability is real difference among things, such as deer differing in mass, and it does not go away. Uncertainty is your lack of knowledge, and more data shrink it.
+Statistics is the craft of saying honestly how much you know, and Hobbs and Hooten frame their whole approach as gaining insight in the face of uncertainty ([[Hobbs and Hooten 2015 Ch1]]). Every unit of the course adds a tool for it: standard errors, a [[Confidence Interval]], a [[Credible Interval]], and [[Akaike Weight|model weights]] for [[Model Selection Uncertainty]]. Good models keep the sources apart; hierarchical models, for instance, separate [[Process Variation|process variation]] from [[Observation Error|observation error]] ([[Hierarchical Model]]). Two confusions to clear up: uncertainty does not mean the analysis is bad, it means the analysis is honest; and uncertainty is not the same as variability. Variability is real difference among things, such as deer differing in mass, and it does not go away. Uncertainty is your lack of knowledge, and more data shrink it.
 
 ```mermaid
 flowchart TD
@@ -38,7 +38,7 @@ Both samples come from the same truth. With 4 plots the interval is about eight 
 
 ## Connections
 - **Builds on:** [[Estimate]], [[Standard Error]]
-- **Leads to:** [[Confidence Interval]], [[Credible Interval]], [[Model Selection Uncertainty]]
+- **Leads to:** [[Confidence Interval]], [[Credible Interval]], [[Model Selection Uncertainty]], [[Akaike Weight]], [[Process Variation]], [[Observation Error]]
 - **Part of:** [[MOC 01 - Basics from Zero|MOC - Basics from Zero]]
 
 ## Flashcards

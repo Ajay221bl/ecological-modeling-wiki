@@ -14,7 +14,7 @@ status: seedling
 
 A student learns one rule for every exam, "the answer is usually C". He is never wildly surprised, but he is usually wrong, because he learned almost nothing about the subject. **Underfitting** is a model in that state: too rigid to capture a real pattern, so its answers are systematically off, which is [[Bias]]. The missing structure does not vanish; it shows up as a pattern in the *residuals*, the gaps between the observations and the model's predictions ([[Residual]]). Missing in the same direction in the same places is the fingerprint of underfitting.
 
-An example. Grass biomass rises with rain and then levels off: 2, 6, 9, 10.5 and 11 at rain = 1, 2, 3, 4 and 5. Fit a flat line, just the mean of 7.7, and the residuals are −5.7, −1.7, +1.3, +2.8 and +3.3: it over-predicts every dry site and under-predicts every wet one. That run of negatives then positives is a clear pattern, not random scatter. A straight line in rain does much better, and adding a *quadratic term*, an x² term that lets the line curve, does better still, leaving small residuals with no pattern.
+An example. Grass biomass rises with rain and then levels off: 2, 6, 9, 10.5 and 11 at rain = 1, 2, 3, 4 and 5. Fit a flat line, just the mean of 7.7, and the residuals are −5.7, −1.7, +1.3, +2.8 and +3.3: it over-predicts every dry site and under-predicts every wet one. That run of negatives then positives is a clear pattern, not random scatter. A [[Equation of a Line|straight line]] in rain does much better, and adding a *[[Quadratic Term|quadratic term]]*, an x² term that lets the line curve, does better still, leaving small residuals with no pattern.
 
 Leaving out something real does more than reduce fit: it biases the rest of the model, because other terms soak up the missing effect wrongly. That is why "as simple as possible, but no simpler" makes underfitting as much a failure as [[Overfitting]] ([[Parsimony]], [[Bias-Variance Trade-off]]). Detect it by plotting residuals: random scatter is fine, but curves or trends mean something is missing. Low R² often accompanies underfitting, but patterned residuals are the clearer sign. Fix it by adding the missing term, guided by your [[Conceptual Model]] rather than by adding terms blindly ([[Statistical Model]]).
 
@@ -30,7 +30,7 @@ round(resid(curved), 2)            # small, patternless
 ```
 
 ## Connections
-- **Builds on:** [[Statistical Model]], [[Bias]]
+- **Builds on:** [[Statistical Model]], [[Bias]], [[Equation of a Line]], [[Quadratic Term]]
 - **Leads to:** [[Overfitting]], [[Bias-Variance Trade-off]], [[Residual]]
 - **See also:** [[MOC 10 - Model Selection]]
 - **Part of:** [[MOC 02 - Modeling Foundations|MOC - Modeling Foundations]]; the principle behind it: [[Parsimony]]

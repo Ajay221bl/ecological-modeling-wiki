@@ -4,69 +4,38 @@ tags:
   - r-reproducibility
   - r-functions
   - diagnostics
-  - flashcards
+  - flashcards/eco/r
+description: "check_overdispersion(), from the performance package, asks a fitted Poisson model whether the data are more spread out than a Poisson allows, and answers with a dispersion ratio: about 1 is fine, well above 1 means overdispersion."
 aliases:
   - "check_overdispersion"
-  - "performance package"
   - "dispersion ratio"
 status: seedling
 ---
 
 # check_overdispersion()
-**In one line:** `check_overdispersion()`, from the **performance** package, asks a fitted Poisson model "are the data more spread out than a Poisson allows?" and answers with a dispersion ratio: about 1 is fine, well above 1 means [[Overdispersion]].
 
-> [!info] Before this, it helps to know
-> [[Spread and Variability]] (what "spread" and variance mean) · [[Poisson Distribution]] (the assumption being checked) · [[Residuals]] (what is left over after the model)
+The [[Poisson Distribution]], the standard model for counts, has one strict rule: the [[Variance]] (how spread out values are around their average) equals the mean. If the average is 6 species, the variance should be about 6, with no separate knob for spread. Real counts often break the rule upward, because birds clump, some points are much better than others and some causes were never measured. Variance bigger than the model allows is [[Overdispersion]]; smaller is [[Underdispersion]]. **`check_overdispersion()`**, from the [[performance Package Checks|performance package]], asks a fitted Poisson model whether its data are more spread out than a Poisson allows, and answers with a *dispersion ratio*: about 1 is fine, well above 1 means overdispersion. It matters because an overdispersed model is overconfident: its [[Standard Error|standard errors]] come out too small, [[Confidence Interval|confidence intervals]] too narrow and [[P-value|p-values]] too small. [[Harrison et al. 2018]] note that overdispersion suggests a poor fit and that standard errors will likely be biased unless it is accounted for (PDF p. 16), so the check comes before trusting the results.
 
-## Start from zero
-**Variance** is a number for how spread out values are around their average ([[Spread and Variability]], [[Variance]]). Counts 6, 6, 6 have variance 0; counts 2, 6, 10 have a big variance.
+How it works: for each row take the gap between the observed count and the model's prediction, scaled by how big a gap Poisson expects (a [[Pearson Residuals|Pearson residual]]); square these, add them up, and divide by the residual [[Degrees of Freedom]] (rows minus estimated parameters). If the model is right the answer is near 1. The function also gives a p-value for "is the ratio really 1?", and for [[Mixed Effects Model|mixed models]] the test is approximate. The idea in miniature, with a predicted average of 6 everywhere: counts 5, 6, 7, 6 have variance 0.67, ratio 0.11, underdispersed (very even); counts 3, 6, 9, 6 have variance 6, ratio 1.0, Poisson-like; counts 0, 2, 10, 12 have variance 34.7, ratio 5.8, overdispersed (sample variance, dividing by n − 1; the real function works on model residuals, but the logic is the same). The project runs `check_overdispersion(topRich)` and `check_overdispersion(topFocal)` on the top-ranked models from [[MuMIn model.sel()]], M3 for both, so it checks the model it actually reports.
 
-The [[Poisson Distribution]] is the standard model for counts. It has one strict rule: **the variance equals the mean.** If the average is 6 species, the variance should be about 6. There is no separate knob for spread.
-
-Real counts often break the rule upward: birds clump, some points are much better than others, and some causes were never measured. Variance bigger than the mean is **overdispersion**. Smaller than the mean is [[Underdispersion]].
-
-## Why it exists
-If the data are more spread out than the model assumes, the model is overconfident. Its [[Standard Error|standard errors]] come out too small, [[Confidence Interval|confidence intervals]] too narrow, and [[P-value|p-values]] too small: it sounds more certain than the data allow. [[Harrison et al. 2018]] note that overdispersion suggests a poor fit and that standard errors will likely be biased unless it is accounted for (PDF p. 16). So the check comes *before* trusting the Poisson results.
-
-How it works, roughly: for each row, take the gap between the observed count and the model's prediction, scaled by how big a gap Poisson expects (a Pearson residual). Square these, add them up, and divide by the number of rows minus the number of estimated parameters (the residual degrees of freedom). If the model is right, the answer is near 1. The function also gives a p-value for "is the ratio really 1?". For mixed models this test is approximate.
-
-## A tiny example
-Predicted average 6 everywhere, so Poisson expects a variance of about 6.
-
-| Observed counts | Their variance | Ratio (variance / mean) | Verdict |
-|---|---|---|---|
-| 5, 6, 7, 6 | 0.67 | 0.11 | underdispersed (very even) |
-| 3, 6, 9, 6 | 6 | 1.0 | Poisson-like |
-| 0, 2, 10, 12 | 34.7 | 5.8 | overdispersed |
-
-(Variance here uses the sample formula, dividing by n - 1. The real function works on model residuals, not raw counts, but the logic is the same.)
-
-## In my project
-In `GrasslandBirdRichness_Analysis.R` (it ran in ajay's RStudio on Oct 13; R is not installed in Claude's environment, so rerun any change there):
+It found ratios of 0.66 (all species) and 0.60 (focal): underdispersion, counts more even than Poisson expects, as the raw within-site variance/mean ratios (0.56 to 0.93) had hinted. Below 1, Poisson makes standard errors slightly too large, so the intervals are conservative; the DHARMa test agreed ([[DHARMa Simulated Residuals]], [[Preliminary Results]]). The script's rule was to refit as a [[Negative Binomial Distribution|negative binomial]] (`glmer.nb()` or glmmTMB) if the ratio were well above 1; that did not happen, so the Oct 13 decision was to keep the Poisson [[GLMM]] for the Report, report the underdispersion, and try a distribution allowing less spread in the Final Draft ([[Next Steps]]). A single-species model such as [[Dickcissel]] (raw variance/mean about 12) would almost certainly need a negative binomial instead. Three confusions: raw variance/mean is only a first clue, since what matters is the spread left after the [[Predictor Variable|predictors]] and point effects; below 1 is usually not a crisis, only a bit too cautious; and "well above 1" is a judgment, so a ratio of 1.2 is a mild excess, not an automatic switch of families.
 
 ```r
-check_overdispersion(topRich)
-check_overdispersion(topFocal)
+x <- c(0, 2, 10, 12)
+var(x) / mean(x)   # about 5.8: overdispersed relative to Poisson
 ```
 
-Word by word: `topRich` and `topFocal` are the top-ranked models for all-species and focal richness, pulled out after the AIC table ([[MuMIn model.sel()]]). The script checks the model it actually reports, which was M3 (property plus habitat) for both.
-
-What it found: dispersion ratios of **0.66** (all species) and **0.60** (focal). That is [[Underdispersion]]: the counts are *more even* than Poisson expects. The raw within-site variance/mean ratios had already hinted at this (0.56 to 0.93 on the 376-point data). Below 1 means Poisson makes standard errors slightly *too large*, so the confidence intervals are conservative (wider than needed). The DHARMa dispersion test agreed ([[DHARMa Simulated Residuals]]). Full numbers: [[Preliminary Results]].
-
-Decision rule written in the script's comment: if the ratio is well above 1, refit as negative binomial (`glmer.nb()` or glmmTMB) ([[Negative Binomial Distribution]]). That did not happen. The Oct 13 decision is to keep the Poisson GLMM for the Report, report the underdispersion, and try a distribution that allows *less* spread than Poisson in the Final Draft ([[Next Steps]]). For a single-species model such as [[Dickcissel]] (variance/mean about 12), a negative binomial would almost certainly be needed instead.
-
-## Common confusions
-- **"Check the raw counts instead."** Raw variance/mean is a first clue only. What matters is the spread left *after* the predictors and point effects.
-- **"Below 1 is also a crisis."** Usually not: it makes results a bit too cautious, not too bold.
-- **"Ratio 1.2 means switch families."** "Well above 1" is a judgment; small excesses are common and mild.
-
 ## Connections
-- **Builds on:** [[Spread and Variability]], [[Mean-Variance Relationship]], [[Overdispersion]], [[Residuals]]
-- **Leads to:** [[Why check overdispersion before trusting Poisson]], [[Negative Binomial Distribution]], [[Residual Diagnostics]]
+- **Builds on:** [[Poisson Distribution]], [[Variance]], [[Overdispersion]], [[Underdispersion]], [[Pearson Residuals]], [[Degrees of Freedom]], [[Predictor Variable]]
+- **Leads to:** [[Negative Binomial Distribution]], [[DHARMa Simulated Residuals]], [[Residual Diagnostics]], [[Why check overdispersion before trusting Poisson]], [[performance Package Checks]], [[Mixed Effects Model]], [[GLMM]]
 - **Part of:** [[MOC 12 - Reproducible Coding and Figures|MOC - R and Reproducibility]], [[MOC 10 - Model Selection|MOC - Model Selection and Diagnostics]]
-- **Go deeper:** [[Harrison et al. 2018]] (overdispersion in GLMMs), [[Zuur et al. 2010]]
+- **Go deeper:** [[Mean-Variance Relationship]], [[Spread and Variability]], [[Preliminary Results]], [[Harrison et al. 2018]], [[Zuur et al. 2010]]
 
-> [!question]- Check yourself
-> If `check_overdispersion()` returns a ratio of 3 for a Poisson model, what goes wrong if I ignore it, and what is my fix?
-> ?
-> Standard errors are too small, so effects look more certain than they are. The fix would be to refit with a negative binomial model (`glmer.nb()` or glmmTMB). My real ratios were 0.66 and 0.60, the opposite problem, which is milder.
+## Flashcards
+
+If `check_overdispersion()` returns a ratio of 3 for a Poisson model, what goes wrong if you ignore it, and what is the fix?
+??
+Standard errors are too small, so effects look more certain than they are. The fix would be to refit with a negative binomial model (`glmer.nb()` or glmmTMB). The project's real ratios were 0.66 and 0.60, the opposite problem, which is milder.
+++++
+
+What does a dispersion ratio below 1 do to a Poisson model's standard errors?::It makes them slightly too large, so intervals are conservative (wider than needed).

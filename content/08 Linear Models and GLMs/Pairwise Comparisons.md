@@ -18,7 +18,7 @@ After a league's group stage shows the teams are not all equal, a round-robin fi
 
 Many comparisons inflate false positives. With 10 independent tests at the 0.05 level, the chance of at least one false alarm is 1 − 0.95¹⁰ = 0.40 ([[Type I Error]]). So the comparisons are adjusted: Tukey's method widens the intervals to keep the chance of any false alarm across the whole family at 5%. The code below fits three habitats and prints all three Tukey-adjusted differences, with forest clearly below both grass and wetland.
 
-Report the differences with their intervals, not just letters and stars ([[Statistical Significance]]). The common mistake is to run every pairwise t-test separately, which ignores both the multiplicity and the pooled variance estimate from the model.
+Report the differences with their intervals, not just letters and stars ([[Statistical Significance]]). The common mistake is to run every pairwise [[t-test]] separately, which ignores both the multiplicity and the pooled variance estimate from the model.
 
 ```r
 library(emmeans)
@@ -28,7 +28,7 @@ m <- lm(y ~ hab, d); emmeans(m, pairwise ~ hab)$contrasts
 ```
 
 ## Connections
-- **Builds on:** [[Reference Level]], [[ANOVA]]
+- **Builds on:** [[Reference Level]], [[ANOVA]], [[t-test]]
 - **Leads to:** [[Type I Error]], [[Statistical Significance]]
 - **See also:** [[P-value]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]

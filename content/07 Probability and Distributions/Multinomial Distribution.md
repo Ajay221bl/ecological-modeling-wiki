@@ -17,7 +17,7 @@ Roll a die 60 times and record how many 1s, 2s and so on up to 6s you get. The s
 
 An example. 100 marked animals each end the year in one of three states: alive and seen (0.5), alive and unseen (0.2), or dead (0.3). The expected counts are 50, 20 and 30, and one year's data might be (52, 17, 31). The code below draws three such datasets, computes the probability of (52, 17, 31) with `dmultinom()`, and confirms over 10,000 draws that the means are 50, 20 and 30. It also shows that the counts are negatively correlated, about −0.5 between the first two categories, because they compete for the same fixed total.
 
-Each category's count, on its own, is binomial, but the counts are not independent binomials, because the fixed total ties them together. In ecology the multinomial describes capture histories in mark-recapture, where Powell and Gale use it to build encounter-history likelihoods ([[Capture History]], [[Powell and Gale 2015 Ch3]]), as well as age or stage classes, diet composition and habitat categories ([[Hobbs and Hooten 2015 Ch3]]). It is a [[Multivariate Distribution]], and its Bayesian partner for the probabilities is the [[Dirichlet Distribution]].
+Each category's count, on its own, is binomial, but the counts are not independent binomials, because the fixed total ties them together. In ecology the multinomial describes capture histories in [[Mark-Recapture|mark-recapture]], where Powell and Gale use it to build encounter-history likelihoods ([[Capture History]], [[Powell and Gale 2015 Ch3]]), as well as age or stage classes, diet composition and habitat categories ([[Hobbs and Hooten 2015 Ch3]]). It is a [[Multivariate Distribution]], and its Bayesian partner for the probabilities is the [[Dirichlet Distribution]].
 
 ```r
 set.seed(16); rmultinom(3, size = 100, prob = c(0.5, 0.2, 0.3))     # three datasets, one per column
@@ -27,7 +27,7 @@ x <- t(rmultinom(1e4, 100, c(0.5, 0.2, 0.3))); round(colMeans(x), 1); round(cor(
 
 ## Connections
 - **Builds on:** [[Binomial Distribution]], [[Categorical Variable]]
-- **Leads to:** [[Dirichlet Distribution]], [[Capture History]], [[Multivariate Distribution]]
+- **Leads to:** [[Dirichlet Distribution]], [[Capture History]], [[Multivariate Distribution]], [[Mark-Recapture]]
 - **Part of:** [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]]
 
 ## Flashcards

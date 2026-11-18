@@ -15,7 +15,7 @@ status: seedling
 
 Imagine scoring a guess about a street of houses ("60% have a cat, and a cat shows itself 40% of the time") by asking how likely that guess makes the exact sightings you wrote down at every house. The **occupancy likelihood** is the product, over all sites, of the probability of each site's [[Detection History]], written in terms of ψ (occupancy) and p (detection), and the model picks the ψ and p that make the whole data set most probable ([[Likelihood Function]], [[Maximum Likelihood Estimation]], [[Occupancy]]). Each site gets one of two kinds of term. A history with at least one 1 must come from an occupied site, so its term is ψ times a p for every detection and a (1 − p) for every miss: in the guest lecture's 30 sites and 4 surveys, site 1 with history 1001 contributes ψ·p₁(1 − p₂)(1 − p₃)p₄, and site 3 with 1100 contributes ψ·p₁p₂(1 − p₃)(1 − p₄).
 
-An all-zero history is the interesting one, because it has two routes: the site was occupied and the species was missed four times, ψ(1 − p₁)(1 − p₂)(1 − p₃)(1 − p₄), or the site was empty, (1 − ψ). Because the routes cannot both happen, their probabilities add ([[Union of Events]]). The sites are assumed independent, so their terms multiply: L(ψ, p | H₁ … H₃₀) = ∏ Pr(Hᵢ) ([[Independent Events]], [[Site Independence Assumption]]). In the code below, with ψ = 0.6 and p = 0.4, histories 1001 and 1100 each have probability 0.0346, history 0000 has 0.4778, and the log-likelihood of the three sites together is −7.469. A computer tries many ψ and p values and keeps the pair with the largest log-likelihood; the base-R fits in [[Occupancy]] and [[Single-season Occupancy]] do exactly that with `optim()` ([[Numerical Optimization]]).
+An all-zero history is the interesting one, because it has two routes: the site was occupied and the species was missed four times, ψ(1 − p₁)(1 − p₂)(1 − p₃)(1 − p₄), or the site was empty, (1 − ψ). Because the routes cannot both happen, their probabilities add ([[Union of Events]]). The sites are assumed independent, so their terms multiply: L(ψ, p | H₁ … H₃₀) = ∏ Pr(Hᵢ) ([[Independent Events]], [[Site Independence Assumption]]). In the code below, with ψ = 0.6 and p = 0.4, histories 1001 and 1100 each have probability 0.0346, history 0000 has 0.4778, and the [[Log-likelihood|log-likelihood]] of the three sites together is −7.469. A computer tries many ψ and p values and keeps the pair with the largest log-likelihood; the base-R fits in [[Occupancy]] and [[Single-season Occupancy]] do exactly that with `optim()` ([[Numerical Optimization]]).
 
 This is the engine taught in the Nov 3 [[Occupancy Guest Lecture]] and in [[Powell and Gale 2015]] Ch15. The likelihood is not the probability that ψ is right; it is the probability of the data you saw if ψ and p took particular values, used to compare those values ([[Probability vs Likelihood]]).
 
@@ -28,7 +28,7 @@ round(sum(log(probs)), 3)   # log-likelihood of these three sites
 ```
 
 ## Connections
-- **Builds on:** [[Detection History]], [[Likelihood Function]], [[Independent Events]]
+- **Builds on:** [[Detection History]], [[Likelihood Function]], [[Independent Events]], [[Log-likelihood]]
 - **Leads to:** [[Maximum Likelihood Estimation]], [[Single-season Occupancy]], [[Site Independence Assumption]]
 - **Part of:** [[MOC 16 - Population Estimation|MOC - Population Estimation]], molecular note [[Assumptions of Occupancy Models]]
 

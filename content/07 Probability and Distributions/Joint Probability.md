@@ -18,7 +18,7 @@ A two-way table of people by hair colour and eye colour has a cell for brown hai
 
 An example. Of 100 sites, a species is present at 40, and at 30 of those it was detected. So P(present and detected) = 30/100 = 0.30. The same number comes from the general rule P(A, B) = P(A | B) × P(B), here P(present) × P(detected given present) = 0.4 × 0.75 = 0.30, where the bar means "given" ([[Conditional Probability]]). Only in the special case of [[Independent Events]] does this simplify to P(A) × P(B). The figure and code lay the site example out as a table: each cell is a joint probability, the row and column totals are [[Marginal Probability|marginal probabilities]], and a conditional probability rescales one row.
 
-Joint probability is central because a statistical model is a joint probability of all the data, and in Bayesian work of all the parameters too; fitting a model is working with that one big joint probability. Breaking it into conditional pieces is the [[Chain Rule of Probability]], which Hobbs and Hooten use to build every later result ([[Hobbs and Hooten 2015 Ch3]], [[Joint, Marginal and Conditional Probability]]). The common mistake is to assume joint probability is always P(A) × P(B); that holds only under independence.
+Joint probability is central because a [[Statistical Model|statistical model]] is a joint probability of all the data, and in Bayesian work of all the parameters too; [[Parameter Estimation|fitting a model]] is working with that one big joint probability. Breaking it into conditional pieces is the [[Chain Rule of Probability]], which Hobbs and Hooten use to build every later result ([[Hobbs and Hooten 2015 Ch3]], [[Joint, Marginal and Conditional Probability]]). The common mistake is to assume joint probability is always P(A) × P(B); that holds only under [[Independence of Observations|independence]].
 
 ![[Joint marginal conditional.png|700]]
 *What to look at:* each cell is a joint probability, the margins are sums of cells, and a conditional rescales one row.
@@ -31,7 +31,7 @@ tab["present", "detected"]                       # joint
 ```
 
 ## Connections
-- **Builds on:** [[Event]], [[Probability]]
+- **Builds on:** [[Event]], [[Probability]], [[Statistical Model]], [[Parameter Estimation]], [[Independence of Observations]]
 - **Leads to:** [[Conditional Probability]], [[Marginal Probability]], [[Chain Rule of Probability]], [[Independent Events]]
 - **Part of:** [[MOC 05 - Probability and Distributions|MOC - Probability and Distributions]], molecular note [[Joint, Marginal and Conditional Probability]]
 

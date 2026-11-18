@@ -14,11 +14,11 @@ status: seedling
 
 # Null Model
 
-A weather forecast that always says "average for the time of year" is the one any forecaster worth hiring must beat. The **null model** is the simplest model in a set, usually one with only an [[Intercept]], `y ~ 1` in R, which predicts the same value for every observation: the overall mean, or the mean rate or proportion on the link scale. It is the baseline every other model must beat. Its deviance is the [[Null Deviance]], and [[R-squared]] and [[Deviance Explained]] measure improvement over it.
+A weather forecast that always says "average for the time of year" is the one any forecaster worth hiring must beat. The **null model** is the simplest model in a set, usually one with only an [[Intercept]], `y ~ 1` in R, which predicts the same value for every observation: the overall mean, or the mean rate or proportion on the [[Link Scale|link scale]]. It is the baseline every other model must beat. Its deviance is the [[Null Deviance]], and [[R-squared]] and [[Deviance Explained]] measure improvement over it.
 
-Include it in a [[Candidate Model Set]]: if it ranks near the top, none of your predictors helps much. In mixed models the "null" may keep the random effects, `y ~ 1 + (1 | site)`, and then asks whether fixed predictors add anything beyond grouping. In the code below the null Poisson model's fitted value, 5.76, is just the mean bird count, and its AIC is 63 units worse than the model with tree cover.
+Include it in a [[Candidate Model Set]]: if it ranks near the top, none of your [[Predictor Variable|predictors]] helps much. In [[Mixed Effects Model|mixed models]] the "null" may keep the [[Random Effect|random effects]], `y ~ 1 + (1 | site)`, and then asks whether fixed predictors add anything beyond grouping. In the code below the null Poisson model's [[Fitted Value|fitted value]], 5.76, is just the mean bird count, and its AIC is 63 units worse than the model with tree cover.
 
-It is not the same as the [[Null Hypothesis]]: a null hypothesis is a statement that an effect is zero, the null model a fitted model, though comparing a model with the null model tests the null hypothesis that all slopes are zero. Every model selection lab includes an intercept-only model ([[Course Website]]), and it should not be dropped from the set, since it belongs there as the baseline.
+It is not the same as the [[Null Hypothesis]]: a null hypothesis is a statement that an effect is zero, the null model a fitted model, though comparing a model with the null model tests the null hypothesis that all slopes are zero. Every [[Model Selection|model selection]] lab includes an intercept-only model ([[Course Website]]), and it should not be dropped from the set, since it belongs there as the baseline.
 
 ```r
 set.seed(2); d <- data.frame(tree = runif(80, 0, 60)); d$birds <- rpois(80, exp(2.3 - 0.02 * d$tree))
@@ -27,8 +27,8 @@ c(null_fitted = unname(fitted(m0)[1]), mean_birds = mean(d$birds), dAIC_null_min
 ```
 
 ## Connections
-- **Builds on:** [[Intercept]], [[Candidate Model Set]]
-- **Leads to:** [[Null Deviance]], [[R-squared]], [[Deviance Explained]], [[Null Hypothesis]]
+- **Builds on:** [[Intercept]], [[Candidate Model Set]], [[Link Scale]], [[Predictor Variable]], [[Fitted Value]], [[Model Selection]]
+- **Leads to:** [[Null Deviance]], [[R-squared]], [[Deviance Explained]], [[Null Hypothesis]], [[Mixed Effects Model]], [[Random Effect]]
 - **Part of:** [[MOC 10 - Model Selection|MOC - Model Selection]]
 
 ## Flashcards

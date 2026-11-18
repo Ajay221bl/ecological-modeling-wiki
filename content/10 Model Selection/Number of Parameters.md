@@ -13,9 +13,9 @@ status: seedling
 
 # Number of Parameters
 
-In [[AIC]] and its relatives, **K** is the total number of parameters the model estimates from the data ([[Parameter]]). Count every estimated quantity: the intercept, slopes, factor-level contrasts (a factor with L levels adds L − 1) and interaction terms; the residual standard deviation in a normal model; dispersion parameters such as the negative binomial θ, the beta φ and the gamma shape; every random-effect standard deviation and correlation in a mixed model; and ĉ when using [[QAIC]]. Fixed quantities such as an offset's coefficient are not counted.
+In [[AIC]] and its relatives, **K** is the total number of parameters the model estimates from the data ([[Parameter]]). Count every estimated quantity: the intercept, slopes, factor-level contrasts (a factor with L levels adds L − 1) and interaction terms; the [[Residual Standard Error|residual standard deviation]] in a normal model; dispersion parameters such as the negative binomial θ, the beta φ and the gamma shape; every random-effect [[Standard Deviation|standard deviation]] and correlation in a [[Mixed Effects Model|mixed model]]; and ĉ when using [[QAIC]]. Fixed quantities such as an offset's [[Regression Coefficient|coefficient]] are not counted.
 
-R's `logLik()` reports K as `df`, and `AIC()` uses it automatically. In the code below a linear model with x and a three-level factor has K = 5 (intercept, x, two contrasts, σ); a negative binomial model with one predictor has K = 3 (intercept, slope, θ); and a mixed model with a random intercept has K = 4 (intercept, slope, group sd, residual sd). It is related to, but not the same as, residual [[Degrees of Freedom]].
+R's `logLik()` reports K as `df`, and `AIC()` uses it automatically. In the code below a [[Linear Model|linear model]] with x and a three-level factor has K = 5 (intercept, x, two contrasts, σ); a negative binomial model with one [[Predictor Variable|predictor]] has K = 3 (intercept, slope, θ); and a mixed model with a [[Random Intercept|random intercept]] has K = 4 (intercept, slope, group sd, residual sd). It is related to, but not the same as, residual [[Degrees of Freedom]].
 
 For Bayesian and penalised models the [[Effective Number of Parameters]] is smaller than the nominal count, because priors and penalties constrain the parameters; small K also matters for [[AICc]] and for spotting [[Uninformative Parameters]] ([[Anderson and Burnham 2002]]). σ is a parameter, not "just error": it is estimated, so it counts.
 
@@ -27,8 +27,8 @@ suppressMessages(attr(logLik(lme4::lmer(y ~ x + (1 | g), d, REML = FALSE)), "df"
 ```
 
 ## Connections
-- **Builds on:** [[Parameter]], [[Degrees of Freedom]]
-- **Leads to:** [[AIC]], [[AICc]], [[Effective Number of Parameters]], [[Uninformative Parameters]]
+- **Builds on:** [[Parameter]], [[Degrees of Freedom]], [[Residual Standard Error]], [[Standard Deviation]], [[Regression Coefficient]], [[Linear Model]], [[Predictor Variable]]
+- **Leads to:** [[AIC]], [[AICc]], [[Effective Number of Parameters]], [[Uninformative Parameters]], [[Mixed Effects Model]], [[Random Intercept]]
 - **Part of:** [[MOC 10 - Model Selection|MOC - Model Selection]]
 
 ## Flashcards

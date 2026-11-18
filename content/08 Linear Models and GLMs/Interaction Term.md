@@ -14,11 +14,11 @@ status: seedling
 
 # Interaction Term
 
-Fertiliser helps a watered plant a lot and a parched plant not at all, so you cannot state "the effect of fertiliser" without asking "at what level of water?". An **interaction term** lets the effect of one predictor depend on the value of another. Start from the additive model y = β₀ + β₁x₁ + β₂x₂, where the effect of x₁ is β₁ whatever x₂ is and the lines are parallel ([[Multiple Regression]]). Add the product: y = β₀ + β₁x₁ + β₂x₂ + β₃x₁x₂. Regrouping gives y = β₀ + (β₁ + β₃x₂)x₁ + β₂x₂, so the [[Slope]] of x₁ is now β₁ + β₃x₂, changing with x₂. β₃ says how much the slope of x₁ changes per unit of x₂.
+Fertiliser helps a watered plant a lot and a parched plant not at all, so you cannot state "the effect of fertiliser" without asking "at what level of water?". An **interaction term** lets the effect of one [[Predictor Variable|predictor]] depend on the value of another. Start from the [[Generalized Additive Model|additive model]] y = β₀ + β₁x₁ + β₂x₂, where the effect of x₁ is β₁ whatever x₂ is and the lines are parallel ([[Multiple Regression]]). Add the product: y = β₀ + β₁x₁ + β₂x₂ + β₃x₁x₂. Regrouping gives y = β₀ + (β₁ + β₃x₂)x₁ + β₂x₂, so the [[Slope]] of x₁ is now β₁ + β₃x₂, changing with x₂. β₃ says how much the slope of x₁ changes per unit of x₂.
 
-An example: richness = 12 − 0.05·tree + 3·burned − 0.15·tree·burned. On unburned plots the slope for tree cover is −0.05; on burned plots it is −0.05 − 0.15 = −0.20. The interaction coefficient −0.15 is the difference between the two slopes. The code below simulates these data, fits `rich ~ tree * burn`, recovers both slopes, and shows the interaction clearly improves the fit. The figure contrasts parallel lines, no interaction, with lines of different slopes. Interactions come in three types: factor × factor (differences differ), factor × numeric (slopes differ between groups, as here) and numeric × numeric (a twisted surface). In R, `x1 * x2` expands to `x1 + x2 + x1:x2`.
+An example: [[Species Richness|richness]] = 12 − 0.05·tree + 3·burned − 0.15·tree·burned. On unburned plots the slope for tree cover is −0.05; on burned plots it is −0.05 − 0.15 = −0.20. The interaction [[Regression Coefficient|coefficient]] −0.15 is the difference between the two slopes. The code below simulates these data, fits `rich ~ tree * burn`, recovers both slopes, and shows the interaction clearly improves the fit. The figure contrasts parallel lines, no interaction, with lines of different slopes. Interactions come in three types: factor × factor (differences differ), factor × numeric (slopes differ between groups, as here) and numeric × numeric (a twisted surface). In R, `x1 * x2` expands to `x1 + x2 + x1:x2`.
 
-Three rules follow. Keep the main effects when including their interaction. Read the "main effect" β₁ as the slope of x₁ only when x₂ = 0, not as an overall effect; [[Centering]] makes zero a meaningful value. And interpret with a plot of predictions, never from the table alone; a [[Coplot]] helps you spot one in the data first. Interactions need much more data to estimate than main effects. Do not confuse interaction with correlation between predictors, which is [[Collinearity]]; interaction is about effects depending on each other. They appear as the year-by-treatment question of Homework 1, in [[Two-way ANOVA]] and [[ANCOVA]], and as a [[Random Slope]] in mixed models ([[Zuur et al. 2009 Appendix A]], [[Course Website]]).
+Three rules follow. Keep the main effects when including their interaction. Read the "main effect" β₁ as the slope of x₁ only when x₂ = 0, not as an overall effect; [[Centering]] makes zero a meaningful value. And interpret with a plot of predictions, never from the table alone; a [[Coplot]] helps you spot one in the data first. Interactions need much more data to estimate than main effects. Do not confuse interaction with correlation between predictors, which is [[Collinearity]]; interaction is about effects depending on each other. They appear as the year-by-treatment question of Homework 1, in [[Two-way ANOVA]] and [[ANCOVA]], and as a [[Random Slope]] in [[Mixed Effects Model|mixed models]] ([[Zuur et al. 2009 Appendix A]], [[Course Website]]).
 
 ![[Interaction lines.png|700]]
 *What to look at:* left, parallel lines (no interaction). Right, lines with different slopes.
@@ -32,8 +32,8 @@ anova(lm(rich ~ tree + burn, d), m)$`Pr(>F)`[2]              # the interaction c
 ```
 
 ## Connections
-- **Builds on:** [[Multiple Regression]], [[Slope]]
-- **Leads to:** [[Coplot]], [[Centering]], [[Two-way ANOVA]], [[ANCOVA]], [[Random Slope]]
+- **Builds on:** [[Multiple Regression]], [[Slope]], [[Predictor Variable]], [[Species Richness]], [[Regression Coefficient]]
+- **Leads to:** [[Coplot]], [[Centering]], [[Two-way ANOVA]], [[ANCOVA]], [[Random Slope]], [[Generalized Additive Model]], [[Mixed Effects Model]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]], molecular note [[Additive vs Interaction Model]]
 
 ## Flashcards

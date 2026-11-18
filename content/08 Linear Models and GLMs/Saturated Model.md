@@ -12,11 +12,11 @@ status: seedling
 
 # Saturated Model
 
-A "model" of your friends' heights that is simply a list of their heights is perfectly accurate about those friends and tells you nothing about anyone else. A **saturated model** is that list: it has as many parameters as observations, so each fitted value equals its observation and it reproduces every data point exactly ([[Log-likelihood]]). It has no residual degrees of freedom, so nothing is left to estimate error from, and it is useless for explanation or prediction, an extreme case of [[Overfitting]].
+A "model" of your friends' heights that is simply a list of their heights is perfectly [[Accuracy|accurate]] about those friends and tells you nothing about anyone else. A **saturated model** is that list: it has as many parameters as observations, so each [[Fitted Value|fitted value]] equals its observation and it reproduces every data point exactly ([[Log-likelihood]]). It has no residual [[Degrees of Freedom|degrees of freedom]], so nothing is left to estimate error from, and it is useless for explanation or prediction, an extreme case of [[Overfitting]].
 
 It is useful as a reference: it sets the ceiling of log-likelihood against which [[Deviance]] is measured. For four Poisson counts 2, 0, 5 and 3, the saturated log-likelihood sets each mean to its own observation; the code below computes it, then the log-likelihood of the [[Null Model]], which uses one shared mean. The null model is the other end of the scale, with one parameter for the lot.
 
-The saturated model is not "the full model with all my predictors". It is far bigger than that: a parameter for every row.
+The saturated model is not "the [[Global Model|full model]] with all my [[Predictor Variable|predictors]]". It is far bigger than that: a parameter for every row.
 
 ```r
 y <- c(2, 0, 5, 3); sum(dpois(y, lambda = y, log = TRUE))       # saturated log-likelihood: each mean set to its own observation
@@ -24,8 +24,8 @@ sum(dpois(y, lambda = mean(y), log = TRUE))                     # null model: on
 ```
 
 ## Connections
-- **Builds on:** [[Log-likelihood]]
-- **Leads to:** [[Deviance]], [[Null Model]], [[Overfitting]]
+- **Builds on:** [[Log-likelihood]], [[Accuracy]], [[Fitted Value]], [[Degrees of Freedom]], [[Predictor Variable]]
+- **Leads to:** [[Deviance]], [[Null Model]], [[Overfitting]], [[Global Model]]
 - **Part of:** [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]]
 
 ## Flashcards

@@ -15,7 +15,7 @@ status: seedling
 
 # Correlation Structure
 
-With n observations there are n(n − 1)/2 pairwise correlations, far too many to estimate freely. A **correlation structure** reduces them to a small formula, with one or two parameters, saying how strongly two residuals are correlated given how far apart they are in time or space ([[Variance-Covariance Matrix|Covariance Matrix]], [[Generalized Least Squares]]). In nlme, the temporal structures are `corCompSymm`, all pairs equally correlated ([[Compound Symmetry]]); `corAR1`, decaying as φ^lag ([[AR(1) Error Structure]]); `corCAR1` for continuous time; and `corARMA(p, q)` ([[ARMA Error Structure]]). The spatial ones are `corExp`, `corGaus`, `corSpher`, `corLin` and `corRatio`, each optionally with a nugget ([[Spatial Correlation Functions]]).
+With n observations there are n(n − 1)/2 pairwise correlations, far too many to estimate freely. A **correlation structure** reduces them to a small formula, with one or two parameters, saying how strongly two residuals are correlated given how far apart they are in time or space ([[Variance-Covariance Matrix|Covariance Matrix]], [[Generalized Least Squares]]). In nlme, the temporal structures are `corCompSymm`, all pairs equally correlated ([[Compound Symmetry]]); `corAR1`, decaying as φ^lag ([[AR(1) Error Structure]]); `corCAR1` for continuous time; and `corARMA(p, q)` ([[ARMA Error Structure]]). The spatial ones are `corExp`, `corGaus`, `corSpher`, `corLin` and `corRatio`, each optionally with a [[Nugget|nugget]] ([[Spatial Correlation Functions]]).
 
 The syntax `correlation = corAR1(form = ~ year | site)` means within each site, ordered by year. Structures work in `gls()`, `lme()` and `gamm()`, and glmmTMB offers `ar1()`, `exp()` and others for GLMMs. In the code below `corAR1(0.6)` for five time points gives correlations of 0.60, 0.36, 0.22 and 0.13 at lags 1 to 4.
 
@@ -26,7 +26,7 @@ library(nlme); round(corMatrix(Initialize(corAR1(0.6), data = data.frame(t = 1:5
 ```
 
 ## Connections
-- **Builds on:** [[Variance-Covariance Matrix|Covariance Matrix]], [[Generalized Least Squares]]
+- **Builds on:** [[Variance-Covariance Matrix|Covariance Matrix]], [[Generalized Least Squares]], [[Nugget]]
 - **Leads to:** [[AR(1) Error Structure]], [[ARMA Error Structure]], [[Compound Symmetry]], [[Spatial Correlation Functions]]
 - **Part of:** [[MOC 13 - Autocorrelation|MOC - Autocorrelation]]
 

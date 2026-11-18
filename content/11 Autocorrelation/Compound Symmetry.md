@@ -17,14 +17,14 @@ status: seedling
 
 A [[Random Intercept]] model implies compound symmetry within groups, with correlation σ²_group / (σ²_group + σ²), the [[Intraclass Correlation]]. In nlme it is `corCompSymm(form = ~ 1 | site)`.
 
-It is often too simple for time series but reasonable for subsamples with no order, such as several quadrats in a plot ([[Zuur et al. 2009 Ch6]]). Compound symmetry and the [[AR(1) Error Structure]] are not the same: AR(1) decays with lag, and compound symmetry doesn't.
+It is often too simple for [[Time Series|time series]] but reasonable for subsamples with no order, such as several quadrats in a plot ([[Zuur et al. 2009 Ch6]]). Compound symmetry and the [[AR(1) Error Structure]] are not the same: AR(1) decays with lag, and compound symmetry doesn't.
 
 ```r
 library(nlme); round(corMatrix(Initialize(corCompSymm(0.4), data = data.frame(t = 1:4))), 2)
 ```
 
 ## Connections
-- **Builds on:** [[Correlation Structure]], [[Random Intercept]]
+- **Builds on:** [[Correlation Structure]], [[Random Intercept]], [[Time Series]]
 - **Leads to:** [[AR(1) Error Structure]], [[Intraclass Correlation]]
 - **Part of:** [[MOC 13 - Autocorrelation|MOC - Autocorrelation]]
 

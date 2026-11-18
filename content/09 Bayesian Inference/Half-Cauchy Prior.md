@@ -13,9 +13,9 @@ status: seedling
 
 # Half-Cauchy Prior
 
-A net with a long handle catches most things close in, but the handle lets it reach far out if needed. A **half-Cauchy prior** is a positive-only prior with its peak at zero and a very heavy tail. The Cauchy is a [[Student t Distribution]] with 1 degree of freedom, with tails so heavy it has no mean; Half-Cauchy(0, s) keeps its positive half, and s is the median. It is popular for a group-level standard deviation ([[Variance Components|Variance Component]], [[Hierarchical Model]]): with few groups the data say little about between-group variation, and this prior leans toward small values without forbidding big ones.
+A net with a long handle catches most things close in, but the handle lets it reach far out if needed. A **half-Cauchy prior** is a positive-only prior with its peak at zero and a very heavy tail. The Cauchy is a [[Student t Distribution]] with 1 degree of freedom, with tails so heavy it has no mean; Half-Cauchy(0, s) keeps its positive half, and s is the median. It is popular for a group-level [[Standard Deviation|standard deviation]] ([[Variance Components|Variance Component]], [[Hierarchical Model]]): with few groups the data say little about between-group variation, and this prior leans toward small values without forbidding big ones.
 
-In the code below, with the same scale, the half-Cauchy has median 1.0, 95th percentile 12.7 and 99th percentile 64, against 0.67, 1.97 and 2.58 for the [[Half-Normal Prior]]. A half-t with 3 or more degrees of freedom is a tamer relative, and brms uses a half Student-t(3, 0, 2.5) by default for standard deviations, with the scale adapted to the response.
+In the code below, with the same scale, the half-Cauchy has median 1.0, 95th [[Quantile|percentile]] 12.7 and 99th percentile 64, against 0.67, 1.97 and 2.58 for the [[Half-Normal Prior]]. A half-t with 3 or more [[Degrees of Freedom|degrees of freedom]] is a tamer relative, and brms uses a half Student-t(3, 0, 2.5) by default for standard [[Deviation|deviations]], with the scale adapted to the response.
 
 The downside is that the heavy tail can occasionally let samplers wander to huge values; half-normal or exponential priors are tighter. A half-Cauchy is not vague: it has a preferred scale, which makes it a [[Weakly Informative Prior]].
 
@@ -25,7 +25,7 @@ rbind(half_cauchy = quantile(hc, c(.5, .95, .99)), half_normal = quantile(hn, c(
 ```
 
 ## Connections
-- **Builds on:** [[Half-Normal Prior]], [[Student t Distribution]]
+- **Builds on:** [[Half-Normal Prior]], [[Student t Distribution]], [[Standard Deviation]], [[Quantile]], [[Degrees of Freedom]], [[Deviation]]
 - **Leads to:** [[Variance Components|Variance Component]], [[Hierarchical Model]], [[Weakly Informative Prior]]
 - **Part of:** [[MOC 09 - Bayesian Inference|MOC - Bayesian Inference]]
 

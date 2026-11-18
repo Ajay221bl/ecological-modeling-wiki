@@ -19,7 +19,7 @@ status: seedling
 
 A page of passport photos uses the same pose, size and lighting, one person per frame, so differences between faces jump out. **Facets** split one plot into a grid of small panels, one per level of a variable, all drawn the same way ([[ggplot2 Grammar of Graphics]], [[Categorical Variable]]). `facet_wrap(~ site)` makes one panel per site and wraps them into rows; `facet_grid(sex ~ site)` makes a strict grid, rows by one variable and columns by another. Axes are shared by default so panels are directly comparable; `scales = "free"` lets each panel choose its own, which helps judge shape but misleads when comparing sizes. Lattice does the same with `xyplot(y ~ x | group)`, and Zuur calls these multi-panel plots and uses them throughout ([[Zuur et al. 2009 Ch5]]).
 
-Facets are the natural look at [[Hierarchical Data]] before a mixed model. Differing heights across panels suggest a [[Random Intercept]]; differing slopes suggest a [[Random Slope]]; and panels with few points or a narrow x range show where groups are poorly sampled. In the figure and the first part of the code, the slope is similar in each site's panel while the height differs, the signature of random intercepts. The last lines fit a separate line to each subject of the `sleepstudy` data used in the mixed-model labs and show that both intercepts and slopes vary a lot, a case for random slopes ([[Course Website]]).
+Facets are the natural look at [[Hierarchical Data]] before a [[Mixed Effects Model|mixed model]]. Differing heights across panels suggest a [[Random Intercept]]; differing slopes suggest a [[Random Slope]]; and panels with few points or a narrow x range show where groups are poorly sampled. In the figure and the first part of the code, the slope is similar in each site's panel while the height differs, the signature of random intercepts. The last lines fit a separate line to each subject of the `sleepstudy` data used in the mixed-model labs and show that both intercepts and slopes vary a lot, a case for random slopes ([[Course Website]]).
 
 Facets are close to a [[Coplot]]: same idea, but coplots slice by any variable to look for interactions, while panels by group show the data's hierarchical structure. Free scales make each panel readable and comparisons misleading. To combine different plots rather than repeat one design, use [[Multi-panel Figures]].
 
@@ -39,7 +39,7 @@ round(apply(by_subj, 1, range), 1)   # per-subject intercepts and slopes vary a 
 
 ## Connections
 - **Builds on:** [[ggplot2 Grammar of Graphics]]
-- **Leads to:** [[Coplot]], [[Random Intercept]], [[Random Slope]], [[Hierarchical Data]]
+- **Leads to:** [[Coplot]], [[Random Intercept]], [[Random Slope]], [[Hierarchical Data]], [[Mixed Effects Model]]
 - **Part of:** [[MOC 12 - Reproducible Coding and Figures|MOC - Reproducible Coding and Figures]]
 
 ## Flashcards

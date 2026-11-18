@@ -8,6 +8,10 @@ aliases:
   - "Assignment"
   - "R Objects and Vectors"
   - "Assignment arrow"
+  - "R Objects and Assignment"
+  - "object"
+  - "objects"
+  - "<-"
 status: seedling
 ---
 
@@ -17,7 +21,7 @@ Picture labelled jars in a pantry. `flour <- 500` puts 500 into a jar and sticks
 
 Three behaviours surprise beginners, and the code below shows all three. First, assignment prints nothing, because R assumes you are storing for later; type the name to see the value. Second, assigning to an existing name throws the old contents away without warning, so `mass <- 30` simply replaces 21.5. Third, objects are snapshots, not live formulas: `double_mass <- mass * 2` stored 43, and changing `mass` afterwards leaves `double_mass` at 43. R is not a spreadsheet, and dependent objects only update when you rerun the lines that create them.
 
-Names are case-sensitive (`Mass` and `mass` are different objects) and cannot start with a number. You may see `=` used for assignment too; it works, but the convention is `<-` for storing objects and `=` for naming arguments inside function calls ([[Function Arguments]]). Objects are what every later step works on: [[Vectors in R]], a [[Data Frame]], or a function you write yourself ([[Writing Your Own Function]]).
+Names are case-sensitive (`Mass` and `mass` are different objects) and cannot start with a number. You may see `=` used for assignment too; it works, but the convention is `<-` for storing objects and `=` for naming arguments inside function calls ([[Functions in R|Function Arguments]]). Objects are what every later step works on: [[Vectors in R]], a [[Data Frame]], or a function you write yourself ([[Writing Your Own Function]]).
 
 ```r
 mass <- 21.5          # store

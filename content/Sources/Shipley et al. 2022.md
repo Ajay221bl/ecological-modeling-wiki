@@ -27,7 +27,7 @@ Combines long-term monitoring and experiments with linear mixed models (individu
 - Climate effects → [[Climate Change Effects on Wildlife]], [[Phenology]]
 
 ## Notes that rely on it (17)
-[[Apparent Survival]], [[Blocking]], [[Body Condition]], [[Body Size]], [[Climate Change Effects on Wildlife]], [[Course Schedule]], [[Drought Index]], [[Fecundity]], [[Habitat Structure]], [[Latitudinal Gradient]], [[Linear Mixed Model]], [[Marginal and Conditional R-squared]], [[Mixed Effects Model]], [[p-values in Mixed Models]], [[Phenology]], [[Spatial Scale]], [[Vital Rates]]
+[[Apparent Survival]], [[Blocking]], [[Body Condition]], [[Body Size]], [[Climate Change Effects on Wildlife]], [[Course Schedule]], [[Drought Index]], [[Fecundity]], [[Habitat Structure]], [[Latitudinal Gradient]], [[Linear Mixed Model]], [[Marginal vs Conditional R-squared|Marginal and Conditional R-squared]], [[Mixed Effects Model]], [[p-values in Mixed Models]], [[Phenology]], [[Spatial Scale]], [[Vital Rates]]
 
 ## Connections
 - **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

@@ -14,9 +14,9 @@ status: seedling
 
 # Linear Predictor
 
-A lending officer adds points for income and subtracts points for debts to get a total score. The total is not the decision; it is fed into a rule that converts scores into an approval probability. The **linear predictor**, η ("eta"), is that score in a GLM: the weighted sum of predictors, η = β₀ + β₁x₁ + … + β_p x_p, computed before it is converted to a mean with the inverse link ([[Regression Coefficient]]). It is the same object as the right-hand side of a linear regression, and in matrix form it is Xβ ([[Model Matrix]]). It can be any real number, negative or positive.
+A lending officer adds points for income and subtracts points for debts to get a total score. The total is not the decision; it is fed into a rule that converts scores into an approval probability. The **linear predictor**, η ("eta"), is that score in a GLM: the weighted sum of [[Predictor Variable|predictors]], η = β₀ + β₁x₁ + … + β_p x_p, computed before it is converted to a mean with the inverse link ([[Regression Coefficient]]). It is the same object as the right-hand side of a [[Linear Regression|linear regression]], and in matrix form it is Xβ ([[Model Matrix]]). It can be any real number, negative or positive.
 
-It lives on the link scale, in log units or log-odds units ([[Link Scale]]), and the inverse link maps it to the mean: μ = g⁻¹(η) ([[Link Function]], [[Inverse Link Function]]). Effects are additive here and only here; on the response scale they generally are not. In the code below, a logistic regression's linear predictor at x = 0.2 and 0.8 comes from `predict(m, type = "link")`, matches the hand calculation β₀ + β₁x, and becomes a probability through `plogis()`.
+It lives on the link scale, in log units or log-odds units ([[Link Scale]]), and the inverse link maps it to the mean: μ = g⁻¹(η) ([[Link Function]], [[Inverse Link Function]]). Effects are additive here and only here; on the [[Response Scale|response scale]] they generally are not. In the code below, a [[Logistic Regression|logistic regression]]'s linear predictor at x = 0.2 and 0.8 comes from `predict(m, type = "link")`, matches the hand calculation β₀ + β₁x, and becomes a probability through `plogis()`.
 
 The linear predictor is the prediction only on the link scale, and readers usually need the response scale. A term added to it with its coefficient fixed at 1 is an [[Offset]] ([[Zuur et al. 2009 Ch8]], [[Harrison et al. 2018]]).
 
@@ -28,7 +28,7 @@ plogis(eta)                                           # converted to probabiliti
 ```
 
 ## Connections
-- **Builds on:** [[Regression Coefficient]], [[Model Matrix]]
+- **Builds on:** [[Regression Coefficient]], [[Model Matrix]], [[Predictor Variable]], [[Linear Regression]], [[Response Scale]], [[Logistic Regression]]
 - **Leads to:** [[Link Function]], [[Inverse Link Function]], [[Link Scale]], [[Offset]]
 - **See also:** [[Generalized Linear Model]]
 - **Part of:** [[MOC 08 - Generalized Linear Models|MOC - Generalized Linear Models]]

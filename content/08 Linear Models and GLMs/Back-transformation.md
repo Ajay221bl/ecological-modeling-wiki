@@ -13,11 +13,11 @@ status: seedling
 
 # Back-transformation
 
-If you worked out a recipe in Fahrenheit, you convert the answer back to Celsius before using your oven. **Back-transformation** converts model results from the transformed scale on which they were estimated back to the original scale of the data ([[Transformation]]). Apply the inverse function: `exp()` undoes a log ([[Exponential Function]]), `plogis()` undoes a logit ([[Logistic Function]]), and squaring undoes a square root ([[Inverse Link Function]]).
+If you worked out a recipe in Fahrenheit, you convert the answer back to Celsius before using your oven. **Back-transformation** converts model results from the transformed scale on which they were estimated back to the original scale of the data ([[Transformation]]). Apply the inverse function: `exp()` undoes a log ([[Exponential Function]]), `plogis()` undoes a [[Logit Link|logit]] ([[Logistic Function]]), and squaring undoes a [[Square Root|square root]] ([[Inverse Link Function]]).
 
-Two rules matter. First, interval endpoints back-transform correctly: compute the interval on the model's scale, then transform both ends. The result is asymmetric, which is right. A standard error must never be back-transformed on its own, because it is a width on the transformed scale and has no direct meaning after a curved transformation. Second, the mean does not back-transform to the mean. exp(mean of logs) is the median, or geometric mean, on the original scale, and it lies below the arithmetic mean; this is [[Jensen's Inequality]]. For a model with normal errors on the log scale, the mean is exp(μ + σ²/2) ([[Lognormal Distribution]]). The code below fits `lm(log(y) ~ x)`, back-transforms the prediction at x = 5 to a median with an asymmetric interval, and shows that the mean, computed with the σ²/2 correction, is noticeably larger and close to the true mean.
+Two rules matter. First, interval endpoints back-transform correctly: compute the interval on the model's scale, then transform both ends. The result is asymmetric, which is right. A [[Standard Error|standard error]] must never be back-transformed on its own, because it is a width on the transformed scale and has no direct meaning after a curved transformation. Second, the mean does not back-transform to the mean. exp(mean of logs) is the median, or geometric mean, on the original scale, and it lies below the [[Mean|arithmetic mean]]; this is [[Jensen's Inequality]]. For a model with normal errors on the log scale, the mean is exp(μ + σ²/2) ([[Lognormal Distribution]]). The code below fits `lm(log(y) ~ x)`, back-transforms the prediction at x = 5 to a median with an asymmetric interval, and shows that the mean, computed with the σ²/2 correction, is noticeably larger and close to the true mean.
 
-GLMs avoid the mean problem, because they model the log of the mean rather than the mean of the logs, so their back-transformed predictions are means; the last line of the code shows a log-link gamma GLM predicting the mean directly ([[Predictions on Link vs Response Scale]]). Every GLM lab back-transforms predictions for plotting ([[Guthery and Bingham 2007]], [[Course Website]]).
+[[Generalized Linear Model|GLMs]] avoid the mean problem, because they model the log of the mean rather than the mean of the logs, so their back-transformed predictions are means; the last line of the code shows a log-link [[Gamma GLM|gamma GLM]] predicting the mean directly ([[Predictions on Link vs Response Scale]]). Every GLM lab back-transforms predictions for plotting ([[Guthery and Bingham 2007]], [[Course Website]]).
 
 ```r
 set.seed(7); x <- runif(200, 0, 10); y <- exp(1 + 0.2 * x + rnorm(200, 0, 0.5))
@@ -28,7 +28,7 @@ predict(glm(y ~ x, family = Gamma("log")), data.frame(x = 5), type = "response")
 ```
 
 ## Connections
-- **Builds on:** [[Transformation]], [[Exponential Function]]
+- **Builds on:** [[Transformation]], [[Exponential Function]], [[Logit Link]], [[Square Root]], [[Standard Error]], [[Mean]], [[Generalized Linear Model]], [[Gamma GLM]]
 - **Leads to:** [[Jensen's Inequality]], [[Predictions on Link vs Response Scale]], [[Inverse Link Function]], [[Lognormal Distribution]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 

@@ -8,6 +8,8 @@ aliases:
   - "Autocorrelation friend or foe"
   - "Red herring debate"
   - "Is autocorrelation a red herring"
+  - "Autocorrelation - Friend or Foe"
+  - "friend or foe"
 status: seedling
 ---
 

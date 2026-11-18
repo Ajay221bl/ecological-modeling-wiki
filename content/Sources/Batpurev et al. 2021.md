@@ -27,7 +27,7 @@ status: seedling
 Herders, scientists, government staff and conservation workers scored photos of Gobi rangeland sites for condition and "collapse." GAMs show how judgments change with total vegetation cover, and whether different stakeholder groups need their own curves (they mostly don't).
 
 ## Key ideas I use
-- A GAM with a smooth (thin plate spline) of total vegetation cover plus a random effect of expert ID: log(C) = s(veg) + expert effect + error (p. 8) -> [[Generalized Additive Model]], [[Smooth Function]], [[Random Effect]]
+- A GAM with a smooth (thin plate spline) of total vegetation cover plus a random effect of expert ID: log(C) = s(veg) + expert effect + error (p. 8) -> [[Generalized Additive Model]], [[Smoother|Smooth Function]], [[Random Effect]]
 - Two model types compared: one global smooth for everyone vs a smooth that can differ among stakeholder groups, following Pedersen et al. (2019) (p. 8) -> [[Hierarchical GAM]]
 - A binomial GAM of "collapsed or not" against vegetation cover, and the cover threshold where the probability of "collapsed" is half its maximum (pp. 8-9, Fig. 4) -> [[Regime Shifts and Spatial Early Warning Signals]], [[Link Function]]
 - Ten-fold cross-validation: the more complex group-specific model gave little advantage, so the simpler model was preferred (pp. 10, 12) -> [[Parsimony]], [[Model Purpose - Exploration Inference Prediction]]

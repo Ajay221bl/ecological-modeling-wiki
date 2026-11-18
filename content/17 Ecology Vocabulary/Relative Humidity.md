@@ -18,7 +18,7 @@ A sponge can soak up only so much water before it drips. Air is the same: at eac
 
 Fire managers care about minimum RH because dry air dries the dead grass and twigs that carry fire. Below roughly 20 to 25% fires can spread too fast to control; well above 40 to 50% grass may not burn well enough to kill woody plants ([[Prescribed Fire]]). Homework 5's RH_per_min column is the daily minimum RH at weather stations across the Great Plains.
 
-For a model, RH is a percentage bounded between 0 and 100, so a Normal distribution can predict impossible values near the edges. Divide by 100 to get a proportion strictly between 0 and 1 and a [[Beta Regression]] respects the bounds ([[Beta Distribution]], [[Why the response type decides the distribution]]). It is a measured continuous percentage, not a count of successes out of trials, so a binomial model does not fit it.
+For a model, RH is a percentage bounded between 0 and 100, so a [[Normal Distribution|Normal distribution]] can predict impossible values near the edges. Divide by 100 to get a proportion strictly between 0 and 1 and a [[Beta Regression]] respects the bounds ([[Beta Distribution]], [[Why the response type decides the distribution]]). It is a measured continuous percentage, not a count of [[Bounded Count|successes out of trials]], so a binomial model does not fit it.
 
 ```r
 rh <- c(12.4, 25, 47.9, 88, 99.5)
@@ -28,7 +28,7 @@ round(rbind(rh, y, y_sq), 3)
 ```
 
 ## Connections
-- **Builds on:** [[Proportion]], [[Beta Distribution]]
+- **Builds on:** [[Proportion]], [[Beta Distribution]], [[Normal Distribution]], [[Bounded Count]]
 - **Leads to:** [[Beta Regression]], [[Prescribed Fire]]
 - **Part of:** [[MOC 19 - Ecology Vocabulary|MOC - Ecology Vocabulary]], molecular note [[Homework 5 - Fire Weather HGAMs]]
 

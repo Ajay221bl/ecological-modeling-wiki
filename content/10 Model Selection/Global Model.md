@@ -13,9 +13,9 @@ status: seedling
 
 # Global Model
 
-The **global model** is the most complex model in the [[Candidate Model Set]], containing every predictor and structure that appears in any other model, so in a nested set every other model is a simplification of it ([[Nested Models]]). It should still be sensible, not every possible interaction.
+The **global model** is the most complex model in the [[Candidate Model Set]], containing every [[Predictor Variable|predictor]] and structure that appears in any other model, so in a nested set every other model is a simplification of it ([[Nested Models]]). It should still be sensible, not every possible interaction.
 
-Check its fit first. If the global model fails its diagnostics, every simpler model will too, and AIC comparisons among them are meaningless ([[Model Validation]]). It is also where you estimate the overdispersion factor ĉ for [[QAIC]], and where [[Collinearity]] is most visible. In the code below a Poisson global model of overdispersed bird counts has a Pearson dispersion of 2.1, a warning to fix before comparing models.
+Check its fit first. If the global model fails its [[Residual Diagnostics|diagnostics]], every simpler model will too, and AIC comparisons among them are meaningless ([[Model Validation]]). It is also where you estimate the [[Overdispersion|overdispersion]] factor ĉ for [[QAIC]], and where [[Collinearity]] is most visible. In the code below a Poisson global model of overdispersed bird counts has a Pearson dispersion of 2.1, a warning to fix before comparing models.
 
 The global model is not the answer; it is the starting point for checks.
 
@@ -25,7 +25,7 @@ g <- glm(birds ~ tree * shrub, family = poisson, data = d); sum(resid(g, "pearso
 ```
 
 ## Connections
-- **Builds on:** [[Candidate Model Set]], [[Nested Models]]
+- **Builds on:** [[Candidate Model Set]], [[Nested Models]], [[Predictor Variable]], [[Residual Diagnostics]], [[Overdispersion]]
 - **Leads to:** [[QAIC]], [[Model Validation]], [[Collinearity]]
 - **Part of:** [[MOC 10 - Model Selection|MOC - Model Selection]]
 

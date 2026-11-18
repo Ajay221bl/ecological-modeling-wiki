@@ -4,6 +4,7 @@ tags:
   - molecular
   - confounding
   - study-design
+  - flashcards/eco/why
 aliases:
   - "Site-year confounding"
   - "site and year confounded"
@@ -21,7 +22,7 @@ The data span 2022 and 2023. Why can't I add Year to the model, and what does th
 - [[Correlation vs Causation]]: two things moving together does not tell you which one matters.
 - [[Confounding]]: two explanations that move together, so the data cannot tell them apart.
 - [[Collinearity]]: the extreme case where one predictor is an exact function of another.
-- [[Categorical Predictor and Reference Level]]: how Site and Year would be coded as 0/1 columns.
+- [[Reference Level|Categorical Predictor and Reference Level]]: how Site and Year would be coded as 0/1 columns.
 - [[Fixed Effect]]: both would be fixed terms.
 - [[Repeat-Visit Design]]: no point was revisited across years.
 
@@ -61,3 +62,9 @@ The data span 2022 and 2023. Why can't I add Year to the model, and what does th
 ## Connections
 - **Related:** [[Study Sites]], [[EDA Findings]], [[Why include wind and sky]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 10 - Model Selection|MOC - Model Selection and Diagnostics]]
+
+## Flashcards
+
+Why can the data not tell a property effect from a year effect?::Each property was surveyed in only one year, so knowing the property tells you the year.
+
+Which comparisons are free of the year problem?::Comparisons within a year: BK vs DC vs HO (2022) and CR vs HB (2023).

@@ -4,6 +4,7 @@ tags:
   - molecular
   - landscape-ecology
   - remote-sensing
+  - flashcards/eco/why
 aliases:
   - "Reading the sign of spatial covariance"
   - "Negative covariance means boundary"
@@ -19,7 +20,7 @@ The habitat file gives each point a spatial covariance value, with a 3x3 median 
 
 ## Built from
 - [[Spatial Covariance]]: the measure itself.
-- [[Average (Mean)]] and [[Spread and Variability]]: covariance is built from distances to the average.
+- [[Mean|Average (Mean)]] and [[Spread and Variability]]: covariance is built from distances to the average.
 - [[Percent Cover]] and [[Plant Functional Groups]]: the two inputs are grass-and-forb cover and tree cover.
 - [[Pixels and Spatial Resolution]] and [[Moving Window Analysis]]: how a 3x3 block of 30 m pixels is scored.
 - [[Edge Effects]] and [[Grassland Core Habitat]]: what boundaries and cores mean for birds.
@@ -53,3 +54,12 @@ The habitat file gives each point a spatial covariance value, with a 3x3 median 
 ## Connections
 - **Related:** [[Why the window size is a choice of scale]], [[Regime Shifts and Spatial Early Warning Signals]], [[Field vs Remote Vegetation Measures]]
 - **Part of:** [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]], [[MOC 25 - Landscape and Remote Sensing|MOC - Landscape and Remote Sensing]], [[MOC 24 - Grassland Bird Ecology|MOC - Grassland Bird Ecology]]
+
+## Flashcards
+
+Why is spatial covariance negative at a forest edge?::Wherever grass cover is high, tree cover is low and vice versa, so the two vary in opposite directions.
+
+A crop field and a grassland core both give spatial covariance near zero. Why?
+??
+Neither has trees, so tree cover barely varies and the covariance sits near zero. The value says whether a point is on a boundary, not whether the open ground is grassland.
+++++

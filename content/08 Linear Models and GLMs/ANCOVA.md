@@ -11,7 +11,7 @@ status: seedling
 
 # ANCOVA
 
-To compare the weights of two dog breeds when one breed's sample happens to be older, draw a weight-against-age line for each breed and compare the lines at the same age. **ANCOVA**, analysis of covariance, is a linear model that combines a categorical predictor with a continuous one, comparing groups after adjusting for the continuous covariate ([[ANOVA]], [[Linear Regression]]). The model y ~ group + covariate fits parallel lines, one per group, and the group coefficient is the vertical gap between them: the group difference at any fixed covariate value ([[Holding Other Variables Constant]]).
+To compare the weights of two dog breeds when one breed's sample happens to be older, draw a weight-against-age line for each breed and compare the lines at the same age. **ANCOVA**, analysis of covariance, is a [[Linear Model|linear model]] that combines a categorical [[Predictor Variable|predictor]] with a continuous one, comparing groups after adjusting for the continuous covariate ([[ANOVA]], [[Linear Regression]]). The model y ~ group + covariate fits parallel lines, one per group, and the group [[Regression Coefficient|coefficient]] is the vertical gap between them: the group difference at any fixed covariate value ([[Holding Other Variables Constant]]).
 
 Including the covariate does two things. It removes variation the covariate explains, which sharpens the group comparison, and it adjusts for groups that differ in the covariate. In the code below, males are both longer and heavier for their length by 6 g. Comparing raw means inflates the sex difference because males are longer; adding length to the model brings the estimate close to the true 6.
 
@@ -26,7 +26,7 @@ anova(lm(mass ~ sex + len, d), lm(mass ~ sex * len, d))$`Pr(>F)`[2]    # no evid
 ```
 
 ## Connections
-- **Builds on:** [[ANOVA]], [[Linear Regression]]
+- **Builds on:** [[ANOVA]], [[Linear Regression]], [[Linear Model]], [[Predictor Variable]], [[Regression Coefficient]]
 - **Leads to:** [[Interaction Term]], [[Holding Other Variables Constant]], [[Random Intercept]]
 - **Part of:** [[MOC 06 - Linear Models and GLMs|MOC - Linear Models and GLMs]]
 

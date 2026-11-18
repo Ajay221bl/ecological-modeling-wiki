@@ -24,7 +24,7 @@ Everything about my own analysis: "Grassland Bird Species Richness Across Fragme
 
 ## The method
 - [[Analysis Plan]]: the final model set (M0 to M3), predictors, the 376-point data set, and how the code implements it (done Oct 13)
-- [[Standardizing Predictors]] and [[Complete-Case Analysis]]: two methods choices from the final proposal, explained from zero
+- [[Standardizing]] and [[Complete-Case Analysis]]: two methods choices from the final proposal, explained from zero
 - [[R Scripts Walkthrough]]: my two scripts, section by section (final versions, run Oct 13)
 
 ## The results
