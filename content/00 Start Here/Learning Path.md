@@ -60,6 +60,8 @@ Units 2 and 8 (Aug 20, Sep 24, Sep 29): the R needed to wrangle data, fit models
 
 **8. Figures:** [[ggplot2 Grammar of Graphics]]
 
+**9. Homework tools:** [[One-to-many Join]] → [[librarian and shelf()]]
+
 **Then the why:** [[Why a reproducible project structure saves you]] · [[Console vs Script]] · [[Loops, apply and map]] · [[Data Frame vs Tibble]] · [[Wide vs Long Data]] · [[Relative vs Absolute Paths]]
 
 ## 3. [[MOC 04 - Data Exploration]]
@@ -77,7 +79,9 @@ Unit 3 (Aug 25, 27): look before you model. Zuur et al. 2010's protocol for catc
 
 **6. Ecological data types met in the labs:** [[Species Richness]] → [[Diversity Index]] → [[Spatial Data in R]] → [[Coordinate Reference System]] → [[UTM Coordinates]] → [[Presence-Absence Data]]
 
-**Then the why:** [[Why explore data before modeling]] · [[Why explore data before modeling]] · [[Why collinearity inflates standard errors]] · [[Outlier, Leverage and Influence]] · [[Centering, Scaling and Standardizing]]
+**7. Homework tools:** [[Inverse Simpson Index]] → [[Interaction Plot]]
+
+**Then the why:** [[Why explore data before modeling]] · [[Why explore data before modeling]] · [[Why collinearity inflates standard errors]] · [[Outlier, Leverage and Influence]] · [[Centering, Scaling and Standardizing]] · [[Homework 1 - Riparian Plant Diversity]]
 
 ## 4. [[MOC 05 - Probability and Distributions]]
 Units 0 and 4 (Sep 1, 3): the language of randomness, and the probability distributions that describe how ecological data scatter. Readings: Hobbs and Hooten 2015 Ch3.
@@ -111,7 +115,9 @@ Unit 4 (Sep 1, 3): the straight-line model, how to read it, and how GLMs extend 
 
 **7. Next: estimation and GLMs:** [[Likelihood]] → [[Maximum Likelihood Estimation]] → [[Confidence Interval]] → [[P-value]] → [[Generalized Linear Model]] → [[Link Function]] → [[Logistic Regression]] → [[Poisson Regression]] → [[Overdispersion]]
 
-**Then the why:** [[Why GLMs need a link function]] · [[Which assumption violation leads to which model]] · [[Transform the data or change the model]] · [[Linear vs Nonlinear Function]] · [[Linear, Semi-log and Log-log Models]] · [[Additive vs Interaction Model]] · [[Simple vs Multiple Regression]] · [[Treatment vs Sum-to-zero Contrasts]]
+**8. Homework tools:** [[Inverse Prediction]] → [[Marginal Effects Plot]]
+
+**Then the why:** [[Why GLMs need a link function]] · [[Which assumption violation leads to which model]] · [[Transform the data or change the model]] · [[Linear vs Nonlinear Function]] · [[Linear, Semi-log and Log-log Models]] · [[Additive vs Interaction Model]] · [[Simple vs Multiple Regression]] · [[Treatment vs Sum-to-zero Contrasts]] · [[Homework 2 - Coral Bleaching]]
 
 ## 6. [[MOC 07 - Likelihood and Estimation]]
 Unit 4 (Sep 1, 3): how a model's numbers are learned from data. Likelihood, maximum likelihood, confidence intervals, tests and p-values. Readings: Hobbs and Hooten 2015 Ch4, Powell and Gale 2015 Ch3.
@@ -160,7 +166,9 @@ Units 5 and 7 (Sep 8, 10, 22): updating what we believe with data. Priors, poste
 
 **8. Software:** [[brms]] → [[brm()]] → [[Setting Priors in brms]] → [[pp_check()]] → [[cmdstanr Backend]] → [[JAGS and BUGS]] → [[tidybayes]] → [[Default Priors in brms]]
 
-**Then the why:** [[Frequentist vs Bayesian Inference]] · [[Why the posterior is proportional to likelihood times prior]] · [[How to choose a prior]] · [[Proper vs Improper Prior]] · [[Data Model, Process Model and Parameter Model]] · [[How MCMC turns a formula into a posterior]] · [[How to check an MCMC fit]] · [[Confidence vs Credible Interval]] · [[Equal-tailed vs Highest Density Interval]] · [[Prior Predictive vs Posterior Predictive Check]] · [[JAGS vs Stan]] · [[Bayesian Linear Regression in R]]
+**9. Homework tools:** [[Bayesian Logistic Regression]] → [[conditional_effects()]]
+
+**Then the why:** [[Frequentist vs Bayesian Inference]] · [[Why the posterior is proportional to likelihood times prior]] · [[How to choose a prior]] · [[Proper vs Improper Prior]] · [[Data Model, Process Model and Parameter Model]] · [[How MCMC turns a formula into a posterior]] · [[How to check an MCMC fit]] · [[Confidence vs Credible Interval]] · [[Equal-tailed vs Highest Density Interval]] · [[Prior Predictive vs Posterior Predictive Check]] · [[JAGS vs Stan]] · [[Bayesian Linear Regression in R]] · [[Homework 6 - Penguin Body Mass in brms]]
 
 ## 9. [[MOC 10 - Model Selection]]
 Units 6 and 7 (Sep 15, 17, 22): choosing among competing models fairly, in frequentist, information-theoretic and Bayesian ways, and checking that the chosen model is any good. Readings: Anderson and Burnham 2002, Powell and Gale 2015 Ch3 and Ch4, Johnson and Omland 2004.
@@ -177,7 +185,9 @@ Units 6 and 7 (Sep 15, 17, 22): choosing among competing models fairly, in frequ
 
 **6. Bayesian selection:** [[Deviance]] → [[DIC]] → [[WAIC]] → [[Leave-one-out Cross-validation]]
 
-**Then the why:** [[Why AIC rewards fit but punishes complexity]] · [[Why build the candidate model set before seeing the data]] · [[Why AIC rewards fit but punishes complexity]] · [[Likelihood Ratio Test vs AIC]] · [[AIC vs BIC]] · [[Null Hypothesis Testing vs Model Selection]] · [[Why build the candidate model set before seeing the data]] · [[Model Selection for Explanation vs Prediction]]
+**8. Homework tools:** [[Scale of Effect]]
+
+**Then the why:** [[Why AIC rewards fit but punishes complexity]] · [[Why build the candidate model set before seeing the data]] · [[Why AIC rewards fit but punishes complexity]] · [[Likelihood Ratio Test vs AIC]] · [[AIC vs BIC]] · [[Null Hypothesis Testing vs Model Selection]] · [[Why build the candidate model set before seeing the data]] · [[Model Selection for Explanation vs Prediction]] · [[Patch vs Landscape Effects]] · [[Homework 3 - Woodland Birds and Landscape Scale]]
 
 ## 10. [[MOC 11 - Bayesian Model Selection]]
 Unit 7 (Sep 22): comparing and checking Bayesian models with DIC, WAIC, LOO and simulated residuals. Readings: Hobbs and Hooten 2015 Ch8 and Ch9, Vehtari et al. 2017.
@@ -225,7 +235,9 @@ Units 10 to 13 (Oct 6, 8, 13, 15, 22): models for grouped data, fitted with lme4
 
 **6. Bayesian mixed models:** [[Bayesian GLMM]] → [[Priors on Standard Deviations]] → [[LKJ Prior]] → [[adapt_delta and Sampler Settings]] → [[Divergent Transitions]]
 
-**Then the why:** [[Why use a random effect instead of a fixed effect]] · [[Fixed vs Random Effects]] · [[Why use a random effect instead of a fixed effect]] · [[Complete, No and Partial Pooling]] · [[Random Intercept vs Random Slope]] · [[Nested vs Crossed Random Effects]] · [[REML vs ML]] · [[Conditional vs Marginal Predictions]] · [[Prediction vs Confidence Interval]] · [[lme4 vs brms]] · [[Bayesian Mixed Model Workflow in R]]
+**7. Homework tools:** [[Random Effect with Few Levels]] → [[Bounded Count]]
+
+**Then the why:** [[Why use a random effect instead of a fixed effect]] · [[Fixed vs Random Effects]] · [[Why use a random effect instead of a fixed effect]] · [[Complete, No and Partial Pooling]] · [[Random Intercept vs Random Slope]] · [[Nested vs Crossed Random Effects]] · [[REML vs ML]] · [[Conditional vs Marginal Predictions]] · [[Prediction vs Confidence Interval]] · [[lme4 vs brms]] · [[Bayesian Mixed Model Workflow in R]] · [[Two-way ANOVA vs Mixed Model]] · [[Homework 4 - Thistle Seedlings and Enemy Release]]
 
 ## 14. [[MOC 19 - Ecology Vocabulary]]
 The ecology words the readings, labs and homework datasets assume you know, each explained from nothing.
@@ -238,6 +250,8 @@ The ecology words the readings, labs and homework datasets assume you know, each
 
 **4. Habitat and landscape:** [[Habitat]] → [[Habitat Structure]] → [[Canopy Cover]] → [[Diameter at Breast Height]] → [[Coarse Woody Debris]] → [[Fire History Variables]] → [[Landscape Metrics]] → [[Species Distribution Model]] → [[Enemy Release Hypothesis]] → [[Woody Encroachment]] → [[NDVI]] → [[Home Range]] → [[Edge Effect]] → [[Species Interaction]]
 
+**5. Words from the homework datasets:** [[Exclosure]] → [[Grazing]] → [[Riparian Zone]] → [[Coral Bleaching]] → [[Temperature Anomaly]] → [[Habitat Patch]] → [[Invasive Species]] → [[Relative Humidity]] → [[Prescribed Fire]]
+
 ## 15. [[MOC 15 - GAMs]]
 Oct 27 onward: generalized additive models let the data draw a smooth curve, and hierarchical GAMs let groups share or differ in that curve. Readings: Zuur et al. 2009 Ch3, Pedersen et al. 2019, Lawton et al. 2022, Noam Ross's GAM course.
 
@@ -247,7 +261,7 @@ Oct 27 onward: generalized additive models let the data draw a smooth curve, and
 
 **3. Hierarchical GAMs:** [[Hierarchical GAM]] → [[Global Smoother]] → [[Group-level Smoothers]] → [[Shared Wiggliness]] → [[GAMM]] → [[bam()]] → [[Bayesian GAMs]]
 
-**Then the why:** [[GLM vs GAM]] · [[Polynomial vs Spline]] · [[Why penalize wiggliness]] · [[GCV vs REML for Smoothing]] · [[by= Smooths vs Factor Smooths]] · [[Choosing an HGAM Model Type]] · [[HGAM vs GLMM with Random Slopes]] · [[Spatial Smooth vs Spatial Correlation Structure]] · [[GAM Workflow in R]]
+**Then the why:** [[GLM vs GAM]] · [[Polynomial vs Spline]] · [[Why penalize wiggliness]] · [[GCV vs REML for Smoothing]] · [[by= Smooths vs Factor Smooths]] · [[Choosing an HGAM Model Type]] · [[HGAM vs GLMM with Random Slopes]] · [[Spatial Smooth vs Spatial Correlation Structure]] · [[GAM Workflow in R]] · [[Homework 5 - Fire Weather HGAMs]]
 
 ## 16. [[MOC 16 - Population Estimation]]
 Guest lectures and Powell and Gale 2015 Ch5 to 19: occupancy, mark-recapture, survival and abundance when animals are missed.
@@ -284,4 +298,4 @@ Nov 24: turning an analysis into clear methods and results. Readings: Cormac McC
 
 **2. Writing up a model:** [[Writing Methods Sections]] → [[Writing Results Sections]] → [[Reporting Statistics in Text]] → [[What to Report for a Model]] → [[Figures for Model Results]]
 
-**Then the why:** [[How to write up a modeling analysis]]
+**Then the why:** [[How to write up a modeling analysis]] · [[How to Approach a Course Homework]]

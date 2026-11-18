@@ -35,8 +35,8 @@ status: seedling
 - Other tests → [[Chi-square Test]], [[Kruskal-Wallis Test]]
 - Worked walk-through → [[Fisher Occupancy Case Study]]
 
-## Notes that rely on it (20)
-[[Camera Trap]], [[Chi-square Test]], [[Edge Effect]], [[Hair Snare]], [[Home Range]], [[Kruskal-Wallis Test]], [[Local Extinction Probability]], [[Naive Occupancy]], [[Observation Covariates]], [[Occupancy Workflow in R]], [[Reintroduction]], [[Single-season Occupancy]], [[Single-season vs Multi-season Occupancy]], [[Site Covariates]], [[Site Independence Assumption]], [[Spatially Balanced Sampling]], [[Stacked Occupancy Design]], [[Translocation]], [[Unexplained Heterogeneity in Detection]], [[unmarked Package]]
+## Notes that rely on it (22)
+[[Camera Trap]], [[Change Log]], [[Chi-square Test]], [[Course Schedule]], [[Edge Effect]], [[Hair Snare]], [[Home Range]], [[Kruskal-Wallis Test]], [[Local Extinction Probability]], [[Naive Occupancy]], [[Observation Covariates]], [[Occupancy Workflow in R]], [[Reintroduction]], [[Single-season Occupancy]], [[Single-season vs Multi-season Occupancy]], [[Site Covariates]], [[Site Independence Assumption]], [[Spatially Balanced Sampling]], [[Stacked Occupancy Design]], [[Translocation]], [[Unexplained Heterogeneity in Detection]], [[unmarked Package]]
 
 ## Connections
 - **Part of:** [[MOC 21 - Course Readings|MOC - Course Readings]]

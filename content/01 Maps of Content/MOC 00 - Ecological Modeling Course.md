@@ -40,6 +40,7 @@ Notes about the course itself: what it asks of me, when things are due, and how 
 - [[MOC 18 - Scientific Writing]]
 - [[MOC 20 - Why We Do It This Way]]
 - [[MOC 21 - Course Readings]]
+- [[MOC 22 - Homework]]
 
 ## Related MOCs
 [[MOC 21 - Course Readings|MOC - Course Readings]] · [[Start Here]]

@@ -9,7 +9,7 @@ status: seedling
 
 # Index
 
-Every note in the wiki, by folder. 1093 notes in total.
+Every note in the wiki, by folder. 1123 notes in total.
 
 ## 00 Start Here (5)
 - [[Change Log]]
@@ -18,7 +18,7 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Open Questions]]
 - [[Start Here]]
 
-## 01 Maps of Content (22)
+## 01 Maps of Content (23)
 - [[MOC 00 - Ecological Modeling Course]]
 - [[MOC 01 - Basics from Zero]]
 - [[MOC 02 - Modeling Foundations]]
@@ -41,8 +41,9 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[MOC 19 - Ecology Vocabulary]]
 - [[MOC 20 - Why We Do It This Way]]
 - [[MOC 21 - Course Readings]]
+- [[MOC 22 - Homework]]
 
-## 02 Molecular Notes (138)
+## 02 Molecular Notes (147)
 - [[ACF vs PACF]]
 - [[Additive vs Interaction Model]]
 - [[AIC vs BIC]]
@@ -86,8 +87,15 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Git vs GitHub]]
 - [[GLM vs GAM]]
 - [[HGAM vs GLMM with Random Slopes]]
+- [[Homework 1 - Riparian Plant Diversity]]
+- [[Homework 2 - Coral Bleaching]]
+- [[Homework 3 - Woodland Birds and Landscape Scale]]
+- [[Homework 4 - Thistle Seedlings and Enemy Release]]
+- [[Homework 5 - Fire Weather HGAMs]]
+- [[Homework 6 - Penguin Body Mass in brms]]
 - [[How many visits does an occupancy study need]]
 - [[How MCMC turns a formula into a posterior]]
+- [[How to Approach a Course Homework]]
 - [[How to check an MCMC fit]]
 - [[How to choose a prior]]
 - [[How to detect and handle autocorrelation]]
@@ -124,6 +132,7 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Open vs Closed Populations]]
 - [[Outlier, Leverage and Influence]]
 - [[Parameter vs Estimate]]
+- [[Patch vs Landscape Effects]]
 - [[PMF vs PDF]]
 - [[Poisson vs Negative Binomial]]
 - [[Polynomial vs Spline]]
@@ -153,6 +162,7 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Transform the data or change the model]]
 - [[Treatment vs Sum-to-zero Contrasts]]
 - [[True vs Apparent Survival]]
+- [[Two-way ANOVA vs Mixed Model]]
 - [[Type I and Type II Errors]]
 - [[Variable and Observation]]
 - [[Wald Test vs Likelihood Ratio Test]]
@@ -312,7 +322,7 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Unbiased Estimator]]
 - [[Underfitting]]
 
-## 05 R and Tidyverse (97)
+## 05 R and Tidyverse (99)
 - [[Absolute Path]]
 - [[across()]]
 - [[Aesthetics]]
@@ -358,6 +368,7 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[kable()]]
 - [[Knitting]]
 - [[lapply()]]
+- [[librarian and shelf()]]
 - [[librarian shelf()]]
 - [[Lists in R]]
 - [[map()]]
@@ -367,6 +378,7 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Multi-panel Figures]]
 - [[mutate()]]
 - [[Objects and Assignment]]
+- [[One-to-many Join]]
 - [[Packages in R]]
 - [[paste()]]
 - [[Pipe Operator]]
@@ -411,7 +423,7 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Working Directory]]
 - [[Writing Your Own Function]]
 
-## 06 Data Exploration (42)
+## 06 Data Exploration (44)
 - [[Balanced Data]]
 - [[Bartlett Test]]
 - [[Boxplot]]
@@ -431,6 +443,8 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Histogram]]
 - [[Homogeneity of Variance]]
 - [[Independence of Observations]]
+- [[Interaction Plot]]
+- [[Inverse Simpson Index]]
 - [[Leverage]]
 - [[Line Plot]]
 - [[LOESS Smoother]]
@@ -513,7 +527,7 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Uniform Distribution]]
 - [[Union of Events]]
 
-## 08 Linear Models and GLMs (141)
+## 08 Linear Models and GLMs (143)
 - [[Adjusted R-squared]]
 - [[Allometry]]
 - [[Alternative Hypothesis]]
@@ -558,6 +572,7 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Intercept]]
 - [[Interpreting Regression Coefficients]]
 - [[Inverse Link Function]]
+- [[Inverse Prediction]]
 - [[Iteratively Reweighted Least Squares]]
 - [[Jensen's Inequality]]
 - [[Kruskal-Wallis Test]]
@@ -583,6 +598,7 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Logistic Growth Model]]
 - [[Logistic Regression]]
 - [[Logit Link]]
+- [[Marginal Effects Plot]]
 - [[Maximum Likelihood Estimation]]
 - [[Michaelis-Menten Function]]
 - [[Model Matrix]]
@@ -656,10 +672,11 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[z-test]]
 - [[Zero-inflated Model]]
 
-## 09 Bayesian Inference (81)
+## 09 Bayesian Inference (83)
 - [[Acceptance Rate]]
 - [[Bayes' Theorem]]
 - [[Bayesian Inference]]
+- [[Bayesian Logistic Regression]]
 - [[Bayesian P-value]]
 - [[Bayesian R-squared]]
 - [[Beta-Binomial Conjugacy]]
@@ -669,6 +686,7 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Chain Autocorrelation]]
 - [[cmdstanr Backend]]
 - [[Composition Sampling]]
+- [[conditional_effects()]]
 - [[Conjugate Prior]]
 - [[Credible Interval]]
 - [[Data Model]]
@@ -739,7 +757,7 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Vague Prior]]
 - [[Weakly Informative Prior]]
 
-## 10 Model Selection (55)
+## 10 Model Selection (56)
 - [[AIC]]
 - [[AICc]]
 - [[Akaike Weight]]
@@ -788,6 +806,7 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Relative Variable Importance]]
 - [[Residual Tests in DHARMa]]
 - [[Reversible-jump MCMC]]
+- [[Scale of Effect]]
 - [[Scoring Rules]]
 - [[Spike-and-slab Prior]]
 - [[Stepwise Selection]]
@@ -841,12 +860,13 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Variogram]]
 - [[Variogram Range]]
 
-## 12 Mixed Models (48)
+## 12 Mixed Models (50)
 - [[adapt_delta and Sampler Settings]]
 - [[Bayesian GLMM]]
 - [[Blocking]]
 - [[bootMer()]]
 - [[Boundary Problem When Testing Variances]]
+- [[Bounded Count]]
 - [[Building All Fixed x Random Combinations]]
 - [[Complete Pooling]]
 - [[Conditional Modes]]
@@ -881,6 +901,7 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[performance Package Checks]]
 - [[Priors on Standard Deviations]]
 - [[Random Effect]]
+- [[Random Effect with Few Levels]]
 - [[Random Intercept]]
 - [[Random Slope]]
 - [[REML]]
@@ -1051,13 +1072,14 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Writing Methods Sections]]
 - [[Writing Results Sections]]
 
-## 17 Ecology Vocabulary (34)
+## 17 Ecology Vocabulary (43)
 - [[Body Condition]]
 - [[Body Size]]
 - [[Canopy Cover]]
 - [[Carrying Capacity]]
 - [[Climate Change Effects on Wildlife]]
 - [[Coarse Woody Debris]]
+- [[Coral Bleaching]]
 - [[Density Dependence]]
 - [[Diameter at Breast Height]]
 - [[Drought Index]]
@@ -1066,11 +1088,15 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[Environmental Gradient]]
 - [[Epizootic Hemorrhagic Disease]]
 - [[Evapotranspiration]]
+- [[Exclosure]]
 - [[Fecundity]]
 - [[Fire History Variables]]
+- [[Grazing]]
 - [[Habitat]]
+- [[Habitat Patch]]
 - [[Habitat Structure]]
 - [[Home Range]]
+- [[Invasive Species]]
 - [[Landscape Metrics]]
 - [[Latitudinal Gradient]]
 - [[Macroecology]]
@@ -1078,10 +1104,14 @@ Every note in the wiki, by folder. 1093 notes in total.
 - [[NDVI]]
 - [[Phenology]]
 - [[Population Density]]
+- [[Prescribed Fire]]
 - [[Reintroduction]]
+- [[Relative Humidity]]
+- [[Riparian Zone]]
 - [[Species Distribution Model]]
 - [[Species Interaction]]
 - [[Tag Loss]]
+- [[Temperature Anomaly]]
 - [[Translocation]]
 - [[Vector-borne Disease]]
 - [[Vital Rates]]
