@@ -80,3 +80,9 @@ Unit 9 (Oct 1): when observations close in space or time resemble each other, or
 
 ## Related MOCs
 [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]] · [[MOC 21 - Course Readings|MOC - Course Readings]] · [[Start Here]]
+
+## From the grassland bird project
+Notes first written for my project vault (EcoModeling-Vault) and merged in v1.5. Project home: [[MOC 23 - Grassland Bird Richness Project|MOC - Grassland Bird Richness Project]].
+
+- [[Autocorrelation - Friend or Foe]]: "Nearby things are alike" can be treated as a problem to correct in your statistics, or as a clue about how nature works; the attitude you pick...
+- [[Smooth Function]]: a flexible curve made by adding together a handful of simple building-block curves, with a brake (penalty) that controls how wiggly the result can be.

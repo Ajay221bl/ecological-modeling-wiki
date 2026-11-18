@@ -205,3 +205,29 @@ Every molecular note. Each one ties several atomic notes into one argument: a co
 
 ## Related MOCs
 [[Start Here]] · [[Learning Path]]
+
+## From the grassland bird project
+Notes first written for my project vault (EcoModeling-Vault) and merged in v1.5. Project home: [[MOC 23 - Grassland Bird Richness Project|MOC - Grassland Bird Richness Project]].
+
+- [[How LM, GLM and GLMM are one family]]
+- [[How the project could grow into Bayesian and occupancy models]]
+- [[Why a random intercept for point]]
+- [[Why a reproducible project structure matters]]
+- [[Why all-species and focal-species richness can disagree]]
+- [[Why check overdispersion before trusting Poisson]]
+- [[Why compare models with AIC rather than only p-values]]
+- [[Why defend the core instead of restoring everywhere]]
+- [[Why exclude fly-overs]]
+- [[Why grassland birds avoid trees]]
+- [[Why include wind and sky]]
+- [[Why negative spatial covariance marks a tree-grass boundary]]
+- [[Why observed richness is not true richness]]
+- [[Why Poisson instead of linear regression for richness]]
+- [[Why richness instead of single-species counts]]
+- [[Why site and year cannot be separated]]
+- [[Why site identity is a weak test of a habitat hypothesis]]
+- [[Why Site is fixed not random]]
+- [[Why the point-visit is the sampling unit]]
+- [[Why the Report keeps the Poisson model despite the diagnostics]]
+- [[Why the window size is a choice of scale]]
+- [[Why trees take over grasslands without fire]]

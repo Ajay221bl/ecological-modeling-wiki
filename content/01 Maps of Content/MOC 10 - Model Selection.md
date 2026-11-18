@@ -90,3 +90,20 @@ Units 6 and 7 (Sep 15, 17, 22): choosing among competing models fairly, in frequ
 
 ## Related MOCs
 [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]] · [[MOC 21 - Course Readings|MOC - Course Readings]] · [[Start Here]]
+
+## From the grassland bird project
+Notes first written for my project vault (EcoModeling-Vault) and merged in v1.5. Project home: [[MOC 23 - Grassland Bird Richness Project|MOC - Grassland Bird Richness Project]].
+
+- [[check_overdispersion()]]: `check_overdispersion()`, from the **performance** package, asks a fitted Poisson model "are the data more spread out than a Poisson allows?" and...
+- [[Complete-Case Analysis]]: fitting every model only to the rows that have no missing value in any variable any of the models uses, so all the models are judged on exactly the same data.
+- [[Confounding]]: when two possible causes always show up together in your data, so any effect you credit to one might really belong to the other.
+- [[Delta AIC and Akaike Weights]]: δAIC is how far each model's AIC is behind the winner; Akaike weights turn those gaps into shares of support that add up to 1.
+- [[MCMC Convergence Diagnostics]]: checks that the MCMC random walk has wandered long enough, and settled well enough, that its footprints really map the posterior.
+- [[Model Purpose - Exploration Inference Prediction]]: before building a model, decide what it is for: finding ideas (exploration), testing ideas you already had (inference), or forecasting new data (prediction).
+- [[MuMIn model.sel()]]: `model.sel()`, from the **MuMIn** package, takes several fitted models and returns one table that ranks them from best to worst by an AIC score,...
+- [[Residual Diagnostics]]: the health check you run on a fitted model, mostly by looking at its mistakes (residuals), before trusting its numbers.
+- [[Residuals]]: what the model got wrong at each visit: the real count minus the model's guess.
+- [[Why check overdispersion before trusting Poisson]]
+- [[Why compare models with AIC rather than only p-values]]
+- [[Why site and year cannot be separated]]
+- [[Why the Report keeps the Poisson model despite the diagnostics]]

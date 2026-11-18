@@ -104,3 +104,15 @@ Units 10 to 13 (Oct 6, 8, 13, 15, 22): models for grouped data, fitted with lme4
 
 ## Related MOCs
 [[MOC 20 - Why We Do It This Way|MOC - Why We Do It This Way]] · [[MOC 21 - Course Readings|MOC - Course Readings]] · [[Start Here]]
+
+## From the grassland bird project
+Notes first written for my project vault (EcoModeling-Vault) and merged in v1.5. Project home: [[MOC 23 - Grassland Bird Richness Project|MOC - Grassland Bird Richness Project]].
+
+- [[glmer()]]: `glmer()`, from the **lme4** package, fits a [[GLMM]]: the same kind of model as [[glm()]], plus "random effects" that let each group (here, each...
+- [[Grouping Variable]]: a column that labels which cluster each row belongs to (which point, which site, which observer), so a model can know which rows go together.
+- [[How LM, GLM and GLMM are one family]]
+- [[Repeat-Visit Design]]: going back to the same points several times in one season; this reveals how often birds are missed, but it also means the visits are not independent.
+- [[Singular Fits and Convergence Warnings]]: messages from `glmer()` saying either "I am not sure I found the best answer" (convergence warning) or "I ended up at an edge, usually a spread of...
+- [[Variance Component]]: one number that says how much the groups (survey points) really differ from each other, beyond what the predictors (property, habitat, wind, sky) explain.
+- [[Why a random intercept for point]]
+- [[Why Site is fixed not random]]
